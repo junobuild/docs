@@ -1,0 +1,33 @@
+.heroBanner {
+  padding: 0 1rem;
+
+  z-index: 1;
+  background: transparent;
+
+  --ifm-hero-background-color: transparent;
+  --ifm-hero-text-color: black;
+}
+
+.container {
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 42% auto;
+  }
+
+  @media screen and (min-width: 1900px) {
+    display: block;
+  }
+}
+
+.item {
+  grid-column: 1/2;
+}
+
+.title {
+  --logo-color: white;
+  :global(svg) {
+    max-width: 300px;
+  }
+}

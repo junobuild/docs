@@ -1,0 +1,8 @@
+{
+  "label": "Infrastructure",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Few information about the Big Tech-less infrastructure that powers the smart contracts of Juno."
+  }
+}

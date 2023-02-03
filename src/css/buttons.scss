@@ -1,0 +1,35 @@
+:root {
+  --juno-border-radius: 3px;
+
+  --ifm-button-border-radius: var(--juno-border-radius);
+  --ifm-pagination-nav-border-radius: var(--juno-border-radius);
+  --ifm-code-border-radius: var(--juno-border-radius);
+}
+
+.theme-admonition,
+.card {
+  border-radius: var(--juno-border-radius);
+}
+
+.button--juno {
+  --ifm-button-border-width: 2px;
+  --ifm-button-border-color: black;
+  box-shadow: 4px 4px black;
+
+  background: white;
+  color: black;
+
+  &:active {
+    box-shadow: none;
+    transform: translateX(3px) translateY(3px);
+  }
+
+  &:hover,
+  &:focus {
+    color: black;
+    background: #e9ebff;
+  }
+
+  transition: color 0.15s ease-out, background 0.15s ease-out,
+    transform 0.15s ease-out, box-shadow 0.25s ease-out, border 0.15s ease-out;
+}

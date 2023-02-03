@@ -1,0 +1,8 @@
+{
+  "label": "Add Juno to an app",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Follow this guide to integrate Juno in your web app or in a Node.js desktop or IoT application."
+  }
+}
