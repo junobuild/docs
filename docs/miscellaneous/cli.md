@@ -231,8 +231,8 @@ juno upgrade
 
 :::caution
 
-- We advice you to iteratively and continuously follow the releases process of Juno as some features might not work as expected in the [console](../terminology.md#console) if your smart contracts are not up-to-date.
-- Upgrading is as sensitive as migrating any storage. This is a sensitive process, we advice you to run it with a stable internet connection.
+- We recommend that you stay current with the Juno releases, as some features may not perform correctly in the [console](../terminology.md#console) if your smart contracts are outdated.
+- Upgrading is as complex as migrating storage and requires a stable internet connection for a successful process.
 
 :::
 
