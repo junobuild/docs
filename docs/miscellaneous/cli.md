@@ -221,6 +221,12 @@ This command removes existing files from the satellite and only affects the app 
 
 :::
 
+:::hint
+
+If you compress (gzip and brotli) your bundle and assets and have already deployed once your app, the assets need also to be cleared. This is required because a certification tree of all assets should be calculated.
+
+:::
+
 ## Upgrade
 
 If the smart contracts' code of your [mission control] or [satellites] become outdated, you can upgrade them by running the following command from the project directory:
