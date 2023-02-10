@@ -167,11 +167,11 @@ Here is an example of how the ignore attribute can be utilized:
 
 The behavior of your [storage](../build/storage.md) can be configured.
 
-By default, a [satellite] adds a trailing slash to URLs in order to resolve the required asset; for example, if you visit `/about` in your browser, the smart contract will try to resolve a file named `/about/index.html` when searching for a corresponding file in its memory.
+By default, a [satellite] adds a trailing slash to URLs in order to resolve the required asset; for example, if you visit `/about` in your browser, the smart contract will try to resolve a file named `/about.html` when searching for a corresponding file in its memory.
 
-You can change this behavior with the `trailingSlash` option, which can be set to `always` (the default) or `never`.
+You can change this behavior with the `trailingSlash` option, which can be set to `never` (the default) or `always`.
 
-If set to `never`, the [satellite] will try to resolve resources without adding a slash. For example, if you visit `/about`, it will try to resolve a file named `/about.html`.
+If set to `always`, the [satellite] will try to resolve `index.html` resources with an additional slash. For example, if you visit `/about`, it will try to resolve a file named `/about/index.html`.
 
 The following is an example of the storage configuration object.
 
