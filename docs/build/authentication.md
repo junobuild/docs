@@ -8,21 +8,15 @@ Juno allows you to securely identify users **anonymously** and save their data o
 
 Our easy-to-use SDKs support authentication via [Internet Identity] and more providers will be added soon.
 
-Juno Authentication integrates tightly with other Juno services, [datastore](datastore.md) and [storage](storage.md).
+Juno Authentication integrates tightly with other Juno services like [datastore](datastore.md) and [storage](storage.md).
+
+You can manage your users in the [authentication](https://console.juno.build/auhtentication) view in Juno's console. A new entry is created when a user succesfully signs in (see below).
 
 :::note
 
 The Juno SDK must be [installed](../add-juno-to-an-app/install-the-sdk-and-initialize-juno.md) and initialized in your app to use the authentication features.
 
 :::
-
-## How does it work?
-
-When a user authenticates successfully in your app, a document is created in your [datastore](datastore.md) with the user's public key (**anonymous** [principal](../terminology.md#principal)).
-
-This allows any actions performed by the user to be authenticated.
-
-You can manage your users in the [authentication](https://console.juno.build/auhtentication) view in Juno's console.
 
 ## Sign-in
 
