@@ -8,7 +8,7 @@ Welcome to Juno, an open-source Blockchain-as-a-Service platform that makes buil
 
 Unlike traditional Backend-as-a-Service (BaaS) platforms like Google Firebase or AWS Amplify, Juno runs entirely on the blockchain.
 
-It provides you the ability to outsource all the behind-the-scenes aspects of your web or mobile development, giving you the ability to focus on the frontend.
+It allows you to outsource all the behind-the-scenes aspects of your web or mobile development, giving you the ability to focus on the frontend.
 
 At Juno, privacy is a top priority and the platform operates without controlling your data or work. With Juno, you truly own your creations.
 
