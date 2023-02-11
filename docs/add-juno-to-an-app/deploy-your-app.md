@@ -25,7 +25,7 @@ npm run build
 If you do not have the [CLI] installed yet, install it:
 
 ```bash
-npm install --global @junobuild/cli
+npm i -g @junobuild/cli
 ```
 
 and initialize the local project state (`juno.json`):
