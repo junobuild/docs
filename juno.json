@@ -1,9 +1,6 @@
 {
   "satellite": {
     "satelliteId": "ucnx3-aqaaa-aaaal-ab3ea-cai",
-    "source": "build",
-    "storage": {
-      "trailingSlash": "always"
-    }
+    "source": "build"
   }
 }
