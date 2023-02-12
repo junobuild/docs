@@ -16,13 +16,15 @@ To use Juno Storage's features, you must [install](../add-juno-to-an-app/install
 
 ## How does it work?
 
-Each [satellite] you create has a "Storage," which can have as many collections as you wish.
+Each [satellite] you create has a "Storage", which can contain assets (photo, document, video etc.) that are automatically made available on the internet.
 
-A collection is identified by a customizable key, which is a `string`.
+A "Storage" can have as many collections as you wish.
 
-Each collection can hold a list of assets, which consist of indexation information (such as a path), content (a blob), and a technical user
+A collection contains a list of assets. Each of these is a record that holds the data you want to persist on chain, along with an associated owner (the creator of the asset).
 
-The technical user is used to grant read and write permissions. Unlike the [datastore](datastore.md), the keys of the assets must be unique across all collections.
+The associated owner is used to grant listing and write permissions.
+
+Each asset is identified by a `path` - e.g. `/images/a-user-image.jpg` - unique within every collection.
 
 :::warning
 
