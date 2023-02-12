@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Datastore
 
-The Juno DataStore provides a convenient programming model for storing data on the blockchain, eliminating the need to write backend code. This allows for easy management of distributed, cross-user data.
+The Juno Datastore provides a convenient programming model for storing data on the blockchain, eliminating the need to write backend code. This allows for easy management of distributed, cross-user data.
 
 :::note
 
@@ -14,21 +14,21 @@ To use these features, the Juno SDK must be [installed](../add-juno-to-an-app/in
 
 ## How does it work?
 
-Each [satellite] you create has a "Datastore," which can have as many collections as you wish.
+Each [satellite] you create has a "Datastore", which can have as many collections as you wish.
 
-A collection is identified by a customizable key, which is a `string`, and contains a list of documents.
+A collection contains a list of documents, each identified by a textual key that you define.
 
-Each document is a record that holds the data you want to persist on the chain, along with timestamps and a technical user.
+Each document is a record that holds the data you want to persist on chain, along with timestamps (created and last updated) and an associated owner (the creator of the document).
 
-Timestamps are used to prevent data from being overwritten, and the technical user is used to grant read and write permissions.
+Timestamps are used to prevent data from being overwritten, and the associated owner is used to grant read and write permissions.
 
-Each document is identified by a unique `key` per collection.
+Each document is identified by a `key` (unique within a collection).
 
 ## Limitation
 
 A [satellite] can hold up to 32GB of data for all services combined.
 
-A document can weigh up to 2MB.
+A document can be up to 2MB.
 
 ## Collections and rules
 
@@ -36,15 +36,15 @@ You can create or update collections and their rules in the "Rules" tab in Juno'
 
 A collection's read and write permissions can be set as `public`, `private`, `managed`, or `controllers`.
 
-- `public` means anyone can read/write in the related collection
-- `private` means only a registered user can access the data
-- `managed` means both the user and the [controllers] can access the data
-- `controllers` means only the [controllers] can access the data
+- `public`: everyone can read from (resp. write to) any document in the collection
+- `private`: only the owner of a document and can read from (resp. write to) a document in the collection
+- `managed`: the owner of a document _and_ the [controllers] of the satellite can read from (resp. write to) a document in the collection
+- `controllers`: only the [controllers] of the satellite can read from (resp. write to) any document in the collection
 
 :::tip
 
 - You can modify the rules at any time, and changes will take effect immediately.
-- Any collection with read permissions set to `public`, `managed` or `controllers` can be viewed in Juno's console under the [datastore](https://console.juno.build/datastore) view.
+- Any collection with read permissions set to `public`, `managed` or `controllers` can be viewed by the satellite's [controllers] in the console under the [datastore](https://console.juno.build/datastore) view.
 
 :::
 
@@ -64,7 +64,7 @@ await setDoc<Example>({
 });
 ```
 
-You need to provide the `collection` in which to save the data and the `key` to use as an index for the document.
+You need to provide the `collection` in which to save the data and the `key` to use as an index for the document. The `data` can be any [JSON]-serializable data.
 
 :::tip
 
@@ -110,21 +110,23 @@ import { setDoc } from "@junobuild/core";
 await setDoc<Example>({
   collection: "my_collection_key",
   doc: {
-    ...myDoc,
+    ...myDoc, // includes 'key' and 'updated_at'
     data: myNewData,
   },
 });
 ```
 
+The `updated_at` timestamp must match the timestamp of the last document update on the satellite, otherwise the call will fail. This prevents unexpected concurrent updates.
+
 :::tip
 
-It is common to retrieve the document before updating it to ensure that you have the most recent timestamp.
+It is common to retrieve the document with `getDoc` before updating it to ensure that you have the most recent timestamp.
 
 :::
 
 ## List data
 
-To list data, use the `listDocs` function, which accepts various optional parameters, including a matcher (a regex applied to the documents' keys), pagination options, and sorting order:
+To list data, use the `listDocs` function, which accepts various optional parameters, including a matcher (a regex applied to the document keys), pagination options, and sorting order:
 
 ```typescript
 import { listDocs } from "@junobuild/core";
@@ -150,3 +152,4 @@ await setDoc<Example>({
 
 [satellite]: ../terminology.md#satellite
 [controllers]: ../terminology.md#controller
+[JSON]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#description
