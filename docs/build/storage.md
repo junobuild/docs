@@ -26,7 +26,7 @@ The associated owner is used to grant listing and write permissions.
 
 Each asset is identified by a `path` - e.g. `/images/a-user-image.jpg` - unique within every collection.
 
-:::warning
+:::caution
 
 Unless you use the optional `token` parameter to persist an asset in your [satellite] and make its URL difficult to guess, any asset stored in Juno Storage will be publicly available on the internet.
 
@@ -38,24 +38,19 @@ Each [satellite] can hold up to 32GB of data for all services combined.
 
 ## Collections and rules
 
-Collection and their rules can be created or updated in the [storage](https://console.juno.build/storage) view in Juno's console under tab "Rules".
+You can create or update collections and their rules in the "Rules" tab in Juno's console under the [storage](https://console.juno.build/storage) view.
 
-Collections and their rules can be created or updated in the Juno console's [storage](https://console.juno.build/storage) view under the "Rules" tab.
-
-A collection is identified by a `key`, a `string`.
-
-Read and write permissions can be defined as follows:
-
-:::warning
+:::caution
 
 Assets remain publicly available on the internet regardless of the permission schema. The rules are only applied when accessing the data through the library.
 
 :::
 
-- `public`: anyone can read and write in the related collection.
-- `private`: only a registered user can read and write in the related collection. Note that even you, the owner of the [satellite], cannot access the data stored in this collection.
-- `managed`: both the user and the [controllers] read and write in the related collection.
-- `controllers`: only the [controllers] can read and write in the related collection.
+A collection's read and write permissions can be set as `public`, `private`, `managed`, or `controllers`.
+- `public`: everyone can read from (resp. write to) any asset in the collection
+- `private`: only the owner of a asset and can read from (resp. write to) a document in the collection
+- `managed`: the owner of an asset _and_ the [controllers] of the satellite can read from (resp. write to) an asset in the collection
+- `controllers`: only the [controllers] of the satellite can read from (resp. write to) any asset in the collection
 
 :::tip
 
@@ -63,6 +58,8 @@ Assets remain publicly available on the internet regardless of the permission sc
 - Any collection with read permission set as`public`, `managed` or `controllers` can be viewed in the Juno console's [storage](https://console.juno.build/storage) view.
 
 :::
+
+### Additional rules
 
 In addition to the permissions, you can set an optional parameter to limit the size (in bytes) of the assets that can be uploaded in a collection.
 
@@ -89,16 +86,16 @@ The `data` parameter is the file you want to upload. This is commonly selected u
 
 The `uploadFile` function provides various options, including:
 
-- `filename`: By default, Juno will use the file's filename. You can overwrite this and provide a custom filename.
-- `fullPath`: Juno will automatically compute the `fullPath`, which is the unique path (or key) that is used to make the asset available on the internet. The `fullPath` is the filename encoded as a URL and prefixed with `/`.
-- `headers`: The headers can affect how the browser handles the asset. If no headers are provided, Juno will extract the `Content-Type` from the file type.
-- `encoding`: The type of encoding for the file. For example, `'identity' | 'gzip' | 'compress' | 'deflate' | 'br'`.
+- `filename`: By default, Juno uses the file's filename. You can overwrite this and provide a custom filename. Example: `myimage.jpg`.
+- `fullPath`: Juno will automatically compute the `fullPath`, which is the **unique** path that is used to make the asset available on the internet. The `fullPath` is the filename encoded as a URL and prefixed with `/`. Example: `/images/myimage.jpg`.
+- `headers`: The headers can affect how the browser handles the asset. If no particular header is provided, Juno will extract the `Content-Type` from the file type.
+- `encoding`: The type of encoding for the file. For example, `identity`  (raw) or `gzip`.
 
 ### Protected asset
 
 While all assets can be found on the internet, it is possible to make their URL difficult to guess so that they remain undiscoverable (**as long as they are not shared**) and considered "private".
 
-Juno achieves this by using the `token` parameter.
+Juno achieves this by using the `token` query parameter.
 
 ```typescript
 import { uploadFile } from "@junobuild/core";
@@ -111,7 +108,7 @@ const result = await uploadFile({
 });
 ```
 
-For example, consider uploading a file "mydata.jpg" with a token. Attempting to access it through the URL "https://yoursatellite/mydata.jpg" will not work. The asset can only be retrieved if a token is provided: "https://yoursatellite/mydata.jpg?token=the-long-nanoid-generated".
+For example, consider uploading a file "mydata.jpg" with a token. Attempting to access it through the URL "https://yoursatellite/mydata.jpg" will not work. The asset can only be retrieved if a token is provided: "https://yoursatellite/mydata.jpg?token=a-super-long-secret-id".
 
 ## List assets
 
@@ -146,3 +143,4 @@ await deleteAsset({
 ```
 
 [satellite]: ../terminology.md#satellite
+[controllers]: ../terminology.md#controller
