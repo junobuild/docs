@@ -47,6 +47,7 @@ Assets remain publicly available on the internet regardless of the permission sc
 :::
 
 A collection's read and write permissions can be set as `public`, `private`, `managed`, or `controllers`.
+
 - `public`: everyone can read from (resp. write to) any asset in the collection
 - `private`: only the owner of a asset and can read from (resp. write to) a document in the collection
 - `managed`: the owner of an asset _and_ the [controllers] of the satellite can read from (resp. write to) an asset in the collection
@@ -89,7 +90,7 @@ The `uploadFile` function provides various options, including:
 - `filename`: By default, Juno uses the file's filename. You can overwrite this and provide a custom filename. Example: `myimage.jpg`.
 - `fullPath`: Juno will automatically compute the `fullPath`, which is the **unique** path that is used to make the asset available on the internet. The `fullPath` is the filename encoded as a URL and prefixed with `/`. Example: `/images/myimage.jpg`.
 - `headers`: The headers can affect how the browser handles the asset. If no particular header is provided, Juno will extract the `Content-Type` from the file type.
-- `encoding`: The type of encoding for the file. For example, `identity`  (raw) or `gzip`.
+- `encoding`: The type of encoding for the file. For example, `identity` (raw) or `gzip`.
 
 ### Protected asset
 
