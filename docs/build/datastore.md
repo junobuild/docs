@@ -48,9 +48,9 @@ A collection's read and write permissions can be set as `public`, `private`, `ma
 
 :::
 
-## Add data
+## Add a document
 
-To add data, use the `setDoc` function:
+To add a document, use the `setDoc` function:
 
 ```typescript
 import { setDoc } from "@junobuild/core";
@@ -87,7 +87,7 @@ await setDoc<Example>({
 });
 ```
 
-## Get data
+## Get a document
 
 To retrieve data, use the `getDoc` function and provide the `collection` and the `key` of the document:
 
@@ -100,7 +100,7 @@ const myDoc = await getDoc({
 });
 ```
 
-## Update data
+## Update a document
 
 To update a document, use the `setDoc` function with a timestamp to validate that the most recent entry is being updated:
 
@@ -124,9 +124,9 @@ It is common to retrieve the document with `getDoc` before updating it to ensure
 
 :::
 
-## List data
+## List documents
 
-To list data, use the `listDocs` function, which accepts various optional parameters, including a matcher (a regex applied to the document keys), pagination options, and sorting order:
+To list documents, use the `listDocs` function, which accepts various optional parameters, including a matcher (a regex applied to the document keys), pagination options, and sorting order:
 
 ```typescript
 import { listDocs } from "@junobuild/core";
@@ -137,9 +137,9 @@ const myList = await listDocs({
 });
 ```
 
-## Delete data
+## Delete a document
 
-To delete data, use the `delDoc` function, which also performs timestamp validation to ensure that the most recent document is being deleted:
+To delete a document, use the `delDoc` function, which also performs timestamp validation to ensure that the most recent document is being deleted:
 
 ```typescript
 import { delDoc } from "@junobuild/core";
