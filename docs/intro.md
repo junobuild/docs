@@ -4,19 +4,23 @@ sidebar_position: 1
 
 # Getting started
 
-Welcome to Juno, an open-source Blockchain-as-a-Service platform that makes building web3 apps faster and easier than ever before ⚡️🚀🤯.
+Welcome to Juno, an open-source Blockchain-as-a-Service platform that makes building decentralized apps faster and easier than ever before ⚡️🚀🤯.
 
 Unlike traditional Backend-as-a-Service (BaaS) platforms like Google Firebase or AWS Amplify, Juno runs entirely on the blockchain.
 
 It allows you to outsource all the behind-the-scenes aspects of your web or mobile development, giving you the ability to focus on the frontend.
 
-At Juno, privacy is a top priority and the platform operates without controlling your data or work. With Juno, you truly own your creations.
+At Juno, privacy is a top priority and the platform operates without controlling your data or work.
 
-## Closed beta 👀
-
-Juno is currently in closed beta. If you would like to participate, reach out to David on [Twitter](https://twitter.com/daviddalbusco) or through his [Contact](https://daviddalbusco.com/#contact) page to request an invitation code.
+With Juno, you truly own your creations.
 
 ## Add Juno to your JavaScript project
+
+:::info
+
+Juno is currently in **closed beta** 👀. If you would like to participate, reach out to David on [Twitter](https://twitter.com/daviddalbusco) or through his [Contact](https://daviddalbusco.com/#contact) page to request an invitation code.
+
+:::
 
 To get started with Juno, follow our [guide](add-juno-to-an-app/create-a-satellite.md) to launch your first [satellite](terminology.md#satellite) and integrate our JavaScript SDK into your project.
 
