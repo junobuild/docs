@@ -136,7 +136,7 @@ Here is an example of how the ignore attribute can be utilized:
 
 The behavior of your [storage](../build/storage.md) can be configured.
 
-### HTTP Headers
+#### HTTP Headers
 
 Headers allow the client and the [satellite] to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
 
