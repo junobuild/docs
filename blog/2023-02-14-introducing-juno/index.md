@@ -73,7 +73,7 @@ await setDoc({
   collection,
   doc: {
    key,
-   ...(doc && doc),
+   ...doc,
    data: {
     email: myNewEmail
    }
