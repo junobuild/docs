@@ -18,7 +18,7 @@ With Juno, you truly own your creations.
 
 :::info
 
-Juno is currently in **closed beta** 👀. If you would like to participate, contact David on [Twitter](https://twitter.com/daviddalbusco) or through his [Contact](https://daviddalbusco.com/#contact) page to request an invitation code.
+Juno is currently in **closed beta** 👀. Contact David on [Twitter](https://daviddalbusco.com) or fill this [form](https://jx5yt-yyaaa-aaaal-abzbq-cai.ic0.app/) - built with Juno 😉 - to enter the waiting list.
 
 :::
 
