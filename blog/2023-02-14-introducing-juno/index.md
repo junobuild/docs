@@ -112,7 +112,7 @@ Juno Hosting - like our other services - runs on the Internet Computer. It is th
 
 Therefore, the "Satellites" launched on Juno run entirely on blockchain, which allows for full decentralization.
 
-You can also maintain your unique brand identity with Juno Hosting as custom domain name are fully supported and can be configured with ease.
+Custom domain names are fully supported and easily configured, meaning your unique brand identity will be just as visible on chain.
 
 ![Hosting screenshot](./hosting.png)
 
