@@ -22,6 +22,21 @@ npm run build
 
 ## Deploy your app
 
+If you do not have the [CLI] installed yet, install it:
+
+```bash
+npm i -g @junobuild/cli
+```
+
+and initialize the local project state (`juno.json`):
+
+```bash
+juno login
+juno init
+```
+
+When prompted, during `login` and `init` select the satellite you created earlier.
+
 Use the Juno [CLI] to upload your production build to your [satellite]:
 
 ```bash
