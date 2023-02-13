@@ -26,7 +26,7 @@ export default function Home(): JSX.Element {
         <meta content="website" property="og:type" />
         <meta content="https://juno.build" property="og:url" />
         <meta
-          content="https://juno.build/images/social-image.png"
+          content="https://juno.build/images/social-image.jpg"
           property="og:image"
         />
         <meta content="summary_large_image" name="twitter:card" />
@@ -36,7 +36,7 @@ export default function Home(): JSX.Element {
           name="twitter:description"
         />
         <meta
-          content="https://juno.build/images/social-image.png"
+          content="https://juno.build/images/social-image.jpg"
           name="twitter:image"
         />
         <meta content="@JunoBuild" name="twitter:creator" />
