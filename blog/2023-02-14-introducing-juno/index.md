@@ -25,7 +25,7 @@ The Juno closed beta program is launching today and is packed with all the essen
 
 ## How It Works
 
-Each project you start on Juno is a smart contract we called "Satellite" 🛰️.
+Every project you create on Juno is a "Satellite": a smart contract that you own, running 100% on-chain. 🛰️
 
 It is a container for your application that runs entirely on-chain and holds all the states or your project. It can contain your users' persisted data, a storage for the assets (images or video) and also your application bundle.
 
