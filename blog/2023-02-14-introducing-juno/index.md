@@ -60,7 +60,7 @@ btn?.addEventListener("click", signIn, { passive: true });
 
 Juno Datastore can be use to add persistence to your application using simple constructs: collections and documents.
 
-Each collections can handle which users and/or administrators have access to their data. Juno has never access to these and it is also worth to note that if you wish, you can also design your architecture in a way that even you the developer of your application can have no access to the data saved by your users.
+Collections specify which users and/or administrators have access to their data. Juno itself does _not_ have access to data in collections (unless you make it public, of course). Juno also gives you the possibility to design your architecture so that even _you_ (the developer of your application) can have no access to the data saved by your users.
 
 ```typescript
 import { getDoc, setDoc } from '@junobuild/core';
