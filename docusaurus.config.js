@@ -61,6 +61,11 @@ const config = {
           },
           { to: "/blog", label: "Blog", position: "left" },
           {
+            href: "https://console.juno.build",
+            label: "Console",
+            position: "right",
+          },
+          {
             href: "https://twitter.com/junobuild",
             label: "Twitter",
             position: "right",
