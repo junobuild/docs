@@ -7,7 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Juno",
-  tagline: "Build web3 apps faster than ever.",
+  tagline: "Build Web3 Apps Faster Than Ever Before.",
   url: "https://juno.build",
   baseUrl: "/",
   onBrokenLinks: "throw",
