@@ -17,7 +17,7 @@ Unlike traditional Backend-as-a-Service (BaaS) platforms like Google Firebase or
 
 It allows you to forget about all the backend aspects of development, letting focus on what matters: the product your users see.
 
-At Juno, privacy is a top priority and the platform operates without controlling your data or work. With Juno, you truly own your creations.
+Our platform operates without controlling your data or work. With Juno, you truly own your creations.
 
 The Juno closed beta program is launching today and is packed with all the essential features you need to start creating Web3 applications.
 
@@ -30,10 +30,6 @@ Every project you create on Juno is a "Satellite": a smart contract that you own
 It is a container for your application that holds all your project's state: users' persisted data, asset storage (images or video) and your application bundle.
 
 A satellite lives on its own -- and only _you_ can administrate it, because you _own_ it, exactly like an NFT.
-
-In the future it will be enhanced with further capabilities and we might launch other extended canisters such as "Rocket" or "Space station".
-
-We also plan to open the platform to third party developers allowing them to provide and sell their own templates.
 
 ---
 
@@ -120,6 +116,6 @@ Custom domain names are fully supported and easily configured, meaning your uniq
 
 ## What's next?
 
-We are starting our closed beta program today. Fill this form - built with Juno - to enter the waiting list or contact David on [Twitter](https://daviddalbusco.com) (if you cannot wait to give Juno a try 😉).
+We are starting our closed beta program today. Contact David on [Twitter](https://daviddalbusco.com) or fill this [form](https://jx5yt-yyaaa-aaaal-abzbq-cai.ic0.app/) - built with Juno 😉 - to enter the waiting list.
 
 ⭐️⭐️⭐️ are also much appreciated: visit the [GitHub repo](https://github.com/buildwithjuno/juno) and show your support!
