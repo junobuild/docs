@@ -58,7 +58,7 @@ btn?.addEventListener("click", signIn, { passive: true });
 
 ## Datastore
 
-Juno Datastore can be use to add persistency to your application. It uses a simple principle of collections and documents.
+Juno Datastore can be use to add persistence to your application using simple constructs: collections and documents.
 
 Each collections can handle which users and/or administrators have access to their data. Juno has never access to these and it is also worth to note that if you wish, you can also design your architecture in a way that even you the developer of your application can have no access to the data saved by your users.
 
