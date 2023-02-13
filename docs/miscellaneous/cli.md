@@ -71,7 +71,7 @@ juno init
 This command sets up a [satellite] for your app. During the initialization, you will be asked to complete the following tasks:
 
 - Select the desired target [satellite].
-- Provide the path to your bundled app files that need to be deployed. This is commonly the output folder of `npm run build`, such as `/dist` or `/build`.
+- Provide the path to your bundled app files that need to be deployed.
 
 The directory will contain a `juno.json` configuration file after the initialization.
 
@@ -83,7 +83,7 @@ The list of [satellites] presented by the CLI at this step are those selected du
 
 ## juno.json
 
-The `juno init` command creates a `juno.json`configuration file in the root of your project directory.
+The `juno init` command creates a `juno.json` configuration file in the root of your project directory.
 
 This file is necessary to deploy your app with the CLI as it specifies which files from your project directory will be deployed to which satellite.
 
@@ -108,35 +108,11 @@ The following is an example `juno.json`:
 
 The configuration provides various **options**:
 
-### HTTP Headers
+### Source
 
-Headers allow the client and the [satellite] to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
+Where should Juno search for the files to deploy in your project directory.
 
-For instance, you may want to set a specific `Cache-Control` for performance reasons.
-
-Here's an example of the `headers` object:
-
-```json
-{
-  "satellite": {
-    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
-    "source": "dist",
-    "headers": [
-      {
-        "source": "assets/fonts/*",
-        "headers": [["Cache-Control", "max-age=31536000"]]
-      },
-      {
-        "source": "**/*.@(js|css)",
-        "headers": [
-          ["Cache-Control", "max-age=31536000"],
-          ["Access-Control-Allow-Origin", "*"]
-        ]
-      }
-    ]
-  }
-}
-```
+This is commonly the output folder of `npm run build`, such as `/dist` or `/build`.
 
 ### Ignore files
 
@@ -156,40 +132,53 @@ Here is an example of how the ignore attribute can be utilized:
 }
 ```
 
-:::note
-
-- The `Content-Type` header is calculated automatically and cannot be altered.
-- No validation or check for uniqueness is performed. For example, if a header matches a file based on multiple rules, multiple headers will be set.
-
-:::
-
 ### Storage
 
 The behavior of your [storage](../build/storage.md) can be configured.
 
-By default, a [satellite] adds a trailing slash to URLs in order to resolve the required asset; for example, if you visit `/about` in your browser, the smart contract will try to resolve a file named `/about.html` when searching for a corresponding file in its memory.
+#### HTTP Headers
 
-You can change this behavior with the `trailingSlash` option, which can be set to `never` (the default) or `always`.
+Headers allow the client and the [satellite] to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
 
-If set to `always`, the [satellite] will try to resolve `index.html` resources with an additional slash. For example, if you visit `/about`, it will try to resolve a file named `/about/index.html`.
+For instance, you may want to set a specific `Cache-Control` for performance reasons.
 
-The following is an example of the storage configuration object.
+Here's an example of the `headers` object:
 
 ```json
 {
   "satellite": {
-    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
     "source": "dist",
     "storage": {
-      "trailingSlash": "never"
+      "headers": [
+        {
+          "source": "/",
+          "headers": [["Cache-Control", "public,max-age=0,must-revalidate"]]
+        },
+        {
+          "source": "assets/fonts/*",
+          "headers": [["Cache-Control", "max-age=31536000"]]
+        },
+        {
+          "source": "**/*.jpg",
+          "headers": [
+            ["Cache-Control", "max-age=31536000"],
+            ["Access-Control-Allow-Origin", "*"]
+          ]
+        }
+      ]
     }
   }
 }
 ```
 
-:::caution
+This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the headers using globs.
 
-Changing the `trailingSlash` option requires clearing and redeploying the assets of your application.
+:::note
+
+- The `Content-Type` header is calculated automatically and cannot be altered.
+- No validation or check for uniqueness is performed. For example, if a header matches a file based on multiple rules, multiple headers will be set.
+- Likewise, if you provide the same header when you [upload](https://juno.build/docs/build/storage#upload-asset) file to your "Storage" and within the configuration, both headers will be set in the response.
 
 :::
 

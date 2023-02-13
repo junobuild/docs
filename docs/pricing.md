@@ -11,7 +11,7 @@ There are two types of costs associated with using Juno.
 
 :::note
 
-Last update: Feb. 3, 2023
+Last update: Feb. 12, 2023
 
 :::
 
@@ -32,5 +32,6 @@ To create additional satellites, a fee of 0.5 ICP is required, in addition to th
 Please note that further transaction fees may be required in the future and prices and models are subject to change.
 
 [mission control]: terminology.md#mission-control
+[satellite]: terminology.md#satellite
 [satellites]: terminology.md#satellite
 [Internet Computer]: https://internetcomputer.org/
