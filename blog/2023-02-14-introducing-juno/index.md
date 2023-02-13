@@ -120,6 +120,6 @@ Custom domain names are fully supported and easily configured, meaning your uniq
 
 ## What's next?
 
-We are starting our closed beta program today. Fill this form - build with Juno - to enter the waiting list or contact David on [Twitter](https://daviddalbusco.com) (if you cannot wait to give Juno a try 😉).
+We are starting our closed beta program today. Fill this form - built with Juno - to enter the waiting list or contact David on [Twitter](https://daviddalbusco.com) (if you cannot wait to give Juno a try 😉).
 
 GitHub Star are also warmly welcomed. Drop a ⭐️ on our [GitHub repo](https://github.com/buildwithjuno/juno).
