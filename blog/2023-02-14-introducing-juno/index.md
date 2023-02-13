@@ -29,7 +29,7 @@ Every project you create on Juno is a "Satellite": a smart contract that you own
 
 It is a container for your application that holds all your project's state: users' persisted data, asset storage (images or video) and your application bundle.
 
-A satellite lives on its own and you - and only you-can administrate it.
+A satellite lives on its own -- and only _you_ can administrate it, because you _own_ it, exactly like an NFT.
 
 In the future it will be enhanced with further capabilities and we might launch other extended canisters such as "Rocket" or "Space station".
 
