@@ -23,7 +23,7 @@ The Juno closed beta program is launching today and is packed with all the essen
 
 ---
 
-## Concept
+## How It Works
 
 Each project you start on Juno is a smart contract we called "Satellite" 🛰️.
 
