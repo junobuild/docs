@@ -91,7 +91,7 @@ await setDoc({
 
 ## Storage
 
-Juno Storage is the easiest way to let your users upload and manage their files securely on blockchain. The API we provide is designed to obfuscate any potential complexity. It takes advantage of the same read and write permission concept as the Datastore and automatically makes the file available on the Internet with the help of a built-in query parameters "token" mechanism that can be use to make users files secret.
+Juno Storage is the easiest way to let your users upload and manage their files securely on the blockchain. The API we provide is designed to obfuscate any potential complexity. It takes advantage of the same read and write permission concept as the Datastore and automatically makes the file available on the Internet with the help of a built-in query parameters "token" mechanism that can be use to make users files secret.
 
 ```javascript
 const input = document.querySelector("input");
