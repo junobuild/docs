@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://juno.build/sitemap.xml
+Host: https://juno.build

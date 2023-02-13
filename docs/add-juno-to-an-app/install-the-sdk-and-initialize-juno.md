@@ -21,10 +21,10 @@ npm i @junobuild/core
 2. Initialize Juno in your web app:
 
 ```typescript
-import { initDapp } from "@junobuild/core";
+import { initJuno } from "@junobuild/core";
 
 // TODO: Replace the following satelliteId with your app's effective satellite ID.
-await initDapp({
+await initJuno({
   satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
 });
 ```
