@@ -108,7 +108,7 @@ const {downloadUrl} = await uploadFile({
 
 ## Hosting
 
-Juno Hosting - as for our other services - runs on the Internet Computer network. It is the only blockchain with canister smart contracts that can serve web and thus, without relying on any Big Tech infrastructure.
+Juno Hosting - like our other services - runs on the Internet Computer. It is the only blockchain with canister smart contracts that can serve web assets to browsers straight from the chain -- meaning no dependency on centralized Big Tech.
 
 Therefore, the "Satellites" launch on Juno run entirely on blockchain, which allows for full decentralization.
 
