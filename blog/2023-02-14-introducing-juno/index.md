@@ -43,7 +43,7 @@ Juno allows developers to securely identify users anonymously and save their dat
 
 Our easy-to-use SDKs support authentication via [Internet Identity](https://internetcomputer.org/internet-identity), a Web3 authentication provider that offers a secure blockchain login experience with a user-friendly Web2 interface, and more providers will be added soon.
 
-Juno Authentication integrates tightly with other services, [datastore](https://juno.build/docs/build/datastore) and [storage](https://juno.build/docs/build/storage).
+Authentication integrates tightly with other Juno services, like [datastore](https://juno.build/docs/build/datastore) and [storage](https://juno.build/docs/build/storage):
 
 ```javascript
 import { signIn } from '@junobuild/core';
