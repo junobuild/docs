@@ -19,7 +19,7 @@ It allows you to forget about all the backend aspects of development, letting fo
 
 At Juno, privacy is a top priority and the platform operates without controlling your data or work. With Juno, you truly own your creations.
 
-The Juno closed beta program is launching today and is packed with all the essential features you need to start creating your Web3 applications.
+The Juno closed beta program is launching today and is packed with all the essential features you need to start creating Web3 applications.
 
 ---
 
