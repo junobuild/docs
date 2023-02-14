@@ -144,7 +144,7 @@ To delete a document, use the `delDoc` function, which also performs timestamp v
 ```typescript
 import { delDoc } from "@junobuild/core";
 
-await setDoc<Example>({
+await delDoc<Example>({
   collection: "my_collection_key",
   doc: myDoc,
 });

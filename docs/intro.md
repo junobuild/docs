@@ -12,8 +12,6 @@ It allows you to outsource all the behind-the-scenes aspects of your web or mobi
 
 Our platform operates without controlling your data or work. With Juno, you truly own your creations.
 
-With Juno, you truly own your creations.
-
 ## Add Juno to your JavaScript project
 
 :::info
