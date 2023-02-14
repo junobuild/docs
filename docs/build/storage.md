@@ -16,19 +16,15 @@ To use Juno Storage's features, you must [install](../add-juno-to-an-app/install
 
 ## How does it work?
 
-Each [satellite] you create has a "Storage", which can contain assets (photo, document, video etc.) that are automatically made available on the internet.
+Each [satellite] you create includes a "Storage" provider, which can store assets (images, documents, videos, etc.) that are automatically made available on the internet.
 
-A "Storage" can have as many collections as you wish.
+Assets are stored in "collections" and you can have as many collections as you wish.
 
-A collection contains a list of assets. Each of these is a record that holds the data you want to persist on chain, along with an associated owner (the creator of the asset).
-
-The associated owner is used to grant listing and write permissions.
-
-Each asset is identified by a `path` - e.g. `/images/a-user-image.jpg` - unique within every collection.
+Each asset within a collection is identified by a `path` -- e.g. `/images/a-user-image.jpg` -- unique within that collection. Assets hold the data you want to persist on chain, along with metadata (the "owner" or creator of the asset).
 
 :::caution
 
-Unless you use the optional `token` parameter to persist an asset in your [satellite] and make its URL difficult to guess, any asset stored in Juno Storage will be publicly available on the internet.
+Unless you use the optional [`token` parameter](#protected-asset) to persist an asset in your [satellite] and make its URL difficult to guess, any asset stored in Juno Storage will be publicly available on the internet.
 
 :::
 
@@ -38,11 +34,11 @@ Each [satellite] can hold up to 32GB of data for all services combined.
 
 ## Collections and rules
 
-You can create or update collections and their rules in the "Rules" tab in Juno's console under the [storage](https://console.juno.build/storage) view.
+You can create or update collections and their access rules (read and write) in the "Rules" tab in Juno's console under the [storage](https://console.juno.build/storage) view.
 
 :::caution
 
-Assets remain publicly available on the internet regardless of the permission schema. The rules are only applied when accessing the data through the library.
+Assets are publicly accessible on the Internet regardless of the permission schema. The rules are only applied when reading or writing the data through the library.
 
 :::
 
@@ -55,8 +51,8 @@ A collection's read and write permissions can be set as `public`, `private`, `ma
 
 :::tip
 
-- Rules can be modified at any time and changes will be immediately applied
-- Any collection with read permission set as`public`, `managed` or `controllers` can be viewed in the Juno console's [storage](https://console.juno.build/storage) view.
+- Rules can be modified at any time and changes will be applied immediately
+- Any collection with read permission set as `public`, `managed` or `controllers` can be viewed in the console's [storage](https://console.juno.build/storage) view.
 
 :::
 
@@ -70,7 +66,7 @@ To upload an asset, use the following code:
 
 :::note
 
-Uploading a file with the same name as an existing file will overwrite the previous file.
+Uploading a file with the same name as an existing file will overwrite the previous file (assuming the uploader has write access to the previous file).
 
 :::
 
@@ -83,20 +79,20 @@ const result = await uploadFile({
 });
 ```
 
-The `data` parameter is the file you want to upload. This is commonly selected using an HTML `<input type="file" /> ` element.
+The `data` parameter is the file you want to upload. This is typically selected using an HTML `<input type="file" /> ` element.
 
 The `uploadFile` function provides various options, including:
 
 - `filename`: By default, Juno uses the file's filename. You can overwrite this and provide a custom filename. Example: `myimage.jpg`.
 - `fullPath`: Juno will automatically compute the `fullPath`, which is the **unique** path that is used to make the asset available on the internet. The `fullPath` is the filename encoded as a URL and prefixed with `/`. Example: `/images/myimage.jpg`.
-- `headers`: The headers can affect how the browser handles the asset. If no particular header is provided, Juno will extract the `Content-Type` from the file type.
+- `headers`: The headers can affect how the browser handles the asset. If no headers are provided Juno will infer the `Content-Type` from the file type.
 - `encoding`: The type of encoding for the file. For example, `identity` (raw) or `gzip`.
 
 ### Protected asset
 
 While all assets can be found on the internet, it is possible to make their URL difficult to guess so that they remain undiscoverable (**as long as they are not shared**) and considered "private".
 
-Juno achieves this by using the `token` query parameter.
+Juno achieves this by using an optional `token` query parameter.
 
 ```typescript
 import { uploadFile } from "@junobuild/core";
@@ -109,7 +105,7 @@ const result = await uploadFile({
 });
 ```
 
-For example, consider uploading a file "mydata.jpg" with a token. Attempting to access it through the URL "https://yoursatellite/mydata.jpg" will not work. The asset can only be retrieved if a token is provided: "https://yoursatellite/mydata.jpg?token=a-super-long-secret-id".
+Imagine a file "mydata.jpg" uploaded with a token. Attempting to access it through the URL "https://yoursatellite/mydata.jpg" will not work. The asset can only be retrieved if a token is provided: "https://yoursatellite/mydata.jpg?token=a-super-long-secret-id".
 
 ## List assets
 
@@ -124,7 +120,7 @@ const myList = await listAssets({
 });
 ```
 
-The `listAssets` function - in addition to specifying the collection to query - accepts various optional parameters:
+The `listAssets` function -- in addition to specifying the collection to query -- accepts various optional parameters:
 
 - `matcher`: a regex to apply to the assets' `fullPath`
 - `paginate`: an object used to query a subset of the assets
