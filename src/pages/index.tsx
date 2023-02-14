@@ -15,28 +15,28 @@ export default function Home(): JSX.Element {
         <title>{`${siteConfig.title} | Build web3 apps`}</title>
         <link href="https://juno.build" rel="canonical" />
         <meta
-          content="Build Web3 Apps Faster Than Ever Before. No backend code required. 100% on-chain with minimal carbon impact."
+          content="Build Web3 Apps Like Its Web2. No backend code required. 100% on-chain with minimal carbon impact."
           name="description"
         />
         <meta content="Juno" property="og:title" />
         <meta
-          content="Build Web3 Apps Faster Than Ever Before."
+          content="Build Web3 Apps Like Its Web2."
           property="og:description"
         />
         <meta content="website" property="og:type" />
         <meta content="https://juno.build" property="og:url" />
         <meta
-          content="https://juno.build/img/social-image.jpg"
+          content="https://juno.build/img/social_image.jpg"
           property="og:image"
         />
         <meta content="summary_large_image" name="twitter:card" />
         <meta content="Juno" name="twitter:title" />
         <meta
-          content="Build Web3 Apps Faster Than Ever Before."
+          content="Build Web3 Apps Like Its Web2."
           name="twitter:description"
         />
         <meta
-          content="https://juno.build/img/social-image.jpg"
+          content="https://juno.build/img/social_image.jpg"
           name="twitter:image"
         />
         <meta content="@JunoBuild" name="twitter:creator" />
