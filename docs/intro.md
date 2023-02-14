@@ -10,7 +10,7 @@ Unlike traditional Backend-as-a-Service (BaaS) platforms like Google Firebase or
 
 It allows you to outsource all the behind-the-scenes aspects of your web or mobile development, giving you the ability to focus on the frontend.
 
-At Juno, privacy is a top priority and the platform operates without controlling your data or work.
+Our platform operates without controlling your data or work. With Juno, you truly own your creations.
 
 With Juno, you truly own your creations.
 
@@ -18,7 +18,7 @@ With Juno, you truly own your creations.
 
 :::info
 
-Juno is currently in **closed beta** 👀. If you would like to participate, reach out to David on [Twitter](https://twitter.com/daviddalbusco) or through his [Contact](https://daviddalbusco.com/#contact) page to request an invitation code.
+Juno is currently in **closed beta** 👀. Contact David on [Twitter](https://daviddalbusco.com) or fill this [form](https://jx5yt-yyaaa-aaaal-abzbq-cai.ic0.app/) - built with Juno 😉 - to enter the waiting list.
 
 :::
 
