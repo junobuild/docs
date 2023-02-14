@@ -20,7 +20,7 @@ Each [satellite] you create includes a "Storage" provider, which can store asset
 
 Assets are stored in "collections" and you can have as many collections as you wish.
 
-Each asset within a collection is identified by a `path` -- e.g. `/images/a-user-image.jpg` -- unique within that collection. Assets hold the data you want to persist on chain, along with metadata (the "owner" or creator of the asset).
+Each asset within a collection is identified by a `path` -- e.g. `/images/a-user-image.jpg` -- unique within all collections. Assets hold the data you want to persist on chain, along with metadata (the "owner" or creator of the asset).
 
 :::caution
 
