@@ -29,6 +29,8 @@ Please note that it may take several minutes to set up your custom domain after 
 
 To configure DNS records, you will be requested to use `CNAME` records. Some domain providers do not provide such types. Instead, DNS providers often support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `icp1.io`.
 
+Some DNS providers require you to specify the main domain. For example, you might have to specify your full domain `foo.bar.com` for the `CNAME` entry related to `icp1.io` instead of only `foo` as displayed by our [console].
+
 :::tip
 
 This external guide explains how to configure the DNS records of your domain for two popular registrars: [Namecheap](https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/dns-setup#namecheap) and [GoDaddy](https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/dns-setup#godaddy).
@@ -46,3 +48,4 @@ This mechanism is in place to prevent tracking between sites. It is recommended 
 [CLI]: ../miscellaneous/cli.md
 [satellite]: ../terminology.md#satellite
 [infrastructure]: ../category/infrastructure
+[console]: ../terminology.md#console
