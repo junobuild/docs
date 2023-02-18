@@ -25,6 +25,16 @@ To connect your custom domain, follow these steps:
 
 Please note that it may take several minutes to set up your custom domain after the wizard is completed and up to 24 hours for your domain provider to reflect the changes.
 
+### About DNS records
+
+To configure DNS records, you will be requested to use `CNAME` records. Some domain providers do not provide such types. Instead, DNS providers often support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `icp1.io`.
+
+:::tip
+
+This external guide explains how to configure the DNS records of your domain for two popular registrars: [Namecheap](https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/dns-setup#namecheap) and [GoDaddy](https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/dns-setup#godaddy).
+
+:::
+
 ## Authentication Considerations
 
 For privacy reasons, Juno's [authentication](authentication.md) is linked to the domain you are using.
