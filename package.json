@@ -12,10 +12,11 @@
     "url": "https://github.com/buildwithjuno/docs/issues"
   },
   "scripts": {
+    "build:compress": "./scripts/build.compress.sh",
     "docusaurus": "docusaurus",
     "dev": "npm run start",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build": "docusaurus build && npm run build:compress",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
