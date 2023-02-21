@@ -166,13 +166,6 @@ const config = {
             ],
           },
         ],
-        logo: {
-          alt: "Juno Logo",
-          src: "img/juno_logo.svg",
-          href: "https://juno.build",
-          width: 160,
-          height: 51,
-        },
         copyright: `Copyright © ${new Date().getFullYear()} Juno.build`,
       },
       prism: {
