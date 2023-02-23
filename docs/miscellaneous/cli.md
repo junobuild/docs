@@ -218,10 +218,18 @@ If you compress (gzip and brotli) your bundle and assets and have already deploy
 
 ## Upgrade
 
-If the smart contracts' code of your [mission control] or [satellites] become outdated, you can upgrade them by running the following command from the project directory:
+If the smart contracts' code of your [mission control] or [satellites] become outdated, you can upgrade them.
+
+Running the following command from the project directory upgrade your [satellite] (default option):
 
 ```bash
 juno upgrade
+```
+
+By adding a suffix, you can upgrade your [mission control]:
+
+```bash
+juno upgrade -m
 ```
 
 :::caution
