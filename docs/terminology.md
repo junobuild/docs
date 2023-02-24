@@ -36,7 +36,7 @@ One "controller" is identified by a [principal](terminology.md#principal).
 
 ## ICP
 
-The ICP token is used to pay for transactions on Juno's [infrastructure].
+The ICP token is the cryptocurrency used to pay for transactions on Juno's [infrastructure].
 
 ## Internet Identity
 
