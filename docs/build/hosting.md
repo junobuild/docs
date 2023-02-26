@@ -37,6 +37,18 @@ This external guide explains how to configure the DNS records of your domain for
 
 :::
 
+### Status
+
+The status of the configuration of your custom domain can be one of the following:
+
+- `PendingOrder`: The registration request has been submitted and is waiting to be picked up.
+- `PendingChallengeResponse`: The certificate has been ordered.
+- `PendingAcmeApproval`: The challenge has been completed.
+- `Available`: The registration request has been successfully processed. Your custom domain is ready.
+- `Failed`: The registration request failed.
+
+If one of the status `Pending...` is reached, the console will automatically refresh the status every few seconds for display purpose until your domain is available.
+
 ## Authentication Considerations
 
 For privacy reasons, Juno's [authentication](authentication.md) is linked to the domain you are using.
