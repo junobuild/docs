@@ -37,6 +37,8 @@ This external guide explains how to configure the DNS records of your domain for
 
 :::
 
+If you ever encounter issues configuring your DNS, you can also refer to the [Troubleshooting](https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/#troubleshooting) section for further assistance.
+
 ### Status
 
 The status of the configuration of your custom domain can be one of the following:
