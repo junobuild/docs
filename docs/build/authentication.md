@@ -39,6 +39,7 @@ The set duration remains unchanged, regardless of whether the users are active o
 :::
 
 - `derivationOrigin`: a specific parameter of [Internet Identity](https://internetcomputer.org/docs/current/references/ii-spec#alternative-frontend-origins)
+- `windowed`: by default, the authentication flow is presented to the user in a popup that is automatically centered on desktop. This behavior can be disabled by setting the option to `false`. In that case, the authentication flow will occur in a separate tab.
 
 ## Sign-out
 
