@@ -126,7 +126,7 @@ It is common to retrieve the document with `getDoc` before updating it to ensure
 
 ## List documents
 
-To list documents, use the `listDocs` function, which accepts various optional parameters, including a matcher (a regex applied to the document keys), pagination options, and sorting order:
+To list documents, use the `listDocs` function:
 
 ```typescript
 import { listDocs } from "@junobuild/core";
@@ -136,6 +136,30 @@ const myList = await listDocs({
   filter: {},
 });
 ```
+
+The function accepts various optional parameters, including a matcher (a regex applied to the document keys), pagination options, and sorting order.
+
+```javascript
+import { listDocs } from "@junobuild/core";
+
+const myList = await listDocs({
+  collection: "my_collection_key",
+  filter: {
+      order: {
+          desc: true,
+          field: "updated_at"
+      }
+  },
+});
+```
+
+Sorting can be applied descending or ascending to following fields:
+
+- `keys`
+- `updated_at`
+- `created_at`
+
+Options `matcher`, `paginate` and `order` can be use together.
 
 ## Delete a document
 
