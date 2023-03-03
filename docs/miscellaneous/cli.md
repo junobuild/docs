@@ -132,11 +132,15 @@ Here is an example of how the ignore attribute can be utilized:
 }
 ```
 
-### Storage
+## Config
 
-The behavior of your [storage](../build/storage.md) can be configured.
+The behavior of your [storage](../build/storage.md) can be configured. Run the following command from the project directory to apply any changes to your configuration:
 
-#### HTTP Headers
+```bash
+juno config
+```
+
+### HTTP Headers
 
 Headers allow the client and the [satellite] to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
 
