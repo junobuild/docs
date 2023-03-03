@@ -37,7 +37,7 @@ You can create or update collections and their rules in the "Rules" tab in Juno'
 A collection's read and write permissions can be set as `public`, `private`, `managed`, or `controllers`.
 
 - `public`: everyone can read from (resp. write to) any document in the collection
-- `private`: only the owner of a document and can read from (resp. write to) a document in the collection
+- `private`: only the owner of a document can read from (resp. write to) a document in the collection
 - `managed`: the owner of a document _and_ the [controllers] of the satellite can read from (resp. write to) a document in the collection
 - `controllers`: only the [controllers] of the satellite can read from (resp. write to) any document in the collection
 
