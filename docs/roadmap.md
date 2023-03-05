@@ -20,6 +20,10 @@ We aim to launch new features and more advanced templates in our [satellites], s
 
 With unified interfaces, we envision a future where developers can sell their own smart contract templates.
 
+## Team collaboration
+
+While Juno is currently focused on individual developers, we recognize the importance of collaboration and are planning to add team support.
+
 ## Infrastructure
 
 To support growth and foster new ideas, we aim to make various infrastructure improvements, including:
