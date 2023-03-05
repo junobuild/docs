@@ -16,7 +16,7 @@ Our platform operates without controlling your data or work. With Juno, you trul
 
 :::info
 
-Juno is currently in **closed beta** 👀. Contact David on [Twitter](https://daviddalbusco.com) or fill this [form](https://jx5yt-yyaaa-aaaal-abzbq-cai.ic0.app/) - built with Juno 😉 - to enter the waiting list.
+Juno is currently in **closed beta** 👀. Contact David on [Twitter](https://twitter.com/daviddalbusco) or fill this [form](https://jx5yt-yyaaa-aaaal-abzbq-cai.ic0.app/) - built with Juno 😉 - to enter the waiting list.
 
 :::
 
