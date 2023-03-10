@@ -145,10 +145,10 @@ import { listDocs } from "@junobuild/core";
 const myList = await listDocs({
   collection: "my_collection_key",
   filter: {
-      order: {
-          desc: true,
-          field: "updated_at"
-      }
+    order: {
+      desc: true,
+      field: "updated_at",
+    },
   },
 });
 ```
