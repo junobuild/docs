@@ -34,7 +34,7 @@ The sign-in feature has options to customize the authentication:
 
 :::note
 
-The set duration remains unchanged, regardless of whether the users are active or inactive.
+The duration is given. It remains unchanged, regardless of whether the users are active or inactive.
 
 :::
 
@@ -71,8 +71,6 @@ authSubscribe((user: User | null) => {
 
 If you register the subscriber at the top of your application, it will propagate the user's state accordingly (e.g. `null` when a new user opens the app, the new user's entry when they sign in, the existing user when they refresh the browser within the valid duration, and `null` again when they sign out).
 
-The subscribing function returns a callback that you can use to unsubscribe.
-
 Subscribing returns a callback that can be executed to unsubscribe:
 
 ```typescript
@@ -84,6 +82,43 @@ const unsubscribe = authSubscribe((user: User | null) => {
 
 // Above subscriber ends now
 unsubscribe();
+```
+
+## Advanced
+
+To improve the session duration and prevent it from expiring while your users are using your applications, you can utilize the pre-bundled Web Worker provided by Juno's SDK.
+
+To do so, you can follow these steps:
+
+1. Copy the worker file provided by Juno's SDK to your app's static folder. For example, to your `public` folder with a NPM `postinstall` script:
+
+```json
+{
+  "postinstall": "rsync -aqz node_modules/@junobuild/core/dist/workers/*.js public/workers/"
+}
+```
+
+2. Enable the option when you initialize Juno:
+
+```javascript
+import { initJuno } from "@junobuild/core";
+
+await initJuno({
+  satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+  workers: {
+    auth: true,
+  },
+});
+```
+
+The `auth` option can accept either `true`, which will default to using a worker located at `https://yourapp/workers/auth.worker.js, or a custom `string` to provide your own URL.
+
+When the session expires, it will be terminated with a standard [sign-out](#sign-out). Additionally, an informational event called `junoSignOutAuthTimer` will be thrown at the `document` level. This event can be used, for example, to display a warning to your users.
+
+```javascript
+document.addEventListener("junoSignOutAuthTimer", () => {
+    // Display an information to your users
+}), {passive: true});
 ```
 
 [Internet Identity]: https://internetcomputer.org/internet-identity
