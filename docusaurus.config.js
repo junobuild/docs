@@ -172,6 +172,12 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      algolia: {
+        appId: "FEZV8HILVI",
+        apiKey: "985173b8726e18aee4c99ae03b9f30b5",
+        indexName: "juno",
+        contextualSearch: false,
+      },
     }),
 };
 
