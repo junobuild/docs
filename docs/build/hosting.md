@@ -55,7 +55,7 @@ If one of the status `Pending...` is reached, the console will automatically ref
 
 For privacy reasons, Juno's [authentication](authentication.md) is linked to the domain you are using.
 
-This means that if a user signs in to your app on the default domain (`ic0.app`) and your custom domain, they will be treated as two separate users.
+This means that if a user signs in to your app on the default domain (`icp0.io`) and your custom domain, they will be treated as two separate users.
 
 This mechanism is in place to prevent tracking between sites. It is recommended to use only communicate one domain to your users to avoid any confusion.
 
