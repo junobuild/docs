@@ -22,7 +22,7 @@ Learn more about [computation and storage costs](https://internetcomputer.org/do
 
 ## Controller
 
-Controllers are used to grant administrative permissions to mission [mission controls] and [satellites] in Juno.
+Controllers are used to grant administrative permissions to [mission controls] and [satellites] in Juno.
 
 A controller can perform tasks such as configuring or deploying an app, topping up a mission control or satellite, creating a new collection in the [datastore](build/datastore.md) or [storage](build/storage.md), or configuring a custom domain in the [hosting](build/hosting.md).
 
