@@ -64,12 +64,6 @@ In addition to the permissions, you can set an optional parameter to limit the s
 
 To upload an asset, use the following code:
 
-:::note
-
-Uploading a file with the same name as an existing file will overwrite the previous file (assuming the uploader has write access to the previous file).
-
-:::
-
 ```typescript
 import { uploadFile } from "@junobuild/core";
 
@@ -87,6 +81,15 @@ The `uploadFile` function provides various options, including:
 - `fullPath`: Juno will automatically compute the `fullPath`, which is the **unique** path that is used to make the asset available on the internet. The `fullPath` is the filename encoded as a URL and prefixed with `/` plus the related collection key. Example: `/images/myimage.jpg`.
 - `headers`: The headers can affect how the browser handles the asset. If no headers are provided Juno will infer the `Content-Type` from the file type.
 - `encoding`: The type of encoding for the file. For example, `identity` (raw) or `gzip`.
+
+
+:::note
+
+- Uploading a file with the same name as an existing file will overwrite the previous file (assuming the uploader has write access to the previous file).
+
+- To ensure that the asset has a clean URL and is easily accessible on the internet, the library converts the `filename` to lowercase and replaces any spaces with dashes. 
+
+:::
 
 ### Protected asset
 
