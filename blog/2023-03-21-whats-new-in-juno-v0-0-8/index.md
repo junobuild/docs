@@ -18,7 +18,7 @@ A month ago, the first beta for Juno was released to the world. Since then, we h
 
 Controllers play a critical role in Juno, as they are used to grant administrative permissions to [mission controls] and [satellites]. They are the cornerstone of the authorization scheme that developers use to sign in and control their segments.
 
-In previous versions, controllers were recorded and displayed only as IDs, which could be confusing for developers. It was difficult to track which controller was granted on which machine and for what purpose.
+In previous versions, controllers were recorded and displayed only as IDs, which could be confusing. It was difficult to track which controller was granted on which machine and for what purpose.
 
 To address this issue, we have reworked the system to give developers the option to set a "profile" for a controller when they [log in](/docs/miscellaneous/cli#login).
 
@@ -68,7 +68,7 @@ Furthermore, not only are custom domains now supported in Juno Hosting, but you 
 
 During the early beta stage, pagination and filtering based on keys were available for listing assets and documents, but ordering options were limited.
 
-To address this, we have extended the sorting feature to include timestamps, and you can now sort the keys, updated_at, and created_at fields in either ascending or descending order.
+To address this, we have extended the sorting feature to include timestamps, and you can now sort the `keys`, `updated_at`, and `created_at` fields in either ascending or descending order.
 
 ```typescript
 import { listDocs } from "@junobuild/core";
@@ -88,7 +88,7 @@ Since the [console] uses the same technology to present the data to developers, 
 
 ![Ordering screenshot](./ordering.png)
 
-These filters are now also saved in local storage of the [console], ensuring that the last options selected by developers are always applied.
+These [console]'s filters are now saved in local storage, ensuring that the last options selected are always applied.
 
 ---
 
@@ -118,7 +118,7 @@ To provide a more natural experience, Juno uses now a default behavior of a moda
 
 ![Login with II screenshot](./login-ii.png)
 
-Several iterations of the [CLI](/docs/miscellaneous/cli) were developed to support the deployment of these new features. Despite adding many features, we aimed to keep the interface simple and avoid overcomplicating things unnecessarily.
+Several iterations of the [CLI](/docs/miscellaneous/cli) were developed to support the deployment of these new features. Despite adding many of those, we aimed to keep the interface simple and avoid overcomplicating things unnecessarily.
 
 ![CLI screenshot](./cli.png)
 
