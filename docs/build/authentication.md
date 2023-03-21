@@ -86,7 +86,7 @@ unsubscribe();
 
 ## Advanced
 
-To improve the session duration and prevent it from expiring while your users are using your applications, you can utilize the pre-bundled Web Worker provided by Juno's SDK.
+To proactively detect when a session duration expires, you can use the pre-bundled Web Worker provided by Juno's SDK.
 
 To do so, you can follow these steps:
 
