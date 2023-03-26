@@ -18,7 +18,7 @@ Our goal is to continue delivering features that seamlessly integrate both web3 
 
 We aim to launch new features and more advanced templates in our [satellites], such as "rockets" or "space stations.".
 
-With unified interfaces, we envision a future where developers can sell their own smart contract templates.
+With unified interfaces, we envision a future where developers can create and sell their own smart contract templates and plugins, which can seamlessly integrate with their external services.
 
 ## Team collaboration
 
