@@ -12,7 +12,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout>
       <Head>
-        <title>{`${siteConfig.title} | Build web3 apps`}</title>
+        <title>{`${siteConfig.title} | Build Web3 apps`}</title>
         <link href="https://juno.build" rel="canonical" />
         <meta
           content="Build Web3 Apps Like It's Web2. No backend code required. 100% on-chain with minimal carbon impact."
