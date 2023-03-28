@@ -82,12 +82,11 @@ The `uploadFile` function provides various options, including:
 - `headers`: The headers can affect how the browser handles the asset. If no headers are provided Juno will infer the `Content-Type` from the file type.
 - `encoding`: The type of encoding for the file. For example, `identity` (raw) or `gzip`.
 
-
 :::note
 
 - Uploading a file with the same name as an existing file will overwrite the previous file (assuming the uploader has write access to the previous file).
 
-- To ensure that the asset has a clean URL and is easily accessible on the internet, the library converts the `filename` to lowercase and replaces any spaces with dashes. 
+- To ensure that the asset has a clean URL and is easily accessible on the internet, the library converts the `filename` to lowercase and replaces any spaces with dashes.
 
 :::
 

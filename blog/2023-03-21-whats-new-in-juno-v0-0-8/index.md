@@ -103,12 +103,13 @@ await initJuno({
   satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
   workers: {
     auth: true, // ----------------------------------|
-  },                                               //|
-});                                                //|
-                                                   //|
-authSubscribe((user: User | null) => {             //|
+  }, //|
+}); //|
+//|
+authSubscribe((user: User | null) => {
+  //|
   console.log("User:", user); // auto sign-out <-----|
-                              // when session expires
+  // when session expires
 });
 ```
 
