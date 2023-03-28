@@ -337,7 +337,7 @@ export const ListAssetsExample = () => {
 
 * * *
 
-### Deployment And Launch 🚀
+### Deployment 🚀
 
 After you have developed and built your application, you can launch it on the blockchain. To do this, you will need to install the Juno [command line interface](https://juno.build/docs/miscellaneous/cli) by running the following command in your terminal:
 
