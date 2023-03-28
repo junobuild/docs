@@ -2,14 +2,21 @@
 slug: build-a-web3-app-with-react-js
 title: Build A Web3 App With React JS
 authors: [peterpeterparker]
-tags: [tutorial,react]
+tags: [tutorial, react]
 ---
+
+<head>
+    <meta
+      content="https://images.unsplash.com/photo-1506878206813-92402b8ded23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMDkyMzV8MHwxfHNlYXJjaHwxfHxDb21wdXRlciUyMEdyb25pbmdlbiUyQyUyME5ldGhlcmxhbmRzfGVufDB8fHx8MTY3OTk0MzA1OQ&ixlib=rb-4.0.3&q=80&w=1080"
+      property="og:image"
+    />
+</head>
 
 ![Working on Sunday](https://images.unsplash.com/photo-1506878206813-92402b8ded23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMDkyMzV8MHwxfHNlYXJjaHwxfHxDb21wdXRlciUyMEdyb25pbmdlbiUyQyUyME5ldGhlcmxhbmRzfGVufDB8fHx8MTY3OTk0MzA1OQ&ixlib=rb-4.0.3&q=80&w=1080)
 
-*Photo by [Jantine Doornbos](https://unsplash.com/@jantined?utm_source=Papyrs&utm_medium=referral) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
+_Photo by [Jantine Doornbos](https://unsplash.com/@jantined?utm_source=Papyrs&utm_medium=referral) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
 
-* * *
+---
 
 ## Introduction
 
@@ -19,7 +26,7 @@ That’s why [Juno](https://juno.build) takes a different approach, aiming to ha
 
 In this blog post, we’ll explore how to combine React and Juno to develop a dApp. So, let’s dive in and discover how Juno can help you build powerful and user-friendly decentralized applications!
 
-* * *
+---
 
 ## How Juno Works
 
@@ -27,13 +34,13 @@ Juno is an open-source Blockchain-as-a-Service platform. It works just like trad
 
 Behind the scenes, Juno uses the [Internet Computer](https://internetcomputer.org/) blockchain network and infrastructure to launch what we call a “Satellite” for each app you build. A Satellite is essentially a smart contract on steroids that contains your entire app. From its assets provided on the web (such as JavaScript, HTML, and image files) to its state saved in a super simple database, file storage, and authentication, each Satellite controlled solely by you contains everything it needs to run smoothly.
 
-* * *
+---
 
 ## Build Your First DApp
 
 Let’s build our first dapp! In this example, we will create a simple note-taking app that allows users to store data entries, upload files, and retrieve them as needed.
 
-* * *
+---
 
 ### Initialization
 
@@ -73,7 +80,7 @@ export default App;
 
 That’s it for the configuration! Your app is now ready for Web3! 😎
 
-* * *
+---
 
 ### Authentication
 
@@ -115,9 +122,7 @@ export const Auth = ({ children }) => {
   return (
     <AuthContext.Provider value={{ user }}>
       {user !== undefined && user !== null ? (
-        <div>
-          {children}
-        </div>
+        <div>{children}</div>
       ) : (
         <p>Not signed in.</p>
       )}
@@ -128,7 +133,7 @@ export const Auth = ({ children }) => {
 
 Juno’s library is framework-agnostic and currently does not include any framework-specific code. However, we welcome contributions from the community. If you are interested in providing React plugins, contexts, hooks or else, feel free to contribute to the project! 💪
 
-* * *
+---
 
 ### Storing Documents
 
@@ -142,13 +147,15 @@ Once your app is set up and your collection is created, we can persist data on t
 import { setDoc } from "@junobuild/core";
 
 // TypeScript example from the documentation
-await setDoc<Example>({
-  collection: "my_collection_key",
-  doc: {
-    key: "my_document_key",
-    data: myExample,
-  },
-});
+(await setDoc) <
+  Example >
+  {
+    collection: "my_collection_key",
+    doc: {
+      key: "my_document_key",
+      data: myExample,
+    },
+  };
 ```
 
 Since the documents in the collection are identified by a unique key, we create keys using [nanoid](https://github.com/ai/nanoid) — a tiny string ID generator for JavaScript.
@@ -188,7 +195,7 @@ export const Example = () => {
 };
 ```
 
-* * *
+---
 
 ### Listing Documents
 
@@ -234,7 +241,7 @@ export const ListExample = () => {
 };
 ```
 
-* * *
+---
 
 ### Uploading File
 
@@ -281,7 +288,7 @@ export const UploadExample = () => {
         Add
       </button>
 
-      {image !== undefined && <img src={image} loading="lazy" /> }
+      {image !== undefined && <img src={image} loading="lazy" />}
     </>
   );
 };
@@ -289,7 +296,7 @@ export const UploadExample = () => {
 
 Once an asset is uploaded, a `downloadUrl` is returned which provides a direct HTTPS link to access the uploaded asset on the web.
 
-* * *
+---
 
 ### Listing Assets
 
@@ -335,7 +342,7 @@ export const ListAssetsExample = () => {
 };
 ```
 
-* * *
+---
 
 ### Deployment 🚀
 
@@ -359,17 +366,17 @@ juno deploy
 
 Congratulations! Your app is now decentralized 🎉.
 
-* * *
+---
 
 ## Ressources
 
-*   Juno documentation and getting started: [https://juno.build/docs/intro](https://juno.build/docs/intro)
-*   Code source of this tutorial: [https://github.com/buildwithjuno/examples/tree/main/react/diary](https://github.com/buildwithjuno/examples/tree/main/react/diary)
-*   The outcome of this article: [https://pycrs-xiaaa-aaaal-ab6la-cai.icp0.io/](https://pycrs-xiaaa-aaaal-ab6la-cai.icp0.io/)
+- Juno documentation and getting started: [https://juno.build/docs/intro](https://juno.build/docs/intro)
+- Code source of this tutorial: [https://github.com/buildwithjuno/examples/tree/main/react/diary](https://github.com/buildwithjuno/examples/tree/main/react/diary)
+- The outcome of this article: [https://pycrs-xiaaa-aaaal-ab6la-cai.icp0.io/](https://pycrs-xiaaa-aaaal-ab6la-cai.icp0.io/)
 
 > Juno is currently in closed beta 👀. Contact me on [Twitter](https://twitter.com/daviddalbusco) or fill this [form](https://jx5yt-yyaaa-aaaal-abzbq-cai.ic0.app/) to enter the waiting list.
 
-* * *
+---
 
 👋
 
