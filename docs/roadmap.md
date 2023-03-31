@@ -28,7 +28,6 @@ While Juno is currently focused on individual developers, we recognize the impor
 
 To support growth and foster new ideas, we aim to make various infrastructure improvements, including:
 
-- Adding additional [authentication](build/authentication.md) providers
 - Upgrading [satellites] overall available memory, starting with 64 GB
 - Enabling the implementation of backend functions in response to events triggered in [satellites]
 - Replacing quick queries with certified calls by default
