@@ -6,7 +6,7 @@ sidebar_position: 1
 
 Juno allows you to securely identify users **anonymously** and save their data on the blockchain.
 
-Our easy-to-use SDKs support authentication via [Internet Identity] and more providers will be added soon.
+Our easy-to-use SDKs support authentication through [Internet Identity] and [NFID].
 
 Juno Authentication integrates tightly with other Juno services like [datastore](datastore.md) and [storage](storage.md).
 
@@ -40,6 +40,56 @@ The duration is given. It remains unchanged, regardless of whether the users are
 
 - `derivationOrigin`: a specific parameter of [Internet Identity](https://internetcomputer.org/docs/current/references/ii-spec#alternative-frontend-origins)
 - `windowed`: by default, the authentication flow is presented to the user in a popup that is automatically centered on desktop. This behavior can be disabled by setting the option to `false`. In that case, the authentication flow will occur in a separate tab.
+
+The default sign-in flow uses [Internet Identity], but you can configure a particular provider by following these guidelines:
+
+### Internet Identity
+
+[Internet Identity] offers two available domains: `internetcomputer.org` and `ic0.app`.
+
+By default, the SDK uses `internetcomputer.org` because we anticipate it will become the main domain in the future.
+
+```typescript
+import { signIn, InternetIdentityProvider } from "@junobuild/core";
+
+// Default domain is 'internetcomputer.org'
+await signIn({
+  provider: new InternetIdentityProvider({}),
+});
+```
+
+To switch to the `ic0.app` domain, you can configure the provider as follows.
+
+```typescript
+import { signIn, InternetIdentityProvider } from "@junobuild/core";
+
+await signIn({
+  provider: new InternetIdentityProvider({
+    domain: "ic0.app",
+  }),
+});
+```
+
+### NFID
+
+To set up [NFID], you need to configure the corresponding provider and provide your application name and a link to your logo.
+
+```typescript
+import { signIn, NFIDProvider } from "@junobuild/core";
+
+await signIn({
+  provider: new NFIDProvider({
+    appName: "Your app name",
+    logoUrl: "https://somewhere.com/your_logo.png",
+  }),
+});
+```
+
+:::note
+
+You can implement the `signIn` function in your application as many times as you wish, with various configurations. It is perfectly acceptable to use both [Internet Computer] and [NFID] within the same project.
+
+:::
 
 ## Sign-out
 
@@ -121,4 +171,5 @@ document.addEventListener("junoSignOutAuthTimer", () => {
 }), {passive: true});
 ```
 
-[Internet Identity]: https://internetcomputer.org/internet-identity
+[Internet Identity]: ../terminology.md#internet-identity
+[NFID]: ../terminology.md#nfid
