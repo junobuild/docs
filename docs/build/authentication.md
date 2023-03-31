@@ -58,7 +58,7 @@ await signIn({
 });
 ```
 
-To switch to the `ic0.app` domain, you can configure the provider as follows.
+To switch to the `ic0.app`, set the domain as follows.
 
 ```typescript
 import { signIn, InternetIdentityProvider } from "@junobuild/core";
@@ -87,7 +87,7 @@ await signIn({
 
 :::note
 
-You can implement the `signIn` function in your application as many times as you wish, with various configurations. It is perfectly acceptable to use both [Internet Computer] and [NFID] within the same project.
+You can implement the `signIn` function in your application as many times as you wish, with various configurations. It is perfectly acceptable to use both [Internet Identity] and [NFID] within the same project.
 
 :::
 
