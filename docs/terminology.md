@@ -48,6 +48,10 @@ It is free, passwordless, and does not track user activity. It also integrates W
 
 A mission control is a facility used to manage your [satellites]. With it, you can monitor various aspects of your [satellites], including [datastore](build/datastore.md), [storage](build/storage.md), [hosting](build/hosting.md), and cycle consumption.
 
+## NFID
+
+[NFID](https://nfid.one) is a digital identity that provides private and secure sign-in to applications. It offers a convenient way to authenticate with third-party providers like [Metamask](https://metamask.io/) and [Google](https://www.google.com/account/about/).
+
 ## Principal
 
 Principals are generic identifiers for the [console], [mission controls], [satellites], and users.
