@@ -29,6 +29,6 @@ await initJuno({
 });
 ```
 
-Replace the satellite ID with the unique ID for your app, which can be found in the console's [overview](https://console.juno.build/overview).
+Replace the satellite ID with the unique ID for your app, which can be found in the [console](https://console.juno.build).
 
 [satellite]: ../terminology.md#satellite
