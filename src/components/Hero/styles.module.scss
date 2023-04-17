@@ -5,7 +5,8 @@
   background: transparent;
 
   --ifm-hero-background-color: transparent;
-  --ifm-hero-text-color: black;
+
+  position: relative;
 }
 
 .container {
@@ -26,8 +27,10 @@
 }
 
 .title {
-  --logo-color: white;
-  :global(svg) {
-    max-width: 300px;
-  }
+  color: #7888ff;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
 }

@@ -11,17 +11,25 @@ export default function Hero(): JSX.Element {
     <article className={clsx("hero", styles.heroBanner)}>
       <div className={`${styles.container}`}>
         <h1 className={`hero__title ${styles.title} ${styles.item}`}>
-          <JunoLogo />
+          {siteConfig.tagline}
         </h1>
-        <p className={`hero__subtitle ${styles.item}`}>{siteConfig.tagline}</p>
         <p className={`${styles.item}`}>
-          No backend code required.
-          <br />
-          100% on-chain with minimal carbon impact.
+          Juno is an open-source Blockchainless platform. Start building your
+          decentralized app with a datastore, authentication, file storage, and
+          custom domain. No backend code required.
         </p>
-        <div className={`${styles.item}`}>
+        <p className={`${styles.item}`}></p>
+        <div className={`${styles.item} ${styles.actions}`}>
+          <Link
+            className="button button--hero"
+            href="https://console.juno.build"
+            target="_self"
+          >
+            Start building
+          </Link>
+
           <Link className="button button--juno" to="/docs/intro">
-            Get started
+            Documentation
           </Link>
         </div>
       </div>

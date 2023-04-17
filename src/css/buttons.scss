@@ -11,7 +11,8 @@
   border-radius: var(--juno-border-radius);
 }
 
-.button--juno {
+.button--juno,
+.button--hero {
   --ifm-button-border-width: 2px;
   --ifm-button-border-color: black;
   box-shadow: 4px 4px black;
@@ -32,4 +33,38 @@
 
   transition: color 0.15s ease-out, background 0.15s ease-out,
     transform 0.15s ease-out, box-shadow 0.25s ease-out, border 0.15s ease-out;
+}
+
+.button--hero {
+  background: var(--ifm-color-gray-900);
+  color: white;
+  box-shadow: 4px 4px #c4cdff;
+
+  &:hover,
+  &:focus {
+    background: #7888ff;
+    color: white;
+    --ifm-button-border-color: #6a78e0;
+  }
+}
+
+:root {
+  &[data-theme="dark"] {
+    .button--juno {
+      box-shadow: 4px 4px var(--ifm-color-gray-700);
+      --ifm-button-border-color: var(--ifm-color-gray-900);
+    }
+
+    .button--hero {
+      background: #7888ff;
+      color: white;
+      --ifm-button-border-color: white;
+
+      &:hover,
+      &:focus {
+        background: #8694ff;
+        --ifm-button-border-color: #7888ff;
+      }
+    }
+  }
 }
