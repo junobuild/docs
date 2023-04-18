@@ -20,15 +20,17 @@
   background: white;
   color: black;
 
-  &:active {
+  &:active,
+  &:active:focus {
     box-shadow: none;
     transform: translateX(3px) translateY(3px);
   }
 
   &:hover,
   &:focus {
-    color: black;
-    background: #e9ebff;
+    background: #7888ff;
+    color: white;
+    --ifm-button-border-color: #6a78e0;
   }
 
   transition: color 0.15s ease-out, background 0.15s ease-out,
@@ -38,13 +40,11 @@
 .button--hero {
   background: var(--ifm-color-gray-900);
   color: white;
-  box-shadow: 4px 4px #c4cdff;
+  box-shadow: 4px 4px #7888ff;
 
   &:hover,
   &:focus {
-    background: #7888ff;
-    color: white;
-    --ifm-button-border-color: #6a78e0;
+    box-shadow: 4px 4px #c4cdff;
   }
 }
 
@@ -52,13 +52,24 @@
   &[data-theme="dark"] {
     .button--juno {
       box-shadow: 4px 4px var(--ifm-color-gray-700);
-      --ifm-button-border-color: var(--ifm-color-gray-900);
+      --ifm-button-border-color: var(--ifm-color-gray-800);
+
+      &:active,
+      &:active:focus {
+        box-shadow: none;
+      }
     }
 
     .button--hero {
       background: #7888ff;
       color: white;
-      --ifm-button-border-color: white;
+      --ifm-button-border-color: #c4cdff;
+      box-shadow: 4px 4px #c4cdff;
+
+      &:active,
+      &:active:focus {
+        box-shadow: none;
+      }
 
       &:hover,
       &:focus {
