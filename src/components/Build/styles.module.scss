@@ -4,7 +4,7 @@
   --grid-gap: 2rem;
   gap: var(--grid-gap);
 
-  margin: 5rem 0 0;
+  margin: 4rem 0 0;
 
   @media screen and (min-width: 768px) {
     display: grid;
@@ -12,12 +12,19 @@
   }
 
   @media screen and (min-width: 996px) {
-    grid-template-columns: repeat(4, calc((100% - (3 * var(--grid-gap))) / 4));
+    grid-template-columns: repeat(3, calc((100% - (2 * var(--grid-gap))) / 3));
   }
 }
 
 .sub {
   margin: 0 0 0.25rem;
+  text-align: center;
+}
+
+.build {
+  text-align: center;
+  max-width: 576px;
+  margin: 0 auto 8rem;
 }
 
 .link {

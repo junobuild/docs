@@ -3,6 +3,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import Hero from "@site/src/components/Hero";
 import Features from "@site/src/components/Features";
+import Build from "@site/src/components/Build";
 import Illustration from "@site/src/components/Illustration";
 import Head from "@docusaurus/Head";
 
@@ -52,6 +53,10 @@ export default function Home(): JSX.Element {
 
       <section className={`container ${styles.section}`}>
         <Features />
+      </section>
+
+      <section className={`container ${styles.section}`}>
+        <Build />
       </section>
     </Layout>
   );
