@@ -3,6 +3,7 @@ import clsx from "clsx";
 import styles from "./styles.module.scss";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Start from "@site/src/components/Start";
 
 export default function Hero(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -19,13 +20,7 @@ export default function Hero(): JSX.Element {
         </p>
         <p className={`${styles.item}`}></p>
         <div className={`${styles.item} ${styles.actions}`}>
-          <Link
-            className="button button--hero"
-            href="https://console.juno.build"
-            target="_self"
-          >
-            Start building
-          </Link>
+          <Start />
 
           <Link className="button button--juno" to="/docs/intro">
             Documentation
