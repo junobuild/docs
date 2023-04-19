@@ -2,6 +2,7 @@ import React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import Hero from "@site/src/components/Hero";
+import Features from "@site/src/components/Features";
 import Illustration from "@site/src/components/Illustration";
 import Head from "@docusaurus/Head";
 
@@ -41,13 +42,17 @@ export default function Home(): JSX.Element {
         />
         <meta content="@JunoBuild" name="twitter:creator" />
       </Head>
-      <main className={`${styles.main}`}>
-        <section className={`container ${styles.section}`}>
+      <section className={`${styles.main}`}>
+        <div className="container">
           <Hero />
 
           <Illustration />
-        </section>
-      </main>
+        </div>
+      </section>
+
+      <section className={`container ${styles.section}`}>
+        <Features />
+      </section>
     </Layout>
   );
 }

@@ -17,9 +17,8 @@
   }
 
   @media screen and (min-width: 1900px) {
-    position: relative;
-    transform: initial;
-    max-width: calc(var(--ifm-container-width-xl) / 2);
-    top: auto;
+    top: 60%;
+    right: -2%;
+    max-width: calc(var(--ifm-container-width-xl) / 1.4);
   }
 }

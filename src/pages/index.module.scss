@@ -5,24 +5,9 @@
   flex-direction: column;
   justify-content: center;
 
-  overflow: hidden;
-
   min-height: 600px;
-
-  @media screen and (min-height: 948px) {
-    position: absolute;
-
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
 }
 
 .section {
-  @media screen and (min-width: 1900px) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  padding: 6rem 2rem;
 }

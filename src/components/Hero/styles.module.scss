@@ -18,7 +18,7 @@
   }
 
   @media screen and (min-width: 1900px) {
-    display: block;
+    grid-template-columns: 65% auto;
   }
 }
 
