@@ -41,55 +41,7 @@ The duration is given. It remains unchanged, regardless of whether the users are
 - `derivationOrigin`: a specific parameter of [Internet Identity](https://internetcomputer.org/docs/current/references/ii-spec#alternative-frontend-origins)
 - `windowed`: by default, the authentication flow is presented to the user in a popup that is automatically centered on desktop. This behavior can be disabled by setting the option to `false`. In that case, the authentication flow will occur in a separate tab.
 
-The default sign-in flow uses [Internet Identity], but you can configure a particular provider by following these guidelines:
-
-### Internet Identity
-
-[Internet Identity] offers two available domains: `internetcomputer.org` and `ic0.app`.
-
-By default, the SDK uses `internetcomputer.org` because we anticipate it will become the main domain in the future.
-
-```typescript
-import { signIn, InternetIdentityProvider } from "@junobuild/core";
-
-// Default domain is 'internetcomputer.org'
-await signIn({
-  provider: new InternetIdentityProvider({}),
-});
-```
-
-To switch to the `ic0.app`, set the domain as follows.
-
-```typescript
-import { signIn, InternetIdentityProvider } from "@junobuild/core";
-
-await signIn({
-  provider: new InternetIdentityProvider({
-    domain: "ic0.app",
-  }),
-});
-```
-
-### NFID
-
-To set up [NFID], you need to configure the corresponding provider and provide your application name and a link to your logo.
-
-```typescript
-import { signIn, NFIDProvider } from "@junobuild/core";
-
-await signIn({
-  provider: new NFIDProvider({
-    appName: "Your app name",
-    logoUrl: "https://somewhere.com/your_logo.png",
-  }),
-});
-```
-
-:::note
-
-You can implement the `signIn` function in your application as many times as you wish, with various configurations. It is perfectly acceptable to use both [Internet Identity] and [NFID] within the same project.
-
-:::
+You can configure the default sign-in flow that uses [Internet Identity]. You can also set [NFID] as a provider. Check out the [advanced Sign-in guidelines](#sign-in-providers) for more details.
 
 ## Sign-out
 
@@ -135,6 +87,62 @@ unsubscribe();
 ```
 
 ## Advanced
+
+Here are a few advanced recipes to customize your sign-in flow and detect session expiration.
+
+### Sign-In Providers
+
+Juno currently supports [Internet Identity] and [NFID], with NFID offering additional authentication methods such as Google, Metamask, and WalletConnect.
+
+#### Internet Identity
+
+[Internet Identity] offers two available domains: `internetcomputer.org` and `ic0.app`.
+
+By default, the SDK uses `internetcomputer.org` because we anticipate it will become the main domain in the future.
+
+```typescript
+import { signIn, InternetIdentityProvider } from "@junobuild/core";
+
+// Default domain is 'internetcomputer.org'
+await signIn({
+  provider: new InternetIdentityProvider({}),
+});
+```
+
+To switch to the `ic0.app`, set the domain as follows.
+
+```typescript
+import { signIn, InternetIdentityProvider } from "@junobuild/core";
+
+await signIn({
+  provider: new InternetIdentityProvider({
+    domain: "ic0.app",
+  }),
+});
+```
+
+#### NFID
+
+To set up [NFID], you need to configure the corresponding provider and provide your application name and a link to your logo.
+
+```typescript
+import { signIn, NFIDProvider } from "@junobuild/core";
+
+await signIn({
+  provider: new NFIDProvider({
+    appName: "Your app name",
+    logoUrl: "https://somewhere.com/your_logo.png",
+  }),
+});
+```
+
+:::note
+
+You can implement the `signIn` function in your application as many times as you wish, with various configurations. It is perfectly acceptable to use both [Internet Identity] and [NFID] within the same project.
+
+:::
+
+### Session Expiration
 
 To proactively detect when a session duration expires, you can use the pre-bundled Web Worker provided by Juno's SDK.
 
