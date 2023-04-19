@@ -14,12 +14,6 @@ Our platform operates without controlling your data or work. With Juno, you trul
 
 ## Add Juno to your JavaScript project
 
-:::info
-
-Juno is currently in **closed beta** 👀. Contact David on [Twitter](https://twitter.com/daviddalbusco) or fill this [form](https://jx5yt-yyaaa-aaaal-abzbq-cai.ic0.app/) - built with Juno 😉 - to enter the waiting list.
-
-:::
-
 To get started with Juno, follow our [guide](add-juno-to-an-app/create-a-satellite.md) to launch your first [satellite](terminology.md#satellite) and integrate our JavaScript SDK into your project.
 
 ## Build
