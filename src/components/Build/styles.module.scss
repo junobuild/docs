@@ -4,7 +4,7 @@
   --grid-gap: 2rem;
   gap: var(--grid-gap);
 
-  margin: 4rem 0 0;
+  margin: 7rem 0 0;
 
   @media screen and (min-width: 768px) {
     display: grid;
@@ -17,7 +17,7 @@
 }
 
 .sub {
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.5rem;
   text-align: center;
 }
 

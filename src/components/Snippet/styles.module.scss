@@ -4,22 +4,30 @@
   --grid-gap: 2rem;
   gap: var(--grid-gap);
 
-  margin: 5rem 0 0;
+  margin: 2rem 0 5rem;
 
   @media screen and (min-width: 768px) {
     display: grid;
     grid-template-columns: repeat(2, calc((100% - (1 * var(--grid-gap))) / 2));
   }
+}
 
-  @media screen and (min-width: 996px) {
-    grid-template-columns: repeat(4, calc((100% - (3 * var(--grid-gap))) / 4));
+.inverted {
+  @media screen and (min-width: 768px) {
+    :first-of-type {
+      grid-column-start: 2;
+    }
+
+    :last-of-type {
+      grid-row-start: 1;
+    }
   }
 }
 
-.sub {
+.title {
   margin: 0 0 0.5rem;
 }
 
-.link {
-  font-size: var(--ifm-h6-font-size);
+.text {
+  margin: 0 0 0.5rem;
 }

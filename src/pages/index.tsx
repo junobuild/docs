@@ -5,6 +5,8 @@ import Hero from "@site/src/components/Hero";
 import Features from "@site/src/components/Features";
 import Build from "@site/src/components/Build";
 import Illustration from "@site/src/components/Illustration";
+import Auth from "@site/src/components/Auth";
+import Api from "@site/src/components/Api";
 import Head from "@docusaurus/Head";
 
 import styles from "./index.module.scss";
@@ -57,6 +59,12 @@ export default function Home(): JSX.Element {
 
       <section className={`container ${styles.section}`}>
         <Build />
+      </section>
+
+      <section className={`container ${styles.block}`}>
+        <Auth />
+
+        <Api />
       </section>
     </Layout>
   );
