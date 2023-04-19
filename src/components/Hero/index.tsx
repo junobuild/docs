@@ -16,7 +16,7 @@ export default function Hero(): JSX.Element {
         <p className={`${styles.item}`}>
           Juno is an open-source Blockchainless platform. Start building your
           decentralized app with a datastore, authentication, file storage, and
-          custom domain. No backend code required.
+          custom domain.
         </p>
         <p className={`${styles.item}`}></p>
         <div className={`${styles.item} ${styles.actions}`}>
