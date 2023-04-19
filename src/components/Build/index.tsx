@@ -26,7 +26,7 @@ export default function Build(): JSX.Element {
               href="https://github.com/buildwithjuno/examples/tree/main/svelte/form"
               className={styles.link}
             >
-              Learn more
+              View code
             </Link>
           }
           icon={<Svelte />}
@@ -40,7 +40,7 @@ export default function Build(): JSX.Element {
               href="https://github.com/buildwithjuno/examples/blob/main/react/diary"
               className={styles.link}
             >
-              Learn more
+              View code
             </Link>
           }
           icon={<ReactLogo />}
@@ -54,7 +54,7 @@ export default function Build(): JSX.Element {
               href="https://github.com/buildwithjuno/examples/blob/main/angular/diary"
               className={styles.link}
             >
-              Learn more
+              View code
             </Link>
           }
           icon={<Angular />}
@@ -68,7 +68,7 @@ export default function Build(): JSX.Element {
               href="https://github.com/buildwithjuno/examples/tree/main/vanilla"
               className={styles.link}
             >
-              Learn more
+              View code
             </Link>
           }
           icon={<JavaScript />}
@@ -82,7 +82,7 @@ export default function Build(): JSX.Element {
               href="https://github.com/buildwithjuno/examples/blob/main/node/basic"
               className={styles.link}
             >
-              Learn more
+              View code
             </Link>
           }
           icon={<NodeJS />}
