@@ -3,7 +3,7 @@ import clsx from "clsx";
 import styles from "./styles.module.scss";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import JunoLogo from "@site/static/img/juno_logo.svg";
+import Start from "@site/src/components/Start";
 
 export default function Hero(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -11,17 +11,19 @@ export default function Hero(): JSX.Element {
     <article className={clsx("hero", styles.heroBanner)}>
       <div className={`${styles.container}`}>
         <h1 className={`hero__title ${styles.title} ${styles.item}`}>
-          <JunoLogo />
+          {siteConfig.tagline}
         </h1>
-        <p className={`hero__subtitle ${styles.item}`}>{siteConfig.tagline}</p>
         <p className={`${styles.item}`}>
-          No backend code required.
-          <br />
-          100% on-chain with minimal carbon impact.
+          Juno is an open-source Blockchainless platform. Start building your
+          decentralized app with a datastore, authentication, file storage, and
+          custom domain. No backend code required.
         </p>
-        <div className={`${styles.item}`}>
+        <p className={`${styles.item}`}></p>
+        <div className={`${styles.item} ${styles.actions}`}>
+          <Start />
+
           <Link className="button button--juno" to="/docs/intro">
-            Get started
+            Documentation
           </Link>
         </div>
       </div>

@@ -1,13 +1,14 @@
 .illustration {
   position: absolute;
 
-  width: 60%;
-
   right: 0;
   bottom: 0;
-  transform: translate(22%, 10%);
+
+  display: none;
 
   @media screen and (min-width: 768px) {
+    display: block;
+
     width: 58%;
 
     top: 50%;
@@ -16,9 +17,8 @@
   }
 
   @media screen and (min-width: 1900px) {
-    position: relative;
-    transform: initial;
-    max-width: calc(var(--ifm-container-width-xl) / 2);
-    top: auto;
+    top: 60%;
+    right: -2%;
+    max-width: calc(var(--ifm-container-width-xl) / 1.4);
   }
 }

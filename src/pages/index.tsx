@@ -2,7 +2,12 @@ import React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import Hero from "@site/src/components/Hero";
+import Features from "@site/src/components/Features";
+import Build from "@site/src/components/Build";
 import Illustration from "@site/src/components/Illustration";
+import Auth from "@site/src/components/Auth";
+import Api from "@site/src/components/Api";
+import Outro from "@site/src/components/Outro";
 import Head from "@docusaurus/Head";
 
 import styles from "./index.module.scss";
@@ -41,13 +46,31 @@ export default function Home(): JSX.Element {
         />
         <meta content="@JunoBuild" name="twitter:creator" />
       </Head>
-      <main className={`${styles.main}`}>
-        <section className={`container ${styles.section}`}>
+      <section className={`${styles.main}`}>
+        <div className="container">
           <Hero />
 
           <Illustration />
-        </section>
-      </main>
+        </div>
+      </section>
+
+      <section className={`container ${styles.section}`}>
+        <Features />
+      </section>
+
+      <section className={`container ${styles.section}`}>
+        <Build />
+      </section>
+
+      <section className={`container ${styles.block}`}>
+        <Auth />
+
+        <Api />
+      </section>
+
+      <section className={`container ${styles.block}`}>
+        <Outro />
+      </section>
     </Layout>
   );
 }

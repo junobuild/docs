@@ -4,7 +4,7 @@ sidebar_position: 7
 
 # Roadmap
 
-Juno is currently in closed beta but has big plans for the near and distant future.
+We have big plans for the near and distant future.
 
 ## Features
 

@@ -1,0 +1,26 @@
+.outro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 0 5rem;
+}
+
+.sub {
+  margin: 0 0 0.5rem;
+  text-align: center;
+  font-size: var(--ifm-h3-font-size);
+}
+
+.ease {
+  max-width: 78vw;
+}
+
+.time {
+  margin: 0 0 3rem;
+}
+
+.bold {
+  font-weight: bold;
+}

@@ -11,7 +11,8 @@
   border-radius: var(--juno-border-radius);
 }
 
-.button--juno {
+.button--juno,
+.button--hero {
   --ifm-button-border-width: 2px;
   --ifm-button-border-color: black;
   box-shadow: 4px 4px black;
@@ -19,17 +20,62 @@
   background: white;
   color: black;
 
-  &:active {
+  &:active,
+  &:active:focus {
     box-shadow: none;
     transform: translateX(3px) translateY(3px);
   }
 
   &:hover,
   &:focus {
-    color: black;
-    background: #e9ebff;
+    background: #7888ff;
+    color: white;
+    --ifm-button-border-color: #6a78e0;
   }
 
   transition: color 0.15s ease-out, background 0.15s ease-out,
     transform 0.15s ease-out, box-shadow 0.25s ease-out, border 0.15s ease-out;
+}
+
+.button--hero {
+  background: var(--ifm-color-gray-900);
+  color: white;
+  box-shadow: 4px 4px #7888ff;
+
+  &:hover,
+  &:focus {
+    box-shadow: 4px 4px #c4cdff;
+  }
+}
+
+:root {
+  &[data-theme="dark"] {
+    .button--juno {
+      box-shadow: 4px 4px var(--ifm-color-gray-700);
+      --ifm-button-border-color: var(--ifm-color-gray-800);
+
+      &:active,
+      &:active:focus {
+        box-shadow: none;
+      }
+    }
+
+    .button--hero {
+      background: #7888ff;
+      color: white;
+      --ifm-button-border-color: #c4cdff;
+      box-shadow: 4px 4px #c4cdff;
+
+      &:active,
+      &:active:focus {
+        box-shadow: none;
+      }
+
+      &:hover,
+      &:focus {
+        background: #8694ff;
+        --ifm-button-border-color: #7888ff;
+      }
+    }
+  }
 }
