@@ -1,6 +1,6 @@
 {
   "name": "@junobuild/docs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": true,
   "author": "David Dal Busco <david@fluster.io>",
   "license": "AGPL-3.0-or-later",
@@ -40,7 +40,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.4.0",
     "@tsconfig/docusaurus": "^1.0.5",
-    "prettier": "^2.8.3",
+    "prettier": "^2.8.7",
     "typescript": "^4.7.4"
   },
   "browserslist": {
