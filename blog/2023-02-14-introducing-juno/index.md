@@ -2,7 +2,7 @@
 slug: introduction-juno
 title: Introducing Juno 🚀
 authors: [peterpeterparker]
-tags: [hello world]
+tags: [release]
 ---
 
 I am thrilled to introduce [Juno](https://juno.build), a groundbreaking open-source Blockchain-as-a-Service solution that makes building Web3 applications more accessible to the millions of front-end developers worldwide.
