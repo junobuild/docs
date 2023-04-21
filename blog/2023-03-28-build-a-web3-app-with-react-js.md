@@ -46,8 +46,6 @@ Let’s build our first dapp! In this example, we will create a simple note-taki
 
 Before you can integrate Juno into your ReactJS app, you’ll need to create a satellite. This process is explained in detail in the [documentation](https://juno.build/docs/add-juno-to-an-app/create-a-satellite).
 
-> Juno is currently in closed beta 👀. Contact me on [Twitter](https://twitter.com/daviddalbusco) or fill this [form](https://jx5yt-yyaaa-aaaal-abzbq-cai.ic0.app/) to enter the waiting list.
-
 Moreover, you also need to install the SDK.
 
 ```bash
@@ -367,8 +365,6 @@ Congratulations! Your app is now decentralized 🎉.
 - Juno documentation and getting started: [https://juno.build/docs/intro](https://juno.build/docs/intro)
 - Code source of this tutorial: [https://github.com/buildwithjuno/examples/tree/main/react/diary](https://github.com/buildwithjuno/examples/tree/main/react/diary)
 - The outcome of this article: [https://pycrs-xiaaa-aaaal-ab6la-cai.icp0.io/](https://pycrs-xiaaa-aaaal-ab6la-cai.icp0.io/)
-
-> Juno is currently in closed beta 👀. Contact me on [Twitter](https://twitter.com/daviddalbusco) or fill this [form](https://jx5yt-yyaaa-aaaal-abzbq-cai.ic0.app/) to enter the waiting list.
 
 ---
 
