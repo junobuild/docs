@@ -138,6 +138,10 @@ const config = {
                 label: "Roadmap",
                 to: "/docs/roadmap",
               },
+              {
+                label: "Brand & Press",
+                href: "https://github.com/buildwithjuno/brand",
+              },
             ],
           },
           {
