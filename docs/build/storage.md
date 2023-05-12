@@ -118,13 +118,12 @@ import { listAssets } from "@junobuild/core";
 
 const myList = await listAssets({
   collection: "images",
-  filter: {},
 });
 ```
 
 The `listAssets` function -- in addition to specifying the collection to query -- accepts various optional parameters:
 
-- `matcher`: a regex to apply to the assets' `fullPath`
+- `matcher`: a regex to apply to the assets' `fullPath` and `description`
 - `paginate`: an object used to query a subset of the assets
 - `order`: requests entries sorted in ascending or descending order
 

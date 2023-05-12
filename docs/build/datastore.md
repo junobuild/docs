@@ -87,6 +87,34 @@ await setDoc<Example>({
 });
 ```
 
+:::tip
+
+A document can be saved with an optional `description` field, allowing for a maximum length of 1024 characters. This field serves both descriptive purposes and can be used for more granular filtering of your documentation. When retrieving documents, you can also filter based on the description field in addition to the keys, providing additional flexibility and organization options.
+
+:::
+
+```typescript
+import { setDoc } from "@junobuild/core";
+
+await setDoc<Example>({
+  collection: "my_collection_key",
+  doc: {
+    key: "my_document_key_1",
+    data: myExample,
+    description: "This is a description",
+  },
+});
+
+await setDoc<Example>({
+  collection: "my_collection_key",
+  doc: {
+    key: "my_document_key_2",
+    data: myExample,
+    description: "#programming #technology #web3 #junobuild",
+  },
+});
+```
+
 ## Get a document
 
 To retrieve data, use the `getDoc` function and provide the `collection` and the `key` of the document:
@@ -133,11 +161,10 @@ import { listDocs } from "@junobuild/core";
 
 const myList = await listDocs({
   collection: "my_collection_key",
-  filter: {},
 });
 ```
 
-The function accepts various optional parameters, including a matcher (a regex applied to the document keys), pagination options, and sorting order.
+The function accepts various optional parameters, including a matcher (a regex applied to the document keys and descriptions), pagination options, and sorting order.
 
 ```javascript
 import { listDocs } from "@junobuild/core";
