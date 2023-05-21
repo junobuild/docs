@@ -7,6 +7,7 @@ import ReactLogo from "@site/static/icons/react.svg";
 import Angular from "@site/static/icons/angular.svg";
 import JavaScript from "@site/static/icons/javascript.svg";
 import NodeJS from "@site/static/icons/nodejs.svg";
+import Vue from "@site/static/icons/vue.svg";
 
 export default function Build(): JSX.Element {
   return (
@@ -58,6 +59,20 @@ export default function Build(): JSX.Element {
             </Link>
           }
           icon={<Angular />}
+        />
+
+        <Feature
+          title="Vue"
+          text="Another iteration of the dapp example developed with Vue."
+          link={
+            <Link
+              href="https://github.com/buildwithjuno/examples/blob/main/vue/diary"
+              className={styles.link}
+            >
+              View code
+            </Link>
+          }
+          icon={<Vue />}
         />
 
         <Feature
