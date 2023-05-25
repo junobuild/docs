@@ -22,6 +22,6 @@ jobs:
         run: npm run build
 
       - name: Deploy to Juno
-        uses: peterpeterparker/juno-action@main
+        uses: buildwithjuno/juno-action@main
         with:
           args: deploy
