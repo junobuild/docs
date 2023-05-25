@@ -43,6 +43,12 @@ Use the Juno [CLI] to upload your production build to your [satellite]:
 juno deploy
 ```
 
+:::tip
+
+Juno provides a GitHub Action that automates the deployment of your dapp to your [satellite]. For detailed instructions on how to configure it for your repository, please refer to the documentation [here](../miscellaneous/github_actions).
+
+:::
+
 :::note
 
 If you're deploying your app for the first time or if there's no `juno.json` configuration file available in the root of your project, you'll be prompted for some information. The Juno [CLI] needs this information to know which [satellite] your app should be deployed to and where the files are located.
