@@ -25,6 +25,6 @@ jobs:
       - name: Deploy to Juno
         uses: buildwithjuno/juno-action@main
         with:
-          args: deploy
+          args: whoami
         env:
           JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
