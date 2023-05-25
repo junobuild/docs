@@ -9,6 +9,8 @@ In the fast-paced world of decentralized applications (dapps), automating deploy
 
 In this blog post, we will delve into how this powerful integration enables developers to effortlessly deploy their dapps to the Internet Computer, leveraging the capabilities of the Juno platform.
 
+---
+
 ## Adding a Secret Token for Automation
 
 Before implementing automation with the Juno GitHub Action, it is essential to add a secret token to your GitHub repository or organization. This token enables Continuous Integration (CI) to deploy your dapp to the satellite.
@@ -34,6 +36,8 @@ To generate a new controller and obtain the secret token, follow these steps:
 8. Save the secret token as an encrypted secret in your repository or organization, assigning it the key `JUNO_TOKEN`.
 
 Note: While it is possible to generate a controller with administrative permission, we recommend using the "Read-write" scope to prevent unwanted operations on your smart contract by GitHub. By choosing the "Read-write" scope, you retain complete control over your decentralized app and minimize the risk of interference.
+
+---
 
 ## Configuring the GitHub Action
 
