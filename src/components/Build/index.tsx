@@ -12,7 +12,7 @@ import Vue from "@site/static/icons/vue.svg";
 export default function Build(): JSX.Element {
   return (
     <>
-      <h2 className={styles.sub}>Build decentralized app with Juno.</h2>
+      <h2 className={styles.sub}>Build DApps With Juno.</h2>
       <p className={styles.build}>
         There are numerous ways to develop your Web3 projects with Juno, without
         compromising on your favorite frontend technologies.
