@@ -14,9 +14,9 @@ export default function Hero(): JSX.Element {
           {siteConfig.tagline}
         </h1>
         <p className={`${styles.item}`}>
-          Juno is an open-source Blockchainless platform. Start building your
-          decentralized app with a datastore, authentication, file storage, and
-          custom domain.
+          Juno is an open-source, blockchainless platform that offers developers
+          all the necessary features to build any Web3 application. Start
+          building your decentralized app with the same ease as Web2.
         </p>
         <p className={`${styles.item}`}></p>
         <div className={`${styles.item} ${styles.actions}`}>
