@@ -95,10 +95,14 @@ After completing the configuration, you will eventually see the status displayed
 
 ---
 
+## Need Help or Have Questions?
+
+Do you have any questions or have you encountered any issues while following this tutorial? Don’t worry! We’re here to help. If you need further clarification, assistance, or want to share your experience, feel free to reach out on [Twitter](https://twitter.com/junobuild) or our vibrant community on [Discord](https://discord.gg/wHZ57Z2RAG).
+
+---
+
 👋
 
 Thank you for reading! Stay connected with Juno by following us on [Twitter](https://twitter.com/junobuild) to keep up with our latest updates.
-
-And if you made it this far, we’d love to have you join the Juno community on [Discord](https://discord.gg/wHZ57Z2RAG). 😉
 
 ⭐️⭐️⭐️ are also much appreciated: visit the [GitHub repo](https://github.com/buildwithjuno/juno) and show your support!
