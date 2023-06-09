@@ -34,7 +34,7 @@ Each [satellite] can hold up to 32GB of data for all services combined.
 
 ## Collections and rules
 
-You can create or update collections and their access rules (read and write) in the "Rules" tab in Juno's console under the [storage](https://console.juno.build/storage) view.
+You can create or update collections and their access rules (read and write) in the "Collections" tab in Juno's console under the [storage](https://console.juno.build/storage) view.
 
 :::caution
 
