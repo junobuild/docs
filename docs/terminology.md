@@ -24,21 +24,7 @@ Learn more about [computation and storage costs](https://internetcomputer.org/do
 
 Controllers are used to grant permissions to [mission controls] and [satellites] in Juno.
 
-An administrative controller can perform tasks such as configuring or deploying an app, topping up a mission control or satellite, creating a new collection in the [datastore](build/datastore.md) or [storage](build/storage.md), or configuring a custom domain in the [hosting](build/hosting.md).
-
-When you sign in to Juno's [console], you - **and no one else** (including not Juno) - become the controller of your own [mission control].
-
-When you create a [satellite], you and your [mission control] become its controllers. Per extension, you - **and no one else** (including not Juno) - own your [satellite].
-
-You can also add additional controllers. When doing so, you can choose to grant them administrative privileges or restrict their scope to reading and writing data.
-
-One "controller" is identified by a [principal](terminology.md#principal).
-
-:::note
-
-You have the ability to add up to 10 administrative controllers, as per the limitation set by the [Internet Computer](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-create_canister).
-
-:::
+For more detailed information, please refer to the dedicated [documentation](miscellaneous/controllers.md).
 
 ## ICP
 
