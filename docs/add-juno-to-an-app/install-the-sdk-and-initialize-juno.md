@@ -8,7 +8,7 @@ To connect Juno to your web app, you need to install the SDK and initialize your
 
 :::tip
 
-If you plan to use Juno for [hosting](../build/hosting.md) purposes only, you can skip these steps, as they are only required for rich features such as the [datastore](../build/datastore.md) or [storage](../build/storage.md).
+If you plan to use Juno for [hosting](../build/hosting.md) purposes only, you can skip these steps, as they are only required for rich features like [authentication](../build/authentication.md), [datastore](../build/datastore.md) or [storage](../build/storage.md).
 
 :::
 

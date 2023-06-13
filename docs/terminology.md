@@ -34,6 +34,12 @@ You can also add additional controllers. When doing so, you can choose to grant 
 
 One "controller" is identified by a [principal](terminology.md#principal).
 
+:::note
+
+You have the ability to add up to 10 administrative controllers, as per the limitation set by the [Internet Computer](https://internetcomputer.org).
+
+:::
+
 ## ICP
 
 The ICP token is the cryptocurrency used to pay for transactions on Juno's [infrastructure].
