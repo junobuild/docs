@@ -36,7 +36,7 @@ One "controller" is identified by a [principal](terminology.md#principal).
 
 :::note
 
-You have the ability to add up to 10 administrative controllers, as per the limitation set by the [Internet Computer](https://internetcomputer.org).
+You have the ability to add up to 10 administrative controllers, as per the limitation set by the [Internet Computer](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-create_canister).
 
 :::
 
