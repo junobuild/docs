@@ -8,7 +8,7 @@ When you sign in to Juno's [console], you - **and no one else** (including not J
 
 When you create a [satellite], you and your [mission control] become its controllers. Per extension, you - **and no one else** (including not Juno) - own your [satellite].
 
-One "controller" is identified by a [principal](terminology.md#principal).
+One "controller" is identified by a [principal](../terminology.md#principal).
 
 ## Adding Controllers
 
