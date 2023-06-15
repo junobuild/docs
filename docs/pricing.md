@@ -31,21 +31,17 @@ To create additional satellites, a fee of 0.5 ICP is required, in addition to th
 
 Please note that further transaction fees may be required in the future and prices and models are subject to change.
 
-## Notes
+## Sending ICP to Your Mission Control
 
-Here is some useful information related to the subject.
+You can send ICP to your [mission control] from any cryptocurrency exchange platform (e.g., [Coinbase](https://www.coinbase.com), [Binance](binance.com/), etc.) or wallet (e.g. [NNS dapp](https://nns.ic0.app/)). To do so, you will need a destination address.
 
-### Sending ICP to Your Mission Control
+You can find this address in Juno's [console](https://console.juno.build/mission-control/). Once you are signed in, copy your **Account Identifier** from your personal mission control administration page.
 
 :::info
 
 You are the owner of your [mission control], and Juno has no control or access to it. Therefore, any [ICP](terminology.md#icp) transferred to your mission control belongs to you and only you.
 
 :::
-
-You can send ICP to your [mission control] from any cryptocurrency exchange platform (e.g., Coinbase, Binance, etc.) or wallet. To do so, you will need a destination address.
-
-You can find this address in Juno's [console](https://console.juno.build/mission-control/). Once you are signed in, copy your **Account Identifier** from your personal mission control administration page.
 
 [mission control]: terminology.md#mission-control
 [satellite]: terminology.md#satellite
