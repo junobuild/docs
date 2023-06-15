@@ -35,11 +35,11 @@ When deploying a smart contract using Juno, it automatically comes with a predef
 
 To begin, sign in to the [Juno console](https://console.juno.build/).
 
-[screenshot]
+![Sign-in](./sign-in.png)
 
 We affectionately refer to these feature-rich smart contracts as “Satellites.” To create your website project, simply click “Launch a new satellite” and follow the guided wizard to set it up.
 
-[screenshot]
+![Launch a satellite](./launch-a-satellite.png)
 
 That wraps up the setup phase. Your canister now lives on the Internet Computer, solely owned by you and and you alone.
 
@@ -47,7 +47,7 @@ That wraps up the setup phase. Your canister now lives on the Internet Computer,
 
 ## Deploying your website
 
-While deploying your dapp in a continuous deployment environment like GitHub is certainly possible, for the sake of simplicity, we will assume that you prefer to perform your initial website deployment from your computer.
+While deploying your dapp in a continuous deployment environment like GitHub Actions is certainly possible, for the sake of simplicity, we will assume that you prefer to perform your initial website deployment from your computer.
 
 To accomplish this, ensure that [Node.js is installed](https://nodejs.org/en/download) on your machine (if it isn’t already), and proceed to install the Juno [command line interface](https://juno.build/docs/miscellaneous/cli). You can do this by executing the following command in your terminal:
 
@@ -63,7 +63,7 @@ juno login
 
 Running this command will open Juno’s console in your browser. You will be prompted to grant access to your satellite(s) and mission control (which is your own canister holding references to your satellites) for your machine.
 
-(screenshot)
+![Add a controller](./add-a-controller.png)
 
 With the ability to interact with your smart contract on the Internet Computer, you can now deploy your website project to its dedicated satellite by running the following command from your project’s root folder:
 
@@ -83,11 +83,11 @@ As if serving your dapps directly from the blockchain to browsers wasn’t amazi
 
 To configure your domain name, navigate to the hosting tab of Juno’s console. From there, initiate the setup process by clicking on “Add custom domain” and follow the guided wizard.
 
-[screenshot]
+![Hosting](./hosting.png)
 
 Once you have entered your desired domain name, Juno will provide you with the necessary records that need to be added to your DNS provider. These will ensure proper mapping of your domain to your deployed website on the Internet Computer.
 
-[screenshot]
+![Configure DNS](./configure-dns.png)
 
 Once you have configured the DNS records for your domain, click on “Ready” to confirm. At this point, Juno will take over and handle the rest of the process for you.
 
@@ -97,7 +97,7 @@ After completing the configuration, you will eventually see the status displayed
 
 ## Need Help or Have Questions?
 
-Do you have any questions or have you encountered any issues while following this tutorial? Don’t worry! We’re here to help. If you need further clarification, assistance, or want to share your experience, feel free to reach out on [Twitter](https://twitter.com/junobuild) or our vibrant community on [Discord](https://discord.gg/wHZ57Z2RAG).
+Do you have any questions or have you encountered any issues while following this tutorial? Don’t worry! We’re here to help. If you need further clarification, assistance, or want to share your experience, feel free to reach out on [Twitter](https://twitter.com/junobuild) or our vibrant community on [Discord](https://discord.gg/wHZ57Z2RAG). You can also check out our [FAQ section](https://juno.build/docs/faq) on our website for additional information and answers to common queries.
 
 ---
 
