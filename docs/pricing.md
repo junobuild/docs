@@ -53,7 +53,7 @@ In terms of persisting data, based on our experience, storing 100 instances of a
 
 ## Sending ICP to Your Mission Control
 
-You can send ICP to your [mission control] from any cryptocurrency exchange platform (e.g., [Coinbase](https://www.coinbase.com), [Binance](binance.com/), etc.) or wallet (e.g. [NNS dapp](https://nns.ic0.app/)). To do so, you will need a destination address.
+You can send ICP to your [mission control] from any cryptocurrency exchange platform (e.g., [Coinbase](https://www.coinbase.com), [Binance](https://binance.com/), etc.) or wallet (e.g. [NNS dapp](https://nns.ic0.app/)). To do so, you will need a destination address.
 
 You can find this address in Juno's [console](https://console.juno.build/mission-control/). Once you are signed in, copy your **Account Identifier** from your personal mission control administration page.
 
