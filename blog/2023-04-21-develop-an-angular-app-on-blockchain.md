@@ -3,14 +3,8 @@ slug: develop-an-angular-app-on-blockchain
 title: Develop An Angular App On Blockchain
 authors: [peterpeterparker]
 tags: [tutorial, angular]
+image: https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMDkyMzV8MHwxfHNlYXJjaHwyfHxjb21wdXRlciUyMGFuZ3VsYXJ8ZW58MHx8fHwxNjgyMDgwMTI3&ixlib=rb-4.0.3&q=80&w=1080
 ---
-
-<head>
-    <meta
-      content="https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMDkyMzV8MHwxfHNlYXJjaHwyfHxjb21wdXRlciUyMGFuZ3VsYXJ8ZW58MHx8fHwxNjgyMDgwMTI3&ixlib=rb-4.0.3&q=80&w=1080"
-      property="og:image"
-    />
-</head>
 
 ![Macbook Pro](https://images.unsplash.com/photo-1514428631868-a400b561ff44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMDkyMzV8MHwxfHNlYXJjaHwyfHxjb21wdXRlciUyMGFuZ3VsYXJ8ZW58MHx8fHwxNjgyMDgwMTI3&ixlib=rb-4.0.3&q=80&w=1080)
 
