@@ -16,11 +16,13 @@ Getting started is free. Developers are responsible for operating costs. Transac
 
 In the unlikely event of Juno's disappearance, you, as the sole controller of your [mission control] and [satellites], would retain full control over your creations. They would continue to function independently without any reliance on Juno.
 
-### Do you have a library for [some other language]?
+### Can I just deploy my website on the Internet Computer?
 
-We officially support [JavaScript](./add-juno-to-an-app/install-the-sdk-and-initialize-juno.md).
+Absolutely! With Juno, you have the flexibility to choose the level of functionality you want for your project. Whether you simply want to host your static website on the [Internet Computer] or take advantage of Juno's rich features like [authentication](build/authentication.md), [datastore](build/datastore.md), and [storage](build/storage.md) for building dynamic dapps, the choice is yours.
 
-Community-supported libraries and contributions are warmly welcomed.
+### Is Juno a project of the DFINITY foundation?
+
+No. We did not seek or receive any specific support from the [foundation](https://dfinity.org/), nor did we apply for any grants.
 
 ### How does Juno differ from Firebase?
 
@@ -38,6 +40,12 @@ Firebase follows a usage-based pricing model, where costs are calculated based o
 
 In contrast, Juno takes a different approach. Developers pre-charge their smart contracts with [cycles](./terminology.md#cycles), which are then utilized to cover computation and memory usage of the [satellites] and [mission control]. This mechanism eliminates the risk of encountering unexpected financial burdens due to unforeseen usage surges.
 
+### Do you have a library for [some other language]?
+
+We officially support [JavaScript](./add-juno-to-an-app/install-the-sdk-and-initialize-juno.md).
+
+Community-supported libraries and contributions are warmly welcomed.
+
 ### Where can I find resources about Juno?
 
 The [documentation](./intro.md) is a great starting point to explore Juno.
@@ -52,3 +60,4 @@ Do you have more questions or need further assistance? Feel free to reach out to
 
 [mission control]: terminology.md#mission-control
 [satellites]: terminology.md#satellite
+[Internet Computer]: https://internetcomputer.org/
