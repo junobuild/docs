@@ -46,6 +46,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      image: "img/social_image_v3.jpg",
       navbar: {
         title: "Juno",
         logo: {

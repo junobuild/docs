@@ -32,7 +32,7 @@ A document can be up to 2MB.
 
 ## Collections and rules
 
-You can create or update collections and their rules in the "Rules" tab in Juno's console under the [datastore](https://console.juno.build/datastore) view.
+You can create or update collections and their rules in the "Collections" tab in Juno's console under the [datastore](https://console.juno.build/datastore) view.
 
 A collection's read and write permissions can be set as `public`, `private`, `managed`, or `controllers`.
 

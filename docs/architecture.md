@@ -22,9 +22,9 @@ When a developer signs into Juno's [console](https://console.juno.build) using [
 
 ---
 
-A [satellite] is a smart contract deployed on the [Internet Computer](https://internetcomputer.org), compiled into WebAssembly (WASM) code.
+A [satellite] refers to a smart contract deployed on the [Internet Computer](https://internetcomputer.org) and compiled into WebAssembly (WASM) code.
 
-It contains stable memory, permission checks, and other Juno abstractions that serve as endpoints that can be queried by developers and users.
+It acts as a comprehensive entity, encompassing memory, permission checks, and other Juno abstractions. These satellites serve as endpoints that developers and users can query for various functionalities.
 
 ![Satellite architecture](./img/satellite.png)
 

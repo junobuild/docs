@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 10
 ---
 
 # Pricing
@@ -11,7 +11,7 @@ There are two types of costs associated with using Juno.
 
 :::note
 
-Last update: Feb. 24, 2023
+Last update: June 15, 2023
 
 :::
 
@@ -31,21 +31,37 @@ To create additional satellites, a fee of 0.5 ICP is required, in addition to th
 
 Please note that further transaction fees may be required in the future and prices and models are subject to change.
 
-## Notes
+## Cost examples
 
-Here is some useful information related to the subject.
+Here are a few examples of costs provided for explanatory purposes only and without guarantee. Please note also that these cost estimates are subject to change and may vary depending on network conditions and usage patterns.
 
-### Sending ICP to Your Mission Control
+### Storage
+
+The estimated cost of holding 1 gigabyte of data in a smart contract is $5 per year, as stated on the Internet Computer [website](https://internetcomputer.org/social-media-dapps/).
+
+### Deployment
+
+Based on our experimentation, deploying an entire website on-chain, such as the website http://juno.build, which consists of 273 files and is approximately 17 MB in size, is estimated to cost around 0.16 ICP ($0.64).
+
+It's important to note that subsequent deployments of your project can have significantly lower costs if the build consistency of your application is maintained. Juno only uploads new files to your [satellites], which helps reduce costs compared to initial deployments.
+
+### Data
+
+Querying data on the Internet Computer is currently free, so there are no additional costs to expect when reading data.
+
+In terms of persisting data, based on our experience, storing 100 instances of a JSON sample data with approximately 90 fields, totaling around 900 bytes, costs approximately 0.0005 TCycles or 0.00017 ICP ($0.000675). This means that the cost for a single transaction of this nature would be approximately 0.000005 TCycles or 0.0000017 ICP ($0.00000675).
+
+## Sending ICP to Your Mission Control
+
+You can send ICP to your [mission control] from any cryptocurrency exchange platform (e.g., [Coinbase](https://www.coinbase.com), [Binance](https://binance.com/), etc.) or wallet (e.g. [NNS dapp](https://nns.ic0.app/)). To do so, you will need a destination address.
+
+You can find this address in Juno's [console](https://console.juno.build/mission-control/). Once you are signed in, copy your **Account Identifier** from your personal mission control administration page.
 
 :::info
 
 You are the owner of your [mission control], and Juno has no control or access to it. Therefore, any [ICP](terminology.md#icp) transferred to your mission control belongs to you and only you.
 
 :::
-
-You can send ICP to your [mission control] from any cryptocurrency exchange platform (e.g., Coinbase, Binance, etc.) or wallet. To do so, you will need a destination address.
-
-You can find this address in Juno's [console](https://console.juno.build/mission-control/). Once you are signed in, copy your **Account Identifier** from your personal mission control administration page.
 
 [mission control]: terminology.md#mission-control
 [satellite]: terminology.md#satellite

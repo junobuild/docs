@@ -3,14 +3,8 @@ slug: build-a-web3-app-with-react-js
 title: Build A Web3 App With React JS
 authors: [peterpeterparker]
 tags: [tutorial, react]
+image: https://images.unsplash.com/photo-1506878206813-92402b8ded23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMDkyMzV8MHwxfHNlYXJjaHwxfHxDb21wdXRlciUyMEdyb25pbmdlbiUyQyUyME5ldGhlcmxhbmRzfGVufDB8fHx8MTY3OTk0MzA1OQ&ixlib=rb-4.0.3&q=80&w=1080
 ---
-
-<head>
-    <meta
-      content="https://images.unsplash.com/photo-1506878206813-92402b8ded23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMDkyMzV8MHwxfHNlYXJjaHwxfHxDb21wdXRlciUyMEdyb25pbmdlbiUyQyUyME5ldGhlcmxhbmRzfGVufDB8fHx8MTY3OTk0MzA1OQ&ixlib=rb-4.0.3&q=80&w=1080"
-      property="og:image"
-    />
-</head>
 
 ![Working on Sunday](https://images.unsplash.com/photo-1506878206813-92402b8ded23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMDkyMzV8MHwxfHNlYXJjaHwxfHxDb21wdXRlciUyMEdyb25pbmdlbiUyQyUyME5ldGhlcmxhbmRzfGVufDB8fHx8MTY3OTk0MzA1OQ&ixlib=rb-4.0.3&q=80&w=1080)
 
