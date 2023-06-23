@@ -3,10 +3,10 @@ slug: exploring-a-juno-web3-dapp-architecture
 title: Exploring a Juno's Web3 Dapp Architecture
 authors: [peterpeterparker]
 tags: [dapp, web3, programming, webdev]
-image: https://juno.build/assets/images/exploring-a-juno-web3-dapp-architecture-social-image-7f63e3bcc209c21fac6c8b8348dc6706.jpeg
+image: https://juno.build/assets/images/exploring-a-juno-web3-dapp-architecture-social-image-a34be2835d21e01fd97b954a3c16563b.png
 ---
 
-![](./exploring-a-juno-web3-dapp-architecture-social-image.jpeg)
+![](./exploring-a-juno-web3-dapp-architecture-social-image.png)
 
 ---
 
