@@ -24,6 +24,14 @@ Absolutely! With Juno, you have the flexibility to choose the level of functiona
 
 No. We did not seek or receive any specific support from the [foundation](https://dfinity.org/), nor did we apply for any grants.
 
+### Does Juno exercise control over developers' work?
+
+No, Juno does not exert any control over developers' work. Juno is designed to provide developers with true control and autonomy over their projects.
+
+Developers have full ownership and control over their [mission control], [satellites], and the applications they build on the platform.
+
+Juno's philosophy aligns with the principles of Web3, empowering developers with transparency, decentralization, and the freedom to create and innovate without external interference.
+
 ### How does Juno differ from Firebase?
 
 Besides the fundamental differences between the Web2 and Web3 approaches, which empower developers using Juno with true control and future governance over their work, there are additional distinctions that apply regardless of the underlying philosophy.
