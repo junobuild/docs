@@ -26,9 +26,9 @@ Each document is identified by a `key` (unique within a collection).
 
 ## Limitation
 
-A [satellite] can hold up to 32GB of data for all services combined.
+A [satellite] can currently store up to 2GB of data for all services combined. Please note that work is currently underway to increase this limit to 64GB in the near future.
 
-A document can be up to 2MB.
+As for documents, they can be up to 2MB in size. However, larger files can be saved in the [storage](build/storage.md).
 
 ## Collections and rules
 
