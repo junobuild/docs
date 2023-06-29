@@ -10,7 +10,7 @@ image: https://juno.build/assets/images/exploring-a-juno-web3-dapp-architecture-
 
 ---
 
-I developed a web-based drawing application —  [icdraw.com](https://icdraw.com/)  —  on the [Internet Computer](https://internetcomputer.org/) blockchain in just a single weekend, thanks to the smooth integration provided by [Juno](https://juno.build/) 🛰️. In this blog post, I present some insights into the architecture of the frontend application I’ve built.
+I developed a web-based drawing application — [icdraw.com](https://icdraw.com/) — on the [Internet Computer](https://internetcomputer.org/) blockchain in just a single weekend, thanks to the smooth integration provided by [Juno](https://juno.build/) 🛰️. In this blog post, I present some insights into the architecture of the frontend application I’ve built.
 
 ---
 
@@ -86,9 +86,9 @@ export default App;
 
 In the code snippet mentioned above, you may have noticed the use of two contexts:
 
-* Auth: Handles the loading and synchronization of the user’s authentication state.
+- Auth: Handles the loading and synchronization of the user’s authentication state.
 
-* Worker: Manages the initialization and communication with the web workers.
+- Worker: Manages the initialization and communication with the web workers.
 
 ---
 
@@ -258,7 +258,7 @@ Using the “last change” information, the cron job timer running in the web w
 
 ```typescript
 let lastChangeProcessed: number | undefined = undefined;
-    
+
 const sync = async () => {
   const lastChange = await getLastChange();
 
@@ -329,7 +329,7 @@ On the UI side, Juno is initialized with initJuno which allow the library to aut
 
 ```typescript
 const sync = async (user: User | undefined | null) => {
-    
+
   // Some checks and logic
 
   const satellite = {
@@ -344,14 +344,14 @@ const sync = async (user: User | undefined | null) => {
   });
 ```
 
-The function responsible for resolving the identity is named unsafeIdentity  because it returns imperative information that can include an anonymous  identity. As such, it should only be used when necessary, and its  specific name serves as a reminder to handle it with caution.
+The function responsible for resolving the identity is named unsafeIdentity because it returns imperative information that can include an anonymous identity. As such, it should only be used when necessary, and its specific name serves as a reminder to handle it with caution.
 
 While the majority of the work was delegated to the web worker, I still wanted to visually indicate to the user when certain tasks were in progress. To achieve this, I implemented a messaging system where the worker sends messages to the UI indicating whether it is in a busy or idle state. This status information is then used to display a spinner and disable action buttons.
 
 ```typescript
 // Web Worker
 postMessage({
-    msg: "busy", // or "idle"
+  msg: "busy", // or "idle"
 });
 
 // UI
@@ -379,9 +379,9 @@ Because the interaction with the worker was scoped and shared within a context, 
 
 The project I developed over the weekend, which I have described in this blog post, is open source, just like [Juno](https://juno.build)! 🤗
 
-* icdraw 👉 [https://github.com/peterpeterparker/icdraw](https://github.com/peterpeterparker/icdraw)
+- icdraw 👉 [https://github.com/peterpeterparker/icdraw](https://github.com/peterpeterparker/icdraw)
 
-* Juno 👉 [https://github.com/buildwithjuno/juno](https://github.com/buildwithjuno/juno)
+- Juno 👉 [https://github.com/buildwithjuno/juno](https://github.com/buildwithjuno/juno)
 
 ---
 
