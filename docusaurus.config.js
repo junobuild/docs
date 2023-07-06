@@ -28,11 +28,11 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/buildwithjuno/site/edit/main/docs/",
+          editUrl: "https://github.com/buildwithjuno/docs/edit/main/docs/",
         },
         blog: {
           showReadingTime: true,
-          editUrl: "https://github.com/buildwithjuno/site/edit/main/blog/",
+          editUrl: "https://github.com/buildwithjuno/docs/edit/main/blog/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
