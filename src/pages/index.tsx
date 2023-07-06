@@ -46,31 +46,34 @@ export default function Home(): JSX.Element {
         />
         <meta content="@JunoBuild" name="twitter:creator" />
       </Head>
-      <section className={`${styles.main}`}>
-        <div className="container">
-          <Hero />
 
-          <Illustration />
-        </div>
-      </section>
+      <div className={styles.home}>
+        <section className={`${styles.main}`}>
+          <div className="container">
+            <Hero />
 
-      <section className={`container ${styles.section}`}>
-        <Features />
-      </section>
+            <Illustration />
+          </div>
+        </section>
 
-      <section className={`container ${styles.section}`}>
-        <Build />
-      </section>
+        <section className={`container ${styles.section}`}>
+          <Features />
+        </section>
 
-      <section className={`container ${styles.block}`}>
-        <Auth />
+        <section className={`container ${styles.section}`}>
+          <Build />
+        </section>
 
-        <Api />
-      </section>
+        <section className={`container ${styles.block}`}>
+          <Auth />
 
-      <section className={`container ${styles.block}`}>
-        <Outro />
-      </section>
+          <Api />
+        </section>
+
+        <section className={`container ${styles.block}`}>
+          <Outro />
+        </section>
+      </div>
     </Layout>
   );
 }
