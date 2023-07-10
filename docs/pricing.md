@@ -55,9 +55,9 @@ In terms of persisting data, based on our experience, storing 100 instances of a
 
 To send ICP to your [mission control], you can use most cryptocurrency exchange platforms (refer to this [list](https://coinranking.com/fr/coin/aMNLwaUbY+internetcomputerdfinity-icp/exchanges) of major ones) or wallets such as the [NNS dapp](https://nns.internetcomputer.org/).
 
-To initiate the transaction, you will need to provide a destination address where the ICP should be sent.
+To initiate the transaction, you will need to provide a destination address where the ICP should be sent. This destination address corresponds to the [Account Identifier](./terminology.md#account-identifier) of your [mission control].
 
-You can find the destination address in Juno's [console](https://console.juno.build/mission-control/). After signing in, navigate to your personal mission control administration page and copy your **Account Identifier**.
+You can find the destination address in Juno's console. After signing in, navigate to your personal [mission control administration page](https://console.juno.build/mission-control/) and copy your **Account Identifier**.
 
 :::info
 
