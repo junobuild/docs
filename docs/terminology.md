@@ -24,7 +24,7 @@ The amount of cycles available determines whether a smart contract will be activ
 
 This ensures that related costs cannot surpass the amount of cycles available.
 
-Learn more about [computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/deploy/computation-and-storage-costs).
+Learn more about [computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/gas-cost).
 
 ## Controller
 
