@@ -3,17 +3,30 @@ slug: hosting-your-website-on-the-internet-computer
 title: Hosting Your Website on the Internet Computer
 authors: [peterpeterparker]
 tags: [deployment, hosting]
+image: https://juno.build/assets/images/hosting-your-website-on-the-internet-computer-d1eeb88827bd591ed552040dc47efea9.png
 ---
 
-## Hosting Your Website on the Internet Computer with a Custom Domain
+<head>
+  <link rel="canonical" href="https://medium.com/code-state/hosting-your-website-on-the-internet-computer-in-minutes-with-juno-bf4d6d2d0347" />
+</head>
 
-[cover]
+![](./hosting-your-website-on-the-internet-computer.png)
+
+*Photo by <a href="https://unsplash.com/@sebastiansvenson?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sebastian Svenson</a> on <a href="https://unsplash.com/fr/photos/d2w-_1LJioQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>*
+
+---
 
 Deploying a static site fully on Web3 is possible thanks to the [Internet Computer](https://internetcomputer.org/) and made effortless with the help of [Juno](https://juno.build/). It’s just as easy as it is on the good old Web 2.0, but without the limitations of trust-based or centralized approaches that may not be as beloved.
 
 In this article, we will guide you through the step-by-step process of deploying your website on a canister smart contract, ensuring that you have complete ownership and control over it.
 
 Furthermore, we will explore how to establish your domain name, guaranteeing the preservation of your brand identity that your clients and users hold dear. By following our instructions, you can ensure a seamless transition to the Internet Computer while maintaining your online presence and brand recognition.
+
+:::info
+
+This guide was published in collaboration with [Code & State](https://www.codeandstate.com/), a Web3 Venture Studio empowering the next generation of entrepreneurs to build and earn on the Internet Computer. 🚀
+
+:::
 
 ---
 
