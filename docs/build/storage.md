@@ -131,7 +131,7 @@ The `listAssets` function -- in addition to specifying the collection to query -
 
 ## Delete asset
 
-To delete an asset, it must be listed first. This ensures that only the most recent asset is deleted.
+To delete an asset, you only need to provide its `fullPath`. Unlike the [datastore](datastore.md), there is no timestamp validation performed when deleting an asset.
 
 ```typescript
 import { deleteAsset } from "@junobuild/core";
