@@ -58,7 +58,7 @@ This currently does not remove the [controllers] from [satellites] and/or [missi
 
 :::
 
-## Initialize your app
+## Init
 
 Many common tasks performed using the CLI, such as deploying an app, require a **project directory**. A project directory is usually the same directory as your source control root.
 
@@ -132,19 +132,17 @@ Here is an example of how the ignore attribute can be utilized:
 }
 ```
 
-## Config
-
-The behavior of your [storage](../build/storage.md) can be configured. Run the following command from the project directory to apply any changes to your configuration:
-
-```bash
-juno config
-```
-
 ### HTTP Headers
 
 Headers allow the client and the [satellite] to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
 
 For instance, you may want to set a specific `Cache-Control` for performance reasons.
+
+:::info
+
+Please note that currently, the headers are only applied on the .raw. domain until the implementation of "Certification v2" is completed. You can track the progress of this implementation by following the feature request [#168](https://github.com/buildwithjuno/juno/issues/168).
+
+:::
 
 Here's an example of the `headers` object:
 
@@ -186,6 +184,36 @@ This `source` attribute works similarly to Git's `.gitignore`, and you can speci
 
 :::
 
+### Rewrites
+
+You can utilize optional rewrites to display the same content for multiple URLs. Rewrites are especially useful when combined with pattern matching, allowing acceptance of any URL that matches the pattern.
+
+Here's the basic structure for a `rewrites` attribute. This example serves `hello-world.html` for requests to files or directories that don't exist.
+
+```json
+{
+  "satellite": {
+    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "source": "dist",
+    "storage": {
+      "rewrites": [{
+        "source": "**",
+        "destination": "/hello-world.html"
+      }]
+    }
+  }
+}
+```
+
+This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the headers using globs.
+
+:::note
+
+- Rewrites are only applied to requests that do not match any existing resources.
+- By default, all unknown paths are automatically rewritten to `/index.html`. To disable this default behavior, you can set an empty configuration for the rewrite rule.
+
+:::
+
 ## Deploy
 
 To deploy an app to a [satellite] using Juno, run the following command from the project directory:
@@ -199,6 +227,15 @@ juno deploy
 This command uploads each file separately and computes and uploads the corresponding hashes. Subsequent deploys will only upload files that have changed.
 
 :::
+
+
+## Config
+
+To apply any changes to your  [storage](../build/storage.md) configuration, run the following command from your project directory:
+
+```bash
+juno config
+```
 
 ## Clear
 
