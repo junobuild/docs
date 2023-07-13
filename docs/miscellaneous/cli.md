@@ -214,9 +214,9 @@ This command removes existing files from the satellite and only affects the app 
 
 :::
 
-:::hint
+:::tip
 
-If you compress (gzip and brotli) your bundle and assets and have already deployed once your app, the assets need also to be cleared. This is required because a certification tree of all assets should be calculated.
+If you have compressed (gzip and brotli) your bundle and assets after deploying your app, it is also necessary to clear the assets. This is because a certification tree of all assets needs to be calculated.
 
 :::
 

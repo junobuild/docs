@@ -190,12 +190,12 @@ Options `matcher`, `paginate` and `order` can be use together.
 
 ## Delete a document
 
-To delete a document, use the `delDoc` function, which also performs timestamp validation to ensure that the most recent document is being deleted:
+To delete a document, use the `deleteDoc` function, which also performs timestamp validation to ensure that the most recent document is being deleted:
 
 ```typescript
-import { delDoc } from "@junobuild/core";
+import { deleteDoc } from "@junobuild/core";
 
-await delDoc<Example>({
+await deleteDoc<Example>({
   collection: "my_collection_key",
   doc: myDoc,
 });

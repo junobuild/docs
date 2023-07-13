@@ -6,6 +6,12 @@ sidebar_position: 8
 
 In Juno, we use some terms that may be unfamiliar to some. This page provides a summary of the most commonly used terms.
 
+## Account Identifier
+
+An "Account Identifier" is an address, serving as the textual representation of an account on the Internet Computer (ICP) ledger. It can represent an account owned by an individual or a smart contract.
+
+When you send ICP from a cryptocurrency exchange or wallet, as explained in the [documentation](./pricing.md#sending-icp-to-your-mission-control), you are sending it to the "Account Identifier" associated with your [mission control].
+
 ## Console
 
 The "console" refers to Juno's administration application, located at [https://console.juno.build](https://console.juno.build).
@@ -38,7 +44,9 @@ It is free, passwordless, and does not track user activity. It also integrates W
 
 ## Mission control
 
-A mission control is a facility used to manage your [satellites]. With it, you can monitor various aspects of your [satellites], including [datastore](build/datastore.md), [storage](build/storage.md), [hosting](build/hosting.md), and cycle consumption.
+A mission control is a dedicated smart contract designed for managing your [satellites]. It is under your exclusive control, allowing it to hold ICP and perform various operations such as topping up your [satellites] and itself.
+
+For a schematic representation, refer to the [Architecture](./architecture.md) documentation page.
 
 ## NFID
 

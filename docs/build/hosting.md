@@ -59,6 +59,8 @@ This means that if a user signs in to your app on the default domain (`icp0.io`)
 
 This mechanism is in place to prevent tracking between sites. It is recommended to use only communicate one domain to your users to avoid any confusion.
 
+If you do want to migrate from the default domain to a custom domain without your users being treated as seperate users, you can make use of [alternative frontend origins](https://internetcomputer.org/docs/current/developer-docs/integrations/internet-identity/alternative-origins/).
+
 [CLI]: ../miscellaneous/cli.md
 [satellite]: ../terminology.md#satellite
 [infrastructure]: ../category/infrastructure

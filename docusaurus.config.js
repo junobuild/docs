@@ -28,11 +28,11 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/buildwithjuno/site/edit/main/docs/",
+          editUrl: "https://github.com/buildwithjuno/docs/edit/main/",
         },
         blog: {
           showReadingTime: true,
-          editUrl: "https://github.com/buildwithjuno/site/edit/main/blog/",
+          editUrl: "https://github.com/buildwithjuno/docs/edit/main/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
@@ -177,7 +177,7 @@ const config = {
         appId: "FEZV8HILVI",
         apiKey: "985173b8726e18aee4c99ae03b9f30b5",
         indexName: "juno",
-        contextualSearch: false,
+        contextualSearch: true,
       },
     }),
 };
