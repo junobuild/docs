@@ -44,6 +44,14 @@ export default function Build(): JSX.Element {
               View code
             </Link>
           }
+          tutorial={
+            <Link
+              to="/blog/build-a-web3-app-with-react-js"
+              className={styles.link}
+            >
+              Tutorial
+            </Link>
+          }
           icon={<ReactLogo />}
         />
 
@@ -58,6 +66,14 @@ export default function Build(): JSX.Element {
               View code
             </Link>
           }
+          tutorial={
+            <Link
+              to="/blog/develop-an-angular-app-on-blockchain"
+              className={styles.link}
+            >
+              Tutorial
+            </Link>
+          }
           icon={<Angular />}
         />
 
@@ -70,6 +86,14 @@ export default function Build(): JSX.Element {
               className={styles.link}
             >
               View code
+            </Link>
+          }
+          tutorial={
+            <Link
+              to="/blog/build-a-web3-app-with-vuejs"
+              className={styles.link}
+            >
+              Tutorial
             </Link>
           }
           icon={<Vue />}
