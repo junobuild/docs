@@ -156,7 +156,7 @@ export const Example = () => {
 
   const add = async () => {
     await setDoc({
-      collection: "data",
+      collection: "notes",
       doc: {
         key: nanoid(),
         data: {
