@@ -186,6 +186,12 @@ This `source` attribute works similarly to Git's `.gitignore`, and you can speci
 
 ### Rewrites
 
+:::caution
+
+The "Rewrites" option is currently not functioning as expected, and we are actively analyzing it for potential improvements.
+
+:::
+
 You can utilize optional rewrites to display the same content for multiple URLs. Rewrites are especially useful when combined with pattern matching, allowing acceptance of any URL that matches the pattern.
 
 Here's the basic structure for a `rewrites` attribute. This example serves `hello-world.html` for requests to files or directories that don't exist.
