@@ -18,4 +18,12 @@ Juno does not support yet Server Side Rendering (see [Roadmap](./roadmap.md)). T
 
 We generally recommend using Static Site Generation (SSG) / prerendering.
 
+### ENOENT: no such file or directory
+
+When encountering the following error after running `juno deploy`, it is likely caused by either not starting the command from the root directory of your project or having an incorrect configuration for the [source](./miscellaneous/cli.md#source) option, which Juno uses to locate the files for deployment.
+
+> An unexpected error happened 😫. Error: ENOENT: no such file or directory, scandir ...
+
+Make sure these two requirements are correctly met before restarting the command line.
+
 [CLI]: miscellaneous/cli.md

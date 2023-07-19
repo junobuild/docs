@@ -17,6 +17,6 @@ It is estimated that storing 1 GB of data inside a smart contract should cost ap
 - [Internet Computer]
 - [Capabilities](https://internetcomputer.org/features)
 - [How does it works](https://internetcomputer.org/how-it-works)
-- [Computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/deploy/computation-and-storage-costs)
+- [Computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/gas-cost)
 
 [Internet Computer]: https://internetcomputer.org/
