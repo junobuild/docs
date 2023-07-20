@@ -31,13 +31,29 @@ To configure DNS records, you will be requested to use `CNAME` records. Some dom
 
 Some DNS providers require you to specify the main domain. For example, you might have to specify your full domain `foo.bar.com` for the `CNAME` entry related to `icp1.io` instead of only `foo` as displayed by our [console].
 
-:::tip
-
-This external guide explains how to configure the DNS records of your domain for two popular registrars: [Namecheap](https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/dns-setup#namecheap) and [GoDaddy](https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/dns-setup#godaddy).
-
-:::
-
 If you ever encounter issues configuring your DNS, you can also refer to the [Troubleshooting](https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/#troubleshooting) section for further assistance.
+
+### Cloudflare
+
+The DNS entries presented in the console are exactly the ones that should be configured in Cloudflare.
+
+However, based on our experience, to enable the custom domain properly, the following settings in Cloudflare should be disabled:
+
+- DNS > Settings > Disable DNSSEC
+- SSL/TLS > Overview > Set "Your SSL/TLS encryption mode" to "Off (not secure)". A SSL certificate will be automatically ordered by configuring the custom domain.
+- SSL/TLS > Edge Certificates > Disable Universal SSL
+
+### Namecheap
+
+This external guide provides instructions on how to configure the DNS records for [Namecheap](https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/dns-setup#namecheap).
+
+### GoDaddy
+
+This external guide provides instructions on how to configure the DNS records for [GoDaddy](https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/dns-setup#godaddy).
+
+### Google Domains
+
+Google Domains does not support `CNAME` records for the apex domain. For this reason, we suggest transferring the domain to [Cloudflare](#cloudflare).
 
 ### Status
 
@@ -49,7 +65,7 @@ The status of the configuration of your custom domain can be one of the followin
 - `Available`: The registration request has been successfully processed. Your custom domain is ready.
 - `Failed`: The registration request failed.
 
-If one of the status `Pending...` is reached, the console will automatically refresh the status every few seconds for display purpose until your domain is available.
+If one of the status `Pending...` is reached, the console will automatically refresh the status every few seconds until your domain is available.
 
 ## Authentication Considerations
 
