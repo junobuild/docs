@@ -4,7 +4,7 @@ Using any features offered by the Juno [CLI] within GitHub Actions is possible.
 
 ## Using GitHub Actions to Deploy Your Decentralized App
 
-This documentation will guide you through the process of deploying your decentralized app to Juno [satellites] using the [buildwithjuno/juno-action](https://github.com/buildwithjuno/juno-action) GitHub Action.
+This documentation will guide you through the process of deploying your decentralized app to Juno satellites using the [buildwithjuno/juno-action](https://github.com/buildwithjuno/juno-action) GitHub Action.
 
 ### Adding a Secret Token for Automation
 
@@ -22,7 +22,7 @@ Follow the steps below to generate a new controller:
 
 :::info
 
-Although it is possible to generate a controller with administrative permission, we strongly recommend using the "Read-write" scope. This ensures that GitHub does not have the capability to operate your smart contract, such as stopping or deleting your [satellite]. By opting for the "Read-write" scope, you maintain full control over your decentralized app and minimize the risk of unwanted interference from GitHub.
+Although it is possible to generate a controller with administrative permission, we strongly recommend using the "Read-write" scope. This ensures that GitHub does not have the capability to operate your smart contract, such as stopping or deleting your satellite. By opting for the "Read-write" scope, you maintain full control over your decentralized app and minimize the risk of unwanted interference from GitHub.
 
 :::
 
@@ -73,7 +73,7 @@ Make sure to adapt the code according to your specific requirements, such as adj
 
 Before configuring the action, take the following factors into consideration:
 
-- **Build Reproducibility**: Only new resources will be deployed to your [satellite]. Changes are detected through sha256 comparison. Therefore, ensuring the build reproducibility of your application is crucial to accurately identify and deploy the necessary updates.
+- **Build Reproducibility**: Only new resources will be deployed to your satellite. Changes are detected through sha256 comparison. Therefore, ensuring the build reproducibility of your application is crucial to accurately identify and deploy the necessary updates.
 - **Deployment Costs**: Deploying new assets incurs [cycles] costs. The more frequent the deployment and the larger the number of items to deploy, the higher the cost. As a general recommendation, it is advisable to automate only releases to minimize deployment expenses.
 
 By keeping these considerations in mind, you can proceed with configuring the GitHub Action for a streamlined and cost-effective deployment process.
@@ -81,6 +81,5 @@ By keeping these considerations in mind, you can proceed with configuring the Gi
 :::
 
 [CLI]: ../miscellaneous/cli.md
-[satellite]: terminology.md#satellite
-[satellites]: terminology.md#satellite
-[Cycles]: ../terminology.md#cycles
+[satellite]: ../terminology.md#satellite
+[cycles]: ../terminology.md#cycles

@@ -40,11 +40,11 @@ After setting up authentication, deploy your project by running the following co
 juno deploy
 ```
 
-During the initial deployment, you will be prompted to select the target [satellite]. The process should proceed smoothly, and upon completion, your app will be hosted on-chain.
+During the initial deployment, you will be prompted to select the target satellite. The process should proceed smoothly, and upon completion, your app will be hosted on-chain.
 
 :::tip
 
-Juno provides a GitHub Action that automates the deployment of your dapp to your [satellite]. For detailed instructions on how to configure it for your repository, please refer to the documentation [here](../miscellaneous/github_actions).
+Juno provides a GitHub Action that automates the deployment of your dapp to your satellite. For detailed instructions on how to configure it for your repository, please refer to the documentation [here](../miscellaneous/github_actions).
 
 :::
 

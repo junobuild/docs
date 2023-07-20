@@ -6,7 +6,7 @@ The IC is a set of protocols that allow for independent data centers around the 
 
 These independent parties run special "node machines" to produce the same number of blocks as other machines in their cohort, without deviation. Using a Proof-of-Useful-Work (PoUW) scheme. Their work involves replicating smart contract computations for optimal efficiency.
 
-The innovative architecture, protocols, and cryptography make the [Internet Computer] the fastest blockchain, capable of serving web content directly from smart contracts.
+The innovative architecture, protocols, and cryptography make the Internet Computer the fastest blockchain, capable of serving web content directly from smart contracts.
 
 This allows for 100% of online services to run on the blockchain, resulting in full decentralization and affordable costs.
 

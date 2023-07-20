@@ -19,7 +19,7 @@ Our infrastructure automatically provisions an SSL certificate for each of your 
 To connect your custom domain, follow these steps:
 
 1. Start the custom domain wizard from the Juno console [hosting](https://console.juno.build/hosting) page
-2. Enter the desired domain name for your [satellite]
+2. Enter the desired domain name for your satellite
 3. Log into your domain provider's site and configure the DNS records as indicated by Juno
 4. Continue the process in Juno
 
@@ -79,5 +79,4 @@ If you do want to migrate from the default domain to a custom domain without you
 
 [CLI]: ../miscellaneous/cli.md
 [satellite]: ../terminology.md#satellite
-[infrastructure]: ../category/infrastructure
 [console]: ../terminology.md#console

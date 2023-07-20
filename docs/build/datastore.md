@@ -26,7 +26,7 @@ Each document is identified by a `key` (unique within a collection).
 
 ## Limitation
 
-A [satellite] can currently store up to 2GB of data for all services combined. Please note that work is currently underway to increase this limit to 64GB in the near future.
+A satellite can currently store up to 2GB of data for all services combined. Please note that work is currently underway to increase this limit to 64GB in the near future.
 
 As for documents, they can be up to 2MB in size. However, larger files can be saved in the [storage](build/storage.md).
 
@@ -39,12 +39,12 @@ A collection's read and write permissions can be set as `public`, `private`, `ma
 - `public`: everyone can read from (resp. write to) any document in the collection
 - `private`: only the owner of a document can read from (resp. write to) a document in the collection
 - `managed`: the owner of a document _and_ the [controllers] of the satellite can read from (resp. write to) a document in the collection
-- `controllers`: only the [controllers] of the satellite can read from (resp. write to) any document in the collection
+- `controllers`: only the controllers of the satellite can read from (resp. write to) any document in the collection
 
 :::tip
 
 - You can modify the rules at any time, and changes will take effect immediately.
-- Any collection with read permissions set to `public`, `managed` or `controllers` can be viewed by the satellite's [controllers] in the console under the [datastore](https://console.juno.build/datastore) view.
+- Any collection with read permissions set to `public`, `managed` or `controllers` can be viewed by the satellite's controllers in the console under the [datastore](https://console.juno.build/datastore) view.
 
 :::
 

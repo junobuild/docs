@@ -28,7 +28,7 @@ In a NodeJS environment, initializing Juno in your app is not required, unlike u
 
 The second step in the [Install the SDK and initialize Juno](../add-juno-to-an-app/install-the-sdk-and-initialize-juno.md) guide can be skipped.
 
-Instead, any of Juno's functions can be called with an extra parameter that includes both the fetch library and the [satellite](../terminology.md#satellite) ID.
+Instead, any of Juno's functions can be called with an extra parameter that includes both the fetch library and the satellite ID.
 
 For example, calling the `getDoc` function from the datastore:
 

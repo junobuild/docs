@@ -24,13 +24,13 @@ Each asset within a collection is identified by a `path` -- e.g. `/images/a-user
 
 :::caution
 
-Unless you use the optional [`token` parameter](#protected-asset) to persist an asset in your [satellite] and make its URL difficult to guess, any asset stored in Juno Storage will be publicly available on the internet.
+Unless you use the optional [`token` parameter](#protected-asset) to persist an asset in your satellite and make its URL difficult to guess, any asset stored in Juno Storage will be publicly available on the internet.
 
 :::
 
 ## Limitation
 
-A [satellite] can currently store up to 2GB of data for all services combined. Please note that work is currently underway to increase this limit to 64GB in the near future.
+A satellite can currently store up to 2GB of data for all services combined. Please note that work is currently underway to increase this limit to 64GB in the near future.
 
 There is no specific limit on the size of assets (files) that can be uploaded to Juno, unless you choose to set an [optional rule](#additional-rules) to restrict it.
 
@@ -49,7 +49,7 @@ A collection's read and write permissions can be set as `public`, `private`, `ma
 - `public`: everyone can read from (resp. write to) any asset in the collection
 - `private`: only the owner of a asset and can read from (resp. write to) a document in the collection
 - `managed`: the owner of an asset _and_ the [controllers] of the satellite can read from (resp. write to) an asset in the collection
-- `controllers`: only the [controllers] of the satellite can read from (resp. write to) any asset in the collection
+- `controllers`: only the controllers of the satellite can read from (resp. write to) any asset in the collection
 
 :::tip
 
