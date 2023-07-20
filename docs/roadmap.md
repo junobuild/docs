@@ -34,6 +34,7 @@ To support growth and foster new ideas, we aim to make various infrastructure im
 - Automatically topping up [mission control] and [satellites]
 - Providing real-time data updates
 - Server-side rendering
+- End-to-end encryption using threshold key derivation
 
 ## Developer tooling
 
