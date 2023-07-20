@@ -202,10 +202,12 @@ Here's the basic structure for a `rewrites` attribute. This example serves `hell
     "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
     "source": "dist",
     "storage": {
-      "rewrites": [{
-        "source": "**",
-        "destination": "/hello-world.html"
-      }]
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/hello-world.html"
+        }
+      ]
     }
   }
 }
@@ -234,10 +236,9 @@ This command uploads each file separately and computes and uploads the correspon
 
 :::
 
-
 ## Config
 
-To apply any changes to your  [storage](../build/storage.md) configuration, run the following command from your project directory:
+To apply any changes to your [storage](../build/storage.md) configuration, run the following command from your project directory:
 
 ```bash
 juno config
