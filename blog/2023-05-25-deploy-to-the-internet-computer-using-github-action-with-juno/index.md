@@ -2,7 +2,7 @@
 slug: deploy-to-the-internet-computer-using-github-action-with-juno
 title: Deploy to the Internet Computer using GitHub Action with Juno
 authors: [peterpeterparker]
-tags: [github, deployment]
+tags: [github, deployment, internetcomputer]
 image: https://juno.build/assets/images/deploy-to-the-internet-computer-using-github-action-with-juno-social-image-ca0267dc772ba02aa9f7fc1246e5b274.png
 ---
 
