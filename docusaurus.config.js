@@ -67,11 +67,6 @@ const config = {
             position: "right",
           },
           {
-            href: "https://twitter.com/junobuild",
-            label: "Twitter",
-            position: "right",
-          },
-          {
             href: "https://discord.gg/wHZ57Z2RAG",
             label: "Discord",
             position: "right",
@@ -159,6 +154,11 @@ const config = {
               {
                 label: "Discord",
                 href: "https://discord.gg/wHZ57Z2RAG",
+              },
+              {
+                href: "https://oc.app/group/7zz74-6yaaa-aaaar-aqmaa-cai/?ref=xanzv-uaaaa-aaaaf-aneba-cai",
+                label: "OpenChat",
+                position: "right",
               },
               {
                 label: "GitHub",
