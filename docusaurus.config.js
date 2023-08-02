@@ -156,7 +156,7 @@ const config = {
                 href: "https://discord.gg/wHZ57Z2RAG",
               },
               {
-                href: "https://oc.app/group/7zz74-6yaaa-aaaar-aqmaa-cai/?ref=xanzv-uaaaa-aaaaf-aneba-cai",
+                href: "https://oc.app/community/vxgpi-nqaaa-aaaar-ar4lq-cai/?ref=xanzv-uaaaa-aaaaf-aneba-cai",
                 label: "OpenChat",
                 position: "right",
               },
