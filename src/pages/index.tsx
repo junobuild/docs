@@ -7,6 +7,7 @@ import Build from "@site/src/components/Build";
 import Illustration from "@site/src/components/Illustration";
 import Auth from "@site/src/components/Auth";
 import Api from "@site/src/components/Api";
+import Developer from "@site/src/components/Developer";
 import Outro from "@site/src/components/Outro";
 import Head from "@docusaurus/Head";
 
@@ -68,6 +69,8 @@ export default function Home(): JSX.Element {
           <Auth />
 
           <Api />
+
+          <Developer />
         </section>
 
         <section className={`container ${styles.block}`}>
