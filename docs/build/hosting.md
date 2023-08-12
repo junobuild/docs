@@ -43,6 +43,8 @@ However, based on our experience, to enable the custom domain properly, the foll
 - SSL/TLS > Overview > Set "Your SSL/TLS encryption mode" to "Off (not secure)". A SSL certificate will be automatically ordered by configuring the custom domain.
 - SSL/TLS > Edge Certificates > Disable Universal SSL
 
+Additionally, we recommend not proxying the DNS entries ("DNS only").
+
 ### Namecheap
 
 This external guide provides instructions on how to configure the DNS records for [Namecheap](https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/dns-setup#namecheap).
