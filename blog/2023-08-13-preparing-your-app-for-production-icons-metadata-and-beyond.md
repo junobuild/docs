@@ -12,7 +12,7 @@ _Photo by [SpaceX](https://unsplash.com/fr/@spacex?utm_source=unsplash&utm_mediu
 
 ---
 
-So, your decentralized application is all set for its Juno launch. But have you made sure that your icons, social images, web manifest, sitemaps, and robots settings are correctly configured for production?
+So, your decentralized application is all set for its [Juno](https://juno.build) launch. But have you made sure that your icons, social images, web manifest, sitemaps, and robots settings are correctly configured for production?
 
 These elements are not only important technically but also contribute to improving its presence on different social platforms and enhancing your app's visibility on search engines (SEO).
 
