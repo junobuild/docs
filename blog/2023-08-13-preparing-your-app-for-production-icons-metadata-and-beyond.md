@@ -3,12 +3,12 @@ slug: preparing-your-app-for-production-icons-metadata-and-beyond
 title: "Preparing Your App for Production: Icons, Metadata, and Beyond"
 authors: [peterpeterparker]
 tags: [production, launch, metadata, icons]
-image: https://images.unsplash.com/photo-1517976384346-3136801d605d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80
+image: https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMDkyMzV8MHwxfHNlYXJjaHw0Nnx8YWJzdHJhY3R8ZW58MHx8fHwxNjY0NDI4NDU5&ixlib=rb-1.2.1&q=80&w=1080
 ---
 
-![](https://images.unsplash.com/photo-1517976384346-3136801d605d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80)
+![Minimalistic 3D Rendering Wallpaper in 8K Resolution.](https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMDkyMzV8MHwxfHNlYXJjaHw0Nnx8YWJzdHJhY3R8ZW58MHx8fHwxNjY0NDI4NDU5&ixlib=rb-1.2.1&q=80&w=1080)
 
-_Photo by [SpaceX](https://unsplash.com/fr/@spacex?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/fr/photos/tKs_2sBoqAg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
+*[Sebastian Svenson](https://unsplash.com/@sebastiansvenson)*
 
 ---
 
