@@ -162,7 +162,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/buildwithjuno",
+                href: "https://github.com/buildwithjuno/juno",
               },
             ],
           },
