@@ -20,6 +20,8 @@ That’s why [Juno](https://juno.build) takes a different approach, aiming to ha
 
 In this blog post, we’ll explore how to combine React and Juno to develop a dApp. So, let’s dive in and discover how Juno can help you build powerful and user-friendly decentralized applications!
 
+<!--truncate-->
+
 ---
 
 ## How Juno Works

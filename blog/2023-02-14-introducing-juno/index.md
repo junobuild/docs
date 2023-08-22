@@ -7,6 +7,8 @@ tags: [release]
 
 I am thrilled to introduce [Juno](https://juno.build), a groundbreaking open-source Blockchain-as-a-Service solution that makes building Web3 applications more accessible to the millions of front-end developers worldwide.
 
+<!--truncate-->
+
 ![Overview screenshot](./overview.png)
 
 ---

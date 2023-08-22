@@ -14,6 +14,8 @@ In the fast-paced world of decentralized applications (dapps), automating deploy
 
 In this blog post, we will delve into how this powerful integration enables developers to effortlessly deploy their dapps to the Internet Computer, leveraging the capabilities of the Juno platform.
 
+<!--truncate-->
+
 ---
 
 ## Adding a Secret Token for Automation

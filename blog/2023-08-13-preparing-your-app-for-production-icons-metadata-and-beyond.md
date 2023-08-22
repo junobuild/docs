@@ -18,6 +18,8 @@ These elements are not only important technically but also contribute to improvi
 
 To help you with this crucial task, here's a comprehensive list of recommendations to prepare your web application for these purposes.
 
+<!--truncate-->
+
 ---
 
 ## Introduction

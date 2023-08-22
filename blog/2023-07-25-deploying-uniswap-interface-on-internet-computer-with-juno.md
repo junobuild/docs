@@ -11,6 +11,8 @@ We are thrilled to bring you an incredible tutorial on how to deploy the [Uniswa
 
 In this video tutorial, [Moritz](https://twitter.com/cryptoschindler) from the [DFINITY Foundation](https://dfinity.org/) takes you through the seamless process of deploying from scratch to on-chain.
 
+<!--truncate-->
+
 Watch the video below and unlock the boundless potential of building on Web3 with Juno:
 
 <iframe width="100%" height="315" style={{margin: "1rem 0 2rem"}} src="https://www.youtube.com/embed/3RuL7pzNX8E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

@@ -20,6 +20,8 @@ After exploring how to combine React and Juno to develop a dApp in a previous [b
 
 So, let’s dive in and discover how you can build powerful and user-friendly decentralized applications with Angular!
 
+<!--truncate-->
+
 ---
 
 ## How Juno Works

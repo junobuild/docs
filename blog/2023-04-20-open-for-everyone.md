@@ -11,6 +11,8 @@ With Juno, you can build and deploy Web3 apps with just frontend code, making it
 
 Whether you're new to Web3 development or a seasoned pro, Juno's user-friendly platform makes it easy to build and deploy decentralized applications that can scale to meet the needs of your users. So why wait? [Sign up](https://console.juno.build) for Juno today and start building your next-generation Web3 app!
 
+<!--truncate-->
+
 ---
 
 ### Get started

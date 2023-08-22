@@ -20,6 +20,8 @@ But fear not! There's a solution that bridges the gap between Web2 and Web3 seam
 
 In this blog post, we will explore how to leverage the power of Vue and Juno to develop decentralized applications (dApps). By combining these technologies, you'll discover a user-friendly and efficient approach to building powerful dApps that harness the potential of Web3. Join us on this journey as we unveil the secrets of Juno and empower you to create remarkable decentralized experiences with ease!
 
+<!--truncate-->
+
 ---
 
 ## Foreword

@@ -12,6 +12,8 @@ A month ago, the first beta for Juno was released to the world. Since then, we h
 - [Expanded ordering and filtering options](#expanded-ordering-and-filtering-options)
 - [New CLI and JS library features](#new-cli-and-js-library-features)
 
+<!--truncate-->
+
 ---
 
 ## Enhanced controller user experience

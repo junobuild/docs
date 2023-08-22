@@ -12,6 +12,8 @@ image: https://juno.build/assets/images/exploring-a-juno-web3-dapp-architecture-
 
 I developed a web-based drawing application — [icdraw.com](https://icdraw.com/) — on the [Internet Computer](https://internetcomputer.org/) blockchain in just a single weekend, thanks to the smooth integration provided by [Juno](https://juno.build/) 🛰️. In this blog post, I present some insights into the architecture of the frontend application I’ve built.
 
+<!--truncate-->
+
 ---
 
 ## Architecture
