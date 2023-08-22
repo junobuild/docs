@@ -358,7 +358,6 @@ Congratulations! Your app is now decentralized 🎉.
 
 - Juno documentation and getting started: [https://juno.build/docs/intro](https://juno.build/docs/intro)
 - Code source of this tutorial: [https://github.com/buildwithjuno/examples/tree/main/react/diary](https://github.com/buildwithjuno/examples/tree/main/react/diary)
-- The outcome of this article: [https://pycrs-xiaaa-aaaal-ab6la-cai.icp0.io/](https://pycrs-xiaaa-aaaal-ab6la-cai.icp0.io/)
 
 ---
 
