@@ -32,6 +32,8 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          blogSidebarTitle: 'All our posts',
+          blogSidebarCount: 'ALL',
           editUrl: "https://github.com/buildwithjuno/docs/edit/main/",
         },
         theme: {
