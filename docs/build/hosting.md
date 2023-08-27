@@ -57,6 +57,13 @@ This external guide provides instructions on how to configure the DNS records fo
 
 Google Domains does not support `CNAME` records for the apex domain. For this reason, we suggest transferring the domain to [Cloudflare](#cloudflare).
 
+### Other Limited Providers
+
+We are aware of a few other providers that also do not support `CNAME` records for the apex domain. Similar to Google Domains, we advise transferring the domain to [Cloudflare](#cloudflare) in order to overcome this limitation.
+
+- HostGator
+- Infomaniak
+
 ### Status
 
 The status of the configuration of your custom domain can be one of the following:
