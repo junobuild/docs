@@ -30,19 +30,19 @@ juno login
 
 4. Confirm
 
-Your local machine should now be authorized to control the selected objects.
+The terminal on your local machine should now be authorized to control the selected objects.
 
-:::tip
+### How it works?
 
-- Controlling your [mission control] is useful for upgrading its code when new releases are published.
+A new [principal] is generated on your local machine and added as a [controller] of the selected [satellites] and/or [mission control]. This principal is then used to authenticate any CLI calls made from your terminal to your satellites and mission controls.
 
-:::
+The key is saved in the OS-specific user's variables path.
 
-:::note
+- macOS: `~/Library/Preferences/juno-nodejs`
+- Windows: `%APPDATA%\juno-nodejs\Config` (for example, `C:\Users\USERNAME\AppData\Roaming\juno-nodejs\Config`)
+- Linux: `~/.config/juno-nodejs` (or `$XDG_CONFIG_HOME/juno-nodejs`)
 
-A new [principal] is generated on your local machine and added as a [controller] of the selected [satellites] and/or [mission control]. This key is saved in the OS-specific user's variables path. Check which directory matches yours here: https://github.com/sindresorhus/env-paths#pathsconfig.
-
-:::
+To get the paths for storing data the CLI is using the library [env-paths](https://github.com/sindresorhus/env-paths#pathsconfig).
 
 ## Logout
 
