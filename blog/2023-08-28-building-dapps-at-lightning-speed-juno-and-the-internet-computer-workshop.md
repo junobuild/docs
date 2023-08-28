@@ -13,8 +13,7 @@ In this workshop, you'll learn how easily you can implement authentication in yo
 
 So, grab a cup of coffee and join me on this exciting journey.
 
-<iframe width="100%" height="315" style={{margin: "1rem 0 2rem"}} src="https://www.youtube.com/watch?v=mr_9XArcG9Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+<iframe width="100%" height="315" style={{margin: "1rem 0 2rem"}} src="https://www.youtube.com/embed/mr_9XArcG9Y?si=a09laC0gQjT9Q5FL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
 
