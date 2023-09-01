@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import Hero from "@site/src/components/Hero";
@@ -10,11 +10,28 @@ import Api from "@site/src/components/Api";
 import Developer from "@site/src/components/Developer";
 import Outro from "@site/src/components/Outro";
 import Head from "@docusaurus/Head";
+import { initOrbiter } from "@junobuild/analytics";
 
 import styles from "./index.module.scss";
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
+  const {
+    customFields: { dev },
+  } = siteConfig;
+
+  useEffect(() => {
+    if (dev) {
+      return;
+    }
+
+    (async () =>
+      initOrbiter({
+        satelliteId: "ucnx3-aqaaa-aaaal-ab3ea-cai",
+        orbiterId: "3iier-sqaaa-aaaal-aczaa-cai",
+      }))();
+  }, []);
+
   return (
     <Layout>
       <Head>

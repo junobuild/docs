@@ -19,6 +19,9 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
+  customFields: {
+    dev: process.env.NODE_ENV === "development",
+  },
   presets: [
     [
       "classic",
@@ -32,8 +35,8 @@ const config = {
         },
         blog: {
           showReadingTime: true,
-          blogSidebarTitle: 'All our posts',
-          blogSidebarCount: 'ALL',
+          blogSidebarTitle: "All our posts",
+          blogSidebarCount: "ALL",
           editUrl: "https://github.com/buildwithjuno/docs/edit/main/",
         },
         theme: {
