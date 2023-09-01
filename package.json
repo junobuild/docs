@@ -13,6 +13,7 @@
   },
   "scripts": {
     "build:compress": "./scripts/build.compress.sh",
+    "postinstall": "rsync -aqz node_modules/@junobuild/analytics/dist/workers/*.js static/workers/",
     "docusaurus": "docusaurus",
     "dev": "npm run start",
     "start": "docusaurus start",
@@ -29,6 +30,7 @@
   "dependencies": {
     "@docusaurus/core": "^2.4.1",
     "@docusaurus/preset-classic": "^2.4.1",
+    "@junobuild/analytics": "^0.0.1",
     "@mdx-js/react": "^1.6.22",
     "clsx": "^1.2.1",
     "docusaurus-plugin-sass": "^0.2.3",
