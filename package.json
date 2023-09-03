@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build:compress": "./scripts/build.compress.sh",
-    "postinstall": "rsync -aqz node_modules/@junobuild/analytics/dist/workers/*.js static/workers/",
+    "postinstall": "rsync -aqz node_modules/@junobuild/analytics/dist/workers/*.* --exclude *.map static/workers/",
     "docusaurus": "docusaurus",
     "dev": "npm run start",
     "start": "docusaurus start",
