@@ -6,7 +6,7 @@ export default function Developer(): JSX.Element {
     <Snippet
       title="Developer Tools."
       texts={[
-        "Leverage Juno's developer tools to manage your dapps, monitor and administer your data from a single control center.",
+        "Leverage Juno's developer tools to manage your dApps, monitor and administer your data from a single control center.",
         "Utilize the convenient CLI or GitHub Actions to deploy your projects with ease.",
       ]}
       code={`npm i -g @junobuild/cli

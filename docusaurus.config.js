@@ -7,7 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Juno",
-  tagline: "Build Web3 dapps like Web2",
+  tagline: "Build Web3 dApps like Web2",
   url: "https://juno.build",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -51,7 +51,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: "img/social_image_v4.jpg",
+      image: "img/social_image_v5.jpg",
       navbar: {
         title: "Juno",
         logo: {
