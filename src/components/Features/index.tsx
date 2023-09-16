@@ -61,7 +61,7 @@ export default function Features(): JSX.Element {
 
         <Feature
           title="Analytics"
-          text="Gather valuable anonymous insights about your users or visitors with the simple, lightweight, and open-source web analytics that do not use cookies."
+          text="Gather valuable, anonymous user insights with a simple, lightweight, and open-source web analytics that do not use cookies."
           link={
             <Link to="/docs/build/analytics" className={styles.link}>
               Learn more
