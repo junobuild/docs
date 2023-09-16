@@ -6,6 +6,7 @@ import Authentication from "@site/static/icons/authentication.svg";
 import Datastore from "@site/static/icons/datastore.svg";
 import Storage from "@site/static/icons/storage.svg";
 import Hosting from "@site/static/icons/hosting.svg";
+import Analytics from "@site/static/icons/analytics.svg";
 
 export default function Features(): JSX.Element {
   return (
@@ -56,6 +57,17 @@ export default function Features(): JSX.Element {
             </Link>
           }
           icon={<Hosting />}
+        />
+
+        <Feature
+          title="Analytics"
+          text="Gather valuable anonymous insights about your users or visitors with the simple, lightweight, and open-source web analytics that do not use cookies."
+          link={
+            <Link to="/docs/build/analytics" className={styles.link}>
+              Learn more
+            </Link>
+          }
+          icon={<Analytics />}
         />
       </div>
     </>
