@@ -57,7 +57,9 @@ To send ICP to your mission control, you can use most cryptocurrency exchange pl
 
 To initiate the transaction, you will need to provide a destination address where the ICP should be sent. This destination address corresponds to the [Account Identifier](./terminology.md#account-identifier) of your mission control.
 
-You can find the destination address in Juno's console. After signing in, navigate to your personal [mission control administration page](https://console.juno.build/mission-control/) and copy your **Account Identifier**.
+You can find the destination address in Juno's console. After signing in, navigate to your personal [mission control administration page](https://console.juno.build/mission-control/) and copy your **Account Identifier** or use the QR code.
+
+![Where to find the account identifier of your mission control](./img/account-identifier.webp)
 
 :::info
 
