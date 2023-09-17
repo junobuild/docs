@@ -10,7 +10,6 @@ We have big plans for the near and distant future.
 
 Our goal is to continue delivering features that seamlessly integrate both web3 and web2 worlds, while ensuring ease of development. This includes:
 
-- Analytics
 - Plug-and-play recurring payment and paywall solutions
 - Handing over [mission control] or [satellite] to DAO SNS (Service Nervous Systems)
 
@@ -29,7 +28,7 @@ While Juno is currently focused on individual developers, we recognize the impor
 To support growth and foster new ideas, we aim to make various infrastructure improvements, including:
 
 - Upgrading satellites overall available memory, starting with 64 GB
-- Enabling the implementation of backend functions in response to events triggered in satellites
+- Enabling the implementation of backend functions ("serverless functions") in response to events triggered in satellites
 - Replacing quick queries with certified calls by default
 - Automatically topping up mission control and satellites
 - Providing real-time data updates
