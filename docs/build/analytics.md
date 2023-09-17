@@ -4,7 +4,9 @@ sidebar_position: 5
 
 # Analytics
 
-Juno Analytics, a simple, lightweight, and open-source web3 analytics solution that respects your users' privacy. Unlike traditional analytics tools, Juno Analytics doesn't use cookies, ensuring anonymity while providing valuable user insights.
+Juno Analytics, a simple, lightweight, and open-source web3 analytics solution that respects your users' privacy and doesn't use cookies, ensuring anonymity while providing valuable user insights.
+
+![Juno's Analytics screenshot](../img/analytics.webp)
 
 ## Features
 
