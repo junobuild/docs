@@ -6,18 +6,18 @@ sidebar_position: 11
 
 There are two types of costs associated with using Juno.
 
-1. Operating costs for your [mission control] or satellites
+1. Operating costs for your [mission control], satellites and orbiters
 2. Costs for executing transactions with Juno
 
 :::note
 
-Last update: June 15, 2023
+Last update: Sept. 17, 2023
 
 :::
 
 ## Operating costs
 
-As the owner of your mission control or satellites, you are responsible for their operating costs.
+As the owner of your mission control, satellites and orbiters, you are responsible for their operating costs.
 
 To ensure that your infrastructure usage is covered, you must maintain a minimum balance of [cycles](terminology.md#cycles).
 
@@ -25,11 +25,13 @@ You can top up your cycle balance in the Juno [console](https://console.build.co
 
 ## Transaction costs
 
-New developers joining Juno are given credits to create a mission control and their first [satellite].
+New developers who join Juno are granted credits to create a mission control and their initial [satellite].
 
-To create additional satellites, a fee of 0.5 ICP is required, in addition to the costs required by the infrastructure to create the smart contract.
+To create additional satellites, a fee of 0.5 ICP is necessary, along with the infrastructure costs for setting up the smart contract.
 
-Please note that further transaction fees may be required in the future and prices and models are subject to change.
+Similarly, enabling analytics by creating an [orbiter] entails a fee of 0.5 ICP, plus the infrastructure costs for creating the smart contract.
+
+Please note that additional transaction fees may be introduced in the future, and pricing and models are subject to change.
 
 ## Cost examples
 
@@ -69,3 +71,4 @@ You are the owner of your mission control, and Juno has no control or access to 
 
 [mission control]: terminology.md#mission-control
 [satellite]: terminology.md#satellite
+[orbiter]: terminology.md#orbiter
