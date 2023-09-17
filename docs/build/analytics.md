@@ -83,6 +83,82 @@ The platform will then create your orbiter smart contract and provision its reso
 
 At this point, you have successfully created the analytics; however, you have not yet listed which satellites are eligible to track page views and events. To complete the configuration, proceed to the **Settings** page to register them.
 
+## Install the SDK and initialize the Orbiter
+
+To start using Juno Analytics, follow these steps:
+
+1. Install Juno's analytics library using npm:
+
+```bash
+npm i @junobuild/analytics
+```
+
+2. Initialize the orbiter in your web app or website:
+
+```typescript
+import { initOrbiter } from "@junobuild/analytics";
+
+// TODO: Replace the following satelliteId and orbiterId with the effective ID.
+await initOrbiter({
+  satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+  orbiterId: "eeeee-fffff-ddddd-11111-cai",
+});
+```
+
+3. Copy the pre-packaged web worker provided by the library to your `public` or `static` folder, where your project's static assets are located.
+
+- You can achieve this by adding a post-install script to your `package.json`. Here's an example of an inline command:
+
+```json
+{
+  "scripts": {
+    "postinstall": "node -e \"require('fs').cpSync('node_modules/@junobuild/analytics/dist/workers/', './static/workers', {recursive: true});\""
+  }
+}
+```
+
+- Alternatively, you can create a script, e.g., `copy-juno-workers.mjs`, at the root of your project with the following code:
+
+```js
+import { cp } from "node:fs";
+import { extname } from "node:path";
+
+await cp(
+  "node_modules/@junobuild/analytics/dist/workers/",
+  "./static/workers",
+  {
+    recursive: true,
+  },
+  (err) => {
+    if (err === null) {
+      return;
+    }
+
+    console.error(err);
+  }
+);
+```
+
+Finally, add a command to your `package.json` that executes the script:
+
+```json
+{
+  "scripts": {
+    "postinstall": "node ./scripts/copy-workers.mjs"
+  }
+}
+```
+
+Once configured, run `npm run postinstall` manually to trigger the initial copy. Every time you run `npm ci`, the post-install target will execute, ensuring the worker is copied.
+
+:::info
+
+- The above example assumes that `/static` is the folder holding your static assets (e.g., images, favicons, etc.). Adjust the path according to your application.
+
+- If you prefer to specify a custom path for the worker, you can use the `initOrbiter` function with the additional parameter `{worker?: {path?: string}}` for this purpose.
+
+:::
+
 [CLI]: ../miscellaneous/cli.md
 [satellites]: ../terminology.md#satellite
 [orbiter]: ../terminology.md#orbiter
