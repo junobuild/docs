@@ -56,13 +56,13 @@ All data tracked by our analytics solution is securely stored on the blockchain.
 
 ## Getting Started
 
-To begin using Juno Analytics, please refer to our detailed documentation for step-by-step instructions. It will guide you through the process of setting up and integrating Analytics into your web applications and dapps.
+To begin using Juno Analytics, please refer to our detailed documentation for [step-by-step instructions](/docs/build/analytics#getting-started).
+
+It will guide you through the process of setting up and integrating Analytics into your websites and dapps. 🚀
 
 ---
 
 We hope you're as excited about Juno Analytics as we are! This feature marks a significant stride toward a more privacy-conscious analytics solution and provide Juno's developers an additional feature in the eco-system to build awesome decentralized applications.
-
----
 
 👋
 
