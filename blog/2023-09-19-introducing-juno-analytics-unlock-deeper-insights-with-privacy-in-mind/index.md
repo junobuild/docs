@@ -10,7 +10,7 @@ image: https://juno.build/assets/images/exploring-a-juno-web3-dapp-architecture-
 
 ---
 
-We're excited to introduce Juno Analytics, a simple, lightweight, and open-source web3 analytics solution designed with your privacy in mind.
+We're excited to introduce Juno Analytics, a simple, performant, and open-source web3 analytics solution designed with your privacy in mind.
 
 In a digital age where data privacy is paramount, Juno Analytics empowers you to gather valuable insights about your users while ensuring anonymity and respecting their privacy.
 

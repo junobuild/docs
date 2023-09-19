@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Analytics
 
-Juno Analytics, a simple, lightweight, and open-source web3 analytics solution that respects your users' privacy and doesn't use cookies, ensuring anonymity while providing valuable user insights.
+Juno Analytics, a simple, performant, and open-source web3 analytics solution that respects your users' privacy and doesn't use cookies, ensuring anonymity while providing valuable user insights.
 
 ![Juno's Analytics screenshot](../img/analytics.webp)
 
@@ -16,7 +16,7 @@ Juno Analytics offers several advantages for developers:
 
 Just like all of Juno's features, Analytics prioritizes privacy. It conducts dapp and site measurements entirely anonymously, without using cookies or collecting personal data. There are no persistent identifiers, cross-site tracking, or cross-device tracking. Your analytics data is not used for any other purposes.
 
-### Lightweight script
+### Performance-Optimized Script
 
 Juno's JavaScript library for statistics is optimized for performance. It consists of a minimal main script that seamlessly integrates with your application's UI and a dedicated worker responsible for handling logic and cryptography. This design ensures that adding analytics won't impact your application's performance, including its boot time, and per extension preserving your customer acquisition rate.
 
