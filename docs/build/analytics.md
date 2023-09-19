@@ -156,7 +156,7 @@ Finally, add a command to your `package.json` that executes the script:
 ```json
 {
   "scripts": {
-    "postinstall": "node ./scripts/copy-workers.mjs"
+    "postinstall": "node ./scripts/copy-juno-workers.mjs"
   }
 }
 ```
