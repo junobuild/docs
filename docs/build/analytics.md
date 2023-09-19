@@ -70,6 +70,18 @@ Additionally, a unique random session ID is generated for all data. Each time a 
 
 Currently, an orbiter can store up to 96GB of data.
 
+:::caution
+
+Similar to other analytics services in the Web2 environment, an Orbiter accepts data submitted from any source as long as the requested payload matches the expected format, and the targeted satellite is configured to accept analytics. This is because the origin of the HTTP request cannot be accessed, for a valid reason – to prevent tracking. Therefore, calls cannot be limited to the domain of your dapps.
+
+Consequently, this leaves the canister open to potential attacks that can pollute the data and consume cycles. For this reason, we recommend the following:
+
+1. Avoid topping up the smart contract with excessive cycles; instead, adopt a lean approach.
+2. Utilize the [monitoring](../miscellaneous/monitoring.md) feature to stay informed about the status.
+3. Interpret the statistics provided by this feature with some reservation, similar to any other analytics data, considering potential inaccuracies.
+
+:::
+
 ## Getting started
 
 Before integrating Juno Analytics into your app or website, you need to create an orbiter. Here's a step-by-step guide to help you get started:
