@@ -10,7 +10,7 @@ image: https://juno.build/assets/images/exploring-a-juno-web3-dapp-architecture-
 
 ---
 
-We're excited to introduce Juno Analytics, a simple, performant, and open-source web3 analytics solution designed with privacy in mind for the developers building decentralized dapps with Juno.
+We're excited to introduce [Juno Analytics](../../docs/build/analytics), a simple, performant, and open-source web3 analytics solution designed with privacy in mind for the developers building decentralized dapps with Juno.
 
 In a digital age where data privacy is paramount, Juno Analytics empowers you to gather valuable insights about your users while ensuring anonymity and respecting their privacy.
 
@@ -61,6 +61,8 @@ To begin using Juno Analytics, please refer to our detailed documentation for [s
 It will guide you through the process of setting up and integrating Analytics into your websites and dapps. 🚀
 
 ---
+
+## Conclusion
 
 We hope you're as excited about Juno Analytics as we are! This feature marks a significant stride toward a more privacy-conscious analytics solution and provide Juno's developers an additional feature in the eco-system to build awesome decentralized applications.
 
