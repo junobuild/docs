@@ -3,7 +3,7 @@ slug: introducing-juno-analytics-unlock-deeper-insights-with-privacy-in-mind
 title: Introducing Juno Analytics - Unlock Deeper Insights with Privacy in Mind
 authors: [peterpeterparker]
 tags: [dapp, web3, analytics, opensource]
-image: https://juno.build/assets/images/exploring-a-juno-web3-dapp-architecture-social-image-a34be2835d21e01fd97b954a3c16563b.png
+image: https://juno.build/assets/images/introducing-juno-analytics-unlock-deeper-insights-with-privacy-in-mind-fb4d97daf48952a39b95259bf8a7d369.png
 ---
 
 ![](./introducing-juno-analytics-unlock-deeper-insights-with-privacy-in-mind.png)
