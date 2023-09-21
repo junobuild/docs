@@ -52,6 +52,10 @@ For a schematic representation, refer to the [Architecture](./architecture.md) d
 
 [NFID](https://nfid.one) is a digital identity that provides private and secure sign-in to applications. It offers a convenient way to authenticate with third-party providers like [Metamask](https://metamask.io/) and [Google](https://www.google.com/account/about/).
 
+## Orbiter
+
+An orbiter is the term we use to refer to the smart contract that can optionally be employed for analytics to gather valuable, anonymous insights about your users.
+
 ## Principal
 
 Principals are generic identifiers for the [console], [mission controls], [satellites], and users.
