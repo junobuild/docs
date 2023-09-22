@@ -93,7 +93,8 @@ Before integrating Juno Analytics into your app or website, you need to create a
 
 The platform will then create your orbiter smart contract and provision its resources. Once the process is complete, click "Close" to terminate the creation wizard.
 
-At this point, you have successfully created the analytics; however, you have not yet listed which satellites are eligible to track page views and events. To complete the configuration, proceed to the **Settings** page to register them.
+At this point, you have successfully created the analytics; however, you have not yet listed which satellites are eligible to track page views and events. 
+5. To complete the configuration, proceed to the Analytics/**Settings** page to register them.
 
 ## Install the SDK and initialize the Orbiter
 
