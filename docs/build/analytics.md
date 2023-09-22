@@ -167,7 +167,7 @@ Finally, add a command to your `package.json` that executes the script:
 
 :::info
 
-- The above example assumes that `/static` is the folder holding your static assets (e.g., images, favicons, etc.). Adjust the path according to your application.
+- The above example assumes that `/static` is the folder holding your static assets (e.g., images, favicons, etc.). Adjust the path according to your application. For example with React, the static folder might sometimes be called `/public`.
 
 - If you prefer to specify a custom path for the worker, you can use the `initOrbiter` function with the additional parameter `{worker?: {path?: string}}` for this purpose.
 
