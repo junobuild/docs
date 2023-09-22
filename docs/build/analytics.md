@@ -161,7 +161,7 @@ Finally, add a command to your `package.json` that executes the script:
 }
 ```
 
-Once configured, run `npm run postinstall` manually to trigger the initial copy. Every time you run `npm ci`, the post-install target will execute, ensuring the worker is copied.
+4. Once configured, run `npm run postinstall` manually to trigger the initial copy. Every time you run `npm ci`, the post-install target will execute, ensuring the worker is copied.
 
 :::info
 
