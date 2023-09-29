@@ -95,7 +95,7 @@ The platform will then create your orbiter smart contract and provision its reso
 
 At this point, you have successfully created the analytics; however, you have not yet listed which satellites are eligible to track page views and events. 
 
-5. To complete the configuration, proceed to the Analytics/**Settings** page to register them.
+5. To complete the configuration, proceed to the Analytics/**Settings** page to configure them.
 
 ## Install the SDK and initialize the Orbiter
 
