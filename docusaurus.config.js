@@ -72,11 +72,6 @@ const config = {
             position: "right",
           },
           {
-            href: "https://discord.gg/wHZ57Z2RAG",
-            label: "Discord",
-            position: "right",
-          },
-          {
             href: "https://github.com/buildwithjuno/juno",
             label: "GitHub",
             position: "right",
