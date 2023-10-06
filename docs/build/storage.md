@@ -34,17 +34,19 @@ Each satellite has specific memory limits. For detailed information, please refe
 
 There is no specific limit on the size of assets (files) that can be uploaded to Juno, unless you choose to set an [optional rule](#additional-rules) to restrict it.
 
-## Collections and rules
+## Collections
 
-You can create or update collections and their access rules (read and write) in the "Collections" tab in Juno's console under the [storage](https://console.juno.build/storage) view.
+You can create or update a collection in the "Collections" tab in Juno's console under the [storage](https://console.juno.build/storage) view.
+
+### Rules
+
+A rule is assigned to a collection to define read and write permissions, which can be configured as `public`, `private`, `managed`, or `controllers`.
 
 :::caution
 
 Assets are publicly accessible on the Internet regardless of the permission schema. The rules are only applied when reading or writing the data through the library.
 
 :::
-
-A collection's read and write permissions can be set as `public`, `private`, `managed`, or `controllers`.
 
 - `public`: everyone can read from (resp. write to) any asset in the collection
 - `private`: only the owner of a asset and can read from (resp. write to) a document in the collection
@@ -58,9 +60,13 @@ A collection's read and write permissions can be set as `public`, `private`, `ma
 
 :::
 
-### Additional rules
+### Memory
 
-In addition to the permissions, you can set an optional parameter to limit the size (in bytes) of the assets that can be uploaded in a collection.
+When you create a collection, it's assigned to either heap or stable memory. This assignment is permanent and cannot be changed once the collection is created. The default allocation is `stable` memory.
+
+### Max size
+
+You can also set an optional parameter that limits the size, in bytes, of assets that can be uploaded to a collection.
 
 ## Upload asset
 

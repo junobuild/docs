@@ -24,17 +24,21 @@ Timestamps are used to prevent data from being overwritten, and the associated o
 
 Each document is identified by a `key` (unique within a collection).
 
+In essence, a "Datastore" functions as a keypair store.
+
 ## Limitation
 
 Each satellite has specific memory limits. For detailed information, please refer to the related [documentation](../miscellaneous/memory.md) page.
 
 As for documents, they can be up to 2MB in size. However, larger files can be saved in the [storage](build/storage.md).
 
-## Collections and rules
+## Collections
 
-You can create or update collections and their rules in the "Collections" tab in Juno's console under the [datastore](https://console.juno.build/datastore) view.
+You can create or update a collection in the "Collections" tab in Juno's console under the [datastore](https://console.juno.build/datastore) view.
 
-A collection's read and write permissions can be set as `public`, `private`, `managed`, or `controllers`.
+### Rules
+
+A rule is assigned to a collection to define read and write permissions, which can be configured as `public`, `private`, `managed`, or `controllers`.
 
 - `public`: everyone can read from (resp. write to) any document in the collection
 - `private`: only the owner of a document can read from (resp. write to) a document in the collection
@@ -47,6 +51,10 @@ A collection's read and write permissions can be set as `public`, `private`, `ma
 - Any collection with read permissions set to `public`, `managed` or `controllers` can be viewed by the satellite's controllers in the console under the [datastore](https://console.juno.build/datastore) view.
 
 :::
+
+### Memory
+
+When you create a collection, it's assigned to either heap or stable memory. This assignment is permanent and cannot be changed once the collection is created. The default allocation is `heap` memory.
 
 ## Add a document
 
