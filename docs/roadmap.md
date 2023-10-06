@@ -16,6 +16,7 @@ Last update: Oct. 6, 2023
 
 Our goal is to continue delivering features that seamlessly integrate both web3 and web2 worlds, while ensuring ease of development. This includes:
 
+- Analytics (Sept. 2023) ✅
 - Plug-and-play recurring payment and paywall solutions
 - Transitioning parts or entire projects to DAOs or [Service Nervous Systems (SNS)](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/)
 
@@ -33,7 +34,8 @@ While Juno is currently focused on individual developers, we recognize the impor
 
 To support growth and foster new ideas, we aim to make various infrastructure improvements, including:
 
-- Upgrading satellites overall available memory, starting with 64 GB
+- Adding additional authentication providers (Apr. 2023) ✅
+- Upgrading satellites overall available memory to maximum possible (Oct. 2023) ⚙️
 - Enabling the implementation of backend functions ("serverless functions") in response to events triggered in satellites
 - Replacing quick queries with certified calls by default
 - Automatically topping up smart contracts
