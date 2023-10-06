@@ -26,7 +26,7 @@ Each document is identified by a `key` (unique within a collection).
 
 ## Limitation
 
-A satellite can currently store up to 2GB of data for all services combined. Please note that work is currently underway to increase this limit to 64GB in the near future.
+Each satellite has specific memory limits. For detailed information, please refer to the related [documentation](../miscellaneous/memory.md) page.
 
 As for documents, they can be up to 2MB in size. However, larger files can be saved in the [storage](build/storage.md).
 

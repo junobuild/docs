@@ -30,7 +30,7 @@ Unless you use the optional [`token` parameter](#protected-asset) to persist an 
 
 ## Limitation
 
-A satellite can currently store up to 2GB of data for all services combined. Please note that work is currently underway to increase this limit to 64GB in the near future.
+Each satellite has specific memory limits. For detailed information, please refer to the related [documentation](../miscellaneous/memory.md) page.
 
 There is no specific limit on the size of assets (files) that can be uploaded to Juno, unless you choose to set an [optional rule](#additional-rules) to restrict it.
 
