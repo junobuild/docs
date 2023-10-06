@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # Controllers
 
 Controllers play a crucial role in granting permissions to mission controls and satellites within Juno.

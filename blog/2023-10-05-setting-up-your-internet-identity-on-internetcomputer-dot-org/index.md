@@ -92,7 +92,6 @@ The new passkey will inherit a default name. Optionally, you can rename it to ma
 
 In this guide, we've walked you through the process of setting up your Internet Identity for another domain. We hope this has been helpful and will provide you with easy access to Juno's administration console and other dApps using multiple domains for sign-in with Internet Identity.
 
-
 👋
 
 Stay connected with Juno by following us on [X/Twitter](https://twitter.com/junobuild).
