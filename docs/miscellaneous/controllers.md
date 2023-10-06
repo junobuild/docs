@@ -26,36 +26,13 @@ To accomplish this, you have two available options.
 
 ### Reuse an existing controller
 
-When creating an additional satellite, you may want to **reuse an existing controller** that you have already configured on your local machine. To accomplish this, follow the step-by-step instructions below:
+When setting up an additional satellite, you might prefer to use an existing controller configuration you've already established on your local machine. To do this, simply run `juno login` and follow the provided instructions.
 
-1. Execute the command `juno whoami` in your terminal. This will display the principal of the controller you are currently using. It should appear as follows:
+:::note
 
-```
-Profile: Juno
-Controller: 55555-44444-xxxxxx-fffff-hhhhh-oooooo-zzzzz-nnnnn-zzzzzz-xxxxx-gqe
-```
-
-2. Copy the value of the "Controller" field that was printed out.
-
-3. Open your newly created satellite in the console.
-
-:::tip
-
-You can do this by executing `juno open --console` in your project's root folder. This will directly open the related satellite in the browser.
+When you run `juno login`, the command checks for an existing controller on your machine. If one is found, you'll be given the option to either create a new sign-in, which generates a fresh controller, or reuse the existing one. If you opt to reuse it, the CLI will guide you through the process.
 
 :::
-
-4. Open the "Controllers" tab.
-
-5. Select "Add a controller" to start the wizard.
-
-6. Choose "Manually enter a controller" and paste the principal you copied in Step 2.
-
-7. Select a scope for the controller ("Read-write" or "Administrator").
-
-8. Confirm your selection by clicking "Submit".
-
-By following these steps, your existing controller will be set as a new "Controller" for the newly created satellite, allowing you to operate it accordingly.
 
 ### Generate a new controller
 
