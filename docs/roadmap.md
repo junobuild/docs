@@ -35,7 +35,7 @@ While Juno is currently focused on individual developers, we recognize the impor
 To support growth and foster new ideas, we aim to make various infrastructure improvements, including:
 
 - Adding additional authentication providers (Apr. 2023) ✅
-- Upgrading satellites overall available memory to maximum possible (Oct. 2023) ✅
+- Upgrading satellites overall available memory to maximum possible (. 2023) ✅
 - Enabling the implementation of backend functions ("serverless functions") in response to events triggered in satellites
 - Replacing quick queries with certified calls by default
 - Automatically topping up smart contracts
