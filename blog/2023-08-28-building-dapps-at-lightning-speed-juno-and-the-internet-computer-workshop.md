@@ -23,4 +23,4 @@ So, grab a cup of coffee and join me on this exciting journey.
 
 Stay connected with Juno by following us on [Twitter](https://twitter.com/junobuild).
 
-⭐️⭐️⭐️ stars are also much appreciated: visit the [GitHub repo](https://github.com/buildwithjuno/juno) and show your support!
+⭐️⭐️⭐️ stars are also much appreciated: visit the [GitHub repo](https://github.com/junobuild/juno) and show your support!
