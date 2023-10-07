@@ -85,7 +85,7 @@ jobs:
           JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
-That's it! This configuration sets up the GitHub Action for deployment. It performs a series of steps, including checking out the repository, installing dependencies, building the application, and finally utilizing the [buildwithjuno/juno-action](https://github.com/buildwithjuno/juno-action) GitHub Action to deploy your dapp to Juno.
+That's it! This configuration sets up the GitHub Action for deployment. It performs a series of steps, including checking out the repository, installing dependencies, building the application, and finally utilizing the [buildwithjuno/juno-action](https://github.com/junobuild/juno-action) GitHub Action to deploy your dapp to Juno.
 
 Remember to adjust the code according to your specific requirements, such as modifying the branch name and package manager command to match your setup.
 
@@ -99,4 +99,4 @@ Thank you for reading! Stay connected with Juno by following us on [Twitter](htt
 
 And if you made it this far, we’d love to have you join the Juno community on [Discord](https://discord.gg/wHZ57Z2RAG). 😉
 
-⭐️⭐️⭐️ are also much appreciated: visit the [GitHub repo](https://github.com/buildwithjuno/juno) and show your support!
+⭐️⭐️⭐️ are also much appreciated: visit the [GitHub repo](https://github.com/junobuild/juno) and show your support!

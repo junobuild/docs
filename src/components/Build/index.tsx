@@ -24,7 +24,7 @@ export default function Build(): JSX.Element {
           text="A sample registration form utilizes Juno's Datastore and authentication features, enabling user registration for a beta program."
           link={
             <Link
-              href="https://github.com/buildwithjuno/examples/tree/main/svelte/form"
+              href="https://github.com/junobuild/examples/tree/main/svelte/form"
               className={styles.link}
             >
               View code
@@ -38,7 +38,7 @@ export default function Build(): JSX.Element {
           text="A diary dapp showcases how users can securely add notes and upload images on the blockchain."
           link={
             <Link
-              href="https://github.com/buildwithjuno/examples/blob/main/react/diary"
+              href="https://github.com/junobuild/examples/blob/main/react/diary"
               className={styles.link}
             >
               View code
@@ -60,7 +60,7 @@ export default function Build(): JSX.Element {
           text="The same decentralized diary application, but built with Angular."
           link={
             <Link
-              href="https://github.com/buildwithjuno/examples/blob/main/angular/diary"
+              href="https://github.com/junobuild/examples/blob/main/angular/diary"
               className={styles.link}
             >
               View code
@@ -82,7 +82,7 @@ export default function Build(): JSX.Element {
           text="Another iteration of the dapp example developed with Vue."
           link={
             <Link
-              href="https://github.com/buildwithjuno/examples/blob/main/vue/diary"
+              href="https://github.com/junobuild/examples/blob/main/vue/diary"
               className={styles.link}
             >
               View code
@@ -104,7 +104,7 @@ export default function Build(): JSX.Element {
           text="This vanilla example showcases most of Juno's features."
           link={
             <Link
-              href="https://github.com/buildwithjuno/examples/tree/main/vanilla"
+              href="https://github.com/junobuild/examples/tree/main/vanilla"
               className={styles.link}
             >
               View code
@@ -118,7 +118,7 @@ export default function Build(): JSX.Element {
           text="Juno can also be used in command-line interfaces.."
           link={
             <Link
-              href="https://github.com/buildwithjuno/examples/blob/main/node/basic"
+              href="https://github.com/junobuild/examples/blob/main/node/basic"
               className={styles.link}
             >
               View code

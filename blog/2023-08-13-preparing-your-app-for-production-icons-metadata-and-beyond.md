@@ -486,4 +486,4 @@ Stay connected with Juno by following us on [Twitter](https://twitter.com/junobu
 
 And if you made it this far, we’d love to have you join the Juno community on [Discord](https://discord.gg/wHZ57Z2RAG). 😉
 
-⭐️⭐️⭐️ stars are also much appreciated: visit the [GitHub repo](https://github.com/buildwithjuno/juno) and show your support!
+⭐️⭐️⭐️ stars are also much appreciated: visit the [GitHub repo](https://github.com/junobuild/juno) and show your support!

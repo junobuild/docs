@@ -383,7 +383,7 @@ The project I developed over the weekend, which I have described in this blog po
 
 - icdraw 👉 [https://github.com/peterpeterparker/icdraw](https://github.com/peterpeterparker/icdraw)
 
-- Juno 👉 [https://github.com/buildwithjuno/juno](https://github.com/buildwithjuno/juno)
+- Juno 👉 [https://github.com/junobuild/juno](https://github.com/junobuild/juno)
 
 ---
 

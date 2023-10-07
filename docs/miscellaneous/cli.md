@@ -1,6 +1,6 @@
 # CLI
 
-The Juno CLI (GitHub: https://github.com/buildwithjuno) provides a variety of tools for managing and deploying [satellites](../terminology.md#satellite).
+The Juno CLI (GitHub: https://github.com/junobuild) provides a variety of tools for managing and deploying [satellites](../terminology.md#satellite).
 
 ## Installation
 
@@ -168,7 +168,7 @@ For instance, you may want to set a specific `Cache-Control` for performance rea
 
 :::info
 
-Please note that currently, the headers are only applied on the .raw. domain until the implementation of "Certification v2" is completed. You can track the progress of this implementation by following the feature request [#168](https://github.com/buildwithjuno/juno/issues/168).
+Please note that currently, the headers are only applied on the .raw. domain until the implementation of "Certification v2" is completed. You can track the progress of this implementation by following the feature request [#168](https://github.com/junobuild/juno/issues/168).
 
 :::
 

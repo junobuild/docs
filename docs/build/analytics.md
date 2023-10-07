@@ -211,7 +211,7 @@ This allows you to track specific events and gather data relevant to your applic
 
 For scalability and optimization reasons, the data collected must adhere to certain rules, particularly regarding their length. For instance, a randomly generated key should not exceed 36 bytes in length.
 
-For detailed information about these rules, please refer to Juno's GitHub [repository](https://github.com/buildwithjuno/juno).
+For detailed information about these rules, please refer to Juno's GitHub [repository](https://github.com/junobuild/juno).
 
 :::
 
