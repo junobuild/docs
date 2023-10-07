@@ -6,7 +6,7 @@ sidebar_position: 9
 
 ### Where do I find support?
 
-For help and questions about best practices, join our [Discord](https://discord.gg/wHZ57Z2RAG) channel. You can report issue or bug on [GitHub](https://github.com/buildwithjuno/juno).
+For help and questions about best practices, join our [Discord](https://discord.gg/wHZ57Z2RAG) channel. You can report issue or bug on [GitHub](https://github.com/junobuild/juno).
 
 ### How much does it cost?
 
@@ -40,7 +40,7 @@ Besides the fundamental differences between the Web2 and Web3 approaches, which 
 
 Firebase is a closed-source Backend as a Service that restricts access to the underlying details and limits the ability to make custom modifications.
 
-In contrast, Juno is fully [open-source](https://github.com/buildwithjuno/), providing transparency and the flexibility to customize as needed.
+In contrast, Juno is fully [open-source](https://github.com/junobuild/), providing transparency and the flexibility to customize as needed.
 
 #### Pricing
 
@@ -60,7 +60,7 @@ The [documentation](./intro.md) is a great starting point to explore Juno.
 
 Additionally, the [blog](https://juno.build/blog) provides insightful tutorials for various frameworks.
 
-You can also check out the [repository](https://github.com/buildwithjuno/examples), which features multiple examples to help you get started.
+You can also check out the [repository](https://github.com/junobuild/examples), which features multiple examples to help you get started.
 
 ---
 

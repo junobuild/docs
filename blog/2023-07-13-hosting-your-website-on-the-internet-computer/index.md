@@ -120,4 +120,4 @@ Do you have any questions or have you encountered any issues while following thi
 
 Thank you for reading! Stay connected with Juno by following us on [Twitter](https://twitter.com/junobuild) to keep up with our latest updates.
 
-⭐️⭐️⭐️ are also much appreciated: visit the [GitHub repo](https://github.com/buildwithjuno/juno) and show your support!
+⭐️⭐️⭐️ are also much appreciated: visit the [GitHub repo](https://github.com/junobuild/juno) and show your support!

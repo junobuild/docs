@@ -31,13 +31,13 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/buildwithjuno/docs/edit/main/",
+          editUrl: "https://github.com/junobuild/docs/edit/main/",
         },
         blog: {
           showReadingTime: true,
           blogSidebarTitle: "All our posts",
           blogSidebarCount: "ALL",
-          editUrl: "https://github.com/buildwithjuno/docs/edit/main/",
+          editUrl: "https://github.com/junobuild/docs/edit/main/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
@@ -72,7 +72,7 @@ const config = {
             position: "right",
           },
           {
-            href: "https://github.com/buildwithjuno/juno",
+            href: "https://github.com/junobuild/juno",
             label: "GitHub",
             position: "right",
           },
@@ -136,7 +136,7 @@ const config = {
               },
               {
                 label: "Brand & Press",
-                href: "https://github.com/buildwithjuno/brand",
+                href: "https://github.com/junobuild/brand",
               },
             ],
           },
@@ -162,7 +162,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/buildwithjuno/juno",
+                href: "https://github.com/junobuild/juno",
               },
             ],
           },

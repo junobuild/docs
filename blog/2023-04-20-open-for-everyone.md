@@ -18,7 +18,7 @@ Whether you're new to Web3 development or a seasoned pro, Juno's user-friendly p
 ### Get started
 
 - Start using Juno today: [console.juno.build](https://console.juno.build) 🚀
-- Make sure to [star us on GitHub](https://github.com/buildwithjuno/juno)
+- Make sure to [star us on GitHub](https://github.com/junobuild/juno)
 - Follow us [on Twitter](https://twitter.com/junobuild)
 - Join us [on Discord](https://discord.gg/wHZ57Z2RAG)
 

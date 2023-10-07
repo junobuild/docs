@@ -8,7 +8,7 @@ Using any features offered by the Juno [CLI] within GitHub Actions is possible.
 
 ## Using GitHub Actions to Deploy Your Decentralized App
 
-This documentation will guide you through the process of deploying your decentralized app to Juno satellites using the [buildwithjuno/juno-action](https://github.com/buildwithjuno/juno-action) GitHub Action.
+This documentation will guide you through the process of deploying your decentralized app to Juno satellites using the [buildwithjuno/juno-action](https://github.com/junobuild/juno-action) GitHub Action.
 
 ### Adding a Secret Token for Automation
 
@@ -69,7 +69,7 @@ jobs:
           JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
-This action performs the following tasks: it checks out your repository, installs dependencies, and builds your application. It then utilizes the [buildwithjuno/juno-action](https://github.com/buildwithjuno/juno-action) GitHub Action to deploy your dapp.
+This action performs the following tasks: it checks out your repository, installs dependencies, and builds your application. It then utilizes the [buildwithjuno/juno-action](https://github.com/junobuild/juno-action) GitHub Action to deploy your dapp.
 
 Make sure to adapt the code according to your specific requirements, such as adjusting the branch name and package manager command.
 
