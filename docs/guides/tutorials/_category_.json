@@ -1,8 +1,0 @@
-{
-  "label": "Tutorials",
-  "position": 2,
-  "link": {
-    "type": "generated-index",
-    "description": "Learn how to create a simple note-taking app that allows users to store data entries, upload files, and retrieve them on web3 using smart contract."
-  }
-}
