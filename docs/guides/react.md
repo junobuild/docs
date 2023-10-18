@@ -13,6 +13,7 @@ Learn how to create a Juno project developed with React.
 
 - [Quickstart](#quickstart)
 - [Note-taking app](#note-taking-app)
+- [Hosting](#hosting)
 
 ---
 
@@ -105,5 +106,45 @@ This tutorial, published as a [blog post](/blog/build-a-web3-app-with-react-js),
 - Juno [authentication](../build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
 
 For detailed instructions, visit the guide 👉 [Build A Web3 App With React JS](/blog/build-a-web3-app-with-react-js).
+
+---
+
+## Hosting
+
+If you're looking to deploy your existing app or website developed with React without implementing any additional features with Juno, this guide is for you.
+
+### 1. Set up a satellite
+
+[Create a new satellite](../add-juno-to-an-app/create-a-satellite.md) in the Juno's console.
+
+### 2. Install Juno CLI and log in
+
+Install the Juno command line interface by executing the following command in your terminal:
+
+```bash
+npm i -g @junobuild/cli
+```
+
+After the CLI is ready, log in to your satellite from your terminal to authenticate your device.
+
+```bash
+juno login
+```
+
+### 3. Deploy
+
+Deploy your project by running the following command from your project’s root folder:
+
+```bash
+juno deploy
+```
+
+### 4. Open
+
+Open your browser and you should see your deployed app or website.
+
+```bash
+juno open
+```
 
 [satellite]: ../terminology.md#satellite
