@@ -22,6 +22,8 @@ Learn how to create a [satellite], set up a collection, and save data from a Rea
 
 [Create a new satellite](../add-juno-to-an-app/create-a-satellite.md) in the Juno's console.
 
+After your project is ready, create a collection in your datastore, which we'll call `demo` in the [console](https://console.juno.build).
+
 ---
 
 ## Note-taking app
