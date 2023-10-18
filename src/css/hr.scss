@@ -11,11 +11,11 @@ hr {
   &:before {
     content: "\23FA\23FA\23FA";
     display: inline-block;
-    color: var(--ifm-hr-background-color);
+    color: var(--docsearch-text-color);
     position: absolute;
     top: 75%;
     left: 50%;
-    transform: translate(0, -50%);
+    transform: translate(-50%, -50%);
     margin-left: 0.6em;
     letter-spacing: 0.6em;
     font-size: 0.8rem;
