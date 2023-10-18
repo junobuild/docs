@@ -45,7 +45,7 @@ Navigate to the React app and install `@junobuild/core`.
 cd my-app && npm i @junobuild/core
 ```
 
-#### 4. Insert data from your app
+### 4. Insert data from your app
 
 In `App.jsx`, initialize the library with your public satellite ID.
 
