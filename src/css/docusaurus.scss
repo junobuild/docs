@@ -65,7 +65,9 @@ a.card {
   }
 }
 
-.markdown > pre, .markdown > ul, .markdown > p {
+.markdown > pre,
+.markdown > ul,
+.markdown > p {
   &:has(+ hr) {
     margin-bottom: 0 !important;
   }
