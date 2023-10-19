@@ -1,14 +1,14 @@
 ---
-id: react
-title: React
+id: nextjs
+title: Next.js
 toc_min_heading_level: 2
 toc_max_heading_level: 2
-sidebar_position: 2
+sidebar_position: 1
 ---
 
-# Use Juno with React
+# Use Juno with Next.js
 
-Learn how to create a Juno project developed with React.
+Learn how to create a Juno project developed with Next.js.
 
 ## Table of contents
 
@@ -28,19 +28,19 @@ Learn how to create a [satellite], set up a collection, and save data from a Rea
 
 After your project is ready, create a collection in your datastore, which we'll call `demo` in the [console](https://console.juno.build).
 
-### 2. Create a React app
+### 2. Create a Next.js app
 
-Create a React app using for example a [Vite](https://vitejs.dev/guide/) template.
+Use the [create-next-app](https://nextjs.org/docs/pages/api-reference/create-next-app) command, to create a Next.js app:
 
 ```bash
-npm create vite@latest my-juno-app -- --template react
+npx create-next-app@latest my-juno-app
 ```
 
 ### 3. Install the Juno SDK core library
 
-Use `@junobuild/core` client library which provides a convenient interface for working with Juno from a React app.
+Use `@junobuild/core` client library which provides a convenient interface for working with Juno from a Next.js app.
 
-Navigate to the React app and install `@junobuild/core`.
+Navigate to the Next.js app and install `@junobuild/core`.
 
 ```bash
 cd my-juno-app && npm i @junobuild/core
@@ -48,22 +48,28 @@ cd my-juno-app && npm i @junobuild/core
 
 ### 4. Insert data from your app
 
-In `App.jsx`, initialize the library with your public satellite ID.
+In `Page.tsx`, assuming you're using TypeScript; otherwise, in the corresponding JavaScript file, initialize the library with your public satellite ID.
 
 Add an `insert` function to persist a document.
 
-```javascript
-import { useEffect, useState } from "react";
-import { initJuno, setDoc } from "@junobuild/core";
+```typescript
+"use client";
 
-function App() {
-  const [record, setRecord] = useState(undefined);
+import { useEffect, useState } from "react";
+import { type Doc, initJuno, setDoc } from "@junobuild/core";
+
+type Record = {
+  hello: string;
+};
+
+export default function Home() {
+  const [record, setRecord] = useState<Doc<Record> | undefined>(undefined);
 
   // TODO: Replace the following satelliteId with your app's effective satellite ID.
   useEffect(() => {
     (async () =>
       await initJuno({
-        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+        satelliteId: "wjar4-kiaaa-aaaal-ab4va-cai",
       }))();
   }, []);
 
@@ -88,37 +94,52 @@ function App() {
     </>
   );
 }
-
-export default App;
 ```
 
 ### 5. Start the app
 
-Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite on the blockchain.
+Start the app, go to [http://localhost:3000](http://localhost:3000) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite on the blockchain.
 
 ---
 
 ## Note-taking app
 
-This tutorial, published as a [blog post](/blog/build-a-web3-app-with-react-js), demonstrates how to build a basic note-taking app. The app authenticates and identifies the user, stores their notes in a simple key-pair database, some files in storage, and allows the user to log in and retrieve their data. The app uses:
+This example demonstrates how to build a basic note-taking app. The app authenticates and identifies the user, stores their notes in a simple key-pair database, some files in storage, and allows the user to log in and retrieve their data. The app uses:
 
 - Juno [datastore](../build/datastore.md): a simple key-pair database for storing user data and other information.
 - Juno [storage](../build/storage.md): a file storage system to store and serve user-generated content, such as photos.
 - Juno [authentication](../build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
 
-For detailed instructions, visit the guide 👉 [Build A Web3 App With React JS](/blog/build-a-web3-app-with-react-js).
+For sample code and instructions, visit the guide 👉 [GitHub repo](https://github.com/junobuild/examples/tree/main/next/diary).
 
 ---
 
 ## Hosting
 
-If you're looking to deploy your existing app or website developed with React and Juno, this guide is for you.
+If you're looking to deploy your existing app or website developed with Next.js and Juno, this guide is for you.
 
-### 1. Set up a satellite
+### 1. Static exports
+
+The Internet Computer, including Juno, currently does not support Server Side Rendering. Therefore, it is recommended to generate a pre-rendered or client-side-only frontend application.
+
+We suggest using the [static exports](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) option from Next.js.
+
+In `next.config.js` file:
+
+```javascript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: "export",
+};
+
+module.exports = nextConfig;
+```
+
+### 2. Set up a satellite
 
 [Create a new satellite](../add-juno-to-an-app/create-a-satellite.md) in the Juno's console.
 
-### 2. Install Juno CLI and log in
+### 3. Install Juno CLI and log in
 
 Install the Juno command line interface by executing the following command in your terminal:
 
@@ -132,7 +153,7 @@ After the CLI is ready, log in to your satellite from your terminal to authentic
 juno login
 ```
 
-### 3. Deploy
+### 4. Deploy
 
 Deploy your project by running the following command from your project’s root folder:
 
@@ -140,7 +161,7 @@ Deploy your project by running the following command from your project’s root 
 juno deploy
 ```
 
-### 4. Open
+### 5. Open
 
 Open your browser and you should see your deployed app or website.
 
