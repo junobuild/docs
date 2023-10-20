@@ -55,14 +55,14 @@ Add an `insert` function to persist a document.
 
 ```html title="+layout.svelte"
 <script>
-  import { onMount } from 'svelte';
-  import { initJuno } from '@junobuild/core';
+  import { onMount } from "svelte";
+  import { initJuno } from "@junobuild/core";
 
   // TODO: Replace the following satelliteId with your app's effective satellite ID.
   onMount(
     async () =>
       await initJuno({
-        satelliteId: 'aaaaa-bbbbb-ccccc-ddddd-cai'
+        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
       })
   );
 </script>
@@ -74,26 +74,26 @@ Replace the existing content in your `+page.svelte` file in the same `routes` di
 
 ```html title="+page.svelte"
 <script>
-  import { setDoc } from '@junobuild/core';
+  import { setDoc } from "@junobuild/core";
 
   let doc;
 
   const insert = async () =>
     (doc = await setDoc({
-      collection: 'demo',
+      collection: "demo",
       doc: {
         key: `my-key-${new Date().getTime()}`,
         data: {
-          hello: 'world'
-        }
-      }
+          hello: "world",
+        },
+      },
     }));
 </script>
 
-<button on:click={insert}>Insert a document</button>
+<button on:click="{insert}">Insert a document</button>
 
 {#if doc !== undefined}
-  <span>Key: {doc.key}</span>
+<span>Key: {doc.key}</span>
 {/if}
 ```
 
@@ -133,13 +133,13 @@ npm rm @sveltejs/adapter-auto && npm i -D @sveltejs/adapter-static
 Update the import in `svelte.config.js` file:
 
 ```javascript title="svelte.config.js"
-import adapter from '@sveltejs/adapter-static';
+import adapter from "@sveltejs/adapter-static";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
-    adapter: adapter()
-  }
+    adapter: adapter(),
+  },
 };
 
 export default config;
