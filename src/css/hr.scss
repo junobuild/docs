@@ -1,0 +1,23 @@
+hr {
+  height: 3em;
+  margin: var(--ifm-hr-margin-vertical) auto;
+  overflow: visible;
+  position: relative;
+  display: block;
+  border: none;
+  outline: none;
+  background-color: unset;
+
+  &:before {
+    content: "\23FA\23FA\23FA";
+    display: inline-block;
+    color: var(--docsearch-text-color);
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-left: 0.6em;
+    letter-spacing: 0.6em;
+    font-size: 0.8rem;
+  }
+}

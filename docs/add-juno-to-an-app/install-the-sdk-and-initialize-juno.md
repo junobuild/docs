@@ -23,7 +23,7 @@ npm i @junobuild/core
 ```typescript
 import { initJuno } from "@junobuild/core";
 
-// TODO: Replace the following satelliteId with your app's effective satellite ID.
+// TODO: Replace 'satelliteId' with your actual satellite ID
 await initJuno({
   satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
 });

@@ -64,3 +64,15 @@ a.card {
     }
   }
 }
+
+.markdown > pre,
+.markdown > ul,
+.markdown > p {
+  &:has(+ hr) {
+    margin-bottom: 0 !important;
+  }
+
+  & + hr {
+    margin-top: 0;
+  }
+}
