@@ -58,7 +58,7 @@ Add an `insert` function to persist a document.
   import { onMount } from "svelte";
   import { initJuno } from "@junobuild/core";
 
-  // TODO: Replace the following satelliteId with your app's effective satellite ID.
+  // TODO: Replace 'satelliteId' with your actual satellite ID
   onMount(
     async () =>
       await initJuno({

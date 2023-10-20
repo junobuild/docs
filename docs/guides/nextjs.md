@@ -66,7 +66,7 @@ type Record = {
 export default function Home() {
   const [record, setRecord] = useState<Doc<Record> | undefined>(undefined);
 
-  // TODO: Replace the following satelliteId with your app's effective satellite ID.
+  // TODO: Replace 'satelliteId' with your actual satellite ID
   useEffect(() => {
     (async () =>
       await initJuno({
