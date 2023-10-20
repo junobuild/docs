@@ -69,8 +69,9 @@ export class AppComponent {
   doc: Doc<{ hello: string }> | undefined = undefined;
 
   async ngOnInit() {
+    // TODO: Replace the following satelliteId with your app's effective satellite ID.
     await initJuno({
-      satelliteId: "f62k6-laaaa-aaaal-acq7q-cai",
+      satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
     });
   }
 
