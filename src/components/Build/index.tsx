@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import Link from "@docusaurus/Link";
-import Feature from "@site/src/components/Feature";
 import Guide from "@site/src/components/Guide";
 import Svelte from "@site/static/icons/svelte.svg";
 import ReactLogo from "@site/static/icons/react.svg";
