@@ -117,7 +117,7 @@ If you're looking to deploy your existing app or website developed with React an
 
 ### 1. Set up a satellite
 
-[Create a new satellite](../add-juno-to-an-app/create-a-satellite.md) in the Juno's console.
+If you haven't created a satellite yet, go ahead and [create](../add-juno-to-an-app/create-a-satellite.md) a new one in the Juno's console.
 
 ### 2. Install Juno CLI and log in
 
