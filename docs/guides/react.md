@@ -1,6 +1,7 @@
 ---
 id: react
 title: React
+description: Use Juno with React
 toc_min_heading_level: 2
 toc_max_heading_level: 2
 sidebar_position: 2
@@ -8,7 +9,7 @@ sidebar_position: 2
 
 # Use Juno with React
 
-Learn how to create a Juno project developed with React.
+Explore how to create a Juno project developed with React.
 
 ## Table of contents
 
@@ -26,14 +27,14 @@ Learn how to create a [satellite], set up a collection, and save data from a Rea
 
 [Create a new satellite](../add-juno-to-an-app/create-a-satellite.md) in the Juno's console.
 
-After your project is ready, create a collection in your datastore, which we'll call `demo` in the [console](https://console.juno.build).
+After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
 
 ### 2. Create a React app
 
 Create a React app using for example a [Vite](https://vitejs.dev/guide/) template.
 
 ```bash
-npm create vite@latest my-juno-app -- --template react
+npm create vite@latest myjunoapp -- --template react
 ```
 
 ### 3. Install the Juno SDK core library
@@ -43,7 +44,7 @@ Use `@junobuild/core` client library which provides a convenient interface for w
 Navigate to the React app and install `@junobuild/core`.
 
 ```bash
-cd my-juno-app && npm i @junobuild/core
+cd myjunoapp && npm i @junobuild/core
 ```
 
 ### 4. Insert data from your app
@@ -84,7 +85,7 @@ function App() {
   return (
     <>
       <button onClick={insert}>Insert a document</button>
-      {record !== undefined && <output>Key: {record.key}</output>}
+      {record !== undefined && <span>Key: {record.key}</span>}
     </>
   );
 }
@@ -139,6 +140,8 @@ Deploy your project by running the following command from your project’s root 
 ```bash
 juno deploy
 ```
+
+When prompted to provide the name or path of the folder containing your built dapp files, answer `dist`.
 
 ### 4. Open
 

@@ -1,6 +1,7 @@
 ---
 id: nextjs
 title: Next.js
+description: Use Juno with Next.js
 toc_min_heading_level: 2
 toc_max_heading_level: 2
 sidebar_position: 1
@@ -8,7 +9,7 @@ sidebar_position: 1
 
 # Use Juno with Next.js
 
-Learn how to create a Juno project developed with Next.js.
+Explore how to create a Juno project developed with Next.js.
 
 ## Table of contents
 
@@ -26,14 +27,14 @@ Learn how to create a [satellite], set up a collection, and save data from a Rea
 
 [Create a new satellite](../add-juno-to-an-app/create-a-satellite.md) in the Juno's console.
 
-After your project is ready, create a collection in your datastore, which we'll call `demo` in the [console](https://console.juno.build).
+After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
 
 ### 2. Create a Next.js app
 
 Use the [create-next-app](https://nextjs.org/docs/pages/api-reference/create-next-app) command, to create a Next.js app:
 
 ```bash
-npx create-next-app@latest my-juno-app
+npx create-next-app@latest myjunoapp
 ```
 
 ### 3. Install the Juno SDK core library
@@ -43,7 +44,7 @@ Use `@junobuild/core` client library which provides a convenient interface for w
 Navigate to the Next.js app and install `@junobuild/core`.
 
 ```bash
-cd my-juno-app && npm i @junobuild/core
+cd myjunoapp && npm i @junobuild/core
 ```
 
 ### 4. Insert data from your app
@@ -52,7 +53,7 @@ In `Page.tsx`, assuming you're using TypeScript; otherwise, in the corresponding
 
 Add an `insert` function to persist a document.
 
-```typescript
+```typescript title="Page.tsx"
 "use client";
 
 import { useEffect, useState } from "react";
@@ -90,7 +91,7 @@ export default function Home() {
   return (
     <>
       <button onClick={insert}>Insert a document</button>
-      {record !== undefined && <output>Key: {record.key}</output>}
+      {record !== undefined && <span>Key: {record.key}</span>}
     </>
   );
 }
@@ -126,7 +127,7 @@ We suggest using the [static exports](https://nextjs.org/docs/pages/building-you
 
 In `next.config.js` file:
 
-```javascript
+```javascript title="next.config.js"
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
@@ -160,6 +161,8 @@ Deploy your project by running the following command from your project’s root 
 ```bash
 juno deploy
 ```
+
+When prompted to provide the name or path of the folder containing your built dapp files, answer `out`.
 
 ### 5. Open
 
