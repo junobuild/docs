@@ -1,15 +1,15 @@
 ---
-id: react
-title: React
-description: Use Juno with React
+id: angular
+title: Angular
+description: Use Juno with Angular
 toc_min_heading_level: 2
 toc_max_heading_level: 2
-sidebar_position: 2
+sidebar_position: 4
 ---
 
-# Use Juno with React
+# Use Juno with Angular
 
-Explore how to create a Juno project developed with React.
+Explore how to create a Juno project developed with Angular.
 
 ## Table of contents
 
@@ -21,7 +21,7 @@ Explore how to create a Juno project developed with React.
 
 ## Quickstart
 
-Learn how to create a [satellite], set up a collection, and save data from a React app.
+Learn how to create a [satellite], set up a collection, and save data from an Angular app.
 
 ### 1. Set up a satellite and new collection
 
@@ -29,19 +29,19 @@ Learn how to create a [satellite], set up a collection, and save data from a Rea
 
 After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
 
-### 2. Create a React app
+### 2. Create a Angular app
 
-Create a React app using for example a [Vite](https://vitejs.dev/guide/) template.
+Create a Angular app using the [Angular CLI](https://angular.io/cli) template.
 
 ```bash
-npm create vite@latest myjunoapp -- --template react
+ng new myjunoapp
 ```
 
 ### 3. Install the Juno SDK core library
 
-Use `@junobuild/core` client library which provides a convenient interface for working with Juno from a React app.
+Use `@junobuild/core` client library which provides a convenient interface for working with Juno from a Angular app.
 
-Navigate to the React app and install `@junobuild/core`.
+Navigate to the Angular app and install `@junobuild/core`.
 
 ```bash
 cd myjunoapp && npm i @junobuild/core
@@ -49,27 +49,33 @@ cd myjunoapp && npm i @junobuild/core
 
 ### 4. Insert data from your app
 
-In `App.jsx`, initialize the library with your public satellite ID.
+In `app.component.ts`, initialize the library with your public satellite ID.
 
 Add an `insert` function to persist a document.
 
-```javascript
-import { useEffect, useState } from "react";
-import { initJuno, setDoc } from "@junobuild/core";
+```typescript
+import { Component } from "@angular/core";
+import { type Doc, initJuno, setDoc } from "@junobuild/core";
 
-function App() {
-  const [record, setRecord] = useState(undefined);
+@Component({
+  selector: "app-root",
+  template: `
+    <button (click)="insert()">Insert a document</button>
+    <span *ngIf="doc !== undefined">Key: {{ doc.key }}</span>
+  `,
+  styleUrls: ["./app.component.css"],
+})
+export class AppComponent {
+  doc: Doc<{ hello: string }> | undefined = undefined;
 
-  // TODO: Replace the following satelliteId with your app's effective satellite ID.
-  useEffect(() => {
-    (async () =>
-      await initJuno({
-        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
-      }))();
-  }, []);
+  async ngOnInit() {
+    await initJuno({
+      satelliteId: "f62k6-laaaa-aaaal-acq7q-cai",
+    });
+  }
 
-  const insert = async () => {
-    const doc = await setDoc({
+  async insert() {
+    this.doc = await setDoc({
       collection: "demo",
       doc: {
         key: `my-key-${new Date().getTime()}`,
@@ -78,42 +84,31 @@ function App() {
         },
       },
     });
-
-    setRecord(doc);
-  };
-
-  return (
-    <>
-      <button onClick={insert}>Insert a document</button>
-      {record !== undefined && <span>Key: {record.key}</span>}
-    </>
-  );
+  }
 }
-
-export default App;
 ```
 
 ### 5. Start the app
 
-Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite on the blockchain.
+Start the app, go to [http://localhost:4200](http://localhost:4200) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite on the blockchain.
 
 ---
 
 ## Note-taking app
 
-This tutorial, published as a [blog post](/blog/build-a-web3-app-with-react-js), demonstrates how to build a basic note-taking app. The app authenticates and identifies the user, stores their notes in a simple key-pair database, some files in storage, and allows the user to log in and retrieve their data. The app uses:
+This tutorial, published as a [blog post](/blog/develop-an-angular-app-on-blockchain), demonstrates how to build a basic note-taking app. The app authenticates and identifies the user, stores their notes in a simple key-pair database, some files in storage, and allows the user to log in and retrieve their data. The app uses:
 
 - Juno [datastore](../build/datastore.md): a simple key-pair database for storing user data and other information.
 - Juno [storage](../build/storage.md): a file storage system to store and serve user-generated content, such as photos.
 - Juno [authentication](../build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
 
-For detailed instructions, visit the guide 👉 [Build A Web3 App With React JS](/blog/build-a-web3-app-with-react-js).
+For detailed instructions, visit the guide 👉 [Develop An Angular App On Blockchain](/blog/develop-an-angular-app-on-blockchain).
 
 ---
 
 ## Hosting
 
-If you're looking to deploy your existing app or website developed with React and Juno, this guide is for you.
+If you're looking to deploy your existing app or website developed with Angular and Juno, this guide is for you.
 
 ### 1. Set up a satellite
 

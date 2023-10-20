@@ -171,6 +171,12 @@ juno login
 
 ### 4. Deploy
 
+Build your app:
+
+```bash
+npm run build
+```
+
 Deploy your project by running the following command from your project’s root folder:
 
 ```bash
