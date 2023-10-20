@@ -53,7 +53,7 @@ In `App.jsx`, initialize the library with your public satellite ID.
 
 Add an `insert` function to persist a document.
 
-```javascript
+```javascript title="App.jsx"
 import { useEffect, useState } from "react";
 import { initJuno, setDoc } from "@junobuild/core";
 

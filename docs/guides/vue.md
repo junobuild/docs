@@ -1,15 +1,15 @@
 ---
-id: angular
-title: Angular
-description: Use Juno with Angular
+id: vue
+title: Vue
+description: Use Juno with Vue
 toc_min_heading_level: 2
 toc_max_heading_level: 2
-sidebar_position: 5
+sidebar_position: 4
 ---
 
-# Use Juno with Angular
+# Use Juno with Vue
 
-Explore how to create a Juno project developed with Angular.
+Explore how to create a Juno project developed with Vue.
 
 ## Table of contents
 
@@ -21,7 +21,7 @@ Explore how to create a Juno project developed with Angular.
 
 ## Quickstart
 
-Learn how to create a [satellite], set up a collection, and save data from an Angular app.
+Learn how to create a [satellite], set up a collection, and save data from a Vue app.
 
 ### 1. Set up a satellite and new collection
 
@@ -29,19 +29,19 @@ Learn how to create a [satellite], set up a collection, and save data from an An
 
 After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
 
-### 2. Create a Angular app
+### 2. Create a Vue app
 
-Create a Angular app using the [Angular CLI](https://angular.io/cli) template.
+Create a Vue app using the `npm init` command.
 
 ```bash
-ng new myjunoapp
+npm init vue@latest myjunoapp
 ```
 
 ### 3. Install the Juno SDK core library
 
-Use `@junobuild/core` client library which provides a convenient interface for working with Juno from a Angular app.
+Use `@junobuild/core` client library which provides a convenient interface for working with Juno from a Vue app.
 
-Navigate to the Angular app and install `@junobuild/core`.
+Navigate to the Vue app and install `@junobuild/core`.
 
 ```bash
 cd myjunoapp && npm i @junobuild/core
@@ -49,34 +49,26 @@ cd myjunoapp && npm i @junobuild/core
 
 ### 4. Insert data from your app
 
-In `app.component.ts`, initialize the library with your public satellite ID.
+In `App.vue`, initialize the library with your public satellite ID.
 
 Add an `insert` function to persist a document.
 
-```typescript title="app.component.ts"
-import { Component } from "@angular/core";
-import { type Doc, initJuno, setDoc } from "@junobuild/core";
+```html title="App.vue"
+<script setup>
+  import { initJuno, setDoc } from "@junobuild/core";
+  import { onMounted, ref } from "vue";
 
-@Component({
-  selector: "app-root",
-  template: `
-    <button (click)="insert()">Insert a document</button>
-    <span *ngIf="doc !== undefined">Key: {{ doc.key }}</span>
-  `,
-  styleUrls: ["./app.component.css"],
-})
-export class AppComponent {
-  doc: Doc<{ hello: string }> | undefined = undefined;
+  onMounted(
+    async () =>
+      await initJuno({
+        satelliteId: "wjar4-kiaaa-aaaal-ab4va-cai",
+      })
+  );
 
-  async ngOnInit() {
-    // TODO: Replace 'satelliteId' with your actual satellite ID
-    await initJuno({
-      satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
-    });
-  }
+  const doc = ref(undefined);
 
-  async insert() {
-    this.doc = await setDoc({
+  const insert = async () => {
+    doc.value = await setDoc({
       collection: "demo",
       doc: {
         key: `my-key-${new Date().getTime()}`,
@@ -85,31 +77,36 @@ export class AppComponent {
         },
       },
     });
-  }
-}
+  };
+</script>
+
+<template>
+  <button @click="insert">Insert a document</button>
+  <span v-if="doc !== undefined">Key: {{ doc.key }}</span>
+</template>
 ```
 
 ### 5. Start the app
 
-Start the app, go to [http://localhost:4200](http://localhost:4200) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite on the blockchain.
+Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite on the blockchain.
 
 ---
 
 ## Note-taking app
 
-This tutorial, published as a [blog post](/blog/develop-an-angular-app-on-blockchain), demonstrates how to build a basic note-taking app. The app authenticates and identifies the user, stores their notes in a simple key-pair database, some files in storage, and allows the user to log in and retrieve their data. The app uses:
+This tutorial, published as a [blog post](/blog/build-a-web3-app-with-vuejs), demonstrates how to build a basic note-taking app. The app authenticates and identifies the user, stores their notes in a simple key-pair database, some files in storage, and allows the user to log in and retrieve their data. The app uses:
 
 - Juno [datastore](../build/datastore.md): a simple key-pair database for storing user data and other information.
 - Juno [storage](../build/storage.md): a file storage system to store and serve user-generated content, such as photos.
 - Juno [authentication](../build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
 
-For detailed instructions, visit the guide 👉 [Develop An Angular App On Blockchain](/blog/develop-an-angular-app-on-blockchain).
+For detailed instructions, visit the guide 👉 [Build a Web3 App with VueJS](/blog/build-a-web3-app-with-vuejs).
 
 ---
 
 ## Hosting
 
-If you're looking to deploy your existing app or website developed with Angular and Juno, this guide is for you.
+If you're looking to deploy your existing app or website developed with Vue and Juno, this guide is for you.
 
 ### 1. Set up a satellite
 
