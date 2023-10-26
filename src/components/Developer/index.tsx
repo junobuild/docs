@@ -10,7 +10,6 @@ export default function Developer(): JSX.Element {
         "Utilize the convenient CLI or GitHub Actions to deploy your projects with ease.",
       ]}
       code={`npm i -g @junobuild/cli
-juno init
 juno deploy`}
       inverted={false}
       lang="language-bash"
