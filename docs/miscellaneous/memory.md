@@ -33,10 +33,10 @@ In contrast, the [analytics](../build/analytics.md) data is saved within stable 
 ## Summary
 
 | Aspect          | Heap Memory                                          | Stable Memory                                       |
-| --------------- | ---------------------------------------------------- | --------------------------------------------------- |
+| --------------- | ---------------------------------------------------- |-----------------------------------------------------|
 | **Capacity**    | Max 2 GB                                             | Max 96 GB (minus heap size)                         |
 | **Performance** | Fast for read and write operations                   | Slightly slower                                     |
-| **Cost**        | Lower cost                                           | Slightly higher cost (~20x)                         |
+| **Cost**        | Lower cost                                           | Higher cost (~20x)                                  |
 | **Upgrades**    | Data must be deserialized/serialized during upgrades | Data are not processed during upgrades              |
 | **Usage**       | Suitable for small or frequently accessed data       | Suitable for large or less frequently accessed data |
 
