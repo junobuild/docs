@@ -28,7 +28,7 @@ This is why the default options for creating new collections are `heap` for data
 
 For the reasons mentioned above, your users, as well as your dapp's bundle and assets (including JS, HTML, images, etc., everything you deploy to your satellite using `juno deploy`), are stored in the `heap` memory.
 
-In contrast, the [analytics](../build/analytitcs.md) data is saved within stable memory.
+In contrast, the [analytics](../build/analytics.md) data is saved within stable memory.
 
 ## Summary
 
