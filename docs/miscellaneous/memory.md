@@ -28,7 +28,7 @@ This is why the default options for creating new collections are `heap` for data
 
 For the reasons mentioned above, your users, as well as your dapp's bundle and assets (including JS, HTML, images, etc., everything you deploy to your satellite using `juno deploy`), are stored in the `heap` memory.
 
-In contrast, the the [analytics](../build/analytitcs.md) data is saved within stable memory.
+In contrast, the [analytics](../build/analytitcs.md) data is saved within stable memory.
 
 ## Summary
 
@@ -36,8 +36,12 @@ In contrast, the the [analytics](../build/analytitcs.md) data is saved within st
 | --------------- | ---------------------------------------------------- | --------------------------------------------------- |
 | **Capacity**    | Max 2 GB                                             | Max 96 GB (minus heap size)                         |
 | **Performance** | Fast for read and write operations                   | Slightly slower                                     |
-| **Cost**        | Lower cost                                           | Slightly higher cost                                |
+| **Cost**        | Lower cost                                           | Slightly higher cost (~20x)                         |
 | **Upgrades**    | Data must be deserialized/serialized during upgrades | Data are not processed during upgrades              |
 | **Usage**       | Suitable for small or frequently accessed data       | Suitable for large or less frequently accessed data |
+
+## Resources
+
+- [Measure different collection libraries written in Rust](https://dfinity.github.io/canister-profiling/collections/)
 
 [satellite]: ../terminology.md#satellite
