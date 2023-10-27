@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # GitHub Actions
 
 Using any features offered by the Juno [CLI] within GitHub Actions is possible.

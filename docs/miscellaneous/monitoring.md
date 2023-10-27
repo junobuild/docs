@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Monitoring
 
 Your [mission control] and satellites smart contracts consume resources while they operate.
