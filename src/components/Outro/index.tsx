@@ -10,7 +10,7 @@ export default function Outro(): JSX.Element {
         <span className={styles.bold}>no time</span>.
       </p>
 
-      <Start />
+      <Start position="footer" />
     </div>
   );
 }
