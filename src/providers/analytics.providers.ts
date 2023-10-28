@@ -9,13 +9,13 @@ export const trackEvent = async ({
   name: string;
   metadata?: Record<string, string>
   siteConfig: DocusaurusConfig;
-}) => {
+}): Promise<boolean> => {
   const {
     customFields: { dev },
   } = siteConfig;
 
   if (dev) {
-    return;
+    return false;
   }
 
   await trackEventOrbiter({
