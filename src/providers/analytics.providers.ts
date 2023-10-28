@@ -7,7 +7,7 @@ export const trackEvent = async ({
   siteConfig,
 }: {
   name: string;
-  metadata?: Record<string, string>
+  metadata?: Record<string, string>;
   siteConfig: DocusaurusConfig;
 }): Promise<boolean> => {
   const {
@@ -20,7 +20,7 @@ export const trackEvent = async ({
 
   await trackEventOrbiter({
     name,
-    metadata
+    metadata,
   });
 
   return true;
