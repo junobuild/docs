@@ -11,8 +11,8 @@ import Analytics from "@site/static/icons/analytics.svg";
 export default function Features(): JSX.Element {
   return (
     <>
-      <h3 className={styles.sub}>No backend code required.</h3>
-      <p>100% on-chain with minimal carbon impact.</p>
+      <h3 className={styles.sub}>Embrace Cloud 3.0 with Ease</h3>
+      <p>Blockchainless with minimal carbon impact.</p>
 
       <div className={styles.grid}>
         <Feature

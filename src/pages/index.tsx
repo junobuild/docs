@@ -38,7 +38,7 @@ export default function Home(): JSX.Element {
         <title>{`${siteConfig.title} | Build Web3 dApps like Web2`}</title>
         <link href="https://juno.build" rel="canonical" />
         <meta
-          content="Build Web3 dApps like Web2 No backend code required. 100% on-chain with minimal carbon impact."
+          content="Juno is a zero-knowledge blockchain platform that equips developers with all the essential tools to create any Web3 application, making it as easy as developing serverless Web2."
           name="description"
         />
         <meta content="Juno" property="og:title" />
