@@ -90,7 +90,7 @@ You can configure customized hosting behavior for requests to your site.
 - Ignore some files during deployment. [Lean how.](#ignore-files)
 - Configure HTTP `headers` to pass along additional information about a request or a response. [Lean how.](#http-headers)
 - Serve a customized 404 page. [Lean how.](#customize-a-404not-found-page)
-- Set up `redirects` for pages that you've moved or deleted.
+- Set up `redirects` for pages that you've moved or deleted. [Lean how.](#redirects)
 - Set up `rewrites`. [Lean how.](#rewrites)
 - Customize the `encoding` behavior of your files. [Lean how.](#encoding-types)
 
@@ -176,6 +176,38 @@ By default, all unknown paths are automatically rewritten to `/index.html`. Howe
 
 Simply upload a custom `404.html` file to your satellite that should be served from the root path of your site.
 
+### Redirects
+
+Use a URL redirect to prevent broken links if you've moved a page or to shorten URLs. For example, you could redirect a browser from `juno.build/start-building` to `juno.build/get-started.html`.
+
+Here's the basic structure for a `redirects` attribute.
+
+```json
+{
+  "satellite": {
+    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "source": "dist",
+    "storage": {
+      "redirects": [
+        {
+          "source": "/hello",
+          "location": "/world/index.html",
+          "code": 300
+        }
+      ]
+    }
+  }
+}
+```
+
+The `redirects` attribute contains an array of redirect rules:
+
+| Field        | Description                                                                                                                     |
+| ------------ |---------------------------------------------------------------------------------------------------------------------------------|
+| **source**   | This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the redirects using globs. |
+| **location** | A relative path to where the browser should make a new request.                                                                 |
+| **code**     | The HTTPS response code. Use a type of `301` for 'Moved Permanently' or `302` for 'Found' (Temporary Redirect).                 |
+
 ### Rewrites
 
 You can utilize optional rewrites to display the same content for multiple URLs. Rewrites are especially useful when combined with pattern matching, allowing acceptance of any URL that matches the pattern.
@@ -199,7 +231,7 @@ Here's the basic structure for a `rewrites` attribute.
 }
 ```
 
-This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the headers using globs.
+This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the rewrites using globs.
 
 :::note
 
