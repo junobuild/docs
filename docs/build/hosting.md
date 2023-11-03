@@ -89,7 +89,7 @@ You can configure customized hosting behavior for requests to your site.
 - Specify which `source` files in your local project directory you want to deploy? [Lean how.](#source)
 - Ignore some files during deployment. [Lean how.](#ignore-files)
 - Configure HTTP `headers` to pass along additional information about a request or a response. [Lean how.](#http-headers)
-- Serve a customized 404/Not Found page.
+- Serve a customized 404 page. [Lean how.](#customize-a-404not-found-page)
 - Set up `redirects` for pages that you've moved or deleted.
 - Set up `rewrites`. [Lean how.](#rewrites)
 - Customize the `encoding` behavior of your files. [Lean how.](#encoding-types)
@@ -170,6 +170,12 @@ The `headers` is an array of objects, each containing `key` and `value`, and the
 
 :::
 
+### Customize a 404/Not Found page
+
+By default, all unknown paths are automatically rewritten to `/index.html`. However, if you wish to serve a custom `404 Not Found` error when a user attempts to access a non-existent page, you can do so without requiring additional configuration.
+
+Simply upload a custom `404.html` file to your satellite that should be served from the root path of your site.
+
 ### Rewrites
 
 You can utilize optional rewrites to display the same content for multiple URLs. Rewrites are especially useful when combined with pattern matching, allowing acceptance of any URL that matches the pattern.
@@ -198,7 +204,7 @@ This `source` attribute works similarly to Git's `.gitignore`, and you can speci
 :::note
 
 - Rewrites are only applied to requests that do not match any existing resources.
-- By default, all unknown paths are automatically rewritten to `/index.html` or `/404.html`. You cannot disable this default behavior.
+- By default, all unknown paths are automatically rewritten to `/index.html` (or `/404.html` if you provide such a page). You cannot disable this default behavior.
 
 :::
 
