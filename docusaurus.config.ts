@@ -1,11 +1,9 @@
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
+const { themes } = require("prism-react-renderer");
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
+import type { Config } from "@docusaurus/types";
 
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+const config: Config = {
   title: "Juno",
   tagline: "Build Web3 dApps like Web2",
   url: "https://juno.build",
@@ -26,7 +24,7 @@ const config = {
     [
       "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
@@ -42,7 +40,7 @@ const config = {
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
         },
-      }),
+      },
     ],
   ],
 
@@ -50,7 +48,7 @@ const config = {
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+    {
       image: "img/social_image_v5.jpg",
       navbar: {
         title: "Juno",
@@ -172,6 +170,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ["markup", "bash", "json"],
       },
       algolia: {
         appId: "FEZV8HILVI",
@@ -179,7 +178,10 @@ const config = {
         indexName: "juno",
         contextualSearch: true,
       },
-    }),
+      feedOptions: {
+        limit: false,
+      },
+    },
 };
 
 module.exports = config;
