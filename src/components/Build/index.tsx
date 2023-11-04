@@ -8,6 +8,7 @@ import JavaScript from "@site/static/icons/javascript.svg";
 import NodeJS from "@site/static/icons/nodejs.svg";
 import Vue from "@site/static/icons/vue.svg";
 import NextJS from "@site/static/icons/nextjs.svg";
+import Astro from "@site/static/icons/astro.svg";
 
 export default function Build(): JSX.Element {
   return (
@@ -47,6 +48,12 @@ export default function Build(): JSX.Element {
           title="Use Juno with Angular"
           link="/docs/guides/angular"
           icon={<Angular />}
+        />
+
+        <Guide
+          title="Use Juno with Astro"
+          link="/docs/guides/astro"
+          icon={<Astro />}
         />
 
         <Guide
