@@ -20,7 +20,7 @@ Explore how to create a Juno project developed with Astro.
 
 ## Quickstart
 
-Learn how to create a [satellite], set up a collection, and save data from a React app.
+Learn how to create a [satellite], set up a collection, and save data from a Astro app.
 
 ### 1. Set up a satellite and new collection
 
