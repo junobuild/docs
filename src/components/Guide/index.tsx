@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./styles.module.scss";
 
 export default function Feature({
   icon,
@@ -11,7 +12,7 @@ export default function Feature({
   };
 
   return (
-    <a href={link} aria-label={title} {...attr}>
+    <a href={link} aria-label={title} {...attr} className={styles.link}>
       {icon}
     </a>
   );
