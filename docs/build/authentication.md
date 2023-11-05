@@ -10,7 +10,7 @@ Our easy-to-use SDKs support authentication through [Internet Identity] and [NFI
 
 Juno Authentication integrates tightly with other Juno services like [datastore](datastore.md) and [storage](storage.md).
 
-You can manage your users in the [authentication](https://console.juno.build/auhtentication) view in Juno's console. A new entry is created when a user succesfully signs in (see below).
+You can manage your users in the [authentication](https://console.juno.build/auhtentication) view in Juno's console. A new entry is created when a user successfully signs in (see below).
 
 :::note
 
