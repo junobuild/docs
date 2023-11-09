@@ -171,7 +171,7 @@ const config: Config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ["markup", "bash", "json"],
+        additionalLanguages: ["javascript", "bash", "json"],
       },
       algolia: {
         appId: "FEZV8HILVI",
