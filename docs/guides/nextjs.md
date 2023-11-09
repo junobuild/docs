@@ -39,12 +39,12 @@ npx create-next-app@latest myjunoapp
 
 ### 3. Install the Juno SDK core library
 
-Use `@junobuild/core` client library which provides a convenient interface for working with Juno from a Next.js app.
+Use `@junobuild/core-peer` client library which provides a convenient interface for working with Juno from a Next.js app.
 
-Navigate to the Next.js app and install `@junobuild/core`.
+Navigate to the Next.js app and install `@junobuild/core-peer`.
 
 ```bash
-cd myjunoapp && npm i @junobuild/core
+cd myjunoapp && npm i @junobuild/core-peer
 ```
 
 ### 4. Insert data from your app
@@ -57,7 +57,7 @@ Add an `insert` function to persist a document.
 "use client";
 
 import { useEffect, useState } from "react";
-import { type Doc, initJuno, setDoc } from "@junobuild/core";
+import { type Doc, initJuno, setDoc } from "@junobuild/core-peer";
 
 type Record = {
   hello: string;
@@ -70,7 +70,7 @@ export default function Home() {
   useEffect(() => {
     (async () =>
       await initJuno({
-        satelliteId: "wjar4-kiaaa-aaaal-ab4va-cai",
+        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
       }))();
   }, []);
 
