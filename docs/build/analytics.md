@@ -133,7 +133,7 @@ await initOrbiter({
 
 - Alternatively, you can create a script, e.g., `copy-juno-workers.mjs`, at the root of your project with the following code:
 
-```js
+```javascript
 import { cp } from "node:fs";
 import { extname } from "node:path";
 
