@@ -34,15 +34,15 @@ Although it is possible to generate a controller with administrative permission,
 
 To configure the action, follow these steps:
 
-1. Create a `deploy.yaml` file in the `.github/workflows` subfolder of your repository.
-2. Copy and paste the following code into the `deploy.yaml` file.
+1. Create a `deploy.yaml` file in the `.github/workflows` subfolder of your repository. If the folder doesn't exist, create it.
+2. Paste the following code into a new `deploy.yaml` file.
 
 ```yaml
 name: Deploy to Juno
 
 on:
-  release:
-    types: [released]
+  push:
+    branches: [main]
 
 jobs:
   build:
@@ -69,7 +69,7 @@ jobs:
           JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
-This action performs the following tasks: it checks out your repository, installs dependencies, and builds your application. It then utilizes the [buildwithjuno/juno-action](https://github.com/junobuild/juno-action) GitHub Action to deploy your dapp.
+Whenever code is pushed to your `main` branch, this action performs the following tasks: it checks out your repository, installs dependencies, and builds your application. It then utilizes the [buildwithjuno/juno-action](https://github.com/junobuild/juno-action) GitHub Action to deploy your dapp.
 
 Make sure to adapt the code according to your specific requirements, such as adjusting the branch name and package manager command.
 
@@ -78,9 +78,13 @@ Make sure to adapt the code according to your specific requirements, such as adj
 Before configuring the action, take the following factors into consideration:
 
 - **Build Reproducibility**: Only new resources will be deployed to your satellite. Changes are detected through sha256 comparison. Therefore, ensuring the build reproducibility of your application is crucial to accurately identify and deploy the necessary updates.
-- **Deployment Costs**: Deploying new assets incurs [cycles] costs. The more frequent the deployment and the larger the number of items to deploy, the higher the cost. As a general recommendation, it is advisable to automate only releases to minimize deployment expenses.
+- **Deployment Costs**: Deploying new assets consumes [cycles], and the cost increases with both the frequency of deployments and the number of items to deploy. While the above code snippet demonstrates a more frequent lifecycle, as a general recommendation, consider minimizing your deployment expenses with less frequent deployments. For instance, you can trigger the action on releases instead.
 
-By keeping these considerations in mind, you can proceed with configuring the GitHub Action for a streamlined and cost-effective deployment process.
+```yaml
+on:
+  release:
+    types: [released]
+```
 
 :::
 

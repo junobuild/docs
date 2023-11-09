@@ -298,7 +298,7 @@ If you have compressed (gzip and brotli) your bundle and assets after deploying 
 
 ## Upgrade
 
-If the smart contracts' code of your [mission control] or [satellites] become outdated, you can upgrade them.
+If the smart contracts' code of your [mission control] or [satellites] becomes outdated, you can upgrade them.
 
 Running the following command from the project directory upgrade your [satellite] (default option):
 

@@ -57,8 +57,8 @@ To configure the GitHub Action and complete the deployment process, follow these
 name: Deploy to Juno
 
 on:
-  release:
-    types: [released]
+  push:
+    branches: [main]
 
 jobs:
   build:
