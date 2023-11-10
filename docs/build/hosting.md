@@ -92,6 +92,7 @@ You can configure customized hosting behavior for requests to your site.
 - Serve a customized 404 page. [Lean how.](#customize-a-404not-found-page)
 - Set up `redirects` for pages that you've moved or deleted. [Lean how.](#redirects)
 - Set up `rewrites`. [Lean how.](#rewrites)
+- Tweak `gzip` compression for best performance. [Lean how.](#gzip)
 - Customize the `encoding` behavior of your files. [Lean how.](#encoding-types)
 
 #### Where do you define your Hosting configuration?
@@ -203,7 +204,7 @@ Here's the basic structure for a `redirects` attribute.
 The `redirects` attribute contains an array of redirect rules:
 
 | Field        | Description                                                                                                                     |
-| ------------ |---------------------------------------------------------------------------------------------------------------------------------|
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
 | **source**   | This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the redirects using globs. |
 | **location** | A relative path to where the browser should make a new request.                                                                 |
 | **code**     | The HTTPS response code. Use a type of `301` for 'Moved Permanently' or `302` for 'Found' (Temporary Redirect).                 |
@@ -239,6 +240,36 @@ This `source` attribute works similarly to Git's `.gitignore`, and you can speci
 - By default, all unknown paths are automatically rewritten to `/index.html` (or `/404.html` if you provide such a page). You cannot disable this default behavior.
 
 :::
+
+### GZIP
+
+When deploying your application, the CLI automatically searches for JavaScript (js), ES Module (mjs), and CSS (css) files in the `source` folder and optimizes them using Gzip compression. This is useful because neither the protocol nor a satellite can compress these files, ensuring the best web performance.
+
+If you wish to customize this behavior, you have the option to disable it or provide a different file matching pattern using glob syntax.
+
+To opt-out of Gzip compression, simply set the `gzip` option to `false` in your configuration:
+
+```json
+{
+  "satellite": {
+    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "source": "dist",
+    "gzip": false
+  }
+}
+```
+
+If you want to customize the default pattern `**/*.+(css|js|mjs)` to better suit your needs, you can specify your own pattern. For example:
+
+```json
+{
+  "satellite": {
+    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "source": "dist",
+    "gzip": "**/*.jpg"
+  }
+}
+```
 
 ### Encoding types
 
