@@ -12,12 +12,11 @@
     "url": "https://github.com/junobuild/docs/issues"
   },
   "scripts": {
-    "build:compress": "./scripts/build.compress.sh",
     "postinstall": "rsync -aqz node_modules/@junobuild/analytics/dist/workers/*.* --exclude *.map static/workers/",
     "docusaurus": "docusaurus",
     "dev": "npm run start",
     "start": "docusaurus start",
-    "build": "docusaurus build && npm run build:compress",
+    "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
