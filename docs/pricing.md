@@ -39,7 +39,15 @@ Here are a few examples of costs provided for explanatory purposes only and with
 
 ### Storage
 
-The estimated cost of holding 1 gigabyte of data in a smart contract is $5 per year, as stated on the Internet Computer [website](https://internetcomputer.org/social-media-dapps/).
+The estimated annual cost of storing 1 gigabyte of data in a smart contract is $5.
+
+To calculate the estimated monthly cost for 1 gigabyte of storage, you can refer to the table provided on the Internet Computer [website](https://internetcomputer.org/docs/current/developer-docs/gas-cost).
+
+| Transaction                 | 13-node Application Subnets    | 34-node Application Subnets     |
+|-----------------------------|--------------------------------|---------------------------------|
+| GB Storage Per Second       | $0.00000016622522              | $0.00000043474178               |
+| Derived to a 30-day month   | $0.431                         | $1.127                          |
+| Derived to a 12-month year  | $5.172                         | $13.524                         |
 
 ### Deployment
 
