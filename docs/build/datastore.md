@@ -74,11 +74,9 @@ await setDoc<Example>({
 
 You need to provide the `collection` in which to save the data and the `key` to use as an index for the document. The `data` can be any [JSON]-serializable data.
 
-:::tip
+### Key
 
 The `key` can be any `string`, but it's recommended to generate IDs using the [nanoid](https://github.com/ai/nanoid) library.
-
-:::
 
 ```typescript
 import { setDoc } from "@junobuild/core";
@@ -95,11 +93,9 @@ await setDoc<Example>({
 });
 ```
 
-:::tip
+### Description
 
 A document can be saved with an optional `description` field, allowing for a maximum length of 1024 characters. This field serves both descriptive purposes and can be used for more granular filtering of your documentation. When retrieving documents, you can also filter based on the description field in addition to the keys, providing additional flexibility and organization options.
-
-:::
 
 ```typescript
 import { setDoc } from "@junobuild/core";
@@ -160,6 +156,38 @@ It is common to retrieve the document with `getDoc` before updating it to ensure
 
 :::
 
+## Set multiple documents
+
+You might need to set multiple documents, whether within the same collection or across collections, all at once in an atomic manner. This ensures that if any of the creations or deletions fail, the entire batch will be automatically reverted.
+
+You can achieve this using the `setManyDocs` function:
+
+```typescript
+import { setManyDocs } from "@junobuild/core";
+
+const update1 = {
+  collection: "my_collection",
+  doc: {
+    key: "my_document_key_1",
+    data: {
+      hello: "world",
+    },
+  },
+};
+
+const update2 = {
+  collection: "my_other_collection",
+  doc: {
+    key: "my_document_key_2",
+    data: {
+      count: 123,
+    },
+  },
+};
+
+const docs = await setManyDocs({ docs: [update1, update2] });
+```
+
 ## List documents
 
 To list documents, use the `listDocs` function:
@@ -207,6 +235,16 @@ await deleteDoc<Example>({
   collection: "my_collection_key",
   doc: myDoc,
 });
+```
+
+## Delete multiple documents
+
+To delete multiple documents in an atomic manner, you can use the function `deleteManyDocs`:
+
+```typescript
+import { deleteManyDocs } from "@junobuild/core";
+
+await deleteManyDocs({ docs: [myDoc1, myDo2, myDoc3] });
 ```
 
 [satellite]: ../terminology.md#satellite
