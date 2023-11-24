@@ -148,5 +148,15 @@ await deleteAsset({
 });
 ```
 
+## Delete multiple assets
+
+To delete multiple assets in an atomic manner, you can use the function `deleteManyAssets`:
+
+```typescript
+import { deleteManyAssets } from "@junobuild/core";
+
+await deleteManyAssets({ docs: [myAsset1, myAsset2, myAsset3] });
+```
+
 [satellite]: ../terminology.md#satellite
 [controllers]: ../terminology.md#controller
