@@ -16,7 +16,7 @@
     "docusaurus": "docusaurus",
     "dev": "npm run start",
     "start": "docusaurus start",
-    "build": "docusaurus build && rm build/404.html",
+    "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
