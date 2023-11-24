@@ -174,6 +174,12 @@ The `headers` is an array of objects, each containing `key` and `value`, and the
 
 ### Customize a 404/Not Found page
 
+:::caution
+
+There is currently an issue with the Service Worker on the Internet Computer that affects the functionality of 404 pages. This bug will be resolved indirectly with the upcoming removal of the Service Worker feature. Until then, it's recommended not to add a `404.html` file to your project.
+
+:::
+
 By default, all unknown paths are automatically rewritten to `/index.html`. However, if you wish to serve a custom `404 Not Found` error when a user attempts to access a non-existent page, you can do so without requiring additional configuration.
 
 Simply upload a custom `404.html` file to your satellite that should be served from the root path of your site.
