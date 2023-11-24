@@ -94,6 +94,7 @@ You can configure customized hosting behavior for requests to your site.
 - Set up `rewrites`. [Lean how.](#rewrites)
 - Tweak `gzip` compression for best performance. [Lean how.](#gzip)
 - Customize the `encoding` behavior of your files. [Lean how.](#encoding-types)
+- Allow your project to be embedded as an `iframe`. [Lean how.](#iframe)
 
 #### Where do you define your Hosting configuration?
 
@@ -295,6 +296,22 @@ Here is an example of how the "encoding" attribute can be utilized:
     "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
     "source": "dist",
     "encoding": [["**/releases/*.gz", "identity"]]
+  }
+}
+```
+
+### iframe
+
+For security reasons and to prevent click-jacking attacks, dapps deployed with Juno are, by default, set to deny embedding in other sites.
+
+You can customize this behavior by setting the `iframe` option to either `same-origin`, which restricts your pages to be displayed only if all ancestor frames have the same origin as the page itself, or `allow-any`, which allows your project to be embeddable by any site.
+
+```json
+{
+  "satellite": {
+    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "source": "dist",
+    "iframe": "same-origin"
   }
 }
 ```
