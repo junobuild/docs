@@ -8,13 +8,15 @@ Juno Hosting offers fast and secure hosting powered by 100% blockchain technolog
 
 With just one [CLI] command, you can effortlessly deploy your web applications, static, and dynamic content to your [satellite].
 
+---
+
 ## Custom Domain Support
 
 You can maintain your unique brand identity with Juno Hosting. Use your custom domain, such as "yolo.com" or "hello.world.com", instead of the default domain name provided by Juno.
 
 Our infrastructure automatically provisions an SSL certificate for each of your domains, ensuring secure connections for your users.
 
-## Connecting Your Domain
+### Connecting Your Domain
 
 To connect your custom domain, follow these steps:
 
@@ -75,6 +77,252 @@ The status of the configuration of your custom domain can be one of the followin
 - `Failed`: The registration request failed.
 
 If one of the status `Pending...` is reached, the console will automatically refresh the status every few seconds until your domain is available.
+
+---
+
+## Configure Hosting behavior
+
+You can configure customized hosting behavior for requests to your site.
+
+#### What can you configure?
+
+- Specify which `source` files in your local project directory you want to deploy? [Lean how.](#source)
+- Ignore some files during deployment. [Lean how.](#ignore-files)
+- Configure HTTP `headers` to pass along additional information about a request or a response. [Lean how.](#http-headers)
+- Serve a customized 404 page. [Lean how.](#customize-a-404not-found-page)
+- Set up `redirects` for pages that you've moved or deleted. [Lean how.](#redirects)
+- Set up `rewrites`. [Lean how.](#rewrites)
+- Tweak `gzip` compression for best performance. [Lean how.](#gzip)
+- Customize the `encoding` behavior of your files. [Lean how.](#encoding-types)
+- Allow your project to be embedded as an `iframe`. [Lean how.](#iframe)
+
+#### Where do you define your Hosting configuration?
+
+You define your Hosting configuration in your `juno.json` file. The CLI automatically creates the file at the root of your project directory when you run the [juno init](../miscellaneous/cli.md#init) or [juno deploy](../miscellaneous/cli.md#deploy) command for the first time.
+
+### Source
+
+Where should Juno search for the files to deploy in your project directory.
+
+This is commonly the output folder of `npm run build`, such as `/dist` or `/build`.
+
+### Ignore files
+
+The `ignore` attribute allows you to exclude certain files from being deployed to your satellite.
+
+This attribute works similarly to Git's `.gitignore`, and you can specify which files to ignore using globs.
+
+Here is an example of how the ignore attribute can be utilized:
+
+```json
+{
+  "satellite": {
+    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "source": "dist",
+    "ignore": ["**/*.txt", ".tmp/"]
+  }
+}
+```
+
+### HTTP Headers
+
+Headers allow the client and the satellite to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
+
+For instance, you may want to set a specific `Cache-Control` for performance reasons.
+
+Here's an example of the `headers` object:
+
+```json
+{
+  "satellite": {
+    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "source": "dist",
+    "storage": {
+      "headers": [
+        {
+          "source": "/",
+          "headers": [["Cache-Control", "public,max-age=0,must-revalidate"]]
+        },
+        {
+          "source": "assets/fonts/*",
+          "headers": [["Cache-Control", "max-age=31536000"]]
+        },
+        {
+          "source": "**/*.jpg",
+          "headers": [
+            ["Cache-Control", "max-age=31536000"],
+            ["Access-Control-Allow-Origin", "*"]
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the headers using globs.
+
+The `headers` is an array of objects, each containing `key` and `value`, and these apply to the matching paths.
+
+:::note
+
+- The `Content-Type` header is calculated automatically and cannot be altered.
+- No validation or check for uniqueness is performed. For example, if a header matches a file based on multiple rules, multiple headers will be set.
+- Likewise, if you provide the same header when you [upload](https://juno.build/docs/build/storage#upload-asset) file to your "Storage" and within the configuration, both headers will be set in the response.
+
+:::
+
+### Customize a 404/Not Found page
+
+:::caution
+
+There is currently an issue with the Service Worker on the Internet Computer that affects the functionality of 404 pages. This bug will be resolved indirectly with the upcoming removal of the Service Worker feature. Until then, it's recommended not to add a `404.html` file to your project.
+
+:::
+
+By default, all unknown paths are automatically rewritten to `/index.html`. However, if you wish to serve a custom `404 Not Found` error when a user attempts to access a non-existent page, you can do so without requiring additional configuration.
+
+Simply upload a custom `404.html` file to your satellite that should be served from the root path of your site.
+
+### Redirects
+
+Use a URL redirect to prevent broken links if you've moved a page or to shorten URLs. For example, you could redirect a browser from `juno.build/start-building` to `juno.build/get-started.html`.
+
+Here's the basic structure for a `redirects` attribute.
+
+```json
+{
+  "satellite": {
+    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "source": "dist",
+    "storage": {
+      "redirects": [
+        {
+          "source": "/hello",
+          "location": "/world/index.html",
+          "code": 300
+        }
+      ]
+    }
+  }
+}
+```
+
+The `redirects` attribute contains an array of redirect rules:
+
+| Field        | Description                                                                                                                     |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| **source**   | This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the redirects using globs. |
+| **location** | A relative path to where the browser should make a new request.                                                                 |
+| **code**     | The HTTPS response code. Use a type of `301` for 'Moved Permanently' or `302` for 'Found' (Temporary Redirect).                 |
+
+### Rewrites
+
+You can utilize optional rewrites to display the same content for multiple URLs. Rewrites are especially useful when combined with pattern matching, allowing acceptance of any URL that matches the pattern.
+
+Here's the basic structure for a `rewrites` attribute.
+
+```json
+{
+  "satellite": {
+    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "source": "dist",
+    "storage": {
+      "rewrites": [
+        {
+          "source": "/hello/**",
+          "destination": "/hello/world.html"
+        }
+      ]
+    }
+  }
+}
+```
+
+This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the rewrites using globs.
+
+:::note
+
+- Rewrites are only applied to requests that do not match any existing resources.
+- By default, all unknown paths are automatically rewritten to `/index.html` (or `/404.html` if you provide such a page). You cannot disable this default behavior.
+
+:::
+
+### GZIP
+
+When deploying your application, the CLI automatically searches for JavaScript (js), ES Module (mjs), and CSS (css) files in the `source` folder and optimizes them using Gzip compression. This is useful because neither the protocol nor a satellite can compress these files, ensuring the best web performance.
+
+If you wish to customize this behavior, you have the option to disable it or provide a different file matching pattern using glob syntax.
+
+To opt-out of Gzip compression, simply set the `gzip` option to `false` in your configuration:
+
+```json
+{
+  "satellite": {
+    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "source": "dist",
+    "gzip": false
+  }
+}
+```
+
+If you want to customize the default pattern `**/*.+(css|js|mjs)` to better suit your needs, you can specify your own pattern. For example:
+
+```json
+{
+  "satellite": {
+    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "source": "dist",
+    "gzip": "**/*.jpg"
+  }
+}
+```
+
+### Encoding types
+
+When deploying, the CLI automatically maps the encoding type based on the file extension. The encoding information is then used in the satellite to provide the appropriate HTTP response header `Content-Encoding`.
+
+The default mappings are as follows:
+
+- `.Z` = `compress`
+- `.gz` = `gzip`
+- `.br` = `br`
+- `.zlib` = `deflate`
+- rest = `identity` (no compression)
+
+You can also customize the encoding behavior by using the "encoding" attribute in the configuration file.
+
+This attribute works similarly to Git's `.gitignore`, and you can specify which files to ignore using globs.
+
+Here is an example of how the "encoding" attribute can be utilized:
+
+```json
+{
+  "satellite": {
+    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "source": "dist",
+    "encoding": [["**/releases/*.gz", "identity"]]
+  }
+}
+```
+
+### iframe
+
+For security reasons and to prevent click-jacking attacks, dapps deployed with Juno are, by default, set to deny embedding in other sites.
+
+You can customize this behavior by setting the `iframe` option to either `same-origin`, which restricts your pages to be displayed only if all ancestor frames have the same origin as the page itself, or `allow-any`, which allows your project to be embeddable by any site.
+
+```json
+{
+  "satellite": {
+    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "source": "dist",
+    "iframe": "same-origin"
+  }
+}
+```
+
+---
 
 ## Authentication Considerations
 
