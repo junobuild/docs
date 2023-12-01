@@ -171,11 +171,19 @@ await initJuno({
 
 The `auth` option can accept either `true`, which will default to using a worker located at `https://yourapp/workers/auth.worker.js, or a custom `string` to provide your own URL.
 
-When the session expires, it will be terminated with a standard [sign-out](#sign-out). Additionally, an informational event called `junoSignOutAuthTimer` will be thrown at the `document` level. This event is optional and can be used, for example, to display a warning to your users.
+When the session expires, it will automatically be terminated with a standard [sign-out](#sign-out). Additionally, an informational event called `junoSignOutAuthTimer` will be thrown at the `document` level. This event is optional and can be used, for example, to display a warning to your users.
 
 ```javascript
 document.addEventListener("junoSignOutAuthTimer", () => {
     // Display an information to your users
+}), {passive: true});
+```
+
+The worker also emits an event named `junoDelegationRemainingTime`, which provides the remaining duration in milliseconds of the authentication delegation. This can be useful if you want to display to your users how much time remains in their active session.
+
+```javascript
+document.addEventListener("junoDelegationRemainingTime", ({detail: remainingTime}) => {
+    // Display the remaining session duration to your users
 }), {passive: true});
 ```
 
