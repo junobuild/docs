@@ -152,9 +152,13 @@ To do so, you can follow these steps:
 
 ```json
 {
-  "postinstall": "rsync -aqz node_modules/@junobuild/core/dist/workers/*.js public/workers/"
+  "scripts": {
+    "postinstall": "node -e \"require('fs').cpSync('node_modules/@junobuild/core/dist/workers/', './static/workers', {recursive: true});\""
+  }
 }
 ```
+
+Once configured, run `npm run postinstall` manually to trigger the initial copy. Every time you run `npm ci`, the post-install target will execute, ensuring the worker is copied.
 
 2. Enable the option when you initialize Juno:
 
@@ -169,7 +173,7 @@ await initJuno({
 });
 ```
 
-The `auth` option can accept either `true`, which will default to using a worker located at `https://yourapp/workers/auth.worker.js, or a custom `string` to provide your own URL.
+The `auth` option can accept either `true`, which will default to using a worker located at https://yourapp/workers/auth.worker.js, or a custom `string` to provide your own URL.
 
 When the session expires, it will automatically be terminated with a standard [sign-out](#sign-out). Additionally, an informational event called `junoSignOutAuthTimer` will be thrown at the `document` level. This event is optional and can be used, for example, to display a warning to your users.
 
