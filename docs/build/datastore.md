@@ -132,6 +132,28 @@ const myDoc = await getDoc({
 });
 ```
 
+## Get multiple documents
+
+Obtaining multiple documents at once can improve performance compared to making multiple individual `getDoc` calls depending on the use case.
+
+You can achieve this by using the `getManyDocs` function:
+
+```typescript
+import { setManyDocs } from "@junobuild/core";
+
+const docPair1 = {
+  collection: "my_collection",
+  key: "my_document_key_1",
+};
+
+const docPair2 = {
+  collection: "my_other_collection",
+  key: "my_document_key_2",
+};
+
+const docs = await getManyDocs({ docs: [docPair1, docPair2] });
+```
+
 ## Update a document
 
 To update a document, use the `setDoc` function with a timestamp to validate that the most recent entry is being updated:
