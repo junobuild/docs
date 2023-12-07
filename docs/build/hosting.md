@@ -86,15 +86,15 @@ You can configure customized hosting behavior for requests to your site.
 
 #### What can you configure?
 
-- Specify which `source` files in your local project directory you want to deploy? [Lean how.](#source)
-- Ignore some files during deployment. [Lean how.](#ignore-files)
-- Configure HTTP `headers` to pass along additional information about a request or a response. [Lean how.](#http-headers)
-- Serve a customized 404 page. [Lean how.](#customize-a-404not-found-page)
-- Set up `redirects` for pages that you've moved or deleted. [Lean how.](#redirects)
-- Set up `rewrites`. [Lean how.](#rewrites)
-- Tweak `gzip` compression for best performance. [Lean how.](#gzip)
-- Customize the `encoding` behavior of your files. [Lean how.](#encoding-types)
-- Allow your project to be embedded as an `iframe`. [Lean how.](#iframe)
+- Specify which `source` files in your local project directory you want to deploy? [Learn how.](#source)
+- Ignore some files during deployment. [Learn how.](#ignore-files)
+- Configure HTTP `headers` to pass along additional information about a request or a response. [Learn how.](#http-headers)
+- Serve a customized 404 page. [Learn how.](#customize-a-404not-found-page)
+- Set up `redirects` for pages that you've moved or deleted. [Learn how.](#redirects)
+- Set up `rewrites`. [Learn how.](#rewrites)
+- Tweak `gzip` compression for best performance. [Learn how.](#gzip)
+- Customize the `encoding` behavior of your files. [Learn how.](#encoding-types)
+- Allow your project to be embedded as an `iframe`. [Learn how.](#iframe)
 
 #### Where do you define your Hosting configuration?
 
