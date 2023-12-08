@@ -4,7 +4,7 @@ import Link from "@docusaurus/Link";
 import { ShowcaseSpotlight } from "@site/src/types/showcase";
 
 export default function Spotlight({
-  name,
+  title,
   description,
   img,
   url,
@@ -18,12 +18,12 @@ export default function Spotlight({
             loading="lazy"
             className={styles.img}
             role="presentation"
-            alt={`${name} banner`}
+            alt={`${title} banner`}
           />
         </div>
 
         <div className={styles.content}>
-          <h4>{name}</h4>
+          <h4>{title}</h4>
           <p>{description}</p>
         </div>
       </article>

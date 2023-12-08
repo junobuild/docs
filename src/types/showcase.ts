@@ -1,5 +1,5 @@
 export interface ShowcaseSpotlight {
-  name: string;
+  title: string;
   url: string;
   description: string;
   img: string;
