@@ -1,0 +1,16 @@
+[
+  {
+    "name": "icdraw",
+    "url": "https://icdraw.com/",
+    "description": "A whiteboard for sketching hand-drawn like diagrams on Web3.",
+    "img": "/showcase/icdraw.png",
+    "github": "https://github.com/peterpeterparker/icdraw"
+  },
+  {
+    "name": "proposals.network",
+    "url": "https://proposals.network",
+    "description": "Browse and submit proposals on ICP.",
+    "img": "https://proposals.network/images/meta-share.jpg",
+    "github": "https://github.com/peterpeterparker/proposals.network"
+  }
+]
