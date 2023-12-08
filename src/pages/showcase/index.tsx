@@ -1,10 +1,7 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import Features from "@site/src/components/Features";
 import Head from "@site/src/components/Head";
-
 import styles from "./index.module.scss";
-import { trackEvent } from "@site/src/providers/analytics.providers";
 import Link from "@docusaurus/Link";
 import Spotlight from "@site/src/components/Spotlight";
 
@@ -35,6 +32,7 @@ export default function Home(): JSX.Element {
             title="Proposals.network"
             text="Browse and submit proposals on ICP"
             img="https://proposals.network/images/meta-share.jpg"
+            url="https://proposals.network"
           />
         </div>
       </section>

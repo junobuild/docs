@@ -1,6 +1,12 @@
 .img {
   width: 100%;
   object-fit: cover;
+
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
 }
 
 .card {
@@ -10,13 +16,7 @@
   background: var(--ifm-footer-background-color);
   color: var(--ifm-footer-color);
 
-  div {
-    padding: 1rem;
-  }
-
-  p {
-    font-weight: initial;
-  }
+  min-width: 100%;
 
   &:hover,
   &:focus {
@@ -24,6 +24,11 @@
     color: var(--ifm-footer-color);
     box-shadow: 4px 4px var(--ifm-color-primary);
     --ifm-button-border-color: var(--ifm-color-primary);
+
+    &:active,
+    &:active:focus {
+      box-shadow: none;
+    }
   }
 }
 
@@ -34,7 +39,27 @@
       &:focus {
         box-shadow: 4px 4px var(--ifm-color-primary);
         --ifm-button-border-color: var(--ifm-color-primary);
+
+        &:active,
+        &:active:focus {
+          box-shadow: none;
+        }
       }
     }
+  }
+}
+
+.imgContainer {
+  width: 100%;
+  aspect-ratio: 1200 / 630;
+}
+
+.content {
+  padding: 1rem;
+
+  color: var(--ifm-font-color-base);
+
+  p {
+    font-weight: initial;
   }
 }
