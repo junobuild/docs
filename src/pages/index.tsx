@@ -9,8 +9,8 @@ import Auth from "@site/src/components/Auth";
 import Api from "@site/src/components/Api";
 import Developer from "@site/src/components/Developer";
 import Outro from "@site/src/components/Outro";
-import Head from "@docusaurus/Head";
 import { initOrbiter } from "@junobuild/analytics";
+import Head from "@site/src/components/Head";
 
 import styles from "./index.module.scss";
 
@@ -35,28 +35,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout>
       <Head>
-        <title>{`${siteConfig.title} | Build Web3 dApps like Web2`}</title>
         <link href="https://juno.build" rel="canonical" />
-        <meta
-          content="Juno is a zero-knowledge blockchain platform that equips developers with all the essential tools to create any Web3 application, making it as easy as developing serverless Web2."
-          name="description"
-        />
-        <meta content="Juno" property="og:title" />
-        <meta content="Build Web3 dApps like Web2" property="og:description" />
-        <meta content="website" property="og:type" />
-        <meta content="https://juno.build" property="og:url" />
-        <meta
-          content="https://juno.build/img/social_image_v5.jpg"
-          property="og:image"
-        />
-        <meta content="summary_large_image" name="twitter:card" />
-        <meta content="Juno" name="twitter:title" />
-        <meta content="Build Web3 dApps like Web2" name="twitter:description" />
-        <meta
-          content="https://juno.build/img/social_image_v5.jpg"
-          name="twitter:image"
-        />
-        <meta content="@JunoBuild" name="twitter:creator" />
       </Head>
 
       <div className={styles.home}>

@@ -63,7 +63,15 @@ const config: Config = {
             position: "left",
             label: "Docs",
           },
-          { to: "/blog", label: "Blog", position: "left" },
+          {
+            type: "dropdown",
+            label: "More",
+            position: "left",
+            items: [
+              { to: "/blog", label: "Blog" },
+              { to: "/showcase", label: "Showcase" },
+            ],
+          },
           {
             href: "https://console.juno.build",
             label: "Start building",
@@ -153,6 +161,10 @@ const config: Config = {
               {
                 label: "Blog",
                 to: "/blog",
+              },
+              {
+                label: "Showcase",
+                to: "/showcase",
               },
               {
                 label: "Twitter",
