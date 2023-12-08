@@ -4,4 +4,5 @@ export interface ShowcaseSpotlight {
   description: string;
   img: string;
   github?: string;
+  twitter?: string;
 }
