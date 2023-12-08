@@ -20,7 +20,7 @@ export default function Home(): JSX.Element {
 
         <Link
           className="button button--hero"
-          href="https://console.juno.build"
+          href="https://github.com/junobuild/docs#showcase"
           target="_blank"
         >
           🙏 Please add yours
