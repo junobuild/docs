@@ -91,6 +91,10 @@ const config: Config = {
                 label: "Add Juno to an app",
                 to: "/docs/add-juno-to-an-app/create-a-satellite",
               },
+              {
+                label: "Guides and examples",
+                to: "/docs/category/guides-and-examples",
+              },
             ],
           },
           {
@@ -111,6 +115,10 @@ const config: Config = {
               {
                 label: "Hosting",
                 to: "/docs/build/hosting",
+              },
+              {
+                label: "Analytics",
+                to: "/docs/build/analytics",
               },
             ],
           },
