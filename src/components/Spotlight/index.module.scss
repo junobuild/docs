@@ -1,0 +1,40 @@
+.img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card {
+  padding: 0;
+  text-align: left;
+
+  background: var(--ifm-footer-background-color);
+  color: var(--ifm-footer-color);
+
+  div {
+    padding: 1rem;
+  }
+
+  p {
+    font-weight: initial;
+  }
+
+  &:hover,
+  &:focus {
+    background: var(--ifm-footer-background-color);
+    color: var(--ifm-footer-color);
+    box-shadow: 4px 4px var(--ifm-color-primary);
+    --ifm-button-border-color: var(--ifm-color-primary);
+  }
+}
+
+:root {
+  &[data-theme="dark"] {
+    .card {
+      &:hover,
+      &:focus {
+        box-shadow: 4px 4px var(--ifm-color-primary);
+        --ifm-button-border-color: var(--ifm-color-primary);
+      }
+    }
+  }
+}
