@@ -40,6 +40,13 @@
     "github": "https://github.com/peterpeterparker/proposals.network"
   },
   {
+    "title": "cycles.watch",
+    "url": "https://cycles.watch",
+    "description": "Track the cycles consumption of canister smart contracts.",
+    "img": "https://cycles.watch/images/social-image.jpg",
+    "github": "https://github.com/peterpeterparker/cycles.watch"
+  },
+  {
     "title": "Juno",
     "url": "https://juno.build",
     "description": "Isn't it meta that Juno is built with Juno?",
