@@ -40,6 +40,13 @@
     "github": "https://github.com/peterpeterparker/proposals.network"
   },
   {
+    "title": "GIX Components",
+    "url": "https://gix.design",
+    "description": "A UI kit developed by the GIX team.",
+    "img": "https://gix.design/assets/images/social-image.jpg",
+    "github": "https://github.com/dfinity/gix-components"
+  },
+  {
     "title": "cycles.watch",
     "url": "https://cycles.watch",
     "description": "Track the cycles consumption of canister smart contracts.",
