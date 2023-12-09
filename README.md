@@ -9,7 +9,7 @@ The official documentation of [Juno], built with [Docusaurus](https://docusaurus
 
 ## Showcase submissions
 
-Add your dapp(s) to the Juno showcase.
+Add your dapp(s) to the [Juno showcase](https://juno.build/showcase).
 
 🧑‍🎨 You built a beautiful project and want to show it to the world?
 
@@ -27,6 +27,8 @@ Please submit a Pull Request to add your dApp to the [showcase.json](showcase.js
 - Twitter/X handle (optional)
 
 For an example JSON entry and formatting guidelines, refer to the existing entries in the [showcase.json](showcase.json) file.
+
+> The order of entries is randomized each time the site is deployed, with contributions from Juno and [peterpeterparker](https://github.com/peterpeterparker/) added at the end of the list.
 
 Thank you for contributing!
 
