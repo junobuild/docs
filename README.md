@@ -24,6 +24,7 @@ Please submit a Pull Request to add your dApp to the [showcase.json](showcase.js
 - Image: A compressed image of your dApp, 1200x630px dimensions. Commonly the social card of your project
 - URL: The URL to access your web app or website.
 - Source code URL (optional): If applicable, provide the URL to the source code of your dApp.
+- Twitter/X handle (optional)
 
 For an example JSON entry and formatting guidelines, refer to the existing entries in the [showcase.json](showcase.json) file.
 
