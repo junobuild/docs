@@ -1,3 +1,5 @@
+import { join } from "node:path";
+
 const { themes } = require("prism-react-renderer");
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
@@ -44,7 +46,10 @@ const config: Config = {
     ],
   ],
 
-  plugins: ["docusaurus-plugin-sass"],
+  plugins: [
+    "docusaurus-plugin-sass",
+    join(process.cwd(), "docusaurus.showcase.plugin.ts"),
+  ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
