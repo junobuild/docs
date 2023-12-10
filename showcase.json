@@ -6,34 +6,40 @@
     "img": "/showcase/windoge98.jpg"
   },
   {
+    "title": "Spellkaster",
+    "url": "https://spellkaster.app",
+    "description": "Cast spells on internet computer things 🪄.",
+    "img": "/showcase/spellkaster.webp"
+  },
+  {
     "title": "Bicycle to Dfinity",
-    "url": "https://m5rwi-daaaa-aaaal-acrpq-cai.icp0.io/",
+    "url": "https://m5rwi-daaaa-aaaal-acrpq-cai.icp0.io",
     "description": "An adventure around the world to meet great souls and promote good stuff",
     "img": "/showcase/aegir.jpg"
   },
   {
     "title": "THE REGISTRY",
-    "url": "https://theregistry.app/",
+    "url": "https://theregistry.app",
     "description": "PayString provider on the internet computer, allowing easy multichain payments.",
     "img": "https://theregistry.app/banner.jpg",
     "twitter": "@the_registry_"
   },
   {
     "title": "ICPFA",
-    "url": "https://icpfa.org/",
+    "url": "https://icpfa.org",
     "description": "The Future of Community Football.",
     "img": "/showcase/icpfa.jpg",
     "twitter": "OpenFPL_DAO"
   },
   {
     "title": "BEE-2B PLATFORM",
-    "url": "https://bee-2b.com/",
+    "url": "https://bee-2b.com",
     "description": "Tech community with passion.",
     "img": "/showcase/bee-2b.png"
   },
   {
     "title": "icdraw",
-    "url": "https://icdraw.com/",
+    "url": "https://icdraw.com",
     "description": "A whiteboard for sketching hand-drawn like diagrams on Web3.",
     "img": "https://icdraw.com/social-image.jpg",
     "github": "https://github.com/peterpeterparker/icdraw"
