@@ -36,7 +36,7 @@ const shuffleJson = (showcaseJsonString: string) => {
 
 export default function showcasePlugin(context, options) {
   return {
-    name: "docusaurus-friends-plugin",
+    name: "docusaurus-dapps-plugin",
     async loadContent() {
       return readFileSync(source, "utf-8");
     },
@@ -48,7 +48,6 @@ export default function showcasePlugin(context, options) {
         shuffleJson(content)
       );
 
-      // Add the '/friends' routes, and ensure it receives the friends props
       addRoute({
         path: "/showcase",
         component: "@site/src/pages/showcase/index.tsx",
