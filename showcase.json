@@ -71,5 +71,12 @@
     "description": "Isn't it meta that Juno is built with Juno?",
     "img": "https://juno.build/img/social_image_v5.jpg",
     "github": "https://github.com/junobuild/juno"
+  },
+  {
+    "title": "InheritX",
+    "url": "https://kii7z-gaaaa-aaaal-adhwa-cai.icp0.io",
+    "description": "Empowering Your Digital Asset Succession",
+    "img": "/showcase/inheritx.png",
+    "github": "https://github.com/mzurs/InheritX"
   }
 ]
