@@ -8,7 +8,7 @@ A [satellite] can store data using two types of memory: `heap` and `stable`. Whi
 
 ## In a nutshell
 
-`Heap` memory offers the best performance for accessing data, both for reading and writing. However, it has a limited capacity in terms of the space it can occupy, with a max of 2 GB.
+`Heap` memory offers the best performance for accessing data, both for reading and writing. However, it has a limited capacity in terms of the space it can occupy, with a max of 1 GB.
 
 On the other hand, `stable` memory has a higher memory threshold with a maximum limit of 96 GB minus the heap size, allowing it to store more data in terms of size. However, it is slightly slower.
 
@@ -33,8 +33,8 @@ In contrast, the [analytics](../build/analytics.md) data is saved within stable 
 ## Summary
 
 | Aspect          | Heap Memory                                          | Stable Memory                                       |
-| --------------- | ---------------------------------------------------- | --------------------------------------------------- |
-| **Capacity**    | Max 2 GB                                             | Max 96 GB (minus heap size)                         |
+| --------------- |------------------------------------------------------| --------------------------------------------------- |
+| **Capacity**    | Max 1 GB                                             | Max 96 GB (minus heap size)                         |
 | **Performance** | Fast for read and write operations                   | Slightly slower                                     |
 | **Cost**        | Lower cost                                           | Higher cost (~20x)                                  |
 | **Upgrades**    | Data must be deserialized/serialized during upgrades | Data are not processed during upgrades              |
