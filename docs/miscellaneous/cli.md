@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # CLI
 
-The Juno CLI (GitHub: https://github.com/junobuild) provides a variety of tools for managing and deploying satellites(../terminology.md#satellite).
+The Juno CLI (GitHub: https://github.com/junobuild) provides a variety of tools for managing and deploying [satellite].
 
 ## Installation
 
