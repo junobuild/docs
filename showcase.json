@@ -82,7 +82,7 @@
   {
     "title": "Integral Wizard: SELF-PORTAL-CHAIN",
     "url": "https://integralwizard.com",
-    "description": "A novel base Reality model",
+    "description": "A novel base model of Reality",
     "img": "/showcase/integralwizard.png"
   },
   {
@@ -96,5 +96,12 @@
     "url": "https://enesekool.ee",
     "description": "An integral school for the free Spirit",
     "img": "/showcase/enesekool.png"
+  },
+  {
+    "title": "Why ICP?",
+    "url": "https://why-internetcomputer.org",
+    "description": "A simple context for why ICP (CryptoCloud)",
+    "img": "/showcase/why-internetcomputer.png",
+    "github": "https://github.com/3erikpotter/why-internetcomputer.org"
   }
 ]
