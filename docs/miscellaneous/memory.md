@@ -20,20 +20,24 @@ On the contrary, `stable` memory doesn't require processing during an upgrade. H
 
 There are no strict rules governing the choice of memory type for your use case. Ultimately, the decision lies with you, based on what best suits your project. This is why both the [datastore](../build/datastore.md) and [storage](../build/storage.md) support both memory types.
 
-However, we generally recommend using `heap` for small data or data that require frequent access, and `stable` for large data or data accessed less often.
+In practice, `heap` memory is sometimes recommended for small datasets or data that require frequent access, while `stable` memory is preferred for large data or data accessed less often.
 
-This is why the default options for creating new collections are `heap` for datastore and `stable` for storage.
+This is why, for example, user data and your dapp's bundle assets (including JS, HTML, images, etc.) are stored within the `heap` memory of satellites.
+
+However, this decision, along with the memory limitations, results in a significant portion of the `heap` memory being allocated. Although `stable` memory is slightly slower and comes at a higher cost, it is well-suited for storing data and ensuring smooth smart contract upgrades. This is particularly important for the operation and lifecycle of a project.
+
+That's why the default option for creating new collections is set to `stable` for both datastore and storage.
 
 ## Default usage
 
-For the reasons mentioned above, your users, as well as your dapp's bundle and assets (including JS, HTML, images, etc., everything you deploy to your satellite using `juno deploy`), are stored in the `heap` memory.
+As mentioned in the previous chapter, both your users and your dapp's bundle and assets (everything you deploy to your satellite using `juno deploy`), are stored in the `heap` memory.
 
 In contrast, the [analytics](../build/analytics.md) data is saved within stable memory.
 
 ## Summary
 
 | Aspect          | Heap Memory                                          | Stable Memory                                       |
-| --------------- |------------------------------------------------------| --------------------------------------------------- |
+| --------------- | ---------------------------------------------------- | --------------------------------------------------- |
 | **Capacity**    | Max 1 GB                                             | Max 96 GB (minus heap size)                         |
 | **Performance** | Fast for read and write operations                   | Slightly slower                                     |
 | **Cost**        | Lower cost                                           | Higher cost (~20x)                                  |
