@@ -86,7 +86,7 @@ The `data` parameter is the file you want to upload. This is typically selected 
 The `uploadFile` function provides various options, including:
 
 - `filename`: By default, Juno uses the file's filename. You can overwrite this and provide a custom filename. Example: `myimage.jpg`.
-- `fullPath`: Juno will automatically compute the `fullPath`, which is the **unique** path that is used to make the asset available on the internet. The `fullPath` is the filename encoded as a URL and prefixed with `/` plus the related collection key. Example: `/images/myimage.jpg`.
+- `fullPath`: Juno will automatically compute the `fullPath`, which is the **unique** path that is used to make the asset available on the internet. The `fullPath` is the filename prefixed with `/` plus the related collection key. Example: `/images/myimage.jpg`.
 - `headers`: The headers can affect how the browser handles the asset. If no headers are provided Juno will infer the `Content-Type` from the file type.
 - `encoding`: The type of encoding for the file. For example, `identity` (raw) or `gzip`.
 
@@ -94,7 +94,7 @@ The `uploadFile` function provides various options, including:
 
 - Uploading a file with the same name as an existing file will overwrite the previous file (assuming the uploader has write access to the previous file).
 
-- To ensure that the asset has a clean URL and is easily accessible on the internet, the library converts the `filename` to lowercase and replaces any spaces with dashes.
+- URL encoding is currently not supported on the Internet Computer. Therefore, it's important to keep in mind that your `filename` should not be encoded. That is why the library decodes the `filename` automatically.
 
 :::
 
