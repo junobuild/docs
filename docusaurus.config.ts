@@ -1,3 +1,5 @@
+import { join } from "node:path";
+
 const { themes } = require("prism-react-renderer");
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
@@ -44,7 +46,10 @@ const config: Config = {
     ],
   ],
 
-  plugins: ["docusaurus-plugin-sass"],
+  plugins: [
+    "docusaurus-plugin-sass",
+    join(process.cwd(), "docusaurus.showcase.plugin.ts"),
+  ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -63,7 +68,15 @@ const config: Config = {
             position: "left",
             label: "Docs",
           },
-          { to: "/blog", label: "Blog", position: "left" },
+          {
+            type: "dropdown",
+            label: "More",
+            position: "left",
+            items: [
+              { to: "/blog", label: "Blog" },
+              { to: "/showcase", label: "Showcase" },
+            ],
+          },
           {
             href: "https://console.juno.build",
             label: "Start building",
@@ -91,6 +104,10 @@ const config: Config = {
                 label: "Add Juno to an app",
                 to: "/docs/add-juno-to-an-app/create-a-satellite",
               },
+              {
+                label: "Guides and examples",
+                to: "/docs/category/guides-and-examples",
+              },
             ],
           },
           {
@@ -111,6 +128,10 @@ const config: Config = {
               {
                 label: "Hosting",
                 to: "/docs/build/hosting",
+              },
+              {
+                label: "Analytics",
+                to: "/docs/build/analytics",
               },
             ],
           },
@@ -145,6 +166,10 @@ const config: Config = {
               {
                 label: "Blog",
                 to: "/blog",
+              },
+              {
+                label: "Showcase",
+                to: "/showcase",
               },
               {
                 label: "Twitter",

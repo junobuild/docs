@@ -4,22 +4,30 @@ sidebar_position: 1
 
 # Getting started
 
-Welcome to Juno, an open-source Blockchain-as-a-Service platform that makes building decentralized apps faster and easier than ever before ⚡️🚀🤯.
+Welcome to Juno, an open-source Blockchain-as-a-Service platform that empowers developers to build decentralized apps more efficiently than ever before 🚀🤯.
 
-Unlike traditional Backend-as-a-Service (BaaS) platforms like Google Firebase or AWS Amplify, Juno runs entirely on the blockchain.
+Unlike traditional Web2 platforms like Google Firebase or AWS Amplify, Juno operates entirely on the blockchain. This means you can delegate the complexities of web or mobile development on Web3, allowing you to focus solely on the frontend.
 
-It allows you to outsource all the behind-the-scenes aspects of your web or mobile development, giving you the ability to focus on the frontend.
-
-Our platform operates without controlling your data or work. With Juno, you truly own your creations.
+Our unique approach ensures that you retain full control over your data and work. With Juno, your creations remain truly your own.
 
 ## Add Juno to your JavaScript project
 
-To get started with Juno, follow our [guide](add-juno-to-an-app/create-a-satellite.md) to launch your first [satellite](terminology.md#satellite) and integrate our JavaScript SDK into your project.
+To get started with Juno, launch your first [satellite](/docs/add-juno-to-an-app/create-a-satellite.md) – a smart contract container packed with features for your project, and integrate our JavaScript SDK into your project.
+
+## Having a preferred frameworks?
+
+Juno is framework-agnostic and can be easily integrated with all modern frontend frameworks or even used without one. Follow our quick start [guides and examples](/docs/category/guides-and-examples) to stay true to your favorite stack.
 
 ## Build
 
-Build and launch your project with the help of our [authentication](build/authentication.md), [datastore](build/datastore.md), [storage](build/storage.md), and [hosting](build/hosting.md) services.
+Develop and launch your project with the help of our comprehensive set of features:
+
+- [Authentication](build/authentication.md)
+- [Datastore](build/datastore.md)
+- [Storage](build/storage.md)
+- [Hosting](build/hosting.md)
+- [Analytics](build/analytics.md)
 
 ## Learn concepts
 
-Learn about Juno's [infrastructure](category/infrastructure) and [architecture](architecture.md) to fully understand how it works.
+Familiarize yourself with Juno's [infrastructure](category/infrastructure) and [architecture](architecture.md) to gain a better understanding of its operation.

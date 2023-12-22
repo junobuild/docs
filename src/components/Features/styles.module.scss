@@ -1,19 +1,9 @@
+@use "../../mixins/grid";
+
 .grid {
-  display: flex;
-  flex-direction: column;
-  --grid-gap: 2rem;
-  gap: var(--grid-gap);
+  @include grid.columns;
 
   margin: 5rem 0 0;
-
-  @media screen and (min-width: 768px) {
-    display: grid;
-    grid-template-columns: repeat(2, calc((100% - (1 * var(--grid-gap))) / 2));
-  }
-
-  @media screen and (min-width: 996px) {
-    grid-template-columns: repeat(3, calc((100% - (3 * var(--grid-gap))) / 3));
-  }
 }
 
 .sub {
