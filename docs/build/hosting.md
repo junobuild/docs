@@ -95,6 +95,7 @@ You can configure customized hosting behavior for requests to your site.
 - Tweak `gzip` compression for best performance. [Learn how.](#gzip)
 - Customize the `encoding` behavior of your files. [Learn how.](#encoding-types)
 - Allow your project to be embedded as an `iframe`. [Learn how.](#iframe)
+- Customize `assertions` to modify the default verification behavior of the CLI. [Learn how.](#assertions)
 
 #### Where do you define your Hosting configuration?
 
@@ -312,6 +313,38 @@ You can customize this behavior by setting the `iframe` option to either `same-o
     "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
     "source": "dist",
     "iframe": "same-origin"
+  }
+}
+```
+
+### Assertions
+
+The CLI conducts several assertions when interacting with your Satellite, one of which involves monitoring the heap memory size. Typically, the CLI checks to ensure that the heap memory does not exceed the 1 GB limit before deployment. For instance, if your heap memory usage is close to 900 MB, the CLI will prompt you to confirm the deployment.
+
+You can customize this behavior by adjusting the heap memory limit in bytes. For example, to set a new limit of 678 MB, update your configuration as follows:
+
+```json
+{
+  "satellite": {
+    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "source": "dist",
+    "assertions": {
+      "heapMemory": 678000000
+    }
+  }
+}
+```
+
+Alternatively, these checks can be completely disabled. To do so, set the `heapMemory` assertion to `false`:
+
+```json
+{
+  "satellite": {
+    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "source": "dist",
+    "assertions": {
+      "heapMemory": false
+    }
   }
 }
 ```
