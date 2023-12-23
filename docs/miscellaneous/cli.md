@@ -147,10 +147,16 @@ Running the following command from the project directory upgrade your satellite 
 juno upgrade
 ```
 
-By adding a suffix, you can upgrade your mission control:
+By adding a suffix `-m` or `--mission-control`, you can upgrade your mission control:
 
 ```bash
 juno upgrade -m
+```
+
+Likewise, by using the suffix `-o` or `--orbiter`, you can upgrade your orbiter for the analytics:
+
+```bash
+juno upgrade -o
 ```
 
 :::caution
