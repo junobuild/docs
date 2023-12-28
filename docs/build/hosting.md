@@ -103,7 +103,7 @@ You define your Hosting configuration in your `juno.json` file. The CLI automati
 
 #### How do you apply your changes?
 
-To apply any changes you make to your configuration in `juno.json` to your satellite, simply use the [juno config](../miscellaneous/cli.md#config)g command with the CLI.
+To apply any changes you make to your configuration in `juno.json` to your satellite, simply use the [juno config](../miscellaneous/cli.md#config) command with the CLI.
 
 ### Source
 
