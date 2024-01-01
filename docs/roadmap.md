@@ -8,7 +8,7 @@ We have big plans for the near and distant future.
 
 :::note
 
-Last update: Oct. 6, 2023
+Last update: Jan. 1, 2024
 
 :::
 
@@ -47,5 +47,5 @@ To support growth and foster new ideas, we aim to make various infrastructure im
 
 Easing the development process will always be a priority. To that end, we plan to provide:
 
-- A local emulator suite for developers to build and test their apps
+- A local emulator suite for developers to build and test their apps ⚙️
 - Continuously updated documentation, along with sample repos and tutorials.
