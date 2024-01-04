@@ -14,7 +14,7 @@ Make sure you have Docker installed on your machine ([Windows](https://docs.dock
 
 In the folder, create a `docker-compose.yml` file.
 
-```yml
+```yml title="docker-compose.yml"
 services:
   juno-satellite:
     image: junobuild/satellite:latest
@@ -46,7 +46,7 @@ Replace `my_dapp` in the above snippet with another volume name to suit your nee
 
 For example, if you are developing a "Hello World" project, you could change the volume name to "hello_world".
 
-```yml
+```yml title="docker-compose.yml"
 services:
   juno-satellite:
     image: junobuild/satellite:latest
@@ -82,7 +82,7 @@ The behavior of the Satellite running in the Docker container can be configured 
 
 To create a configuration, create a file named `juno.dev.json` next to your Docker Compose file and populate it with the required fields.
 
-```json
+```json title="docker-compose.yml"
 {
   "satellite": {
     "collections": {}
@@ -131,7 +131,7 @@ export interface JunoDevConfig {
 
 If, for example, we want to configure a "metadata" collection in the Datastore, a "content" collection in the Storage, and provide an additional controller, we could use the following configuration:
 
-```json
+```json title="juno.dev.json"
 {
   "satellite": {
     "collections": {
@@ -166,7 +166,7 @@ If, for example, we want to configure a "metadata" collection in the Datastore, 
 
 The configuration can be placed in a location other than next to the compose file and can be named whatever suits your needs. If you do so, make sure to adapt the compose file accordingly.
 
-```yml
+```yml title="docker-compose.yml"
 services:
   juno-satellite:
     image: junobuild/satellite:latest
@@ -202,8 +202,7 @@ await initJuno({
 
 For those utilizing the [Vite Plugin](plugins.md#vite-plugin), the configuration is similar. Specify the option within the plugin settings:
 
-```javascript
-// vite.config.js
+```javascript title="vite.config.js"
 import juno from "@junobuild/vite-plugin";
 
 export default defineConfig({
