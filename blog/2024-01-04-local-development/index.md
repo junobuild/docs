@@ -127,7 +127,7 @@ await initJuno({
 });
 ```
 
-With the local dApp server active, you can now access it in your browser at [http://localhost:4321](http://localhost:4321]).
+With the local dApp server active, you can now access it in your browser at [http://localhost:4321](http://localhost:4321).
 
 Upon visiting the site, you'll find an option to sign in using Internet Identity. Since everything is deployed locally in a sandbox, your existing identity (anchor) won't be recognized, that's why you will have to create a new one.
 
