@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # Memory
@@ -33,7 +33,7 @@ In contrast, the [analytics](../build/analytics.md) data is saved within stable 
 ## Summary
 
 | Aspect          | Heap Memory                                          | Stable Memory                                       |
-| --------------- |------------------------------------------------------| --------------------------------------------------- |
+| --------------- | ---------------------------------------------------- | --------------------------------------------------- |
 | **Capacity**    | Max 1 GB                                             | Max 96 GB (minus heap size)                         |
 | **Performance** | Fast for read and write operations                   | Slightly slower                                     |
 | **Cost**        | Lower cost                                           | Higher cost (~20x)                                  |
