@@ -179,3 +179,44 @@ services:
 volumes:
   my_dapp:
 ```
+
+## Usage
+
+When integrating your application with the container during Juno initialization, you have two primary options. The first is to set a specific parameter to `true`, which applies the default container configuration. The second option is to provide a custom `string` as the URL of the container, which is especially beneficial if you're using a custom port.
+
+The initialization would look like this:
+
+```typescript
+import { initJuno } from "@junobuild/core";
+
+await initJuno({
+  satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+  container: true,
+});
+```
+
+For those utilizing the [Vite Plugin](plugins.md#vite-plugin), the configuration is similar. Specify the option within the plugin settings:
+
+```javascript
+// vite.config.js
+import juno from "@junobuild/vite-plugin";
+
+export default defineConfig({
+  plugins: [
+    juno({
+      container: true,
+    }),
+  ],
+});
+```
+
+To further streamline the process, you can map environment variables for initialization:
+
+```javascript
+await initJuno({
+  satelliteId: import.meta.env.VITE_SATELLITE_ID,
+  container: import.meta.env.VITE_CONTAINER,
+});
+```
+
+This approach ensures a more dynamic and flexible setup, catering to various development environments and scenarios.
