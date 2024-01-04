@@ -91,8 +91,6 @@ docker compose up
 
 And that's it! The container is designed to manage serving a local [Internet Computer](https://internetcomputer.org/) replica. It also embeds a custom CLI which handles deploying and populating the [Internet Identity](https://identity.internetcomputer.org/) and a Satellite. With this setup, you have everything necessary for efficient local development.
 
-![A gif displaying the logs of starting a container](local-development-terminal.gif)
-
 ---
 
 ## Run the dApp
