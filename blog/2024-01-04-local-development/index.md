@@ -73,8 +73,8 @@ There's also a `juno.dev.json` file, which is designed to set up a collection on
       "db": [
         {
           "collection": "counter",
-          "read": "public",
-          "write": "public",
+          "read": "managed",
+          "write": "managed",
           "memory": "stable"
         }
       ]
