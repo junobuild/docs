@@ -316,7 +316,9 @@ You can customize this behavior by setting the `iframe` option to either `same-o
   "satellite": {
     "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
     "source": "dist",
-    "iframe": "same-origin"
+    "storage": {
+      "iframe": "same-origin"
+    }
   }
 }
 ```
