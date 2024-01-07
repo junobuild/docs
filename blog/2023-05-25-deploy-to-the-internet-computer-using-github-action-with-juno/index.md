@@ -78,14 +78,14 @@ jobs:
         run: npm run build
 
       - name: Deploy to Juno
-        uses: buildwithjuno/juno-action@main
+        uses: junobuild/juno-action@main
         with:
           args: deploy
         env:
           JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
-That's it! This configuration sets up the GitHub Action for deployment. It performs a series of steps, including checking out the repository, installing dependencies, building the application, and finally utilizing the [buildwithjuno/juno-action](https://github.com/junobuild/juno-action) GitHub Action to deploy your dapp to Juno.
+That's it! This configuration sets up the GitHub Action for deployment. It performs a series of steps, including checking out the repository, installing dependencies, building the application, and finally utilizing the [junobuild/juno-action](https://github.com/junobuild/juno-action) GitHub Action to deploy your dapp to Juno.
 
 Remember to adjust the code according to your specific requirements, such as modifying the branch name and package manager command to match your setup.
 

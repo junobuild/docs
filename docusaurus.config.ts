@@ -13,7 +13,7 @@ const config: Config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
-  organizationName: "buildwithjuno",
+  organizationName: "junobuild",
   projectName: "juno",
   i18n: {
     defaultLocale: "en",
