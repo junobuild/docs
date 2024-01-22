@@ -139,7 +139,7 @@ Obtaining multiple documents at once can improve performance compared to making 
 You can achieve this by using the `getManyDocs` function:
 
 ```typescript
-import { setManyDocs } from "@junobuild/core";
+import { getManyDocs } from "@junobuild/core";
 
 const docPair1 = {
   collection: "my_collection",
