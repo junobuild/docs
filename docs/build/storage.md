@@ -137,10 +137,10 @@ The `listAssets` function -- in addition to specifying the collection to query -
 
 The function **returns various information**, in the form of an object whose interface is given below.
 
-```javascript
+```typescript
 {
   items: []; // The data - array of assets
-  items_length: bigint; // The numbers of items - basically items.length
+  items_length: bigint; // The number of assets - basically items.length
   items_page?: bigint; // If the query is paginated, at what page (starting from 0) do the items find the place
   matches_length: bigint; // The total number of matching results
   matches_pages?: bigint; // If the query is paginated, the total number (starting from 0) of pages
