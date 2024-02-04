@@ -25,7 +25,7 @@ import { initJuno } from "@junobuild/core";
 
 // TODO: Replace 'satelliteId' with your actual satellite ID
 await initJuno({
-  satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+  satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
 });
 ```
 

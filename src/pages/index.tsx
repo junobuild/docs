@@ -1,23 +1,23 @@
-import React, { useEffect } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Layout from "@theme/Layout";
-import Hero from "@site/src/components/Hero";
-import Features from "@site/src/components/Features";
-import Build from "@site/src/components/Build";
-import Illustration from "@site/src/components/Illustration";
-import Auth from "@site/src/components/Auth";
-import Api from "@site/src/components/Api";
-import Developer from "@site/src/components/Developer";
-import Outro from "@site/src/components/Outro";
 import { initOrbiter } from "@junobuild/analytics";
+import Api from "@site/src/components/Api";
+import Auth from "@site/src/components/Auth";
+import Build from "@site/src/components/Build";
+import Developer from "@site/src/components/Developer";
+import Features from "@site/src/components/Features";
 import Head from "@site/src/components/Head";
+import Hero from "@site/src/components/Hero";
+import Illustration from "@site/src/components/Illustration";
+import Outro from "@site/src/components/Outro";
+import Layout from "@theme/Layout";
+import { useEffect } from "react";
 
 import styles from "./index.module.scss";
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   const {
-    customFields: { dev },
+    customFields: { dev }
   } = siteConfig;
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function Home(): JSX.Element {
     (async () =>
       initOrbiter({
         satelliteId: "ucnx3-aqaaa-aaaal-ab3ea-cai",
-        orbiterId: "3iier-sqaaa-aaaal-aczaa-cai",
+        orbiterId: "3iier-sqaaa-aaaal-aczaa-cai"
       }))();
   }, []);
 

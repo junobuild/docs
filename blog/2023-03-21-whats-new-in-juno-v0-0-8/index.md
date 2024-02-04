@@ -80,9 +80,9 @@ const myList = await listDocs({
   filter: {
     order: {
       desc: true,
-      field: "updated_at",
-    },
-  },
+      field: "updated_at"
+    }
+  }
 });
 ```
 
@@ -104,8 +104,8 @@ import { initJuno } from "@junobuild/core";
 await initJuno({
   satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
   workers: {
-    auth: true, // ----------------------------------|
-  }, //|
+    auth: true // ----------------------------------|
+  } //|
 }); //|
 //|
 authSubscribe((user: User | null) => {

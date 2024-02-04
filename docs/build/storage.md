@@ -77,7 +77,7 @@ import { uploadFile } from "@junobuild/core";
 
 const result = await uploadFile({
   data,
-  collection: "images",
+  collection: "images"
 });
 ```
 
@@ -111,7 +111,7 @@ import { nanoid } from "nanoid";
 const result = await uploadFile({
   data,
   collection: "images",
-  token: nanoid(),
+  token: nanoid()
 });
 ```
 
@@ -125,7 +125,7 @@ The "Storage" provider offers a way to list assets.
 import { listAssets } from "@junobuild/core";
 
 const myList = await listAssets({
-  collection: "images",
+  collection: "images"
 });
 ```
 
@@ -144,7 +144,7 @@ import { deleteAsset } from "@junobuild/core";
 
 await deleteAsset({
   collection: "images",
-  storageFile: myAsset,
+  storageFile: myAsset
 });
 ```
 

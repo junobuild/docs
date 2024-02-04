@@ -64,7 +64,7 @@ function App() {
   useEffect(() => {
     (async () =>
       await initJuno({
-        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
       }))();
   }, []);
 
@@ -74,9 +74,9 @@ function App() {
       doc: {
         key: `my-key-${new Date().getTime()}`,
         data: {
-          hello: "world",
-        },
-      },
+          hello: "world"
+        }
+      }
     });
 
     setRecord(doc);

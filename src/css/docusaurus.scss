@@ -30,8 +30,12 @@ a.pagination-nav__link,
 a.card {
   box-shadow: 2px 2px rgba(0, 0, 0, 0.15);
 
-  transition: color 0.15s ease-out, background 0.15s ease-out,
-    transform 0.15s ease-out, box-shadow 0.25s ease-out, border 0.15s ease-out;
+  transition:
+    color 0.15s ease-out,
+    background 0.15s ease-out,
+    transform 0.15s ease-out,
+    box-shadow 0.25s ease-out,
+    border 0.15s ease-out;
 
   &:active,
   &:active:focus {

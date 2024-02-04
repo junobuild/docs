@@ -111,10 +111,10 @@ export default defineConfig({
   vite: {
     plugins: [
       juno({
-        container: true,
-      }),
-    ],
-  },
+        container: true
+      })
+    ]
+  }
 });
 ```
 
@@ -123,7 +123,7 @@ And pass along the environment variable to the initialization:
 ```javascript
 await initJuno({
   satelliteId: import.meta.env.PUBLIC_SATELLITE_ID,
-  container: import.meta.env.PUBLIC_CONTAINER,
+  container: import.meta.env.PUBLIC_CONTAINER
 });
 ```
 

@@ -62,7 +62,7 @@ Add an `insert` function to persist a document.
   onMount(
     async () =>
       await initJuno({
-        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
       })
   );
 </script>
@@ -84,9 +84,9 @@ Replace the existing content in your `+page.svelte` file in the same `routes` di
       doc: {
         key: `my-key-${new Date().getTime()}`,
         data: {
-          hello: "world",
-        },
-      },
+          hello: "world"
+        }
+      }
     }));
 </script>
 
@@ -138,8 +138,8 @@ import adapter from "@sveltejs/adapter-static";
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
-    adapter: adapter(),
-  },
+    adapter: adapter()
+  }
 };
 
 export default config;

@@ -196,7 +196,7 @@ await initJuno({
   satelliteId: DEV
     ? "jx5yt-yyaaa-aaaal-abzbq-cai"
     : "aaaaa-bbbbb-ccccc-ddddd-cai",
-  container: true,
+  container: true
 });
 ```
 
@@ -208,9 +208,9 @@ import juno from "@junobuild/vite-plugin";
 export default defineConfig({
   plugins: [
     juno({
-      container: true,
-    }),
-  ],
+      container: true
+    })
+  ]
 });
 ```
 
@@ -219,7 +219,7 @@ To further streamline the process, you can map environment variables for initial
 ```javascript
 await initJuno({
   satelliteId: import.meta.env.VITE_SATELLITE_ID,
-  container: import.meta.env.VITE_CONTAINER,
+  container: import.meta.env.VITE_CONTAINER
 });
 ```
 

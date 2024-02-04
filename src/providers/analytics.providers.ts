@@ -1,17 +1,17 @@
-import { trackEvent as trackEventOrbiter } from "@junobuild/analytics";
 import type { DocusaurusConfig } from "@docusaurus/types";
+import { trackEvent as trackEventOrbiter } from "@junobuild/analytics";
 
 export const trackEvent = async ({
   name,
   metadata,
-  siteConfig,
+  siteConfig
 }: {
   name: string;
   metadata?: Record<string, string>;
   siteConfig: DocusaurusConfig;
 }): Promise<boolean> => {
   const {
-    customFields: { dev },
+    customFields: { dev }
   } = siteConfig;
 
   if (dev) {
@@ -20,7 +20,7 @@ export const trackEvent = async ({
 
   await trackEventOrbiter({
     name,
-    metadata,
+    metadata
   });
 
   return true;

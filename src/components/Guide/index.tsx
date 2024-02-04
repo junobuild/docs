@@ -1,14 +1,13 @@
-import React from "react";
 import styles from "./styles.module.scss";
 
 export default function Feature({
   icon,
   title,
   link,
-  external = false,
+  external = false
 }): JSX.Element {
   let attr = {
-    ...(external && { rel: "noopener noreferrer", target: "_blank" }),
+    ...(external && { rel: "noopener noreferrer", target: "_blank" })
   };
 
   return (

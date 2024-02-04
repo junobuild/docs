@@ -43,8 +43,8 @@ await getDoc({
   satellite: {
     identity: new AnonymousIdentity(),
     satelliteId: "t6rzw-2iaaa-aaaaa-aaama-cai",
-    fetch,
-  },
+    fetch
+  }
 });
 ```
 

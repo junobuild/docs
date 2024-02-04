@@ -1,13 +1,12 @@
-import React from "react";
-import styles from "./styles.module.scss";
 import CodeBlock from "@theme/CodeBlock";
+import styles from "./styles.module.scss";
 
 export default function Snippet({
   title,
   texts,
   code,
   inverted,
-  lang = "language-javascript",
+  lang = "language-javascript"
 }): JSX.Element {
   return (
     <div className={`${styles.grid} ${inverted ? styles.inverted : ""}`}>

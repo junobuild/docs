@@ -1,12 +1,11 @@
-import React from "react";
-import styles from "./styles.module.scss";
 import Link from "@docusaurus/Link";
 import Feature from "@site/src/components/Feature";
+import Analytics from "@site/static/icons/analytics.svg";
 import Authentication from "@site/static/icons/authentication.svg";
 import Datastore from "@site/static/icons/datastore.svg";
-import Storage from "@site/static/icons/storage.svg";
 import Hosting from "@site/static/icons/hosting.svg";
-import Analytics from "@site/static/icons/analytics.svg";
+import Storage from "@site/static/icons/storage.svg";
+import styles from "./styles.module.scss";
 
 export default function Features(): JSX.Element {
   return (

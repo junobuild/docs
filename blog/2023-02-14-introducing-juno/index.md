@@ -68,7 +68,7 @@ const key = "my_key";
 
 const doc = await getDoc({
   collection,
-  key,
+  key
 });
 
 await setDoc({
@@ -77,9 +77,9 @@ await setDoc({
     key,
     ...doc,
     data: {
-      email: myNewEmail,
-    },
-  },
+      email: myNewEmail
+    }
+  }
 });
 ```
 
@@ -96,7 +96,7 @@ const input = document.querySelector("input");
 
 const { downloadUrl } = await uploadFile({
   data: input.files[0],
-  collection: "images",
+  collection: "images"
 });
 ```
 

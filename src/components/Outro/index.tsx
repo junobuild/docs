@@ -1,6 +1,5 @@
-import React from "react";
-import styles from "./styles.module.scss";
 import Start from "@site/src/components/Start";
+import styles from "./styles.module.scss";
 
 export default function Outro(): JSX.Element {
   return (

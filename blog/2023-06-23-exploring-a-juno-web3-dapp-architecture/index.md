@@ -247,7 +247,7 @@ export const setMetadata = ({ key, name }: Metadata) =>
     [
       [KEY_LAST_CHANGE, Date.now()],
       [KEY_SCENE, key],
-      [KEY_NAME, name],
+      [KEY_NAME, name]
     ],
     stateStore
   );
@@ -288,7 +288,7 @@ As mentioned in the architecture chapter, the concept of the project is to conti
 
 ```typescript
 onmessage = async ({
-  data: { msg, data },
+  data: { msg, data }
 }: MessageEvent<PostMessage<PostMessageDataRequest>>) => {
   switch (msg) {
     case "start":

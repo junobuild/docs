@@ -1,10 +1,9 @@
-import React from "react";
-import clsx from "clsx";
-import styles from "./styles.module.scss";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Start from "@site/src/components/Start";
 import { trackEvent } from "@site/src/providers/analytics.providers";
+import clsx from "clsx";
+import styles from "./styles.module.scss";
 
 export default function Hero(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
@@ -29,7 +28,7 @@ export default function Hero(): JSX.Element {
             onClick={() =>
               trackEvent({
                 name: "documentation",
-                siteConfig,
+                siteConfig
               })
             }
           >

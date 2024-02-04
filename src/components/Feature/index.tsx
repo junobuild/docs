@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./styles.module.scss";
 
 export default function Feature({
@@ -6,7 +5,7 @@ export default function Feature({
   title,
   text,
   link,
-  tutorial = undefined,
+  tutorial = undefined
 }): JSX.Element {
   return (
     <article>

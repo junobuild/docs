@@ -58,7 +58,7 @@ function App() {
   useEffect(() => {
     (async () =>
       await initJuno({
-        satelliteId: "pycrs-xiaaa-aaaal-ab6la-cai",
+        satelliteId: "pycrs-xiaaa-aaaal-ab6la-cai"
       }))();
   }, []);
 
@@ -141,8 +141,8 @@ await setDoc<Example>({
   collection: "my_collection_key",
   doc: {
     key: "my_document_key",
-    data: myExample,
-  },
+    data: myExample
+  }
 });
 ```
 
@@ -162,9 +162,9 @@ export const Example = () => {
       doc: {
         key: nanoid(),
         data: {
-          text: inputText,
-        },
-      },
+          text: inputText
+        }
+      }
     });
   };
 
@@ -204,7 +204,7 @@ export const ListExample = () => {
   const list = async () => {
     const { items } = await listDocs({
       collection: "notes",
-      filter: {},
+      filter: {}
     });
 
     setItems(items);
@@ -258,7 +258,7 @@ export const UploadExample = () => {
     const { downloadUrl } = await uploadFile({
       collection: "images",
       data: file,
-      filename,
+      filename
     });
 
     setImage(downloadUrl);
@@ -305,7 +305,7 @@ export const ListAssetsExample = () => {
   const list = async () => {
     const { assets } = await listAssets({
       collection: "images",
-      filter: {},
+      filter: {}
     });
 
     setAssets(assets);

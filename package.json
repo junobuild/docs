@@ -24,7 +24,7 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "format": "prettier --plugin-search-dir . --write ."
+    "format": "prettier . --write ."
   },
   "dependencies": {
     "@docusaurus/core": "^3.1.1",
@@ -43,6 +43,7 @@
     "@types/react": "^18.2.52",
     "docusaurus-plugin-sass": "^0.2.5",
     "prettier": "^3.2.5",
+    "prettier-plugin-organize-imports": "^3.2.4",
     "sass": "^1.70.0",
     "typescript": "^5.3.3"
   },

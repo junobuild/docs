@@ -1,4 +1,3 @@
-import React from "react";
 import Snippet from "@site/src/components/Snippet";
 
 export default function Api(): JSX.Element {
@@ -6,7 +5,7 @@ export default function Api(): JSX.Element {
     <Snippet
       title="Efficient API."
       texts={[
-        "Juno's API is designed with TypeScript definitions to provide powerful blockchain features through easy-to-use and streamlined functions.",
+        "Juno's API is designed with TypeScript definitions to provide powerful blockchain features through easy-to-use and streamlined functions."
       ]}
       code={`import { setDoc } from "@junobuild/core";
 

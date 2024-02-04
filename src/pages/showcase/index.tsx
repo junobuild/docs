@@ -1,9 +1,8 @@
-import React from "react";
-import Layout from "@theme/Layout";
-import Head from "@site/src/components/Head";
-import styles from "./index.module.scss";
 import Link from "@docusaurus/Link";
+import Head from "@site/src/components/Head";
 import Spotlight from "@site/src/components/Spotlight";
+import Layout from "@theme/Layout";
+import styles from "./index.module.scss";
 
 export default function Showcase({ dapps }): JSX.Element {
   return (

@@ -1,14 +1,13 @@
-import React from "react";
-import styles from "./styles.module.scss";
 import Guide from "@site/src/components/Guide";
-import Svelte from "@site/static/icons/svelte.svg";
-import ReactLogo from "@site/static/icons/react.svg";
 import Angular from "@site/static/icons/angular.svg";
-import JavaScript from "@site/static/icons/javascript.svg";
-import NodeJS from "@site/static/icons/nodejs.svg";
-import Vue from "@site/static/icons/vue.svg";
-import NextJS from "@site/static/icons/nextjs.svg";
 import Astro from "@site/static/icons/astro.svg";
+import JavaScript from "@site/static/icons/javascript.svg";
+import NextJS from "@site/static/icons/nextjs.svg";
+import NodeJS from "@site/static/icons/nodejs.svg";
+import ReactLogo from "@site/static/icons/react.svg";
+import Svelte from "@site/static/icons/svelte.svg";
+import Vue from "@site/static/icons/vue.svg";
+import styles from "./styles.module.scss";
 
 export default function Build(): JSX.Element {
   return (

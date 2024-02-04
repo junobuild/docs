@@ -70,7 +70,7 @@ After completing both of these steps, you can initialize Juno with your satellit
   onMounted(
     async () =>
       await initJuno({
-        satelliteId: "pycrs-xiaaa-aaaal-ab6la-cai",
+        satelliteId: "pycrs-xiaaa-aaaal-ab6la-cai"
       })
   );
 </script>
@@ -155,8 +155,8 @@ await setDoc<Example>({
   collection: "my_collection_key",
   doc: {
     key: "my_document_key",
-    data: myExample,
-  },
+    data: myExample
+  }
 });
 ```
 
@@ -178,9 +178,9 @@ Since the documents in the collection are identified by a unique key, we create 
       doc: {
         key,
         data: {
-          text: inputText.value,
-        },
-      },
+          text: inputText.value
+        }
+      }
     });
   };
 </script>
@@ -215,7 +215,7 @@ For the purpose of this tutorial, we will keep the example minimalistic. Our obj
 
   const list = async () => {
     const { items: data } = await listDocs({
-      collection: "notes",
+      collection: "notes"
     });
 
     items.value = data;
@@ -269,7 +269,7 @@ To accomplish this, we can create a key using a combination of the user's unique
     const { downloadUrl } = await uploadFile({
       collection: "images",
       data: file.value,
-      filename,
+      filename
     });
 
     console.log("Uploaded", downloadUrl);
@@ -302,7 +302,7 @@ Similar to the previous example with documents, we will keep this example minima
 
   const list = async () => {
     const { assets: images } = await listAssets({
-      collection: "images",
+      collection: "images"
     });
 
     assets.value = images;

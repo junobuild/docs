@@ -1,13 +1,12 @@
-import React from "react";
-import styles from "./index.module.scss";
 import Link from "@docusaurus/Link";
 import { ShowcaseSpotlight } from "@site/src/types/showcase";
+import styles from "./index.module.scss";
 
 export default function Spotlight({
   title,
   description,
   img,
-  url,
+  url
 }: ShowcaseSpotlight): JSX.Element {
   return (
     <Link href={url} target="_blank" rel="noreferrer noopener nofollow">

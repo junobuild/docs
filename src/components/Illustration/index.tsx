@@ -1,4 +1,3 @@
-import React from "react";
 import IllustrationSvg from "@site/static/img/illustration.svg";
 
 import styles from "./styles.module.scss";

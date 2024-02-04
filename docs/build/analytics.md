@@ -115,7 +115,7 @@ import { initOrbiter } from "@junobuild/analytics";
 // TODO: Replace the following satelliteId and orbiterId with the effective ID.
 await initOrbiter({
   satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
-  orbiterId: "eeeee-fffff-ddddd-11111-cai",
+  orbiterId: "eeeee-fffff-ddddd-11111-cai"
 });
 ```
 
@@ -141,7 +141,7 @@ await cp(
   "node_modules/@junobuild/analytics/dist/workers/",
   "./static/workers",
   {
-    recursive: true,
+    recursive: true
   },
   (err) => {
     if (err === null) {
@@ -200,8 +200,8 @@ await trackEvent({
   name: "Your custom event",
   metadata: {
     your_key: "A value",
-    your_other_key: "Another value",
-  },
+    your_other_key: "Another value"
+  }
 });
 ```
 

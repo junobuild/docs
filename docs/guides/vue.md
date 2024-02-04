@@ -61,7 +61,7 @@ Add an `insert` function to persist a document.
   onMounted(
     async () =>
       await initJuno({
-        satelliteId: "wjar4-kiaaa-aaaal-ab4va-cai",
+        satelliteId: "wjar4-kiaaa-aaaal-ab4va-cai"
       })
   );
 
@@ -73,9 +73,9 @@ Add an `insert` function to persist a document.
       doc: {
         key: `my-key-${new Date().getTime()}`,
         data: {
-          hello: "world",
-        },
-      },
+          hello: "world"
+        }
+      }
     });
   };
 </script>

@@ -1,6 +1,5 @@
-import React from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Head from "@docusaurus/Head";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 export default function Home({ children }): JSX.Element {
   const { siteConfig } = useDocusaurusContext();

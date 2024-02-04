@@ -67,8 +67,8 @@ await setDoc<Example>({
   collection: "my_collection_key",
   doc: {
     key: "my_document_key",
-    data: myExample,
-  },
+    data: myExample
+  }
 });
 ```
 
@@ -88,8 +88,8 @@ await setDoc<Example>({
   collection: "my_collection_key",
   doc: {
     key: myId,
-    data: myExample,
-  },
+    data: myExample
+  }
 });
 ```
 
@@ -105,8 +105,8 @@ await setDoc<Example>({
   doc: {
     key: "my_document_key_1",
     data: myExample,
-    description: "This is a description",
-  },
+    description: "This is a description"
+  }
 });
 
 await setDoc<Example>({
@@ -114,8 +114,8 @@ await setDoc<Example>({
   doc: {
     key: "my_document_key_2",
     data: myExample,
-    description: "#programming #technology #web3 #junobuild",
-  },
+    description: "#programming #technology #web3 #junobuild"
+  }
 });
 ```
 
@@ -128,7 +128,7 @@ import { getDoc } from "@junobuild/core";
 
 const myDoc = await getDoc({
   collection: "my_collection_key",
-  key: myId,
+  key: myId
 });
 ```
 
@@ -143,12 +143,12 @@ import { getManyDocs } from "@junobuild/core";
 
 const docPair1 = {
   collection: "my_collection",
-  key: "my_document_key_1",
+  key: "my_document_key_1"
 };
 
 const docPair2 = {
   collection: "my_other_collection",
-  key: "my_document_key_2",
+  key: "my_document_key_2"
 };
 
 const docs = await getManyDocs({ docs: [docPair1, docPair2] });
@@ -165,8 +165,8 @@ await setDoc<Example>({
   collection: "my_collection_key",
   doc: {
     ...myDoc, // includes 'key' and 'updated_at'
-    data: myNewData,
-  },
+    data: myNewData
+  }
 });
 ```
 
@@ -192,9 +192,9 @@ const update1 = {
   doc: {
     key: "my_document_key_1",
     data: {
-      hello: "world",
-    },
-  },
+      hello: "world"
+    }
+  }
 };
 
 const update2 = {
@@ -202,9 +202,9 @@ const update2 = {
   doc: {
     key: "my_document_key_2",
     data: {
-      count: 123,
-    },
-  },
+      count: 123
+    }
+  }
 };
 
 const docs = await setManyDocs({ docs: [update1, update2] });
@@ -218,7 +218,7 @@ To list documents, use the `listDocs` function:
 import { listDocs } from "@junobuild/core";
 
 const myList = await listDocs({
-  collection: "my_collection_key",
+  collection: "my_collection_key"
 });
 ```
 
@@ -232,9 +232,9 @@ const myList = await listDocs({
   filter: {
     order: {
       desc: true,
-      field: "updated_at",
-    },
-  },
+      field: "updated_at"
+    }
+  }
 });
 ```
 
@@ -255,7 +255,7 @@ import { deleteDoc } from "@junobuild/core";
 
 await deleteDoc<Example>({
   collection: "my_collection_key",
-  doc: myDoc,
+  doc: myDoc
 });
 ```
 

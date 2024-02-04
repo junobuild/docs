@@ -15,12 +15,12 @@ These values allow you to instantiate Juno in your code without the need to manu
 ```javascript
 await Promise.all([
   initJuno({
-    satelliteId: import.meta.env.VITE_SATELLITE_ID,
+    satelliteId: import.meta.env.VITE_SATELLITE_ID
   }),
   initOrbiter({
     satelliteId: import.meta.env.VITE_SATELLITE_ID,
-    orbiterId: import.meta.env.VITE_ORBITER_ID,
-  }),
+    orbiterId: import.meta.env.VITE_ORBITER_ID
+  })
 ]);
 ```
 
@@ -37,7 +37,7 @@ npm i @junobuild/vite-plugin -D
 import juno from "@junobuild/vite-plugin";
 
 export default defineConfig({
-  plugins: [juno()],
+  plugins: [juno()]
 });
 ```
 
