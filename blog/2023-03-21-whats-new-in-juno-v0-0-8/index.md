@@ -7,7 +7,7 @@ tags: [release]
 
 A month ago, the first beta for Juno was released to the world. Since then, we have been fixing bugs and gathering feedback on what to tackle next. Today, we are excited to announce the release of some of our most requested features, which include:
 
-- [Enhanced controller user experience](#improved-controllers-user-experience)
+- [Enhanced controller user experience](#enhanced-controller-user-experience)
 - [Custom domains support](#custom-domains-support)
 - [Expanded ordering and filtering options](#expanded-ordering-and-filtering-options)
 - [New CLI and JS library features](#new-cli-and-js-library-features)

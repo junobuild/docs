@@ -32,7 +32,7 @@ Unless you use the optional [`token` parameter](#protected-asset) to persist an 
 
 Each satellite has specific memory limits. For detailed information, please refer to the related [documentation](../miscellaneous/memory.md) page.
 
-There is no specific limit on the size of assets (files) that can be uploaded to Juno, unless you choose to set an [optional rule](#additional-rules) to restrict it.
+There is no specific limit on the size of assets (files) that can be uploaded to Juno, unless you choose to set an optional [rule](#rules) to restrict it.
 
 ## Collections
 
