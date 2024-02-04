@@ -222,7 +222,7 @@ const myList = await listDocs({
 });
 ```
 
-The function accepts various optional parameters, including a matcher (a regex applied to the document keys and descriptions), pagination options, and sorting order.
+The function **accepts various optional parameters**, including a matcher (a regex applied to the document keys and descriptions), pagination options, and sorting order.
 
 ```javascript
 import { listDocs } from "@junobuild/core";
@@ -245,6 +245,18 @@ Sorting can be applied descending or ascending to following fields:
 - `created_at`
 
 Options `matcher`, `paginate` and `order` can be use together.
+
+The function **returns various information**, in the form of an object whose interface is given below.
+
+```typescript
+{
+  items: []; // The data - array of documents
+  items_length: bigint; // The number of documents - basically items.length
+  items_page?: bigint; // If the query is paginated, at what page (starting from 0) do the items find the place
+  matches_length: bigint; // The total number of matching results
+  matches_pages?: bigint; // If the query is paginated, the total number (starting from 0) of pages
+}
+```
 
 ## Delete a document
 
