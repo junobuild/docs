@@ -5,8 +5,8 @@ export default function Outro(): JSX.Element {
   return (
     <div className={styles.outro}>
       <p className={`${styles.sub} ${styles.time}`}>
-        Develop your next decentralized app in{" "}
-        <span className={styles.bold}>no time</span>.
+        Develop your next dApp at{" "}
+        <span className={styles.bold}>Lightning Speed</span>.
       </p>
 
       <Start position="footer" />

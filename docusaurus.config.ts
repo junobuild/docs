@@ -7,7 +7,7 @@ const darkCodeTheme = themes.dracula;
 
 const config: Config = {
   title: "Juno",
-  tagline: "Build Web3 dApps like Web2",
+  tagline: "Build Apps on the Web3 Space",
   url: "https://juno.build",
   baseUrl: "/",
   onBrokenLinks: "throw",
