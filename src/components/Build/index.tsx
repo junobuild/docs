@@ -15,7 +15,7 @@ export default function Build(): JSX.Element {
       <h2 className={styles.sub}>Crafted for web devs.</h2>
       <p className={styles.build}>
         There are numerous ways to develop your projects without compromising on
-        your favorite frontend technologies.
+        your favorite technologies.
       </p>
 
       <div className={styles.grid}>
@@ -61,13 +61,7 @@ export default function Build(): JSX.Element {
           icon={<JavaScript />}
           external={true}
         />
-      </div>
 
-      <p className={styles.build}>
-        Enhanced with powerful tools for seamless blockchain features.
-      </p>
-
-      <div className={styles.grid}>
         <Guide
           title="Juno can also be extended with custom backend code with Rust"
           link="https://github.com/junobuild/examples/blob/main/rust/hooks"

@@ -10,7 +10,7 @@ export default function Auth(): JSX.Element {
       ]}
       code={`import { signIn } from "@junobuild/core";
 
-await signIn();`}
+<button onClick={signIn}>Sign-in</button>`}
       inverted={false}
     />
   );
