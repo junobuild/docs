@@ -10,7 +10,7 @@ import styles from "./styles.module.scss";
 export default function Features(): JSX.Element {
   return (
     <>
-      <h3 className={styles.sub}>Embrace Cloud 3.0 with Ease</h3>
+      <h3 className={styles.sub}>Prototype a dApp in a weekend</h3>
       <p>Blockchainless with minimal carbon impact.</p>
 
       <div className={styles.grid}>

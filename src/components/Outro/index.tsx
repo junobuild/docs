@@ -5,7 +5,7 @@ export default function Outro(): JSX.Element {
   return (
     <div className={styles.outro}>
       <p className={`${styles.sub} ${styles.time}`}>
-        Develop your next dApp at{" "}
+        Embrace Cloud 3.0 at{" "}
         <span className={styles.bold}>Lightning Speed</span>.
       </p>
 
