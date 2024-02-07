@@ -59,7 +59,8 @@ const config: Config = {
         title: "Juno",
         logo: {
           alt: "Juno Logo",
-          src: "img/logo.svg"
+          src: "img/logo.svg",
+          srcDark: "img/logo_dark.svg"
         },
         items: [
           {
