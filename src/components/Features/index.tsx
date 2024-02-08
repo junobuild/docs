@@ -3,6 +3,7 @@ import Feature from "@site/src/components/Feature";
 import Analytics from "@site/static/icons/analytics.svg";
 import Authentication from "@site/static/icons/authentication.svg";
 import Datastore from "@site/static/icons/datastore.svg";
+import Functions from "@site/static/icons/functions.svg";
 import Hosting from "@site/static/icons/hosting.svg";
 import Storage from "@site/static/icons/storage.svg";
 import styles from "./styles.module.scss";
@@ -56,6 +57,17 @@ export default function Features(): JSX.Element {
             </Link>
           }
           icon={<Hosting />}
+        />
+
+        <Feature
+          title="Functions"
+          text="Execute custom code in response to background events, extend Juno's smart contracts, and develop features that run on-chain."
+          link={
+            <Link to="/docs/build/functions" className={styles.link}>
+              Learn more
+            </Link>
+          }
+          icon={<Functions />}
         />
 
         <Feature
