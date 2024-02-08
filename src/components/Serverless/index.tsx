@@ -3,9 +3,9 @@ import Snippet from "@site/src/components/Snippet";
 export default function Developer(): JSX.Element {
   return (
     <Snippet
-      title="Hooks."
+      title="Serverless Functions."
       texts={[
-        "Write strongly-typed serverless functions that are triggered automatically to run custom logic on your smart contract."
+        "Enhance Juno's capabilities with strongly-typed hooks, automatically triggered to execute custom logic on your smart contract."
       ]}
       code={`#[derive(Serialize, Deserialize)]
 struct Person {
