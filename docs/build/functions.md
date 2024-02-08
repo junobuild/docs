@@ -4,13 +4,15 @@ sidebar_position: 5
 
 # Functions
 
-Juno's Functions utilize a set of Rust-based macros to facilitate the creation and management of responsive, serverless behaviors within smart contracts, or "Satellites." These functions are triggered by specific events, such as document and asset operations, enabling developers to embed custom logic directly into the blockchain environment.
+Juno's Functions utilize a set of Rust-based macros to facilitate the creation and management of responsive, serverless behaviors within smart contracts, or "Satellites". These functions are triggered by specific events, such as document and asset operations, enabling developers to embed custom logic directly into the blockchain environment.
 
 ---
 
 ## How does it work?
 
 Functions in Juno are defined using hooks that automatically handle event triggers related to documents and assets. These hooks include creating, updating, and deleting operations, allowing for a wide range of automated responses within your Satellite.
+
+A naive schema representation of a hook that is triggered when a document is set:
 
 ![Functions hooks flow](../img/functions.png)
 
@@ -58,7 +60,7 @@ Once your project is scaffolded, proceed to define Rust functions and annotate t
 
 ### Local Development
 
-For local development and testing, a sandbox environment is essential. With Docker installed and using the CLI, you can establish this environment by running `juno dev start`. Alternatively, manual setup instructions are available in the documentation for a more customized approach.
+For local development and testing, a sandbox environment is essential. With Docker installed and using the CLI, you can establish this environment by running `juno dev start`. Alternatively, manual setup instructions are available in the [documentation](../miscellaneous/local-development.md) for a more customized approach.
 
 :::note
 
