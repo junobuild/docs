@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Functions
 
-Juno's Functions utilize a set of Rust-based macros to facilitate the creation and management of responsive, serverless behaviors within smart contracts, or [Satellites](../terminology.md#satellite). These functions are triggered by specific events, such as document and asset operations, enabling developers to embed custom logic directly into the blockchain environment.
+Functions are a set of Rust-based features enabling developers to extend the native capabilities of Satellites. Functions facilitate the creation and management of responsive, serverless behaviors within smart contracts, or [Satellites](../terminology.md#satellite). Triggered by specific events like document and asset operations, they allow developers to embed custom logic directly into the blockchain environment.
 
 ---
 
