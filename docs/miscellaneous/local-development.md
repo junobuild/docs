@@ -6,13 +6,29 @@ sidebar_position: 4
 
 When you get started with Juno, you are using your smart contract deployed on the blockchain in production. If you are interested in developing or testing your apps in continuous integration workflows, this guide will show you how you can run a Satellite in a Docker sandbox.
 
+---
+
 ## Before you begin
 
 Make sure you have Docker installed on your machine ([Windows](https://docs.docker.com/desktop/install/windows-install/), [MacOS](https://docs.docker.com/desktop/install/mac-install/), or [Linux](https://docs.docker.com/desktop/install/linux-install/)).
 
-## Running
+---
 
-In the folder, create a `docker-compose.yml` file.
+## Getting Started
+
+There are two ways to start a local developer environment:
+
+### Automated
+
+If you've installed Juno's CLI on your machine, you can start a local container by simply running the `juno dev start` command in your terminal.
+
+The first time you execute this command, it will prompt you to automatically populate the required configuration.
+
+To start the container, run this command whenever needed. Use `juno dev stop` to halt the container.
+
+### Manually
+
+In a folder, create a `docker-compose.yml` file.
 
 ```yml title="docker-compose.yml"
 services:
@@ -23,41 +39,20 @@ services:
     volumes:
       - my_dapp:/juno/.juno
       - ./juno.dev.json:/juno/juno.dev.json
+      - ./target/deploy:/juno/target/deploy/
 
 volumes:
   my_dapp:
 ```
 
-Subsequently, modify the following information according to your needs:
+In addition, create a file named `juno.dev.json` next to your Docker Compose file and populate it with the required fields.
 
-### Ports
-
-The default port is 5987. If, for example, you would like to use port 8080, modify the value `5987:5987` to `8080:5987`. The latter is the port exposed by the container.
-
-### Volumes
-
-The image requires a volume to preserve its state. This ensures that when you stop and restart your container, it will resume with the previous state - for instance, if you persist data in its Datastore or Storage, those files will be retained.
-
-The Docker Compose feature automatically creates the volume, so all you need to do is specify it once.
-
-Naming the volume is particularly useful when developing multiple dApps locally, as it allows you to maintain separate states for each project.
-
-Replace `my_dapp` in the above snippet with another volume name to suit your needs.
-
-For example, if you are developing a "Hello World" project, you could change the volume name to "hello_world".
-
-```yml title="docker-compose.yml"
-services:
-  juno-satellite:
-    image: junobuild/satellite:latest
-    ports:
-      - 5987:5987
-    volumes:
-      - hello_world:/juno/.juno # <-------- hello_world modified here
-      - ./juno.dev.json:/juno/juno.dev.json
-
-volumes:
-  hello_world: # <-------- and here
+```json title="juno.dev.json"
+{
+  "satellite": {
+    "collections": {}
+  }
+}
 ```
 
 Once the configuration is set, start the container using the following Docker command:
@@ -76,21 +71,56 @@ It's worth noting that you can run multiple containers simultaneously, as long a
 
 :::
 
-## Configuration
+---
 
-The behavior of the Satellite running in the Docker container can be configured with the help of a local configuration file. Each time the container starts, the configuration is read and applied. Therefore, each time you modify your config, do not forget to restart your container to apply the changes.
+## Hot Reload
 
-To create a configuration, create a file named `juno.dev.json` next to your Docker Compose file and populate it with the required fields.
+The local container supports live reloading. When you modify your [configuration](#configuration) or build custom [Functions](../build/functions.md) to enhance Juno's capabilities with serverless features, those changes will be automatically redeployed.
 
-```json title="docker-compose.yml"
-{
-  "satellite": {
-    "collections": {}
-  }
-}
+---
+
+## Options
+
+Modify the following information of the `docker-compose.yml` file to tweak the container behavior to your needs:
+
+### Ports
+
+The default port is 5987. If, for example, you would like to use port 8080, modify the value `5987:5987` to `8080:5987`. The latter is the port exposed by the container.
+
+### Volumes
+
+The image requires a volume to preserve its state. This ensures that when you stop and restart your container, it will resume with the previous state - for instance, if you persist data in its Datastore or Storage, those files will be retained.
+
+The Docker Compose feature automatically creates the volume, so all you need to do is specify it once.
+
+Naming the volume is particularly useful when developing multiple dApps locally, as it allows you to maintain separate states for each project.
+
+Replace `my_dapp` in the configuration with another volume name to suit your needs.
+
+For example, if you are developing a "Hello World" project, you could change the volume name to "hello_world".
+
+```yml title="docker-compose.yml"
+services:
+  juno-satellite:
+    image: junobuild/satellite:latest
+    ports:
+      - 5987:5987
+    volumes:
+      - hello_world:/juno/.juno # <-------- hello_world modified here
+      - ./juno.dev.json:/juno/juno.dev.json
+      - ./target/deploy:/juno/target/deploy/
+
+volumes:
+  hello_world: # <-------- and here
 ```
 
-This configuration file enables you to configure the collections of the Datastore and Storage that run locally, but it also allows for defining additional controllers for your satellite.
+---
+
+## Configuration
+
+The behavior of the Satellite running in the Docker container can be configured with the help of a local configuration file commonly named `juno.dev.json`.
+
+This configuration file enables you to define the collections of the Datastore and Storage that run locally, but it also allows for defining additional controllers for your satellite.
 
 The definition is as follows:
 
@@ -179,6 +209,8 @@ services:
 volumes:
   my_dapp:
 ```
+
+---
 
 ## Usage
 
