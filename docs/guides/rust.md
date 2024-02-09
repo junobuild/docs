@@ -53,7 +53,7 @@ The local environment detects changes and automatically deploys them, allowing y
 
 ---
 
-### Hooks and Data Operations
+## Hooks and Data Operations
 
 Serverless Functions are triggered by hooks, which in turn respond to events executed in the Satellite, such as setting a document. Before we delve into implementing a hook that manipulates data, let's first set up a JavaScript function in your frontend dApp.
 
