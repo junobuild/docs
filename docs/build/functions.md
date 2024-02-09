@@ -4,13 +4,13 @@ sidebar_position: 5
 
 # Functions
 
-Functions are a set of Rust-based features enabling developers to extend the native capabilities of Satellites. Functions facilitate the creation and management of responsive, serverless behaviors within smart contracts, or [Satellites](../terminology.md#satellite). Triggered by specific events like document and asset operations, they allow developers to embed custom logic directly into the blockchain environment.
+Functions are a set of Rust-based features enabling developers to extend the native capabilities of Satellites. Functions facilitate the creation and management of serverless behaviors within smart contracts, or [Satellites](../terminology.md#satellite). Triggered by specific events like document and asset operations, they allow developers to embed custom logic directly into the blockchain environment.
 
 ---
 
 ## How does it work?
 
-Functions in Juno are defined using hooks that automatically handle event triggers related to documents and assets. These hooks include creating, updating, and deleting operations, allowing for a wide range of automated responses within your Satellite.
+Functions in Juno are defined using hooks that automatically handle event triggers related to documents and assets. These hooks include creating, updating, and deleting operations, allowing for a wide range of features within your Satellite.
 
 A naive schema representation of a hook that is triggered when a document is set:
 
@@ -50,9 +50,7 @@ Incorporating custom Functions into a Juno Satellite requires developers to prep
 
 ### Initial Setup
 
-To start developing Functions, follow this essential step:
-
-At the root of your dApp's source code, execute the `juno dev eject` command via the CLI. This command configures your project with the required Rust setup, including a `Cargo.toml` for dependencies and a `lib.rs` file for defining your Functions.
+To start developing Functions, at the root of your dApp's source code, execute the `juno dev eject` command via the CLI. This command configures your project with the required Rust setup, including a `Cargo.toml` for dependencies and a `lib.rs` file for defining your Functions.
 
 ### Developing Functions
 
@@ -62,7 +60,7 @@ Once your project is scaffolded, proceed to define Rust functions and annotate t
 
 For local development and testing, a sandbox environment is essential. With Docker installed and using the CLI, you can establish this environment by running `juno dev start`. Alternatively, manual setup instructions are available in the [documentation](../miscellaneous/local-development.md) for a more customized approach.
 
-:::note
+:::info
 
 The Docker container for the local sandbox environment supports hot reloading. This means that the container will automatically redeploy your local Satellite each time `juno dev build` is executed and a new version is produced. This feature streamlines the development process, allowing for immediate feedback and faster iteration of your Functions.
 
@@ -78,9 +76,18 @@ juno upgrade -s ./target/deploy/satellite.wasm.gz
 
 This process updates your Satellite with the custom Functions, making them live on the mainnet for real-world application and interaction.
 
+### Summary
+
+| CLI Command                                         | Short description                                                            |
+| --------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `juno dev eject`                                    | Initializes your project to extend a Satellite.                              |
+| `juno dev start`                                    | Starts the local development environment using Docker.                       |
+| `juno dev build`                                    | Compiles your custom Satellite's code. Changes are automatically redeployed. |
+| `juno upgrade -s ./target/deploy/satellite.wasm.gz` | Upgrades your Satellite in production.                                       |
+
 ---
 
-## Implementing Functions
+## Implementation
 
 When you're ready to implement Functions within your Juno Satellite, you'll have a variety of event-driven macros at your disposal, enabling custom logic execution in response to specific actions. Here's how to implement each available Function:
 
@@ -199,10 +206,20 @@ async fn on_delete_many_assets(context: OnDeleteManyAssetsContext) -> Result<(),
 
 Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
 
-## Including the Satellite
+### Including the Satellite
 
 After defining your Functions, at the very end of your `lib.rs` module, include the Satellite to ensure that your custom logic and the default features or Juno are properly registered and executable within the Juno ecosystem.
 
 ```rust
 include_satellite!();
+```
+
+## Additional Notes
+
+WebAssembly (Wasm) binaries serve as the compilation target for the Satellites. While Juno's CLI automatically specifies this target for you, manual execution of certain `cargo` commands necessitates explicitly providing this target.
+
+For instance:
+
+```bash
+cargo clippy --target=wasm32-unknown-unknown
 ```
