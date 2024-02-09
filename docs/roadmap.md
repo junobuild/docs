@@ -39,7 +39,7 @@ To support growth and foster new ideas, we aim to make various infrastructure im
 - Adding additional authentication providers (Apr. 2023) ✅
 - Upgrading satellites overall available memory to maximum possible (Oct. 2023). ✅
 - Enhance hosting capabilities to offer Web2-like features (Nov. 2023). ✅
-- Blockchainless ("serverless") functions. Enabling the implementation of backend functions in response to events triggered within satellites. (Feb. 2024)  ✅
+- Blockchainless ("serverless") functions. Enabling the implementation of backend functions in response to events triggered within satellites. (Feb. 2024) ✅
 - Replacing quick queries with certified calls by default.
 - Automatically topping up smart contracts.
 - Providing real-time data updates.
