@@ -107,7 +107,7 @@ Or explicitly list the IDs:
 ```javascript title="juno.config.js"
 import { defineConfig } from "@junobuild/config";
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   satellite: {
     satelliteIds: {
       staging: "11111-22222-33333-44444-cai",
@@ -115,7 +115,7 @@ export default defineConfig(({ mode }) => ({
     },
     source: "dist"
   }
-}));
+});
 ```
 
 The latter method is also compatible with JSON configuration:
