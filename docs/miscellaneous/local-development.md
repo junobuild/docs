@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Local development
@@ -38,16 +38,16 @@ services:
       - 5987:5987
     volumes:
       - my_dapp:/juno/.juno
-      - ./juno.dev.json:/juno/juno.dev.json
+      - ./juno.dev.config.json:/juno/juno.dev.config.json
       - ./target/deploy:/juno/target/deploy/
 
 volumes:
   my_dapp:
 ```
 
-In addition, create a file named `juno.dev.json` next to your Docker Compose file and populate it with the required fields.
+In addition, create a file named `juno.dev.config.json` next to your Docker Compose file and populate it with the required fields.
 
-```json title="juno.dev.json"
+```json title="juno.dev.config.json"
 {
   "satellite": {
     "collections": {}
@@ -107,7 +107,7 @@ services:
       - 5987:5987
     volumes:
       - hello_world:/juno/.juno # <-------- hello_world modified here
-      - ./juno.dev.json:/juno/juno.dev.json
+      - ./juno.dev.config.json:/juno/juno.dev.config.json
       - ./target/deploy:/juno/target/deploy/
 
 volumes:
@@ -118,7 +118,7 @@ volumes:
 
 ## Configuration
 
-The behavior of the Satellite running in the Docker container can be configured with the help of a local configuration file commonly named `juno.dev.json`.
+The behavior of the Satellite running in the Docker container can be configured with the help of a local configuration file commonly named `juno.dev.config.json`.
 
 This configuration file enables you to define the collections of the Datastore and Storage that run locally, but it also allows for defining additional controllers for your satellite.
 
@@ -161,7 +161,7 @@ export interface JunoDevConfig {
 
 If, for example, we want to configure a "metadata" collection in the Datastore, a "content" collection in the Storage, and provide an additional controller, we could use the following configuration:
 
-```json title="juno.dev.json"
+```json title="juno.dev.config.json"
 {
   "satellite": {
     "collections": {
@@ -204,7 +204,7 @@ services:
       - 5987:5987
     volumes:
       - my_dapp:/juno/.juno
-      - /your/custom/path/your_config_file.json:/juno/juno.dev.json # <-------- Modify location and file name of the left hand part
+      - /your/custom/path/your_config_file.json:/juno/juno.dev.config.json # <-------- Modify location and file name of the left hand part
 
 volumes:
   my_dapp:
