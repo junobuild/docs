@@ -99,11 +99,11 @@ You can configure customized hosting behavior for requests to your site.
 
 #### Where do you define your Hosting configuration?
 
-You define your Hosting configuration in your `juno.json` file. The CLI automatically creates the file at the root of your project directory when you run the [juno init](../miscellaneous/cli.md#init) or [juno deploy](../miscellaneous/cli.md#deploy) command for the first time.
+You define your Hosting configuration in your Juno configuration file. The CLI automatically creates the file at the root of your project directory when you run the [juno init](../miscellaneous/cli.md#init) or [juno deploy](../miscellaneous/cli.md#deploy) command for the first time.
 
 #### How do you apply your changes?
 
-To apply any changes you make to your configuration in `juno.json` to your satellite, simply use the [juno config](../miscellaneous/cli.md#config) command with the CLI.
+To apply any changes you make in your configuration to your satellite, execute the [juno config](../miscellaneous/cli.md#config) command with the CLI.
 
 ### Source
 
