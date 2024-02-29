@@ -122,7 +122,7 @@ Here is an example of how the ignore attribute can be utilized:
 ```json
 {
   "satellite": {
-    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
     "source": "dist",
     "ignore": ["**/*.txt", ".tmp/"]
   }
@@ -140,7 +140,7 @@ Here's an example of the `headers` object:
 ```json
 {
   "satellite": {
-    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
     "source": "dist",
     "storage": {
       "headers": [
@@ -192,7 +192,7 @@ Here's the basic structure for a `redirects` attribute.
 ```json
 {
   "satellite": {
-    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
     "source": "dist",
     "storage": {
       "redirects": [
@@ -224,7 +224,7 @@ Here's the basic structure for a `rewrites` attribute.
 ```json
 {
   "satellite": {
-    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
     "source": "dist",
     "storage": {
       "rewrites": [
@@ -258,7 +258,7 @@ To opt-out of Gzip compression, simply set the `gzip` option to `false` in your 
 ```json
 {
   "satellite": {
-    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
     "source": "dist",
     "gzip": false
   }
@@ -270,7 +270,7 @@ If you want to customize the default pattern `**/*.+(css|js|mjs)` to better suit
 ```json
 {
   "satellite": {
-    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
     "source": "dist",
     "gzip": "**/*.jpg"
   }
@@ -298,7 +298,7 @@ Here is an example of how the "encoding" attribute can be utilized:
 ```json
 {
   "satellite": {
-    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
     "source": "dist",
     "encoding": [["**/releases/*.gz", "identity"]]
   }
@@ -314,7 +314,7 @@ You can customize this behavior by setting the `iframe` option to either `same-o
 ```json
 {
   "satellite": {
-    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
     "source": "dist",
     "storage": {
       "iframe": "same-origin"
@@ -332,7 +332,7 @@ You can customize this behavior by adjusting the heap memory limit in bytes. For
 ```json
 {
   "satellite": {
-    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
     "source": "dist",
     "assertions": {
       "heapMemory": 678000000
@@ -346,7 +346,7 @@ Alternatively, these checks can be completely disabled. To do so, set the `heapM
 ```json
 {
   "satellite": {
-    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
     "source": "dist",
     "assertions": {
       "heapMemory": false

@@ -1,4 +1,4 @@
----
+x---
 sidebar_position: 3
 ---
 
@@ -13,7 +13,7 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+    id: "aaaaa-bbbbb-ccccc-ddddd-cai",
     source: "build"
   }
 });
@@ -59,7 +59,7 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig(({ mode }) => ({
   satellite: {
-    satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+    id: "aaaaa-bbbbb-ccccc-ddddd-cai",
     source: "dist",
     ...(mode === "production" && { iframe: true })
   }
@@ -93,7 +93,7 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig(({ mode }) => ({
   satellite: {
-    satelliteId:
+    id:
       mode === "staging"
         ? "11111-22222-33333-44444-cai"
         : "aaaaa-bbbbb-ccccc-ddddd-cai",
@@ -109,7 +109,7 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    satelliteIds: {
+    ids: {
       staging: "11111-22222-33333-44444-cai",
       production: "aaaaa-bbbbb-ccccc-ddddd-cai"
     },
@@ -123,7 +123,7 @@ The latter method is also compatible with JSON configuration:
 ```json title="juno.config.json"
 {
   "satellite": {
-    "satelliteIds": {
+    "ids": {
       "staging": "11111-22222-33333-44444-cai",
       "production": "aaaaa-bbbbb-ccccc-ddddd-cai"
     },
@@ -132,4 +132,4 @@ The latter method is also compatible with JSON configuration:
 }
 ```
 
-Note that defining a `satelliteId` or at least a `production` entry in `satelliteIds` is mandatory.
+Note that defining an `id` or at least a `production` entry in `ids` is mandatory.

@@ -42,7 +42,7 @@ await getDoc({
   key: "id2",
   satellite: {
     identity: new AnonymousIdentity(),
-    satelliteId: "t6rzw-2iaaa-aaaaa-aaama-cai",
+    id: "t6rzw-2iaaa-aaaaa-aaama-cai",
     fetch
   }
 });
