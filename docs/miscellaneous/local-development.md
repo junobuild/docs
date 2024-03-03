@@ -28,7 +28,7 @@ To start the container, run this command whenever needed. Use `juno dev stop` to
 
 ### Manually
 
-In a folder, create a `docker-compose.yml` file.
+In a folder, create a `docker-compose.yml` file and adjust the time zone according your local settings.
 
 ```yml title="docker-compose.yml"
 services:
@@ -40,6 +40,8 @@ services:
       - my_dapp:/juno/.juno
       - ./juno.dev.config.json:/juno/juno.dev.config.json
       - ./target/deploy:/juno/target/deploy/
+    environment:
+      - TZ=Europe/Zurich
 
 volumes:
   my_dapp:
@@ -83,6 +85,16 @@ The local container supports live reloading. When you modify your [configuration
 
 Modify the following information of the `docker-compose.yml` file to tweak the container behavior to your needs:
 
+### Time zone
+
+The container must be in sync with your local clock because the replica it mounts allows up to a five-minute difference for signing certificates. That's why setting the correct time zone is important.
+
+When you eject the configuration with the CLI, it will automatically detect your time zone and set the appropriate option.
+
+If it is wrongly detected, or if you travel and your local clock automatically picks up the time zone, the `environment` variable can be adjusted using the `TZ` option.
+
+You can find a list of time zones on [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+
 ### Ports
 
 The default port is 5987. If, for example, you would like to use port 8080, modify the value `5987:5987` to `8080:5987`. The latter is the port exposed by the container.
@@ -109,6 +121,8 @@ services:
       - hello_world:/juno/.juno # <-------- hello_world modified here
       - ./juno.dev.config.json:/juno/juno.dev.config.json
       - ./target/deploy:/juno/target/deploy/
+    environment:
+      - TZ=Europe/Zurich
 
 volumes:
   hello_world: # <-------- and here
@@ -205,6 +219,8 @@ services:
     volumes:
       - my_dapp:/juno/.juno
       - /your/custom/path/your_config_file.json:/juno/juno.dev.config.json # <-------- Modify location and file name of the left hand part
+    environment:
+      - TZ=Europe/Zurich
 
 volumes:
   my_dapp:
