@@ -4,24 +4,6 @@
   --grid-gap: 2rem;
   gap: var(--grid-gap);
 
-  margin: 2rem 0 5rem;
-
-  @media screen and (min-width: 768px) {
-    display: grid;
-    grid-template-columns: repeat(2, calc((100% - (1 * var(--grid-gap))) / 2));
-  }
-}
-
-.inverted {
-  @media screen and (min-width: 768px) {
-    :first-of-type {
-      grid-column-start: 2;
-    }
-
-    :last-of-type {
-      grid-row-start: 1;
-    }
-  }
 }
 
 .title {

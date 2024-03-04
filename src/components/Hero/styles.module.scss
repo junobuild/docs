@@ -23,6 +23,16 @@
 
   p {
     max-width: 680px;
+
+    @media screen and (min-width: 960px) {
+      font-size: 18px;
+      line-height: 32px;
+    }
+
+    @media screen and (min-width: 1900px) {
+      font-size: 20px;
+      line-height: 38px;
+    }
   }
 }
 

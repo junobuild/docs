@@ -1,3 +1,5 @@
+@use "../mixins/grid";
+
 .home {
   overflow-x: hidden;
 }
@@ -18,4 +20,9 @@
 
 .block {
   padding: 2rem;
+}
+
+.grid {
+  @include grid.columns;
+  --grid-gap: 3rem;
 }

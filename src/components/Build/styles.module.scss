@@ -1,20 +1,20 @@
 .grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 1rem;
-  margin: 0 auto 4rem;
+  margin-bottom: 4rem;
 }
 
 .sub {
   margin: 1rem 0 0.5rem;
-  text-align: center;
+  font-size: 60px;
 }
 
 .build {
-  text-align: center;
-  max-width: 526px;
-  margin: 0 auto 2rem;
+  font-size: 20px;
+  line-height: 38px;
+  max-width: 724px;
+  margin-bottom: 2rem;
 }
 
 .link {

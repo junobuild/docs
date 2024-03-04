@@ -3,9 +3,9 @@ import Snippet from "@site/src/components/Snippet";
 export default function Api(): JSX.Element {
   return (
     <Snippet
-      title="Efficient Libraries."
+      title="Efficient API"
       texts={[
-        "Juno offers advanced blockchain capabilities via user-friendly JavaScript libraries, enabling seamless integration into your frontend projects."
+        "Juno's API is designed with TypeScript definitions to provide powerful blockchain features through easy-to-use and streamlined functions."
       ]}
       code={`import { setDoc } from "@junobuild/core";
 
@@ -16,7 +16,6 @@ await setDoc<Example>({
     data: myExample,
   },
 });`}
-      inverted={true}
     />
   );
 }

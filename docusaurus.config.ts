@@ -2,8 +2,8 @@ import type { Config } from "@docusaurus/types";
 import { join } from "node:path";
 
 const { themes } = require("prism-react-renderer");
-const lightCodeTheme = themes.github;
-const darkCodeTheme = themes.dracula;
+const codeTheme = themes.oneDark;
+codeTheme.plain.backgroundColor = "black";
 
 const config: Config = {
   title: "Juno",
@@ -218,8 +218,7 @@ const config: Config = {
         copyright: `Copyright © ${new Date().getFullYear()} Juno.build`
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: codeTheme,
         additionalLanguages: ["bash", "json"]
       },
       algolia: {
