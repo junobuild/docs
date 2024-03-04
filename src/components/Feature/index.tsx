@@ -8,7 +8,7 @@ export default function Feature({
   tutorial = undefined
 }): JSX.Element {
   return (
-    <article>
+    <article className={styles.container}>
       <div className={styles.title}>
         {icon}
 
@@ -17,7 +17,7 @@ export default function Feature({
 
       <p className={styles.text}>{text}</p>
 
-      {link}
+      <span className={styles.link}>{link}</span>
 
       {tutorial !== undefined && <> | {tutorial}</>}
     </article>

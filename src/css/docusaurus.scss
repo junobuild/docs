@@ -3,6 +3,12 @@
   --ifm-global-shadow-lw: none;
 }
 
+.container {
+  @media (min-width: 1440px) {
+    max-width: 1640px;
+  }
+}
+
 .main-wrapper {
   position: relative;
 }

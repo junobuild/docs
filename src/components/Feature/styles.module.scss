@@ -1,15 +1,46 @@
+.container {
+  position: relative;
+  border: solid 4px var(--ifm-heading-color);
+  border-radius: 5px;
+  box-shadow: 10px 10px var(--ifm-heading-color);
+  padding: 1.5rem 1rem;
+}
+
 .title {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 
   margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
 
+  svg {
+    width: 28px;
+    height: 28px;
+  }
   h4 {
+    color: var(--ifm-font-color-base);
     margin: 0;
+    font-size: 20px;
   }
 }
 
 .text {
   margin: 0.5rem 0 0.25rem;
+  line-height: 20px;
+  font-size: 15px;
+  padding-bottom: 2rem;
+}
+
+.link {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  &::after {
+    display: inline-block;
+    content: '>';
+    transform: translateY(2px);
+    color: var(--ifm-color-primary);
+    margin-left: 0.5rem;
+  }
 }

@@ -7,7 +7,8 @@
   --ifm-color-primary-lighter: #b0baff;
   --ifm-color-primary-lightest: #e9ebff;
   --ifm-navbar-background-color: #fff;
-  --ifm-button-background-color: ;
+  --ifm-heading-color: #000;
+  --ifm-button-background-color: #fff;
   --ifm-button-color: #000;
   --ifm-button-border-color: #000;
   --button-shadow-color: #000;
@@ -21,6 +22,7 @@ html[data-theme='dark'] {
   --ifm-background-color: #000;
   --ifm-font-color-base: #fff;
   --ifm-navbar-background-color: #1c1c1c;
+  --ifm-heading-color: var(--ifm-color-primary);
   --ifm-button-background-color: #000;
   --ifm-button-color: #fff;
   --ifm-button-border-color: var(--ifm-color-primary);
