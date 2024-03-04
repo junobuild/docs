@@ -8,7 +8,7 @@ export default function Feature({
   tutorial = undefined
 }): JSX.Element {
   return (
-    <article>
+    <article className={styles.container}>
       <div className={styles.title}>
         {icon}
 

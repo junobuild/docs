@@ -1,12 +1,26 @@
+.container {
+  border: solid 4px var(--ifm-heading-color);
+  border-radius: 5px;
+  box-shadow: 10px 10px var(--ifm-heading-color);
+  padding: 1rem;
+}
+
 .title {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 
   margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
 
+  svg {
+    width: 24px;
+    height: 24px;
+  }
   h4 {
+    color: var(--ifm-font-color-base);
     margin: 0;
+    font-size: 20px;
   }
 }
 
