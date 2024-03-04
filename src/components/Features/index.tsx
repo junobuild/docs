@@ -6,13 +6,21 @@ import Datastore from "@site/static/icons/datastore.svg";
 import Functions from "@site/static/icons/functions.svg";
 import Hosting from "@site/static/icons/hosting.svg";
 import Storage from "@site/static/icons/storage.svg";
+import CloudIllustration from "./cloud.svg";
 import styles from "./styles.module.scss";
 
 export default function Features(): JSX.Element {
   return (
     <>
-      <h3 className={styles.sub}>Embrace Cloud 3.0 with Ease</h3>
-      <p>Blockchainless with minimal carbon impact.</p>
+      <div className={styles.sub}>
+        <picture>
+          <CloudIllustration height="auto" width="100%" />
+        </picture>
+        <aside>
+          <h3>Embrace Cloud 3.0 with Ease</h3>
+          <p>Blockchainless with minimal carbon impact.</p>
+        </aside>
+      </div>
 
       <div className={styles.grid}>
         <Feature

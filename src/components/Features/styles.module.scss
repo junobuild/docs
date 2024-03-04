@@ -7,9 +7,41 @@
 }
 
 .sub {
-  margin: 0 0 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  @media screen and (min-width: 768px){
+    grid-template-columns: 1fr 2fr;
+  }
+
+  picture {
+    padding-right: 4rem;
+    width: 75vw;
+    margin: 2rem auto;
+    @media screen and (min-width: 768px){
+      width: 100%;
+      margin: auto;
+    }
+    max-width: 350px;
+  }
+
+  h3 {
+    color: var(--ifm-heading-color);
+    font-size: 60px;
+    line-height: 64px;
+    margin: 0 0 0.5rem;
+    max-width: 40rem;
+  }
+  p {
+    font-size: 20px;
+    margin-top: 2rem;
+  }
 }
 
 .link {
   font-size: var(--ifm-h6-font-size);
+}
+
+
+.illustration {
+  transform: scale(0.8);
 }
