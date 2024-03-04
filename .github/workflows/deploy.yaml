@@ -3,7 +3,7 @@ name: Deploy to Juno
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [release]
 
 jobs:
   build:
