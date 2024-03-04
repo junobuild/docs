@@ -11,8 +11,7 @@ export default function Hero(): JSX.Element {
     <article className={clsx("hero", styles.heroBanner)}>
       <div className={`${styles.container}`}>
         <h1 className={`hero__title ${styles.title} ${styles.item}`}>
-          Build Web3
-          <br />
+          Build Web3 <br />
           like Web2
         </h1>
         <p className={`${styles.item}`}>
