@@ -1,5 +1,5 @@
 import lottie from "lottie-web";
-import React from "react";
+import { useEffect, useRef } from "react";
 import animationData from "./lottie-animation.json";
 
 import styles from "./styles.module.scss";
@@ -17,9 +17,9 @@ export default Illustration;
 // --
 
 function LottieAnimation() {
-  const container = React.useRef(null);
+  const container = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     lottie.loadAnimation({
       container: container.current,
       renderer: "svg",
