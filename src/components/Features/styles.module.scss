@@ -2,6 +2,7 @@
 
 .grid {
   @include grid.columns;
+  --grid-gap: 3rem;
 
   margin: 5rem 0 0;
 }
@@ -40,6 +41,7 @@
 .link {
   font-size: var(--ifm-h6-font-size);
   font-weight: 600;
+  margin-top: auto;
 }
 
 .illustration {
