@@ -1,6 +1,5 @@
 :root {
   --juno-border-radius: 3px;
-
   --ifm-button-border-radius: var(--juno-border-radius);
   --ifm-pagination-nav-border-radius: var(--juno-border-radius);
 }
@@ -13,11 +12,7 @@
 .button--juno,
 .button--hero {
   --ifm-button-border-width: 2px;
-  --ifm-button-border-color: black;
-  box-shadow: 4px 4px black;
-
-  background: white;
-  color: black;
+  box-shadow: 4px 4px var(--button-shadow-color);
 
   &:active,
   &:active:focus {
@@ -30,6 +25,7 @@
     background: #7888ff;
     color: white;
     --ifm-button-border-color: #6a78e0;
+    --button-shadow-color: #c4cdff
   }
 
   transition:
@@ -41,33 +37,16 @@
 }
 
 .button--hero {
-  background: var(--ifm-color-gray-900);
-  color: white;
-  box-shadow: 4px 4px #7888ff;
-
-  &:hover,
-  &:focus {
-    box-shadow: 4px 4px #c4cdff;
-  }
+  --ifm-button-background-color: #c9cfff;
 }
 
 :root {
   &[data-theme="dark"] {
-    .button--juno {
-      box-shadow: 4px 4px var(--ifm-color-gray-700);
-      --ifm-button-border-color: var(--ifm-color-gray-800);
-
-      &:active,
-      &:active:focus {
-        box-shadow: none;
-      }
-    }
-
     .button--hero {
-      background: #7888ff;
-      color: white;
-      --ifm-button-border-color: #c4cdff;
-      box-shadow: 4px 4px #c4cdff;
+      --ifm-button-background-color: white;
+      --ifm-button-color: black;
+      --ifm-button-border-color: var(--ifm-color-primary);
+      --button-shadow-color: var(--ifm-color-primary);
 
       &:active,
       &:active:focus {
@@ -78,6 +57,7 @@
       &:focus {
         background: #8694ff;
         --ifm-button-border-color: #7888ff;
+        --button-shadow-color: #c4cdff;
       }
     }
   }

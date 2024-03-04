@@ -12,7 +12,7 @@
 .container {
   width: 100%;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 960px) {
     display: grid;
     grid-template-columns: 42% auto;
   }
@@ -27,9 +27,23 @@
 }
 
 .title {
-  color: #7888ff;
+  color: black;
+  html[data-theme="dark"] & {
+    color: var(--ifm-color-primary);
+  }
+
   letter-spacing: -0.05rem;
   line-height: 1.2;
+  font-size: 3.5rem;
+  @media screen and (min-width: 768px){
+    font-size: 4rem;
+  }
+  @media screen and (min-width: 1480px) {
+    font-size: 5rem;
+  }
+  @media screen and (min-width: 1900px) {
+    font-size: 5.75rem;
+  }
 }
 
 .actions {
