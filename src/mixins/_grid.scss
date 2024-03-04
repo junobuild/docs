@@ -9,7 +9,7 @@
     grid-template-columns: repeat(2, calc((100% - (1 * var(--grid-gap))) / 2));
   }
 
-  @media screen and (min-width: 996px) {
+  @media screen and (min-width: 1280px) {
     grid-template-columns: repeat(3, calc((100% - (3 * var(--grid-gap))) / 3));
   }
 }
