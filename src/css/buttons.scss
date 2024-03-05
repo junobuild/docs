@@ -2,6 +2,7 @@
   --juno-border-radius: 3px;
   --ifm-button-border-radius: var(--juno-border-radius);
   --ifm-pagination-nav-border-radius: var(--juno-border-radius);
+  --button-shadow-size: 4px;
 }
 
 .theme-admonition,
@@ -12,7 +13,7 @@
 .button--juno,
 .button--hero {
   --ifm-button-border-width: 2px;
-  box-shadow: 4px 4px var(--button-shadow-color);
+  box-shadow: var(--button-shadow-size) var(--button-shadow-size) var(--button-shadow-color);
 
   &:active,
   &:active:focus {
@@ -61,4 +62,12 @@
       }
     }
   }
+}
+
+.button-lg {
+  --ifm-button-size-multiplier: 2;
+  --button-shadow-size: 10px;
+  --ifm-button-border-width: 4px;
+  --ifm-button-border-radius: 5px;
+  font-size: 20px;
 }

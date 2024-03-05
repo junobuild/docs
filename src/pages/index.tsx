@@ -66,9 +66,7 @@ export default function Home(): JSX.Element {
           <Developer />
         </section>
 
-        <section className={`container ${styles.block}`}>
-          <Outro />
-        </section>
+        <Outro />
       </div>
     </Layout>
   );

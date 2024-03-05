@@ -2,12 +2,20 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { trackEvent } from "../../providers/analytics.providers";
 
-export default function Start({ position }): JSX.Element {
+type StartProps = {
+  position: string;
+  className?: string;
+};
+
+export default function Start({
+  position,
+  className = ""
+}: StartProps): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
 
   return (
     <Link
-      className="button button--hero"
+      className={`button button--hero ${className}`}
       href="https://console.juno.build"
       target="_self"
       onClick={() =>
