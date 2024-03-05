@@ -20,7 +20,6 @@ fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
   print(format!("Caller: {}", context.caller.to_text()));
   print(format!("Data: {}", amount.value));
 }`}
-      inverted={false}
       lang="language-rust"
     />
   );

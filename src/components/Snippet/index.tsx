@@ -5,11 +5,10 @@ export default function Snippet({
   title,
   texts,
   code,
-  inverted,
   lang = "language-javascript"
 }): JSX.Element {
   return (
-    <div className={`${styles.grid} ${inverted ? styles.inverted : ""}`}>
+    <div className={styles.grid}>
       <div>
         <h2 className={styles.title}>{title}</h2>
 

@@ -10,7 +10,6 @@ export default function Developer(): JSX.Element {
       ]}
       code={`❯ npm i -g @junobuild/cli
 ❯ juno deploy`}
-      inverted={true}
       lang="language-bash"
     />
   );

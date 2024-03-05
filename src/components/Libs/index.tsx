@@ -16,7 +16,6 @@ await setDoc<Example>({
     data: myExample,
   },
 });`}
-      inverted={true}
     />
   );
 }

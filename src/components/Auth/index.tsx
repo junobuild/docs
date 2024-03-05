@@ -11,7 +11,6 @@ export default function Auth(): JSX.Element {
       code={`import { signIn } from "@junobuild/core";
 
 <button onClick={signIn}>Sign-in</button>`}
-      inverted={false}
     />
   );
 }
