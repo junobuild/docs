@@ -109,5 +109,11 @@
     "url": "https://web3marketing.ufostart.com/",
     "description": "Explore the Web3 marketing universe with UFOstart. Discover startups, innovative platforms, and unique blockchain, NFTs, and crypto marketing strategies.",
     "img": "/showcase/web3marketing-landscape-ufostart.png"
+  },
+  {
+    "title": "Paste.digital",
+    "url": "https://paste.digital",
+    "description": "Text and code sharing app. Zero to DAPP Hackaton best use of Juno award",
+    "img": "/showcase/paste.png"
   }
 ]
