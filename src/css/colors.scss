@@ -11,6 +11,7 @@
   --ifm-button-background-color: #fff;
   --ifm-button-color: #000;
   --ifm-button-border-color: #000;
+  --ifm-footer-link-color: #000;
   --button-shadow-color: #000;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --navbar-shadow-color: #7888FF4B;
@@ -27,6 +28,8 @@ html[data-theme='dark'] {
   --ifm-button-background-color: #000;
   --ifm-button-color: #fff;
   --ifm-button-border-color: var(--ifm-color-primary);
+  --ifm-footer-link-color: #fff;
+  --ifm-footer-background-color: #1c1c1c;
   --button-shadow-color: var(--ifm-color-primary);
   --navbar-shadow-color: #000;
   --navbar-shadow-size: 30px;
