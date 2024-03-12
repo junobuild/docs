@@ -38,7 +38,7 @@
   left: 1rem;
   &::after {
     display: inline-block;
-    content: '>';
+    content: ">";
     transform: translateY(2px);
     color: var(--ifm-color-primary);
     margin-left: 0.5rem;

@@ -13,7 +13,8 @@
 .button--juno,
 .button--hero {
   --ifm-button-border-width: 2px;
-  box-shadow: var(--button-shadow-size) var(--button-shadow-size) var(--button-shadow-color);
+  box-shadow: var(--button-shadow-size) var(--button-shadow-size)
+    var(--button-shadow-color);
 
   &:active,
   &:active:focus {
@@ -26,7 +27,7 @@
     background: #7888ff;
     color: white;
     --ifm-button-border-color: #6a78e0;
-    --button-shadow-color: #c4cdff
+    --button-shadow-color: #c4cdff;
   }
 
   transition:
