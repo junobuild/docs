@@ -46,10 +46,12 @@
     color: var(--ifm-color-primary);
   }
 
+  padding: 4rem 0 0;
+
   letter-spacing: -0.05rem;
   line-height: 1.2;
   font-size: 3.5rem;
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     font-size: 4rem;
   }
   @media screen and (min-width: 1480px) {

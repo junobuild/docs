@@ -10,7 +10,7 @@ export default function Snippet({
   return (
     <div className={styles.grid}>
       <div>
-        <h2 className={styles.title}>{title}</h2>
+        <h3 className={styles.title}>{title}</h3>
 
         {texts.map((text, i) => (
           <p key={i} className={styles.text}>
@@ -19,9 +19,7 @@ export default function Snippet({
         ))}
       </div>
 
-      <div>
-        <CodeBlock className={lang}>{code}</CodeBlock>
-      </div>
+      <CodeBlock className={lang}>{code}</CodeBlock>
     </div>
   );
 }
