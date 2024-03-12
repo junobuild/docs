@@ -14,7 +14,7 @@ export default function Features(): JSX.Element {
     <>
       <div className={styles.sub}>
         <picture>
-          <CloudIllustration height="auto" width="100%" />
+          <CloudIllustration />
         </picture>
         <aside>
           <h2>Code + Launch in a Weekend</h2>
