@@ -56,7 +56,6 @@ const config: Config = {
     {
       image: "img/social_image_v5.jpg",
       navbar: {
-        title: "Open Source Blockchain Platform",
         logo: {
           alt: "Juno Logo",
           src: "img/juno_logo.svg",
