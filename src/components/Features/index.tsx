@@ -17,8 +17,11 @@ export default function Features(): JSX.Element {
           <CloudIllustration height="auto" width="100%" />
         </picture>
         <aside>
-          <h2>Embrace Cloud 3.0 with Ease</h2>
-          <p>Blockchainless with minimal carbon impact.</p>
+          <h2>Code + Launch in a Weekend</h2>
+          <p>
+            Kickstart your project with a suite of features designed to
+            accelerate your Web3 development.
+          </p>
         </aside>
       </div>
 

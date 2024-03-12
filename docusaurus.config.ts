@@ -7,7 +7,7 @@ codeTheme.plain.backgroundColor = "black";
 
 const config: Config = {
   title: "Juno",
-  tagline: "Build Web3 like Web2",
+  tagline: "Build Web3 at Lightning Speed",
   url: "https://juno.build",
   baseUrl: "/",
   onBrokenLinks: "throw",

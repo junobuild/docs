@@ -37,22 +37,26 @@
 
     @include fonts.h2;
 
-    margin: 0;
-    max-width: 25rem;
+    margin: 0 auto;
+    max-width: 22rem;
     text-align: center;
 
     @media screen and (min-width: 768px) {
+      margin: 0;
+      max-width: 24rem;
       text-align: inherit;
     }
 
     @media screen and (min-width: 1480px) {
-      max-width: 30rem;
+      max-width: 38rem;
     }
   }
 
   p {
     margin: 0.75rem 0 0;
     text-align: center;
+
+    max-width: 580px;
 
     @media screen and (min-width: 768px) {
       text-align: inherit;
