@@ -1,18 +1,18 @@
+@use "../../mixins/fonts";
+
 .grid {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 4rem;
+  padding: 0.75rem 0 4rem;
 }
 
 .sub {
-  margin: 1rem 0 0.5rem;
-  font-size: 60px;
+  @include fonts.h2;
+  margin: 1rem 0 0.75rem;
 }
 
 .build {
-  font-size: 20px;
-  line-height: 38px;
   max-width: 724px;
   margin-bottom: 2rem;
 }

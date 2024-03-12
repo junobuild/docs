@@ -56,14 +56,16 @@ export default function Home(): JSX.Element {
           <Build />
         </section>
 
-        <section className={`container ${styles.block} ${styles.grid}`}>
+        <section
+          className={`container ${styles.block} ${styles.grid_two_columns}`}
+        >
           <Auth />
 
           <Libs />
 
-          <Serverless />
-
           <Developer />
+
+          <Serverless />
         </section>
 
         <Outro />
