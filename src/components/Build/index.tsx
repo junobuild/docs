@@ -12,7 +12,7 @@ import styles from "./styles.module.scss";
 export default function Build(): JSX.Element {
   return (
     <>
-      <h2 className={styles.sub}>Crafted for web devs.</h2>
+      <h2 className={styles.sub}>Crafted for web devs</h2>
       <p className={styles.build}>
         There are numerous ways to develop your projects without compromising on
         your favorite technologies.

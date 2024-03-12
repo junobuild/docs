@@ -14,11 +14,15 @@
 
   @media screen and (min-width: 960px) {
     display: grid;
-    grid-template-columns: 42% auto;
+    grid-template-columns: 540px auto;
+  }
+
+  @media screen and (min-width: 1480px) {
+    grid-template-columns: 46% auto;
   }
 
   @media screen and (min-width: 1900px) {
-    grid-template-columns: 65% auto;
+    grid-template-columns: 720px auto;
   }
 
   p {
@@ -49,7 +53,7 @@
   padding: 4rem 0 0;
 
   letter-spacing: -0.05rem;
-  line-height: 1.2;
+  line-height: 1.1;
   font-size: 3.5rem;
   @media screen and (min-width: 768px) {
     font-size: 4rem;
