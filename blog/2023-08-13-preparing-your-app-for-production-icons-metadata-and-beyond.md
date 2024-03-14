@@ -55,13 +55,13 @@ There are two other aspects that are of utmost importance:
 2.  Secondly, in cases where your content is duplicated across the web — like maintaining a blog on multiple platforms — or if you wish to highlight the relationship between multiple pages, it's critical to offer `canonical` links. These links inform search engines that they shouldn't index the same content multiple times. Otherwise, it could lead to a potential drop in ranking (based on my understanding).
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
 
     <title>Juno</title>
-    <meta content="Build Web3 dApps like Web2" name="description" />
+    <meta content="Build Web3 at Lightning Speed" name="description" />
 
     <link href="https://juno.build" rel="canonical" />
   </head>
@@ -90,13 +90,13 @@ Among the plethora of available tags, we typically employ only the following fiv
 5.  `og:image`: This entails an absolute URL pointing to the social image (for further insights about its format, refer to the chapter below).
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Here same HTML tags as previous chapter -->
 
     <meta content="Juno" property="og:title" />
-    <meta content="Build Web3 dApps like Web2" property="og:description" />
+    <meta content="Build Web3 at Lightning Speed" property="og:description" />
     <meta content="website" property="og:type" />
     <meta content="https://juno.build" property="og:url" />
     <meta
@@ -128,7 +128,7 @@ The possibilities for display vary, but we typically configure the following pro
 It's crucial to keep in mind that tweets are limited to 280 characters without premium features, encompassing the information we provide. This limitation is something to consider while crafting the metadata for sharing on Twitter.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Here same HTML tags as previous chapter -->
@@ -136,7 +136,7 @@ It's crucial to keep in mind that tweets are limited to 280 characters without p
 
     <meta content="summary_large_image" name="twitter:card" />
     <meta content="Juno" name="twitter:title" />
-    <meta content="Build Web3 dApps like Web2" name="twitter:description" />
+    <meta content="Build Web3 at Lightning Speed" name="twitter:description" />
     <meta
       content="https://juno.build/images/social-image.jpg"
       name="twitter:image"
@@ -190,7 +190,7 @@ Here's how we can generate this data:
 By following this process, we ensure that our icons are well-optimized and tailored for different platforms, ultimately enhancing the overall user experience.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Here same HTML tags as previous chapter -->
@@ -264,7 +264,7 @@ This file should be provided by our smart contract using the correct JSON mime t
 Despite being located in a top-level directory, the web app manifest should still be referenced in the HTML pages.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Here same HTML tags as previous chapter -->
@@ -422,7 +422,7 @@ Sitemaps are valuable tools that assist search engines in comprehending which pa
 The `sitemap.xml` is an file; therefore, it should be served by our canister with the appropriate mime type (`application/xml`). Additionally, it should be referenced within our HTML pages.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Here same HTML tags as previous chapter -->

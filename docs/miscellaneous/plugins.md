@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Plugins
@@ -8,7 +8,7 @@ Juno provides various plugins to simplify your development workflow. We also war
 
 ## Vite Plugin
 
-If you are developing your app using Vite, this plugin automatically loads the Satellite ID from your project's `juno.json`. If you are using analytics, it also loads the Orbiter ID too.
+If you are developing your app using Vite, this plugin automatically loads the Satellite ID from your project's configuration file. If you are using analytics, it also loads the Orbiter ID too.
 
 These values allow you to instantiate Juno in your code without the need to manually define environment variables.
 
@@ -34,7 +34,7 @@ npm i @junobuild/vite-plugin -D
 
 ```javascript
 // vite.config.js
-import juno from '@junobuild/vite-plugin';
+import juno from "@junobuild/vite-plugin";
 
 export default defineConfig({
   plugins: [juno()]

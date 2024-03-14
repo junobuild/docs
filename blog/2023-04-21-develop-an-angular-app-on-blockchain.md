@@ -57,12 +57,12 @@ import { initJuno } from "@junobuild/core";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
   async ngOnInit() {
     await initJuno({
-      satelliteId: "pycrs-xiaaa-aaaal-ab6la-cai",
+      satelliteId: "pycrs-xiaaa-aaaal-ab6la-cai"
     });
   }
 }
@@ -84,7 +84,7 @@ import { signIn, signOut } from "@junobuild/core";
   selector: "app-demo",
   template: `<button (click)="signIn()">Sign-in</button>
     <button (click)="signOut()">Sign-out</button>`,
-  standalone: true,
+  standalone: true
 })
 export class DemoComponent {
   readonly signOut = signOut;
@@ -102,7 +102,7 @@ import { authSubscribe, User } from "@junobuild/core";
 import { map, Observable } from "rxjs";
 
 @Injectable({
-  providedIn: "root",
+  providedIn: "root"
 })
 export class AuthService {
   readonly user$: Observable<User | null> = new Observable((observer) =>
@@ -135,8 +135,8 @@ await setDoc<Example>({
   collection: "my_collection_key",
   doc: {
     key: "my_document_key",
-    data: myExample,
-  },
+    data: myExample
+  }
 });
 ```
 
@@ -157,11 +157,11 @@ import { Entry } from "../../types/entry";
     <button [disabled]="entryForm.disabled">Submit</button>
   </form>`,
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule]
 })
 export class InputComponent {
   entryForm = this.formBuilder.group({
-    entry: "",
+    entry: ""
   });
 
   constructor(private formBuilder: FormBuilder) {}
@@ -178,9 +178,9 @@ export class InputComponent {
       doc: {
         key,
         data: {
-          text: this.entryForm.value.entry,
-        },
-      },
+          text: this.entryForm.value.entry
+        }
+      }
     });
   }
 }
@@ -220,20 +220,20 @@ import {
   shareReplay,
   startWith,
   Subject,
-  switchMap,
+  switchMap
 } from "rxjs";
 import type { Entry } from "../types/entry";
 import { AuthService } from "./auth.service";
 
 @Injectable({
-  providedIn: "root",
+  providedIn: "root"
 })
 export class DocsService {
   private reloadSubject = new Subject<void>();
 
   docs$: Observable<Doc<Entry>[]> = combineLatest([
     this.authService.user$,
-    this.reloadSubject.pipe(startWith(undefined)),
+    this.reloadSubject.pipe(startWith(undefined))
   ]).pipe(
     switchMap(([user, _]) => {
       if (user === null) {
@@ -243,7 +243,7 @@ export class DocsService {
       return from(
         listDocs<Entry>({
           collection: "notes",
-          filter: {},
+          filter: {}
         })
       ).pipe(map(({ items }) => items));
     }),
@@ -275,7 +275,7 @@ import type { Entry } from "../../types/entry";
     {{ doc.key }}: {{ doc.data.text }}
   </p>`,
   imports: [BrowserModule],
-  standalone: true,
+  standalone: true
 })
 export class ListComponent {
   readonly docs$: Observable<Doc<Entry>[]> = this.docsService.docs$;
@@ -315,7 +315,7 @@ import { BrowserModule } from "@angular/platform-browser";
     <button (click)="add()">Upload</button>
   `,
   standalone: true,
-  imports: [BrowserModule],
+  imports: [BrowserModule]
 })
 export class UploadComponent {
   private file: File | undefined;
@@ -347,7 +347,7 @@ export class UploadComponent {
     return uploadFile({
       collection: "images",
       data: this.file,
-      filename,
+      filename
     });
   }
 }
@@ -376,19 +376,19 @@ import {
   shareReplay,
   startWith,
   Subject,
-  switchMap,
+  switchMap
 } from "rxjs";
 import { AuthService } from "./auth.service";
 
 @Injectable({
-  providedIn: "root",
+  providedIn: "root"
 })
 export class AssetsService {
   private reloadSubject = new Subject<void>();
 
   assets$: Observable<Assets[]> = combineLatest([
     this.authService.user$,
-    this.reloadSubject.pipe(startWith(undefined)),
+    this.reloadSubject.pipe(startWith(undefined))
   ]).pipe(
     switchMap(([user, _]) => {
       if (user === null) {
@@ -398,7 +398,7 @@ export class AssetsService {
       return from(
         listAssets({
           collection: "images",
-          filter: {},
+          filter: {}
         })
       ).pipe(map(({ assets }) => assets));
     }),
@@ -431,7 +431,7 @@ import { AssetsService } from "../../services/assets.service";
     loading="lazy"
   />`,
   imports: [BrowserModule],
-  standalone: true,
+  standalone: true
 })
 export class AssetsComponent {
   readonly assets$: Observable<Asset[]> = this.assetsService.assets$;

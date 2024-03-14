@@ -53,7 +53,7 @@ In `index.astro`, initialize the library with your public satellite ID.
 Add an `insert` function to persist a document.
 
 ```html title="index.astro"
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <body>
     <main>
@@ -69,7 +69,7 @@ Add an `insert` function to persist a document.
           "DOMContentLoaded",
           async () => {
             await initJuno({
-              satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+              satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
             });
           },
           { once: true }
@@ -82,9 +82,9 @@ Add an `insert` function to persist a document.
             doc: {
               key: `my-key-${new Date().getTime()}`,
               data: {
-                hello: "world",
-              },
-            },
+                hello: "world"
+              }
+            }
           });
 
           const result = document.querySelector("#result");

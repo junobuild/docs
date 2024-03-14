@@ -1,3 +1,5 @@
+@use "../mixins/grid";
+
 .home {
   overflow-x: hidden;
 }
@@ -9,7 +11,11 @@
   flex-direction: column;
   justify-content: center;
 
-  min-height: 600px;
+  min-height: 540px;
+
+  @media screen and (min-width: 768px) {
+    min-height: 600px;
+  }
 }
 
 .section {
@@ -17,5 +23,14 @@
 }
 
 .block {
-  padding: 2rem;
+  padding: 2rem 2rem 4rem;
+}
+
+.grid {
+  @include grid.columns;
+  --grid-gap: 3rem;
+}
+
+.grid_two_columns {
+  @include grid.two-columns;
 }

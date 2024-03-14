@@ -63,7 +63,7 @@ import { type Doc, initJuno, setDoc } from "@junobuild/core";
     <button (click)="insert()">Insert a document</button>
     <span *ngIf="doc !== undefined">Key: {{ doc.key }}</span>
   `,
-  styleUrls: ["./app.component.css"],
+  styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
   doc: Doc<{ hello: string }> | undefined = undefined;
@@ -71,7 +71,7 @@ export class AppComponent {
   async ngOnInit() {
     // TODO: Replace 'satelliteId' with your actual satellite ID
     await initJuno({
-      satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+      satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
     });
   }
 
@@ -81,9 +81,9 @@ export class AppComponent {
       doc: {
         key: `my-key-${new Date().getTime()}`,
         data: {
-          hello: "world",
-        },
-      },
+          hello: "world"
+        }
+      }
     });
   }
 }

@@ -7,7 +7,7 @@ tags: [release]
 
 A month ago, the first beta for Juno was released to the world. Since then, we have been fixing bugs and gathering feedback on what to tackle next. Today, we are excited to announce the release of some of our most requested features, which include:
 
-- [Enhanced controller user experience](#improved-controllers-user-experience)
+- [Enhanced controller user experience](#enhanced-controller-user-experience)
 - [Custom domains support](#custom-domains-support)
 - [Expanded ordering and filtering options](#expanded-ordering-and-filtering-options)
 - [New CLI and JS library features](#new-cli-and-js-library-features)
@@ -80,9 +80,9 @@ const myList = await listDocs({
   filter: {
     order: {
       desc: true,
-      field: "updated_at",
-    },
-  },
+      field: "updated_at"
+    }
+  }
 });
 ```
 
@@ -104,8 +104,8 @@ import { initJuno } from "@junobuild/core";
 await initJuno({
   satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
   workers: {
-    auth: true, // ----------------------------------|
-  }, //|
+    auth: true // ----------------------------------|
+  } //|
 }); //|
 //|
 authSubscribe((user: User | null) => {

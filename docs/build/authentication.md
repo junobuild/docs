@@ -105,7 +105,7 @@ import { signIn, InternetIdentityProvider } from "@junobuild/core";
 
 // Default domain is 'internetcomputer.org'
 await signIn({
-  provider: new InternetIdentityProvider({}),
+  provider: new InternetIdentityProvider({})
 });
 ```
 
@@ -116,8 +116,8 @@ import { signIn, InternetIdentityProvider } from "@junobuild/core";
 
 await signIn({
   provider: new InternetIdentityProvider({
-    domain: "ic0.app",
-  }),
+    domain: "ic0.app"
+  })
 });
 ```
 
@@ -131,8 +131,8 @@ import { signIn, NFIDProvider } from "@junobuild/core";
 await signIn({
   provider: new NFIDProvider({
     appName: "Your app name",
-    logoUrl: "https://somewhere.com/your_logo.png",
-  }),
+    logoUrl: "https://somewhere.com/your_logo.png"
+  })
 });
 ```
 
@@ -168,8 +168,8 @@ import { initJuno } from "@junobuild/core";
 await initJuno({
   satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
   workers: {
-    auth: true,
-  },
+    auth: true
+  }
 });
 ```
 

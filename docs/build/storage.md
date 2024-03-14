@@ -32,7 +32,7 @@ Unless you use the optional [`token` parameter](#protected-asset) to persist an 
 
 Each satellite has specific memory limits. For detailed information, please refer to the related [documentation](../miscellaneous/memory.md) page.
 
-There is no specific limit on the size of assets (files) that can be uploaded to Juno, unless you choose to set an [optional rule](#additional-rules) to restrict it.
+There is no specific limit on the size of assets (files) that can be uploaded to Juno, unless you choose to set an optional [rule](#rules) to restrict it.
 
 ## Collections
 
@@ -77,7 +77,7 @@ import { uploadFile } from "@junobuild/core";
 
 const result = await uploadFile({
   data,
-  collection: "images",
+  collection: "images"
 });
 ```
 
@@ -111,7 +111,7 @@ import { nanoid } from "nanoid";
 const result = await uploadFile({
   data,
   collection: "images",
-  token: nanoid(),
+  token: nanoid()
 });
 ```
 
@@ -125,7 +125,7 @@ The "Storage" provider offers a way to list assets.
 import { listAssets } from "@junobuild/core";
 
 const myList = await listAssets({
-  collection: "images",
+  collection: "images"
 });
 ```
 
@@ -134,6 +134,18 @@ The `listAssets` function -- in addition to specifying the collection to query -
 - `matcher`: a regex to apply to the assets' `fullPath` and `description`
 - `paginate`: an object used to query a subset of the assets
 - `order`: requests entries sorted in ascending or descending order
+
+The function **returns various information**, in the form of an object whose interface is given below.
+
+```typescript
+{
+  items: []; // The data - array of assets
+  items_length: bigint; // The number of assets - basically items.length
+  items_page?: bigint; // If the query is paginated, at what page (starting from 0) do the items find the place
+  matches_length: bigint; // The total number of matching results
+  matches_pages?: bigint; // If the query is paginated, the total number (starting from 0) of pages
+}
+```
 
 ## Delete asset
 
@@ -144,7 +156,7 @@ import { deleteAsset } from "@junobuild/core";
 
 await deleteAsset({
   collection: "images",
-  storageFile: myAsset,
+  storageFile: myAsset
 });
 ```
 

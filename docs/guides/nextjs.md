@@ -130,7 +130,7 @@ In `next.config.js` file:
 ```javascript title="next.config.js"
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
+  output: "export"
 };
 
 module.exports = nextConfig;

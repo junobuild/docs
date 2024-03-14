@@ -67,8 +67,8 @@ await setDoc<Example>({
   collection: "my_collection_key",
   doc: {
     key: "my_document_key",
-    data: myExample,
-  },
+    data: myExample
+  }
 });
 ```
 
@@ -88,8 +88,8 @@ await setDoc<Example>({
   collection: "my_collection_key",
   doc: {
     key: myId,
-    data: myExample,
-  },
+    data: myExample
+  }
 });
 ```
 
@@ -105,8 +105,8 @@ await setDoc<Example>({
   doc: {
     key: "my_document_key_1",
     data: myExample,
-    description: "This is a description",
-  },
+    description: "This is a description"
+  }
 });
 
 await setDoc<Example>({
@@ -114,8 +114,8 @@ await setDoc<Example>({
   doc: {
     key: "my_document_key_2",
     data: myExample,
-    description: "#programming #technology #web3 #junobuild",
-  },
+    description: "#programming #technology #web3 #junobuild"
+  }
 });
 ```
 
@@ -128,8 +128,30 @@ import { getDoc } from "@junobuild/core";
 
 const myDoc = await getDoc({
   collection: "my_collection_key",
-  key: myId,
+  key: myId
 });
+```
+
+## Get multiple documents
+
+Obtaining multiple documents at once can improve performance compared to making multiple individual `getDoc` calls depending on the use case.
+
+You can achieve this by using the `getManyDocs` function:
+
+```typescript
+import { getManyDocs } from "@junobuild/core";
+
+const docPair1 = {
+  collection: "my_collection",
+  key: "my_document_key_1"
+};
+
+const docPair2 = {
+  collection: "my_other_collection",
+  key: "my_document_key_2"
+};
+
+const docs = await getManyDocs({ docs: [docPair1, docPair2] });
 ```
 
 ## Update a document
@@ -143,8 +165,8 @@ await setDoc<Example>({
   collection: "my_collection_key",
   doc: {
     ...myDoc, // includes 'key' and 'updated_at'
-    data: myNewData,
-  },
+    data: myNewData
+  }
 });
 ```
 
@@ -170,9 +192,9 @@ const update1 = {
   doc: {
     key: "my_document_key_1",
     data: {
-      hello: "world",
-    },
-  },
+      hello: "world"
+    }
+  }
 };
 
 const update2 = {
@@ -180,9 +202,9 @@ const update2 = {
   doc: {
     key: "my_document_key_2",
     data: {
-      count: 123,
-    },
-  },
+      count: 123
+    }
+  }
 };
 
 const docs = await setManyDocs({ docs: [update1, update2] });
@@ -196,11 +218,11 @@ To list documents, use the `listDocs` function:
 import { listDocs } from "@junobuild/core";
 
 const myList = await listDocs({
-  collection: "my_collection_key",
+  collection: "my_collection_key"
 });
 ```
 
-The function accepts various optional parameters, including a matcher (a regex applied to the document keys and descriptions), pagination options, and sorting order.
+The function **accepts various optional parameters**, including a matcher (a regex applied to the document keys and descriptions), pagination options, and sorting order.
 
 ```javascript
 import { listDocs } from "@junobuild/core";
@@ -210,9 +232,9 @@ const myList = await listDocs({
   filter: {
     order: {
       desc: true,
-      field: "updated_at",
-    },
-  },
+      field: "updated_at"
+    }
+  }
 });
 ```
 
@@ -224,6 +246,18 @@ Sorting can be applied descending or ascending to following fields:
 
 Options `matcher`, `paginate` and `order` can be use together.
 
+The function **returns various information**, in the form of an object whose interface is given below.
+
+```typescript
+{
+  items: []; // The data - array of documents
+  items_length: bigint; // The number of documents - basically items.length
+  items_page?: bigint; // If the query is paginated, at what page (starting from 0) do the items find the place
+  matches_length: bigint; // The total number of matching results
+  matches_pages?: bigint; // If the query is paginated, the total number (starting from 0) of pages
+}
+```
+
 ## Delete a document
 
 To delete a document, use the `deleteDoc` function, which also performs timestamp validation to ensure that the most recent document is being deleted:
@@ -233,7 +267,7 @@ import { deleteDoc } from "@junobuild/core";
 
 await deleteDoc<Example>({
   collection: "my_collection_key",
-  doc: myDoc,
+  doc: myDoc
 });
 ```
 

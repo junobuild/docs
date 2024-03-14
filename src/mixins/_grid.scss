@@ -9,7 +9,30 @@
     grid-template-columns: repeat(2, calc((100% - (1 * var(--grid-gap))) / 2));
   }
 
-  @media screen and (min-width: 996px) {
-    grid-template-columns: repeat(3, calc((100% - (3 * var(--grid-gap))) / 3));
+  @media screen and (min-width: 1280px) {
+    grid-template-columns: repeat(3, calc((100% - (2 * var(--grid-gap))) / 3));
+  }
+}
+
+@mixin two-columns {
+  display: flex;
+  flex-direction: column;
+
+  --grid-colum-gap: 4rem;
+  --grid-row-gap: 4rem;
+
+  column-gap: var(--grid-colum-gap);
+  row-gap: var(--grid-row-gap);
+
+  @media screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(
+      2,
+      calc((100% - (1 * var(--grid-colum-gap))) / 2)
+    );
+  }
+
+  @media screen and (min-width: 960px) {
+    --grid-colum-gap: 6rem;
   }
 }

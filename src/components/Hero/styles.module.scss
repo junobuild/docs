@@ -12,13 +12,31 @@
 .container {
   width: 100%;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 960px) {
     display: grid;
-    grid-template-columns: 42% auto;
+    grid-template-columns: 540px auto;
+  }
+
+  @media screen and (min-width: 1480px) {
+    grid-template-columns: 46% auto;
   }
 
   @media screen and (min-width: 1900px) {
-    grid-template-columns: 65% auto;
+    grid-template-columns: 720px auto;
+  }
+
+  p {
+    max-width: 680px;
+
+    @media screen and (min-width: 960px) {
+      font-size: 18px;
+      line-height: 32px;
+    }
+
+    @media screen and (min-width: 1900px) {
+      font-size: 20px;
+      line-height: 38px;
+    }
   }
 }
 
@@ -27,9 +45,25 @@
 }
 
 .title {
-  color: #7888ff;
+  color: black;
+  html[data-theme="dark"] & {
+    color: var(--ifm-color-primary);
+  }
+
+  padding: 4rem 0 0;
+
   letter-spacing: -0.05rem;
-  line-height: 1.2;
+  line-height: 1.1;
+  font-size: 3.5rem;
+  @media screen and (min-width: 768px) {
+    font-size: 4rem;
+  }
+  @media screen and (min-width: 1480px) {
+    font-size: 5rem;
+  }
+  @media screen and (min-width: 1900px) {
+    font-size: 5.75rem;
+  }
 }
 
 .actions {

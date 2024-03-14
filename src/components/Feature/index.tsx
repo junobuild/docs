@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./styles.module.scss";
 
 export default function Feature({
@@ -6,10 +5,10 @@ export default function Feature({
   title,
   text,
   link,
-  tutorial = undefined,
+  tutorial = undefined
 }): JSX.Element {
   return (
-    <article>
+    <article className={styles.container}>
       <div className={styles.title}>
         {icon}
 
@@ -18,7 +17,7 @@ export default function Feature({
 
       <p className={styles.text}>{text}</p>
 
-      {link}
+      <span className={styles.link}>{link}</span>
 
       {tutorial !== undefined && <> | {tutorial}</>}
     </article>

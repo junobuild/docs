@@ -6,9 +6,11 @@ sidebar_position: 7
 
 We have big plans for the near and distant future.
 
+Our goal is to transform Juno into a decentralized organization while equipping developers with all the tools they need to efficiently build products on Web3.
+
 :::note
 
-Last update: Oct. 6, 2023
+Last update: Feb. 8, 2024
 
 :::
 
@@ -16,9 +18,9 @@ Last update: Oct. 6, 2023
 
 Our goal is to continue delivering features that seamlessly integrate both web3 and web2 worlds, while ensuring ease of development. This includes:
 
-- Analytics (Sept. 2023) ✅
-- Plug-and-play recurring payment and paywall solutions
-- Transitioning parts or entire projects to DAOs or [Service Nervous Systems (SNS)](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/)
+- Analytics (Sept. 2023). ✅
+- Plug-and-play payment and paywall solutions.
+- Transitioning parts or entire projects to DAOs or [Service Nervous Systems (SNS)](https://internetcomputer.org/docs/current/developer-docs/integrations/sns/).
 
 ## Templates marketplace
 
@@ -35,17 +37,18 @@ While Juno is currently focused on individual developers, we recognize the impor
 To support growth and foster new ideas, we aim to make various infrastructure improvements, including:
 
 - Adding additional authentication providers (Apr. 2023) ✅
-- Upgrading satellites overall available memory to maximum possible (Oct . 2023) ✅
-- Enabling the implementation of backend functions ("serverless functions") in response to events triggered in satellites
-- Replacing quick queries with certified calls by default
-- Automatically topping up smart contracts
-- Providing real-time data updates
-- Server-side rendering
-- End-to-end encryption using threshold key derivation
+- Upgrading satellites overall available memory to maximum possible (Oct. 2023). ✅
+- Enhance hosting capabilities to offer Web2-like features (Nov. 2023). ✅
+- Blockchainless ("serverless") functions. Enabling the implementation of backend functions in response to events triggered within satellites. (Feb. 2024) ✅
+- Replacing quick queries with certified calls by default.
+- Automatically topping up smart contracts.
+- Providing real-time data updates.
+- Server-side rendering.
+- End-to-end encryption using threshold key derivation.
 
 ## Developer tooling
 
 Easing the development process will always be a priority. To that end, we plan to provide:
 
-- A local emulator suite for developers to build and test their apps
+- A local emulator for developers to build and test their apps (Jan. 2024). ✅
 - Continuously updated documentation, along with sample repos and tutorials.

@@ -1,6 +1,6 @@
-import { join } from "node:path";
-import { readFileSync } from "node:fs";
 import { ShowcaseSpotlight } from "@site/src/types/showcase";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
 const source = join(process.cwd(), "showcase.json");
 
@@ -16,7 +16,7 @@ function shuffleArray<T>(array_: T[]): T[] {
 }
 
 const buildByPeterPeterParker = ({
-  github,
+  github
 }: Pick<ShowcaseSpotlight, "github">) =>
   github?.includes("https://github.com/peterpeterparker") ||
   github?.includes("https://github.com/junobuild");
@@ -28,7 +28,7 @@ const shuffleJson = (showcaseJsonString: string) => {
 
   const dapps = [
     ...shuffleArray(data.filter((dapp) => !buildByPeterPeterParker(dapp))),
-    ...shuffleArray(data.filter((dapp) => buildByPeterPeterParker(dapp))),
+    ...shuffleArray(data.filter((dapp) => buildByPeterPeterParker(dapp)))
   ];
 
   return JSON.stringify(dapps, null, 2);
@@ -52,10 +52,10 @@ export default function showcasePlugin(context, options) {
         path: "/showcase",
         component: "@site/src/pages/showcase/index.tsx",
         modules: {
-          dapps: dappsJsonPath,
+          dapps: dappsJsonPath
         },
-        exact: true,
+        exact: true
       });
-    },
+    }
   };
 }

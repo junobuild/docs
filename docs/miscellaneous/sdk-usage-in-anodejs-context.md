@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 6
 ---
 
 # SDK usage in a NodeJS context
@@ -42,9 +42,9 @@ await getDoc({
   key: "id2",
   satellite: {
     identity: new AnonymousIdentity(),
-    satelliteId: "t6rzw-2iaaa-aaaaa-aaama-cai",
-    fetch,
-  },
+    id: "t6rzw-2iaaa-aaaaa-aaama-cai",
+    fetch
+  }
 });
 ```
 

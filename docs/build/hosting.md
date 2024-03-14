@@ -95,10 +95,15 @@ You can configure customized hosting behavior for requests to your site.
 - Tweak `gzip` compression for best performance. [Learn how.](#gzip)
 - Customize the `encoding` behavior of your files. [Learn how.](#encoding-types)
 - Allow your project to be embedded as an `iframe`. [Learn how.](#iframe)
+- Customize `assertions` to modify the default verification behavior of the CLI. [Learn how.](#assertions)
 
 #### Where do you define your Hosting configuration?
 
-You define your Hosting configuration in your `juno.json` file. The CLI automatically creates the file at the root of your project directory when you run the [juno init](../miscellaneous/cli.md#init) or [juno deploy](../miscellaneous/cli.md#deploy) command for the first time.
+You define your Hosting configuration in your Juno configuration file. The CLI automatically creates the file at the root of your project directory when you run the [juno init](../miscellaneous/cli.md#init) or [juno deploy](../miscellaneous/cli.md#deploy) command for the first time.
+
+#### How do you apply your changes?
+
+To apply any changes you make in your configuration to your satellite, execute the [juno config](../miscellaneous/cli.md#config) command with the CLI.
 
 ### Source
 
@@ -117,7 +122,7 @@ Here is an example of how the ignore attribute can be utilized:
 ```json
 {
   "satellite": {
-    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
     "source": "dist",
     "ignore": ["**/*.txt", ".tmp/"]
   }
@@ -135,7 +140,7 @@ Here's an example of the `headers` object:
 ```json
 {
   "satellite": {
-    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
     "source": "dist",
     "storage": {
       "headers": [
@@ -187,7 +192,7 @@ Here's the basic structure for a `redirects` attribute.
 ```json
 {
   "satellite": {
-    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
     "source": "dist",
     "storage": {
       "redirects": [
@@ -219,7 +224,7 @@ Here's the basic structure for a `rewrites` attribute.
 ```json
 {
   "satellite": {
-    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
     "source": "dist",
     "storage": {
       "rewrites": [
@@ -253,7 +258,7 @@ To opt-out of Gzip compression, simply set the `gzip` option to `false` in your 
 ```json
 {
   "satellite": {
-    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
     "source": "dist",
     "gzip": false
   }
@@ -265,7 +270,7 @@ If you want to customize the default pattern `**/*.+(css|js|mjs)` to better suit
 ```json
 {
   "satellite": {
-    "satelliteId": "ddddd-ccccc-aaaaa-bbbbb-cai",
+    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
     "source": "dist",
     "gzip": "**/*.jpg"
   }
@@ -293,7 +298,7 @@ Here is an example of how the "encoding" attribute can be utilized:
 ```json
 {
   "satellite": {
-    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
     "source": "dist",
     "encoding": [["**/releases/*.gz", "identity"]]
   }
@@ -309,9 +314,43 @@ You can customize this behavior by setting the `iframe` option to either `same-o
 ```json
 {
   "satellite": {
-    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
     "source": "dist",
-    "iframe": "same-origin"
+    "storage": {
+      "iframe": "same-origin"
+    }
+  }
+}
+```
+
+### Assertions
+
+The CLI conducts several assertions when interacting with your Satellite, one of which involves monitoring the heap memory size. Typically, the CLI checks to ensure that the heap memory does not exceed the 1 GB limit before deployment. For instance, if your heap memory usage is close to 900 MB, the CLI will prompt you to confirm the deployment.
+
+You can customize this behavior by adjusting the heap memory limit in bytes. For example, to set a new limit of 678 MB, update your configuration as follows:
+
+```json
+{
+  "satellite": {
+    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "source": "dist",
+    "assertions": {
+      "heapMemory": 678000000
+    }
+  }
+}
+```
+
+Alternatively, these checks can be completely disabled. To do so, set the `heapMemory` assertion to `false`:
+
+```json
+{
+  "satellite": {
+    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
+    "source": "dist",
+    "assertions": {
+      "heapMemory": false
+    }
   }
 }
 ```

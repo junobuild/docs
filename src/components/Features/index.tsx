@@ -1,18 +1,29 @@
-import React from "react";
-import styles from "./styles.module.scss";
 import Link from "@docusaurus/Link";
 import Feature from "@site/src/components/Feature";
+import Analytics from "@site/static/icons/analytics.svg";
 import Authentication from "@site/static/icons/authentication.svg";
 import Datastore from "@site/static/icons/datastore.svg";
-import Storage from "@site/static/icons/storage.svg";
+import Functions from "@site/static/icons/functions.svg";
 import Hosting from "@site/static/icons/hosting.svg";
-import Analytics from "@site/static/icons/analytics.svg";
+import Storage from "@site/static/icons/storage.svg";
+import CloudIllustration from "../../assets/cloud.svg";
+import styles from "./styles.module.scss";
 
 export default function Features(): JSX.Element {
   return (
     <>
-      <h3 className={styles.sub}>Embrace Cloud 3.0 with Ease</h3>
-      <p>Blockchainless with minimal carbon impact.</p>
+      <div className={styles.sub}>
+        <picture>
+          <CloudIllustration />
+        </picture>
+        <aside>
+          <h2>Code + Launch in a Weekend</h2>
+          <p>
+            Kickstart your project with a suite of features designed to
+            accelerate your Web3 development.
+          </p>
+        </aside>
+      </div>
 
       <div className={styles.grid}>
         <Feature
@@ -57,6 +68,17 @@ export default function Features(): JSX.Element {
             </Link>
           }
           icon={<Hosting />}
+        />
+
+        <Feature
+          title="Functions"
+          text="Execute custom code in response to background events, extend Juno's smart contracts, and develop features that run on-chain."
+          link={
+            <Link to="/docs/build/functions" className={styles.link}>
+              Learn more
+            </Link>
+          }
+          icon={<Functions />}
         />
 
         <Feature

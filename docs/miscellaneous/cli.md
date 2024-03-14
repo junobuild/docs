@@ -6,6 +6,8 @@ sidebar_position: 1
 
 The Juno CLI (GitHub: https://github.com/junobuild) provides a variety of tools for managing and deploying [satellite].
 
+---
+
 ## Installation
 
 1. Install Node.js (version LTS or above) from https://nodejs.org/en/download/. You can use nvm (https://github.com/nvm-sh/nvm) to manage multiple Node.js versions on a single machine.
@@ -16,9 +18,11 @@ The Juno CLI (GitHub: https://github.com/junobuild) provides a variety of tools 
 npm i -g @junobuild/cli
 ```
 
+---
+
 ## Login
 
-The CLI requires authentication to make changes, such as deploying an application, upgrading a [satellite] or mission control, etc.
+The CLI requires authentication to make changes, such as deploying an application, upgrading a satellite or mission control, etc.
 
 The authentication process requires a browser:
 
@@ -42,17 +46,19 @@ If you've previously authenticated your terminal and decide to log in again, the
 
 :::
 
-### How it works?
+### How does it work?
 
-A new [principal] is generated on your local machine and added as a [controller] of the selected satellites and/or mission control. This principal is then used to authenticate any CLI calls made from your terminal to your satellites and mission controls.
+A new [principal] is generated on your local machine and added as a [controller] of the selected segments. This principal is then used to authenticate any CLI calls made from your terminal to your satellites and mission controls.
 
 The key is saved in the OS-specific user's variables path.
 
-- macOS: `~/Library/Preferences/juno-nodejs`
-- Windows: `%APPDATA%\juno-nodejs\Config` (for example, `C:\Users\USERNAME\AppData\Roaming\juno-nodejs\Config`)
-- Linux: `~/.config/juno-nodejs` (or `$XDG_CONFIG_HOME/juno-nodejs`)
+| OS      | Path                                                                                                 |
+| ------- | ---------------------------------------------------------------------------------------------------- |
+| Mac     | `~/Library/Preferences/juno-nodejs`                                                                  |
+| Windows | `%APPDATA%\juno-nodejs\Config` (for example, `C:\Users\USERNAME\AppData\Roaming\juno-nodejs\Config`) |
+| Linux   | `~/.config/juno-nodejs` (or `$XDG_CONFIG_HOME/juno-nodejs`)                                          |
 
-To get the paths for storing data the CLI is using the library [env-paths](https://github.com/sindresorhus/env-paths#pathsconfig).
+---
 
 ## Logout
 
@@ -62,38 +68,31 @@ To remove the authorization of your local machine:
 juno logout
 ```
 
-:::note
+:::caution
 
-This currently does not remove the controllers from satellites and/or mission control. It only logs out your local machine and removes the locally saved key (principal).
+This currently does not remove the controllers from satellites and/or mission control and/or orbiter. It only logs out your local machine and removes the locally saved key (principal).
 
 :::
+
+---
 
 ## Init
 
-The `juno init` command creates a `juno.json` configuration file in the root of your project directory.
+The `juno init` command creates a `juno.config` file in the root directory of your project.
 
-This file is necessary to deploy your app with the CLI as it specifies which files from your project directory will be deployed to which satellite.
+You will be prompted to select your preferred format: TypeScript, JavaScript, or JSON.
 
-The satellite ID and path can be configured or edited manually through juno init.
+:::tip
 
-:::note
-
-Running `juno init` will overwrite the `juno.json` configuration file.
+We recommend using the first two options because they can leverage your IDE's IntelliSense with type hints.
 
 :::
 
-The following is an example `juno.json`:
+This file is necessary for deploying, configuring, or running any other CLI commands for your app.
 
-```json
-{
-  "satellite": {
-    "satelliteId": "qsgjb-riaaa-aaaaa-aaaga-cai",
-    "source": "dist"
-  }
-}
-```
+Read more about the [configuration](./configuration.md).
 
-You can [configure your Hosting behavior](../build/hosting.md#configure-hosting-behavior) by specifying various options within that file.
+---
 
 ## Deploy
 
@@ -109,6 +108,8 @@ This command uploads each file separately and computes and uploads the correspon
 
 :::
 
+---
+
 ## Config
 
 To apply any changes to your [storage](../build/storage.md) configuration, run the following command from your project directory:
@@ -116,6 +117,8 @@ To apply any changes to your [storage](../build/storage.md) configuration, run t
 ```bash
 juno config
 ```
+
+---
 
 ## Clear
 
@@ -137,26 +140,22 @@ If you have compressed (gzip and brotli) your bundle and assets after deploying 
 
 :::
 
+---
+
 ## Upgrade
 
-If the smart contracts' code of your mission control or satellites become outdated, you can upgrade them.
+If the smart contracts' code of your mission control, satellites or orbiters become outdated, you can upgrade them.
 
 Running the following command from the project directory upgrade your satellite (default option):
 
 ```bash
-juno upgrade
-```
-
-By adding a suffix, you can upgrade your mission control:
-
-```bash
-juno upgrade -m
+juno upgrade --target s|m|o
 ```
 
 :::caution
 
 - We recommend that you stay current with the Juno releases, as some features may not perform correctly in the [console](../terminology.md#console) if your smart contracts are outdated.
-- Upgrading is as complex as migrating storage and requires a stable internet connection for a successful process.
+- Upgrading requires a stable internet connection for a successful process.
 
 :::
 

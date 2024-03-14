@@ -6,5 +6,32 @@
   --ifm-color-primary-light: #9ea9ff;
   --ifm-color-primary-lighter: #b0baff;
   --ifm-color-primary-lightest: #e9ebff;
+  --ifm-navbar-background-color: #fff;
+  --ifm-heading-color: #000;
+  --ifm-button-background-color: #fff;
+  --ifm-button-color: #000;
+  --ifm-button-border-color: #000;
+  --ifm-footer-link-color: #000;
+  --button-shadow-color: #000;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --navbar-shadow-color: #7888ff4b;
+  --navbar-shadow-size: 20px;
+  --navbar-search-border-color: #707070;
+  --ifm-code-border-radius: 5px;
+}
+
+html[data-theme="dark"] {
+  --ifm-background-color: #000;
+  --ifm-font-color-base: #fff;
+  --ifm-navbar-background-color: #1c1c1c;
+  --ifm-heading-color: var(--ifm-color-primary);
+  --ifm-button-background-color: #000;
+  --ifm-button-color: #fff;
+  --ifm-button-border-color: var(--ifm-color-primary);
+  --ifm-footer-link-color: #fff;
+  --ifm-footer-background-color: #1c1c1c;
+  --button-shadow-color: var(--ifm-color-primary);
+  --navbar-shadow-color: #000;
+  --navbar-shadow-size: 30px;
+  --navbar-search-border-color: #fff;
 }
