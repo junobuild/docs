@@ -21,7 +21,7 @@ As the owner of your mission control, satellites and orbiters, you are responsib
 
 To ensure that your infrastructure usage is covered, you must maintain a minimum balance of [cycles](terminology.md#cycles).
 
-You can top up your cycle balance in the Juno [console](https://console.build.com) using ICP from your mission control or from anywhere else on the [Internet Computer](https://internetcomputer.org/).
+You can top up your cycle balance in the Juno [console](https://console.juno.build/) using ICP from your mission control or from anywhere else on the [Internet Computer](https://internetcomputer.org/).
 
 ## Transaction costs
 
