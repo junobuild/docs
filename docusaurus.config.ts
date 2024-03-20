@@ -61,6 +61,7 @@ const config: Config = {
           src: "img/juno_logo.svg",
           srcDark: "img/juno_logo_dark.svg"
         },
+        hideOnScroll: true,
         items: [
           {
             type: "doc",
