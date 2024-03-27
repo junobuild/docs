@@ -28,18 +28,12 @@ import { signIn } from "@junobuild/core";
 await signIn();
 ```
 
-The sign-in feature has options to customize the authentication:
+The sign-in feature offers customization options for authentication:
 
-- `maxTimeToLive`: a maximum time to live (**4 hours** per default, `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)`)
-
-:::note
-
-The duration is given. It remains unchanged, regardless of whether the users are active or inactive.
-
-:::
-
-- `derivationOrigin`: a specific parameter of [Internet Identity](https://internetcomputer.org/docs/current/references/ii-spec#alternative-frontend-origins)
-- `windowed`: by default, the authentication flow is presented to the user in a popup that is automatically centered on desktop. This behavior can be disabled by setting the option to `false`. In that case, the authentication flow will occur in a separate tab.
+- `maxTimeToLive`: Specifies the duration for the session (defaults to **4 hours**, represented as `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)`). It's **important** to note that this duration remains constant, whether the users are active or inactive.
+- `windowed`: By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead.
+- `derivationOrigin`: A specific parameter of [Internet Identity](https://internetcomputer.org/docs/current/references/ii-spec#alternative-frontend-origins)
+- `allowPin`: We consider the specific PIN authentication method of [Internet Identity](https://internetcomputer.org/docs/current/references/ii-spec#client-authentication-protocol) as "insecure" because users can easily lose their login information if they do not register a passphrase, particularly as Safari clears the browser cache every two weeks in cases of inactivity. This is why we **disable** it by default.
 
 You can configure the default sign-in flow that uses Internet Identity. You can also set NFID as a provider. Check out the [advanced Sign-in guidelines](#sign-in-providers) for more details.
 
