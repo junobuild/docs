@@ -450,9 +450,11 @@ If our intention is to have all crawlers index our entire app, we can communicat
 
 Additionally, we can once again provide the URL to our sitemap and host information within this file.
 
-```html
-User-agent: * Allow: / Sitemap: https://juno.build/sitemap.xml Host:
-https://juno.build
+```
+User-agent: *
+Allow: /
+Sitemap: https://juno.build/sitemap.xml
+Host: https://juno.build
 ```
 
 Resources:
