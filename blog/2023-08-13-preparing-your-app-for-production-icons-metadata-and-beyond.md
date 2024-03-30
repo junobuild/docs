@@ -167,7 +167,7 @@ Providing the social image follows a single rule: it must be accompanied by an a
 <meta content="/images/social-image.jpg" name="twitter:image" />
 ```
 
-In terms of format and content, as a best practice, we recommend creating an image with dimensions of `1200x628` pixels for optimal display across all devices. It's advisable to use traditional image formats such as `PNG` or `JPG`.
+In terms of format and content, as a best practice, we recommend creating an image with dimensions of `1200x630` pixels for optimal display across all devices. It's advisable to use traditional image formats such as `PNG` or `JPG`.
 
 Considering its display on both small and large screens, a single image serves all screen sizes. Hence, during its design, it's important to ensure the content is composed in a way that it fits seamlessly everywhere.
 
