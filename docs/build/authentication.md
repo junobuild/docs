@@ -18,6 +18,8 @@ The Juno SDK must be [installed](../add-juno-to-an-app/install-the-sdk-and-initi
 
 :::
 
+---
+
 ## Sign-in
 
 You can authorize an existing or new user with the identity provider using `signIn`.
@@ -37,6 +39,8 @@ The sign-in feature offers customization options for authentication:
 
 You can configure the default sign-in flow that uses Internet Identity. You can also set NFID as a provider. Check out the [advanced Sign-in guidelines](#sign-in-providers) for more details.
 
+---
+
 ## Sign-out
 
 You can end a user's session by logging them out.
@@ -52,6 +56,8 @@ await signOut();
 This will clear the sign-in information stored in IndexedDB.
 
 :::
+
+---
 
 ## Subscription
 
@@ -79,6 +85,8 @@ const unsubscribe = authSubscribe((user: User | null) => {
 // Above subscriber ends now
 unsubscribe();
 ```
+
+---
 
 ## Advanced
 

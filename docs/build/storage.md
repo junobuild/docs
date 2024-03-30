@@ -14,6 +14,8 @@ To use Juno Storage's features, you must [install](../add-juno-to-an-app/install
 
 :::
 
+---
+
 ## How does it work?
 
 Each [satellite] you create includes a "Storage" provider, which can store assets (images, documents, videos, etc.) that are automatically made available on the internet.
@@ -28,11 +30,15 @@ Unless you use the optional [`token` parameter](#protected-asset) to persist an 
 
 :::
 
+---
+
 ## Limitation
 
 Each satellite has specific memory limits. For detailed information, please refer to the related [documentation](../miscellaneous/memory.md) page.
 
 There is no specific limit on the size of assets (files) that can be uploaded to Juno, unless you choose to set an optional [rule](#rules) to restrict it.
+
+---
 
 ## Collections
 
@@ -67,6 +73,8 @@ When you create a collection, it's assigned to either heap or stable memory. Thi
 ### Max size
 
 You can also set an optional parameter that limits the size, in bytes, of assets that can be uploaded to a collection.
+
+---
 
 ## Upload asset
 
@@ -117,6 +125,8 @@ const result = await uploadFile({
 
 Imagine a file "mydata.jpg" uploaded with a token. Attempting to access it through the URL "https://yoursatellite/mydata.jpg" will not work. The asset can only be retrieved if a token is provided: "https://yoursatellite/mydata.jpg?token=a-super-long-secret-id".
 
+---
+
 ## List assets
 
 The "Storage" provider offers a way to list assets.
@@ -147,6 +157,8 @@ The function **returns various information**, in the form of an object whose int
 }
 ```
 
+---
+
 ## Delete asset
 
 To delete an asset, you only need to provide its `fullPath`. Unlike the [datastore](datastore.md), there is no timestamp validation performed when deleting an asset.
@@ -159,6 +171,8 @@ await deleteAsset({
   storageFile: myAsset
 });
 ```
+
+---
 
 ## Delete multiple assets
 

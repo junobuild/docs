@@ -12,6 +12,8 @@ To use these features, the Juno SDK must be [installed](../add-juno-to-an-app/in
 
 :::
 
+---
+
 ## How does it work?
 
 Each [satellite] you create has a "Datastore", which can have as many collections as you wish.
@@ -26,11 +28,15 @@ Each document is identified by a `key` (unique within a collection).
 
 In essence, a "Datastore" functions as a keypair store.
 
+---
+
 ## Limitation
 
 Each satellite has specific memory limits. For detailed information, please refer to the related [documentation](../miscellaneous/memory.md) page.
 
 As for documents, they can be up to 2MB in size. However, larger files can be saved in the [storage](build/storage.md).
+
+---
 
 ## Collections
 
@@ -55,6 +61,8 @@ A rule is assigned to a collection to define read and write permissions, which c
 ### Memory
 
 When you create a collection, it's assigned to either heap or stable memory. This assignment is permanent and cannot be changed once the collection is created. The default allocation is `heap` memory.
+
+---
 
 ## Add a document
 
@@ -119,6 +127,8 @@ await setDoc<Example>({
 });
 ```
 
+---
+
 ## Get a document
 
 To retrieve data, use the `getDoc` function and provide the `collection` and the `key` of the document:
@@ -131,6 +141,8 @@ const myDoc = await getDoc({
   key: myId
 });
 ```
+
+---
 
 ## Get multiple documents
 
@@ -153,6 +165,8 @@ const docPair2 = {
 
 const docs = await getManyDocs({ docs: [docPair1, docPair2] });
 ```
+
+---
 
 ## Update a document
 
@@ -177,6 +191,8 @@ The `updated_at` timestamp must match the timestamp of the last document update 
 It is common to retrieve the document with `getDoc` before updating it to ensure that you have the most recent timestamp.
 
 :::
+
+---
 
 ## Set multiple documents
 
@@ -209,6 +225,8 @@ const update2 = {
 
 const docs = await setManyDocs({ docs: [update1, update2] });
 ```
+
+---
 
 ## List documents
 
@@ -258,6 +276,8 @@ The function **returns various information**, in the form of an object whose int
 }
 ```
 
+---
+
 ## Delete a document
 
 To delete a document, use the `deleteDoc` function, which also performs timestamp validation to ensure that the most recent document is being deleted:
@@ -270,6 +290,8 @@ await deleteDoc<Example>({
   doc: myDoc
 });
 ```
+
+---
 
 ## Delete multiple documents
 
