@@ -34,7 +34,7 @@ npm i @junobuild/nextjs-plugin -D
 
 ### Usage
 
-```javascript
+```javascript title="next.config.mjs"
 import {withJuno} from '@junobuild/nextjs-plugin';
 
 export default withJuno();
@@ -42,7 +42,7 @@ export default withJuno();
 
 The plugin sets the build output to `export` by default. You can override the option or provide additional options as follows:
 
-```javascript
+```javascript title="next.config.mjs"
 import {withJuno} from '@junobuild/nextjs-plugin';
 
 /** @type {import('next').NextConfig} */
