@@ -36,13 +36,13 @@ In contrast, your users (as of Satellite version 0.0.16) and the [analytics](../
 
 ## Summary
 
-| Aspect             | Heap Memory                                          | Stable Memory                                       |
-|--------------------| ---------------------------------------------------- |-----------------------------------------------------|
-| **Capacity**       | Max 1 GB                                             | Max 400 GB (minus heap size)                        |
-| **Performance**    | Fast for read and write operations                   | Slightly slower                                     |
-| **Cost**           | Lower cost                                           | Higher cost (~20x)                                  |
-| **Upgrades**       | Data must be deserialized/serialized during upgrades | Data are not processed during upgrades              |
-| **Usage**          | Suitable for small or frequently accessed data       | Suitable for large or less frequently accessed data |
+| Aspect          | Heap Memory                                          | Stable Memory                                       |
+| --------------- | ---------------------------------------------------- | --------------------------------------------------- |
+| **Capacity**    | Max 1 GB                                             | Max 400 GB (minus heap size)                        |
+| **Performance** | Fast for read and write operations                   | Slightly slower                                     |
+| **Cost**        | Lower cost                                           | Higher cost (~20x)                                  |
+| **Upgrades**    | Data must be deserialized/serialized during upgrades | Data are not processed during upgrades              |
+| **Usage**       | Suitable for small or frequently accessed data       | Suitable for large or less frequently accessed data |
 
 ## Resources
 
