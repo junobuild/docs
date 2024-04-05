@@ -27,8 +27,8 @@
     "format": "prettier . --write ."
   },
   "dependencies": {
-    "@docusaurus/core": "^3.1.1",
-    "@docusaurus/preset-classic": "^3.1.1",
+    "@docusaurus/core": "^3.2.1",
+    "@docusaurus/preset-classic": "^3.2.1",
     "@junobuild/analytics": "^0.0.17",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.1.0",
@@ -38,9 +38,9 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.1.1",
-    "@docusaurus/tsconfig": "^3.1.1",
-    "@docusaurus/types": "^3.1.1",
+    "@docusaurus/module-type-aliases": "^3.2.1",
+    "@docusaurus/tsconfig": "^3.2.1",
+    "@docusaurus/types": "^3.2.1",
     "@junobuild/config": "^0.0.4",
     "@types/react": "^18.2.52",
     "docusaurus-plugin-sass": "^0.2.5",
