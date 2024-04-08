@@ -125,35 +125,49 @@ This configuration file enables you to define the collections of the Datastore a
 The definition is as follows:
 
 ```typescript
-type PermissionText = "public" | "private" | "managed" | "controllers";
-type MemoryText = "Heap" | "Stable";
+export type PermissionText = "public" | "private" | "managed" | "controllers";
+export type MemoryText = "heap" | "stable";
+export type RulesType = "db" | "storage";
 
-interface SatelliteCollection {
+export interface Rule {
   collection: string;
   read: PermissionText;
   write: PermissionText;
   memory: MemoryText;
-  max_size?: number;
+  createdAt?: bigint;
+  updatedAt?: bigint;
+  maxSize?: number;
+  maxCapacity?: number;
   mutablePermissions: boolean;
 }
 
-interface SatelliteCollections {
-  db?: SatelliteCollection[];
-  storage?: SatelliteCollection[];
+export type SatelliteDevDbCollection = Omit<
+  Rule,
+  "createdAt" | "updatedAt" | "maxSize"
+>;
+
+export type SatelliteDevStorageCollection = Omit<
+  Rule,
+  "createdAt" | "updatedAt" | "maxCapacity"
+>;
+
+export interface SatelliteDevCollections {
+  db?: SatelliteDevDbCollection[];
+  storage?: SatelliteDevStorageCollection[];
 }
 
-interface SatelliteController {
+export interface SatelliteDevController {
   id: string;
   scope: "write" | "admin";
 }
 
-interface SatelliteConfig {
-  collections: SatelliteCollections;
-  controllers?: SatelliteController[];
+export interface SatelliteDevConfig {
+  collections: SatelliteDevCollections;
+  controllers?: SatelliteDevController[];
 }
 
 export interface JunoDevConfig {
-  satellite: SatelliteConfig;
+  satellite: SatelliteDevConfig;
 }
 ```
 
@@ -170,7 +184,8 @@ If, for example, we want to configure a "metadata" collection in the Datastore, 
           "collection": "metadata",
           "read": "managed",
           "write": "managed",
-          "memory": "stable"
+          "memory": "stable",
+          "mutablePermissions": true
         }
       ],
       "storage": [
@@ -178,7 +193,8 @@ If, for example, we want to configure a "metadata" collection in the Datastore, 
           "collection": "content",
           "read": "public",
           "write": "public",
-          "memory": "stable"
+          "memory": "stable",
+          "mutablePermissions": true
         }
       ]
     },
