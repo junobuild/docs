@@ -7,7 +7,7 @@ export default function Outro(): JSX.Element {
     <section className={styles.section}>
       <div className={`container ${styles.container}`}>
         <div>
-          <p className={`${styles.sub}`}>Take control of YOUR CODE now.</p>
+          <p className={`${styles.sub}`}>Take control of YOUR CODE.</p>
           <p className={styles.subText}>
             <small>
               Shape your future apps with smart contracts controlled only by
