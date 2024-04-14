@@ -38,7 +38,7 @@ Our CLI tool is compatible with Mac, Linux, and Windows and requires [NodeJS](ht
 
 ## Integrating in an existing app
 
-Juno is designed to be framework-agnostic, allowing for seamless integration with any modern frontend framework or even in projects without one. To ensure a smooth integration that aligns with your preferred technology stack, explore our [guides and examples](/docs/category/guides-and-examples).
+After creating your satellite, you're ready to put it to use. Follow our [step-by-step guidance](./add-juno-to-an-app/install-the-sdk-and-initialize-juno.md) to install the SDK and initialize your app, establishing communication with your satellite.
 
 ## Local development
 
