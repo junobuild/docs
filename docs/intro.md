@@ -48,7 +48,7 @@ Try our [local development emulator](./miscellaneous/local-development.md). It a
 
 :::tip
 
-The emulator is available with all starting templates. Try `npm create juno@latest`.
+The emulator is available with all starting templates. Run `npm create juno@latest` to start a new project.
 
 :::
 
