@@ -16,13 +16,45 @@ To begin with Juno, launch your first [Satellite](/docs/add-juno-to-an-app/creat
 
 This all-in-one container provides authentication, datastore (a key-pair store akin to a simple "database"), file storage, serverless functions and hosting capabilities.
 
-## Having a preferred frameworks?
+## Starting a new project
 
-Juno is framework-agnostic and can be easily integrated with all modern frontend frameworks or even used without one. Follow our quick start [guides and examples](/docs/category/guides-and-examples) to stay true to your favorite stack.
+Are you embarking on a new project? We've got your back.
 
-## Build
+Whether you're aiming to create a website, blog, or application, leverage Juno's onboarding CLI to scaffold your project. Our ready-made templates are developed with the most well-known frontend frameworks, including Astro, Next.js, React, SvelteKit, Vue, and Angular.
 
-Develop and launch your project with the help of our comprehensive set of features:
+Just run
+
+```bash
+npm create juno@latest
+```
+
+...and follow the prompts.
+
+:::note
+
+Our CLI tool is compatible with Mac, Linux, and Windows and requires [NodeJS](https://nodejs.org/en) to be installed. It also supports Yarn and pnpm.
+
+:::
+
+## Integrating in an existing app
+
+Juno is designed to be framework-agnostic, allowing for seamless integration with any modern frontend framework or even in projects without one. To ensure a smooth integration that aligns with your preferred technology stack, explore our [guides and examples](/docs/category/guides-and-examples).
+
+## Local development
+
+Unsure about launching satellites in production? Primarily interested in local development?
+
+Try our [local development emulator](./miscellaneous/local-development.md). It allows you to build and test your projects in an environment that closely mirrors production, without the commitment of a live deployment.
+
+:::tip
+
+The emulator is available with all starting templates. Try `npm create juno@latest`.
+
+:::
+
+## Further Details
+
+Explore the features of Juno through the detailed documentation:
 
 - [Authentication](build/authentication.md)
 - [Datastore](build/datastore.md)
