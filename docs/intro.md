@@ -10,9 +10,11 @@ Unlike traditional Web2 platforms like Google Firebase or AWS Amplify, Juno oper
 
 Our unique approach ensures that you retain full control over your data and work. With Juno, your creations remain truly your own.
 
-## Add Juno to your JavaScript project
+## Launching with Juno
 
-To get started with Juno, launch your first [satellite](/docs/add-juno-to-an-app/create-a-satellite.md) – a smart contract container packed with features for your project, and integrate our JavaScript SDK into your project.
+To begin with Juno, launch your first [Satellite](/docs/add-juno-to-an-app/create-a-satellite.md) – a feature-packed smart contract for your project.
+
+This all-in-one container provides authentication, datastore (a key-pair store akin to a simple "database"), file storage, serverless functions and hosting capabilities.
 
 ## Having a preferred frameworks?
 
