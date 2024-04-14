@@ -10,17 +10,51 @@ Unlike traditional Web2 platforms like Google Firebase or AWS Amplify, Juno oper
 
 Our unique approach ensures that you retain full control over your data and work. With Juno, your creations remain truly your own.
 
-## Add Juno to your JavaScript project
+## Launching with Juno
 
-To get started with Juno, launch your first [satellite](/docs/add-juno-to-an-app/create-a-satellite.md) – a smart contract container packed with features for your project, and integrate our JavaScript SDK into your project.
+To begin with Juno, launch your first [Satellite](/docs/add-juno-to-an-app/create-a-satellite.md) – a feature-packed smart contract for your project.
 
-## Having a preferred frameworks?
+This all-in-one container provides authentication, datastore (a key-pair store akin to a simple "database"), file storage, serverless functions and hosting capabilities.
 
-Juno is framework-agnostic and can be easily integrated with all modern frontend frameworks or even used without one. Follow our quick start [guides and examples](/docs/category/guides-and-examples) to stay true to your favorite stack.
+## Starting a new project
 
-## Build
+Are you embarking on a new project? We've got your back.
 
-Develop and launch your project with the help of our comprehensive set of features:
+Whether you're aiming to create a website, blog, or application, leverage Juno's onboarding CLI to scaffold your project. Our ready-made templates are developed with the most well-known frontend frameworks, including Astro, Next.js, React, SvelteKit, Vue, and Angular.
+
+Just run
+
+```bash
+npm create juno@latest
+```
+
+...and follow the prompts.
+
+:::note
+
+Our CLI tool is compatible with Mac, Linux, and Windows and requires [NodeJS](https://nodejs.org/en) to be installed. It also supports Yarn and pnpm.
+
+:::
+
+## Integrating in an existing app
+
+After creating your satellite, you're ready to put it to use. Follow our [step-by-step guidance](./add-juno-to-an-app/install-the-sdk-and-initialize-juno.md) to install the SDK and initialize your app, establishing communication with your satellite.
+
+## Local development
+
+Unsure about launching satellites in production? Primarily interested in local development?
+
+Try our [local development emulator](./miscellaneous/local-development.md). It allows you to build and test your projects in an environment that closely mirrors production, without the commitment of a live deployment.
+
+:::tip
+
+The emulator is available with all starting templates. Run `npm create juno@latest` to start a new project.
+
+:::
+
+## Further Details
+
+Explore the features of Juno through the detailed documentation:
 
 - [Authentication](build/authentication.md)
 - [Datastore](build/datastore.md)
