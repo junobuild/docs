@@ -14,11 +14,13 @@ export default function Changelog(
   const { toc, children, releases, ...layoutProps } = props;
   const hasSidebar = true;
 
-  const sidebarItems: BlogSidebarItem[] = releases.map(({ tag_name }) => ({
-    title: tag_name,
-    permalink: `/changelog#${tag_name}`,
-    unlisted: false
-  }));
+  const sidebarItems: BlogSidebarItem[] = (releases ?? []).map(
+    ({ tag_name }) => ({
+      title: tag_name,
+      permalink: `/changelog/release-${tag_name}`,
+      unlisted: false
+    })
+  );
 
   let sidebar: BlogSidebarType = {
     items: sidebarItems,

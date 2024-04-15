@@ -7,11 +7,18 @@ import remarkGfm from "remark-gfm";
 import styles from "./index.module.scss";
 
 export default function ReleasePage(
-  props: Props & { release: GitHubRelease; releases: GitHubRelease[] }
+  props: Props & {
+    release: GitHubRelease | undefined;
+    releases: GitHubRelease[];
+  }
 ): JSX.Element {
   const { release } = props;
 
-  const { tag_name, body, published_at } = release;
+  const { tag_name, body, published_at } = release ?? {
+    tag_name: "",
+    body: "",
+    published_at: new Date().toISOString()
+  };
 
   return (
     <Changelog {...props}>
