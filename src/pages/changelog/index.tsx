@@ -1,24 +1,24 @@
 import Changelog from "@site/src/components/Changelog";
+import Release from "@site/src/components/Release";
 import { GitHubRelease } from "@site/src/types/github";
 import type { Props } from "@theme/BlogLayout";
 import ReadMoreLink from "@theme/BlogPostItem/Footer/ReadMoreLink";
 import clsx from "clsx";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import styles from "./index.module.scss";
 
 export default function ChangelogPage(
   props: Props & { releases: GitHubRelease[] }
 ): JSX.Element {
   const { releases } = props;
 
+  const formatter = new Intl.DateTimeFormat("en-US");
+
   return (
     <Changelog {...props}>
-      {releases.map(({ tag_name, body }) => (
+      {releases.map(({ tag_name, body, published_at }) => (
         <div key={tag_name} id={tag_name}>
-          <a href={`/changelog/release-${tag_name}`} className={styles.title}>
-            <h1>{tag_name}</h1>
-          </a>
+          <Release tag_name={tag_name} published_at={published_at} />
 
           <Markdown remarkPlugins={[remarkGfm]}>
             {body.length > 400 ? `${body.substring(0, 400)}...` : body}
