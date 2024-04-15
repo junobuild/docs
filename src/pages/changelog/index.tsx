@@ -12,8 +12,6 @@ export default function ChangelogPage(
 ): JSX.Element {
   const { releases } = props;
 
-  const formatter = new Intl.DateTimeFormat("en-US");
-
   return (
     <Changelog {...props}>
       {releases.map(({ tag_name, body, published_at }) => (
