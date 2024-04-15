@@ -48,7 +48,8 @@ const config: Config = {
 
   plugins: [
     "docusaurus-plugin-sass",
-    join(process.cwd(), "docusaurus.showcase.plugin.ts")
+    join(process.cwd(), "docusaurus.showcase.plugin.ts"),
+    join(process.cwd(), "docusaurus.changelog.plugin.ts")
   ],
 
   themeConfig:
@@ -74,8 +75,9 @@ const config: Config = {
             label: "More",
             position: "left",
             items: [
+              { to: "/showcase", label: "Showcase" },
               { to: "/blog", label: "Blog" },
-              { to: "/showcase", label: "Showcase" }
+              { to: "/changelog", label: "Changelog" }
             ]
           },
           {

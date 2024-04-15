@@ -36,7 +36,7 @@ const shuffleJson = (showcaseJsonString: string) => {
 
 export default function showcasePlugin(context, options) {
   return {
-    name: "docusaurus-dapps-plugin",
+    name: "docusaurus-showcase-plugin",
     async loadContent() {
       return readFileSync(source, "utf-8");
     },

@@ -1,0 +1,10 @@
+.title {
+  &:hover,
+  &:active {
+    text-decoration-color: var(--ifm-heading-color);
+  }
+}
+
+.date {
+  font-size: 0.9rem;
+}
