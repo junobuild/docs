@@ -14,8 +14,8 @@ export default function Build(): JSX.Element {
     <>
       <h2 className={styles.sub}>Crafted for web devs</h2>
       <p className={styles.build}>
-        There are numerous ways to develop your projects without compromising on
-        your favorite technologies.
+        There are numerous ways to develop on Juno without compromising on your
+        favorite tech stack.
       </p>
 
       <div className={styles.grid}>

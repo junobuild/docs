@@ -17,9 +17,9 @@ export default function Features(): JSX.Element {
           <CloudIllustration />
         </picture>
         <aside>
-          <h2>Code + Launch in a Weekend</h2>
+          <h2>Bootstrap in a Weekend</h2>
           <p>
-            Kickstart your project with a suite of features designed to
+            Bring your ideas to life with a comprehensive toolkit designed to
             accelerate your Web3 development.
           </p>
         </aside>
