@@ -9,10 +9,7 @@ export default function Outro(): JSX.Element {
         <div>
           <p className={`${styles.sub}`}>Take control of YOUR CODE.</p>
           <p className={styles.subText}>
-            <small>
-              Shape your future apps with smart contracts controlled only by
-              you.
-            </small>
+            <small>Shape your future apps controlled exclusively by you.</small>
           </p>
           <Start position="footer" className={`button-lg ${styles.start}`} />
         </div>
