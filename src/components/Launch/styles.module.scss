@@ -2,33 +2,26 @@
 
 .sub {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @media screen and (min-width: 960px) {
-    display: grid;
-    grid-template-columns: 60% calc(40% - 4rem);
-    gap: 4rem;
-  }
+  gap: 4rem;
 
   article {
-    max-width: 724px;
-    margin-bottom: 2rem;
+    max-width: 684px;
+    padding-top: 1.75rem;
   }
 
-  picture {
+  img {
     width: 100%;
     margin: 0 auto;
 
     display: none;
 
     @media screen and (min-width: 960px) {
-      max-width: 580px;
+      max-width: 460px;
       display: block;
     }
   }
 
-  :global(.code-yolo) {
+  :global(.code-npm) {
     width: 280px;
     box-shadow: none;
 

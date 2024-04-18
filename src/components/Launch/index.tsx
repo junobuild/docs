@@ -1,4 +1,4 @@
-import LaunchIllustration from "@site/static/img/launch.svg";
+import LaunchIllustration from "@site/static/img/launch.png";
 import CodeBlock from "@theme/CodeBlock";
 import styles from "./styles.module.scss";
 
@@ -8,17 +8,18 @@ export default function Launch(): JSX.Element {
       <article>
         <h2 className={styles.title}>Launch your app now</h2>
         <p>
-          Are you starting a new project? We've got your back. Whether you're
-          planning to build a website, blog, or application, quickly scaffold
-          your project with ready-made templates.
+          Whether you're planning to build a website, blog, or application,
+          quickly scaffold your project with ready-made templates.
         </p>
 
-        <CodeBlock className="code-yolo">npm create juno@latest</CodeBlock>
+        <CodeBlock className="code-npm">npm create juno@latest</CodeBlock>
       </article>
 
-      <picture aria-label="An satellite being launch to space through the clouds.">
-        <LaunchIllustration />
-      </picture>
+      <img
+        src={LaunchIllustration}
+        loading="lazy"
+        alt="An satellite being launch to space through the clouds."
+      />
     </div>
   );
 }
