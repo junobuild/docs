@@ -20,35 +20,78 @@ Explore how to create a Juno project developed with Astro.
 
 ## Quickstart
 
-Learn how to create a [satellite], set up a collection, and save data from a Astro app.
+This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing Astro app.
 
-### 1. Set up a satellite and new collection
+Additionally, it covers how to develop against a production environment or locally.
 
-[Create a new satellite](../add-juno-to-an-app/create-a-satellite.md) in the Juno's console.
+### Path A: Start a new project with a template
 
-After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
-
-### 2. Create an Astro app
-
-Create a [Astro](https://astro.build/) app using the `npm create` command:
+1. Create a new project using the Juno quickstart CLI:
 
 ```bash
-npm create astro@latest myjunoapp
+npm create juno@latest
 ```
 
-### 3. Install the Juno SDK core library
+### Path B: Integrate Juno into an existing Next.js app
 
-Use `@junobuild/core` client library which provides a convenient interface for working with Juno from a Astro app.
+1. Add the Juno SDK:
 
-Navigate to the Astro app and install `@junobuild/core`.
+Navigate to your existing app directory and install Juno SDK:
 
 ```bash
-cd myjunoapp && npm i @junobuild/core
+cd your-existing-app
+npm i @junobuild/core
 ```
 
-### 4. Insert data from your app
+### 2. Configure Datastore
 
-In `index.astro`, initialize the library with your public satellite ID.
+#### Production Path
+
+To use production, set up a satellite and new collection:
+
+- [Create a new satellite](../add-juno-to-an-app/create-a-satellite.md) in the Juno's console.
+- After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
+
+#### Local Development Path
+
+To develop with the local emulator, add a collection named `demo` within the `juno.dev.config.mjs` file.
+
+```typescript
+import { defineDevConfig } from "@junobuild/config";
+
+/** @type {import('@junobuild/config').JunoDevConfig} */
+export default defineDevConfig(() => ({
+  satellite: {
+    collections: {
+      db: [
+        {
+          collection: "demo",
+          read: "managed",
+          write: "managed",
+          memory: "stable",
+          mutablePermissions: true
+        }
+      ]
+    }
+  }
+}));
+```
+
+- Once set, run the local emulator:
+
+```bash
+juno dev start
+```
+
+- If the Juno admin CLI (required for deployment, configuration, or to run the emulator) is not installed yet, run:
+
+```
+npm i -g @junobuild/cli
+```
+
+### 3. Insert data from your app
+
+In `index.astro`, initialize the library with the satellite ID you have created for production, or use `jx5yt-yyaaa-aaaal-abzbq-cai` if you are developing locally with the emulator.
 
 Add an `insert` function to persist a document.
 
