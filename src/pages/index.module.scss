@@ -22,6 +22,14 @@
   padding: 5rem 2rem 4rem;
 }
 
+.launch {
+  padding: 0 2rem 8rem;
+
+  @media screen and (min-width: 960px) {
+    padding: 2rem 2rem 10rem;
+  }
+}
+
 .block {
   padding: 2rem 2rem 4rem;
 }
