@@ -30,7 +30,6 @@
 
 div.theme-code-block {
   border: 4px solid var(--ifm-color-primary);
-  box-shadow: 10px 10px var(--ifm-color-primary);
   scrollbar-color: var(--ifm-color-primary-lighter) var(--ifm-color-primary);
 
   ::-webkit-scrollbar-track {
@@ -44,7 +43,8 @@ div.theme-code-block {
 
 a.pagination-nav__link,
 a.card {
-  box-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+  border: 1px solid #000;
+  box-shadow: none;
 
   transition:
     color 0.15s ease-out,
@@ -61,6 +61,7 @@ a.card {
 
   &:hover,
   &:focus {
+    border: 1px solid var(--ifm-color-primary-light);
     box-shadow: 2px 2px var(--ifm-color-primary-light);
   }
 }
@@ -69,7 +70,8 @@ a.card {
   &[data-theme="dark"] {
     a.pagination-nav__link,
     a.card {
-      box-shadow: 2px 2px var(--ifm-color-gray-700);
+      border: 1px solid #fff;
+      box-shadow: 2px 2px #fff;
 
       &:active,
       &:active:focus {
@@ -79,6 +81,7 @@ a.card {
 
       &:hover,
       &:focus {
+        border: 1px solid var(--ifm-color-primary-light);
         box-shadow: 2px 2px var(--ifm-color-primary-light);
       }
     }
