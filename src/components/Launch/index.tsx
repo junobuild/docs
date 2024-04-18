@@ -1,8 +1,27 @@
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { trackEvent } from "@site/src/providers/analytics.providers";
 import LaunchIllustration from "@site/static/img/launch.png";
 import CodeBlock from "@theme/CodeBlock";
+import { useRef } from "react";
 import styles from "./styles.module.scss";
 
 export default function Launch(): JSX.Element {
+  const { siteConfig } = useDocusaurusContext();
+  const container = useRef(null);
+
+  const onClick = async ({ target }: MouseEvent) => {
+    const btn = container.current?.querySelector('button[title="Copy"]');
+
+    if (!btn?.contains(target)) {
+      return;
+    }
+
+    await trackEvent({
+      name: "copy_launch_snippet",
+      siteConfig
+    });
+  };
+
   return (
     <div className={styles.sub}>
       <article>
@@ -12,7 +31,12 @@ export default function Launch(): JSX.Element {
           quickly scaffold your project with ready-made templates.
         </p>
 
-        <CodeBlock className="code-npm">npm create juno@latest</CodeBlock>
+        <div
+          ref={container}
+          onClick={async ($event) => onClick($event as unknown as MouseEvent)}
+        >
+          <CodeBlock className="code-npm">npm create juno@latest</CodeBlock>
+        </div>
       </article>
 
       <img
