@@ -58,7 +58,7 @@ To use production, set up a satellite and new collection:
 To develop with the local emulator, add a collection named `demo` within the `juno.dev.config.js` file.
 
 ```typescript
-import {defineDevConfig} from '@junobuild/config';
+import { defineDevConfig } from "@junobuild/config";
 
 /** @type {import('@junobuild/config').JunoDevConfig} */
 export default defineDevConfig(() => ({
@@ -66,10 +66,10 @@ export default defineDevConfig(() => ({
     collections: {
       db: [
         {
-          collection: 'demo',
-          read: 'managed',
-          write: 'managed',
-          memory: 'stable',
+          collection: "demo",
+          read: "managed",
+          write: "managed",
+          memory: "stable",
           mutablePermissions: true
         }
       ]

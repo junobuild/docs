@@ -58,17 +58,17 @@ To use production, set up a satellite and new collection:
 To develop with the local emulator, add a collection named `demo` within the `juno.dev.config.ts` file.
 
 ```typescript
-import { defineDevConfig } from '@junobuild/config';
+import { defineDevConfig } from "@junobuild/config";
 
 export default defineDevConfig(() => ({
   satellite: {
     collections: {
       db: [
         {
-          collection: 'demo',
-          read: 'managed' as const,
-          write: 'managed' as const,
-          memory: 'stable' as const,
+          collection: "demo",
+          read: "managed" as const,
+          write: "managed" as const,
+          memory: "stable" as const,
           mutablePermissions: true
         }
       ]
@@ -97,20 +97,20 @@ Add an `insert` function to persist a document.
 
 ```html title="App.vue"
 <script setup>
-import { initJuno, setDoc } from "@junobuild/core";
-import { onMounted, ref } from "vue";
+  import { initJuno, setDoc } from "@junobuild/core";
+  import { onMounted, ref } from "vue";
 
-// TODO: Replace 'id' value with the satellite ID
-onMounted(
+  // TODO: Replace 'id' value with the satellite ID
+  onMounted(
     async () =>
       await initJuno({
         id: "aaaaa-bbbbb-ccccc-ddddd-cai"
       })
-);
+  );
 
-const doc = ref(undefined);
+  const doc = ref(undefined);
 
-const insert = async () => {
+  const insert = async () => {
     doc.value = await setDoc({
       collection: "demo",
       doc: {
@@ -120,7 +120,7 @@ const insert = async () => {
         }
       }
     });
-};
+  };
 </script>
 
 <template>

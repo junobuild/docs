@@ -58,17 +58,17 @@ To use production, set up a satellite and new collection:
 To develop with the local emulator, add a collection named `demo` within the `juno.dev.config.ts` file.
 
 ```typescript
-import { defineDevConfig } from '@junobuild/config';
+import { defineDevConfig } from "@junobuild/config";
 
 export default defineDevConfig(() => ({
   satellite: {
     collections: {
       db: [
         {
-          collection: 'demo',
-          read: 'managed' as const,
-          write: 'managed' as const,
-          memory: 'stable' as const,
+          collection: "demo",
+          read: "managed" as const,
+          write: "managed" as const,
+          memory: "stable" as const,
           mutablePermissions: true
         }
       ]
@@ -142,6 +142,7 @@ Replace the existing content in your `+page.svelte` file in the same `routes` di
 Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite on the blockchain.
 
 ---
+
 ## Note-taking app example
 
 This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
