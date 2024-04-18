@@ -4,6 +4,42 @@ import { join } from "node:path";
 const { themes } = require("prism-react-renderer");
 const codeTheme = themes.oneDark;
 codeTheme.plain.backgroundColor = "black";
+codeTheme.styles = [
+  ...codeTheme.styles,
+  {
+    types: ["property", "tag", "symbol", "deleted", "important"],
+    style: { color: "#00fff5" }
+  },
+  { types: ["keyword"], style: { color: "rgb(163, 174, 255)" } },
+  {
+    types: [
+      "selector",
+      "string",
+      "char",
+      "builtin",
+      "inserted",
+      "regex",
+      "attr-value"
+    ],
+    style: { color: "#ff5df9" }
+  },
+  {
+    types: ["variable", "operator", "function"],
+    style: { color: "#ff5df9" }
+  },
+  {
+    types: [
+      "attr-name",
+      "class-name",
+      "maybe-class-name",
+      "boolean",
+      "constant",
+      "number",
+      "atrule"
+    ],
+    style: { color: "#F7AF9D" }
+  }
+];
 
 const config: Config = {
   title: "Juno",
