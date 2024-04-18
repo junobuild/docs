@@ -66,7 +66,7 @@ export default defineDevConfig(() => ({
     collections: {
       db: [
         {
-          collection: 'notes',
+          collection: 'demo',
           read: 'managed',
           write: 'managed',
           memory: 'stable',
@@ -172,6 +172,8 @@ pnpm create juno
 
 <br />
 Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
+
+---
 
 ## Hosting
 
