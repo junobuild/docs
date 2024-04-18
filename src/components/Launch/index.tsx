@@ -1,5 +1,5 @@
+import LaunchIllustration from "@site/static/img/launch.svg";
 import CodeBlock from "@theme/CodeBlock";
-import LaunchIllustration from "../../assets/launch.svg";
 import styles from "./styles.module.scss";
 
 export default function Launch(): JSX.Element {

@@ -1,5 +1,5 @@
 import Start from "@site/src/components/Start";
-import MoonIllustration from "../../assets/moon.svg";
+import MoonIllustration from "@site/static/img/moon.svg";
 import styles from "./styles.module.scss";
 
 export default function Outro(): JSX.Element {
