@@ -91,7 +91,9 @@ npm i -g @junobuild/cli
 
 ### 3. Insert data from your app
 
-In `Page.tsx`, (if using TypeScript) or the corresponding JavaScript file, initialize the library with your public satellite ID and add an `insert` function to persist a document.
+In `Page.tsx`, (if using TypeScript) or the corresponding JavaScript file, initialize the library with the satellite ID you have created for production, or use `jx5yt-yyaaa-aaaal-abzbq-cai` if you are developing locally with the emulator.
+
+Add an `insert` function to persist a document as well.
 
 ```typescript title="Page.tsx"
 "use client";
@@ -106,11 +108,11 @@ type Record = {
 export default function Home() {
   const [record, setRecord] = useState<Doc<Record> | undefined>(undefined);
 
-  // TODO: Replace 'satelliteId' with your actual satellite ID
+  // TODO: Replace 'id' value with the satellite ID
   useEffect(() => {
     (async () =>
       await initJuno({
-        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+        id: "aaaaa-bbbbb-ccccc-ddddd-cai",
       }))();
   }, []);
 
