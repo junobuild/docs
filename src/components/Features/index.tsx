@@ -6,7 +6,7 @@ import Datastore from "@site/static/icons/datastore.svg";
 import Functions from "@site/static/icons/functions.svg";
 import Hosting from "@site/static/icons/hosting.svg";
 import Storage from "@site/static/icons/storage.svg";
-import CloudIllustration from "../../assets/cloud.svg";
+import CloudIllustration from "@site/static/img/cloud.svg";
 import styles from "./styles.module.scss";
 
 export default function Features(): JSX.Element {
@@ -17,9 +17,9 @@ export default function Features(): JSX.Element {
           <CloudIllustration />
         </picture>
         <aside>
-          <h2>Code + Launch in a Weekend</h2>
+          <h2>Bootstrap in a Weekend</h2>
           <p>
-            Kickstart your project with a suite of features designed to
+            Bring your ideas to life with a comprehensive toolkit designed to
             accelerate your Web3 development.
           </p>
         </aside>

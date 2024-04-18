@@ -13,6 +13,7 @@ import Serverless from "@site/src/components/Serverless";
 import Layout from "@theme/Layout";
 import { useEffect } from "react";
 
+import Launch from "@site/src/components/Launch";
 import styles from "./index.module.scss";
 
 export default function Home(): JSX.Element {
@@ -54,6 +55,10 @@ export default function Home(): JSX.Element {
 
         <section className={`container ${styles.section}`}>
           <Build />
+        </section>
+
+        <section className={`container ${styles.launch}`}>
+          <Launch />
         </section>
 
         <section
