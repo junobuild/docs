@@ -14,42 +14,84 @@ Explore how to create a Juno project developed with Vue.
 ## Table of contents
 
 - [Quickstart](#quickstart)
-- [Note-taking app](#note-taking-app)
+- [Note-taking app example](#note-taking-app-example)
 - [Hosting](#hosting)
 
 ---
 
 ## Quickstart
 
-Learn how to create a [satellite], set up a collection, and save data from a Vue app.
+This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing Vue app.
 
-### 1. Set up a satellite and new collection
+Additionally, it covers how to develop against a production environment or locally.
 
-[Create a new satellite](../add-juno-to-an-app/create-a-satellite.md) in the Juno's console.
+### Path A: Start a new project with a template
 
-After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
-
-### 2. Create a Vue app
-
-Create a Vue app using the `npm init` command.
+1. Create a new project using the Juno quickstart CLI:
 
 ```bash
-npm init vue@latest myjunoapp
+npm create juno@latest
 ```
 
-### 3. Install the Juno SDK core library
+### Path B: Integrate Juno into an existing Next.js app
 
-Use `@junobuild/core` client library which provides a convenient interface for working with Juno from a Vue app.
+1. Add the Juno SDK:
 
-Navigate to the Vue app and install `@junobuild/core`.
+Navigate to your existing app directory and install Juno SDK:
 
 ```bash
-cd myjunoapp && npm i @junobuild/core
+cd your-existing-app
+npm i @junobuild/core
 ```
 
-### 4. Insert data from your app
+### 2. Configure Datastore
 
-In `App.vue`, initialize the library with your public satellite ID.
+#### Production Path
+
+To use production, set up a satellite and new collection:
+
+- [Create a new satellite](../add-juno-to-an-app/create-a-satellite.md) in the Juno's console.
+- After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
+
+#### Local Development Path
+
+To develop with the local emulator, add a collection named `demo` within the `juno.dev.config.ts` file.
+
+```typescript
+import { defineDevConfig } from "@junobuild/config";
+
+export default defineDevConfig(() => ({
+  satellite: {
+    collections: {
+      db: [
+        {
+          collection: "demo",
+          read: "managed" as const,
+          write: "managed" as const,
+          memory: "stable" as const,
+          mutablePermissions: true
+        }
+      ]
+    }
+  }
+}));
+```
+
+- Once set, run the local emulator:
+
+```bash
+juno dev start
+```
+
+- If the Juno admin CLI (required for deployment, configuration, or to run the emulator) is not installed yet, run:
+
+```
+npm i -g @junobuild/cli
+```
+
+### 3. Insert data from your app
+
+In `App.vue`, initialize the library with the satellite ID you have created for production, or use `jx5yt-yyaaa-aaaal-abzbq-cai` if you are developing locally with the emulator.
 
 Add an `insert` function to persist a document.
 
@@ -58,10 +100,11 @@ Add an `insert` function to persist a document.
   import { initJuno, setDoc } from "@junobuild/core";
   import { onMounted, ref } from "vue";
 
+  // TODO: Replace 'id' value with the satellite ID
   onMounted(
     async () =>
       await initJuno({
-        satelliteId: "wjar4-kiaaa-aaaal-ab4va-cai"
+        id: "aaaaa-bbbbb-ccccc-ddddd-cai"
       })
   );
 
@@ -92,15 +135,36 @@ Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser
 
 ---
 
-## Note-taking app
+## Note-taking app example
 
-This tutorial, published as a [blog post](/blog/build-a-web3-app-with-vuejs), demonstrates how to build a basic note-taking app. The app authenticates and identifies the user, stores their notes in a simple key-pair database, some files in storage, and allows the user to log in and retrieve their data. The app uses:
+This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
 
-- Juno [datastore](../build/datastore.md): a simple key-pair database for storing user data and other information.
-- Juno [storage](../build/storage.md): a file storage system to store and serve user-generated content, such as photos.
-- Juno [authentication](../build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
+- [Authentication](../build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
+- [Datastore](../build/datastore.md): a simple key-pair database for storing user data and other information.
+- [Storage](../build/storage.md): a file storage system to store and serve user-generated content, such as photos.
 
-For detailed instructions, visit the guide 👉 [Build a Web3 App with VueJS](/blog/build-a-web3-app-with-vuejs).
+Using the Juno CLI, you can easily scaffold this app. To start, run the appropriate command based on your package manager:
+
+NPM:
+
+```bash
+npm create juno@latest
+```
+
+Yarn:
+
+```bash
+yarn create juno
+```
+
+PNPM:
+
+```bash
+pnpm create juno
+```
+
+<br />
+Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
 
 ---
 
