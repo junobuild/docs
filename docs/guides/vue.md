@@ -21,7 +21,7 @@ Explore how to create a Juno project developed with Vue.
 
 ## Quickstart
 
-This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing React app.
+This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing Vue app.
 
 Additionally, it covers how to develop against a production environment or locally.
 
