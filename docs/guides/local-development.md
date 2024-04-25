@@ -1,5 +1,8 @@
 ---
-sidebar_position: 5
+id: local-development
+title: Local development
+description: Set-up the local emulator with Docker
+sidebar_position: 9
 ---
 
 # Local development

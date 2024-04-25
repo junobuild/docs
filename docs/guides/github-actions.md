@@ -1,5 +1,8 @@
 ---
-sidebar_position: 2
+id: github-actions
+title: GitHub Actions
+description: Continuous integration and deployment
+sidebar_position: 8
 ---
 
 # GitHub Actions
