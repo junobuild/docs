@@ -192,6 +192,10 @@ const config: Config = {
                 to: "/docs/build/hosting"
               },
               {
+                label: "Functions",
+                to: "/docs/build/functions"
+              },
+              {
                 label: "Analytics",
                 to: "/docs/build/analytics"
               }
