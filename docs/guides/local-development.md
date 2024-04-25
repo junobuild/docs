@@ -251,7 +251,7 @@ await initJuno({
 });
 ```
 
-For those utilizing the [Vite Plugin](plugins.md#vite-plugin), the configuration is similar. Specify the option within the plugin settings:
+For those utilizing the [Vite Plugin](../miscellaneous/plugins.md#vite-plugin), the configuration is similar. Specify the option within the plugin settings:
 
 ```javascript title="vite.config.js"
 import juno from "@junobuild/vite-plugin";

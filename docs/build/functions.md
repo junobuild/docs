@@ -71,7 +71,7 @@ Once your project is scaffolded, proceed to define Rust functions and annotate t
 
 ### Local Development
 
-For local development and testing, a sandbox environment is essential. With Docker installed and using the CLI, you can establish this environment by running `juno dev start`. Alternatively, manual setup instructions are available in the [documentation](../miscellaneous/local-development.md) for a more customized approach.
+For local development and testing, a sandbox environment is essential. With Docker installed and using the CLI, you can establish this environment by running `juno dev start`. Alternatively, manual setup instructions are available in the [documentation](../guides/local-development.md) for a more customized approach.
 
 :::info
 

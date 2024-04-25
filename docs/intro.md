@@ -44,7 +44,7 @@ After creating your satellite, you're ready to put it to use. Follow our [step-b
 
 Unsure about launching satellites in production? Primarily interested in local development?
 
-Try our [local development emulator](./miscellaneous/local-development.md). It allows you to build and test your projects in an environment that closely mirrors production, without the commitment of a live deployment.
+Try our [local development emulator](./guides/local-development.md). It allows you to build and test your projects in an environment that closely mirrors production, without the commitment of a live deployment.
 
 :::tip
 
