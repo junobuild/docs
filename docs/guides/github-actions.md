@@ -48,7 +48,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
