@@ -1,3 +1,18 @@
+div[class*="announcementBar_"][role="banner"] {
+  border: none;
+
+  font-size: 14px;
+
+  @media screen and (min-width: 960px) {
+    font-size: inherit;
+    padding-top: .45rem;
+  }
+
+  a {
+    color: var(--button-shadow-color);
+  }
+}
+
 .navbar {
   @media screen and (min-width: 1280px) {
     padding-inline: 3rem;
