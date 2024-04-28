@@ -1,6 +1,5 @@
-import lottie from "lottie-web";
+import { DotLottie } from "@lottiefiles/dotlottie-web";
 import { useEffect, useRef } from "react";
-import animationData from "./lottie-animation.json";
 
 import styles from "./styles.module.scss";
 
@@ -17,22 +16,20 @@ export default Illustration;
 // --
 
 function LottieAnimation() {
-  const container = useRef(null);
+  const canvas = useRef(null);
 
   useEffect(() => {
-    lottie.loadAnimation({
-      container: container.current,
-      renderer: "svg",
-      loop: true,
+    new DotLottie({
       autoplay: true,
-      animationData: animationData
+      loop: true,
+      canvas: canvas.current,
+      src: "/animations/astronaut.lottie"
     });
-  }, []);
+  }, [canvas]);
 
   return (
-    <picture
-      aria-label="An astronaut floating in space around planet Juno orbited by satellites, stars in the background."
-      ref={container}
-    />
+    <picture aria-label="An astronaut floating in space around planet Juno orbited by satellites, stars in the background.">
+      <canvas ref={canvas} />
+    </picture>
   );
 }
