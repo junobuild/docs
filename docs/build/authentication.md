@@ -20,6 +20,26 @@ The Juno SDK must be [installed](../add-juno-to-an-app/install-the-sdk-and-initi
 
 ---
 
+## Domain-Based User Identity
+
+For privacy reasons and to prevent tracking between sites, Juno's [authentication](authentication.md) is linked to the domains you use.
+
+This means that if a user signs in to your app on the default domain (`icp0.io`) and a custom domain, they will, by default, be treated as two separate users.
+
+Similarly, a user signing in on your custom domain `hello.com` and a subdomain such as `www.hello.com` will also be treated as separate users.
+
+That is why, when you set up a domain in the Console, you will be prompted about which primary domain should be used to identify users. This ensures that, regardless of whether they sign in on the default or a custom domain, users will be identified with the same public ID.
+
+This feature is also known as "derivation origin" or "alternative origins". See the [documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/internet-identity/alternative-origins/) for more details about the specification.
+
+:::tip
+
+It is strongly recommended to set up such a primary domain only once per project and preferably before going live.
+
+:::
+
+---
+
 ## Sign-in
 
 You can authorize an existing or new user with the identity provider using `signIn`.
