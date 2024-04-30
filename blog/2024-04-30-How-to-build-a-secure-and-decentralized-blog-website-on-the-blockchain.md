@@ -11,7 +11,9 @@ authors: [sam-the-tutor]
 
 Beyond cryptocurrencies, Blockchain technology offers tools to build secure, transparent applications fully controlled by the user. Building a blog website on the blockchain allows the user to establish a censorship resistant space where they retain full ownership of their content and data.
 
-In this article, we will look at how to create and host your blog website on the blockchain using Juno. Juno is an open-source Blockchain-as-a-service platform that offers a fully decentralized and secure infrastructure for your applications. This article will cover setting up the boilerplate project using juno, configuring the satellites that will host our website, developing the code for the website as well as deploying the project on the blockchain using some of Juno's super powers. By the end of this article, the reader will have an understanding of how Juno works, how to host their own website on the blockchain using Juno and how to automate the different deployment tasks using Github Actions.
+In this article, we will look at how to create and host your blog website on the blockchain using Juno. Juno is an open-source Blockchain-as-a-service platform that offers a fully decentralized and secure infrastructure for your applications. This article will cover setting up a boilerplate project, configuring the hosting, developing the code for your blog and deploying the project on the blockchain using some of Juno's super powers.
+
+By the end of this article, you will have an understanding of how Juno works, how to host your websites on the blockchain and how to automate the different tasks using Github Actions.
 
 ## Prerequisites
 
