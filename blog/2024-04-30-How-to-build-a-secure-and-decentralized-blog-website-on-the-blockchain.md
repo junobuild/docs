@@ -17,7 +17,7 @@ By the end of this article, you will have an understanding of how Juno works, ho
 
 ## Prerequisites
 
-- Prior knowldge of working with HTML,CSS and JavaScript
+- Prior knowledge of working with HTML, CSS and JavaScript
 - Prior knowledge of working with terminal or command line
 - Prior knowledge of Github
 - Computer and Internet
