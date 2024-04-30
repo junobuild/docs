@@ -97,6 +97,8 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_SOCIAL_IMAGE } from "../consts";
       description={SITE_DESCRIPTION}
       image={SITE_SOCIAL_IMAGE}
     />
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" />
+
   </head>
   
   <body>
