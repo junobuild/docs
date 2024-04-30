@@ -1,5 +1,5 @@
 ---
-slug: How to Build a Secure and Decentralized Blog Website on the Blockchain
+slug: how-to-build-a-secure-and-decentralized-blog-website-on-the-blockchain
 title: How to Build a Secure and Decentralized Blog Website on the Blockchain
 authors: [sam-the-tutor]
 ---
