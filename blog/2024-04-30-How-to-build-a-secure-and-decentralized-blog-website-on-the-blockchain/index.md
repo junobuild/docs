@@ -54,7 +54,6 @@ npm create juno@latest -- --template astro-starter
 
 In the prompts;
 - Provide the name of the project folder `myBlog`
-- select `Static website or blog` as the kind of project
 - Select `yes` to configure Github Actions
 - Select `no` to configure the local development emurator
 - Select `yes` to install the dependencies
@@ -85,6 +84,7 @@ Replace all the code in the in the `index.astro` file with the code below
 import blogPosts from '../components/blogPosts.json';
 import Article from '../components/Article.astro';
 import Background from "../components/Background.astro";
+import BaseHead from "../components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_SOCIAL_IMAGE } from "../consts";
 
 ---
