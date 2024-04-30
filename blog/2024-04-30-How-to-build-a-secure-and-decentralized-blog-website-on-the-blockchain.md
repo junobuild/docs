@@ -211,7 +211,7 @@ In the project terminal, run the command `juno init` and follow the prompts
 
 Select `yes` to login and authorize the terminal to access your satellite in your browser, select `myBlogSatellite` as the satellite to connect the project to, `dist` as the location of the compiled app files, and `JavaScript` as the configuration file format.
 
-If the above step is successful, a new file `juno.config.js`
+If the above step is successful, a new file `juno.config.ts`
  will be added at the root of our project folder. It contains the configuration necessary for our poject to connect to the satellite. You need this file if your project is to be deployed successfully to the satellite. Learn more about this [configuration](https://juno.build/docs/miscellaneous/configuration)
 
 ### Compiling and deploying the Project
