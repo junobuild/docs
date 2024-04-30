@@ -2,9 +2,11 @@
 slug: how-to-build-a-secure-and-decentralized-blog-website-on-the-blockchain
 title: How to Build a Secure and Decentralized Blog Website on the Blockchain
 authors: [sam-the-tutor]
+tags: [hosting, blog, website, tutorial]
+image: https://juno.build/assets/images/project-complete-b24c4bfccb40cfd234cd724b34dc978b.png
 ---
 
-![](./complete-project.PNG)
+![](./project-complete.png)
 
 ---
 
@@ -48,7 +50,7 @@ Unlike traditional blockchains, the Internet Computer uses a unique consensus me
 
 This is a secure and decentralized blog website. The frontend is build with Astro, which is a modern, flexible web framework focused on building fast, content-rich websites with minimal JavaScript. Here is what you will build by the end of thi article:
 
-![live project](./complete-project.PNG)
+![live project](./project-complete.png)
 
 ---
 
@@ -73,7 +75,7 @@ In the prompts;
 Navigate to the project folder `myBlog` and open it in your favorite code editor.
 If every previous step is successfull, running `npm run dev` will open the project in your browser and you should have something similar to this.
 
-![template](./template-on-localhost.PNG)
+![template](./template-localhost.png)
 
 ---
 
@@ -81,7 +83,7 @@ If every previous step is successfull, running `npm run dev` will open the proje
 
 Having followed the above steps, and opening the project in a code editor, your project should have a file structure similar to the one below.
 
-![filestructure](./file-structure.PNG)
+![filestructure](./project-structure.png)
 
 ---
 
@@ -187,25 +189,25 @@ In the components folder, create a new file and name it `blogPosts.json`. Paste 
 [
   {
     "title": "Introduction to Astro",
-    "image": "https://a2ede-rqaaa-aaaal-ai6sq-cai.raw.icp0.io/uploads/download.300.168.png",
+    "image": "https://juno.build/img/cloud.svg",
     "description": "Astro is a new static site generator that makes it easy to build fast, content-focused websites.",
     "url": "https://docs.astro.build/en/getting-started/"
   },
   {
     "title": "Tailwind CSS: A Utility-First CSS Framework",
-    "image": "https://a2ede-rqaaa-aaaal-ai6sq-cai.raw.icp0.io/uploads/tttttt.512.256.png",
+    "image": "https://juno.build/img/launch.png",
     "description": "Tailwind CSS is a utility-first CSS framework that makes it easy to build responsive and customizable user interfaces.",
     "url": "https://tailwindcss.com/docs/installation"
   },
   {
     "title": "The Benefits of Static Site Generation",
-    "image": "https://a2ede-rqaaa-aaaal-ai6sq-cai.raw.icp0.io/uploads/staticsite.270.148.png",
+    "image": "https://juno.build/img/moon.svg",
     "description": "Static site generation offers several benefits, including improved performance, better security, and easier deployment.",
     "url": "https://www.netlify.com/blog/2016/05/02/top-ten-reasons-the-static-website-is-back/"
   },
   {
     "title": "Introduction to Astro",
-    "image": "https://a2ede-rqaaa-aaaal-ai6sq-cai.raw.icp0.io/uploads/download.300.168.png",
+    "image": "https://juno.build/img/illustration.svg",
     "description": "Astro is a new static site generator that makes it easy to build fast, content-focused websites.",
     "url": "https://docs.astro.build/en/getting-started/"
   }
@@ -216,7 +218,7 @@ This file holds our sample article data that we are using for this project.
 
 If all the above steps are successfull, your project should look like this in the browser
 
-![local project](./project-on-localhost.PNG)
+![local project](./project-localhost.png)
 
 ---
 
@@ -286,7 +288,7 @@ Running `juno open` in your terminal opens your project in your favorite browser
 :::
 
 Opening the link in the browser, you should have something like this below
-![live project](./complete-project.PNG)
+![live project](./project-complete.png)
 
 If you have reached this step, well done, you have successfully deployed your first blog website on the blockchain using Juno.
 
