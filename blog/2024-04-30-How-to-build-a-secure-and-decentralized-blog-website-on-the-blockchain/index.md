@@ -5,7 +5,7 @@ authors: [sam-the-tutor]
 ---
 
 
-![](https://a2ede-rqaaa-aaaal-ai6sq-cai.raw.icp0.io/uploads/ddd.1362.695.PNG)
+![](./complete-project.PNG)
 
 ## Introduction
 
@@ -20,52 +20,60 @@ By the end of this article, you will have an understanding of how Juno works, ho
 - Prior knowledge of working with HTML, CSS and JavaScript
 - Prior knowledge of working with terminal or command line
 - Prior knowledge of Github
-- Computer and Internet
+
+To follow along this article, you dont need any knowledge about crypto and blockchain
+
 
 ## What is Juno?
 
-Juno is an open-source Blockchain-as-a-Service platform. It works just like traditional serverless platforms such as Google Firebase or AWS Amplify, but with one key difference: everything on Juno runs on the blockchain. This means that you get a fully decentralized and secure infrastructure for your applications, which is pretty cool if you ask me.
+Juno works just like traditional serverless platforms such as Google Firebase or AWS Amplify, but with one key difference: everything on Juno runs on the blockchain. This means that you get a fully decentralized and secure infrastructure for your applications, which is pretty cool if you ask me.
 
-Behind the scenes, Juno uses the Internet Computer blockchain network and infrastructure to launch what we call a “Satellite” for each app you build. A Satellite is essentially a smart contract on steroids that contains your entire app. From its assets provided on the web (such as JavaScript, HTML, and image files) to its state saved in a super simple database, file storage, and authentication, each Satellite controlled solely by you contains everything it needs to run smoothly.
-[Learn more about Juno](https://juno.build/)
+Behind the scenes, Juno uses the Internet Computer blockchain network and infrastructure to launch what we call a “Satellite” for each project you build. A Satellite is essentially a smart contract on steroids that contains your entire app. From its assets provided on the web (such as JavaScript, HTML, and image files) to its state saved in a super simple database, file storage, and authentication, each Satellite controlled solely by you contains everything it needs to run smoothly.
 
 ## What is ICP?
 
-The Internet Computer (ICP) is a blockchain-based platform that aims to create a new type of internet, one that is decentralized, secure, and scalable. Developed by the Dfinity Foundation, the Internet Computer is designed to serve as a global public compute infrastructure, allowing developers to build and deploy decentralized applications (dApps) and services directly on the blockchain.
-Unlike traditional blockchains, the Internet Computer uses a unique consensus mechanism called Threshold Relay, which allows it to achieve high transaction throughput and low latency. The platform is also designed to be highly scalable, with the ability to add more nodes and increase its computing power as demand grows. This makes the Internet Computer a promising platform for building a wide range of decentralized applications, from social media and e-commerce to finance and cloud computing.[Learn more about ICP](https://internetcomputer.org/)
+The Internet Computer (ICP) is a blockchain-based platform that aims to create a new type of internet, one that is decentralized, secure, and scalable. Developed, among others, by the DFINITY Foundation, the Internet Computer is designed to serve as a global public compute infrastructure, allowing developers to build and deploy decentralized applications (dApps) and services directly on the blockchain.
+
+Unlike traditional blockchains, the Internet Computer uses a unique consensus mechanism called Threshold Relay, which allows it to achieve high transaction throughput and low latency. The platform is also designed to be highly scalable, with the ability to add more nodes and increase its computing power as demand grows. This makes the Internet Computer a promising platform for building a wide range of decentralized applications, from social media and e-commerce to finance and cloud computing. [Learn more about ICP](https://internetcomputer.org/)
 
 ## About the Project
 
-This is a secure and decentralized blog website hosted on the blockchain using Juno. The frontend is build with Astro, which is a modern, flexible web framework focused on building fast, content-rich websites with minimal JavaScript. Here is what you will build by the end of thi article
+This is a secure and decentralized blog website. The frontend is build with Astro, which is a modern, flexible web framework focused on building fast, content-rich websites with minimal JavaScript. Here is what you will build by the end of thi article:
 
-![live project](https://a2ede-rqaaa-aaaal-ai6sq-cai.raw.icp0.io/uploads/ddd.1362.695.PNG)
+![live project](./complete-project.PNG)
 
 ## Setting up the project
 
-In this section, we will look at how to create a boilerplate template for our project using Juno
+In this section, we will look at how to create a boilerplate template for our project.
 
 In your terminal, run the command below
 
 ```bash
-npm create juno@latest --template astro-starter
+npm create juno@latest -- --template astro-starter
 ```
 
-In the prompts, select `Static website or blog` as the kind of project, `Astro` as the framwork, `yes` to configure Github Actions, `no` to configure the local development emurator, `yes` to install the dependencies, and `yes` to install juno's CLI tool. Juno CLI will help us to deploy our project in the satellite.
+In the prompts;
+- Provide the name of the project folder `myBlog`
+- select `Static website or blog` as the kind of project
+- Select `yes` to configure Github Actions
+- Select `no` to configure the local development emurator
+- Select `yes` to install the dependencies
+- Select `yes` to install juno's CLI tool. Juno CLI will help us to deploy our project in the satellite.
 
-Navigate to the project folder `astro-starter` and open it in your favorite code editor.
-If every previous step is successfull, running `npm run start` will open the project in your browser and you should have something similar to this.
+Navigate to the project folder `myBlog` and open it in your favorite code editor.
+If every previous step is successfull, running `npm run dev` will open the project in your browser and you should have something similar to this.
 
-![template](https://a2ede-rqaaa-aaaal-ai6sq-cai.raw.icp0.io/uploads/sw.1354.642.PNG)
+![template](./template-on-localhost.PNG)
 
 ### File Structure
 
 Having followed the above steps, and opening the project in a code editor, your project should have a file structure similar to the one below.
 
-![filestructure](https://a2ede-rqaaa-aaaal-ai6sq-cai.raw.icp0.io/uploads/fielstruc.259.579.PNG)
+![filestructure](./file-structure.PNG)
 
-## Project code
+## Blog code
 
-In this section,we will look at the code required for our project to function
+In this section,we will adapt the boilerplate code to transform your project into a blogging website.
 
 ### `index.astro`
 
@@ -77,15 +85,20 @@ Replace all the code in the in the `index.astro` file with the code below
 import blogPosts from '../components/blogPosts.json';
 import Article from '../components/Article.astro';
 import Background from "../components/Background.astro";
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_SOCIAL_IMAGE } from "../consts";
+
 ---
 
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Blog</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" />
+    <BaseHead
+      title={SITE_TITLE}
+      description={SITE_DESCRIPTION}
+      image={SITE_SOCIAL_IMAGE}
+    />
   </head>
+  
   <body>
     <header class="bg-gray-800 text-white py-4">
       <nav class="container mx-auto flex justify-between items-center">
@@ -185,25 +198,28 @@ This file holds our sample article data that we are using for this project.
 
 If all the above steps are successfull, your project should look like this in the browser
 
-![local project](https://a2ede-rqaaa-aaaal-ai6sq-cai.raw.icp0.io/uploads/local.1351.693.PNG)
+![local project](./project-on-localhost.PNG)
 
-## Project Deployment
+## Deployment
 
-In this section, we will look at how to deploy our project to the satellite using juno.
+In this section, we will look at how to deploy our project live.
 
 ### Creating a satellite
 
 We need to create a satellite that will host our project. Follow the steps below to create your own satellite.
 
-![juno statellite](https://a2ede-rqaaa-aaaal-ai6sq-cai.raw.icp0.io/uploads/createsatellite.600.338.gif)
+![juno statellite](./createsatellite.gif)
 
-- Navigate to the [juno console](https://console.juno.build/) website
-- Login with your internet Identity
+- Navigate to the administration [console](https://console.juno.build/) website
+- Login with your [internet Identity](https://internetcomputer.org/internet-identity)
 - On the dashboard, select Launch new satellite
 - Provide name `myBlogSatellite` for the satellite.
 - Click `Create Satellite`
 
-`To keep the satellite operational, the developer pays a small fee that is used to purchase the necessary cycles for the satellite's storage and computation requirements.` [Learn more about pricing](https://juno.build/docs/pricing)
+
+
+> To keep the satellite operational, the developer pays a small fee that is used to purchase the necessary cycles for the satellite's storage and computation requirements. [Learn more about pricing](https://juno.build/docs/pricing)
+
 
 ## Connect Project to the Satellite
 
@@ -211,7 +227,13 @@ We need to link our project to the satellite. follow the steps below
 
 In the project terminal, run the command `juno init` and follow the prompts
 
-Select `yes` to login and authorize the terminal to access your satellite in your browser, select `myBlogSatellite` as the satellite to connect the project to, `dist` as the location of the compiled app files, and `JavaScript` as the configuration file format.
+- Select `yes` to login and authorize the terminal to access your satellite in your browser
+
+- Select `myBlogSatellite` as the satellite to connect the project to
+
+- Select `dist` as the location of the compiled app files
+
+- Select `TypeScript` as the configuration file format.
 
 If the above step is successful, a new file `juno.config.ts`
  will be added at the root of our project folder. It contains the configuration necessary for our poject to connect to the satellite. You need this file if your project is to be deployed successfully to the satellite. Learn more about this [configuration](https://juno.build/docs/miscellaneous/configuration)
@@ -234,8 +256,13 @@ This will deploy our compiled files to the satellite that we connected linked ou
 
 At this stage, if all the previous steps are successful, `juno deploy` command will output a link whixh is in this format `https://<SATELLITE_ID>.icp0.io` where `SATELLITE_ID` is the id of the satellite that we connected our project to.
 
+
+> **Tip:** Running `juno open` in your terminal opens your project in your favorite browser.
+
+
+
 Opening the link in the browser, you should have something like this below
-![live project](https://a2ede-rqaaa-aaaal-ai6sq-cai.raw.icp0.io/uploads/ddd.1362.695.PNG)
+![live project](./complete-project.PNG)
 
 If you have reached this step, well done, you have successfully deployed your first blog website on the blockchain using Juno.
 
@@ -245,7 +272,38 @@ If you noticed in the previous steps, every time we make changes to our project,
 
 In our project, we have a folder `.github` which contains the file `deploy.yaml`. This file has all the configurations required to setup Github Actions in our project. This folder must be present in your poject to successfully setup Github Actions. You can add it manually if you dont have it in your project. Below are the contents of the `deploy.yaml` file
 
-![](https://a2ede-rqaaa-aaaal-ai6sq-cai.raw.icp0.io/uploads/deployss.1317.670.PNG)
+```yaml
+name: Deploy to Juno
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to Juno
+        uses: junobuild/juno-action@main
+        with:
+          args: deploy
+        env:
+          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
 
 ### Generating a secret token from the juno console
 
@@ -256,7 +314,7 @@ To set up Github Actions, we need a secret token that uniquely identifies our sa
 - Select 'Genetate new controller' and select 'Read-write' as the scope.
 - Click submit.
 Once the new controller is generated, it will provide a secret token, copy and store the secret token.
-![secret token](https://a2ede-rqaaa-aaaal-ai6sq-cai.raw.icp0.io/uploads/createsecret.600.338.gif)
+![secret token](./createsecret.gif)
 
 ### Setting up Github Repo
 
@@ -267,7 +325,7 @@ On your Github account, create a new repo and name it `myfirstBlog`.
 - Click on the `new repository secret`, add `JUNO_TOKEN` as the name, paste the secret token you copied from the juno console in the `Secret` section.
 - Click `Add secret`.
 
-![github repo](https://a2ede-rqaaa-aaaal-ai6sq-cai.raw.icp0.io/uploads/addsecret.600.338.gif)
+![github repo](./addsecret.gif)
 
 
 ### Pushing Code to Github
@@ -293,8 +351,9 @@ Now that we have successfully hosted our blog website on the blockchain, you can
 ## Conclusion
 
 In this article, we have looked at how to create a boilerplate template project using juno, how to create a satellite from the juno console, writing code for our project, how to connect the satellite to the our local project, deploying our project to the satellite and configuring Github Actions to automate compiling and deployment tasks for our project
----
 
+
+----
 👋
 
 Stay connected with Juno by following us on [Twitter](https://twitter.com/junobuild) to keep up with our latest updates.
