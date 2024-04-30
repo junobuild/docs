@@ -291,4 +291,10 @@ Now that we have successfully hosted our blog website on the blockchain, you can
 ## Conclusion
 
 In this article, we have looked at how to create a boilerplate template project using juno, how to create a satellite from the juno console, writing code for our project, how to connect the satellite to the our local project, deploying our project to the satellite and configuring Github Actions to automate compiling and deployment tasks for our project
+---
 
+👋
+
+Stay connected with Juno by following us on [Twitter](https://twitter.com/junobuild) to keep up with our latest updates.
+
+And if you made it this far, we’d love to have you join the Juno community on [Discord](https://discord.gg/wHZ57Z2RAG). 😉
