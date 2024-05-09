@@ -145,7 +145,7 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     let doc: SetDoc = SetDoc {
         data: encode_data,
         description: context.data.data.after.description,
-        updated_at: Some(context.data.data.after.updated_at),
+        version: context.data.data.after.version,
     };
 
     // We save the document for the same caller as the one who triggered the original on_set_doc, in the same collection with the same key as well.
@@ -273,7 +273,7 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
             let doc: SetDoc = SetDoc {
                 data: encode_data,
                 description: context.data.data.after.description,
-                updated_at: Some(context.data.data.after.updated_at),
+                version: context.data.data.after.version,
             };
 
             // 7. We store the data in the Datastore for the same caller as the one who triggered the original on_set_doc, in the same collection with the same key as well.

@@ -170,7 +170,7 @@ const docs = await getManyDocs({ docs: [docPair1, docPair2] });
 
 ## Update a document
 
-To update a document, use the `setDoc` function with a timestamp to validate that the most recent entry is being updated:
+To update a document, use the `setDoc` function with its current version to validate that the most recent entry is being updated:
 
 ```typescript
 import { setDoc } from "@junobuild/core";
@@ -178,17 +178,30 @@ import { setDoc } from "@junobuild/core";
 await setDoc<Example>({
   collection: "my_collection_key",
   doc: {
-    ...myDoc, // includes 'key' and 'updated_at'
-    data: myNewData
+    key: myId,
+    data: myExample,
+    version: 3n
   }
 });
 ```
 
-The `updated_at` timestamp must match the timestamp of the last document update on the satellite, otherwise the call will fail. This prevents unexpected concurrent updates.
+The `version` must match the current version of the last document within the satellite; otherwise, the call will fail. This prevents unexpected concurrent overwrites, which is useful, for example, if your users use your projects simultaneously on multiple devices.
 
 :::tip
 
-It is common to retrieve the document with `getDoc` before updating it to ensure that you have the most recent timestamp.
+You can spread the document you have previously retrieved, for example with `getDoc`, to populate the `version` and `key` fields.
+
+```typescript
+import { setDoc } from "@junobuild/core";
+
+await setDoc<Example>({
+  collection: "my_collection_key",
+  doc: {
+    ...myDoc, // includes 'key' and 'version'
+    data: myNewData
+  }
+});
+```
 
 :::
 
