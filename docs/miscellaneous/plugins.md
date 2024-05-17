@@ -17,11 +17,11 @@ These values allow you to instantiate Juno in your code without the need to manu
 ```javascript
 await Promise.all([
   initJuno({
-    satelliteId: import.meta.env.NEXT_PUBLIC_SATELLITE_ID
+    satelliteId: process.env.NEXT_PUBLIC_SATELLITE_ID
   }),
   initOrbiter({
-    satelliteId: import.meta.env.NEXT_PUBLIC_SATELLITE_ID,
-    orbiterId: import.meta.env.NEXT_PUBLIC_ORBITER_ID
+    satelliteId: process.env.NEXT_PUBLIC_SATELLITE_ID,
+    orbiterId: process.env.NEXT_PUBLIC_ORBITER_ID
   })
 ]);
 ```
