@@ -119,6 +119,16 @@ npm i @junobuild/analytics
 
 2. Initialize the orbiter in your web app or website:
 
+If you are using the [Next.js](../miscellaneous/plugins.md#nextjs-plugin) or [Vite](../miscellaneous/plugins.md#vite-plugin) plugins, simply initialize the orbiter in your application, preferably as soon as possible when your app starts.
+
+```typescript
+import { initOrbiter } from "@junobuild/analytics";
+
+await initOrbiter();
+```
+
+If you are not using the plugins, you will also need to provide the `satelliteId` and `orbiterId` manually as configuration.
+
 ```typescript
 import { initOrbiter } from "@junobuild/analytics";
 
