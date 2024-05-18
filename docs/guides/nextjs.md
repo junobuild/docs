@@ -108,12 +108,9 @@ type Record = {
 export default function Home() {
   const [record, setRecord] = useState<Doc<Record> | undefined>(undefined);
 
-  // TODO: Replace 'satelliteId' value with the satellite ID
   useEffect(() => {
     (async () =>
-      await initSatellite({
-        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
-      }))();
+      await initSatellite())();
   }, []);
 
   const insert = async () => {

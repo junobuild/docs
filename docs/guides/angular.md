@@ -112,10 +112,7 @@ export class AppComponent {
   doc: Doc<{ hello: string }> | undefined = undefined;
 
   async ngOnInit() {
-    // TODO: Replace 'satelliteId' value with the satellite ID
-    await initSatellite({
-      satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
-    });
+    await initSatellite();
   }
 
   async insert() {

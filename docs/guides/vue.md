@@ -100,12 +100,9 @@ Add an `insert` function to persist a document.
   import { initSatellite, setDoc } from "@junobuild/core";
   import { onMounted, ref } from "vue";
 
-  // TODO: Replace 'satelliteId' value with the satellite ID
   onMounted(
     async () =>
-      await initSatellite({
-        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
-      })
+      await initSatellite()
   );
 
   const doc = ref(undefined);
