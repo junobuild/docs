@@ -103,12 +103,9 @@ import { initSatellite, setDoc } from "@junobuild/core";
 function App() {
   const [record, setRecord] = useState(undefined);
 
-  // TODO: Replace 'satelliteId' value with the satellite ID
   useEffect(() => {
     (async () =>
-      await initSatellite({
-        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
-      }))();
+      await initSatellite())();
   }, []);
 
   const insert = async () => {

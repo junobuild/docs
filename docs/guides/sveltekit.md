@@ -98,12 +98,9 @@ Create a new file `+layout.svelte` in `src/routes` and initialize the library wi
   import { onMount } from "svelte";
   import { initSatellite } from "@junobuild/core";
 
-  // TODO: Replace 'satelliteId' value with the satellite ID
   onMount(
     async () =>
-      await initSatellite({
-        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
-      })
+      await initSatellite()
   );
 </script>
 

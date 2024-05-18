@@ -106,14 +106,11 @@ Add an `insert` function to persist a document.
       <script>
         import { initSatellite, setDoc } from "@junobuild/core";
 
-        // Initialize Juno
-        // TODO: Replace 'satelliteId' with your actual satellite ID
+        // Initialize Juno's satellite
         document.addEventListener(
           "DOMContentLoaded",
           async () => {
-            await initSatellite({
-              satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
-            });
+            await initSatellite();
           },
           { once: true }
         );
