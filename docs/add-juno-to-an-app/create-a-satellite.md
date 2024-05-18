@@ -16,7 +16,7 @@ Before integrating Juno into your project, you need to create a [satellite].
 
 :::info
 
-Whether you're looking to connect your satellite to an [existing application](setup), [deploy](deploy#deploy-your-app-1) your website, or launch a project [created with a template](../intro.md#starting-a-new-project), you now own a container to shape your project. This smart contract is controlled exclusively by you.
+Whether you're looking to connect your satellite to an [existing application](setup), [deploy](deploy#deploy-your-app-1) your website, or launch a project [created with a template](../intro.md#starting-a-new-project), you now own a container to shape your project. This smart contract is **controlled exclusively by you 🔐**.
 
 :::
 
