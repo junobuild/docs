@@ -16,6 +16,15 @@ These values allow you to instantiate Juno in your code without the need to manu
 
 ```javascript
 await Promise.all([
+  initSatellite(),
+  initOrbiter()
+]);
+```
+
+However, if you wish to explicitly use the environment variables that are loaded by the plugin, you can do so. This is notably required if you specify a prefix other than `NEXT_PUBLIC_`.
+
+```javascript
+await Promise.all([
   initSatellite({
     satelliteId: process.env.NEXT_PUBLIC_SATELLITE_ID
   }),
@@ -79,6 +88,15 @@ Discover additional information in the library's [README](https://github.com/jun
 If you are developing your app using Vite, this plugin automatically loads the Satellite ID from your project's configuration file. If you are using analytics, it also loads the Orbiter ID too.
 
 These values allow you to instantiate Juno in your code without the need to manually define environment variables.
+
+```javascript
+await Promise.all([
+  initSatellite(),
+  initOrbiter()
+]);
+```
+
+However, if you wish to explicitly use the environment variables that are loaded by the plugin, you can do so. This is notably required if you specify a prefix other than the default, such as `VITE_` or `PUBLIC_`.
 
 ```javascript
 await Promise.all([
