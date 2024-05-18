@@ -17,7 +17,8 @@ export default defineConfig({
           code: 301
         },
         {
-          source: "/docs/add-juno-to-an-app/install-the-sdk-and-initialize-juno",
+          source:
+            "/docs/add-juno-to-an-app/install-the-sdk-and-initialize-juno",
           location: "/docs/add-juno-to-an-app/setup",
           code: 301
         },
