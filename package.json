@@ -30,7 +30,7 @@
     "@docusaurus/core": "^3.3.2",
     "@docusaurus/preset-classic": "^3.3.2",
     "@junobuild/analytics": "^0.0.23",
-    "@lottiefiles/dotlottie-web": "^0.20.0",
+    "@lottiefiles/dotlottie-web": "^0.20.2",
     "@mdx-js/react": "^3.0.1",
     "clsx": "^2.1.1",
     "prism-react-renderer": "^2.3.1",
