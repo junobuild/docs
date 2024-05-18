@@ -26,7 +26,7 @@ npm i node-fetch
 
 In a NodeJS environment, initializing Juno in your app is not required, unlike using Juno in a web application.
 
-The second step in the [Install the SDK and initialize Juno](../add-juno-to-an-app/install-the-sdk-and-initialize-juno.md) guide can be skipped.
+The second step in the [Install the SDK and initialize Juno](../add-juno-to-an-app/setup) guide can be skipped.
 
 Instead, any of Juno's functions can be called with an extra parameter that includes both the fetch library and the satellite ID.
 

@@ -38,7 +38,7 @@ Our CLI tool is compatible with Mac, Linux, and Windows and requires [NodeJS](ht
 
 ## Integrating in an existing app
 
-After creating your satellite, you're ready to put it to use. Follow our [step-by-step guidance](./add-juno-to-an-app/install-the-sdk-and-initialize-juno.md) to install the SDK and initialize your app, establishing communication with your satellite.
+After creating your satellite, you're ready to put it to use. Follow our [step-by-step guidance](./add-juno-to-an-app/setup) to install the SDK and initialize your app, establishing communication with your satellite.
 
 ## Local development
 

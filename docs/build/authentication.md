@@ -14,7 +14,7 @@ You can manage your users in the [authentication](https://console.juno.build/auh
 
 :::note
 
-The Juno SDK must be [installed](../add-juno-to-an-app/install-the-sdk-and-initialize-juno.md) and initialized in your app to use the authentication features.
+The Juno SDK must be [installed](../add-juno-to-an-app/setup) and initialized in your app to use the authentication features.
 
 :::
 
