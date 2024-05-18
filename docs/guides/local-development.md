@@ -235,23 +235,9 @@ volumes:
 
 When integrating your application with the container during Juno initialization, you have two primary options. The first is to set a specific parameter to `true`, which applies the default container configuration. The second option is to provide a custom `string` as the URL of the container, which is especially beneficial if you're using a custom port.
 
-In addition, you should also set the satellite ID to the static ID used in the container - that is, `jx5yt-yyaaa-aaaal-abzbq-cai`.
+### Plugins
 
-The initialization would look like this:
-
-```typescript
-import { initSatellite } from "@junobuild/core";
-
-await initSatellite({
-  // TODO: replace DEV flag according your need and the production satellite ID as well
-  satelliteId: DEV
-    ? "jx5yt-yyaaa-aaaal-abzbq-cai"
-    : "aaaaa-bbbbb-ccccc-ddddd-cai",
-  container: true
-});
-```
-
-For those utilizing the [Vite Plugin](../miscellaneous/plugins.md#vite-plugin), the configuration is similar. Specify the option within the plugin settings:
+If you are utilizing the [Vite](../miscellaneous/plugins.md#vite-plugin) or [NextJS](../miscellaneous/plugins.md#nextjs-plugin), you can configure the container directly within the plugin settings:
 
 ```javascript title="vite.config.js"
 import juno from "@junobuild/vite-plugin";
@@ -265,13 +251,20 @@ export default defineConfig({
 });
 ```
 
-To further streamline the process, you can map environment variables for initialization:
+The plugin will automatically load the necessary environment variables for the container configuration so that your app uses it when you develop.
 
-```javascript
+### Manual Initialization
+
+If you are not using the plugins, you should set the satellite ID to the static ID used in the container, which is `jx5yt-yyaaa-aaaal-abzbq-cai`. The initialization would look like this:
+
+```typescript
+import { initSatellite } from "@junobuild/core";
+
 await initSatellite({
-  satelliteId: import.meta.env.VITE_SATELLITE_ID,
-  container: import.meta.env.VITE_CONTAINER
+  // TODO: replace DEV flag according your need and the production satellite ID as well
+  satelliteId: DEV
+    ? "jx5yt-yyaaa-aaaal-abzbq-cai"
+    : "aaaaa-bbbbb-ccccc-ddddd-cai",
+  container: true
 });
 ```
-
-This approach ensures a more dynamic and flexible setup, catering to various development environments and scenarios.
