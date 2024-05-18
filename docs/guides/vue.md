@@ -97,14 +97,14 @@ Add an `insert` function to persist a document.
 
 ```html title="App.vue"
 <script setup>
-  import { initJuno, setDoc } from "@junobuild/core";
+  import { initSatellite, setDoc } from "@junobuild/core";
   import { onMounted, ref } from "vue";
 
-  // TODO: Replace 'id' value with the satellite ID
+  // TODO: Replace 'satelliteId' value with the satellite ID
   onMounted(
     async () =>
-      await initJuno({
-        id: "aaaaa-bbbbb-ccccc-ddddd-cai"
+      await initSatellite({
+        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
       })
   );
 

@@ -187,9 +187,9 @@ Once configured, run `npm run postinstall` manually to trigger the initial copy.
 2. Enable the option when you initialize Juno:
 
 ```javascript
-import { initJuno } from "@junobuild/core";
+import { initSatellite } from "@junobuild/core";
 
-await initJuno({
+await initSatellite({
   satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
   workers: {
     auth: true

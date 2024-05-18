@@ -240,9 +240,9 @@ In addition, you should also set the satellite ID to the static ID used in the c
 The initialization would look like this:
 
 ```typescript
-import { initJuno } from "@junobuild/core";
+import { initSatellite } from "@junobuild/core";
 
-await initJuno({
+await initSatellite({
   // TODO: replace DEV flag according your need and the production satellite ID as well
   satelliteId: DEV
     ? "jx5yt-yyaaa-aaaal-abzbq-cai"
@@ -268,7 +268,7 @@ export default defineConfig({
 To further streamline the process, you can map environment variables for initialization:
 
 ```javascript
-await initJuno({
+await initSatellite({
   satelliteId: import.meta.env.VITE_SATELLITE_ID,
   container: import.meta.env.VITE_CONTAINER
 });

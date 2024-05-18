@@ -121,7 +121,7 @@ export default defineConfig({
 And pass along the environment variable to the initialization:
 
 ```javascript
-await initJuno({
+await initSatellite({
   satelliteId: import.meta.env.PUBLIC_SATELLITE_ID,
   container: import.meta.env.PUBLIC_CONTAINER
 });

@@ -98,7 +98,7 @@ Add an `insert` function to persist a document.
 
 ```typescript title="app.component.ts"
 import { Component } from "@angular/core";
-import { type Doc, initJuno, setDoc } from "@junobuild/core";
+import { type Doc, initSatellite, setDoc } from "@junobuild/core";
 
 @Component({
   selector: "app-root",
@@ -112,9 +112,9 @@ export class AppComponent {
   doc: Doc<{ hello: string }> | undefined = undefined;
 
   async ngOnInit() {
-    // TODO: Replace 'id' value with the satellite ID
-    await initJuno({
-      id: "aaaaa-bbbbb-ccccc-ddddd-cai"
+    // TODO: Replace 'satelliteId' value with the satellite ID
+    await initSatellite({
+      satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
     });
   }
 

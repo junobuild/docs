@@ -16,7 +16,7 @@ These values allow you to instantiate Juno in your code without the need to manu
 
 ```javascript
 await Promise.all([
-  initJuno({
+  initSatellite({
     satelliteId: process.env.NEXT_PUBLIC_SATELLITE_ID
   }),
   initOrbiter({
@@ -82,7 +82,7 @@ These values allow you to instantiate Juno in your code without the need to manu
 
 ```javascript
 await Promise.all([
-  initJuno({
+  initSatellite({
     satelliteId: import.meta.env.VITE_SATELLITE_ID
   }),
   initOrbiter({

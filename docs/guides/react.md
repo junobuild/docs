@@ -98,16 +98,16 @@ Add an `insert` function to persist a document.
 
 ```javascript title="App.jsx"
 import { useEffect, useState } from "react";
-import { initJuno, setDoc } from "@junobuild/core";
+import { initSatellite, setDoc } from "@junobuild/core";
 
 function App() {
   const [record, setRecord] = useState(undefined);
 
-  // TODO: Replace 'id' value with the satellite ID
+  // TODO: Replace 'satelliteId' value with the satellite ID
   useEffect(() => {
     (async () =>
-      await initJuno({
-        id: "aaaaa-bbbbb-ccccc-ddddd-cai"
+      await initSatellite({
+        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
       }))();
   }, []);
 
