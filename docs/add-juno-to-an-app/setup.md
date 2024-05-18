@@ -8,6 +8,8 @@ If you intend to use Juno solely for [hosting](../build/hosting.md) purposes, yo
 
 Conversely, if you plan to utilize these rich features, here is how you can connect Juno to your web app.
 
+## Initialization
+
 1. Install Juno SDK using npm:
 
 ```bash
@@ -17,26 +19,37 @@ npm i @junobuild/core
 2. Initialize your satellite in your web app:
 
 ```typescript
-import { initJuno } from "@junobuild/core";
+import { initSatellite } from "@junobuild/core";
 
-// TODO: Replace the placeholder satellite ID with your actual satellite ID.
-await initJuno({
-  satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
-});
+await initSatellite();
 ```
 
 It is generally recommended to initialize the library at the top of your application.
 
-3. Configure your application with your satellite ID:
+If you are using the plugins, you can start developing or continue with [deployment](./deploy.md).
 
-- **Manually**: Simply replace the `satelliteId` with the unique ID of your satellite, which can be copied from the [console](https://console.juno.build) on the overview page.
+---
 
-- **Plugin**: Although manual configuration is sufficient, we recommend leveraging environment variables that are automatically injected through the use of plugins provided by Juno. If you are using [Next.js](../miscellaneous/plugins.md#nextjs-plugin) or [Vite](../miscellaneous/plugins.md#vite-plugin) check out the related documentation to set up such a versatile environment.
+## Configuration
 
-:::note
+No parameters are required to initialize a satellite if you are using the [Next.js](../miscellaneous/plugins.md#nextjs-plugin) or [Vite](../miscellaneous/plugins.md#vite-plugin) plugins, which take care of the environment variables.
 
-The starting templates incorporate the use of plugins. Run `npm create juno@latest` to start a new project.
+### Automated
 
-:::
+The configuration of your project is set in a `juno.config` ile (TypeScript, JavaScript, or JSON) that exists at the root of your project. If you are using the plugins, they will read the file and automatically load the information required to initialize your dApp when you build and run it.
+
+### Manually configure your application
+
+If you are not using a plugin, you need to provide the `satelliteId` when initializing the satellite. Update the initialization as follows:
+
+```typescript
+import { initSatellite } from "@junobuild/core";
+
+await initSatellite({
+  satelliteId: "your-actual-satellite-id"
+});
+```
+
+Replace the placeholder `satelliteId` with your actual satellite ID, which can be copied from the [console](https://console.juno.build) on the overview page.
 
 [satellite]: ../terminology.md#satellite
