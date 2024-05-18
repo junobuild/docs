@@ -8,7 +8,7 @@ The Juno Datastore provides a convenient programming model for storing data on t
 
 :::note
 
-To use these features, the Juno SDK must be [installed](../add-juno-to-an-app/install-the-sdk-and-initialize-juno.md) and initialized in your app.
+To use these features, the Juno SDK must be [installed](../add-juno-to-an-app/setup) and initialized in your app.
 
 :::
 

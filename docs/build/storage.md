@@ -10,7 +10,7 @@ It offers a powerful and cost-effective object storage solution on the blockchai
 
 :::note
 
-To use Juno Storage's features, you must [install](../add-juno-to-an-app/install-the-sdk-and-initialize-juno.md) and initialize the Juno SDK in your app.
+To use Juno Storage's features, you must [install](../add-juno-to-an-app/setup) and initialize the Juno SDK in your app.
 
 :::
 

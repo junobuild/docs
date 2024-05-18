@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Deploy your app
+# Deploy
 
 Deploying your app with Juno is straightforward, just like deploying any modern frontend application.
 

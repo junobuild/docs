@@ -15,6 +15,16 @@ export default defineConfig({
           source: "/docs/miscellaneous/local-development",
           location: "/docs/guides/local-development",
           code: 301
+        },
+        {
+          source: "/docs/add-juno-to-an-app/install-the-sdk-and-initialize-juno",
+          location: "/docs/add-juno-to-an-app/setup",
+          code: 301
+        },
+        {
+          source: "/docs/add-juno-to-an-app/deploy-your-app",
+          location: "/docs/add-juno-to-an-app/deploy",
+          code: 301
         }
       ]
     }
