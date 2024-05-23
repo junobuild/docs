@@ -4,11 +4,11 @@ sidebar_position: 1
 
 # Getting started
 
-Welcome to Juno, an open-source Blockchain-as-a-Service platform that empowers developers to build decentralized apps more efficiently than ever before 🚀🤯.
+Juno is a blockchain-as-a-service (“blockchainless”) platform that empowers developers to build decentralized apps efficiently. Similar to Web2 cloud service platforms but with significant improvements, it offers a comprehensive toolkit to scaffold secure and efficient projects running on the blockchain.
 
-Unlike traditional Web2 platforms like Google Firebase or AWS Amplify, Juno operates entirely on the blockchain. This means you can delegate the complexities of web or mobile development on Web3, allowing you to focus solely on the frontend.
+With Juno, developers can integrate features such as authentication, data and file storage, hosting, serverless functions, or on-chain analytics provided by smart contracts. This allows them to develop projects using familiar patterns while maintaining complete control over their work.
 
-Our unique approach ensures that you retain full control over your data and work. With Juno, your creations remain truly your own.
+In short, Juno is the Google Firebase alternative for Web3.
 
 ## Launching with Juno
 
