@@ -135,8 +135,18 @@ The "Storage" provider offers a way to list assets.
 import { listAssets } from "@junobuild/core";
 
 const myList = await listAssets({
-  collection: "images"
-});
+      collection: "images",
+      // Optional parameters
+      matcher: {
+        fullPath: /.*\.png$/, // match assets with .png extension
+        description: /holiday/ // match description containing 'holiday'
+      },
+      paginate: {
+        page: 0, // Start from the first page
+        limit: 10 // Limit the results to 10 assets per page
+      },
+      order: "asc" // Order the results in ascending order
+    });
 ```
 
 The `listAssets` function -- in addition to specifying the collection to query -- accepts various optional parameters:
