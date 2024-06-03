@@ -13,7 +13,13 @@ When you get started with Juno, you are using your smart contract deployed on th
 
 ## Before you begin
 
-Make sure you have Docker installed on your machine ([Windows](https://docs.docker.com/desktop/install/windows-install/), [MacOS](https://docs.docker.com/desktop/install/mac-install/), or [Linux](https://docs.docker.com/desktop/install/linux-install/)). For MacBooks with M processors, it is important to use Docker Desktop version 4.25.0 or later, ideally the latest available version.
+Make sure you have Docker installed on your machine ([Windows](https://docs.docker.com/desktop/install/windows-install/), [MacOS](https://docs.docker.com/desktop/install/mac-install/), or [Linux](https://docs.docker.com/desktop/install/linux-install/)).
+
+:::note
+
+For MacBooks with M processors, it is important to use Docker Desktop version 4.25.0 or later, ideally the latest available version.
+
+:::
 
 ---
 
