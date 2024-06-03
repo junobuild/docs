@@ -135,27 +135,31 @@ The `listAssets` function -- in addition to specifying the collection to query -
 - `matcher`: a regex to apply to the assets' `fullPath` and `description`
 - `paginate`: an object used to query a subset of the assets
 - `order`: requests entries sorted in ascending or descending order
+
+:::note
+Example of usage of the parameters:
+
 ```typescript
 import { listAssets } from "@junobuild/core";
 
 const myList = await listAssets({
-      collection: "images",
-      // Optional parameters
-      matcher: {
-        fullPath: /.*\.png$/, // match assets with .png extension
-        description: /holiday/ // match description containing 'holiday'
-      },
-      paginate: {
-        page: 0, // Start from the first page
-        limit: 10 // Limit the results to 10 assets per page
-      },
-      order: "asc" // Order the results in ascending order
-    });
+  collection: "images",
+  // Optional parameters
+  matcher: {
+    fullPath: /.*\.png$/, // match assets with .png extension
+    description: /holiday/ // match description containing 'holiday'
+  },
+  paginate: {
+    page: 0, // Start from the first page
+    limit: 10 // Limit the results to 10 assets per page
+  },
+  order: "asc" // Order the results in ascending order
+});
 ```
 
+:::
 
-
-The function **returns various information**, in the form of an object whose interface is given below.
+The function returns the assets and various information, in the form of an object whose interface is given below.
 
 ```typescript
 {

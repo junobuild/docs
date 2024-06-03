@@ -245,116 +245,105 @@ const docs = await setManyDocs({ docs: [update1, update2] });
 
 The `listDocs` function is used to retrieve documents from a specified collection.
 
-### Parameters of `listDocs`
+```typescript
+import { listDocs } from "@junobuild/core";
+
+const myList = await listDocs({
+  collection: "my_collection_key"
+});
+```
+
+### Parameters
+
+The function requires a collection and accepts various optional parameters, including a matcher (a regex applied to the document keys and descriptions), pagination options, and sorting order.
 
 1. **`collection`** (required)
-    - **Type**: `string`
-    - **Description**: The key of the collection from which documents are to be listed.
 
-  To list documents, use the `listDocs` function:
-
-  ```typescript
-  import { listDocs } from "@junobuild/core";
-
-  const myList = await listDocs({
-    collection: "my_collection_key"
-  });
-  ```
-
-The function **accepts various optional parameters**, including a matcher (a regex applied to the document keys and descriptions), pagination options, and sorting order.
+   - **Description**: The key of the collection from which documents are to be listed.
+   - **Type**: `string`
 
 2. **`matcher`** (optional)
-   - **Type**: `ListMatcher`
+
    - **Description**: An object used to filter documents based on their keys or descriptions using regular expressions.
+   - **Type**: `ListMatcher`
 
-   ```typescript
-   interface ListMatcher {
-     key?: string;
-     description?: string;
-    }
-    ```
+     ```typescript
+     interface ListMatcher {
+       key?: string;
+       description?: string;
+     }
+     ```
 
-   - **key**: A regex to match against document keys.
-   - **description**: A regex to match against document descriptions.
+     - **key**: A regex to match against document keys.
+     - **description**: A regex to match against document descriptions.
 
 3. **`paginate`** (optional)
-    - **Type**: `ListPaginate`
-    - **Description**: An object to control pagination of the results
 
-    ```typescript
-    interface ListPaginate {
-    startAfter?: string;
-    limit?: number;
-    }
-    ```
+   - **Description**: An object to control pagination of the results
+   - **Type**: `ListPaginate`
 
-    - **startAfter**: A string key to start listing documents after this key.
-    - **limit**: The maximum number of documents to return.
+     ```typescript
+     interface ListPaginate {
+       startAfter?: string;
+       limit?: number;
+     }
+     ```
 
-    Using **`matchers`** and **`pagination`**
-
-    ```typescript
-    import { listDocs } from "@junobuild/core";
-
-    const myList = await listDocs({
-      collection: "my_collection_key",
-      matcher: {
-        key: "^doc_",
-        description: "example"
-      },
-      paginate: {
-        startAfter: "doc_10",
-        limit: 5
-      }
-    });
-    ```
+     - **startAfter**: A string key to start listing documents after this key.
+     - **limit**: The maximum number of documents to return.
 
 4. **`order`** (optional)
-    - **Type**: `ListOrder`
-    - **Description**: Control the sorting order of the results.
 
-    ```typescript
-    interface ListOrder {
-      desc: boolean;
-      field: ListOrderField;
+   - **Description**: Control the sorting order of the results.
+   - **Type**: `ListOrder`
+
+     ```typescript
+     interface ListOrder {
+       desc: boolean;
+       field: ListOrderField;
+     }
+
+     type ListOrderField = "keys" | "updated_at" | "created_at";
+     ```
+
+5. **`owner`** (optional)
+
+   - **Description**: The owner of the documents.
+   - **Type**: `ListOwner`
+
+     ```typescript
+     type ListOwner = string | Principal;
+     ```
+
+:::note
+Example of usage of the parameters:
+
+```typescript
+import { listDocs } from "@junobuild/core";
+
+const myList = await listDocs({
+  collection: "my_collection_key",
+  owner: "some_owner_id_or_principal",
+  matcher: {
+    key: "^doc_",
+    description: "example"
+  },
+  paginate: {
+    startAfter: "doc_10",
+    limit: 5
+  },
+  filter: {
+    order: {
+      desc: true,
+      field: "updated_at"
     }
-    type ListOrderField = 'keys' | 'updated_at' | 'created_at';
-    ```
+  }
+});
+```
 
-5. **`owner`** (optional) 
-    - **Type**: `ListOwner`
-    - **Description**: The owner of the documents, which can be a string or a Principal.
+:::
 
-    ```typescript
-    type ListOwner = string | Principal;
-    ```
-
-   Using **`order`** and **`owner`**
-
-  ```typescript
-  import { listDocs } from "@junobuild/core";
-
-  const myList = await listDocs({
-    collection: "my_collection_key",
-    owner: "some_owner_id_or_principal"
-    filter: {
-      order: {
-        desc: true,
-        field: "updated_at"
-      }
-    }
-  });
-  ```
-
-Sorting can be applied descending or ascending to following fields:
-
-- `keys`
-- `updated_at`
-- `created_at`
-
-Options `matcher`, `paginate` and `order` can be use together.
-
-The function **returns various information**, in the form of an object whose interface is given below.
+The function returns the documents and various information, in the form of an object whose interface is given below.
 
 ```typescript
 {
