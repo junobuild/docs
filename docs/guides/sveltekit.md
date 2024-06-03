@@ -98,10 +98,7 @@ Create a new file `+layout.svelte` in `src/routes` and initialize the library wi
   import { onMount } from "svelte";
   import { initSatellite } from "@junobuild/core";
 
-  onMount(
-    async () =>
-      await initSatellite()
-  );
+  onMount(async () => await initSatellite());
 </script>
 
 <slot />

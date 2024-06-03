@@ -104,8 +104,7 @@ function App() {
   const [record, setRecord] = useState(undefined);
 
   useEffect(() => {
-    (async () =>
-      await initSatellite())();
+    (async () => await initSatellite())();
   }, []);
 
   const insert = async () => {
