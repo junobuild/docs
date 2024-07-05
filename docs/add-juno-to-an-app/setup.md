@@ -26,7 +26,7 @@ await initSatellite();
 
 It is generally recommended to initialize the library at the top of your application.
 
-If you are using the the [Next.js](../miscellaneous/plugins.md#nextjs-plugin) or [Vite](../miscellaneous/plugins.md#vite-plugin) plugins, you can start developing or continue with [deployment](./deploy.md).
+If you are using the [Next.js](../miscellaneous/plugins.md#nextjs-plugin) or [Vite](../miscellaneous/plugins.md#vite-plugin) plugins, you can start developing or continue with [deployment](./deploy.md).
 
 ---
 
@@ -36,7 +36,7 @@ No parameters are required to initialize a satellite if you are using plugins, w
 
 ### Automated
 
-The configuration of your project is set in a `juno.config` ile (TypeScript, JavaScript, or JSON) that exists at the root of your project. The the [Next.js](../miscellaneous/plugins.md#nextjs-plugin) or [Vite](../miscellaneous/plugins.md#vite-plugin) plugins read the file and automatically load the information required to initialize your dApp when you build and run it.
+The configuration of your project is set in a `juno.config` file (TypeScript, JavaScript, or JSON) that exists at the root of your project. The [Next.js](../miscellaneous/plugins.md#nextjs-plugin) or [Vite](../miscellaneous/plugins.md#vite-plugin) plugins read the file and automatically load the information required to initialize your dApp when you build and run it.
 
 ### Manually configure your application
 
