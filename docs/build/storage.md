@@ -195,7 +195,17 @@ To delete multiple assets in an atomic manner, you can use the function `deleteM
 ```typescript
 import { deleteManyAssets } from "@junobuild/core";
 
-await deleteManyAssets({ docs: [myAsset1, myAsset2, myAsset3] });
+const myAsset1 = {
+  collection: "hello",
+  fullPath: "/hello/world.jpg"
+};
+
+const myAsset2 = {
+  collection: "data",
+  fullPath: "/data/something.json"
+};
+
+await deleteManyAssets({ assets: [myAsset1, myAsset2] });
 ```
 
 [satellite]: ../terminology.md#satellite
