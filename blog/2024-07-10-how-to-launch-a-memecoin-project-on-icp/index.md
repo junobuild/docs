@@ -40,7 +40,7 @@ Behind the scenes, Juno uses the Internet Computer blockchain network and infras
 
 - Ensure that you have dfx installed on your machine, otherwise follow this [guide](https://internetcomputer.org/docs/current/developer-docs/getting-started/install/) to install dfx
 
-- Creating a canister requires cycles.Cycles are used to measure and pay for the resources, such as memory, storage, and compute power, that are used by a canister. Therefore you need to have some on your machine before you can continue with these steps. This [guide](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles) shows you two options that you can see to load cycles on your machine.
+- Creating a canister requires cycles. Cycles are used to measure and pay for the resources, such as memory, storage, and compute power, that are used by a canister. Therefore you need to have some on your machine before you can continue with these steps. This [guide](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles) shows you two options that you can see to load cycles on your machine.
 
 The following steps assume that you have cycles on your machine
 
@@ -126,9 +126,53 @@ cycles_for_archive_creation = opt ${CYCLE_FOR_ARCHIVE_CREATION};
 
 The command above first creates an empty canister `myToken` on the mainnet using the cycles from your wallet, and then deploys our token in the canister.
 
+Here is how the final command snippet should look like. You can copy and run the code in a bash script to save time.
+
+```bash
+# Token setting definitions
+export TOKEN_NAME="FROGIE"
+export TOKEN_SYMBOL="FRG"
+export TRANSFER_FEE=10000
+export PRE_MINTED_TOKENS=100_000_000_00_000_000
+export FEATURE_FLAGS=true
+export TRIGGER_THRESHOLD=2000
+export CYCLE_FOR_ARCHIVE_CREATION=10000000000000
+export NUM_OF_BLOCK_TO_ARCHIVE=1000
+
+dfx identity use default
+export DEFAULT=$(dfx identity get-principal)
+
+dfx identity new archive_controller
+dfx identity use archive_controller
+export ARCHIVE_CONTROLLER=$(dfx identity get-principal)
+
+dfx identity new minter
+dfx identity use minter
+export MINTER=$(dfx identity get-principal)
+
+dfx canister create myToken --ic
+dfx deploy myToken --ic  --argument "(variant {Init =
+record {
+token_symbol = \"${TOKEN_SYMBOL}\";
+token_name = \"${TOKEN_NAME}\";
+minting_account = record { owner = principal \"${MINTER}\" };
+transfer_fee = ${TRANSFER_FEE};
+metadata = vec {};
+feature_flags = opt record{icrc2 = ${FEATURE_FLAGS}};
+initial_balances = vec { record { record { owner = principal \"${DEFAULT}\"; }; ${PRE_MINTED_TOKENS}; }; };
+archive_options = record {
+num_blocks_to_archive = ${NUM_OF_BLOCK_TO_ARCHIVE};
+trigger_threshold = ${TRIGGER_THRESHOLD};
+controller_id = principal \"${ARCHIVE_CONTROLLER}\";
+cycles_for_archive_creation = opt ${CYCLE_FOR_ARCHIVE_CREATION};
+};}
+})"
+
+```
+
 If all the previous steps are succesful at this point, you should get a link in this format `https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<TOKEN-CANISTER-ID>` where `TOKEN-CANISTER-ID` is the id of your token ledger.
 
-All the premined tokens are now held by the principal address of the `default` identity. You can transfer these to an external wallet like plug to ease with the transfer process since using the command line is a little bit hefty.
+All the premined tokens are now held by the principal address of the `default` identity. You can transfer these to an external wallet like plug to ease with the transfer process since using the command line is a little bit cumbersome.
 [Learn more about creating token canisters](https://internetcomputer.org/docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup)
 
 Alternatively, there are some no-code tools like [ICPEx](https://icpex.org/createToken), [ICPI](https://www.icpi.xyz/#/deploy) to create your token canister but as Juno,  we are not affiliated with any of these services and therefore cannot endorse any of them. It is up to the user to make their own research and decision to use them
@@ -346,7 +390,7 @@ We will create a proposal to add our token on ICPSwap in the following steps
 ![kk](./makepropsdetails.png)
 
 The voting duration for proposals on the ICPSwap platform is typically three days. If a proposal passes during this voting period, your token will be listed on the exchange and will be tradable.
-Once your token is available for trading, you can update the link on the `Buy Frogie Now` button to redirect the user to the exchnage from where they can buy the token.
+Once your token is available for trading, you can update the link on the `Buy Frogie Now` button to redirect the user to the exchange from where they can buy the token.
 
 You can also use [`proposals.network`](https://proposals.network/) as an alternatice to submit a proposal to any [SNS](https://dashboard.internetcomputer.org/) project.
 
