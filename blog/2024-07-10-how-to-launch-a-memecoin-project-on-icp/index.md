@@ -7,7 +7,6 @@ image: https://juno.build/assets/images/project-complete-b24c4bfccb40cfd234cd724
 ---
 
 ![complete-project](./complete-project.png)
-
 ---
 
 ## Introduction
@@ -126,10 +125,13 @@ cycles_for_archive_creation = opt ${CYCLE_FOR_ARCHIVE_CREATION};
 
 The command above first creates an empty canister `myToken` on the mainnet using the cycles from your wallet, and then deploys our token in the canister.
 
-Here is how the final command snippet should look like. You can copy and run the code in a bash script to save time.
+Here is how the final command snippet should look like. Create a new file and name it `deploy.sh` Paste the code below.
 
 ```bash
+#!/usr/bin/env bash
+
 # Token setting definitions
+
 export TOKEN_NAME="FROGIE"
 export TOKEN_SYMBOL="FRG"
 export TRANSFER_FEE=10000
@@ -168,6 +170,12 @@ cycles_for_archive_creation = opt ${CYCLE_FOR_ARCHIVE_CREATION};
 };}
 })"
 
+```
+
+In the terminal, run the command to deploy the token canister on the network.
+
+```bash
+./deploy.sh
 ```
 
 If all the previous steps are succesful at this point, you should get a link in this format `https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<TOKEN-CANISTER-ID>` where `TOKEN-CANISTER-ID` is the id of your token ledger.
