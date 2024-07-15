@@ -1,54 +1,58 @@
 ---
 slug: how-to-launch-a-memecoin-project-on-icp
-title: How to launch your first memecoin token on the Internet Computer(ICP)
+title: How to Launch Your First Memecoin Token on the Internet Computer (ICP)
 authors: [sam-the-tutor]
 tags: [hosting, blog, website, memes]
 image: https://juno.build/assets/images/project-complete-b24c4bfccb40cfd234cd724b34dc978b.png
 ---
 
 ![complete-project](./complete-project.png)
+
 ---
 
 ## Introduction
 
 Memecoins are starting to gain significant traction. Some of these tokens, such as [Windowge98](https://windoge98.com/), [Damonic Welleams](https://damonicwelleams.com/), [Wumbo](https://qmpah-qqaaa-aaaal-ajabq-cai.icp0.io/), [Spellkaster](https://spellkaster.app/) and [$stik](https://bj2ym-biaaa-aaaal-aji3q-cai.icp0.io/), have reached high prices and attracted many retail investors into the ecosystem. Now, you may be wondering how these meme tokens were launched. In this article, we will walk you through all the steps you need to follow in order to create your own memecoin project.
 
-From creating the token canister to building a marketing website for your token using Juno, and then launching the token on [ICPSwap](icpswap.com/), a major decentralized exchange (DEX) on the Internet Computer network, we've got you covered.
- 
- We will also provide some useful tips that you can use to create a successful memecoin project. By the end of this article, you will have all the necessary information to create a memecoin project on ICP.
+From creating the token smart contract (canister) to building a marketing website using Juno, and finally launching the token on [ICPSwap](https://icpswap.com), a major decentralized exchange (DEX) on the Internet Computer network, we've got you covered.
+
+We will also provide useful tips to ensure your memecoin project is successful. By the end of this article, you will have all the information needed to launch your token on ICP.
+
+:::important
+
+This article is for educational purposes only and is not financial advice of any form.
+
+:::
 
 ---
 
 ## What is ICP
 
-The Internet Computer (ICP) is a blockchain-based platform that aims to create a new type of internet, one that is decentralized, secure, and scalable. Developed, among others, by the DFINITY Foundation, the Internet Computer is designed to serve as a global public compute infrastructure, allowing developers to build and deploy decentralized applications (dApps) and services directly on the blockchain.
-
-Unlike traditional blockchains, the Internet Computer uses a unique consensus mechanism called Threshold Relay, which allows it to achieve high transaction throughput and low latency. The platform is also designed to be highly scalable, with the ability to add more nodes and increase its computing power as demand grows. This makes the Internet Computer a promising platform for building a wide range of decentralized applications, from social media and e-commerce to finance and cloud computing. [Learn more about ICP](https://internetcomputer.org/)
+The Internet Computer (ICP) is a blockchain-based platform that aims to create a new type of internet, one that is decentralized, secure, and scalable. Developed, among others, by the DFINITY Foundation, the Internet Computer is designed to serve as a global public compute infrastructure, allowing developers to build and deploy decentralized applications (dApps) and services directly on the blockchain. [Learn more about ICP](https://internetcomputer.org/)
 
 --- 
 
 ## What is Juno
 
-Juno works just like traditional serverless platforms such as Google Firebase or AWS Amplify, but with one key difference: everything on Juno runs on the blockchain. This means that you get a fully decentralized and secure infrastructure for your applications, which is pretty cool if you ask me.
+Juno is a blockchain-as-a-service (“blockchainless”) platform that empowers developers to build decentralized apps efficiently. Similar to Web2 cloud service platforms but with significant improvements, it offers a comprehensive toolkit to scaffold secure and efficient projects running on the blockchain.
 
-Behind the scenes, Juno uses the Internet Computer blockchain network and infrastructure to launch what we call a “Satellite” for each project you build. A Satellite is essentially a smart contract on steroids that contains your entire app. From its assets provided on the web (such as JavaScript, HTML, and image files) to its state saved in a super simple database, file storage, and authentication, each Satellite controlled solely by you contains everything it needs to run smoothly.
+In short, Juno is the Google Firebase alternative for Web3.
 
 --- 
 
 ## Creating the token smart contract canister
 
-- Ensure that you have dfx installed on your machine, otherwise follow this [guide](https://internetcomputer.org/docs/current/developer-docs/getting-started/install/) to install dfx
+- Make sure you have the `dfx` CLI installed on your machine. If not, follow this [guide](https://internetcomputer.org/docs/current/developer-docs/getting-started/install/) to complete the installation.
 
-- Creating a canister requires cycles. Cycles are used to measure and pay for the resources, such as memory, storage, and compute power used by a canister. Therefore you need to have some on your machine before you can continue with these steps. This [guide](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles) shows you two options that you can use to load cycles on your machine.
+- Creating a canister requires cycles, which measure and pay for resources like memory, storage, and compute power. Follow this [guide](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles) to load cycles on your machine for deploying your ledger.
 
 The following steps assume that you have cycles on your machine
 
 - On your computer, make an empty folder and name it `myToken`, and open it in your favorite editor
 
-- create a file inside the folder and name it `dfx.json`
-paste the code below
+- Create a file inside the folder and name it `dfx.json`paste the code below
 
-```bash
+```json
 {
     "canisters": {
       "myToken": {
@@ -65,124 +69,76 @@ paste the code below
     },
     "output_env_file": ".env",
     "version": 1
-  }
+}
 ```
 
-In the above code, we define our token canister details
-
-Next, we are going to define some parameters for our token
-
-```bash
-export TOKEN_NAME="FROGIE"
-export TOKEN_SYMBOL="FRG"
-export TRANSFER_FEE=10000
-export PRE_MINTED_TOKENS=100_000_000_00_000_000
-```
-
-We specified our token name, symbol,transfer fee, and the initial supply for our token. You will need to edit these to match your tokenomics as well as your token information details. For our token, we are going to premine 100 million tokens
-
-```bash
-export FEATURE_FLAGS=true
-export TRIGGER_THRESHOLD=2000
-export CYCLE_FOR_ARCHIVE_CREATION=10000000000000
-export NUM_OF_BLOCK_TO_ARCHIVE=1000
-
-dfx identity use default
-export DEFAULT=$(dfx identity get-principal)
-
-dfx identity new archive_controller
-dfx identity use archive_controller
-export ARCHIVE_CONTROLLER=$(dfx identity get-principal)
-
-dfx identity new minter
-dfx identity use minter
-export MINTER=$(dfx identity get-principal)
-```
-
-In the above code, we specify other default settings for our token as well as the identities for minting, archiving.
-
-> **NOTE :** Switch back to the identity that contains the cycles on your machine, before you run the commands below
-
-
-```bash
-dfx canister create myToken --ic
-dfx deploy myToken --ic  --argument "(variant {Init =
-record {
-token_symbol = \"${TOKEN_SYMBOL}\";
-token_name = \"${TOKEN_NAME}\";
-minting_account = record { owner = principal \"${MINTER}\" };
-transfer_fee = ${TRANSFER_FEE};
-metadata = vec {};
-feature_flags = opt record{icrc2 = ${FEATURE_FLAGS}};
-initial_balances = vec { record { record { owner = principal \"${DEFAULT}\"; }; ${PRE_MINTED_TOKENS}; }; };
-archive_options = record {
-num_blocks_to_archive = ${NUM_OF_BLOCK_TO_ARCHIVE};
-trigger_threshold = ${TRIGGER_THRESHOLD};
-controller_id = principal \"${ARCHIVE_CONTROLLER}\";
-cycles_for_archive_creation = opt ${CYCLE_FOR_ARCHIVE_CREATION};
-};}
-})"
-
-```
-
-The command above first creates an empty canister `myToken` on the mainnet using the cycles from your wallet, and then deploys our token in the canister.
-
-Here is how the final command snippet should look like. Create a new file and name it `deploy.sh` Paste the code below.
+Next, we are going to define some parameters for our token. Create a new file named `deploy.sh` and paste the following code:
 
 ```bash
 #!/usr/bin/env bash
 
 # Token settings
+TOKEN_NAME="FROGIE"
+TOKEN_SYMBOL="FRG"
+TRANSFER_FEE=10000
+PRE_MINTED_TOKENS=100_000_000_00_000_000
+FEATURE_FLAGS=true
+TRIGGER_THRESHOLD=2000
+CYCLE_FOR_ARCHIVE_CREATION=10000000000000
+NUM_OF_BLOCK_TO_ARCHIVE=1000
 
-export TOKEN_NAME="FROGIE"
-export TOKEN_SYMBOL="FRG"
-export TRANSFER_FEE=10000
-export PRE_MINTED_TOKENS=100_000_000_00_000_000
-export FEATURE_FLAGS=true
-export TRIGGER_THRESHOLD=2000
-export CYCLE_FOR_ARCHIVE_CREATION=10000000000000
-export NUM_OF_BLOCK_TO_ARCHIVE=1000
-
+# Identities
 dfx identity use default
-export DEFAULT=$(dfx identity get-principal)
+DEFAULT=$(dfx identity get-principal)
 
 dfx identity new archive_controller
 dfx identity use archive_controller
-export ARCHIVE_CONTROLLER=$(dfx identity get-principal)
+ARCHIVE_CONTROLLER=$(dfx identity get-principal)
 
 dfx identity new minter
 dfx identity use minter
-export MINTER=$(dfx identity get-principal)
+MINTER=$(dfx identity get-principal)
 
-##switch back to the identity that contains cycles
+# Switch back to the identity that contains cycles
 dfx identity use "<YOUR-IDENTITY>"
 
-dfx canister create myToken --ic
-dfx deploy myToken --ic  --argument "(variant {Init =
+# Create and deploy the token canister
+dfx canister create myToken --network ic
+dfx deploy myToken --network ic  --argument "(variant {Init =
 record {
-token_symbol = \"${TOKEN_SYMBOL}\";
-token_name = \"${TOKEN_NAME}\";
-minting_account = record { owner = principal \"${MINTER}\" };
-transfer_fee = ${TRANSFER_FEE};
-metadata = vec {};
-feature_flags = opt record{icrc2 = ${FEATURE_FLAGS}};
-initial_balances = vec { record { record { owner = principal \"${DEFAULT}\"; }; ${PRE_MINTED_TOKENS}; }; };
-archive_options = record {
-num_blocks_to_archive = ${NUM_OF_BLOCK_TO_ARCHIVE};
-trigger_threshold = ${TRIGGER_THRESHOLD};
-controller_id = principal \"${ARCHIVE_CONTROLLER}\";
-cycles_for_archive_creation = opt ${CYCLE_FOR_ARCHIVE_CREATION};
-};}
+  token_symbol = \"${TOKEN_SYMBOL}\";
+  token_name = \"${TOKEN_NAME}\";
+  minting_account = record { owner = principal \"${MINTER}\" };
+  transfer_fee = ${TRANSFER_FEE};
+  metadata = vec {};
+  feature_flags = opt record{icrc2 = ${FEATURE_FLAGS}};
+  initial_balances = vec { record { record { owner = principal \"${DEFAULT}\"; }; ${PRE_MINTED_TOKENS}; }; };
+  archive_options = record {
+    num_blocks_to_archive = ${NUM_OF_BLOCK_TO_ARCHIVE};
+    trigger_threshold = ${TRIGGER_THRESHOLD};
+    controller_id = principal \"${ARCHIVE_CONTROLLER}\";
+    cycles_for_archive_creation = opt ${CYCLE_FOR_ARCHIVE_CREATION};
+  };}
 })"
 ```
 
-Run the command below in your terminal to deploy the token canister on the network.
+In this script, we define our token's name, symbol, transfer fee, and initial supply. Adjust these settings to match your tokenomics and token information details. For our token, we are premining 100 million tokens.
+
+The script also specifies default settings for the token and sets up identities for minting and archiving.
+
+:::note
+
+Ensure you switch back to the identity that contains the cycles on your machine before running the commands below.
+
+:::
+
+Run the command below in your terminal to deploy the token canister on the network:
 
 ```bash
 ./deploy.sh
 ```
 
-If all the previous steps are succesful at this point, you should get a link in this format `https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<TOKEN-CANISTER-ID>` where `TOKEN-CANISTER-ID` is the id of your token ledger.
+If all the previous steps are successful, you should get a link in this format `https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<TOKEN-CANISTER-ID>` where `TOKEN-CANISTER-ID` is the id of your token ledger.
 
 All the premined tokens are now held by the principal address of the `default` identity. You can transfer these to an external wallet like plug to ease with the transfer process since using the command line to distribute the tokens is a little bit cumbersome.
 [Learn more about creating token canisters](https://internetcomputer.org/docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup)
@@ -195,25 +151,27 @@ The next step is to set up a marketing website for your project.
 
 ## Launching the marketing website
 
-In this section, we are going to setup the marketing website for our token. Follow these steps to set up a marketing website for your token using Juno
+In this section, we will guide you through setting up a marketing website for your token using Juno. Follow these steps to create your site.
 
 - Ensure you have Node.js and npm installed on your computer. If not, follow the [guide](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/) to install them.
 
-- Open your computer's terminal and run the following command to initialize a template using the Juno package
+- Open your computer's terminal and run the following command to initialize a template:
 
-  ```bash
-  npm create juno@latest -- --template astro-starter
-  ```
+```bash
+npm create juno@latest -- --template astro-starter
+```
 
 - Provide the name of the project folder `myWebsite`
-- Select no to configure Github Actions
-- Select no to configure the local development emurator
-- Select yes to install the dependencies
-- Select yes to install juno's CLI tool. Juno CLI will help us to deploy our project in the satellite.
+- Select `no` to configure Github Actions
+- Select `no` to configure the local development emurator
+- Select `yes` to install the dependencies
+- Select `yes` to install juno's CLI tool. Juno CLI will help us to deploy our project in the satellite.
 
 Navigate to the project folder `myWebsite` and open it in your favorite code editor. If every previous step is successfull, running `npm run dev` in the terminal will open the project in the browser and you should have something similar to this.
 
 ![board](./junoboard.png)
+
+---
 
 ### Editing the code for the website
 
@@ -222,7 +180,6 @@ We will create a simple website for our token.
 In the `pages` folder, replace all the code in the `index.astro` with the code below
 
 ```js
----
 ---
 import BaseHead from "../components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_SOCIAL_IMAGE } from "../consts";
@@ -318,40 +275,47 @@ In the above code, we created a simple website to display the logo of our token,
 
  Edit the code above to display the information of your token including the name, symbol, total supply, and logo.
 
-### Deployment
-
-In this section, we will create a live link for our token website.
+---
 
 ### Creating a satellite
 
-We need to create a satellite that will host our website . Follow the steps below to create your own satellite from the Juno console..
+We need to create a satellite that will host our website. Follow the steps below to create your own satellite from the Juno console.
 
-- Navigate to the administration [console](https://console.juno.build/) website
-- Login with your internet Identity
+:::note
+
+A satellite is a smart contract provided by Juno, packed with features such as authentication, simple database, file storage and, hosting.
+
+:::
+
+- Navigate to the Juno's administration [console](https://console.juno.build/) website
+- Login with your Internet Identity
 - On the dashboard, select Launch new satellite
 - Provide name `myWebsite` for the satellite.
 - Click Create 
 
+---
 
 ### Connect Project to the Satellite
 
-We need to link our project to the satellite. follow the steps below
+One last step before deployment, we have to link our local project with the satellite that lives on chain. Follow the steps below:
 
-- Back to the project terminal on your computer, run the command `juno init` and follow the prompts
+- Back to the project terminal on your computer, run the command `juno init` and follow the prompts.
 
-- Select yes to login and authorize the terminal to access your satellite in your browser
+- Select yes to `login` and authorize your terminal to access your satellite.
 
-- Select `myWebsite` as the satellite to connect the project to
+- Select `myWebsite` as the satellite to connect to.
 
-- Select dist as the location of the compiled app files
+- Select `dist` as the location of the compiled app files.
 
-- Select TypeScript as the configuration file format.
+- Select `TypeScript` as the configuration file format.
 
-If the above step is successful, a new file juno.config.ts will be added at the root of our project folder. It contains the configuration necessary for our poject to connect to the satellite. You need this file if your project is to be deployed successfully to the satellite.
+If the above step is successful, a new file `juno.config.ts` will be added at the root of our project folder.
+
+---
 
 ### Compiling and deploying the Project
 
-Now that we connected our project to the satellite, we have to compile and deploy the webiste to the satellite
+Now that we connected our project to the satellite, we can compile and deploy the website.
 
 ```bash
 npm run build
@@ -365,9 +329,13 @@ juno deploy
 
 This will deploy our compiled files to the satellite that we connected linked our website to.
 
-At this stage, if all the previous steps are successful, juno deploy command will output a link whixh is in this format `https://<SATELLITE_ID>.icp0.io` where SATELLITE_ID is the id of the satellite that we connected our project to.
+At this stage, if all the previous steps are successful, the command will output a link which is in this format `https://<SATELLITE_ID>.icp0.io` where `SATELLITE_ID` is the id of the satellite that we connected our project to.
 
-> **TIP:** Running `juno open` in your terminal opens your project in your favorite browser.
+:::tip
+
+Running `juno open` in your terminal opens your project in your favorite browser.
+
+:::
 
 Opening the link in the browser, you should have something like this below
 
@@ -377,7 +345,7 @@ Opening the link in the browser, you should have something like this below
 
 ## Listing the token on ICPSwap
 
-In this section, we will look at how to list our newly created token on [ICPSwap](icpswap.com/).
+In this section, we will look at how to list our newly created token on [ICPSwap](https://icpswap.com).
 
 ICPSwap is a decentralized exchange that facilitates token trading and swapping by allowing tokens to be listed and liquidity pools to be created for different token pairs.
 
@@ -385,8 +353,8 @@ And because ICPSwap is a decentralized autonomous organization (DAO) controlled 
 
 We will create a proposal to add our token on ICPSwap in the following steps.
 
-- Visit the [ICPSwap](https://oc.app/community/qhpy7-vqaaa-aaaar-aurxa-cai/channel/146905696808670344863162689200573775433) community group on OpenChat
-- CLick on te three dots in the right corner ans select `make proposal`
+- Visit the [ICPSwap](https://oc.app/community/qhpy7-vqaaa-aaaar-aurxa-cai/channel/146905696808670344863162689200573775433) community group on [OpenChat](https://oc.app)
+- Click on te three dots in the right corner and select `make proposal`
 
 ![makeproposal](./makeproposal.png)
 
@@ -403,9 +371,15 @@ We will create a proposal to add our token on ICPSwap in the following steps.
 The voting duration for proposals on the ICPSwap platform is typically three days. If a proposal passes during this voting period, your token will be listed on the exchange and will be tradable.
 Once your token is available for trading, you can update the link on the `Buy Frogie Now` button to redirect the user to the exchange from where they can buy the token.
 
-You can also use [`proposals.network`](https://proposals.network/) as an alternatice to submit a proposal to any [SNS](https://dashboard.internetcomputer.org/) project.
+:::note
 
-If you have reached this step without any errors, congratulations, you have created your first meme coin project. Now you can start marketing to attract more users and holders. Good luck
+You can also use [`proposals.network`](https://proposals.network/) as an alternative to submit a proposal to any [SNS](https://dashboard.internetcomputer.org/) project.
+
+:::
+
+If you have reached this step without any errors, congratulations, you have created your first meme coin project. 🥳
+
+Now you can start marketing to attract more users and holders. Good luck! 🤞
 
 --- 
 
@@ -414,12 +388,15 @@ If you have reached this step without any errors, congratulations, you have crea
 
 In this section, we will cover some tips you need to launch a successful memecoin project.
 
+---
 
-**Develop a Unique and Relatable Concept**
+### Develop a Unique and Relatable Concept
 
 The first step to creating a successful meme coin is finding a unique topic that resonates with people. Your concept should be relatable, funny or nostalgic. Capture the essence of internet culture with a catchy name and logo that embodies the humor and appeal of your chosen meme.
 
-**Build a Strong Community**
+---
+
+### Build a Strong Community
 
 Think of your meme coin's community like a big group of friends who all love the same joke. To make that friend group huge and enthusiastic:
 
@@ -430,7 +407,9 @@ Think of your meme coin's community like a big group of friends who all love the
 - Work with other meme coins or popular meme accounts to reach even more people
 - Make new people feel instantly part of the joke
 
-**Implement a Comprehensive Marketing Strategy**
+---
+
+### Implement a Comprehensive Marketing Strategy
 
 Effective crypto marketing is critical for meme coin success. Implement a multi-faceted strategy across various channels:
 
@@ -440,7 +419,9 @@ Effective crypto marketing is critical for meme coin success. Implement a multi-
 - Form strategic partnerships with influencers, projects, and industry leaders to expand your reach
 - Monitor performance using analytics tools and gather feedback to continuously improve
 
-**Leverage Influencer Marketing**
+---
+
+### Leverage Influencer Marketing
 
 Most successful meme coin projects hire specialized crypto influencer marketing teams with extensive networks. Partner with online personalities who like memes or crypto and have them talk about your coin to their followers.
 
@@ -449,9 +430,10 @@ Most successful meme coin projects hire specialized crypto influencer marketing 
 ## Conclusion
 
 In this article, we have covered everything you need to launch a successful memecoin project, from creating the token canister, to creating a marketing website using Juno and listing the token on ICPSwap.
-This article is for educational purposes only and is not financial advice of any form.Do Your Own Research (DYOR) if you want to invest in memecoins
+This article is for educational purposes only and is not financial advice of any form. Do Your Own Research (DYOR) if you want to invest in memecoins.
 
 👋
+
 
 Stay connected with Juno by following us on [Twitter](https://twitter.com/junobuild) to keep up with our latest updates.
 
