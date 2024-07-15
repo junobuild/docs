@@ -70,7 +70,7 @@ paste the code below
 
 In the above code, we define our token canister details
 
-Next, we are goind to define some parameters for our token
+Next, we are going to define some parameters for our token
 
 ```bash
 export TOKEN_NAME="FROGIE"
@@ -195,7 +195,7 @@ The next step is to set up a marketing website for your project.
 
 ## Launching the marketing website
 
-In this section, we are going to look setup the marketing website for our token. Follow these steps to set up a marketing website for your token using Juno
+In this section, we are going to setup the marketing website for our token. Follow these steps to set up a marketing website for your token using Juno
 
 - Ensure you have Node.js and npm installed on your computer. If not, follow the [guide](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/) to install them.
 
@@ -381,7 +381,7 @@ In this section, we will look at how to list our newly created token on [ICPSwap
 
 ICPSwap is a decentralized exchange that facilitates token trading and swapping by allowing tokens to be listed and liquidity pools to be created for different token pairs.
 
-And because ICPSwap is a decentralized autonomous organization (DAO) controlled by the community members, you need to submit a proposal for your proposal to be added on the exchange. This proposal will be voted on by the community members. If the proposal passes, the token will be listed on this exchange.
+And because ICPSwap is a decentralized autonomous organization (DAO) controlled by the community members, you need to submit a proposal for your token to be added on the exchange. This proposal will be voted on by the community members. If the proposal passes, the token will be listed on this exchange.
 
 We will create a proposal to add our token on ICPSwap in the following steps.
 
