@@ -39,7 +39,7 @@ Behind the scenes, Juno uses the Internet Computer blockchain network and infras
 
 - Ensure that you have dfx installed on your machine, otherwise follow this [guide](https://internetcomputer.org/docs/current/developer-docs/getting-started/install/) to install dfx
 
-- Creating a canister requires cycles. Cycles are used to measure and pay for the resources, such as memory, storage, and compute power, that are used by a canister. Therefore you need to have some on your machine before you can continue with these steps. This [guide](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles) shows you two options that you can see to load cycles on your machine.
+- Creating a canister requires cycles. Cycles are used to measure and pay for the resources, such as memory, storage, and compute power used by a canister. Therefore you need to have some on your machine before you can continue with these steps. This [guide](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles) shows you two options that you can use to load cycles on your machine.
 
 The following steps assume that you have cycles on your machine
 
@@ -53,8 +53,8 @@ paste the code below
     "canisters": {
       "myToken": {
         "type": "custom",
-        "candid": "https://raw.githubusercontent.com/dfinity/ic/7dee90107a88b836fc72e78993913988f4f73ca2/rs/rosetta-api/icrc1/ledger/ledger.did",
-        "wasm": "https://download.dfinity.systems/ic/7dee90107a88b836fc72e78993913988f4f73ca2/canisters/ic-icrc1-ledger.wasm.gz"
+        "candid": "https://raw.githubusercontent.com/dfinity/ic/4472b0064d347a88649beb526214fde204f906fb/rs/rosetta-api/icrc1/ledger/ledger.did",
+        "wasm": "https://download.dfinity.systems/ic/4472b0064d347a88649beb526214fde204f906fb/canisters/ic-icrc1-ledger.wasm.gz"
       }
     },
     "defaults": {
@@ -70,7 +70,7 @@ paste the code below
 
 In the above code, we define our token canister details
 
-Next, paste the command below in your project terminal
+Next, we are goind to define some parameters for our token
 
 ```bash
 export TOKEN_NAME="FROGIE"
@@ -86,6 +86,7 @@ export FEATURE_FLAGS=true
 export TRIGGER_THRESHOLD=2000
 export CYCLE_FOR_ARCHIVE_CREATION=10000000000000
 export NUM_OF_BLOCK_TO_ARCHIVE=1000
+
 dfx identity use default
 export DEFAULT=$(dfx identity get-principal)
 
@@ -100,7 +101,8 @@ export MINTER=$(dfx identity get-principal)
 
 In the above code, we specify other default settings for our token as well as the identities for minting, archiving.
 
-- Now,switch back to the identity that has the cycles and run the command below to install the token ledger
+> **NOTE :** Switch back to the identity that contains the cycles on your machine, before you run the commands below
+
 
 ```bash
 dfx canister create myToken --ic
@@ -130,7 +132,7 @@ Here is how the final command snippet should look like. Create a new file and na
 ```bash
 #!/usr/bin/env bash
 
-# Token setting definitions
+# Token settings
 
 export TOKEN_NAME="FROGIE"
 export TOKEN_SYMBOL="FRG"
@@ -152,6 +154,9 @@ dfx identity new minter
 dfx identity use minter
 export MINTER=$(dfx identity get-principal)
 
+##switch back to the identity that contains cycles
+dfx identity use "<YOUR-IDENTITY>"
+
 dfx canister create myToken --ic
 dfx deploy myToken --ic  --argument "(variant {Init =
 record {
@@ -169,10 +174,9 @@ controller_id = principal \"${ARCHIVE_CONTROLLER}\";
 cycles_for_archive_creation = opt ${CYCLE_FOR_ARCHIVE_CREATION};
 };}
 })"
-
 ```
 
-In the terminal, run the command to deploy the token canister on the network.
+Run the command below in your terminal to deploy the token canister on the network.
 
 ```bash
 ./deploy.sh
@@ -180,20 +184,18 @@ In the terminal, run the command to deploy the token canister on the network.
 
 If all the previous steps are succesful at this point, you should get a link in this format `https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<TOKEN-CANISTER-ID>` where `TOKEN-CANISTER-ID` is the id of your token ledger.
 
-All the premined tokens are now held by the principal address of the `default` identity. You can transfer these to an external wallet like plug to ease with the transfer process since using the command line is a little bit cumbersome.
+All the premined tokens are now held by the principal address of the `default` identity. You can transfer these to an external wallet like plug to ease with the transfer process since using the command line to distribute the tokens is a little bit cumbersome.
 [Learn more about creating token canisters](https://internetcomputer.org/docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup)
 
-Alternatively, there are some no-code tools like [ICPEx](https://icpex.org/createToken), [ICPI](https://www.icpi.xyz/#/deploy) to create your token canister but as Juno,  we are not affiliated with any of these services and therefore cannot endorse any of them. It is up to the user to make their own research and decision to use them
+Alternatively, there are some no-code tools like [ICPEx](https://icpex.org/createToken), [ICPI](https://www.icpi.xyz/#/deploy) to create your token canister but as Juno,  we are not affiliated with any of these services and therefore cannot endorse any of them. It is up to the user to make their own research and make a decision to use them
 
-The next step is to set up a marketing website for your new meme token.
+The next step is to set up a marketing website for your project.
 
 --- 
 
 ## Launching the marketing website
 
-In this section, we are going to look setup the marketing website for our token using Juno.
-
-To set up a marketing website for your token using Juno, follow these steps:
+In this section, we are going to look setup the marketing website for our token. Follow these steps to set up a marketing website for your token using Juno
 
 - Ensure you have Node.js and npm installed on your computer. If not, follow the [guide](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/) to install them.
 
@@ -209,7 +211,7 @@ To set up a marketing website for your token using Juno, follow these steps:
 - Select yes to install the dependencies
 - Select yes to install juno's CLI tool. Juno CLI will help us to deploy our project in the satellite.
 
-Navigate to the project folder `myWebsite` and open it in your favorite code editor. If every previous step is successfull, running `npm run dev` in the terminal will open the project in your browser and you should have something similar to this.
+Navigate to the project folder `myWebsite` and open it in your favorite code editor. If every previous step is successfull, running `npm run dev` in the terminal will open the project in the browser and you should have something similar to this.
 
 ![board](./junoboard.png)
 
@@ -220,6 +222,7 @@ We will create a simple website for our token.
 In the `pages` folder, replace all the code in the `index.astro` with the code below
 
 ```js
+---
 ---
 import BaseHead from "../components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_SOCIAL_IMAGE } from "../consts";
@@ -296,12 +299,12 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_SOCIAL_IMAGE } from "../consts";
         </section>
       </main>
     </div>
-    <div class="bg-[#1a1a2e] py-[10px] overflow-hidden">
-      <div class="ticker-content inline-block whitespace-nowrap pl-[100%] animate-ticker">
-        <span class="ticker-item inline-block px-[20px]">🚀 Frogie to the moon!</span>
-        <span class="ticker-item inline-block px-[20px]">💎 HODL for life!</span>
-        <span class="ticker-item inline-block px-[20px]">🐸 Pepe's long lost cousin is here!</span>
-        <span class="ticker-item inline-block px-[20px]">🎉 1 Frogie = 1 Frogie</span>
+    <div class=" py-[10px] overflow-hidden">
+      <div class=" inline-block whitespace-nowrap pl-[10%]">
+        <span class="inline-block px-[20px]">🚀 Frogie to the moon!</span>
+        <span class=" inline-block px-[20px]">💎 HODL for life!</span>
+        <span class="inline-block px-[20px]">🐸 Pepe's long lost cousin is here!</span>
+        <span class=" inline-block px-[20px]">🎉 1 Frogie = 1 Frogie</span>
       </div>
     </div>
     <footer class="text-center py-[20px] bg-[#16213e]">
@@ -378,9 +381,9 @@ In this section, we will look at how to list our newly created token on [ICPSwap
 
 ICPSwap is a decentralized exchange that facilitates token trading and swapping by allowing tokens to be listed and liquidity pools to be created for different token pairs.
 
-As ICPSwap is a decentralized autonomous organization (DAO) controlled by the community members, to add a token to their list, you need to submit a proposal that will be voted on by the community members. If the proposal passes, the token will be listed on this exchange.
+And because ICPSwap is a decentralized autonomous organization (DAO) controlled by the community members, you need to submit a proposal for your proposal to be added on the exchange. This proposal will be voted on by the community members. If the proposal passes, the token will be listed on this exchange.
 
-We will create a proposal to add our token on ICPSwap in the following steps
+We will create a proposal to add our token on ICPSwap in the following steps.
 
 - Visit the [ICPSwap](https://oc.app/community/qhpy7-vqaaa-aaaar-aurxa-cai/channel/146905696808670344863162689200573775433) community group on OpenChat
 - CLick on te three dots in the right corner ans select `make proposal`
