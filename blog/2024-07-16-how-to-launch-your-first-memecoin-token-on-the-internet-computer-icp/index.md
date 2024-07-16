@@ -44,11 +44,13 @@ In short, Juno is the Google Firebase alternative for Web3.
 
 :::info
 
-There are simpler ways to launch your own token that do not involve scripting, such as using no-code platforms like [ICPEx](https://icpex.org/createToken) or [ICPI](https://www.icpi.xyz/#/deploy).
+There are simpler ways to launch your own token that do not involve scripting, such as using no-code platforms like [ICTO](https://icto.app/tokens), [ICPEx](https://icpex.org/createToken) or [ICPI](https://www.icpi.xyz/#/deploy).
 
-However, since Juno is dedicated to providing developers with full ownership without compromise, this tutorial showcases an approach that aligns with our core values.
+However, since Juno is dedicated to providing developers with full ownership without compromise, this tutorial showcases a developer approach that aligns with our core values.
 
-Who knows, maybe in the future, Juno itself will make launching ledgers to the moon easy too! 😉
+If you prefer to use one of those services, that's cool. Some of those also share these values; we just suggest you do your own research before making a decision.
+
+And who knows, maybe in the future, Juno itself will make launching ledgers to the moon easy too! 😉
 
 :::
 
