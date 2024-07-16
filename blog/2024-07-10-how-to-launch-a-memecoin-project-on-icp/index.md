@@ -15,9 +15,9 @@ draft: true
 
 Memecoins are starting to gain significant traction. Some of these tokens, such as [Windowge98](https://windoge98.com/), [Damonic Welleams](https://damonicwelleams.com/), [Wumbo](https://qmpah-qqaaa-aaaal-ajabq-cai.icp0.io/), [Spellkaster](https://spellkaster.app/) and [$stik](https://bj2ym-biaaa-aaaal-aji3q-cai.icp0.io/), have reached high prices and attracted many retail investors into the ecosystem. Now, you may be wondering how these meme tokens were launched. In this article, we will walk you through all the steps you need to follow in order to create your own memecoin project.
 
-From creating the token smart contract (canister) to building a marketing website using Juno, and finally launching the token on [ICPSwap](https://icpswap.com), a major decentralized exchange (DEX) on the Internet Computer network, we've got you covered.
+From creating the token smart contract (canister) to building a marketing website using Juno, and finally launching the token on [ICPSwap](https://icpswap.com), a major decentralized exchange (DEX) on ICP, we've got you covered.
 
-We will also provide useful tips to ensure your memecoin project is successful. By the end of this article, you will have all the information needed to launch your token on ICP.
+We will also provide useful tips to ensure your memecoin project is successful. By the end of this article, you will have all the information needed to launch your token.
 
 :::important
 
@@ -42,6 +42,18 @@ In short, Juno is the Google Firebase alternative for Web3.
 --- 
 
 ## Creating the token smart contract canister
+
+:::info
+
+There are simpler ways to launch your own token that do not involve scripting, such as using no-code platforms like [ICPEx](https://icpex.org/createToken) or [ICPI](https://www.icpi.xyz/#/deploy).
+
+However, since Juno is dedicated to providing developers with full ownership without compromise, this tutorial showcases an approach that aligns with our core values.
+
+Who knows, maybe in the future, Juno itself will make launching ledgers to the moon easy too! 😉
+
+:::
+
+To deploy a ledger for your token proceed as following:
 
 - Make sure you have the `dfx` CLI installed on your machine. If not, follow this [guide](https://internetcomputer.org/docs/current/developer-docs/getting-started/install/) to complete the installation.
 
@@ -73,7 +85,9 @@ The following steps assume that you have cycles on your machine
 }
 ```
 
-Next, we are going to define some parameters for our token. Create a new file named `deploy.sh` and paste the following code:
+Next, we are going to define some parameters for our token and prepare the script for deployment.
+
+Create a new file named `deploy.sh` and paste the following code:
 
 ```bash
 #!/usr/bin/env bash
@@ -133,18 +147,16 @@ Ensure you switch back to the identity that contains the cycles on your machine 
 
 :::
 
-Run the command below in your terminal to deploy the token canister on the network:
+Once the file saved, run the command below in your terminal to deploy the token canister on the network:
 
 ```bash
 ./deploy.sh
 ```
 
-If all the previous steps are successful, you should get a link in this format `https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<TOKEN-CANISTER-ID>` where `TOKEN-CANISTER-ID` is the id of your token ledger.
+If all the previous steps are successful, you should get a link in this format `https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=<TOKEN-CANISTER-ID>` where `TOKEN-CANISTER-ID` is the id of your token ledger that was deployed.
 
 All the premined tokens are now held by the principal address of the `default` identity. You can transfer these to an external wallet like plug to ease with the transfer process since using the command line to distribute the tokens is a little bit cumbersome.
 [Learn more about creating token canisters](https://internetcomputer.org/docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup)
-
-Alternatively, there are some no-code tools like [ICPEx](https://icpex.org/createToken), [ICPI](https://www.icpi.xyz/#/deploy) to create your token canister but as Juno,  we are not affiliated with any of these services and therefore cannot endorse any of them. It is up to the user to make their own research and make a decision to use them
 
 The next step is to set up a marketing website for your project.
 
