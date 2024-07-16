@@ -1,12 +1,12 @@
 ---
-slug: how-to-launch-a-memecoin-project-on-icp
+slug: how-to-launch-your-first-memecoin-token-on-the-internet-computer-icp
 title: How to Launch Your First Memecoin Token on the Internet Computer (ICP)
 authors: [sam-the-tutor]
 tags: [hosting, blog, website, memes]
-image: https://juno.build/assets/images/project-complete-b24c4bfccb40cfd234cd724b34dc978b.png
+image: https://juno.build/assets/images/memecoin-complete-project-bd061437676a4795aa995edd6a65d04d.png
 ---
 
-![complete-project](./complete-project.png)
+![A cover title for the article](./memecoin-complete-project.png)
 
 ---
 
@@ -351,7 +351,7 @@ Running `juno open` in your terminal opens your project in your favorite browser
 
 Opening the link in the browser, you should have something like this below
 
-![website](./complete-project.png)
+![website](./memecoin-complete-project.png)
 
 ---
 
