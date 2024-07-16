@@ -4,7 +4,6 @@ title: How to Launch Your First Memecoin Token on the Internet Computer (ICP)
 authors: [sam-the-tutor]
 tags: [hosting, blog, website, memes]
 image: https://juno.build/assets/images/project-complete-b24c4bfccb40cfd234cd724b34dc978b.png
-draft: true
 ---
 
 ![complete-project](./complete-project.png)
