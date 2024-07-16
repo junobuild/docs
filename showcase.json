@@ -154,5 +154,12 @@
     "description": "First tap to earn meme coin on Internet Computer.",
     "img": "/showcase/stik.png",
     "twitter": "icpstik"
+  },
+  {
+    "title": "Metaviz",
+    "url": "https://ic.metaviz.net",
+    "description": "Metaviz is a visual project collaboration workspace. Good for making diagrams, project management, storing files and media.",
+    "img": "/showcase/metaviz.jpg",
+    "twitter": "MetavizOfficial"
   }
 ]
