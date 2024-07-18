@@ -7,4 +7,5 @@
 .grid {
   @include grid.columns;
   --grid-gap: 3rem;
+  margin: 0 0 4rem;
 }
