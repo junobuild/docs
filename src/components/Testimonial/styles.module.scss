@@ -1,0 +1,41 @@
+.container {
+  position: relative;
+}
+
+.quote {
+  position: relative;
+  padding-inline-start: 1.5em;
+  --ifm-blockquote-border-color: var(--ifm-color-primary);
+  font-size: var(--ifm-h6-font-size);
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+
+  color: var(--ifm-heading-color);
+
+  h5 {
+    color: var(--ifm-font-color-base);
+    margin: 0;
+    font-size: 18px;
+  }
+}
+
+.img {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  border: 2px solid black;
+}
+
+.link {
+  color: var(--ifm-color-primary);
+  font-size: var(--ifm-h6-font-size);
+}

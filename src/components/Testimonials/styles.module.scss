@@ -1,0 +1,10 @@
+@use "../../mixins/grid";
+
+.title {
+  margin: 1rem 0 2.75rem;
+}
+
+.grid {
+  @include grid.columns;
+  --grid-gap: 3rem;
+}
