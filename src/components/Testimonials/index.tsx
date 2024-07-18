@@ -21,7 +21,7 @@ export default function Testimonials(): JSX.Element {
       name: "Sam-the-tutor™",
       twitter: "samthetutor2",
       img: "https://pbs.twimg.com/profile_images/1679878586369449984/qv_eQ3oX_400x400.jpg",
-      text: "I know you will love it when you try it out. I was amazed by how it is very easy to deploy an app on Juno"
+      text: "I know you will love it when you try it out. I was amazed by how it is very easy to deploy an app on Juno."
     },
     {
       name: "SwissyP ∞",
