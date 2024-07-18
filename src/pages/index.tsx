@@ -14,6 +14,7 @@ import Layout from "@theme/Layout";
 import { useEffect } from "react";
 
 import Launch from "@site/src/components/Launch";
+import Testimonials from "@site/src/components/Testimonials";
 import styles from "./index.module.scss";
 
 export default function Home(): JSX.Element {
@@ -71,6 +72,10 @@ export default function Home(): JSX.Element {
           <Developer />
 
           <Serverless />
+        </section>
+
+        <section className={`container ${styles.block}`}>
+          <Testimonials />
         </section>
 
         <Outro />
