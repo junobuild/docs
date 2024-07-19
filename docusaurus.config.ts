@@ -180,7 +180,7 @@ const config: Config = {
                 to: "/showcase"
               },
               {
-                label: "Twitter",
+                label: "X",
                 href: "https://twitter.com/junobuild"
               },
               {
