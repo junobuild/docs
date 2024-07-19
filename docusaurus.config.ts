@@ -184,6 +184,10 @@ const config: Config = {
                 href: "https://twitter.com/junobuild"
               },
               {
+                label: "YouTube",
+                href: "https://youtube.com/@junobuild"
+              },
+              {
                 label: "Discord",
                 href: "https://discord.gg/wHZ57Z2RAG"
               },
