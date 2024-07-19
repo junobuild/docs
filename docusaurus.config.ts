@@ -173,66 +173,8 @@ const config: Config = {
             ]
           },
           {
-            title: "Build",
+            title: "Community",
             items: [
-              {
-                label: "Authentication",
-                to: "/docs/build/authentication"
-              },
-              {
-                label: "Datastore",
-                to: "/docs/build/datastore"
-              },
-              {
-                label: "Storage",
-                to: "/docs/build/storage"
-              },
-              {
-                label: "Hosting",
-                to: "/docs/build/hosting"
-              },
-              {
-                label: "Functions",
-                to: "/docs/build/functions"
-              },
-              {
-                label: "Analytics",
-                to: "/docs/build/analytics"
-              }
-            ]
-          },
-          {
-            title: "About",
-            items: [
-              {
-                label: "Internet Computer",
-                to: "/docs/infrastructure/internet-computer"
-              },
-              {
-                label: "Sustainability",
-                to: "/docs/infrastructure/sustainability"
-              },
-              {
-                label: "Architecture",
-                to: "/docs/architecture"
-              },
-              {
-                label: "Roadmap",
-                to: "/docs/roadmap"
-              },
-              {
-                label: "Brand & Press",
-                href: "https://github.com/junobuild/brand"
-              }
-            ]
-          },
-          {
-            title: "More",
-            items: [
-              {
-                label: "Blog",
-                to: "/blog"
-              },
               {
                 label: "Showcase",
                 to: "/showcase"
@@ -249,10 +191,31 @@ const config: Config = {
                 href: "https://oc.app/community/vxgpi-nqaaa-aaaar-ar4lq-cai/?ref=xanzv-uaaaa-aaaaf-aneba-cai",
                 label: "OpenChat",
                 position: "right"
+              }
+            ]
+          },
+          {
+            title: "More",
+            items: [
+              {
+                label: "Blog",
+                to: "/blog"
+              },
+              {
+                label: "Roadmap",
+                to: "/docs/roadmap"
+              },
+              {
+                label: "Changelog",
+                to: "/changelog"
               },
               {
                 label: "GitHub",
                 href: "https://github.com/junobuild/juno"
+              },
+              {
+                label: "Brand & Press",
+                href: "https://github.com/junobuild/brand"
               }
             ]
           }
