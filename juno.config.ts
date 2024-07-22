@@ -26,6 +26,11 @@ export default defineConfig({
           source: "/docs/add-juno-to-an-app/deploy-your-app",
           location: "/docs/add-juno-to-an-app/deploy",
           code: 301
+        },
+        {
+          source: "/docs/miscellaneous/sdk-usage-in-anodejs-context",
+          location: "/docs/guides/nodejs",
+          code: 301
         }
       ]
     }
