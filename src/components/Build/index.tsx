@@ -63,10 +63,9 @@ export default function Build(): JSX.Element {
         />
 
         <Guide
-          title="Juno can also be extended with custom backend code with Rust"
-          link="https://github.com/junobuild/examples/blob/main/rust/hooks"
+          title="Juno can also be extended with serverless functions written in Rust."
+          link="/docs/guides/rust"
           icon={<Rust />}
-          external={true}
         />
       </div>
     </>
