@@ -30,7 +30,7 @@ This article is for educational purposes only and is not financial advice of any
 
 The Internet Computer (ICP) is a blockchain-based platform that aims to create a new type of internet, one that is decentralized, secure, and scalable. Developed, among others, by the DFINITY Foundation, the Internet Computer is designed to serve as a global public compute infrastructure, allowing developers to build and deploy decentralized applications (dApps) and services directly on the blockchain. [Learn more about ICP](https://internetcomputer.org/)
 
---- 
+---
 
 ## What is Juno
 
@@ -38,7 +38,7 @@ Juno is a blockchain-as-a-service (“blockchainless”) platform that empowers 
 
 In short, Juno is the Google Firebase alternative for Web3.
 
---- 
+---
 
 ## Creating the token smart contract canister
 
@@ -68,21 +68,21 @@ The following steps assume that you have cycles on your machine
 
 ```json
 {
-    "canisters": {
-      "myToken": {
-        "type": "custom",
-        "candid": "https://raw.githubusercontent.com/dfinity/ic/4472b0064d347a88649beb526214fde204f906fb/rs/rosetta-api/icrc1/ledger/ledger.did",
-        "wasm": "https://download.dfinity.systems/ic/4472b0064d347a88649beb526214fde204f906fb/canisters/ic-icrc1-ledger.wasm.gz"
-      }
-    },
-    "defaults": {
-      "build": {
-        "args": "",
-        "packtool": ""
-      }
-    },
-    "output_env_file": ".env",
-    "version": 1
+  "canisters": {
+    "myToken": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/4472b0064d347a88649beb526214fde204f906fb/rs/rosetta-api/icrc1/ledger/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/4472b0064d347a88649beb526214fde204f906fb/canisters/ic-icrc1-ledger.wasm.gz"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
 ```
 
@@ -161,7 +161,7 @@ All the premined tokens are now held by the principal address of the `default` i
 
 The next step is to set up a marketing website for your project.
 
---- 
+---
 
 ## Launching the marketing website
 
@@ -252,7 +252,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_SOCIAL_IMAGE } from "../consts";
 
         <section class="flex justify-center gap-8 items-center mb-16">
           <div class="flex flex-col justify-center gap-2 items-center">
-          
+
             <img src="https://github.com/sam-thetutor/images/blob/main/imgs/forgie5.png?raw=true" class="h-[100px] w-[100px] flex rounded-full" alt="">
             <h2 class="text-2xl">Moon-bound Potential</h2>
             <p class="text-center flex ">Our advanced memetics ensure stratospheric growth! From the waters to the moon</p>
@@ -287,7 +287,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_SOCIAL_IMAGE } from "../consts";
 
 In the above code, we created a simple website to display the logo of our token, as well as the name,symbol and total supply of the token. There is also a button that allows the user to but our token from an exchange where it is listed.
 
- Edit the code above to display the information of your token including the name, symbol, total supply, and logo.
+Edit the code above to display the information of your token including the name, symbol, total supply, and logo.
 
 ---
 
@@ -305,7 +305,7 @@ A satellite is a smart contract provided by Juno, packed with features such as a
 - Login with your Internet Identity
 - On the dashboard, select Launch new satellite
 - Provide name `myWebsite` for the satellite.
-- Click Create 
+- Click Create
 
 ---
 
@@ -379,7 +379,6 @@ We will create a proposal to add our token on ICPSwap in the following steps.
 
 > **NOTE:** You will be charged a fee of 50 ICS for this service, therefore ensure you have enough ICS balance before you peform this step.
 
-
 ![kk](./makepropsdetails.png)
 
 The voting duration for proposals on the ICPSwap platform is typically three days. If a proposal passes during this voting period, your token will be listed on the exchange and will be tradable.
@@ -395,8 +394,7 @@ If you have reached this step without any errors, congratulations, you have crea
 
 Now you can start marketing to attract more users and holders. Good luck! 🤞
 
---- 
-
+---
 
 ## Tips for a successful memecoin project
 
@@ -439,7 +437,7 @@ Effective crypto marketing is critical for meme coin success. Implement a multi-
 
 Most successful meme coin projects hire specialized crypto influencer marketing teams with extensive networks. Partner with online personalities who like memes or crypto and have them talk about your coin to their followers.
 
---- 
+---
 
 ## Conclusion
 
@@ -447,7 +445,6 @@ In this article, we have covered everything you need to launch a successful meme
 This article is for educational purposes only and is not financial advice of any form. Do Your Own Research (DYOR) if you want to invest in memecoins.
 
 👋
-
 
 Stay connected with Juno by following us on [Twitter](https://twitter.com/junobuild) to keep up with our latest updates.
 

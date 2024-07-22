@@ -47,7 +47,7 @@ const satellite = {
   identity: new AnonymousIdentity(),
   id: "jx5yt-yyaaa-aaaal-abzbq-cai",
   container: true
-}
+};
 
 const doc = await getDoc({
   collection: "demo",
