@@ -3,6 +3,7 @@ import Angular from "@site/static/icons/angular.svg";
 import Astro from "@site/static/icons/astro.svg";
 import JavaScript from "@site/static/icons/javascript.svg";
 import NextJS from "@site/static/icons/nextjs.svg";
+import NodeJS from "@site/static/icons/nodejs.svg";
 import ReactLogo from "@site/static/icons/react.svg";
 import Rust from "@site/static/icons/rust.svg";
 import Svelte from "@site/static/icons/svelte.svg";
@@ -60,6 +61,12 @@ export default function Build(): JSX.Element {
           link="https://github.com/junobuild/examples/tree/main/vanilla"
           icon={<JavaScript />}
           external={true}
+        />
+
+        <Guide
+          title="Use Juno in non-interactive environment with NodeJS."
+          link="/docs/guides/nodejs"
+          icon={<NodeJS />}
         />
 
         <Guide
