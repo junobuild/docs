@@ -1,5 +1,10 @@
 ---
-sidebar_position: 6
+id: nodejs
+title: NodeJS
+description: SDK usage in a NodeJS context
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+sidebar_position: 7
 ---
 
 # SDK usage in a NodeJS context
@@ -24,7 +29,7 @@ npm i @junobuild/core-peer
 
 Unlike in a web application, initializing Juno globally in your NodeJS app is not required.
 
-Instead, you can call any of Juno's functions with an additional parameter that includes the satellite ID and other parameters, such as `container` set to `true` if you are [developing locally](../guides/local-development.md).
+Instead, you can call any of Juno's functions with an additional parameter that includes the satellite ID and other parameters, such as `container` set to `true` if you are [developing locally](local-development.md).
 
 Moreover, since no interactive [Authentication](../build/authentication.md) is performed in this context, the information must also be provided. The DFINITY [agent-js](https://github.com/dfinity/agent-js/) library can be used to build an `identity`.
 
