@@ -22,7 +22,7 @@ Absolutely! With Juno, you have the flexibility to choose the level of functiona
 
 ### Is Juno a project of the DFINITY foundation?
 
-No. We did not seek or receive any specific support from the [foundation](https://dfinity.org/), nor did we apply for any grants.
+No. We did not seek or receive any specific support from the [foundation](https://dfinity.org/). However, after a year of existence, we were awarded a [Developer Grant](https://dfinity.org/grants/) in 2024, which we used to further develop the ecosystem, build templates to ease the onboarding of new developers, and improve our visual communication and overall marketing strategy.
 
 ### Does Juno exercise control over developers' work?
 
