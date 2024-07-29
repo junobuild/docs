@@ -60,7 +60,7 @@ The [documentation](./intro.md) is a great starting point to explore Juno.
 
 Additionally, the [blog](https://juno.build/blog) provides insightful tutorials for various frameworks.
 
-You can also check out the [repository](https://github.com/junobuild/examples), which features multiple examples to help you get started.
+You can also check out the [guides](/docs/category/guides-and-examples), which feature examples to help you get started.
 
 ---
 
