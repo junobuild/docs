@@ -12,13 +12,43 @@ This document will help you understand the different settings you can configure 
 
 The Freezing Threshold defines the duration (in seconds) after which a module will be frozen. It is an important feature because if a module runs out of cycles, it will be uninstalled, meaning its code and state are deleted. The Freezing Threshold protects from deletion. If the cycles balance dips below the threshold, the smart contract will stop processing any new requests but will continue to reply to existing requests.
 
-For sensitive applications, developers can set a freezing threshold to 90 days or more. This ensures that they and their users have enough time to react and top up the modules before they finally run out of cycles.
+For sensitive applications that requires several resources, developers can set a freezing threshold to 90 days or more. This ensures that they and their users have enough time to react and top up the modules before they finally run out of cycles.
 
-The default value is `2_592_000n` (30 days), except for Mission Control, which is set by default to `15_552_000n` (180 days).
+The default value is `2_592_000n` (30 days).
 
-### Example
+### Example of calculation
 
-If you set the freezing threshold to `3_600n` (1 hour), your smart contract will freeze if it runs out of cycles and remains in this state for an hour. The module's state will be preserved, and it will resume operations once it receives additional cycles. If no cycles are added and the module's cycle balance hits zero, it will be uninstalled, and its code and state will be deleted, though its ID and controllers will remain intact.
+We are interested in finding out how close we are to hitting its threshold. So, let's consider a module with the following details:
+
+- Cycles Balance: 0.937 T Cycles (937 billion cycles)
+- Memory Usage: 14.32 MB (14,320,000 bytes)
+- Freezing Threshold: 15,552,000 seconds (180 days)
+
+#### Memory Cost Calculation
+
+1. We assume a cost per byte per second is 0.0000001 cycles
+2. Total memory cost per second: 14,320,000 bytes × 0.0000001 cycles/byte/second = 1.432 cycles/second
+3. Total memory cost for 180 days: 1.432 cycles / second × 180 × 24 × 60 × 60 = 22,272,768 cycles
+
+#### Total Cost for 180 Days
+
+Total cost = Memory cost for 180 days + Compute cost for 180 days
+
+We assume the compute allocation is the default 0% in this scenario.
+
+Total cost = 22,272,768 cycles
+
+#### Estimate Remaining Time
+
+1. Current Cycles Balance: 0.937 × 1012 = 937,000,000,0000 cycles
+2. Total cost for 180 days: 22,272,768 cycles
+3. Remaining time: 937,000,000,0000 cycles / 22,272,768 cycles ≈ 42,060 180-day periods
+
+Remaining time = 42,060 × 180 days ≈ 7,570,800 days
+
+#### Summary
+
+With a cycles balance of 937 billion cycles and memory usage of 14.32 MB, a module can survive for approximately 7,570,800 days (or about 20,741 years) before hitting the freezing threshold, assuming constant usage patterns.
 
 ---
 
