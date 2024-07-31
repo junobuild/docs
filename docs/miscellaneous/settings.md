@@ -14,11 +14,11 @@ The Freezing Threshold defines the duration (in seconds) after which a module wi
 
 For sensitive applications, developers can set a freezing threshold to 90 days or more. This ensures that they and their users have enough time to react and top up the modules before they finally run out of cycles.
 
-The default value is `2_592_000n` (30 days), except for Mission Control, which is set by default to `10_368_000n` (180 days).
+The default value is `2_592_000n` (30 days), except for Mission Control, which is set by default to `15_552_000n` (180 days).
 
 ### Example
 
-If you set the freezing threshold to `3600n` (1 hour), your smart contract will freeze if it runs out of cycles and remains in this state for an hour. The module's state will be preserved, and it will resume operations once it receives additional cycles. If no cycles are added and the module's cycle balance hits zero, it will be uninstalled, and its code and state will be deleted, though its ID and controllers will remain intact.
+If you set the freezing threshold to `3_600n` (1 hour), your smart contract will freeze if it runs out of cycles and remains in this state for an hour. The module's state will be preserved, and it will resume operations once it receives additional cycles. If no cycles are added and the module's cycle balance hits zero, it will be uninstalled, and its code and state will be deleted, though its ID and controllers will remain intact.
 
 ---
 
