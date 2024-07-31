@@ -4,15 +4,17 @@ sidebar_position: 10
 
 # Settings
 
-This document will help you understand the different settings you can configure for your modules (Satellites, Mission controls, and Orbiters).
+This document will help you understand the different settings you can configure for your modules ([Satellites], [Mission controls], and [Orbiters]).
 
 ---
 
 ## Freezing Threshold
 
-This setting defines the duration (in seconds) after which a module will be frozen if it runs out of cycles. When a module is frozen, it stops processing new requests but continues to reply to existing ones. The module's state is preserved during this period. However, if the module completely runs out of cycles, it will be uninstalled, and its code and state will be deleted. The rest of the module's information, such as its ID and controllers, remains intact.
+The Freezing Threshold defines the duration (in seconds) after which a module will be frozen. It is an important feature because if a module runs out of cycles, it will be uninstalled, meaning its code and state are deleted. The Freezing Threshold protects from deletion. If the cycles balance dips below the threshold, the smart contract will stop processing any new requests but will continue to reply to existing requests.
 
-The default value is `2_592_000n` (30 days).
+For sensitive applications, developers can set a freezing threshold to 90 days or more. This ensures that they and their users have enough time to react and top up the modules before they finally run out of cycles.
+
+The default value is `2_592_000n` (30 days), except for Mission Control, which is set by default to `10_368_000n` (180 days).
 
 ### Example
 
@@ -22,13 +24,13 @@ If you set the freezing threshold to `3600n` (1 hour), your smart contract will 
 
 ## Reserved Cycles Limit
 
-The Reserved Cycles Limit sets the maximum number of cycles a module can reserve. It's a number between 0 and 2128−12128−1. If the reserved cycles exceed this limit, any operation requiring resources, such as compute or memory, will fail.
+The Reserved Cycles Limit sets the maximum number of cycles a module can reserve. If the reserved cycles exceed this limit, any operation requiring resources, such as compute or memory, will fail.
 
 The default value is `5_000_000_000_000n` (5 trillion cycles)
 
 ### Example
 
-If you set the reserved cycles limit to `10_000_000_000_000n` (10 T cycles), the module will reserve up to 10 trillion cycles, and any operation exceeding this limit will fail.
+A practical use case could be a scenario where a module is expected to handle a large amount of data storage or perform intensive computations. By setting the Reserved Cycles Limit, developers can control the maximum amount of cycles that can be reserved for the future resource payments. This helps in preventing the smart contract from exceeding its allocated budget and also ensures that it has enough cycles for its operations.
 
 ---
 
@@ -78,4 +80,8 @@ The default value is `0n` - i.e. no particular allocation.
 
 ### Example
 
-If you set the compute allocation to `50n` (50%), the module will be allocated 50% of the compute capacity. This ensures that the module has a guaranteed share of the compute resources, potentially improving its performance by ensuring it has sufficient processing power for its operations.
+If you set the compute allocation to `50n`, the module will be allocated 50% of the compute capacity. This ensures that the module has a guaranteed share of the compute resources, potentially improving its performance by ensuring it has sufficient processing power for its operations.
+
+[satellites]: ../terminology.md#satellite
+[mission controls]: ../terminology.md#mission-control
+[orbiters]: ../terminology.md#orbiter
