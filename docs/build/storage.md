@@ -55,7 +55,7 @@ Assets are publicly accessible on the Internet regardless of the permission sche
 :::
 
 - `public`: everyone can read from (resp. write to) any asset in the collection
-- `private`: only the owner of a asset and can read from (resp. write to) a document in the collection
+- `private`: only the owner of a asset and can read from (resp. write to) a asset in the collection
 - `managed`: the owner of an asset _and_ the [controllers] of the satellite can read from (resp. write to) an asset in the collection
 - `controllers`: only the controllers of the satellite can read from (resp. write to) any asset in the collection
 
@@ -129,31 +129,157 @@ Imagine a file "mydata.jpg" uploaded with a token. Attempting to access it throu
 
 ## List assets
 
-The "Storage" provider offers a way to list assets.
-The `listAssets` function -- in addition to specifying the collection to query -- accepts various optional parameters:
-
-- `matcher`: a regex to apply to the assets' `fullPath` and `description`
-- `paginate`: an object used to query a subset of the assets
-- `order`: requests entries sorted in ascending or descending order
-
-:::note
-Example of usage of the parameters:
+The `listAssets` function is used to retrieve assets from a specified collection.
 
 ```typescript
 import { listAssets } from "@junobuild/core";
 
 const myList = await listAssets({
-  collection: "images",
-  // Optional parameters
+  collection: "my_collection_key"
+});
+```
+
+### Parameters
+
+The function requires a collection and accepts various optional parameters, including a matcher (a regex applied to the assets fullPaths and descriptions), pagination options, and sorting order.
+
+:::note
+
+`listAssets` uses the same interface as `listDocs`. That is why the parameter `matcher` expect a value `key` to filter the assets according their `fullPath`.
+
+:::
+
+1. **`collection`** (required)
+
+   - **Description**: The key of the collection from which assets are to be listed.
+   - **Type**: `string`
+
+2. **`matcher`** (optional)
+
+   - **Description**: An object used to filter assets based on their keys (fullPaths) or descriptions using regular expressions.
+   - **Type**: `ListMatcher`
+
+     ```typescript
+     interface ListMatcher {
+       key?: string;
+       description?: string;
+       createdAt?: ListTimestampMatcher;
+       updatedAt?: ListTimestampMatcher;
+     }
+     ```
+
+     - **key**: A regex to match against asset keys.
+     - **description**: A regex to match against asset descriptions.
+     - **createdAt**: A `ListTimestampMatcher` to filter assets based on their creation timestamp.
+     - **updatedAt**: A `ListTimestampMatcher` to filter assets based on their last update timestamp.
+
+   - **Type**: `ListTimestampMatcher` can be used to specify criteria for timestamp matching.
+
+     ```typescript
+     type ListTimestampMatcher =
+       | {
+           matcher: "equal";
+           timestamp: bigint;
+         }
+       | {
+           matcher: "greaterThan";
+           timestamp: bigint;
+         }
+       | {
+           matcher: "lessThan";
+           timestamp: bigint;
+         }
+       | {
+           matcher: "between";
+           timestamps: {
+             start: bigint;
+             end: bigint;
+           };
+         };
+     ```
+
+     - **matcher**: Specifies the type of timestamp comparison. Can be one of the following:
+
+       - **equal**: Matches assets where the timestamp is exactly equal to the specified value.
+       - **greaterThan**: Matches assets where the timestamp is greater than the specified value.
+       - **lessThan**: Matches assets where the timestamp is less than the specified value.
+       - **between**: Matches assets where the timestamp falls within a specified range.
+
+     - **timestamp**: Used with `equal`, `greaterThan`, and `lessThan` matchers to specify the exact timestamp for comparison.
+     - **timestamps**: Used with the `between` matcher to specify a range of timestamps. The range is inclusive of both the start and end values.
+
+3. **`paginate`** (optional)
+
+   - **Description**: An object to control pagination of the results
+   - **Type**: `ListPaginate`
+
+     ```typescript
+     interface ListPaginate {
+       startAfter?: string;
+       limit?: number;
+     }
+     ```
+
+     - **startAfter**: A string key to start listing assets after this key.
+     - **limit**: The maximum number of assets to return.
+
+4. **`order`** (optional)
+
+   - **Description**: Control the sorting order of the results.
+   - **Type**: `ListOrder`
+
+     ```typescript
+     interface ListOrder {
+       desc: boolean;
+       field: ListOrderField;
+     }
+
+     type ListOrderField = "keys" | "updated_at" | "created_at";
+     ```
+
+5. **`owner`** (optional)
+
+   - **Description**: The owner of the assets.
+   - **Type**: `ListOwner`
+
+     ```typescript
+     type ListOwner = string | Principal;
+     ```
+
+:::note
+Example of usage of the parameters:
+
+```typescript
+import { listDocs } from "@junobuild/core";
+
+const myList = await listDocs({
+  collection: "my_collection_key",
+  owner: "some_owner_id_or_principal",
   matcher: {
-    fullPath: /.*\.png$/, // match assets with .png extension
-    description: /holiday/ // match description containing 'holiday'
+    key: ".*.png$", // match assets with .png extension
+    description: "holiday", // match description containing 'holiday'
+    createdAt: {
+      matcher: "greaterThan",
+      timestamp: 1627776000n
+    },
+    updatedAt: {
+      matcher: "between",
+      timestamps: {
+        start: 1627770000n,
+        end: 1627900000n
+      }
+    }
   },
   paginate: {
-    page: 0, // Start from the first page
-    limit: 10 // Limit the results to 10 assets per page
+    startAfter: "doc_10",
+    limit: 5
   },
-  order: "asc" // Order the results in ascending order
+  filter: {
+    order: {
+      desc: true,
+      field: "updated_at"
+    }
+  }
 });
 ```
 
