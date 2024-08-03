@@ -27,27 +27,29 @@
     "format": "prettier . --write ."
   },
   "dependencies": {
-    "@docusaurus/core": "^3.1.1",
-    "@docusaurus/preset-classic": "^3.1.1",
-    "@junobuild/analytics": "^0.0.17",
-    "@mdx-js/react": "^3.0.0",
-    "clsx": "^2.1.0",
-    "lottie-web": "^5.12.2",
+    "@docusaurus/core": "^3.4.0",
+    "@docusaurus/preset-classic": "^3.4.0",
+    "@junobuild/analytics": "^0.0.24",
+    "@lottiefiles/dotlottie-web": "^0.23.2",
+    "@mdx-js/react": "^3.0.1",
+    "clsx": "^2.1.1",
     "prism-react-renderer": "^2.3.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.1.1",
-    "@docusaurus/tsconfig": "^3.1.1",
-    "@docusaurus/types": "^3.1.1",
-    "@junobuild/config": "^0.0.4",
-    "@types/react": "^18.2.52",
+    "@docusaurus/module-type-aliases": "^3.4.0",
+    "@docusaurus/tsconfig": "^3.4.0",
+    "@docusaurus/types": "^3.4.0",
+    "@junobuild/config": "^0.0.8",
+    "@types/react": "^18.3.3",
     "docusaurus-plugin-sass": "^0.2.5",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.2",
     "prettier-plugin-organize-imports": "^3.2.4",
-    "sass": "^1.70.0",
-    "typescript": "^5.3.3"
+    "sass": "^1.77.4",
+    "typescript": "^5.4.5"
   },
   "browserslist": {
     "production": [

@@ -52,12 +52,12 @@ After completing both of these steps, you can initialize Juno with your satellit
 
 ```javascript
 import { useEffect } from "react";
-import { initJuno } from "@junobuild/core";
+import { initSatellite } from "@junobuild/core";
 
 function App() {
   useEffect(() => {
     (async () =>
-      await initJuno({
+      await initSatellite({
         satelliteId: "pycrs-xiaaa-aaaal-ab6la-cai"
       }))();
   }, []);

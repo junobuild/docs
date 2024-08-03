@@ -10,9 +10,11 @@ It offers a powerful and cost-effective object storage solution on the blockchai
 
 :::note
 
-To use Juno Storage's features, you must [install](../add-juno-to-an-app/install-the-sdk-and-initialize-juno.md) and initialize the Juno SDK in your app.
+To use Juno Storage's features, you must [install](../add-juno-to-an-app/setup) and initialize the Juno SDK in your app.
 
 :::
+
+---
 
 ## How does it work?
 
@@ -28,11 +30,15 @@ Unless you use the optional [`token` parameter](#protected-asset) to persist an 
 
 :::
 
+---
+
 ## Limitation
 
 Each satellite has specific memory limits. For detailed information, please refer to the related [documentation](../miscellaneous/memory.md) page.
 
 There is no specific limit on the size of assets (files) that can be uploaded to Juno, unless you choose to set an optional [rule](#rules) to restrict it.
+
+---
 
 ## Collections
 
@@ -67,6 +73,8 @@ When you create a collection, it's assigned to either heap or stable memory. Thi
 ### Max size
 
 You can also set an optional parameter that limits the size, in bytes, of assets that can be uploaded to a collection.
+
+---
 
 ## Upload asset
 
@@ -117,25 +125,41 @@ const result = await uploadFile({
 
 Imagine a file "mydata.jpg" uploaded with a token. Attempting to access it through the URL "https://yoursatellite/mydata.jpg" will not work. The asset can only be retrieved if a token is provided: "https://yoursatellite/mydata.jpg?token=a-super-long-secret-id".
 
+---
+
 ## List assets
 
 The "Storage" provider offers a way to list assets.
-
-```typescript
-import { listAssets } from "@junobuild/core";
-
-const myList = await listAssets({
-  collection: "images"
-});
-```
-
 The `listAssets` function -- in addition to specifying the collection to query -- accepts various optional parameters:
 
 - `matcher`: a regex to apply to the assets' `fullPath` and `description`
 - `paginate`: an object used to query a subset of the assets
 - `order`: requests entries sorted in ascending or descending order
 
-The function **returns various information**, in the form of an object whose interface is given below.
+:::note
+Example of usage of the parameters:
+
+```typescript
+import { listAssets } from "@junobuild/core";
+
+const myList = await listAssets({
+  collection: "images",
+  // Optional parameters
+  matcher: {
+    fullPath: /.*\.png$/, // match assets with .png extension
+    description: /holiday/ // match description containing 'holiday'
+  },
+  paginate: {
+    page: 0, // Start from the first page
+    limit: 10 // Limit the results to 10 assets per page
+  },
+  order: "asc" // Order the results in ascending order
+});
+```
+
+:::
+
+The function returns the assets and various information, in the form of an object whose interface is given below.
 
 ```typescript
 {
@@ -146,6 +170,8 @@ The function **returns various information**, in the form of an object whose int
   matches_pages?: bigint; // If the query is paginated, the total number (starting from 0) of pages
 }
 ```
+
+---
 
 ## Delete asset
 
@@ -160,6 +186,8 @@ await deleteAsset({
 });
 ```
 
+---
+
 ## Delete multiple assets
 
 To delete multiple assets in an atomic manner, you can use the function `deleteManyAssets`:
@@ -167,7 +195,17 @@ To delete multiple assets in an atomic manner, you can use the function `deleteM
 ```typescript
 import { deleteManyAssets } from "@junobuild/core";
 
-await deleteManyAssets({ docs: [myAsset1, myAsset2, myAsset3] });
+const myAsset1 = {
+  collection: "hello",
+  fullPath: "/hello/world.jpg"
+};
+
+const myAsset2 = {
+  collection: "data",
+  fullPath: "/data/something.json"
+};
+
+await deleteManyAssets({ assets: [myAsset1, myAsset2] });
 ```
 
 [satellite]: ../terminology.md#satellite

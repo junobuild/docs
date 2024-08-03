@@ -48,7 +48,7 @@ It is generally recommended to use this method if you wish to generate a complet
 
 :::note
 
-You also have the option to generate new controllers directly in the console. This feature is particularly beneficial if you intend to configure [GitHub Actions](../miscellaneous/github_actions) to automate the deployment of your application.
+You also have the option to generate new controllers directly in the console. This feature is particularly beneficial if you intend to configure [GitHub Actions](../guides/github-actions) to automate the deployment of your application.
 
 :::
 

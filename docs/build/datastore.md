@@ -8,9 +8,11 @@ The Juno Datastore provides a convenient programming model for storing data on t
 
 :::note
 
-To use these features, the Juno SDK must be [installed](../add-juno-to-an-app/install-the-sdk-and-initialize-juno.md) and initialized in your app.
+To use these features, the Juno SDK must be [installed](../add-juno-to-an-app/setup) and initialized in your app.
 
 :::
+
+---
 
 ## How does it work?
 
@@ -26,11 +28,15 @@ Each document is identified by a `key` (unique within a collection).
 
 In essence, a "Datastore" functions as a keypair store.
 
+---
+
 ## Limitation
 
 Each satellite has specific memory limits. For detailed information, please refer to the related [documentation](../miscellaneous/memory.md) page.
 
 As for documents, they can be up to 2MB in size. However, larger files can be saved in the [storage](build/storage.md).
+
+---
 
 ## Collections
 
@@ -55,6 +61,8 @@ A rule is assigned to a collection to define read and write permissions, which c
 ### Memory
 
 When you create a collection, it's assigned to either heap or stable memory. This assignment is permanent and cannot be changed once the collection is created. The default allocation is `heap` memory.
+
+---
 
 ## Add a document
 
@@ -119,6 +127,8 @@ await setDoc<Example>({
 });
 ```
 
+---
+
 ## Get a document
 
 To retrieve data, use the `getDoc` function and provide the `collection` and the `key` of the document:
@@ -131,6 +141,8 @@ const myDoc = await getDoc({
   key: myId
 });
 ```
+
+---
 
 ## Get multiple documents
 
@@ -154,9 +166,11 @@ const docPair2 = {
 const docs = await getManyDocs({ docs: [docPair1, docPair2] });
 ```
 
+---
+
 ## Update a document
 
-To update a document, use the `setDoc` function with a timestamp to validate that the most recent entry is being updated:
+To update a document, use the `setDoc` function with its current version to validate that the most recent entry is being updated:
 
 ```typescript
 import { setDoc } from "@junobuild/core";
@@ -164,19 +178,34 @@ import { setDoc } from "@junobuild/core";
 await setDoc<Example>({
   collection: "my_collection_key",
   doc: {
-    ...myDoc, // includes 'key' and 'updated_at'
+    key: myId,
+    data: myExample,
+    version: 3n
+  }
+});
+```
+
+The `version` must match the current version of the last document within the satellite; otherwise, the call will fail. This prevents unexpected concurrent overwrites, which is useful, for example, if your users use your projects simultaneously on multiple devices.
+
+:::tip
+
+You can spread the document you have previously retrieved, for example with `getDoc`, to populate the `version` and `key` fields.
+
+```typescript
+import { setDoc } from "@junobuild/core";
+
+await setDoc<Example>({
+  collection: "my_collection_key",
+  doc: {
+    ...myDoc, // includes 'key' and 'version'
     data: myNewData
   }
 });
 ```
 
-The `updated_at` timestamp must match the timestamp of the last document update on the satellite, otherwise the call will fail. This prevents unexpected concurrent updates.
-
-:::tip
-
-It is common to retrieve the document with `getDoc` before updating it to ensure that you have the most recent timestamp.
-
 :::
+
+---
 
 ## Set multiple documents
 
@@ -210,9 +239,11 @@ const update2 = {
 const docs = await setManyDocs({ docs: [update1, update2] });
 ```
 
+---
+
 ## List documents
 
-To list documents, use the `listDocs` function:
+The `listDocs` function is used to retrieve documents from a specified collection.
 
 ```typescript
 import { listDocs } from "@junobuild/core";
@@ -222,13 +253,85 @@ const myList = await listDocs({
 });
 ```
 
-The function **accepts various optional parameters**, including a matcher (a regex applied to the document keys and descriptions), pagination options, and sorting order.
+### Parameters
 
-```javascript
+The function requires a collection and accepts various optional parameters, including a matcher (a regex applied to the document keys and descriptions), pagination options, and sorting order.
+
+1. **`collection`** (required)
+
+   - **Description**: The key of the collection from which documents are to be listed.
+   - **Type**: `string`
+
+2. **`matcher`** (optional)
+
+   - **Description**: An object used to filter documents based on their keys or descriptions using regular expressions.
+   - **Type**: `ListMatcher`
+
+     ```typescript
+     interface ListMatcher {
+       key?: string;
+       description?: string;
+     }
+     ```
+
+     - **key**: A regex to match against document keys.
+     - **description**: A regex to match against document descriptions.
+
+3. **`paginate`** (optional)
+
+   - **Description**: An object to control pagination of the results
+   - **Type**: `ListPaginate`
+
+     ```typescript
+     interface ListPaginate {
+       startAfter?: string;
+       limit?: number;
+     }
+     ```
+
+     - **startAfter**: A string key to start listing documents after this key.
+     - **limit**: The maximum number of documents to return.
+
+4. **`order`** (optional)
+
+   - **Description**: Control the sorting order of the results.
+   - **Type**: `ListOrder`
+
+     ```typescript
+     interface ListOrder {
+       desc: boolean;
+       field: ListOrderField;
+     }
+
+     type ListOrderField = "keys" | "updated_at" | "created_at";
+     ```
+
+5. **`owner`** (optional)
+
+   - **Description**: The owner of the documents.
+   - **Type**: `ListOwner`
+
+     ```typescript
+     type ListOwner = string | Principal;
+     ```
+
+:::note
+Example of usage of the parameters:
+
+```typescript
 import { listDocs } from "@junobuild/core";
 
 const myList = await listDocs({
   collection: "my_collection_key",
+  owner: "some_owner_id_or_principal",
+  matcher: {
+    key: "^doc_",
+    description: "example"
+  },
+  paginate: {
+    startAfter: "doc_10",
+    limit: 5
+  },
   filter: {
     order: {
       desc: true,
@@ -238,15 +341,9 @@ const myList = await listDocs({
 });
 ```
 
-Sorting can be applied descending or ascending to following fields:
+:::
 
-- `keys`
-- `updated_at`
-- `created_at`
-
-Options `matcher`, `paginate` and `order` can be use together.
-
-The function **returns various information**, in the form of an object whose interface is given below.
+The function returns the documents and various information, in the form of an object whose interface is given below.
 
 ```typescript
 {
@@ -257,6 +354,8 @@ The function **returns various information**, in the form of an object whose int
   matches_pages?: bigint; // If the query is paginated, the total number (starting from 0) of pages
 }
 ```
+
+---
 
 ## Delete a document
 
@@ -270,6 +369,8 @@ await deleteDoc<Example>({
   doc: myDoc
 });
 ```
+
+---
 
 ## Delete multiple documents
 

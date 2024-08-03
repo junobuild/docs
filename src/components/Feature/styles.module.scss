@@ -2,7 +2,6 @@
   position: relative;
   border: solid 4px var(--ifm-heading-color);
   border-radius: 5px;
-  box-shadow: 10px 10px var(--ifm-heading-color);
   padding: 1.5rem 1rem;
 }
 
@@ -38,7 +37,7 @@
   left: 1rem;
   &::after {
     display: inline-block;
-    content: '>';
+    content: ">";
     transform: translateY(2px);
     color: var(--ifm-color-primary);
     margin-left: 0.5rem;

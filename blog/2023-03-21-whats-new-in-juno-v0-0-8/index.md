@@ -99,9 +99,9 @@ These [console]'s filters are now saved in local storage, ensuring that the last
 Of the many new features added to the CLI and JS library, the most useful one is likely the [Web Worker](/docs/build/authentication#advanced) that automatically logs out users when their session expires.
 
 ```typescript
-import { initJuno } from "@junobuild/core";
+import { initSatellite } from "@junobuild/core";
 
-await initJuno({
+await initSatellite({
   satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
   workers: {
     auth: true // ----------------------------------|

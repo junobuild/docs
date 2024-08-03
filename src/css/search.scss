@@ -1,33 +1,36 @@
-.DocSearch {
-  --docsearch-searchbox-background: var(--ifm-navbar-background-color);
+nav {
+  .DocSearch {
+    --docsearch-searchbox-background: var(--ifm-navbar-background-color);
 
-  @media screen and (min-width: 769px) {
-    position: relative;
-    width: 150px;
+    @media screen and (min-width: 769px) {
+      position: relative;
+      width: 150px;
 
-    // Move the looking glass icon on the right,
-    // but only on the button, not in the modal (where classes are reused)
-    &:not(:has(.DocSearch-Modal)) .DocSearch-Search-Icon {
-      position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
+      // Move the looking glass icon on the right,
+      // but only on the button, not in the modal (where classes are reused)
+      &:not(:has(.DocSearch-Modal)) .DocSearch-Search-Icon {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
     }
-  }
 
-  outline: solid 1px var(--navbar-search-border-color) !important;
-  outline-offset: -0.5px; // Allow the border and focus shadow to blend seamlessly
-  &:hover, &:focus {
-    outline: solid 1px var(--ifm-color-primary) !important;
-  }
+    outline: solid 1px var(--navbar-search-border-color) !important;
+    outline-offset: -0.5px; // Allow the border and focus shadow to blend seamlessly
+    &:hover,
+    &:focus {
+      outline: solid 1px var(--ifm-color-primary) !important;
+    }
 
-  .DocSearch-Button-Placeholder {
-    font-family: var(--ifm-font-family-base);
-    padding-left: 1rem;
-    color: var(--docsearch-text-color);
-  }
+    .DocSearch-Button-Placeholder {
+      font-family: var(--ifm-font-family-base);
+      padding-left: 1rem;
+      color: var(--docsearch-text-color);
+    }
 
-  .DocSearch-Button-Keys {
-    display: none;
+    .DocSearch-Button-Keys {
+      display: none;
+    }
   }
 }

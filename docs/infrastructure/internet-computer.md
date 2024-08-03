@@ -1,5 +1,7 @@
 # Internet Computer
 
+![An illustration representing Juno smart contracts living at the top of the Internet Computer](../img/juno-internet-computer.webp)
+
 Juno operates on the [Internet Computer] (ICP or IC), a blockchain unlike any other.
 
 The Internet Computer is like adding a super-powered, self-running cloud to the regular internet. It enables the creation of various systems and services on a decentralized network using "canister software", which represents a more advanced version of smart contracts.

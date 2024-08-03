@@ -65,11 +65,11 @@ After completing both of these steps, you can initialize Juno with your satellit
 ```html
 <script setup lang="ts">
   import { onMounted } from "vue";
-  import { initJuno } from "@junobuild/core";
+  import { initSatellite } from "@junobuild/core";
 
   onMounted(
     async () =>
-      await initJuno({
+      await initSatellite({
         satelliteId: "pycrs-xiaaa-aaaal-ab6la-cai"
       })
   );

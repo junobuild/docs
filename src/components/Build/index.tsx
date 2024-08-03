@@ -3,6 +3,7 @@ import Angular from "@site/static/icons/angular.svg";
 import Astro from "@site/static/icons/astro.svg";
 import JavaScript from "@site/static/icons/javascript.svg";
 import NextJS from "@site/static/icons/nextjs.svg";
+import NodeJS from "@site/static/icons/nodejs.svg";
 import ReactLogo from "@site/static/icons/react.svg";
 import Rust from "@site/static/icons/rust.svg";
 import Svelte from "@site/static/icons/svelte.svg";
@@ -12,10 +13,10 @@ import styles from "./styles.module.scss";
 export default function Build(): JSX.Element {
   return (
     <>
-      <h2 className={styles.sub}>Crafted for web devs.</h2>
+      <h2 className={styles.sub}>Crafted for web devs</h2>
       <p className={styles.build}>
-        There are numerous ways to develop your projects without compromising on
-        your favorite technologies.
+        There are numerous ways to develop on Juno without sacrificing your
+        preferred tech stack
       </p>
 
       <div className={styles.grid}>
@@ -63,10 +64,15 @@ export default function Build(): JSX.Element {
         />
 
         <Guide
-          title="Juno can also be extended with custom backend code with Rust"
-          link="https://github.com/junobuild/examples/blob/main/rust/hooks"
+          title="Use Juno in non-interactive environment with NodeJS."
+          link="/docs/guides/nodejs"
+          icon={<NodeJS />}
+        />
+
+        <Guide
+          title="Juno can also be extended with serverless functions written in Rust."
+          link="/docs/guides/rust"
           icon={<Rust />}
-          external={true}
         />
       </div>
     </>

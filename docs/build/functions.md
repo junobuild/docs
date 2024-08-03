@@ -44,6 +44,19 @@ In the stock Satellite, custom hooks are not active by default. Developers shoul
 
 ---
 
+## Assertions
+
+In addition to hooks, developers have the option to expand the native rule set of their Satellites by creating custom assertions. These assertions can be implemented similarly to hooks, with the key difference being that they are synchronous and must return a result indicating the outcome of the assertion.
+
+| Assertion             | Provider  | Description                                   |
+| --------------------- | --------- | --------------------------------------------- |
+| `assert_set_doc`      | Datastore | Ensures a document can be created or updated. |
+| `assert_delete_doc`   | Datastore | Verifies that a document can be deleted.      |
+| `assert_upload_asset` | Storage   | Confirms an asset upload can be committed.    |
+| `assert_delete_asset` | Storage   | Checks that an asset can be deleted.          |
+
+---
+
 ## Getting Started
 
 Incorporating custom Functions into a Juno Satellite requires developers to prepare their project with the necessary Rust environment. This foundational step ensures the capability to develop tailored logic within the Satellite.
@@ -58,7 +71,7 @@ Once your project is scaffolded, proceed to define Rust functions and annotate t
 
 ### Local Development
 
-For local development and testing, a sandbox environment is essential. With Docker installed and using the CLI, you can establish this environment by running `juno dev start`. Alternatively, manual setup instructions are available in the [documentation](../miscellaneous/local-development.md) for a more customized approach.
+For local development and testing, a sandbox environment is essential. With Docker installed and using the CLI, you can establish this environment by running `juno dev start`. Alternatively, manual setup instructions are available in the [documentation](../guides/local-development.md) for a more customized approach.
 
 :::info
 
@@ -206,6 +219,54 @@ async fn on_delete_many_assets(context: OnDeleteManyAssetsContext) -> Result<(),
 
 Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
 
+### assert_set_doc
+
+Ensures a document can be created or updated.
+
+```rust
+#[assert_set_doc]
+fn assert_set_doc(_context: AssertSetDocContext) -> Result<(), String> {
+    // Custom logic for asserting a document's creation or update is possible
+    Ok(())
+}
+```
+
+### assert_delete_doc
+
+Verifies that a document can be deleted.
+
+```rust
+#[assert_delete_doc]
+fn assert_delete_doc(context: AssertDeleteDocContext) -> Result<(), String> {
+    // Custom logic for asserting a document can be deleted
+    Ok(())
+}
+```
+
+### assert_upload_asset
+
+Confirms an asset upload can be committed.
+
+```rust
+#[assert_upload_asset]
+fn assert_upload_asset(_context: AssertUploadAssetContext) -> Result<(), String> {
+    // Custom logic for asserting an asset upload is possible
+    Ok(())
+}
+```
+
+### assert_delete_asset
+
+Checks that an asset can be deleted.
+
+```rust
+#[assert_delete_asset]
+fn assert_delete_asset(_context: AssertDeleteAssetContext) -> Result<(), String> {
+    // Custom logic for asserting an asset can be deleted
+    Ok(())
+}
+```
+
 ### Including the Satellite
 
 After defining your Functions, at the very end of your `lib.rs` module, include the Satellite to ensure that your custom logic and the default features or Juno are properly registered and executable within the Juno ecosystem.
@@ -213,6 +274,8 @@ After defining your Functions, at the very end of your `lib.rs` module, include 
 ```rust
 include_satellite!();
 ```
+
+---
 
 ## Additional Notes
 
@@ -223,3 +286,34 @@ For instance:
 ```bash
 cargo clippy --target=wasm32-unknown-unknown
 ```
+
+---
+
+## Write and view logs
+
+Logging is a crucial tool for debugging and monitoring your code. Serverless Functions offer you the option to utilize loggers to report status effectively.
+
+### How does it work?
+
+Logs are stored in stable memory, accommodating up to 100 entries. Once this limit is reached, the oldest entry is discarded. It's important to note that since logs are saved in memory, your hooks should return a success—meaning they should not trap—otherwise, the information cannot be preserved.
+
+:::note
+
+In the future, errors and unsuccessful calls to functions will be automatically logged.
+
+:::
+
+### Available loggers
+
+| Logger            | Level   | Description                                                    |
+| ----------------- | ------- | -------------------------------------------------------------- |
+| `log`             | Info    | Logs a message.                                                |
+| `log_with_data`   | Info    | Logs a message with additional serialized data.                |
+| `info`            | Info    | Logs an informational message.                                 |
+| `info_with_data`  | Info    | Logs an informational message with additional serialized data. |
+| `debug`           | Debug   | Logs an debug-level message.                                   |
+| `debug_with_data` | Debug   | Logs a debug-level message with additional serialized data.    |
+| `warn`            | Warning | Logs a warning message.                                        |
+| `warn_with_data`  | Warning | Logs a warning message with additional serialized data.        |
+| `error`           | Error   | Logs an error message.                                         |
+| `error_with_data` | Error   | Logs an error message with additional serialized data.         |

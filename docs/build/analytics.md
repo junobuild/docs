@@ -8,6 +8,8 @@ Juno Analytics, a simple, performant, and open-source web3 analytics solution th
 
 ![Juno's Analytics screenshot](../img/analytics.webp)
 
+---
+
 ## Features
 
 Juno Analytics offers several advantages for developers:
@@ -29,6 +31,8 @@ Beyond standard page views, you can gain valuable insights into your visitors by
 Juno is fully open source, including all its Analytics features, setting it apart from proprietary tools like Google Analytics.
 
 Furthermore, unlike any other analytics alternative or solution, Juno's long-term vision is to evolve into a decentralized organization (DAO), embracing a new paradigm in the analytics industry.
+
+---
 
 ## Considerations
 
@@ -54,6 +58,8 @@ As with all services provided by Juno, you are the sole controller of your smart
 
 You have the capability to delete all collected data within your Analytics at any time by utilizing the [CLI] to reset your smart contract.
 
+---
+
 ## How does it work?
 
 To gather analytics for your dapps, you need to create an [orbiter]. Creating an Orbiter requires ICP, and its price is defined in the [transaction costs](../pricing#transaction-costs).
@@ -66,9 +72,11 @@ You can also collect custom tracking events, which are organized in the same man
 
 Additionally, a unique random session ID is generated for all data. Each time a visitor visits your dapps, a new session is created.
 
+---
+
 ## Limitation
 
-Currently, an orbiter can store up to 96GB of data.
+Currently, an orbiter can store up to 400 GB of data.
 
 :::caution
 
@@ -81,6 +89,8 @@ Consequently, this leaves the canister open to potential attacks that can pollut
 3. Interpret the statistics provided by this feature with some reservation, similar to any other analytics data, considering potential inaccuracies.
 
 :::
+
+---
 
 ## Getting started
 
@@ -108,6 +118,16 @@ npm i @junobuild/analytics
 ```
 
 2. Initialize the orbiter in your web app or website:
+
+If you are using the [Next.js](../miscellaneous/plugins.md#nextjs-plugin) or [Vite](../miscellaneous/plugins.md#vite-plugin) plugins, simply initialize the orbiter in your application, preferably as soon as possible when your app starts.
+
+```typescript
+import { initOrbiter } from "@junobuild/analytics";
+
+await initOrbiter();
+```
+
+If you are not using the plugins, you will also need to provide the `satelliteId` and `orbiterId` manually as configuration.
 
 ```typescript
 import { initOrbiter } from "@junobuild/analytics";
@@ -173,11 +193,15 @@ Finally, add a command to your `package.json` that executes the script:
 
 :::
 
+---
+
 ## Page views
 
 Page views, such as when a visitor opens your website or navigates to a subpage, are automatically tracked once you have configured, initialized, and deployed your application with the analytics module.
 
 There's **no need** for additional development work!
+
+---
 
 ## Track custom events
 

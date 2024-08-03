@@ -55,7 +55,7 @@ I developed the UI using several independent and reusable UI components. Rather 
 The integration process of Juno begins with a straightforward initialization at the root of the project, specifically in App.tsx , connecting the application to its associated smart contract, which we affectionately named “Satellite.” Once connected, it gains the ability to interact with the blockchain.
 
 ```typescript jsx
-import { initJuno } from "@junobuild/core";
+import { initSatellite } from "@junobuild/core";
 import { useEffect, useState } from "react";
 import { Scene } from "./components/Scene.tsx";
 import { Auth } from "./components/context/Auth.tsx";
@@ -66,7 +66,7 @@ const App = () => {
 
   useEffect(() => {
     (async () => {
-      await initJuno({
+      await initSatellite({
         satelliteId: "fqotu-wqaaa-aaaal-acp3a-cai",
       });
 
@@ -327,7 +327,7 @@ const startTimer = async (user: User | undefined | null) => {
 };
 ```
 
-On the UI side, Juno is initialized with initJuno which allow the library to automatically provide the information to authenticate each call made to the API smart contract. However, in the worker, I did not utilize this functionality. Instead, I manually constructed the necessary information required by the smart contract to validate the calls.
+On the UI side, Juno is initialized with `initSatellite` which allow the library to automatically provide the information to authenticate each call made to the API smart contract. However, in the worker, I did not utilize this functionality. Instead, I manually constructed the necessary information required by the smart contract to validate the calls.
 
 ```typescript
 const sync = async (user: User | undefined | null) => {

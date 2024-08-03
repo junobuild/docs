@@ -52,7 +52,7 @@ After completing both of these steps, you can initialize Juno with your satellit
 
 ```typescript
 import { Component, OnInit } from "@angular/core";
-import { initJuno } from "@junobuild/core";
+import { initSatellite } from "@junobuild/core";
 
 @Component({
   selector: "app-root",
@@ -61,7 +61,7 @@ import { initJuno } from "@junobuild/core";
 })
 export class AppComponent implements OnInit {
   async ngOnInit() {
-    await initJuno({
+    await initSatellite({
       satelliteId: "pycrs-xiaaa-aaaal-ab6la-cai"
     });
   }

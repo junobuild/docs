@@ -22,7 +22,7 @@ Absolutely! With Juno, you have the flexibility to choose the level of functiona
 
 ### Is Juno a project of the DFINITY foundation?
 
-No. We did not seek or receive any specific support from the [foundation](https://dfinity.org/), nor did we apply for any grants.
+No. We did not seek or receive any specific support from the [foundation](https://dfinity.org/). However, after a year of existence, we were awarded a [Developer Grant](https://dfinity.org/grants/) in 2024, which we used to further develop the ecosystem, build templates to ease the onboarding of new developers, and improve our visual communication and overall marketing strategy.
 
 ### Does Juno exercise control over developers' work?
 
@@ -50,7 +50,7 @@ In contrast, Juno takes a different approach. Developers pre-charge their smart 
 
 ### Do you have a library for [some other language]?
 
-We officially support [JavaScript](./add-juno-to-an-app/install-the-sdk-and-initialize-juno.md).
+We officially support [JavaScript](./add-juno-to-an-app/setup).
 
 Community-supported libraries and contributions are warmly welcomed.
 
@@ -60,7 +60,7 @@ The [documentation](./intro.md) is a great starting point to explore Juno.
 
 Additionally, the [blog](https://juno.build/blog) provides insightful tutorials for various frameworks.
 
-You can also check out the [repository](https://github.com/junobuild/examples), which features multiple examples to help you get started.
+You can also check out the [guides](/docs/category/guides-and-examples), which feature examples to help you get started.
 
 ---
 

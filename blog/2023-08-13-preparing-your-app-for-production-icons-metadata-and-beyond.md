@@ -3,12 +3,12 @@ slug: preparing-your-app-for-production-icons-metadata-and-beyond
 title: "Preparing Your App for Production: Icons, Metadata, and Beyond"
 authors: [peterpeterparker]
 tags: [production, launch, metadata, icons]
-image: https://images.unsplash.com/photo-1517976384346-3136801d605d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80
+image: https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMDkyMzV8MHwxfHNlYXJjaHw0Nnx8YWJzdHJhY3R8ZW58MHx8fHwxNjY0NDI4NDU5&ixlib=rb-1.2.1&q=80&w=1080
 ---
 
-![](https://images.unsplash.com/photo-1517976384346-3136801d605d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80)
+![](https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMDkyMzV8MHwxfHNlYXJjaHw0Nnx8YWJzdHJhY3R8ZW58MHx8fHwxNjY0NDI4NDU5&ixlib=rb-1.2.1&q=80&w=1080)
 
-_Photo by [SpaceX](https://unsplash.com/fr/@spacex?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/fr/photos/tKs_2sBoqAg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
+_Photo by [Sebastian Svenson](https://unsplash.com/@sebastiansvenson)_
 
 ---
 
@@ -61,7 +61,7 @@ There are two other aspects that are of utmost importance:
     <meta charset="utf-8" />
 
     <title>Juno</title>
-    <meta content="Build Web3 like Web2" name="description" />
+    <meta content="Build Web3 at Lightning Speed" name="description" />
 
     <link href="https://juno.build" rel="canonical" />
   </head>
@@ -96,7 +96,7 @@ Among the plethora of available tags, we typically employ only the following fiv
     <!-- Here same HTML tags as previous chapter -->
 
     <meta content="Juno" property="og:title" />
-    <meta content="Build Web3 like Web2" property="og:description" />
+    <meta content="Build Web3 at Lightning Speed" property="og:description" />
     <meta content="website" property="og:type" />
     <meta content="https://juno.build" property="og:url" />
     <meta
@@ -136,7 +136,7 @@ It's crucial to keep in mind that tweets are limited to 280 characters without p
 
     <meta content="summary_large_image" name="twitter:card" />
     <meta content="Juno" name="twitter:title" />
-    <meta content="Build Web3 like Web2" name="twitter:description" />
+    <meta content="Build Web3 at Lightning Speed" name="twitter:description" />
     <meta
       content="https://juno.build/images/social-image.jpg"
       name="twitter:image"
@@ -167,7 +167,7 @@ Providing the social image follows a single rule: it must be accompanied by an a
 <meta content="/images/social-image.jpg" name="twitter:image" />
 ```
 
-In terms of format and content, as a best practice, we recommend creating an image with dimensions of `1200x628` pixels for optimal display across all devices. It's advisable to use traditional image formats such as `PNG` or `JPG`.
+In terms of format and content, as a best practice, we recommend creating an image with dimensions of `1200x630` pixels for optimal display across all devices. It's advisable to use traditional image formats such as `PNG` or `JPG`.
 
 Considering its display on both small and large screens, a single image serves all screen sizes. Hence, during its design, it's important to ensure the content is composed in a way that it fits seamlessly everywhere.
 
@@ -450,9 +450,11 @@ If our intention is to have all crawlers index our entire app, we can communicat
 
 Additionally, we can once again provide the URL to our sitemap and host information within this file.
 
-```html
-User-agent: * Allow: / Sitemap: https://juno.build/sitemap.xml Host:
-https://juno.build
+```
+User-agent: *
+Allow: /
+Sitemap: https://juno.build/sitemap.xml
+Host: https://juno.build
 ```
 
 Resources:

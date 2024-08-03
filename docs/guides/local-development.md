@@ -1,5 +1,8 @@
 ---
-sidebar_position: 5
+id: local-development
+title: Local development
+description: Set-up the local emulator with Docker
+sidebar_position: 9
 ---
 
 # Local development
@@ -11,6 +14,12 @@ When you get started with Juno, you are using your smart contract deployed on th
 ## Before you begin
 
 Make sure you have Docker installed on your machine ([Windows](https://docs.docker.com/desktop/install/windows-install/), [MacOS](https://docs.docker.com/desktop/install/mac-install/), or [Linux](https://docs.docker.com/desktop/install/linux-install/)).
+
+:::note
+
+For MacBooks with M processors, it is important to use Docker Desktop version 4.25.0 or later, ideally the latest available version.
+
+:::
 
 ---
 
@@ -125,35 +134,49 @@ This configuration file enables you to define the collections of the Datastore a
 The definition is as follows:
 
 ```typescript
-type PermissionText = "public" | "private" | "managed" | "controllers";
-type MemoryText = "Heap" | "Stable";
+export type PermissionText = "public" | "private" | "managed" | "controllers";
+export type MemoryText = "heap" | "stable";
+export type RulesType = "db" | "storage";
 
-interface SatelliteCollection {
+export interface Rule {
   collection: string;
   read: PermissionText;
   write: PermissionText;
   memory: MemoryText;
-  max_size?: number;
+  createdAt?: bigint;
+  updatedAt?: bigint;
+  maxSize?: number;
+  maxCapacity?: number;
   mutablePermissions: boolean;
 }
 
-interface SatelliteCollections {
-  db?: SatelliteCollection[];
-  storage?: SatelliteCollection[];
+export type SatelliteDevDbCollection = Omit<
+  Rule,
+  "createdAt" | "updatedAt" | "maxSize"
+>;
+
+export type SatelliteDevStorageCollection = Omit<
+  Rule,
+  "createdAt" | "updatedAt" | "maxCapacity"
+>;
+
+export interface SatelliteDevCollections {
+  db?: SatelliteDevDbCollection[];
+  storage?: SatelliteDevStorageCollection[];
 }
 
-interface SatelliteController {
+export interface SatelliteDevController {
   id: string;
   scope: "write" | "admin";
 }
 
-interface SatelliteConfig {
-  collections: SatelliteCollections;
-  controllers?: SatelliteController[];
+export interface SatelliteDevConfig {
+  collections: SatelliteDevCollections;
+  controllers?: SatelliteDevController[];
 }
 
 export interface JunoDevConfig {
-  satellite: SatelliteConfig;
+  satellite: SatelliteDevConfig;
 }
 ```
 
@@ -170,7 +193,8 @@ If, for example, we want to configure a "metadata" collection in the Datastore, 
           "collection": "metadata",
           "read": "managed",
           "write": "managed",
-          "memory": "stable"
+          "memory": "stable",
+          "mutablePermissions": true
         }
       ],
       "storage": [
@@ -178,7 +202,8 @@ If, for example, we want to configure a "metadata" collection in the Datastore, 
           "collection": "content",
           "read": "public",
           "write": "public",
-          "memory": "stable"
+          "memory": "stable",
+          "mutablePermissions": true
         }
       ]
     },
@@ -216,23 +241,9 @@ volumes:
 
 When integrating your application with the container during Juno initialization, you have two primary options. The first is to set a specific parameter to `true`, which applies the default container configuration. The second option is to provide a custom `string` as the URL of the container, which is especially beneficial if you're using a custom port.
 
-In addition, you should also set the satellite ID to the static ID used in the container - that is, `jx5yt-yyaaa-aaaal-abzbq-cai`.
+### Plugins
 
-The initialization would look like this:
-
-```typescript
-import { initJuno } from "@junobuild/core";
-
-await initJuno({
-  // TODO: replace DEV flag according your need and the production satellite ID as well
-  satelliteId: DEV
-    ? "jx5yt-yyaaa-aaaal-abzbq-cai"
-    : "aaaaa-bbbbb-ccccc-ddddd-cai",
-  container: true
-});
-```
-
-For those utilizing the [Vite Plugin](plugins.md#vite-plugin), the configuration is similar. Specify the option within the plugin settings:
+If you are utilizing the [Vite](../miscellaneous/plugins.md#vite-plugin) or [NextJS](../miscellaneous/plugins.md#nextjs-plugin), you can configure the container directly within the plugin settings:
 
 ```javascript title="vite.config.js"
 import juno from "@junobuild/vite-plugin";
@@ -246,13 +257,20 @@ export default defineConfig({
 });
 ```
 
-To further streamline the process, you can map environment variables for initialization:
+The plugin will automatically load the necessary environment variables for the container configuration so that your app uses it when you develop.
 
-```javascript
-await initJuno({
-  satelliteId: import.meta.env.VITE_SATELLITE_ID,
-  container: import.meta.env.VITE_CONTAINER
+### Manual Initialization
+
+If you are not using the plugins, you should set the satellite ID to the static ID used in the container, which is `jx5yt-yyaaa-aaaal-abzbq-cai`. The initialization would look like this:
+
+```typescript
+import { initSatellite } from "@junobuild/core";
+
+await initSatellite({
+  // TODO: replace DEV flag according your need and the production satellite ID as well
+  satelliteId: DEV
+    ? "jx5yt-yyaaa-aaaal-abzbq-cai"
+    : "aaaaa-bbbbb-ccccc-ddddd-cai",
+  container: true
 });
 ```
-
-This approach ensures a more dynamic and flexible setup, catering to various development environments and scenarios.

@@ -11,18 +11,34 @@
   flex-direction: column;
   justify-content: center;
 
-  min-height: 600px;
+  min-height: 540px;
+
+  @media screen and (min-width: 768px) {
+    min-height: 600px;
+  }
 }
 
 .section {
   padding: 5rem 2rem 4rem;
 }
 
+.launch {
+  padding: 0 2rem 8rem;
+
+  @media screen and (min-width: 960px) {
+    padding: 2rem 2rem 10rem;
+  }
+}
+
 .block {
-  padding: 2rem;
+  padding: 2rem 2rem 4rem;
 }
 
 .grid {
   @include grid.columns;
   --grid-gap: 3rem;
+}
+
+.grid_two_columns {
+  @include grid.two-columns;
 }

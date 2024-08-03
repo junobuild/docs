@@ -4,10 +4,46 @@ import { join } from "node:path";
 const { themes } = require("prism-react-renderer");
 const codeTheme = themes.oneDark;
 codeTheme.plain.backgroundColor = "black";
+codeTheme.styles = [
+  ...codeTheme.styles,
+  {
+    types: ["property", "tag", "symbol", "deleted", "important"],
+    style: { color: "#00fff5" }
+  },
+  { types: ["keyword"], style: { color: "rgb(163, 174, 255)" } },
+  {
+    types: [
+      "selector",
+      "string",
+      "char",
+      "builtin",
+      "inserted",
+      "regex",
+      "attr-value"
+    ],
+    style: { color: "#ff5df9" }
+  },
+  {
+    types: ["variable", "operator", "function"],
+    style: { color: "#ff5df9" }
+  },
+  {
+    types: [
+      "attr-name",
+      "class-name",
+      "maybe-class-name",
+      "boolean",
+      "constant",
+      "number",
+      "atrule"
+    ],
+    style: { color: "#F7AF9D" }
+  }
+];
 
 const config: Config = {
   title: "Juno",
-  tagline: "Build Web3 like Web2",
+  tagline: "Build Web3 at Lightning Speed",
   url: "https://juno.build",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -48,20 +84,21 @@ const config: Config = {
 
   plugins: [
     "docusaurus-plugin-sass",
-    join(process.cwd(), "docusaurus.showcase.plugin.ts")
+    join(process.cwd(), "docusaurus.showcase.plugin.ts"),
+    join(process.cwd(), "docusaurus.changelog.plugin.ts")
   ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
-      image: "img/social_image_v5.jpg",
+      image: "img/social_image_v6.jpg",
       navbar: {
-        title: "Open Source Blockchain Platform",
         logo: {
           alt: "Juno Logo",
           src: "img/juno_logo.svg",
           srcDark: "img/juno_logo_dark.svg"
         },
+        hideOnScroll: true,
         items: [
           {
             type: "doc",
@@ -74,8 +111,9 @@ const config: Config = {
             label: "More",
             position: "left",
             items: [
+              { to: "/showcase", label: "Showcase" },
               { to: "/blog", label: "Blog" },
-              { to: "/showcase", label: "Showcase" }
+              { to: "/changelog", label: "Changelog" }
             ]
           },
           {
@@ -135,52 +173,28 @@ const config: Config = {
             ]
           },
           {
-            title: "Build",
+            title: "Community",
             items: [
               {
-                label: "Authentication",
-                to: "/docs/build/authentication"
+                label: "Showcase",
+                to: "/showcase"
               },
               {
-                label: "Datastore",
-                to: "/docs/build/datastore"
+                label: "X",
+                href: "https://twitter.com/junobuild"
               },
               {
-                label: "Storage",
-                to: "/docs/build/storage"
+                label: "YouTube",
+                href: "https://youtube.com/@junobuild"
               },
               {
-                label: "Hosting",
-                to: "/docs/build/hosting"
+                label: "Discord",
+                href: "https://discord.gg/wHZ57Z2RAG"
               },
               {
-                label: "Analytics",
-                to: "/docs/build/analytics"
-              }
-            ]
-          },
-          {
-            title: "About",
-            items: [
-              {
-                label: "Internet Computer",
-                to: "/docs/infrastructure/internet-computer"
-              },
-              {
-                label: "Sustainability",
-                to: "/docs/infrastructure/sustainability"
-              },
-              {
-                label: "Architecture",
-                to: "/docs/architecture"
-              },
-              {
-                label: "Roadmap",
-                to: "/docs/roadmap"
-              },
-              {
-                label: "Brand & Press",
-                href: "https://github.com/junobuild/brand"
+                href: "https://oc.app/community/vxgpi-nqaaa-aaaar-ar4lq-cai/?ref=xanzv-uaaaa-aaaaf-aneba-cai",
+                label: "OpenChat",
+                position: "right"
               }
             ]
           },
@@ -192,25 +206,20 @@ const config: Config = {
                 to: "/blog"
               },
               {
-                label: "Showcase",
-                to: "/showcase"
+                label: "Roadmap",
+                to: "/docs/roadmap"
               },
               {
-                label: "Twitter",
-                href: "https://twitter.com/junobuild"
-              },
-              {
-                label: "Discord",
-                href: "https://discord.gg/wHZ57Z2RAG"
-              },
-              {
-                href: "https://oc.app/community/vxgpi-nqaaa-aaaar-ar4lq-cai/?ref=xanzv-uaaaa-aaaaf-aneba-cai",
-                label: "OpenChat",
-                position: "right"
+                label: "Changelog",
+                to: "/changelog"
               },
               {
                 label: "GitHub",
                 href: "https://github.com/junobuild/juno"
+              },
+              {
+                label: "Brand & Press",
+                href: "https://github.com/junobuild/brand"
               }
             ]
           }
@@ -229,6 +238,14 @@ const config: Config = {
       },
       feedOptions: {
         limit: false
+      },
+      announcementBar: {
+        id: "support_us",
+        content:
+          'If you like Juno, <a target="_blank" rel="noopener noreferrer" href="https://github.com/junobuild/juno">star it on GitHub</a>!<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="20" height="20" style="vertical-align: text-bottom;" fill="currentColor"><path d="M480-269 314-169q-11 7-23 6t-21-8q-9-7-14-17.5t-2-23.5l44-189-147-127q-10-9-12.5-20.5T140-571q4-11 12-18t22-9l194-17 75-178q5-12 15.5-18t21.5-6q11 0 21.5 6t15.5 18l75 178 194 17q14 2 22 9t12 18q4 11 1.5 22.5T809-528L662-401l44 189q3 13-2 23.5T690-171q-9 7-21 8t-23-6L480-269Z"/></svg>',
+        backgroundColor: "var(--ifm-navbar-background-color)",
+        textColor: "var(--ifm-menu-color)",
+        isCloseable: false
       }
     }
 };

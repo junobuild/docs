@@ -2,13 +2,15 @@
 sidebar_position: 3
 ---
 
-# Deploy your app
+# Deploy
 
 Deploying your app with Juno is straightforward, just like deploying any modern frontend application.
 
-## Requirements
+:::note
 
-- [Node.js](https://nodejs.org/en/download/) version LTS or higher
+[Node.js](https://nodejs.org/en/download/) version LTS or higher is required.
+
+:::
 
 ## Build your app
 
@@ -44,7 +46,7 @@ During the initial deployment, you will be prompted to select the target satelli
 
 :::tip
 
-Juno provides a GitHub Action that automates the deployment of your dapp to your satellite. For detailed instructions on how to configure it for your repository, please refer to the documentation [here](../miscellaneous/github_actions).
+Juno provides a **GitHub Action** that automates the deployment of your dapp to your satellite. For detailed instructions on how to configure it for your repository, please refer to the documentation [here](../guides/github-actions).
 
 :::
 

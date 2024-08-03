@@ -14,9 +14,33 @@ You can manage your users in the [authentication](https://console.juno.build/auh
 
 :::note
 
-The Juno SDK must be [installed](../add-juno-to-an-app/install-the-sdk-and-initialize-juno.md) and initialized in your app to use the authentication features.
+The Juno SDK must be [installed](../add-juno-to-an-app/setup) and initialized in your app to use the authentication features.
 
 :::
+
+---
+
+## Domain-Based User Identity
+
+For privacy reasons and to prevent tracking between sites, Juno's [authentication](authentication.md) is linked to the domains you use.
+
+This means that if a user signs in to your app on the default domain (`icp0.io`) and a custom domain, they will, by default, be treated as two separate users.
+
+Similarly, a user signing in on your custom domain `hello.com` and a subdomain such as `www.hello.com` will also be treated as separate users.
+
+That is why, when you set up a domain in the Console, you will be prompted about which primary domain should be used to identify users. This ensures that, regardless of whether they sign in on the default or a custom domain, users will be identified with the same public ID.
+
+This feature is also known as "derivation origin" or "alternative origins". See the [documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/internet-identity/alternative-origins/) for more details about the specification.
+
+:::important
+
+- It is strongly recommended to set up such a primary domain only once per project and preferably before going live.
+
+- In addition to configuring settings, you must also instruct your application to use the main domain you have selected by setting the `derivationOrigin` parameter to the sign-in options.
+
+:::
+
+---
 
 ## Sign-in
 
@@ -28,20 +52,16 @@ import { signIn } from "@junobuild/core";
 await signIn();
 ```
 
-The sign-in feature has options to customize the authentication:
+The sign-in feature offers customization options for authentication:
 
-- `maxTimeToLive`: a maximum time to live (**4 hours** per default, `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)`)
-
-:::note
-
-The duration is given. It remains unchanged, regardless of whether the users are active or inactive.
-
-:::
-
-- `derivationOrigin`: a specific parameter of [Internet Identity](https://internetcomputer.org/docs/current/references/ii-spec#alternative-frontend-origins)
-- `windowed`: by default, the authentication flow is presented to the user in a popup that is automatically centered on desktop. This behavior can be disabled by setting the option to `false`. In that case, the authentication flow will occur in a separate tab.
+- `maxTimeToLive`: Specifies the duration for the session (defaults to **4 hours**, represented as `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)`). It's **important** to note that this duration remains constant, whether the users are active or inactive.
+- `windowed`: By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead.
+- `derivationOrigin`: The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your satellite’s URLs they use to access your application.
+- `allowPin`: We consider the specific PIN authentication method of [Internet Identity](https://internetcomputer.org/docs/current/references/ii-spec#client-authentication-protocol) as "insecure" because users can easily lose their login information if they do not register a passphrase, particularly as Safari clears the browser cache every two weeks in cases of inactivity. This is why we **disable** it by default.
 
 You can configure the default sign-in flow that uses Internet Identity. You can also set NFID as a provider. Check out the [advanced Sign-in guidelines](#sign-in-providers) for more details.
+
+---
 
 ## Sign-out
 
@@ -58,6 +78,8 @@ await signOut();
 This will clear the sign-in information stored in IndexedDB.
 
 :::
+
+---
 
 ## Subscription
 
@@ -86,6 +108,8 @@ const unsubscribe = authSubscribe((user: User | null) => {
 unsubscribe();
 ```
 
+---
+
 ## Advanced
 
 Here are a few advanced recipes to customize your sign-in flow and detect session expiration.
@@ -96,9 +120,9 @@ Juno currently supports Internet Identity and NFID, with NFID offering additiona
 
 #### Internet Identity
 
-Internet Identity offers two available domains: `internetcomputer.org` and `ic0.app`.
+Internet Identity is available at two different URLs: `internetcomputer.org` and `ic0.app`.
 
-By default, the SDK uses `internetcomputer.org` because we anticipate it will become the main domain in the future.
+By default, the SDK uses `internetcomputer.org` as we anticipate it will become the main domain in the future, and we believe it offers a better user experience and branding.
 
 ```typescript
 import { signIn, InternetIdentityProvider } from "@junobuild/core";
@@ -109,7 +133,7 @@ await signIn({
 });
 ```
 
-To switch to the `ic0.app`, set the domain as follows.
+To switch to the `ic0.app`, set the domain option as follows.
 
 ```typescript
 import { signIn, InternetIdentityProvider } from "@junobuild/core";
@@ -163,10 +187,9 @@ Once configured, run `npm run postinstall` manually to trigger the initial copy.
 2. Enable the option when you initialize Juno:
 
 ```javascript
-import { initJuno } from "@junobuild/core";
+import { initSatellite } from "@junobuild/core";
 
-await initJuno({
-  satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+await initSatellite({
   workers: {
     auth: true
   }

@@ -1,5 +1,8 @@
 ---
-sidebar_position: 2
+id: github-actions
+title: GitHub Actions
+description: Continuous integration and deployment
+sidebar_position: 8
 ---
 
 # GitHub Actions
@@ -45,15 +48,16 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20.x"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install Dependencies
         run: npm ci

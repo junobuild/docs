@@ -14,57 +14,91 @@ Explore how to create a Juno project developed with SvelteKit.
 ## Table of contents
 
 - [Quickstart](#quickstart)
-- [Registration-form app](#registration-form-app)
+- [Note-taking app example](#note-taking-app-example)
 - [Hosting](#hosting)
 
 ---
 
 ## Quickstart
 
-Learn how to create a [satellite], set up a collection, and save data from a React app.
+This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing SvelteKit app.
 
-### 1. Set up a satellite and new collection
+Additionally, it covers how to develop against a production environment or locally.
 
-[Create a new satellite](../add-juno-to-an-app/create-a-satellite.md) in the Juno's console.
+### Path A: Start a new project with a template
 
-After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
-
-### 2. Create a SvelteKit app
-
-Create a [SvelteKit](https://kit.svelte.dev/docs/creating-a-project) app using the `npm create` command:
+1. Create a new project using the Juno quickstart CLI:
 
 ```bash
-npm create svelte@latest myjunoapp
+npm create juno@latest
 ```
 
-### 3. Install the Juno SDK core library
+### Path B: Integrate Juno into an existing Next.js app
 
-Use `@junobuild/core` client library which provides a convenient interface for working with Juno from a SvelteKit app.
+1. Add the Juno SDK:
 
-Navigate to the SvelteKit app and install `@junobuild/core`.
+Navigate to your existing app directory and install Juno SDK:
 
 ```bash
-cd myjunoapp && npm i @junobuild/core
+cd your-existing-app
+npm i @junobuild/core-peer
 ```
 
-### 4. Insert data from your app
+### 2. Configure Datastore
 
-Create a new file `+layout.svelte` in `src/routes` and initialize the library with your public satellite ID.
+#### Production Path
 
-Add an `insert` function to persist a document.
+To use production, set up a satellite and new collection:
+
+- [Create a new satellite](../add-juno-to-an-app/create-a-satellite.md) in the Juno's console.
+- After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
+
+#### Local Development Path
+
+To develop with the local emulator, add a collection named `demo` within the `juno.dev.config.ts` file.
+
+```typescript
+import { defineDevConfig } from "@junobuild/config";
+
+export default defineDevConfig(() => ({
+  satellite: {
+    collections: {
+      db: [
+        {
+          collection: "demo",
+          read: "managed" as const,
+          write: "managed" as const,
+          memory: "stable" as const,
+          mutablePermissions: true
+        }
+      ]
+    }
+  }
+}));
+```
+
+- Once set, run the local emulator:
+
+```bash
+juno dev start
+```
+
+- If the Juno admin CLI (required for deployment, configuration, or to run the emulator) is not installed yet, run:
+
+```
+npm i -g @junobuild/cli
+```
+
+### 3. Insert data from your app
+
+Create a new file `+layout.svelte` in `src/routes` and initialize the library with the satellite ID you have created for production, or use `jx5yt-yyaaa-aaaal-abzbq-cai` if you are developing locally with the emulator.
 
 ```html title="+layout.svelte"
 <script>
   import { onMount } from "svelte";
-  import { initJuno } from "@junobuild/core";
+  import { initSatellite } from "@junobuild/core";
 
-  // TODO: Replace 'satelliteId' with your actual satellite ID
-  onMount(
-    async () =>
-      await initJuno({
-        satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai"
-      })
-  );
+  onMount(async () => await initSatellite());
 </script>
 
 <slot />
@@ -103,14 +137,36 @@ Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser
 
 ---
 
-## Registration-form app
+## Note-taking app example
 
-This example demonstrates how to build a basic registration-form app. The app authenticates and identifies the user, stores their information in a simple key-pair database, and allows the user to log in and retrieve their data. The app uses:
+This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
 
-- Juno [datastore](../build/datastore.md): a simple key-pair database for storing user data and other information.
-- Juno [authentication](../build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
+- [Authentication](../build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
+- [Datastore](../build/datastore.md): a simple key-pair database for storing user data and other information.
+- [Storage](../build/storage.md): a file storage system to store and serve user-generated content, such as photos.
 
-For sample code and instructions, visit the guide 👉 [GitHub repo](https://github.com/junobuild/examples/tree/main/svelte/form).
+Using the Juno CLI, you can easily scaffold this app. To start, run the appropriate command based on your package manager:
+
+NPM:
+
+```bash
+npm create juno@latest
+```
+
+Yarn:
+
+```bash
+yarn create juno
+```
+
+PNPM:
+
+```bash
+pnpm create juno
+```
+
+<br />
+Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
 
 ---
 

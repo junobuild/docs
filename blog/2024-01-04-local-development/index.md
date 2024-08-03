@@ -16,7 +16,7 @@ I'm excited to share that local dApp development and end-to-end testing are now 
 
 This update serves as a key addition to our upcoming features for the year to come, offering developers a practical solution to build or test their projects in a sandbox environment.
 
-The documentation for this new feature is available [here](/docs/miscellaneous/local-development). Moreover, the container's code is open source, and you can access it [here](https://github.com/junobuild/juno-docker) for more insights.
+The documentation for this new feature is available [here](/docs/guides/local-development). Moreover, the container's code is open source, and you can access it [here](https://github.com/junobuild/juno-docker) for more insights.
 
 In this blog post, rather than reiterating the documentation, I'll provide an example to demonstrate how you can effectively utilize this feature in your development workflow.
 
@@ -48,7 +48,7 @@ To start the container, head to the subfolder containing the configuration I pre
 cd docker
 ```
 
-In this folder, you will find two files. A `docker-compose.yml` file contains essential information for the image, such as the port and a volume. For more details, refer to the [documentation](/docs/miscellaneous/local-development).
+In this folder, you will find two files. A `docker-compose.yml` file contains essential information for the image, such as the port and a volume. For more details, refer to the [documentation](/docs/guides/local-development).
 
 ```yml title="docker-compose.yml"
 services:
@@ -121,7 +121,7 @@ export default defineConfig({
 And pass along the environment variable to the initialization:
 
 ```javascript
-await initJuno({
+await initSatellite({
   satelliteId: import.meta.env.PUBLIC_SATELLITE_ID,
   container: import.meta.env.PUBLIC_CONTAINER
 });

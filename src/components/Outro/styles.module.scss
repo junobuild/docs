@@ -2,7 +2,7 @@
   height: 650px;
   background: var(--ifm-color-primary);
   padding-inline: 1rem;
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     padding-inline: 2rem;
   }
 }
@@ -28,12 +28,16 @@
   font-weight: bold;
   font-size: 40px;
   line-height: 50px;
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     font-size: 60px;
     line-height: 76px;
     max-width: 612px;
   }
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.subText {
+  color: black;
 }
 
 .start {

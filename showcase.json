@@ -1,5 +1,17 @@
 [
   {
+    "title": "Solutio Feedback & Ideation Incubator",
+    "url": "https://home.solutio.one",
+    "description": "Request any app, earn for ideas, crowdfund & crowdbuild open-source.",
+    "img": "/showcase/solutio-logo-wide.png"
+  },
+  {
+    "title": "IC Party Hats",
+    "url": "https://partyhats.xyz",
+    "description": "Your ticket to the Internet Computer Party",
+    "img": "/showcase/icphats.png"
+  },
+  {
     "title": "Windoge98",
     "url": "https://windoge98.com",
     "description": "An art/memecoin launched on the Internet Computer Protocol (ICP).",
@@ -69,7 +81,7 @@
     "title": "Juno",
     "url": "https://juno.build",
     "description": "Isn't it meta that Juno is built with Juno?",
-    "img": "https://juno.build/img/social_image_v5.jpg",
+    "img": "https://juno.build/img/social_image_v6.jpg",
     "github": "https://github.com/junobuild/juno"
   },
   {
@@ -98,13 +110,6 @@
     "img": "/showcase/enesekool.png"
   },
   {
-    "title": "Why ICP?",
-    "url": "https://why-internetcomputer.org",
-    "description": "A simple context for why ICP (CryptoCloud)",
-    "img": "/showcase/why-internetcomputer.png",
-    "github": "https://github.com/3erikpotter/why-internetcomputer.org"
-  },
-  {
     "title": "Web3 marketing landscape by UFOstart",
     "url": "https://web3marketing.ufostart.com/",
     "description": "Explore the Web3 marketing universe with UFOstart. Discover startups, innovative platforms, and unique blockchain, NFTs, and crypto marketing strategies.",
@@ -115,8 +120,49 @@
     "url": "https://paste.digital",
     "description": "Text and code sharing app. Zero to DAPP Hackaton best use of Juno award",
     "img": "/showcase/paste.png"
+  }
+  {
+    "title": "Artem Korotkikh, designer",
+    "url": "https://artkorotkikh.com/",
+    "description": "As a product designer, I bridge user needs with business goals, turning ideas into digital solutions.",
+    "img": "https://artkorotkikh.com/assets/share-img.webp"
   },
-    {
+  {
+    "title": "Damonic Welleams",
+    "url": "https://damonicwelleams.com/",
+    "description": "Hi I'm Damonic Welleams. Aftr conekting my keputer to the indernet i created this whole new fing: an inderned keputer.",
+    "img": "https://damonicwelleams.com/og-image.jpg",
+    "twitter": "damonicwelleams"
+  },
+  {
+    "title": "$STACK",
+    "url": "https://m6fz7-jaaaa-aaaal-ajf7a-cai.icp0.io/",
+    "description": "Incentivizing Governance Participation on the Internet Computer",
+    "img": "/showcase/stack.jpg",
+    "twitter": "StackICP"
+  },
+  {
+    "title": "Wumbo",
+    "url": "https://qmpah-qqaaa-aaaal-ajabq-cai.icp0.io/",
+    "description": "Wumbo is built on the Internet Computer Protocol utilizing Magic Conch Shell's Immutable Token Creator, rendering the canister code trustless and unmodifiable.",
+    "img": "/showcase/wumbo.jpg",
+    "twitter": "WUMBOicp"
+  },
+  {
+    "title": "stik coin",
+    "url": "https://bj2ym-biaaa-aaaal-aji3q-cai.icp0.io/",
+    "description": "First tap to earn meme coin on Internet Computer.",
+    "img": "/showcase/stik.png",
+    "twitter": "icpstik"
+  },
+  {
+    "title": "Metaviz",
+    "url": "https://ic.metaviz.net",
+    "description": "Metaviz is a visual project collaboration workspace. Good for making diagrams, project management, storing files and media.",
+    "img": "/showcase/metaviz.jpg",
+    "twitter": "MetavizOfficial"
+  },
+  {
     "title": "Bridge23",
     "url": "https://alpha.bridge23.app/",
     "description": "Bridge 23 is a fully featured Data Marketplace running on Internet Computer blockchain where everyone can sell their data directly to merchants, companies and institutions.",

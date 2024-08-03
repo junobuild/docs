@@ -6,7 +6,7 @@ import Datastore from "@site/static/icons/datastore.svg";
 import Functions from "@site/static/icons/functions.svg";
 import Hosting from "@site/static/icons/hosting.svg";
 import Storage from "@site/static/icons/storage.svg";
-import CloudIllustration from "./cloud.svg";
+import CloudIllustration from "@site/static/img/cloud.svg";
 import styles from "./styles.module.scss";
 
 export default function Features(): JSX.Element {
@@ -14,11 +14,14 @@ export default function Features(): JSX.Element {
     <>
       <div className={styles.sub}>
         <picture>
-          <CloudIllustration height="auto" width="100%" />
+          <CloudIllustration />
         </picture>
         <aside>
-          <h3>Embrace Cloud 3.0 with Ease</h3>
-          <p>Blockchainless with minimal carbon impact.</p>
+          <h2>Bootstrap in a Weekend</h2>
+          <p>
+            Bring your ideas to life with a comprehensive toolkit designed to
+            accelerate your Web3 development.
+          </p>
         </aside>
       </div>
 
