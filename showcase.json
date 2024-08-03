@@ -30,13 +30,6 @@
     "img": "/showcase/aegir.jpg"
   },
   {
-    "title": "THE REGISTRY",
-    "url": "https://theregistry.app",
-    "description": "PayString provider on the internet computer, allowing easy multichain payments.",
-    "img": "https://theregistry.app/banner.jpg",
-    "twitter": "@the_registry_"
-  },
-  {
     "title": "ICPFA",
     "url": "https://icpfa.org",
     "description": "The Future of Community Football.",
