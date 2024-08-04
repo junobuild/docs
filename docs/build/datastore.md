@@ -271,11 +271,50 @@ The function requires a collection and accepts various optional parameters, incl
      interface ListMatcher {
        key?: string;
        description?: string;
+       createdAt?: ListTimestampMatcher;
+       updatedAt?: ListTimestampMatcher;
      }
      ```
 
      - **key**: A regex to match against document keys.
      - **description**: A regex to match against document descriptions.
+     - **createdAt**: A `ListTimestampMatcher` to filter documents based on their creation timestamp.
+     - **updatedAt**: A `ListTimestampMatcher` to filter documents based on their last update timestamp.
+
+   - **Type**: `ListTimestampMatcher` can be used to specify criteria for timestamp matching.
+
+     ```typescript
+     type ListTimestampMatcher =
+       | {
+           matcher: "equal";
+           timestamp: bigint;
+         }
+       | {
+           matcher: "greaterThan";
+           timestamp: bigint;
+         }
+       | {
+           matcher: "lessThan";
+           timestamp: bigint;
+         }
+       | {
+           matcher: "between";
+           timestamps: {
+             start: bigint;
+             end: bigint;
+           };
+         };
+     ```
+
+     - **matcher**: Specifies the type of timestamp comparison. Can be one of the following:
+
+       - **equal**: Matches documents where the timestamp is exactly equal to the specified value.
+       - **greaterThan**: Matches documents where the timestamp is greater than the specified value.
+       - **lessThan**: Matches documents where the timestamp is less than the specified value.
+       - **between**: Matches documents where the timestamp falls within a specified range.
+
+     - **timestamp**: Used with `equal`, `greaterThan`, and `lessThan` matchers to specify the exact timestamp for comparison.
+     - **timestamps**: Used with the `between` matcher to specify a range of timestamps. The range is inclusive of both the start and end values.
 
 3. **`paginate`** (optional)
 
@@ -326,7 +365,18 @@ const myList = await listDocs({
   owner: "some_owner_id_or_principal",
   matcher: {
     key: "^doc_",
-    description: "example"
+    description: "example",
+    createdAt: {
+      matcher: "greaterThan",
+      timestamp: 1627776000n
+    },
+    updatedAt: {
+      matcher: "between",
+      timestamps: {
+        start: 1627770000n,
+        end: 1627900000n
+      }
+    }
   },
   paginate: {
     startAfter: "doc_10",
