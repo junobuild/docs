@@ -119,14 +119,16 @@ This attribute works similarly to Git's `.gitignore`, and you can specify which 
 
 Here is an example of how the ignore attribute can be utilized:
 
-```json
-{
-  "satellite": {
-    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
-    "source": "dist",
-    "ignore": ["**/*.txt", ".tmp/"]
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    ignore: ["**/*.txt", ".tmp/"]
   }
-}
+});
 ```
 
 ### HTTP Headers
@@ -137,24 +139,26 @@ For instance, you may want to set a specific `Cache-Control` for performance rea
 
 Here's an example of the `headers` object:
 
-```json
-{
-  "satellite": {
-    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
-    "source": "dist",
-    "storage": {
-      "headers": [
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    storage: {
+      headers: [
         {
-          "source": "/",
-          "headers": [["Cache-Control", "public,max-age=0,must-revalidate"]]
+          source: "/",
+          headers: [["Cache-Control", "public,max-age=0,must-revalidate"]]
         },
         {
-          "source": "assets/fonts/*",
-          "headers": [["Cache-Control", "max-age=31536000"]]
+          source: "assets/fonts/*",
+          headers: [["Cache-Control", "max-age=31536000"]]
         },
         {
-          "source": "**/*.jpg",
-          "headers": [
+          source: "**/*.jpg",
+          headers: [
             ["Cache-Control", "max-age=31536000"],
             ["Access-Control-Allow-Origin", "*"]
           ]
@@ -162,7 +166,7 @@ Here's an example of the `headers` object:
       ]
     }
   }
-}
+});
 ```
 
 This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the headers using globs.
@@ -189,22 +193,24 @@ Use a URL redirect to prevent broken links if you've moved a page or to shorten 
 
 Here's the basic structure for a `redirects` attribute.
 
-```json
-{
-  "satellite": {
-    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
-    "source": "dist",
-    "storage": {
-      "redirects": [
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    storage: {
+      redirects: [
         {
-          "source": "/hello",
-          "location": "/world/index.html",
-          "code": 300
+          source: "/hello",
+          location: "/world/index.html",
+          code: 300
         }
       ]
     }
   }
-}
+});
 ```
 
 The `redirects` attribute contains an array of redirect rules:
@@ -221,21 +227,23 @@ You can utilize optional rewrites to display the same content for multiple URLs.
 
 Here's the basic structure for a `rewrites` attribute.
 
-```json
-{
-  "satellite": {
-    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
-    "source": "dist",
-    "storage": {
-      "rewrites": [
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    storage: {
+      rewrites: [
         {
-          "source": "/hello/**",
-          "destination": "/hello/world.html"
+          source: "/hello/**",
+          destination: "/hello/world.html"
         }
       ]
     }
   }
-}
+});
 ```
 
 This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the rewrites using globs.
@@ -255,26 +263,30 @@ If you wish to customize this behavior, you have the option to disable it or pro
 
 To opt-out of Gzip compression, simply set the `gzip` option to `false` in your configuration:
 
-```json
-{
-  "satellite": {
-    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
-    "source": "dist",
-    "gzip": false
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    gzip: false
   }
-}
+});
 ```
 
 If you want to customize the default pattern `**/*.+(css|js|mjs)` to better suit your needs, you can specify your own pattern. For example:
 
-```json
-{
-  "satellite": {
-    "id": "ddddd-ccccc-aaaaa-bbbbb-cai",
-    "source": "dist",
-    "gzip": "**/*.jpg"
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    gzip: "**/*.jpg"
   }
-}
+});
 ```
 
 ### Encoding types
@@ -295,14 +307,16 @@ This attribute works similarly to Git's `.gitignore`, and you can specify which 
 
 Here is an example of how the "encoding" attribute can be utilized:
 
-```json
-{
-  "satellite": {
-    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
-    "source": "dist",
-    "encoding": [["**/releases/*.gz", "identity"]]
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    encoding: [["**/releases/*.gz", "identity"]]
   }
-}
+});
 ```
 
 ### iframe
@@ -311,16 +325,18 @@ For security reasons and to prevent click-jacking attacks, dapps deployed with J
 
 You can customize this behavior by setting the `iframe` option to either `same-origin`, which restricts your pages to be displayed only if all ancestor frames have the same origin as the page itself, or `allow-any`, which allows your project to be embeddable by any site.
 
-```json
-{
-  "satellite": {
-    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
-    "source": "dist",
-    "storage": {
-      "iframe": "same-origin"
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    storage: {
+      iframe: "same-origin"
     }
   }
-}
+});
 ```
 
 ### Assertions
@@ -329,30 +345,34 @@ The CLI conducts several assertions when interacting with your Satellite, one of
 
 You can customize this behavior by adjusting the heap memory limit in bytes. For example, to set a new limit of 678 MB, update your configuration as follows:
 
-```json
-{
-  "satellite": {
-    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
-    "source": "dist",
-    "assertions": {
-      "heapMemory": 678000000
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    assertions: {
+      heapMemory: 678000000
     }
   }
-}
+});
 ```
 
 Alternatively, these checks can be completely disabled. To do so, set the `heapMemory` assertion to `false`:
 
-```json
-{
-  "satellite": {
-    "id": "qsgjb-riaaa-aaaaa-aaaga-cai",
-    "source": "dist",
-    "assertions": {
-      "heapMemory": false
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    assertions: {
+      heapMemory: false
     }
   }
-}
+});
 ```
 
 [CLI]: ../miscellaneous/cli.md
