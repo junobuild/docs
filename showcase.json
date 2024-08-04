@@ -30,13 +30,6 @@
     "img": "/showcase/aegir.jpg"
   },
   {
-    "title": "THE REGISTRY",
-    "url": "https://theregistry.app",
-    "description": "PayString provider on the internet computer, allowing easy multichain payments.",
-    "img": "https://theregistry.app/banner.jpg",
-    "twitter": "@the_registry_"
-  },
-  {
     "title": "ICPFA",
     "url": "https://icpfa.org",
     "description": "The Future of Community Football.",
@@ -161,5 +154,12 @@
     "description": "Metaviz is a visual project collaboration workspace. Good for making diagrams, project management, storing files and media.",
     "img": "/showcase/metaviz.jpg",
     "twitter": "MetavizOfficial"
+  },
+  {
+    "title": "Bridge23",
+    "url": "https://alpha.bridge23.app/",
+    "description": "Bridge 23 is a fully featured Data Marketplace running on Internet Computer blockchain where everyone can sell their data directly to merchants, companies and institutions.",
+    "img": "/showcase/bridge23.png",
+    "twitter": "Bridge23inc"
   }
 ]
