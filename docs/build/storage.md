@@ -208,5 +208,47 @@ const myAsset2 = {
 await deleteManyAssets({ assets: [myAsset1, myAsset2] });
 ```
 
+---
+
+## Configuration
+
+You can configure various settings of the Storage.
+
+:::note
+
+If you are looking to configure the hosting behavior of your site, check out the related [documentation](./hosting.md#configure-hosting-behavior).
+
+:::
+
+#### Where do you define your Storage configuration?
+
+You define your Storage configuration in your Juno configuration file. The CLI automatically creates the file at the root of your project directory when you run the [juno init](../miscellaneous/cli.md#init) or [juno deploy](../miscellaneous/cli.md#deploy) command for the first time.
+
+#### How do you apply your changes?
+
+To apply any changes you make in your configuration to your satellite, execute the [juno config](../miscellaneous/cli.md#config) command with the CLI.
+
+### Maximum Memory Size
+
+You can configure optional limits on heap and stable memory for your smart contract to control the creation and update of assets in your storage.
+
+When the limit is reached, the Storage and smart contract will continue to operate normally but will reject the upload of new assets.
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    storage: {
+      maxMemorySize: {
+        stable: 1_073_741_824n // For example max. 1 GiB in bytes of Stable memory
+      }
+    }
+  }
+});
+```
+
 [satellite]: ../terminology.md#satellite
 [controllers]: ../terminology.md#controller
