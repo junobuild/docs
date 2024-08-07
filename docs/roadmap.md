@@ -16,9 +16,13 @@ Last update: August 7, 2024
 
 :::
 
+---
+
 ## Ongoing Effort
 
 - **Ecosystem Growth**: Continuing to build a robust ecosystem around Juno by fostering a strong developer community, hosting events, and providing comprehensive resources and support. This is an ongoing effort.
+
+---
 
 ## H1 2025
 
@@ -27,10 +31,14 @@ Last update: August 7, 2024
 - **Third-Party Authentication**: Supporting integration with more third-party authentication providers.
 - **Standalone Analytics**: Providing the existing analytics solution as a standalone product, offering comprehensive insights and performance on Web3 metrics for any developers or product owners.
 
+---
+
 ## H2 2025
 
 - **Subscription-Based Model**: Launching a subscription-based model to provide premium features and services, including secure team collaboration and enhanced management tools.
 - **Regions Selection**: Allowing developers to choose a specific subnet for deploying new smart contracts, enabling projects to comply with regional regulations, and enhance data sovereignty by being located in areas such as Europe.
+
+---
 
 ## 2026 and Long Term
 
@@ -38,6 +46,8 @@ Last update: August 7, 2024
 - **Enhanced Serverless Functions**: Developing additional capabilities for serverless functions to further empower developers in creating scalable and efficient applications, including support for writing these functions in JavaScript and TypeScript.
 - **Cross-Chain Compatibility**: Developing cross-chain features to enable interoperability between different blockchain networks, allowing for more versatile and integrated applications.
 - **Network Actor**: Becoming a key actor in decentralized networks to enhance the robustness of Juno's services and contribute to the overall infrastructure for the greater good. This includes becoming a node provider on the Internet Computer.
+
+---
 
 ## Released Features
 
