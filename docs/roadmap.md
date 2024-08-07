@@ -4,65 +4,48 @@ sidebar_position: 7
 
 # Roadmap
 
-We have big plans for the near and distant future. 🚀
+Juno's development roadmap and future plans provide insights into the platform's evolution and enhancements over time. The roadmap outlines the long-term vision and upcoming features that will enrich the user experience and expand the platform's capabilities.
+
+We are committed to continuous improvement and innovation, ensuring that developers have access to the best, most comprehensive tools and technologies for building decentralized applications.
+
+In short: We have big plans for the near and distant future. 🚀
 
 :::note
 
-Last update: May 4, 2024
+Last update: August 7, 2024
 
 :::
 
----
+## Ongoing Effort
 
-## Decentralized autonomous organization
+- **Ecosystem Growth**: Continuing to build a robust ecosystem around Juno by fostering a strong developer community, hosting events, and providing comprehensive resources and support. This is an ongoing effort.
 
-While Juno is not yet a Decentralized Autonomous Organization (DAO), we aspire to transition towards this model in the near future. This will enable a transparent, democratic decision-making process, fostering a collaborative and adaptive ecosystem while also enhancing trust and security in the platform's operations and the implementation of upgrades.
+## H1 2025
 
----
+- **Payments SDK**: Allowing developers to integrate payment solutions seamlessly into their dApps using signer standards.
+- **Developer Wallet**: Introducing a dedicated developer wallet, enabling developers to manage earnings, payments, and transactions securely and efficiently within the Juno ecosystem.
+- **Third-Party Authentication**: Supporting integration with more third-party authentication providers.
+- **Standalone Analytics**: Providing the existing analytics solution as a standalone product, offering comprehensive insights and performance on Web3 metrics for any developers or product owners.
 
-## Features
+## H2 2025
 
-Our goal is to continue delivering features that seamlessly integrate both web3 and web2 worlds, while ensuring ease of development. This includes:
+- **Subscription-Based Model**: Launching a subscription-based model to provide premium features and services, including secure team collaboration and enhanced management tools.
+- **Regions Selection**: Allowing developers to choose a specific subnet for deploying new smart contracts, enabling projects to comply with regional regulations, and enhance data sovereignty by being located in areas such as Europe.
 
-- Analytics (Sept. 2023). ✅
-- Plug-and-play payment and paywall solutions.
-- Application monitoring service.
+## 2026 and Long Term
 
----
+- **Marketplace for Developers**: Establishing a marketplace from developers to developers to design and offer their own smart contract solutions, templates, and plugins, allowing them to contribute to and profit from their work.
+- **Enhanced Serverless Functions**: Developing additional capabilities for serverless functions to further empower developers in creating scalable and efficient applications, including support for writing these functions in JavaScript and TypeScript.
+- **Cross-Chain Compatibility**: Developing cross-chain features to enable interoperability between different blockchain networks, allowing for more versatile and integrated applications.
+- **Network Actor**: Becoming a key actor in decentralized networks to enhance the robustness of Juno's services and contribute to the overall infrastructure for the greater good. This includes becoming a node provider on the Internet Computer.
 
-## Marketplace for developers
+## Released Features
 
-We are committed to continually delivering new features related to the satellite or analytics smart contracts. While we may propose some new solutions in the future, our vision revolves around unified interfaces, enabling developers to design and offer their own smart contract solutions, templates, and plugins for other community developers.
+To date, these are the key features that have been successfully delivered, in addition to general maintenance and lifecycle improvements, showcasing a commitment to continuous progress:
 
-In essence, while we may launch some of these features ourselves, let's refer to them as "rockets" or "space stations", establishing a marketplace will allow developers to contribute and profit from their work by offering their creations to fellow developers.
-
----
-
-## Team collaboration
-
-While Juno is currently focused on individual developers, we recognize the importance of collaboration and are planning to add team support.
-
----
-
-## Infrastructure
-
-To support growth and foster new ideas, we aim to make various infrastructure improvements, including:
-
-- Adding additional authentication providers (Apr. 2023) ✅
-- Upgrading satellites overall available memory to maximum possible (Oct. 2023). ✅
-- Enhance hosting capabilities to offer Web2-like features (Nov. 2023). ✅
-- Blockchainless ("serverless") functions. Enabling the implementation of backend functions in response to events triggered within satellites. (Feb. 2024) ✅
-- Replacing queries with certified calls by default.
-- Automatically topping up smart contracts.
-- Server-side rendering.
-- End-to-end encryption.
-
----
-
-## Developer tooling
-
-Easing the development process will always be a priority. To that end, we plan to provide:
-
-- A local emulator for developers to build and test their apps (Jan. 2024). ✅
-- Allowing developers to easily scaffold new projects based on templates (April 2024). ✅
-- Continuously updated documentation, along with sample repos and tutorials.
+- Analytics (Sept. 2023)
+- Upgraded Satellites Memory (Oct. 2023)
+- Enhanced Hosting Capabilities (Nov. 2023)
+- Local Emulator for Developers (Jan. 2024)
+- Bockchainless ("Serverless") Functions (Feb. 2024)
+- Project Scaffolding Templates (Apr. 2024)
