@@ -12,7 +12,7 @@ In short: We have big plans for the near and distant future. 🚀
 
 :::note
 
-Last update: August 7, 2024
+Last update: August 8, 2024
 
 :::
 
