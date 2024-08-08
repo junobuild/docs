@@ -5,6 +5,7 @@ description: Use Juno with Vue
 toc_min_heading_level: 2
 toc_max_heading_level: 2
 sidebar_position: 4
+image: https://raw.githubusercontent.com/junobuild/create-juno/main/screenshots/screenshot-example.png
 ---
 
 # Use Juno with Vue
