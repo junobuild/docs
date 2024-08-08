@@ -29,7 +29,6 @@ Last update: August 8, 2024
 - **Payments SDK**: Allowing developers to integrate payment solutions seamlessly into their dApps using signer standards.
 - **Developer Wallet**: Introducing a dedicated developer wallet, enabling developers to manage earnings, payments, and transactions securely and efficiently within the Juno ecosystem.
 - **Third-Party Authentication**: Supporting integration with more third-party authentication providers.
-- **Standalone Analytics**: Providing the existing analytics solution as a standalone product, offering comprehensive insights and performance on Web3 metrics for any developers or product owners.
 
 ---
 
@@ -37,6 +36,7 @@ Last update: August 8, 2024
 
 - **Subscription-Based Model**: Launching a subscription-based model to provide premium features and services, including secure team collaboration and enhanced management tools.
 - **Regions Selection**: Allowing developers to choose a specific subnet for deploying new smart contracts, enabling projects to comply with regional regulations, and enhance data sovereignty by being located in areas such as Europe.
+- **Standalone Analytics**: Providing the existing analytics solution as a standalone product, offering comprehensive insights and performance on Web3 metrics for any developers or product owners.
 
 ---
 
