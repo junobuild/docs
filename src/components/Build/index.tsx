@@ -12,7 +12,7 @@ import styles from "./styles.module.scss";
 
 export default function Build(): JSX.Element {
   return (
-    <>
+    <div className={styles.section}>
       <h2 className={styles.sub}>Crafted for web devs</h2>
       <p className={styles.build}>
         There are numerous ways to develop on Juno without sacrificing your
@@ -75,6 +75,6 @@ export default function Build(): JSX.Element {
           icon={<Rust />}
         />
       </div>
-    </>
+    </div>
   );
 }

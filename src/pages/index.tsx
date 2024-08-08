@@ -8,6 +8,7 @@ import Head from "@site/src/components/Head";
 import Hero from "@site/src/components/Hero";
 import Illustration from "@site/src/components/Illustration";
 import Libs from "@site/src/components/Libs";
+import Newsletter from "@site/src/components/Newsletter";
 import Outro from "@site/src/components/Outro";
 import Serverless from "@site/src/components/Serverless";
 import Layout from "@theme/Layout";
@@ -76,6 +77,10 @@ export default function Home(): JSX.Element {
 
         <section className={`container ${styles.block}`}>
           <Testimonials />
+        </section>
+
+        <section className={`container ${styles.block}`}>
+          <Newsletter />
         </section>
 
         <Outro />
