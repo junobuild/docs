@@ -12,21 +12,13 @@
 .container {
   width: 100%;
 
-  @media screen and (min-width: 960px) {
-    display: grid;
-    grid-template-columns: 540px auto;
-  }
-
-  @media screen and (min-width: 1480px) {
-    grid-template-columns: 46% auto;
-  }
-
-  @media screen and (min-width: 1900px) {
-    grid-template-columns: 720px auto;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   p {
     max-width: 680px;
+    text-align: center;
 
     @media screen and (min-width: 960px) {
       font-size: 18px;
@@ -47,10 +39,14 @@
 .title {
   color: black;
   html[data-theme="dark"] & {
-    color: var(--ifm-color-primary);
+    color: white;
   }
 
   padding: 4rem 0 0;
+
+  text-align: center;
+
+  max-width: 580px;
 
   letter-spacing: -0.05rem;
   line-height: 1.1;
