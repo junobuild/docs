@@ -36,6 +36,13 @@
 
 .button {
   width: fit-content;
+}
 
+.action {
   margin: 0 0 8rem;
+}
+
+.msg {
+  padding: 2rem 0 0;
+  font-size: calc(var(--ifm-font-size-base) * 0.8);
 }
