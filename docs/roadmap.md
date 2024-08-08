@@ -35,6 +35,9 @@ Last update: August 8, 2024
 
 ## H2 2025
 
+- **Secure Team Collaboration**: Introducing support for secure team collaboration, enabling multiple developers to work together efficiently and securely.
+- **Enhanced Management Tools**: Offering advanced administration capabilities such as automatic top-up and batch upgrade of smart contracts.
+- **GitHub and GitLab**: Automate deployment processes and integrate, including preview deployment, with deeper integration with GitHub and GitLab.
 - **Subscription-Based Model**: Launching a subscription-based model to provide premium features and services, including secure team collaboration and enhanced management tools.
 - **Regions Selection**: Allowing developers to choose a specific subnet for deploying new smart contracts, enabling projects to comply with regional regulations, and enhance data sovereignty by being located in areas such as Europe.
 
