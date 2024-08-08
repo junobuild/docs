@@ -71,7 +71,7 @@ To add a document, use the `setDoc` function:
 ```typescript
 import { setDoc } from "@junobuild/core";
 
-await setDoc<Example>({
+await setDoc({
   collection: "my_collection_key",
   doc: {
     key: "my_document_key",
@@ -92,7 +92,7 @@ import { nanoid } from "nanoid";
 
 const myId = nanoid();
 
-await setDoc<Example>({
+await setDoc({
   collection: "my_collection_key",
   doc: {
     key: myId,
@@ -108,7 +108,7 @@ A document can be saved with an optional `description` field, allowing for a max
 ```typescript
 import { setDoc } from "@junobuild/core";
 
-await setDoc<Example>({
+await setDoc({
   collection: "my_collection_key",
   doc: {
     key: "my_document_key_1",
@@ -117,7 +117,7 @@ await setDoc<Example>({
   }
 });
 
-await setDoc<Example>({
+await setDoc({
   collection: "my_collection_key",
   doc: {
     key: "my_document_key_2",
@@ -175,7 +175,7 @@ To update a document, use the `setDoc` function with its current version to vali
 ```typescript
 import { setDoc } from "@junobuild/core";
 
-await setDoc<Example>({
+await setDoc({
   collection: "my_collection_key",
   doc: {
     key: myId,
@@ -194,7 +194,7 @@ You can spread the document you have previously retrieved, for example with `get
 ```typescript
 import { setDoc } from "@junobuild/core";
 
-await setDoc<Example>({
+await setDoc({
   collection: "my_collection_key",
   doc: {
     ...myDoc, // includes 'key' and 'version'
@@ -409,16 +409,18 @@ The function returns the documents and various information, in the form of an ob
 
 ## Delete a document
 
-To delete a document, use the `deleteDoc` function, which also performs timestamp validation to ensure that the most recent document is being deleted:
+To delete a document, use the `deleteDoc` function, which performs version validation to ensure that the most recent document is being deleted:
 
 ```typescript
 import { deleteDoc } from "@junobuild/core";
 
-await deleteDoc<Example>({
+await deleteDoc({
   collection: "my_collection_key",
   doc: myDoc
 });
 ```
+
+The document must include the current `version` from the latest entry within the satellite; otherwise, the call will fail. This prevents unexpected concurrent overwrites, which is particularly useful if your users access your projects simultaneously on multiple devices.
 
 ---
 
