@@ -409,7 +409,7 @@ The function returns the documents and various information, in the form of an ob
 
 ## Delete a document
 
-To delete a document, use the `deleteDoc` function, which also performs timestamp validation to ensure that the most recent document is being deleted:
+To delete a document, use the `deleteDoc` function, which performs version validation to ensure that the most recent document is being deleted:
 
 ```typescript
 import { deleteDoc } from "@junobuild/core";
@@ -419,6 +419,8 @@ await deleteDoc<Example>({
   doc: myDoc
 });
 ```
+
+The document must include the current `version` from the latest entry within the satellite; otherwise, the call will fail. This prevents unexpected concurrent overwrites, which is particularly useful if your users access your projects simultaneously on multiple devices.
 
 ---
 
