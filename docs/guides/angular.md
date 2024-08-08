@@ -5,7 +5,6 @@ description: Use Juno with Angular
 toc_min_heading_level: 2
 toc_max_heading_level: 2
 sidebar_position: 5
-image: https://raw.githubusercontent.com/junobuild/create-juno/main/screenshots/screenshot-example.png
 ---
 
 # Use Juno with Angular
