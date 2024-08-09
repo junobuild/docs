@@ -60,5 +60,5 @@ To date, these are the key features that have been successfully delivered, in ad
 - Upgraded Satellites Memory (Oct. 2023)
 - Enhanced Hosting Capabilities (Nov. 2023)
 - Local Emulator for Developers (Jan. 2024)
-- Bockchainless ("Serverless") Functions (Feb. 2024)
+- Blockchainless ("Serverless") Functions (Feb. 2024)
 - Project Scaffolding Templates (Apr. 2024)
