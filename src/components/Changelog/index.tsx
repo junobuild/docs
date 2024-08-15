@@ -15,10 +15,11 @@ export default function Changelog(
   const hasSidebar = true;
 
   const sidebarItems: BlogSidebarItem[] = (releases ?? []).map(
-    ({ tag_name }) => ({
+    ({ tag_name, created_at }) => ({
       title: tag_name,
       permalink: `/changelog/release-${tag_name}`,
-      unlisted: false
+      unlisted: false,
+      date: new Date(created_at)
     })
   );
 
