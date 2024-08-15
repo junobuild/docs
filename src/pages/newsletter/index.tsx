@@ -12,6 +12,21 @@ export default function NewsletterPage(): JSX.Element {
 
       <section className={styles.container}>
         <Newsletter />
+
+        <p>
+          <small>
+            * We use{" "}
+            <a
+              href="https://mailchimp.com/"
+              rel="noopener noreferrer"
+              aria-label="Open Mailchimp in a new window"
+              target="_blank"
+            >
+              Mailchimp
+            </a>{" "}
+            to manage and send our emails.
+          </small>
+        </p>
       </section>
     </Layout>
   );
