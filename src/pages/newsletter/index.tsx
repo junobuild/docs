@@ -1,6 +1,6 @@
 import Head from "@site/src/components/Head";
-import Layout from "@theme/Layout";
 import Newsletter from "@site/src/components/Newsletter";
+import Layout from "@theme/Layout";
 import styles from "./index.module.scss";
 
 export default function NewsletterPage(): JSX.Element {
