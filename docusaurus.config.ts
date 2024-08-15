@@ -113,7 +113,8 @@ const config: Config = {
             items: [
               { to: "/showcase", label: "Showcase" },
               { to: "/blog", label: "Blog" },
-              { to: "/changelog", label: "Changelog" }
+              { to: "/changelog", label: "Changelog" },
+              { to: "/newsletter", label: "Newsletter" }
             ]
           },
           {
