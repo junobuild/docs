@@ -12,9 +12,9 @@ export default function Showcase({ dapps }): JSX.Element {
       </Head>
 
       <section className={styles.intro}>
-        <h1>Showcase</h1>
+        <h1 className={styles.title}>Showcase</h1>
 
-        <p>List of dApps devs are building with Juno.</p>
+        <p className={styles.text}>List of dApps devs are building with Juno.</p>
 
         <Link
           className="button button--hero"

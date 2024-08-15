@@ -1,4 +1,13 @@
 @use "../../mixins/grid";
+@use "../../mixins/fonts";
+
+.title {
+  @include fonts.h1;
+}
+
+.text {
+  margin: 0 0 2rem;
+}
 
 .intro {
   display: flex;
