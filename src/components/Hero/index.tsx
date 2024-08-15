@@ -14,8 +14,8 @@ export default function Hero(): JSX.Element {
           Build Web3 at Lightning Speed
         </h1>
         <p className={`${styles.item}`}>
-          Juno is a blockchainless platform designed for developers aiming to
-          craft groundbreaking applications on the Web3 space.
+          Juno is a blockchainless platform for creating innovative applications
+          in the Web3 space.
         </p>
         <p className={`${styles.item}`}></p>
         <div className={`${styles.item} ${styles.actions}`}>
