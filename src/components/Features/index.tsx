@@ -20,7 +20,7 @@ export default function Features(): JSX.Element {
           <h2>Bootstrap in a Weekend</h2>
           <p>
             Bring your ideas to life with a comprehensive toolkit designed to
-            accelerate your Web3 development.
+            accelerate your development.
           </p>
         </aside>
       </div>
@@ -28,7 +28,7 @@ export default function Features(): JSX.Element {
       <div className={styles.grid}>
         <Feature
           title="Authentication"
-          text="Ensure maximum security and privacy by using passwordless authentication to securely and anonymously identify users."
+          text="Ensure maximum security and privacy by using passwordless authentication. Securely and anonymously identify users."
           link={
             <Link to="/docs/build/authentication" className={styles.link}>
               Learn more
