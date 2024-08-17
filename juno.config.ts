@@ -5,6 +5,20 @@ export default defineConfig({
     id: "ucnx3-aqaaa-aaaal-ab3ea-cai",
     source: "build",
     storage: {
+      headers: [
+        {
+          source: "**/*.svg",
+          headers: [["Cache-Control", "max-age=2592000"]]
+        },
+        {
+          source: "/animations/**/*.lottie",
+          headers: [["Cache-Control", "max-age=2592000"]]
+        },
+        {
+          source: "/assets/fonts/**/*",
+          headers: [["Cache-Control", "public, max-age=31536000"]]
+        }
+      ],
       redirects: [
         {
           source: "/docs/miscellaneous/github_actions",
