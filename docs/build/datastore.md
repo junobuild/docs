@@ -407,6 +407,28 @@ The function returns the documents and various information, in the form of an ob
 
 ---
 
+## Count documents
+
+The `countDocs` function is used to count the number of documents in a specified collection without retrieving the actual documents.
+
+```typescript
+import { countDocs } from "@junobuild/core";
+
+const count = await countDocs({
+  collection: "my_collection_key"
+});
+```
+
+### Usage
+
+This function accepts similar parameters as the `listDocs` function, including `collection`, `matcher`, and `owner`, and returns the count of matching documents.
+
+For detailed information on how to use these parameters, refer to the [List documents](#list-documents) section.
+
+The return value is the same as the `items_length` property from the `listDocs` function, providing the count of documents that match the criteria.
+
+---
+
 ## Delete a document
 
 To delete a document, use the `deleteDoc` function, which performs version validation to ensure that the most recent document is being deleted:
