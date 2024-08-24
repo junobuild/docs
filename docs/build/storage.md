@@ -299,6 +299,28 @@ The function returns the assets and various information, in the form of an objec
 
 ---
 
+## Count assets
+
+The `countAssets` function is used to count the number of assets in a specified collection without retrieving the actual assets.
+
+```typescript
+import { countAssets } from "@junobuild/core";
+
+const assetCount = await countAssets({
+  collection: "my_collection_key"
+});
+```
+
+### Usage
+
+This function accepts similar parameters as the `listAssets` function, including `collection`, `matcher`, and `owner`, and returns the count of matching documents.
+
+For detailed information on how to use these parameters, refer to the [List assets](#list-assets) section.
+
+The return value is the same as the `items_length` property from the `listAssets` function, providing the count of assets that match the criteria.
+
+---
+
 ## Delete asset
 
 To delete an asset, you only need to provide its `fullPath`. Unlike the [datastore](datastore.md), there is no timestamp validation performed when deleting an asset.
