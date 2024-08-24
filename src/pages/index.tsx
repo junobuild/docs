@@ -6,7 +6,6 @@ import Developer from "@site/src/components/Developer";
 import Features from "@site/src/components/Features";
 import Head from "@site/src/components/Head";
 import Hero from "@site/src/components/Hero";
-import Illustration from "@site/src/components/Illustration";
 import Libs from "@site/src/components/Libs";
 import Newsletter from "@site/src/components/Newsletter";
 import Outro from "@site/src/components/Outro";
@@ -43,12 +42,8 @@ export default function Home(): JSX.Element {
       </Head>
 
       <div className={styles.home}>
-        <section className={`${styles.main}`}>
-          <div className="container">
-            <Hero />
-
-            <Illustration />
-          </div>
+        <section className={`container ${styles.main}`}>
+          <Hero />
         </section>
 
         <section className={`container ${styles.section}`}>
