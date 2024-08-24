@@ -13,7 +13,7 @@ export default function Features(): JSX.Element {
   return (
     <>
       <div className={styles.sub}>
-        <picture>
+        <picture aria-label="An astronaut sitting on a cloud with their laptop">
           <CloudIllustration />
         </picture>
         <aside>
