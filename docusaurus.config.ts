@@ -211,10 +211,6 @@ const config: Config = {
                 to: "/blog"
               },
               {
-                label: "Roadmap",
-                to: "/docs/roadmap"
-              },
-              {
                 label: "Changelog",
                 to: "/changelog"
               },
