@@ -1,11 +1,11 @@
 ---
 id: local-development
-title: Local development
+title: Local Development
 description: Set-up the local emulator with Docker
 sidebar_position: 9
 ---
 
-# Local development
+# Local Development
 
 When you get started with Juno, you are using your smart contract deployed on the blockchain in production. If you are interested in developing or testing your apps in continuous integration workflows, this guide will show you how you can run a Satellite in a Docker sandbox.
 

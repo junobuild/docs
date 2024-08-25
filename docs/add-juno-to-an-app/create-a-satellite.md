@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Create a satellite
+# Create a Satellite
 
 Before integrating Juno into your project, you need to create a [satellite].
 
