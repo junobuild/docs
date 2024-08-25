@@ -84,6 +84,7 @@ const sidebars: SidebarsConfig = {
   ],
   ["white-paper"]: [
     "white-paper/intro",
+    "white-paper/what-is-juno",
     "white-paper/problems-statement",
     "white-paper/solution",
     "white-paper/use-cases",
