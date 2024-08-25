@@ -207,6 +207,10 @@ const config: Config = {
             title: "More",
             items: [
               {
+                label: "White Paper",
+                to: "/docs/white-paper/intro"
+              },
+              {
                 label: "Blog",
                 to: "/blog"
               },
