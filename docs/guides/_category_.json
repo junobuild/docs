@@ -1,8 +1,0 @@
-{
-  "label": "Guides and Examples",
-  "position": 4,
-  "link": {
-    "type": "generated-index",
-    "description": "Start building with your preferred technologies. Explore our quick start guides and tutorials, designed to assist you in hosting and developing web dapps using your favorite frameworks."
-  }
-}
