@@ -48,6 +48,14 @@ A mission control is a dedicated smart contract designed for managing your [sate
 
 For a schematic representation, refer to the [Architecture](./architecture.md) documentation page.
 
+## Modules
+
+A module or segment — i.e. Satellite, Mission Control, and Orbiter — refers to a smart contract compiled into WebAssembly (WASM) code and deployed on the Internet Computer with Juno.
+
+It acts as a comprehensive entity, encompassing memory, permission checks, and other Juno abstractions. These serve as endpoints that developers and users can query for various functionalities.
+
+![A really high level schema representing a Satellite architecture](./img/satellite.png)
+
 ## NFID
 
 [NFID](https://nfid.one) is a digital identity that provides private and secure sign-in to applications. It offers a convenient way to authenticate with third-party providers like [Metamask](https://metamask.io/) and [Google](https://www.google.com/account/about/).

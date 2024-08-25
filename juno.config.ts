@@ -45,6 +45,36 @@ export default defineConfig({
           source: "/docs/miscellaneous/sdk-usage-in-anodejs-context",
           location: "/docs/guides/nodejs",
           code: 301
+        },
+        {
+          source: "/docs/architecture",
+          location: "/docs/white-paper/architecture",
+          code: 301
+        },
+        {
+          source: "/docs/roadmap",
+          location: "/docs/white-paper/architecture",
+          code: 301
+        },
+        {
+          source: "/docs/category/infrastructure",
+          location: "/docs/white-paper/infrastructure",
+          code: 301
+        },
+        {
+          source: "/docs/category/infrastructure",
+          location: "/docs/white-paper/infrastructure",
+          code: 301
+        },
+        {
+          source: "/docs/infrastructure/internet-computer",
+          location: "/docs/white-paper/infrastructure",
+          code: 301
+        },
+        {
+          source: "/docs/infrastructure/sustainability",
+          location: "/docs/white-paper/infrastructure",
+          code: 301
         }
       ]
     }
