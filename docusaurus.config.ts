@@ -207,12 +207,12 @@ const config: Config = {
             title: "More",
             items: [
               {
-                label: "Blog",
-                to: "/blog"
+                label: "White Paper",
+                to: "/docs/white-paper/intro"
               },
               {
-                label: "Roadmap",
-                to: "/docs/roadmap"
+                label: "Blog",
+                to: "/blog"
               },
               {
                 label: "Changelog",
