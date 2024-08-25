@@ -105,6 +105,12 @@ const config: Config = {
             label: "Docs"
           },
           {
+            type: "docSidebar",
+            position: "left",
+            sidebarId: "white-paper",
+            label: "White Paper"
+          },
+          {
             type: "dropdown",
             label: "More",
             position: "left",
