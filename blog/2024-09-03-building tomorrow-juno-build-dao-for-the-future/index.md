@@ -1,10 +1,12 @@
 ---
 slug: building tomorrow-juno-dao-for-the-future
-title: "Building Tomorrow: Juno DAO for the Future"
+title: "Building Tomorrow: Juno Build DAO for the Future"
 authors: [peterpeterparker]
 tags: [dao, ico, sns, crowdfunding]
-image: https://juno.build/assets/images/memecoin-complete-project-bd061437676a4795aa995edd6a65d04d.png
+image: https://juno.build/assets/images/building-tomorrow-e3f6abce62bcecc303743b777a93d140.png
 ---
+
+![A cover image that contains the title of the blog post and a drawing of a satellite being launched](./building-tomorrow.png)
 
 ---
 
