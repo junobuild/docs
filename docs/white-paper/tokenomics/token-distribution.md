@@ -20,7 +20,7 @@ To promote decentralized governance and secure funding for the SNS, 30% of the t
 
 ## Treasury
 
-Following the successful completion of the SNS swap, the Juno Build SNS-DAO treasury will hold an estimated 500 millions JUNOBUILD tokens alongside the ICP accumulated during the swap.
+Following the successful completion of the SNS swap, the Juno Build SNS-DAO treasury will hold an estimated 500 million JUNOBUILD tokens alongside the ICP accumulated during the swap.
 
 The deployment of any funds in the treasury will be strictly governed by DAO-approved proposals.
 
