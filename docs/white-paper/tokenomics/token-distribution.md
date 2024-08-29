@@ -8,6 +8,12 @@ The JUNOBUILD tokens will be allocated at Genesis as following:
 
 ![A pie chart of the JUNOBUILD tokens allocation at Genesis](../../img/token-distribution.webp)
 
+:::note
+
+The percentages presented in chapter were calculated using the [SNS Tokenomics Analyzer](https://dashboard.internetcomputer.org/sns/tokenomics) on August 29, 2024.
+
+:::
+
 ## SNS Swap
 
 To promote decentralized governance and secure funding for the SNS, 30% of the total JUNOBUILD supply will be allocated for a swap. Participants in this SNS Swap, including the Neuron Fund, will receive their tokens as part of a diversified portfolio. This portfolio comprises five equal-value neurons, each with staggered dissolve delays of 0, 6, 12, 18, and 24 months, respectively. This structured approach ensures a balanced distribution and fosters long-term commitment among participants.
