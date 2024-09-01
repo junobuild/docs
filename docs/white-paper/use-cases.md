@@ -21,3 +21,11 @@ The following list provides an example of potential applications and benefits of
 - **Traceability**: Ensuring product traceability and authenticity with blockchain-based records.
 
 - **Transparency**: Providing transparent supply chain information to consumers and stakeholders.
+
+:::info[Links]
+
+- [Showcase](/showcase)
+
+- [Testimonials](/#testimonials)
+
+:::
