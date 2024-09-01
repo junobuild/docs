@@ -45,7 +45,9 @@ export default function Testimonials(): JSX.Element {
 
   return (
     <>
-      <p className={styles.title}>What people are saying</p>
+      <p className={styles.title} id="testimonials">
+        What people are saying
+      </p>
 
       <div className={styles.grid}>
         {testimonials.map((testimonial, i) => (
