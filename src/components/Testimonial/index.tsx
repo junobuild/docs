@@ -21,7 +21,6 @@ export default function Testimonial({
           src={img}
           loading="lazy"
           className={styles.img}
-          role="presentation"
           alt={`@${twitter} profile picture`}
         />
 

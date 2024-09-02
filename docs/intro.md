@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Getting started
+# Getting Started
 
 Juno is a blockchain-as-a-service (“blockchainless”) platform that empowers developers to build decentralized apps efficiently. Similar to Web2 cloud service platforms but with significant improvements, it offers a comprehensive toolkit to scaffold secure and efficient projects running on the blockchain.
 
