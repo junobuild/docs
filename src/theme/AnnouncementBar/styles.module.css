@@ -84,7 +84,7 @@ html[data-announcement-bar-initially-dismissed="true"] .announcementBar {
   }
 }
 
-@media (min-width: 960px) {
+@media screen and (min-width: 960px) {
   div[class*="announcementBar_"][role="banner"] {
     padding-top: 0;
   }
