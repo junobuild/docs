@@ -1,0 +1,40 @@
+table {
+  overflow: visible;
+
+  --ifm-table-border-color: var(--docsearch-text-color);
+
+  thead {
+    background: transparent;
+
+    tr {
+      border: 0;
+
+      th {
+        border-left: 0;
+        border-top: 0;
+      }
+    }
+  }
+
+  tbody {
+    border: 2px solid var(--docsearch-text-color);
+    box-shadow: 6px 6px var(--docsearch-text-color);
+
+    tr:nth-child(even) {
+      background: var(--ifm-color-primary-lightest);
+    }
+  }
+}
+
+:root {
+  &[data-theme="dark"] {
+    table {
+      tbody {
+        tr:nth-child(even) {
+          color: black;
+          background: var(--ifm-color-primary-light);
+        }
+      }
+    }
+  }
+}
