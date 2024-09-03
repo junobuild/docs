@@ -46,7 +46,15 @@ It is free, passwordless, and does not track user activity. It also integrates W
 
 A mission control is a dedicated smart contract designed for managing your [satellites]. It is under your exclusive control, allowing it to hold ICP and perform various operations such as topping up your [satellites] and itself.
 
-For a schematic representation, refer to the [Architecture](./architecture.md) documentation page.
+For a schematic representation, refer to the [Architecture](./white-paper/architecture.md) documentation page.
+
+## Modules
+
+A module or segment — i.e. Satellite, Mission Control, and Orbiter — refers to a smart contract compiled into WebAssembly (WASM) code and deployed on the Internet Computer with Juno.
+
+It acts as a comprehensive entity, encompassing memory, permission checks, and other Juno abstractions. These serve as endpoints that developers and users can query for various functionalities.
+
+![A really high level schema representing a Satellite architecture](./img/satellite.png)
 
 ## NFID
 
@@ -77,4 +85,4 @@ Currently, each satellite is dedicated to a single application.
 [satellites]: terminology.md#satellite
 [mission control]: terminology.md#mission-control
 [mission controls]: terminology.md#mission-control
-[infrastructure]: category/infrastructure
+[infrastructure]: ./white-paper/infrastructure.md
