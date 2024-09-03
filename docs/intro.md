@@ -4,14 +4,6 @@ sidebar_position: 1
 
 # Getting Started
 
-Juno is a blockchain-as-a-service (“blockchainless”) platform that empowers developers to build decentralized apps efficiently. Similar to Web2 cloud service platforms but with significant improvements, it offers a comprehensive toolkit to scaffold secure and efficient projects running on the blockchain.
-
-With Juno, developers can integrate features such as authentication, data and file storage, hosting, serverless functions, or on-chain analytics provided by smart contracts. This allows them to develop projects using familiar patterns while maintaining complete control over their work.
-
-In short, Juno is the Google Firebase alternative for Web3.
-
-## Launching with Juno
-
 To begin with Juno, launch your first [Satellite](/docs/add-juno-to-an-app/create-a-satellite.md) – a feature-packed smart contract for your project.
 
 This all-in-one container provides authentication, datastore (a key-pair store akin to a simple "database"), file storage, serverless functions and hosting capabilities.
@@ -64,4 +56,4 @@ Explore the features of Juno through the detailed documentation:
 
 ## Learn concepts
 
-Familiarize yourself with Juno's [infrastructure](category/infrastructure) and [architecture](architecture.md) to gain a better understanding of its operation.
+Familiarize yourself with Juno's [infrastructure](white-paper/infrastructure.md) and [architecture](white-paper/architecture.md) to gain a better understanding of its operation.

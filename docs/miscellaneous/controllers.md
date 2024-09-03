@@ -8,7 +8,9 @@ Controllers play a crucial role in granting permissions to mission controls and 
 
 An administrative controller can perform tasks such as configuring or deploying an app, topping up a mission control or satellite, creating a new collection in the [datastore](build/datastore.md) or [storage](build/storage.md), or configuring a custom domain in the [hosting](build/hosting.md).
 
-When you sign in to Juno's [console], you - **and no one else** (including not Juno) - become the controller of your own [mission control].
+When you sign in to Juno's [console] using [Internet Identity](https://internetcomputer.org/internet-identity) (1), you - **and no one else** (including not Juno) - become the controller of your own [mission control] (2). This information is then sent back to your browser, where you can manage your modules (3).
+
+![Juno's console flow](../img/console.png)
 
 When you create a [satellite], you and your mission control become its controllers. Per extension, you - **and no one else** (including not Juno) - own your satellite.
 

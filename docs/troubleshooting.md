@@ -14,7 +14,7 @@ Please ensure that npm is added to your system's PATH (e.g. `C:\Users\{PC_NAME}\
 
 ### Windows Not Defined
 
-Juno does not support yet Server Side Rendering (see [Roadmap](./roadmap.md)). Therefore if you are facing such an issue as `ReferenceError: window is not defined` please make sure that your application is not build using SSR.
+Juno does not support yet Server Side Rendering (see [Roadmap](./white-paper/roadmap.mdx)). Therefore if you are facing such an issue as `ReferenceError: window is not defined` please make sure that your application is not build using SSR.
 
 We generally recommend using Static Site Generation (SSG) / prerendering.
 
