@@ -1,0 +1,39 @@
+@use "../../mixins/fonts";
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+}
+
+.input {
+  @media screen and (min-width: 960px) {
+    max-width: 600px;
+  }
+
+  border: 2px solid var(--ifm-color-primary);
+  border-radius: 5px;
+  padding: 1rem;
+
+  font-size: var(--ifm-font-size-base);
+
+  &::placeholder {
+    color: var(--navbar-search-border-color);
+  }
+
+  html[data-theme="dark"] & {
+    &::placeholder {
+      color: #707070;
+    }
+  }
+}
+
+.button {
+  width: fit-content;
+}
+
+.msg {
+  padding: 2rem 0 0;
+  font-size: calc(var(--ifm-font-size-base) * 0.8);
+}
