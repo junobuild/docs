@@ -75,6 +75,18 @@ export default defineConfig({
           source: "/docs/infrastructure/sustainability",
           location: "/docs/white-paper/infrastructure",
           code: 301
+        },
+        // White Paper 1.0.0: Typo in treasury tokens reported by the community on Twitter.
+        {
+          source: "/assets/files/juno-white-paper-9dc998f30569e21ccb46a4d7ed51ff56.pdf",
+          location: "/files/juno-white-paper.pdf",
+          code: 301
+        },
+        // White Paper 1.0.1: The token distribution was correct, but the pie charts did not perfectly represent the percentages.
+        {
+          source: "/assets/files/juno-white-paper-47063bc5d28d71fe7534bfa249ce3f14.pdf",
+          location: "/files/juno-white-paper.pdf",
+          code: 301
         }
       ]
     }
