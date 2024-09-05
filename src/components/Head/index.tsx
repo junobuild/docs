@@ -8,7 +8,7 @@ export default function Home({ children }): JSX.Element {
     <Head>
       <title>{`${siteConfig.title} | Build Web3 at Lightning Speed`}</title>
       <meta
-        content="Juno is a zero-knowledge blockchain platform that equips developers with all the essential tools to create any Web3 application, making it as easy as developing serverless Web2."
+        content="Juno is a zero-knowledge Web3 development platform that equips developers with all the essential tools to create any decentralized application (dApp)."
         name="description"
       />
       <meta content="Juno" property="og:title" />
