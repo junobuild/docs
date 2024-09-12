@@ -8,7 +8,7 @@ Juno's infrastructure is designed to harness the full potential of Web3 technolo
 
 ![An illustration representing Juno smart contracts living at the top of the Internet Computer](../img/juno-internet-computer.webp)
 
-Juno operates on the Internet Computer (ICP or IC), a blockchain unlike any other.The Internet Computer is akin to adding a super-powered, self-running cloud to the regular internet. It enables the creation of various systems and services on a decentralized network using "canister software", which represents a more advanced version of smart contracts.
+Juno operates on the Internet Computer (ICP or IC), a blockchain unlike any other. The Internet Computer is akin to adding a super-powered, self-running cloud to the regular internet. It enables the creation of various systems and services on a decentralized network using "canister software", which represents a more advanced version of smart contracts.
 
 The IC comprises a set of protocols that facilitate independent data centers worldwide in coming together to offer a decentralized alternative to the current centralized internet cloud providers, often referred to as Big Tech. These independent entities operate specialized "node machines" to generate the same number of blocks as other machines within their network, ensuring uniformity through a Proof-of-Useful-Work mechanism. Their tasks involve replicating smart contract computations for optimal efficiency.
 
