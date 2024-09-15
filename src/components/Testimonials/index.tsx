@@ -36,6 +36,12 @@ export default function Testimonials(): JSX.Element {
       text: "Thanks to Juno's well-documented get-started guide, we had it up and running in under 5 minutes. Our first decentralized analytics tool is now live and kicking!"
     },
     {
+      name: "Nezovskii Konstantin",
+      twitter: "nezovskii",
+      img: "https://pbs.twimg.com/profile_images/1673509145104850945/V87HzJPL_400x400.jpg",
+      text: "If you're looking to start building on ICP, you definitely need to check out Juno! It's been a game-changer for me."
+    },
+    {
       name: "DFINITY Developers ∞",
       twitter: "DFINITYDev",
       img: "https://pbs.twimg.com/profile_images/1700228415327023104/l4MdrvwA_400x400.jpg",
@@ -49,11 +55,11 @@ export default function Testimonials(): JSX.Element {
         What people are saying
       </p>
 
-      <div className={styles.grid}>
+      <ul className={styles.grid}>
         {testimonials.map((testimonial, i) => (
           <Testimonial testimonial={testimonial} key={i} />
         ))}
-      </div>
+      </ul>
     </>
   );
 }
