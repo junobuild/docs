@@ -84,19 +84,19 @@ The Docker container for the local sandbox environment supports hot reloading. T
 After finalizing and testing your Functions, the next step is to deploy your modified Satellite to the mainnet. The `juno dev build` command produces a compressed WASM file (`satellite.wasm.gz`) that includes both the optimized code and necessary metadata. This file is located at `./target/deploy/satellite.wasm.gz` relative to your project's root directory. To deploy your Satellite, use the following CLI command from the same root directory:
 
 ```bash
-juno upgrade -s ./target/deploy/satellite.wasm.gz
+juno upgrade -t s -s target/deploy/satellite.wasm.gz
 ```
 
 This process updates your Satellite with the custom Functions, making them live on the mainnet for real-world application and interaction.
 
 ### Summary
 
-| CLI Command                                         | Short description                                                            |
-| --------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `juno dev eject`                                    | Initializes your project to extend a Satellite.                              |
-| `juno dev start`                                    | Starts the local development environment using Docker.                       |
-| `juno dev build`                                    | Compiles your custom Satellite's code. Changes are automatically redeployed. |
-| `juno upgrade -s ./target/deploy/satellite.wasm.gz` | Upgrades your Satellite in production.                                       |
+| CLI Command                                              | Short description                                                            |
+|----------------------------------------------------------| ---------------------------------------------------------------------------- |
+| `juno dev eject`                                         | Initializes your project to extend a Satellite.                              |
+| `juno dev start`                                         | Starts the local development environment using Docker.                       |
+| `juno dev build`                                         | Compiles your custom Satellite's code. Changes are automatically redeployed. |
+| `juno upgrade -t s -s ./target/deploy/satellite.wasm.gz` | Upgrades your Satellite in production.                                       |
 
 ---
 
