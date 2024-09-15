@@ -13,7 +13,7 @@ export default function Testimonial({
   testimonial: TestimonialProps;
 }): JSX.Element {
   return (
-    <article className={styles.container}>
+    <li className={styles.container}>
       <blockquote className={styles.quote}>{text}</blockquote>
 
       <div className={styles.author}>
@@ -37,6 +37,6 @@ export default function Testimonial({
           </a>
         </div>
       </div>
-    </article>
+    </li>
   );
 }
