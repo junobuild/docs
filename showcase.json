@@ -169,5 +169,12 @@
     "img": "/showcase/the-great-crypto-vc-job-board.png",
     "twitter": "IshaaqZiyan",
     "github": "https://github.com/ishaaqziyan/VC-Job-Board"
+  },
+  {
+    "title": "ICP Slime",
+    "url": "https://icpslime.xyz/",
+    "description": "A simple tamagochi inspired game about a slime.",
+    "img": "https://icpslime.xyz/juno_bg.png",
+    "twitter": "moonlightcube"
   }
 ]
