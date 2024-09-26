@@ -33,7 +33,7 @@ Additionally, it covers how to develop against a production environment or local
 npm create juno@latest
 ```
 
-### Path B: Integrate Juno into an existing Next.js app
+### Path B: Integrate Juno into an existing SvelteKit app
 
 1. Add the Juno SDK:
 
