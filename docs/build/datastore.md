@@ -60,7 +60,7 @@ A rule is assigned to a collection to define read and write permissions, which c
 
 ### Memory
 
-When you create a collection, it's assigned to either heap or stable memory. This assignment is permanent and cannot be changed once the collection is created. The default allocation is `heap` memory.
+When you create a collection, it's assigned to either heap or stable memory. This assignment is permanent and cannot be changed once the collection is created. The default allocation is `stable` memory.
 
 ---
 
