@@ -1,26 +1,18 @@
-.container {
-  position: relative;
-  border: solid 4px var(--ifm-heading-color);
-  border-radius: 5px;
-  padding: 1.5rem 1rem;
-}
-
 .title {
   display: flex;
   align-items: center;
   gap: 1rem;
 
   margin-bottom: 1rem;
-  color: var(--ifm-heading-color);
 
   svg {
     width: 28px;
     height: 28px;
   }
   h4 {
-    color: var(--ifm-font-color-base);
     margin: 0;
     font-size: 20px;
+    color: inherit;
   }
 }
 
@@ -28,17 +20,26 @@
   margin: 0.5rem 0 0.25rem;
   line-height: 20px;
   font-size: 15px;
-  padding-bottom: 2rem;
+  font-family: var(--ifm-font-family-base);
+  font-weight: normal;
 }
 
 .link {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
+  font-size: var(--ifm-h6-font-size);
+  font-weight: 600;
+
+  padding: 0.75rem 0 0;
+
+  display: block;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+
   &::after {
     display: inline-block;
     content: ">";
-    transform: translateY(2px);
+    transform: translateY(1px);
     color: var(--ifm-color-primary);
     margin-left: 0.5rem;
   }
