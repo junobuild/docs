@@ -1,8 +1,5 @@
 .grid {
-  display: flex;
-  flex-direction: column;
-  --grid-gap: 2rem;
-  gap: var(--grid-gap);
+  height: calc(100% + 5px);
 }
 
 .title {

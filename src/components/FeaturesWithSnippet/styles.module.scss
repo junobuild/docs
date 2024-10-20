@@ -1,0 +1,82 @@
+@use "../../mixins/grid";
+@use "../../mixins/fonts";
+@use "../../mixins/text";
+
+.grid {
+  display: flex;
+  flex-direction: column;
+
+  --grid-colum-gap: 2rem;
+  --grid-row-gap: 2rem;
+
+  column-gap: var(--grid-colum-gap);
+  row-gap: var(--grid-row-gap);
+
+  margin: 5rem 0 0;
+
+  @media screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 40% calc(60% - var(--grid-colum-gap));
+  }
+
+  @media screen and (min-width: 960px) {
+    --grid-colum-gap: 3rem;
+    grid-template-columns: 35% calc(65% - var(--grid-colum-gap));
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  border-width: 4px;
+  max-width: 100%;
+  white-space: pre-wrap;
+  text-align: left;
+
+  padding: 0.75rem 1rem;
+
+  &:global(:hover a) {
+    color: inherit;
+  }
+
+  &:global(:hover span::after) {
+    color: inherit;
+  }
+
+  @media screen and (min-width: 768px) {
+    &:not(.active) p {
+      display: block;
+      @include text.truncate;
+    }
+  }
+}
+
+.active {
+  @media screen and (min-width: 768px) {
+    box-shadow: none;
+    transform: translateX(3px) translateY(3px);
+
+    background: #c9cfff;
+
+    html[data-theme="dark"] & {
+      background: white;
+      color: black;
+    }
+  }
+}
+
+.code {
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+}
