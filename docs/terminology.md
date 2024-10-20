@@ -80,7 +80,7 @@ A satellite is essentially a smart contract with added capabilities.
 
 Currently, each satellite is dedicated to a single application.
 
-### Subnet
+## Subnet
 
 A subnet is like a group of smart contracts (programs) working together on the Internet Computer. These groups, or subnets, are designed to distribute the workload across the network. By having multiple subnets, the Internet Computer can handle more activity, process data faster, and ensure the system remains efficient and secure.
 
