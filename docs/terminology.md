@@ -16,6 +16,12 @@ When you send ICP from a cryptocurrency exchange or wallet, as explained in the 
 
 The "console" refers to Juno's administration application, located at [https://console.juno.build](https://console.juno.build).
 
+## Controller
+
+Controllers are used to grant permissions to [mission controls] and [satellites] in Juno.
+
+For more detailed information, please refer to the dedicated [documentation](miscellaneous/controllers.md).
+
 ## Cycles
 
 Cycles are used to pay for [infrastructure] usage. Your [mission control] or [satellite] consumes cycles while it's active.
@@ -25,12 +31,6 @@ The amount of cycles available determines whether a smart contract will be activ
 This ensures that related costs cannot surpass the amount of cycles available.
 
 Learn more about [computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/gas-cost).
-
-## Controller
-
-Controllers are used to grant permissions to [mission controls] and [satellites] in Juno.
-
-For more detailed information, please refer to the dedicated [documentation](miscellaneous/controllers.md).
 
 ## ICP
 
