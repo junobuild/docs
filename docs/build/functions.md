@@ -92,7 +92,7 @@ This process updates your Satellite with the custom Functions, making them live 
 ### Summary
 
 | CLI Command                                              | Short description                                                            |
-|----------------------------------------------------------| ---------------------------------------------------------------------------- |
+| -------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `juno dev eject`                                         | Initializes your project to extend a Satellite.                              |
 | `juno dev start`                                         | Starts the local development environment using Docker.                       |
 | `juno dev build`                                         | Compiles your custom Satellite's code. Changes are automatically redeployed. |
