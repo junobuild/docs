@@ -11,6 +11,10 @@ import styles from "./styles.module.scss";
 import CodeBlock from "@theme/CodeBlock";
 import { code as authCode } from "@site/src/snippets/auth";
 import { code as datastoreCode } from "@site/src/snippets/datastore";
+import { code as storageCode } from "@site/src/snippets/storage";
+import { code as hostingCode } from "@site/src/snippets/hosting";
+import { code as functionsCode } from "@site/src/snippets/functions";
+import { code as analyticsCode } from "@site/src/snippets/analytics";
 
 type Snippet =
   | "auth"
@@ -31,6 +35,22 @@ export default function Snippets(): JSX.Element {
     switch (snippet) {
       case "datastore": {
         setSelectedCode(datastoreCode);
+        break;
+      }
+      case "storage": {
+        setSelectedCode(storageCode);
+        break;
+      }
+      case "hosting": {
+        setSelectedCode(hostingCode);
+        break;
+      }
+      case "functions": {
+        setSelectedCode(functionsCode);
+        break;
+      }
+      case "analytics": {
+        setSelectedCode(analyticsCode);
         break;
       }
       default: {
@@ -80,7 +100,10 @@ export default function Snippets(): JSX.Element {
         </li>
 
         <li>
-          <button className={`button button--juno ${styles.btn}`}>
+          <button
+            onClick={() => setSnippet("storage")}
+            className={`${styles.btn} ${snippet === "storage" ? styles.active : ""} button button--juno`}
+          >
             <Feature
               title="Storage"
               text="Easily store and serve user-generated content, such as files, photos, and videos, on Web3."
@@ -95,7 +118,10 @@ export default function Snippets(): JSX.Element {
         </li>
 
         <li>
-          <button className={`button button--juno ${styles.btn}`}>
+          <button
+            onClick={() => setSnippet("hosting")}
+            className={`${styles.btn} ${snippet === "hosting" ? styles.active : ""} button button--juno`}
+          >
             <Feature
               title="Hosting"
               text="Maintain your brand identity with a custom domain for your decentralized application."
@@ -110,7 +136,10 @@ export default function Snippets(): JSX.Element {
         </li>
 
         <li>
-          <button className={`button button--juno ${styles.btn}`}>
+          <button
+            onClick={() => setSnippet("functions")}
+            className={`${styles.btn} ${snippet === "functions" ? styles.active : ""} button button--juno`}
+          >
             <Feature
               title="Functions"
               text="Execute custom code in response to background events, extend Juno's smart contracts, and develop features that run on-chain."
@@ -125,7 +154,10 @@ export default function Snippets(): JSX.Element {
         </li>
 
         <li>
-          <button className={`button button--juno ${styles.btn}`}>
+          <button
+            onClick={() => setSnippet("analytics")}
+            className={`${styles.btn} ${snippet === "analytics" ? styles.active : ""} button button--juno`}
+          >
             <Feature
               title="Analytics"
               text="Gather valuable, anonymous user insights with a simple, lightweight, and open-source web analytics that do not use cookies."
