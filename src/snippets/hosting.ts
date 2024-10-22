@@ -1,4 +1,6 @@
-export const code = `// Hosting behavior can be configured using 
+export const code = {
+  lang: "language-javascript",
+  value: `// Hosting behavior can be configured using 
 // JavaScript, TypeScript, or JSON configuration files
 import { defineConfig } from "@junobuild/config";
 
@@ -31,4 +33,5 @@ export default defineConfig({
     args: deploy
   env:
     JUNO_TOKEN: ...
-`;
+`
+};

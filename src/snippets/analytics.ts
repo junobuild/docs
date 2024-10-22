@@ -1,4 +1,6 @@
-export const code = `// Analytics events are gathered using a web worker
+export const code = {
+  lang: "language-javascript",
+  value: `// Analytics events are gathered using a web worker
 // and a library that requires minimal configuration
 import { initOrbiter, trackEvent } from "@junobuild/analytics";
 
@@ -24,4 +26,5 @@ const onClick = async () => {
 };
 
 <button onClick={onClick}>Do something</button>
-`;
+`
+};

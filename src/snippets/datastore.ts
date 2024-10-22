@@ -1,4 +1,6 @@
-export const code = `import { setDoc, getDoc } from "@junobuild/core";
+export const code = {
+  lang: "language-javascript",
+  value: `import { setDoc, getDoc } from "@junobuild/core";
 
 const collection = "my_collection";
 const key = crypto.randomUUID();
@@ -30,4 +32,5 @@ const myList = await listDocs({
     limit: 5
   }
 });
-`;
+`
+};

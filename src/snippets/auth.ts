@@ -1,4 +1,6 @@
-export const code = `// Import functions from the JavaScript SDK.
+export const code = {
+  lang: "language-javascript",
+  value: `// Import functions from the JavaScript SDK.
 import { signIn, signOut, authSubscribe, 
     InternetIdentityProvider 
 } from "@junobuild/core";
@@ -31,4 +33,5 @@ await initSatellite({
   }
 });
 
-`;
+`
+};

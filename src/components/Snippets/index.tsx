@@ -6,9 +6,9 @@ import { code as datastoreCode } from "@site/src/snippets/datastore";
 import { code as functionsCode } from "@site/src/snippets/functions";
 import { code as hostingCode } from "@site/src/snippets/hosting";
 import { code as storageCode } from "@site/src/snippets/storage";
-import Datastore from "@site/static/icons/datastore.svg";
 import Analytics from "@site/static/icons/analytics.svg";
 import Authentication from "@site/static/icons/authentication.svg";
+import Datastore from "@site/static/icons/datastore.svg";
 import Functions from "@site/static/icons/functions.svg";
 import Hosting from "@site/static/icons/hosting.svg";
 import Storage from "@site/static/icons/storage.svg";
@@ -26,8 +26,6 @@ type Snippet =
 
 export default function Snippets(): JSX.Element {
   const [snippet, setSnippet] = useState<Snippet>("auth");
-
-  const lang = "language-javascript";
 
   const [selectedCode, setSelectedCode] = useState(authCode);
 
@@ -173,7 +171,9 @@ export default function Snippets(): JSX.Element {
       </ul>
 
       <div className={styles.code}>
-        <CodeBlock className={lang}>{selectedCode}</CodeBlock>
+        <CodeBlock className={selectedCode.lang}>
+          {selectedCode.value}
+        </CodeBlock>
       </div>
     </div>
   );

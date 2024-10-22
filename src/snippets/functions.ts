@@ -1,4 +1,6 @@
-export const code = `// You can supercharge Juno's capabilities
+export const code = {
+  lang: "language-rust",
+  value: `// You can supercharge Juno's capabilities
 // and start developing your own serverless features
 #[query]
 fn hello(text: String) -> String {
@@ -24,4 +26,5 @@ fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
 fn assert_delete_doc(_: AssertDeleteDocContext) -> Result<(), String> {
     Err("Deletion not authorized".to_string())
 }
-`;
+`
+};

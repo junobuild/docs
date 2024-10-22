@@ -1,4 +1,6 @@
-export const code = `import { uploadFile, listAssets } from "@junobuild/core";
+export const code = {
+  lang: "language-javascript",
+  value: `import { uploadFile, listAssets } from "@junobuild/core";
 
 // Files are organized into collections,
 // with each collection having specific permissions.
@@ -27,4 +29,5 @@ await uploadFile({
 const myList = await listAssets({
   collection
 });
-`;
+`
+};
