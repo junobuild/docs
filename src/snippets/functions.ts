@@ -18,7 +18,7 @@ fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
   print(format!("Data: {}", amount.value));
 }
 
-/ Similarly, you can also extend the assertion scheme
+// Similarly, you can also extend the assertion scheme
 // to define your own synchronous set of rules
 #[assert_delete_doc(collections = ["answers"])]
 fn assert_delete_doc(_: AssertDeleteDocContext) -> Result<(), String> {
