@@ -30,7 +30,12 @@
 
 div.theme-code-block {
   height: 100%;
-  border: 4px solid var(--ifm-color-primary);
+  border: 4px solid black;
+
+  html[data-theme="dark"] & {
+    border: 4px solid var(--ifm-color-primary);
+  }
+
   scrollbar-color: var(--ifm-color-primary-lighter) var(--ifm-color-primary);
 
   ::-webkit-scrollbar-track {

@@ -97,6 +97,8 @@
     box-shadow: none;
     transform: translateX(3px) translateY(3px);
 
+    min-height: 160px;
+
     background: #c9cfff;
 
     &:hover,
@@ -127,6 +129,9 @@
 
 .code {
   display: none;
+
+  padding: 2px 0 0;
+  min-height: calc(100% + 4px);
 
   @media screen and (min-width: 768px) {
     display: block;
