@@ -6,7 +6,7 @@ import { code as datastoreCode } from "@site/src/snippets/datastore";
 import { code as functionsCode } from "@site/src/snippets/functions";
 import { code as hostingCode } from "@site/src/snippets/hosting";
 import { code as storageCode } from "@site/src/snippets/storage";
-import Datastore from "@site/static/icons/Datastore.svg";
+import Datastore from "@site/static/icons/datastore.svg";
 import Analytics from "@site/static/icons/analytics.svg";
 import Authentication from "@site/static/icons/authentication.svg";
 import Functions from "@site/static/icons/functions.svg";
