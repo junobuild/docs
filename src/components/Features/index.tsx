@@ -1,4 +1,4 @@
-import FeaturesWithSnippet from "@site/src/components/FeaturesWithSnippet";
+import Snippets from "@site/src/components/Snippets";
 import CloudIllustration from "@site/static/img/cloud.svg";
 import styles from "./styles.module.scss";
 
@@ -18,7 +18,7 @@ export default function Features(): JSX.Element {
         </aside>
       </div>
 
-      <FeaturesWithSnippet />
+      <Snippets />
     </>
   );
 }

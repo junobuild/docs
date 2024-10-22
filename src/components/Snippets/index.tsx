@@ -1,7 +1,5 @@
 import Link from "@docusaurus/Link";
 import Feature from "@site/src/components/Feature";
-import Auth from "@site/src/components/Snippets/Auth";
-import DatastoreSnippet from "@site/src/components/Snippets/Datastore";
 import Datastore from "@site/static/icons/Datastore.svg";
 import Analytics from "@site/static/icons/analytics.svg";
 import Authentication from "@site/static/icons/authentication.svg";
@@ -22,7 +20,7 @@ type Snippet =
   | "functions"
   | "analytics";
 
-export default function FeaturesWithSnippet(): JSX.Element {
+export default function Snippets(): JSX.Element {
   const [snippet, setSnippet] = useState<Snippet>("auth");
 
   const lang = "language-javascript";
