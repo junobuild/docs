@@ -1,4 +1,3 @@
-export const lang = "language-bash";
 export const code = `// Hosting behavior can be configured using 
 // JavaScript, TypeScript, or JSON configuration files
 import { defineConfig } from "@junobuild/config";

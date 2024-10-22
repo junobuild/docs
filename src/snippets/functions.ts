@@ -1,4 +1,3 @@
-export const lang = "language-rust";
 export const code = `// You can supercharge Juno's capabilities
 // and start developing your own serverless features
 #[query]

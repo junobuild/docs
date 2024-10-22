@@ -1,4 +1,3 @@
-export const lang = "language-javascript";
 export const code = `import { uploadFile, listAssets } from "@junobuild/core";
 
 // Files are organized into collections,

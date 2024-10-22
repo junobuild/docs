@@ -1,4 +1,3 @@
-export const lang = "language-javascript";
 export const code = `import { setDoc, getDoc } from "@junobuild/core";
 
 const collection = "my_collection";

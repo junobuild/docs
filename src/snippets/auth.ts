@@ -1,4 +1,3 @@
-export const lang = "language-javascript";
 export const code = `// Import functions from the JavaScript SDK.
 import { signIn, signOut, authSubscribe, 
     InternetIdentityProvider 

@@ -1,4 +1,3 @@
-export const lang = "language-javascript";
 export const code = `// Analytics events are gathered using a web worker
 // and a library that requires minimal configuration
 import { initOrbiter, trackEvent } from "@junobuild/analytics";
