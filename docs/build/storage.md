@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Storage
 
-Juno Storage is designed for app developers who need to store and serve user-generated content, such as photos or videos.
+Juno Storage is designed for app developers who need to store and serve user-generated content, such as photos or files.
 
 It offers a powerful and cost-effective object storage solution on the blockchain.
 
@@ -18,7 +18,7 @@ To use Juno Storage's features, you must [install](../add-juno-to-an-app/setup) 
 
 ## How does it work?
 
-Each [satellite] you create includes a "Storage" provider, which can store assets (images, documents, videos, etc.) that are automatically made available on the internet.
+Each [satellite] you create includes a "Storage" provider, which can store assets (images, documents, etc.) that are automatically made available on the internet.
 
 Assets are stored in "collections" and you can have as many collections as you wish.
 

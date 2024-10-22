@@ -106,7 +106,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Storage"
-              text="Easily store and serve user-generated content, such as files, photos, and videos, on Web3."
+              text="Easily store and serve user-generated content, such as files, and images, on Web3."
               link={
                 <Link to="/docs/build/storage" className={styles.link}>
                   Learn more
@@ -124,7 +124,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Hosting"
-              text="Maintain your brand identity with a custom domain for your decentralized application."
+              text="Fast and secure hosting powered by 100% blockchain technology, supporting custom domains to maintain your brand identity."
               link={
                 <Link to="/docs/build/hosting" className={styles.link}>
                   Learn more
@@ -142,7 +142,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Functions"
-              text="Execute custom code in response to background events, extend Juno's smart contracts, and develop features that run on-chain."
+              text="Extend Juno's smart contracts and develop custom serverless features."
               link={
                 <Link to="/docs/build/functions" className={styles.link}>
                   Learn more

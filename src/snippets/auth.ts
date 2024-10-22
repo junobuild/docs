@@ -1,8 +1,6 @@
 export const lang = "language-javascript";
 export const code = `// Import functions from the JavaScript SDK.
-import { signIn, 
-    signOut,
-    authSubscribe, 
+import { signIn, signOut, authSubscribe, 
     InternetIdentityProvider 
 } from "@junobuild/core";
 
@@ -11,7 +9,6 @@ import { signIn,
 authSubscribe((user) => {
   console.log("User is defined or null:", user);
 });
-
 
 // Sign-in with the default function
 <button onClick={signIn}>Sign-in</button>

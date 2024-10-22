@@ -23,9 +23,6 @@ const myDoc = await getDoc({
   key
 });
 
-// It also supports atomic operations
-// like setManyDocs or getManyDocs btw.
-
 // List documents with pagination, filtering, and ordering, etc.
 const myList = await listDocs({
   collection,
