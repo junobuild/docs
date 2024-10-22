@@ -24,10 +24,13 @@
 
   &:hover,
   &:focus {
-    background: #7888ff;
-    color: white;
     --ifm-button-border-color: #6a78e0;
     --button-shadow-color: #c4cdff;
+
+    html[data-theme="dark"] & {
+      --ifm-button-border-color: white;
+      --button-shadow-color: white;
+    }
   }
 
   transition:
