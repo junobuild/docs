@@ -60,6 +60,36 @@
       @include text.truncate;
     }
   }
+
+  &:before {
+    content: "";
+
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg) translateZ(-1px);
+
+    background: black;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    border-radius: 2px;
+
+    transition:
+      opacity 0.15s ease-out,
+      transform 0.15s ease-out,
+      width 0.15s ease-out;
+
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  html[data-theme="dark"] & {
+    &:before {
+      background: #7888ff;
+    }
+  }
 }
 
 .active {
@@ -69,37 +99,27 @@
 
     background: #c9cfff;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background: #c9cfff;
       border-color: black;
       color: black;
     }
 
     &:before {
-      content: "";
-
-      position: absolute;
-      right: 0;
-      top: 50%;
+      opacity: 1;
+      visibility: visible;
       transform: translate(50%, -50%) rotate(45deg) translateZ(-1px);
-
-      background: black;
-
-      width: 2rem;
-      height: 2rem;
     }
 
     html[data-theme="dark"] & {
       background: white;
       color: black;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         background: white;
         border-color: #7888ff;
-      }
-
-      &:before {
-        background: #7888ff;
       }
     }
   }
