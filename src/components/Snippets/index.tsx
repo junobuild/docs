@@ -88,7 +88,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Datastore"
-              text="A simple and convenient programming model for storing data on the blockchain."
+              text="Store data using a simple key-value model, organized by collections that contain documents."
               link={
                 <Link to="/docs/build/datastore" className={styles.link}>
                   Learn more
