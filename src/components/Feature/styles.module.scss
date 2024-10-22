@@ -35,7 +35,35 @@
   font-size: var(--ifm-h6-font-size);
   font-weight: 600;
 
+  pointer-events: all;
+
   padding: 0.75rem 0 0;
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover, &:active {
+    a {
+      color: black;
+    }
+
+    &::after {
+      color: black;
+    }
+  }
+
+  html[data-theme="dark"] & {
+    &:hover, &:active {
+      a {
+        color: white;
+      }
+
+      &::after {
+        color: white;
+      }
+    }
+  }
 
   &::after {
     display: inline-block;

@@ -48,7 +48,11 @@
 
   width: 100%;
 
+  pointer-events: none;
+
   @media screen and (min-width: 768px) {
+    pointer-events: all;
+
     span:last-of-type {
       display: none;
     }
@@ -124,17 +128,15 @@
     }
 
     span:last-of-type {
-       display: block;
-     }
-
+      display: block;
+    }
   }
 }
 
 .code {
   display: none;
 
-  padding: 2px 0 0;
-  min-height: calc(100% + 4px);
+  padding: 1rem 0;
 
   @media screen and (min-width: 768px) {
     display: block;
