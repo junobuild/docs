@@ -70,7 +70,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Authentication"
-              text="Ensure maximum security and privacy by using passwordless authentication. Securely and anonymously identify users."
+              text="Maximize security and privacy with anonymous user access."
               link={
                 <Link to="/docs/build/authentication" className={styles.link}>
                   Learn more
@@ -88,7 +88,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Datastore"
-              text="Store data using a simple key-value model, organized by collections that contain documents."
+              text="Store data in a simple key-value model, organized by collections of documents."
               link={
                 <Link to="/docs/build/datastore" className={styles.link}>
                   Learn more
@@ -106,7 +106,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Storage"
-              text="Easily store and serve user-generated content, such as files, and images, on Web3."
+              text="Easily upload and serve user-generated content, such as files, and images, on Web3."
               link={
                 <Link to="/docs/build/storage" className={styles.link}>
                   Learn more
@@ -124,7 +124,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Hosting"
-              text="Fast and secure hosting powered by 100% blockchain technology, supporting custom domains to maintain your brand identity."
+              text="Hosting powered by blockchain with support for custom domains to maintain your brand identity."
               link={
                 <Link to="/docs/build/hosting" className={styles.link}>
                   Learn more
@@ -160,7 +160,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Analytics"
-              text="Gather valuable, anonymous user insights with a simple, lightweight, and open-source web analytics that do not use cookies."
+              text="Gather valuable insights with simple, open-source web analytics that don't use cookies."
               link={
                 <Link to="/docs/build/analytics" className={styles.link}>
                   Learn more

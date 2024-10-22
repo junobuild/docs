@@ -37,12 +37,6 @@
 
   padding: 0.75rem 0 0;
 
-  display: block;
-
-  @media screen and (min-width: 768px) {
-    display: none;
-  }
-
   &::after {
     display: inline-block;
     content: ">";

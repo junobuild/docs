@@ -46,15 +46,13 @@
   position: relative;
   transform-style: preserve-3d;
 
-  &:global(:hover a) {
-    color: inherit;
-  }
-
-  &:global(:hover span::after) {
-    color: inherit;
-  }
+  width: 100%;
 
   @media screen and (min-width: 768px) {
+    span:last-of-type {
+      display: none;
+    }
+
     &:not(.active) p {
       display: block;
       @include text.truncate;
@@ -97,7 +95,7 @@
     box-shadow: none;
     transform: translateX(3px) translateY(3px);
 
-    min-height: 160px;
+    min-height: 176px;
 
     background: #c9cfff;
 
@@ -124,6 +122,11 @@
         border-color: #7888ff;
       }
     }
+
+    span:last-of-type {
+       display: block;
+     }
+
   }
 }
 
