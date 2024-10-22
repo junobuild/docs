@@ -1,21 +1,34 @@
 import Link from "@docusaurus/Link";
-import Auth from "@site/src/components/Auth";
 import Feature from "@site/src/components/Feature";
+import Auth from "@site/src/components/Snippets/Auth";
+import DatastoreSnippet from "@site/src/components/Snippets/Datastore";
+import Datastore from "@site/static/icons/Datastore.svg";
 import Analytics from "@site/static/icons/analytics.svg";
 import Authentication from "@site/static/icons/authentication.svg";
-import Datastore from "@site/static/icons/datastore.svg";
 import Functions from "@site/static/icons/functions.svg";
 import Hosting from "@site/static/icons/hosting.svg";
 import Storage from "@site/static/icons/storage.svg";
+import { useState } from "react";
 import styles from "./styles.module.scss";
 
+type Snippet =
+  | "auth"
+  | "datastore"
+  | "storage"
+  | "hosting"
+  | "functions"
+  | "analytics";
+
 export default function FeaturesWithSnippet(): JSX.Element {
+  const [snippet, setSnippet] = useState<Snippet>("auth");
+
   return (
     <div className={styles.grid}>
       <ul className={styles.list}>
         <li>
           <button
-            className={`${styles.btn} ${styles.active} button button--juno`}
+            onClick={() => setSnippet("auth")}
+            className={`${styles.btn} ${snippet === "auth" ? styles.active : ""} button button--juno`}
           >
             <Feature
               title="Authentication"
@@ -31,7 +44,10 @@ export default function FeaturesWithSnippet(): JSX.Element {
         </li>
 
         <li>
-          <button className={`button button--juno ${styles.btn}`}>
+          <button
+            onClick={() => setSnippet("datastore")}
+            className={`${styles.btn} ${snippet === "datastore" ? styles.active : ""} button button--juno`}
+          >
             <Feature
               title="Datastore"
               text="A simple and convenient programming model for storing data on the blockchain."
@@ -107,7 +123,8 @@ export default function FeaturesWithSnippet(): JSX.Element {
       </ul>
 
       <div className={styles.code}>
-        <Auth />
+        {snippet === "auth" && <Auth />}
+        {snippet === "datastore" && <DatastoreSnippet />}
       </div>
     </div>
   );

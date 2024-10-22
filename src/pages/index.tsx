@@ -1,12 +1,10 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { initOrbiter } from "@junobuild/analytics";
-import Auth from "@site/src/components/Auth";
 import Build from "@site/src/components/Build";
 import Developer from "@site/src/components/Developer";
 import Features from "@site/src/components/Features";
 import Head from "@site/src/components/Head";
 import Hero from "@site/src/components/Hero";
-import Libs from "@site/src/components/Libs";
 import Newsletter from "@site/src/components/Newsletter";
 import Outro from "@site/src/components/Outro";
 import Serverless from "@site/src/components/Serverless";
@@ -61,10 +59,6 @@ export default function Home(): JSX.Element {
         <section
           className={`container ${styles.block} ${styles.grid_two_columns}`}
         >
-          <Auth />
-
-          <Libs />
-
           <Developer />
 
           <Serverless />
