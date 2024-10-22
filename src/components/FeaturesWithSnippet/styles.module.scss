@@ -43,6 +43,9 @@
 
   padding: 0.75rem 1rem;
 
+  position: relative;
+  transform-style: preserve-3d;
+
   &:global(:hover a) {
     color: inherit;
   }
@@ -69,6 +72,20 @@
     html[data-theme="dark"] & {
       background: white;
       color: black;
+    }
+
+    &:before {
+      content: "";
+
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(50%, -50%) rotate(45deg) translateZ(-1px);
+
+      background: black;
+
+      width: 2rem;
+      height: 2rem;
     }
   }
 }

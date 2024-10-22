@@ -15,7 +15,7 @@ export default function FeaturesWithSnippet(): JSX.Element {
       <ul className={styles.list}>
         <li>
           <button
-            className={` ${styles.btn} ${styles.active} button button--juno`}
+            className={`${styles.btn} ${styles.active} button button--juno`}
           >
             <Feature
               title="Authentication"
