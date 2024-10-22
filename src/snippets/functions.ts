@@ -24,4 +24,4 @@ fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
 fn assert_delete_doc(_: AssertDeleteDocContext) -> Result<(), String> {
     Err("Deletion not authorized".to_string())
 }
-`
+`;

@@ -10,7 +10,7 @@
   align-items: center;
   gap: 1rem;
 
-  margin-bottom: .45rem;
+  margin-bottom: 0.45rem;
 
   svg {
     width: 28px;
@@ -43,7 +43,8 @@
     text-decoration: none;
   }
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     a {
       color: black;
     }
@@ -54,7 +55,8 @@
   }
 
   html[data-theme="dark"] & {
-    &:hover, &:active {
+    &:hover,
+    &:active {
       a {
         color: white;
       }

@@ -1,20 +1,20 @@
 import Link from "@docusaurus/Link";
 import Feature from "@site/src/components/Feature";
+import { code as analyticsCode } from "@site/src/snippets/analytics";
+import { code as authCode } from "@site/src/snippets/auth";
+import { code as datastoreCode } from "@site/src/snippets/datastore";
+import { code as functionsCode } from "@site/src/snippets/functions";
+import { code as hostingCode } from "@site/src/snippets/hosting";
+import { code as storageCode } from "@site/src/snippets/storage";
 import Datastore from "@site/static/icons/Datastore.svg";
 import Analytics from "@site/static/icons/analytics.svg";
 import Authentication from "@site/static/icons/authentication.svg";
 import Functions from "@site/static/icons/functions.svg";
 import Hosting from "@site/static/icons/hosting.svg";
 import Storage from "@site/static/icons/storage.svg";
+import CodeBlock from "@theme/CodeBlock";
 import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
-import CodeBlock from "@theme/CodeBlock";
-import { code as authCode } from "@site/src/snippets/auth";
-import { code as datastoreCode } from "@site/src/snippets/datastore";
-import { code as storageCode } from "@site/src/snippets/storage";
-import { code as hostingCode } from "@site/src/snippets/hosting";
-import { code as functionsCode } from "@site/src/snippets/functions";
-import { code as analyticsCode } from "@site/src/snippets/analytics";
 
 type Snippet =
   | "auth"
@@ -58,7 +58,7 @@ export default function Snippets(): JSX.Element {
         break;
       }
     }
-  }, [snippet])
+  }, [snippet]);
 
   return (
     <div className={styles.grid}>
