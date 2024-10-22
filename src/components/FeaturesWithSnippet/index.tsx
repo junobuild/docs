@@ -8,8 +8,11 @@ import Authentication from "@site/static/icons/authentication.svg";
 import Functions from "@site/static/icons/functions.svg";
 import Hosting from "@site/static/icons/hosting.svg";
 import Storage from "@site/static/icons/storage.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
+import CodeBlock from "@theme/CodeBlock";
+import { code as authCode } from "@site/src/snippets/auth";
+import { code as datastoreCode } from "@site/src/snippets/datastore";
 
 type Snippet =
   | "auth"
@@ -21,6 +24,23 @@ type Snippet =
 
 export default function FeaturesWithSnippet(): JSX.Element {
   const [snippet, setSnippet] = useState<Snippet>("auth");
+
+  const lang = "language-javascript";
+
+  const [selectedCode, setSelectedCode] = useState(authCode);
+
+  useEffect(() => {
+    switch (snippet) {
+      case "datastore": {
+        setSelectedCode(datastoreCode);
+        break;
+      }
+      default: {
+        setSelectedCode(authCode);
+        break;
+      }
+    }
+  }, [snippet])
 
   return (
     <div className={styles.grid}>
@@ -123,8 +143,7 @@ export default function FeaturesWithSnippet(): JSX.Element {
       </ul>
 
       <div className={styles.code}>
-        {snippet === "auth" && <Auth />}
-        {snippet === "datastore" && <DatastoreSnippet />}
+        <CodeBlock className={lang}>{selectedCode}</CodeBlock>
       </div>
     </div>
   );
