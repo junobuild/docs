@@ -1,0 +1,144 @@
+@use "../../mixins/grid";
+@use "../../mixins/fonts";
+@use "../../mixins/text";
+
+.grid {
+  display: flex;
+  flex-direction: column;
+
+  --grid-colum-gap: 2rem;
+  --grid-row-gap: 2rem;
+
+  column-gap: var(--grid-colum-gap);
+  row-gap: var(--grid-row-gap);
+
+  margin: 5rem 0 0;
+
+  @media screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 40% calc(60% - var(--grid-colum-gap));
+  }
+
+  @media screen and (min-width: 960px) {
+    --grid-colum-gap: 3rem;
+    grid-template-columns: 35% calc(65% - var(--grid-colum-gap));
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  border-width: 4px;
+  max-width: 100%;
+  white-space: pre-wrap;
+  text-align: left;
+
+  padding: 0.75rem 1rem;
+
+  position: relative;
+  transform-style: preserve-3d;
+
+  width: 100%;
+
+  pointer-events: none;
+
+  @media screen and (min-width: 768px) {
+    pointer-events: all;
+
+    span:last-of-type {
+      display: none;
+    }
+
+    &:not(.active) p {
+      display: block;
+      @include text.truncate;
+    }
+  }
+
+  &:before {
+    content: "";
+
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg) translateZ(-1px);
+
+    background: black;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    border-radius: 2px;
+
+    transition:
+      opacity 0.15s ease-out,
+      transform 0.15s ease-out,
+      width 0.15s ease-out;
+
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  html[data-theme="dark"] & {
+    &:before {
+      background: #7888ff;
+    }
+  }
+}
+
+.active {
+  @media screen and (min-width: 768px) {
+    box-shadow: none;
+    transform: translateX(3px) translateY(3px);
+
+    min-height: 176px;
+
+    background: #c9cfff;
+
+    &:hover,
+    &:focus {
+      background: #c9cfff;
+      border-color: black;
+      color: black;
+    }
+
+    &:before {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(50%, -50%) rotate(45deg) translateZ(-1px);
+    }
+
+    html[data-theme="dark"] & {
+      background: white;
+      color: black;
+
+      &:hover,
+      &:focus {
+        background: white;
+        border-color: #7888ff;
+      }
+    }
+
+    span:last-of-type {
+      display: block;
+    }
+  }
+}
+
+.code {
+  display: none;
+
+  padding: 1rem 0;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+}

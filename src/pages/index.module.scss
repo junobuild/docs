@@ -38,7 +38,3 @@
   @include grid.columns;
   --grid-gap: 3rem;
 }
-
-.grid_two_columns {
-  @include grid.two-columns;
-}

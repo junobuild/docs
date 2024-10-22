@@ -1,12 +1,4 @@
-@use "../../mixins/grid";
 @use "../../mixins/fonts";
-
-.grid {
-  @include grid.columns;
-  --grid-gap: 3rem;
-
-  margin: 5rem 0 0;
-}
 
 .sub {
   display: flex;
@@ -62,12 +54,6 @@
       text-align: inherit;
     }
   }
-}
-
-.link {
-  font-size: var(--ifm-h6-font-size);
-  font-weight: 600;
-  margin-top: auto;
 }
 
 .illustration {

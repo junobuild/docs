@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Datastore
 
-The Juno Datastore provides a convenient programming model for storing data on the blockchain, eliminating the need to write backend code. This allows for easy management of distributed, cross-user data.
+The Juno Datastore offers a simple key-value model, organized by collections containing documents, for storing data on the blockchain. It eliminates the need to write backend code, allowing easy management of distributed, cross-user data.
 
 :::note
 
