@@ -136,7 +136,8 @@
 .code {
   display: none;
 
-  padding: 1rem 0;
+  min-height: calc(100% + 5px);
+  padding: 2px 0;
 
   @media screen and (min-width: 768px) {
     display: block;
