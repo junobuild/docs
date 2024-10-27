@@ -96,12 +96,52 @@ const redirects: StorageConfigRedirect[] = [
     code: 301
   },
   {
-    source: "/docs/white-paper/tokenomics/**/*",
+    source: "/docs/category/tokenomics",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/purpose",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/outgoings",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/total-supply",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/token-distribution",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/voting-power",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/initial-sns-configuration",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/sns-swap-configuration",
     location: "/docs/white-paper/intro",
     code: 301
   },
   {
     source: "/docs/white-paper/legal-umbrella",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/contributors",
     location: "/docs/white-paper/intro",
     code: 301
   }
