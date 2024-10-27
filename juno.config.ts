@@ -88,6 +88,22 @@ const redirects: StorageConfigRedirect[] = [
       "/assets/files/juno-white-paper-47063bc5d28d71fe7534bfa249ce3f14.pdf",
     location: "/files/juno-white-paper.pdf",
     code: 301
+  },
+  // Pages redirected after SNS DAO failure.
+  {
+    source: "/files/juno-white-paper.pdf",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/**/*",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/legal-umbrella",
+    location: "/docs/white-paper/intro",
+    code: 301
   }
 ];
 
