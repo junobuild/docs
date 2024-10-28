@@ -10,6 +10,12 @@ image: https://images.unsplash.com/photo-1525011268546-bf3f9b007f6a?q=80&w=1000&
 
 ---
 
+:::info TL;DR
+
+I’ll be working 100% on Juno through 2025.
+
+:::
+
 Hey everyone 👋
 
 As you may know, I recently proposed transforming Juno into a Decentralized Autonomous Organization through an SNS swap. Unfortunately, it didn’t reach its funding goal, so Juno didn’t become a DAO.
