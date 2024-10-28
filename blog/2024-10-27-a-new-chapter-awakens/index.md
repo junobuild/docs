@@ -1,6 +1,7 @@
 ---
 slug: a-new-chapter-awakens
 title: A New Chapter Awakens
+description: I’ll be working full-time on Juno through 2025 thanks to support from the DFINITY foundation.
 authors: [peterpeterparker]
 tags: [announcement]
 image: https://juno.build/assets/images/a-new-chapter-awakens-0f18c7e6f98c4140606bd21789838ad2.png
