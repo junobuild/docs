@@ -3,7 +3,7 @@ slug: a-new-chapter-awakens
 title: A New Chapter Awakens
 authors: [peterpeterparker]
 tags: [announcement]
-image: https://images.unsplash.com/photo-1525011268546-bf3f9b007f6a?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+image: https://juno.build/assets/images/a-new-chapter-awakens-0f18c7e6f98c4140606bd21789838ad2.png
 ---
 
 ![A Futuristic cosmic scene with satellites orbiting a distant planet at sunrise, symbolizing renewal and progress in a minimalist space setting](./a-new-chapter-awakens.png)
