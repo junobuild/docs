@@ -18,6 +18,12 @@ export default function Testimonials(): JSX.Element {
       text: "Yes so easy build MVP with Juno 😍"
     },
     {
+      name: "GoldToothRichards",
+      twitter: "crabtr26",
+      img: "https://pbs.twimg.com/profile_images/1433815048758169601/5_nuQ72g_400x400.jpg",
+      text: "Juno is my favorite hosting service, Web3 or otherwise."
+    },
+    {
       name: "Sam-the-tutor™",
       twitter: "samthetutor2",
       img: "https://pbs.twimg.com/profile_images/1679878586369449984/qv_eQ3oX_400x400.jpg",
