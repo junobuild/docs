@@ -27,7 +27,7 @@ In the days that followed, I also received a few other options, including intere
 
 Then, something unexpected happened:
 
-The [DFINITY](https://dfinity.org/) foundation’s CTO, [Jan Camendish](https://x.com/JanCamenisch), reached out and proposed an alternative: funding the project through 2025.
+The [DFINITY](https://dfinity.org/) foundation’s CTO, [Jan Camenisch](https://x.com/JanCamenisch), reached out and proposed an alternative: funding the project through 2025.
 
 I took a few days to consider the offer and ultimately accepted.
 
