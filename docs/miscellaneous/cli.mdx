@@ -20,6 +20,14 @@ npm i -g @junobuild/cli
 
 Commands dedicated to configuring and managing deployed Satellites, Mission Control, and other modules.
 
+:::tip
+
+The CLI automatically runs in non-interactive mode if either a `JUNO_TOKEN` is set or the `--headless` argument is used.
+
+The former is set when you set up a [GitHub Actions](../guides/github-actions.md).
+
+:::
+
 ---
 
 ### Login
@@ -137,6 +145,22 @@ import Upgrade from "./cli/upgrade.md";
 
 :::
 
+The CLI automatically runs in non-interactive mode if either a JUNO_TOKEN is set or the --headless argument is used.
+
+---
+
+## Development
+
+import Dev from "./cli/dev.md";
+
+<Dev />
+
+:::tip
+
+Find more about local development and extending features with serverless functions in the related [guide](../guides/local-development.md).
+
+:::
+
 ---
 
 ## Others
@@ -149,7 +173,7 @@ Additional commands for managing and interacting with the CLI environment.
 
 import Open from "./cli/open.md";
 
-## <Open />
+<Open />
 
 ### Use
 
