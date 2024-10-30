@@ -50,6 +50,6 @@ Juno provides a **GitHub Action** that automates the deployment of your dapp to 
 
 :::
 
-[CLI]: ../miscellaneous/cli.md
+[CLI]: ../miscellaneous/cli.mdx
 [satellite]: ../terminology.md#satellite
 [console]: ../terminology.md#console

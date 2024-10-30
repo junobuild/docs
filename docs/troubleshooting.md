@@ -26,4 +26,4 @@ When encountering the following error after running `juno deploy`, it is likely 
 
 Make sure these two requirements are correctly met before restarting the command line.
 
-[CLI]: miscellaneous/cli.md
+[CLI]: miscellaneous/cli.mdx
