@@ -1,0 +1,179 @@
+---
+sidebar_position: 1
+---
+
+# CLI
+
+The Juno CLI provides a variety of tools for managing and deploying projects.
+
+## Installing the Juno CLI
+
+To download and install Juno CLI, run the following command:
+
+```bash
+npm i -g @junobuild/cli
+```
+
+---
+
+## Administration
+
+Commands dedicated to configuring and managing deployed Satellites, Mission Control, and other modules.
+
+---
+
+### Login
+
+import Login from "./cli/login.md";
+
+:::important
+
+Authenticating your terminal saves sensitive information on your device. We recommend setting up a password to encrypt this file when prompted.
+
+:::
+
+<Login />
+
+:::note
+
+The authentication process requires a browser.
+
+If you've previously authenticated your terminal and decide to log in again, the CLI will prompt you about reusing your existing identity.
+
+This allows you to reuse your authorization, especially when creating new segments like satellites or orbiters.
+
+:::
+
+#### How does it work?
+
+A new [principal] is generated on your local machine and added as a [controller] of the selected segments. This principal is then used to authenticate any CLI calls made from your terminal to your satellites, mission controls or other modules.
+
+The key is saved in the OS-specific user's variables path.
+
+| OS      | Path                                                                                                 |
+| ------- | ---------------------------------------------------------------------------------------------------- |
+| Mac     | `~/Library/Preferences/juno-nodejs`                                                                  |
+| Windows | `%APPDATA%\juno-nodejs\Config` (for example, `C:\Users\USERNAME\AppData\Roaming\juno-nodejs\Config`) |
+| Linux   | `~/.config/juno-nodejs` (or `$XDG_CONFIG_HOME/juno-nodejs`)                                          |
+
+---
+
+### Logout
+
+:::caution
+
+This action currently does not remove the controllers from satellites and/or mission control and/or orbiter. It only logs out your local machine by removing the locally saved key (principal).
+
+:::
+
+import Logout from "./cli/logout.md";
+
+<Logout />
+
+---
+
+### Init
+
+import Init from "./cli/init.md";
+
+<Init />
+
+The `juno init` command creates a `juno.config` file in the root directory of your project.
+
+Depending on your project, it will either create a TypeScript, JavaScript, or JSON file.
+
+:::tip
+
+We recommend using the first two options because they can leverage your IDE's IntelliSense with type hints.
+
+:::
+
+This file is necessary for deploying, configuring, or running any other CLI commands for your app.
+
+Read more about the [configuration](./configuration.md).
+
+---
+
+### Deploy
+
+import Deploy from "./cli/deploy.md";
+
+<Deploy />
+
+---
+
+### Config
+
+import Config from "./cli/config.md";
+
+<Config />
+
+---
+
+### Clear
+
+import Clear from "./cli/clear.md";
+
+<Clear />
+
+:::note
+
+This command removes existing files from the satellite and only affects the app assets. The user's uploaded files will not be cleared as the app is deployed to a reserved collection, `#dapp`.
+
+:::
+
+---
+
+### Upgrade
+
+import Upgrade from "./cli/upgrade.md";
+
+<Upgrade />
+
+:::important
+
+- We recommend that you stay current with the Juno releases, as some features may not perform correctly in the [console](../terminology.md#console) if your smart contracts are outdated.
+- Upgrading requires a stable internet connection for a successful process.
+
+:::
+
+---
+
+## Others
+
+Additional commands for managing and interacting with the CLI environment.
+
+---
+
+### Open
+
+import Open from "./cli/open.md";
+
+## <Open />
+
+### Use
+
+import Use from "./cli/use.md";
+
+<Use />
+
+---
+
+### Version
+
+import Version from "./cli/version.md";
+
+<Version />
+
+---
+
+### Who am I?
+
+import WhoAmI from "./cli/whoami.md";
+
+<WhoAmI />
+
+[satellite]: ../terminology.md#satellite
+[mission control]: ../terminology.md#mission-control
+[principal]: ../terminology.md#principal
+[controller]: ../terminology.md#controller

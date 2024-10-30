@@ -277,7 +277,7 @@ await initOrbiter({
 });
 ```
 
-[CLI]: ../miscellaneous/cli.md
+[CLI]: ../miscellaneous/cli.mdx
 [satellites]: ../terminology.md#satellite
 [orbiter]: ../terminology.md#orbiter
 [controllers]: ../terminology.md#controller

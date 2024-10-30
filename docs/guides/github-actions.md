@@ -92,6 +92,6 @@ on:
 
 :::
 
-[CLI]: ../miscellaneous/cli.md
+[CLI]: ../miscellaneous/cli.mdx
 [satellite]: ../terminology.md#satellite
 [cycles]: ../terminology.md#cycles
