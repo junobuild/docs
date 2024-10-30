@@ -1,9 +1,1 @@
-Generate an authentication for use in non-interactive environments.
-
-```bash
-Usage: juno login [options]
-
-Options:
-  -b, --browser         A particular browser to open. supported: chrome|firefox|edge.
-  -h, --help            Output usage information.
-```
+[?25l[2K[1G? Do you want to encrypt the CLI configuration file for added security? › no / yes

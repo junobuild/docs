@@ -1,10 +1,1 @@
-Switch between multiple profiles.
-
-```bash
-Usage: juno use [options]
-
-Options:
-  -p, --profile         The profile that should be use.
-  -l, --list            What are the available profiles.
-  -h, --help            Output usage information.
-```
+[?25l[2K[1G? Do you want to encrypt the CLI configuration file for added security? › no / yes

@@ -1,8 +1,1 @@
-Log out of the current device. ⚠️ This action does not remove controllers from the module.
-
-```bash
-Usage: juno logout [options]
-
-Options:
-  -h, --help            Output usage information.
-```
+[?25l[2K[1G? Do you want to encrypt the CLI configuration file for added security? › no / yes
