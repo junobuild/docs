@@ -17,6 +17,7 @@
     "dev": "npm run start",
     "start": "docusaurus start",
     "build": "docusaurus build",
+    "docs:cli": "./cli-to-md.sh",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
