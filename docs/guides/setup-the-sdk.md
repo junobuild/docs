@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 10
 ---
 
-# Setup
+# Setup the SDK
 
 If you intend to use Juno solely for [hosting](../build/hosting.md) purposes, you may skip the following steps, which are necessary only for implementing advanced features such as [authentication](../build/authentication.md), [datastore](../build/datastore.md) or [storage](../build/storage.md).
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 description: "Learn how to create a satellite with Juno in this comprehensive guide. Perfect for developers integrating Juno into their projects."
 keywords:
   [
@@ -35,6 +35,6 @@ In the creation wizard, there are advanced options available for more experience
 
 If you wish to have more control over where your satellite is deployed, you can select the [subnet] for deployment during the creation process.
 
-[satellite]: ../terminology.md#satellite
-[Internet Identity]: ../terminology.md#internet-identity
-[subnet]: ../terminology.md#subnet
+[satellite]: terminology.md#satellite
+[Internet Identity]: terminology.md#internet-identity
+[subnet]: terminology.md#subnet

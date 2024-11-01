@@ -5,7 +5,7 @@ description: Explore Juno's smart contracts, serverless functions, and hosting c
 
 # Getting Started
 
-Start your Juno journey by launching your first **[Satellite](/docs/add-juno-to-an-app/create-a-satellite.md)** – a feature-packed smart contract designed for your project.
+Start your Juno journey by launching your first **[Satellite](/docs/create-a-satellite.md)** – a feature-packed smart contract designed for your project.
 
 A Satellite is your project’s all-in-one container, **giving you full control 🔐** over authentication, a key-pair datastore (akin to a simple "database"), file storage, serverless functions, and hosting.
 
@@ -15,7 +15,7 @@ It’s everything you need to run your app – no external resources required.
 
 ## Integrating Juno into an Existing App
 
-After creating your Satellite, you're ready to put it to use. Follow our [step-by-step guidance](./add-juno-to-an-app/setup) to install the SDK and initialize your app, connecting it to your container.
+After creating your Satellite, you're ready to put it to use. Follow our [step-by-step guidance](guides/setup-the-sdk) to install the SDK and initialize your app, connecting it to your container.
 
 ---
 

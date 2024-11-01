@@ -50,7 +50,7 @@ In contrast, Juno takes a different approach. Developers pre-charge their smart 
 
 ### Do you have a library for [some other language]?
 
-We officially support [JavaScript](./add-juno-to-an-app/setup).
+We officially support [JavaScript](guides/setup-the-sdk).
 
 Community-supported libraries and contributions are warmly welcomed.
 

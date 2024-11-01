@@ -41,6 +41,26 @@ const redirects: StorageConfigRedirect[] = [
     code: 301
   },
   {
+    source: "/docs/add-juno-to-an-app/deploy",
+    location: "/docs/category/guides-and-examples",
+    code: 301
+  },
+  {
+    source: "/docs/category/add-juno-to-an-app",
+    location: "/docs/category/guides-and-examples",
+    code: 301
+  },
+  {
+    source: "/docs/add-juno-to-an-app/create-a-satellite",
+    location: "/docs/create-a-satellite",
+    code: 301
+  },
+  {
+    source: "/docs/add-juno-to-an-app/setup",
+    location: "/docs/guides/setup-the-sdk",
+    code: 301
+  },
+  {
     source: "/docs/miscellaneous/sdk-usage-in-anodejs-context",
     location: "/docs/guides/nodejs",
     code: 301

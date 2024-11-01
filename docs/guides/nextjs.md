@@ -51,7 +51,7 @@ npm i @junobuild/core-peer
 
 To use production, set up a satellite and new collection:
 
-- [Create a new satellite](../add-juno-to-an-app/create-a-satellite.md) in the Juno's console.
+- [Create a new satellite](../create-a-satellite.md) in the Juno's console.
 - After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
 
 #### Local Development Path
@@ -199,7 +199,7 @@ module.exports = nextConfig;
 
 ### 2. Set up a satellite
 
-If you haven't created a satellite yet, go ahead and [create](../add-juno-to-an-app/create-a-satellite.md) a new one in the Juno's console.
+If you haven't created a satellite yet, go ahead and [create](../create-a-satellite.md) a new one in the Juno's console.
 
 ### 3. Install Juno CLI and log in
 
