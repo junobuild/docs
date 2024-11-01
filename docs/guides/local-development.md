@@ -2,7 +2,7 @@
 id: local-development
 title: Local Development
 description: Set-up the local emulator with Docker
-sidebar_position: 9
+sidebar_position: 10
 ---
 
 # Local Development
