@@ -90,6 +90,13 @@ const config: Config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
+      metadata: [
+        {
+          name: "keywords",
+          content:
+            "Web3, blockchain platform, decentralized applications, Web3 development, passwordless authentication, datastore, file storage, hosting, serverless functions, analytics, open source"
+        }
+      ],
       image: "img/social_image_v6.jpg",
       navbar: {
         logo: {
@@ -103,7 +110,7 @@ const config: Config = {
             type: "doc",
             docId: "intro",
             position: "left",
-            label: "Docs"
+            label: "Documentation"
           },
           {
             type: "docSidebar",
@@ -162,7 +169,7 @@ const config: Config = {
         style: "light",
         links: [
           {
-            title: "Docs",
+            title: "Documentation",
             items: [
               {
                 label: "Getting started",
