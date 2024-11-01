@@ -1,5 +1,15 @@
 ---
 sidebar_position: 6
+description: Juno Analytics offers a privacy-focused, cookie-free, open-source web3 analytics solution. Ensure user anonymity while gaining valuable insights.
+keywords:
+  [
+    Analytics,
+    Juno Analytics,
+    Web3 Analytics,
+    Privacy-Focused Analytics,
+    Cookie-Free Analytics,
+    Open-Source Analytics
+  ]
 ---
 
 # Analytics

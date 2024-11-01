@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+description: Juno Storage offers a powerful and cost-effective object storage solution on the blockchain for app developers. Learn how to store and serve user-generated content securely.
 ---
 
 # Storage

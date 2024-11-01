@@ -1,5 +1,8 @@
 ---
 title: Validation
+description: Learn about our validation metrics and developer engagement.
+keywords:
+  [open source, development platform, validation metrics, developer engagement]
 ---
 
 # Validation and Metrics

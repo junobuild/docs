@@ -1,3 +1,7 @@
+---
+description: Discover how Juno's infrastructure leverages Web3 technologies to create a secure, scalable environment for decentralized applications.
+---
+
 # Infrastructure
 
 Juno's infrastructure is designed to harness the full potential of Web3 technologies, creating a robust, secure, and scalable environment for developers to build decentralized applications.

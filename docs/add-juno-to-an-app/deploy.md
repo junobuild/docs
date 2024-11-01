@@ -1,5 +1,14 @@
 ---
 sidebar_position: 3
+description: Learn how to deploy your app using Juno with our comprehensive guide. Follow these steps to ensure a smooth deployment process.
+keywords:
+  [
+    deploy app with Juno,
+    Juno deployment guide,
+    how to deploy app,
+    Juno CLI,
+    Juno satellite
+  ]
 ---
 
 # Deploy
@@ -12,7 +21,7 @@ Deploying your app with Juno is straightforward, just like deploying any modern 
 
 :::
 
-## Build your app
+## Build your App
 
 Before proceeding, ensure that your app is prepared and built for production. Typically, this involves the following steps:
 
@@ -20,7 +29,7 @@ Before proceeding, ensure that your app is prepared and built for production. Ty
 npm run build
 ```
 
-## Deploy your app
+## Deploy your App
 
 To install the [CLI] if you haven't done so already:
 

@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: Explore Juno's smart contracts, serverless functions, and hosting capabilities. Start building with Juno today!
 ---
 
 # Getting Started

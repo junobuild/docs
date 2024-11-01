@@ -1,7 +1,8 @@
 ---
 id: astro
 title: Astro
-description: Use Juno with Astro
+description: Learn how to integrate Juno with Astro for seamless development. Follow our quickstart guide and hosting instructions.
+keywords: [Astro, integrate Juno, quickstart, hosting, CLI, SDK]
 toc_min_heading_level: 2
 toc_max_heading_level: 2
 sidebar_position: 6

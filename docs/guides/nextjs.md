@@ -1,7 +1,8 @@
 ---
 id: nextjs
 title: Next.js
-description: Use Juno with Next.js
+description: Learn how to integrate Juno with Next.js. Follow our quickstart guide and examples to get started.
+keywords: [Juno, Next.js, integration, quickstart, guide, examples, hosting]
 toc_min_heading_level: 2
 toc_max_heading_level: 2
 sidebar_position: 1
