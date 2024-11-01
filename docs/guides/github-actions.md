@@ -1,7 +1,7 @@
 ---
 id: github-actions
 title: GitHub Actions
-description: Continuous integration and deployment
+description: Learn how to use GitHub Actions for continuous integration and deployment.
 sidebar_position: 8
 ---
 
@@ -11,7 +11,7 @@ Using any features offered by the Juno [CLI] within GitHub Actions is possible.
 
 ## Using GitHub Actions to Deploy Your Decentralized App
 
-This documentation will guide you through the process of deploying your decentralized app to Juno satellites using the [junobuild/juno-action](https://github.com/junobuild/juno-action) GitHub Action.
+This guide will walk you through deploying your decentralized app to Juno satellites using the [junobuild/juno-action](https://github.com/junobuild/juno-action) GitHub Action.
 
 ### Adding a Secret Token for Automation
 
@@ -29,7 +29,7 @@ Follow the steps below to generate a new controller:
 
 :::info
 
-Although it is possible to generate a controller with administrative permission, we strongly recommend using the "Read-write" scope. This ensures that GitHub does not have the capability to operate your smart contract, such as stopping or deleting your satellite. By opting for the "Read-write" scope, you maintain full control over your decentralized app and minimize the risk of unwanted interference from GitHub.
+While you can generate a controller with administrative permission, we strongly recommend using the "Read-write" scope. This ensures that GitHub does not have the capability to operate your smart contract, such as stopping or deleting your satellite. By opting for the "Read-write" scope, you maintain full control over your decentralized app and minimize the risk of unwanted interference from GitHub.
 
 :::
 

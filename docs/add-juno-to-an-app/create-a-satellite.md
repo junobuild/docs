@@ -1,5 +1,16 @@
 ---
 sidebar_position: 1
+description: "Learn how to create a satellite with Juno in this comprehensive guide. Perfect for developers integrating Juno into their projects."
+keywords:
+  [
+    create a satellite,
+    create a canister,
+    create a smart contract,
+    Juno,
+    Juno integration,
+    satellite smart contract,
+    Internet Identity
+  ]
 ---
 
 # Create a Satellite
@@ -12,7 +23,7 @@ Before integrating Juno into your project, you need to create a [satellite].
 4. Confirm with **Create a Satellite.**
 5. The platform will then create your satellite smart contract and provision its resources.
 6. Once the process is complete, click **Continue** to access the overview page.
-7. You are set. You can start building 🚀
+7. You are all set! Start Building now 🚀
 
 ---
 

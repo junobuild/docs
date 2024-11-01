@@ -139,7 +139,7 @@ const config: Config = {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Start building
+                Start Building
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

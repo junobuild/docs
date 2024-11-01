@@ -1,12 +1,22 @@
 ---
 title: Architecture
+description: Explore the technical architecture of Juno, a decentralized development platform providing developers with full control over their data and applications.
+keywords:
+  [
+    Juno,
+    decentralized development,
+    smart contracts,
+    developer tools,
+    blockchain architecture,
+    canisters
+  ]
 ---
 
 # Technical Architecture
 
 The architecture of Juno is designed to give developers complete control over their data and applications, ensuring a decentralized and secure development environment. It continuously evolves to meet the needs of developers and to incorporate the latest advancements.
 
-![A schema representing Juno architecture and control flow providing developer full control](../img/architecture.png)
+![Juno architecture schema showing developer control flow](../img/architecture.png)
 
 ---
 

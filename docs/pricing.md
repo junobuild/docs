@@ -1,5 +1,18 @@
 ---
 sidebar_position: 12
+description: Discover Juno's pricing structure, including operating costs, transaction fees, and cost examples. Learn how to manage and optimize your expenses.
+keywords:
+  [
+    Juno pricing,
+    operating costs,
+    transaction fees,
+    ICP,
+    cycles,
+    smart contract costs,
+    storage costs,
+    deployment costs,
+    data costs
+  ]
 ---
 
 # Pricing

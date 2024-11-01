@@ -15,7 +15,7 @@ export default function Showcase({ dapps }): JSX.Element {
         <h1 className={styles.title}>Showcase</h1>
 
         <p className={styles.text}>
-          List of dApps devs are building with Juno.
+          Explore the list of dApps devs are building with Juno.
         </p>
 
         <Link

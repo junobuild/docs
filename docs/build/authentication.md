@@ -1,5 +1,14 @@
 ---
 sidebar_position: 1
+description: Learn how to securely identify users anonymously and save their data on the blockchain using Juno's authentication services.
+keywords:
+  [
+    authentication,
+    secure user identification,
+    blockchain authentication,
+    Internet Identity,
+    NFID
+  ]
 ---
 
 # Authentication

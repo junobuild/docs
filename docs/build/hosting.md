@@ -1,5 +1,7 @@
 ---
 sidebar_position: 4
+description: "Discover Juno Hosting: Fast, Secure, Blockchain-Powered Web Hosting. Deploy with ease and custom domains."
+keywords: [Fast hosting, Secure hosting, Blockchain hosting, Custom domains]
 ---
 
 # Hosting

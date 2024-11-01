@@ -1,3 +1,16 @@
+---
+description: Juno is an open-source blockchain platform. Explore our white paper, repositories, and more.
+keywords:
+  [
+    open source,
+    blockchain,
+    blockchain platform,
+    cloud platform,
+    serverless,
+    GitHub repositories
+  ]
+---
+
 # Open Source
 
 Juno is open source. The entire codebase is available on GitHub, and the repositories can be accessed via the following links:

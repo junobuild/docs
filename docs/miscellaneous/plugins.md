@@ -1,5 +1,16 @@
 ---
 sidebar_position: 4
+description: Learn how to use Juno Build plugins to optimize your development workflow. Detailed guides and examples included.
+keywords:
+  [
+    build plugins,
+    development workflow,
+    plugin installation,
+    plugin configuration,
+    plugin examples,
+    nextjs,
+    vitejs
+  ]
 ---
 
 # Plugins
