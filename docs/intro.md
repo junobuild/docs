@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 description: Explore Juno's smart contracts, serverless functions, and hosting capabilities. Start building with Juno today!
 ---
 
@@ -15,7 +14,7 @@ It’s everything you need to run your app – no external resources required.
 
 ## Integrating Juno into an Existing App
 
-After creating your Satellite, you're ready to put it to use. Follow our [step-by-step guidance](guides/setup-the-sdk) to install the SDK and initialize your app, connecting it to your container.
+After creating your Satellite, you're ready to put it to use. Follow our [step-by-step guidance](setup-the-sdk) to install the SDK and initialize your app, connecting it to your container.
 
 ---
 

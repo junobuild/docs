@@ -1,0 +1,84 @@
+---
+description: Learn how to set up the Juno SDK in your web application to access advanced features, including authentication, datastore, and storage options. This guide provides step-by-step instructions for configuring and initializing Juno, with options for both automated and manual setup.
+keyowrds:
+  [
+    Juno SDK setup,
+    Juno integration,
+    web app features,
+    authentication,
+    datastore,
+    storage,
+    satellite configuration,
+    Next.js plugin,
+    Vite plugin,
+    Juno hosting,
+    Juno deployment,
+    initialize Juno
+  ]
+---
+
+# Setup the SDK
+
+To add rich features to your web app, follow these steps to connect Juno and enable advanced functionality.
+
+:::info
+
+If you intend to use Juno solely for **[hosting](build/hosting.md)** purposes, you may skip the following steps.
+
+:::
+
+---
+
+## Initialization
+
+1. Install the Juno SDK using npm (or your preferred package manager):
+
+```bash
+npm i @junobuild/core
+```
+
+**Note:** If you’re using a framework like SvelteKit or Next.js, you might need to install the version with peer dependencies instead:
+
+```bash
+npm i @junobuild/core-peer
+```
+
+2. Initialize your satellite in your web app:
+
+```typescript
+import { initSatellite } from "@junobuild/core";
+
+await initSatellite();
+```
+
+It is generally recommended to initialize globally the library at the top of your application.
+
+---
+
+## Configuration
+
+To connect your application with your smart contract (your Satellite) and other necessary resources, some configuration is required. This setup ensures your application can securely access and initialize the correct Satellite instance, environment variables, and key settings.
+
+For most developers, the [Next.js](miscellaneous/plugins.md#nextjs-plugin) or [Vite](miscellaneous/plugins.md#vite-plugin) plugins streamline this process by managing environment variables automatically. However, if you’re not using one of these plugins, a bit of manual configuration is needed.
+
+### Automated
+
+When using the plugins, the configuration handled through a `juno.config` file (TypeScript, JavaScript, or JSON) at your project root is automatically injected within your application. The plugins read the file and automatically load the required information when you build and run your dApp.
+
+Juno’s provided templates come preconfigured with these plugins, so you can quickly get started. For details on setting up the plugin yourself, refer to the [Next.js](miscellaneous/plugins.md#nextjs-plugin) or [Vite](miscellaneous/plugins.md#vite-plugin) documentation.
+
+### Manually configure your application
+
+If you aren’t using a plugin, you can still configure your application by providing the `satelliteId` directly. In this case, add or update the following in your configuration file:
+
+```typescript
+import { initSatellite } from "@junobuild/core";
+
+await initSatellite({
+  satelliteId: "your-actual-satellite-id"
+});
+```
+
+Replace `your-actual-satellite-id` with your actual ID, available in the [console](https://console.juno.build) on the overview page.
+
+[satellite]: terminology.md#satellite

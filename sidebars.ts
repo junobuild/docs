@@ -4,6 +4,7 @@ const sidebars: SidebarsConfig = {
   docs: [
     "intro",
     "create-a-satellite",
+    "setup-the-sdk",
     {
       type: "category",
       label: "Guides and Examples",

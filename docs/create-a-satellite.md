@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 description: "Learn how to create a satellite with Juno in this comprehensive guide. Perfect for developers integrating Juno into their projects."
 keywords:
   [
