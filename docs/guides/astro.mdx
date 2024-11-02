@@ -14,27 +14,11 @@ import Link from "@docusaurus/Link";
 
 # Use Juno with Astro
 
-Easily set up and deploy your Astro project with Juno. What would you like to do?
+Easily set up and deploy your Astro project with Juno.
 
-<div style={{display: "flex", gap: "1rem", justifyContent: "center", margin: "2rem 0 2.45rem"}}>
-  <Link
-    className="button button--hero"
-    to="#build"
-  >Build</Link>
+import Choice from "./components/choice.mdx";
 
-  <Link
-    className="button button--juno"
-    to="#hosting"
-  >Hosting</Link>
-</div>
-
-:::note[Options]
-
-Choose **Build** if you want to build a full featured rich application.
-
-Choose **Hosting** if you just want to deploy a website.
-
-:::
+<Choice />
 
 ---
 
@@ -48,15 +32,13 @@ You can either start a new project or add Juno to an existing app.
 
 #### Path A: Start a new project with a template
 
-1. Create a new project using the Juno quickstart CLI:
+Create a new project using the Juno quickstart CLI:
 
 ```bash
-npm create juno@latest
+npm create juno@latest -- --template astro-starter
 ```
 
 #### Path B: Integrate Juno into an existing Astro app
-
-1. Add the Juno SDK:
 
 Navigate to your existing app directory and install Juno SDK:
 
@@ -168,11 +150,9 @@ Add an `insert` function to persist a document.
 
 Start the app, go to [http://localhost:4321/](http://localhost:4321/) in a browser, click "Insert a document", and you should see the data successfully persisted in your satellite on the blockchain.
 
-:::info[What's Next: Going Live]
+import WhatsNext from "./components/whats-next.md";
 
-If you used the local development path, make sure to configure your collections in the Juno console for production. Once you're ready to deploy your app for others to access, continue to the [Deployment guide](#deployment).
-
-:::
+<WhatsNext />
 
 ---
 
@@ -194,26 +174,8 @@ Once you’re set up, continue to the [Deployment](#deployment) section below.
 
 Use this guide to deploy your project to production — directly to a smart contract on mainnet.
 
-### 1. Set up a satellite
+import Deploy from "./components/deploy.mdx";
 
-If you haven't created a satellite yet, go ahead and [create](../create-a-satellite.md) a new one in the Juno's console.
-
-### 2. Deploy
-
-Once your satellite is up and running, you can proceed with uploading your app to your smart contract.
-
-You can either automate your deployment with GitHub Actions (recommended) or deploy manually from your device. Choose your method:
-
-<div style={{display: "flex", gap: "1rem", justifyContent: "center", margin: "2rem 0 2.45rem"}}>
-  <Link
-    className="button button--hero"
-    to="/docs/guides/github-actions#using-github-actions-to-deploy-your-decentralized-app"
-  >GitHub Actions</Link>
-
-  <Link
-    className="button button--juno"
-    to="/docs/guides/manual-deployment"
-  >Manual</Link>
-</div>
+<Deploy index={1} />
 
 [satellite]: ../terminology.md#satellite

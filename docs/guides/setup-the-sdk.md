@@ -1,7 +1,21 @@
 ---
 sidebar_position: 10
 description: Learn how to set up the Juno SDK in your web application to access advanced features, including authentication, datastore, and storage options. This guide provides step-by-step instructions for configuring and initializing Juno, with options for both automated and manual setup.
-keyowrds: [Juno SDK setup, Juno integration, web app features, authentication, datastore, storage, satellite configuration, Next.js plugin, Vite plugin, Juno hosting, Juno deployment, initialize Juno]
+keyowrds:
+  [
+    Juno SDK setup,
+    Juno integration,
+    web app features,
+    authentication,
+    datastore,
+    storage,
+    satellite configuration,
+    Next.js plugin,
+    Vite plugin,
+    Juno hosting,
+    Juno deployment,
+    initialize Juno
+  ]
 ---
 
 # Setup the SDK
