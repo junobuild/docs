@@ -46,7 +46,7 @@ In addition to unveiling this new feature, we're also excited to introduce a bra
 
 :::note
 
-Make sure you have Juno's [CLI](/docs/miscellaneous/cli#installation) tool installed on your machine.
+Make sure you have Juno's [CLI](/docs/miscellaneous/cli#installing-the-juno-cli) tool installed on your machine.
 
 :::
 

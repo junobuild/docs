@@ -1,0 +1,25 @@
+import Link from "@docusaurus/Link";
+
+export const index = 1;
+
+### {props.index}. Set up a satellite
+
+If you haven't created a satellite yet, go ahead and [create](../../create-a-satellite.md) a new one in the Juno's console.
+
+### {props.index + 1}. Deploy
+
+Once your satellite is up and running, you can proceed with uploading your app to your smart contract.
+
+You can either automate your deployment with GitHub Actions (recommended) or deploy manually from your device. Choose your method:
+
+<div style={{display: "flex", gap: "1rem", justifyContent: "center", margin: "2rem 0 2.45rem"}}>
+  <Link
+    className="button button--hero"
+    to="/docs/guides/github-actions#using-github-actions-to-deploy-your-decentralized-app"
+  >GitHub Actions</Link>
+
+  <Link
+    className="button button--juno"
+    to="/docs/guides/manual-deployment"
+  >Manual</Link>
+</div>

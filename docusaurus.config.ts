@@ -66,7 +66,7 @@ const config: Config = {
         docs: {
           sidebarPath: "sidebars.ts",
           editUrl: "https://github.com/junobuild/docs/edit/main/",
-          exclude: ["**/miscellaneous/cli/**"]
+          exclude: ["**/miscellaneous/cli/**", "**/guides/components/**"]
         },
         blog: {
           showReadingTime: true,
@@ -177,7 +177,7 @@ const config: Config = {
               },
               {
                 label: "Add Juno to an app",
-                to: "/docs/add-juno-to-an-app/create-a-satellite"
+                to: "/docs/create-a-satellite"
               },
               {
                 label: "Guides and examples",

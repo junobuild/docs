@@ -32,12 +32,32 @@ const redirects: StorageConfigRedirect[] = [
   },
   {
     source: "/docs/add-juno-to-an-app/install-the-sdk-and-initialize-juno",
-    location: "/docs/add-juno-to-an-app/setup",
+    location: "/docs/add-juno-to-an-app/setup-the-sdk",
     code: 301
   },
   {
     source: "/docs/add-juno-to-an-app/deploy-your-app",
     location: "/docs/add-juno-to-an-app/deploy",
+    code: 301
+  },
+  {
+    source: "/docs/add-juno-to-an-app/deploy",
+    location: "/docs/category/guides-and-examples",
+    code: 301
+  },
+  {
+    source: "/docs/category/add-juno-to-an-app",
+    location: "/docs/category/guides-and-examples",
+    code: 301
+  },
+  {
+    source: "/docs/add-juno-to-an-app/create-a-satellite",
+    location: "/docs/create-a-satellite",
+    code: 301
+  },
+  {
+    source: "/docs/add-juno-to-an-app/setup",
+    location: "/docs/setup-the-sdk",
     code: 301
   },
   {

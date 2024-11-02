@@ -25,7 +25,7 @@ Learn how to set up your environment to develop additional features for a [satel
 
 :::note
 
-Make sure you have Juno's [CLI](/docs/miscellaneous/cli#installation) tool installed on your machine.
+Make sure you have Juno's [CLI](/docs/miscellaneous/cli#installing-the-juno-cli) tool installed on your machine.
 
 :::
 

@@ -9,6 +9,8 @@ sidebar_position: 8
 
 Using any features offered by the Juno [CLI] within GitHub Actions is possible.
 
+---
+
 ## Using GitHub Actions to Deploy Your Decentralized App
 
 This guide will walk you through deploying your decentralized app to Juno satellites using the [junobuild/juno-action](https://github.com/junobuild/juno-action) GitHub Action.

@@ -5,37 +5,47 @@ description: Use Juno with React
 toc_min_heading_level: 2
 toc_max_heading_level: 2
 sidebar_position: 2
+pagination_next: null
+pagination_prev: null
 ---
 
 # Use Juno with React
 
 Explore how to create a Juno project developed with React.
 
-## Table of contents
+import Choice from "./components/choice.mdx";
 
-- [Quickstart](#quickstart)
-- [Note-taking app example](#note-taking-app-example)
-- [Hosting](#hosting)
+<Choice />
 
 ---
 
-## Quickstart
+## Build
+
+import Build from "./components/build.mdx";
+
+<Build />
+
+---
+
+### Step-by-step
 
 This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing React app.
 
 Additionally, it covers how to develop against a production environment or locally.
 
-### Path A: Start a new project with a template
+#### 1. Choose Your Integration Path
 
-1. Create a new project using the Juno quickstart CLI:
+You can either start a new project or add Juno to an existing app.
+
+##### Path A: Start a new project with a template
+
+Create a new project using the Juno quickstart CLI:
 
 ```bash
-npm create juno@latest
+npm create juno@latest -- --template react-starter
 ```
 
-### Path B: Integrate Juno into an existing React app
-
-1. Add the Juno SDK:
+##### Path B: Integrate Juno into an existing React app
 
 Navigate to your existing app directory and install Juno SDK:
 
@@ -44,16 +54,16 @@ cd your-existing-app
 npm i @junobuild/core
 ```
 
-### 2. Configure Datastore
+#### 2. Configure Datastore
 
-#### Production Path
+##### Production Path
 
 To use production, set up a satellite and new collection:
 
-- [Create a new satellite](../add-juno-to-an-app/create-a-satellite.md) in the Juno's console.
+- [Create a new satellite](../create-a-satellite.md) in the Juno's console.
 - After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
 
-#### Local Development Path
+##### Local Development Path
 
 To develop with the local emulator, add a collection named `demo` within the `juno.dev.config.js` file.
 
@@ -90,7 +100,7 @@ juno dev start
 npm i -g @junobuild/cli
 ```
 
-### 3. Insert data from your app
+#### 3. Insert data from your app
 
 In `App.jsx`, initialize the library with the satellite ID you have created for production, or use `jx5yt-yyaaa-aaaal-abzbq-cai` if you are developing locally with the emulator.
 
@@ -132,13 +142,17 @@ function App() {
 export default App;
 ```
 
-### 5. Start the app
+#### 4. Start the app
 
 Start the app and go to [http://localhost:5173](http://localhost:5173) in a browser. Click "Insert a document" to see the data successfully persisted in your satellite on the blockchain.
 
+import WhatsNext from "./components/whats-next.md";
+
+<WhatsNext />
+
 ---
 
-## Note-taking app example
+### Quickstart
 
 This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
 
@@ -151,70 +165,48 @@ Using the Juno CLI, you can easily scaffold this app. To start, run the appropri
 NPM:
 
 ```bash
-npm create juno@latest
+npm create juno@latest -- --template react-example
 ```
 
 Yarn:
 
 ```bash
-yarn create juno
+yarn create juno -- --template react-example
 ```
 
 PNPM:
 
 ```bash
-pnpm create juno
+pnpm create juno -- --template react-example
 ```
 
 <br />
-Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
+Follow the CLI prompts to choose the note-taking app example and select local
+development. The CLI will manage all configurations and dependencies, allowing
+you to focus on exploring and customizing your app right away.
 
 ---
 
 ## Hosting
 
-If you're looking to deploy your existing app or website developed with React and Juno, this guide is for you.
+If you already have an [React](https://react.dev/) app, you're all set — proceed to the [Deployment](#deployment) section to upload your project to production.
 
-### 1. Set up a satellite
-
-If you haven't created a satellite yet, go ahead and [create](../add-juno-to-an-app/create-a-satellite.md) a new one in the Juno's console.
-
-### 2. Install Juno CLI and log in
-
-Install the Juno command line interface by executing the following command in your terminal:
+Otherwise, you can bootstrap a new website using the Juno template by running the following command:
 
 ```bash
-npm i -g @junobuild/cli
+npm create juno@latest -- --template react-starter
 ```
 
-After the CLI is ready, log in to your satellite from your terminal to authenticate your device.
+Once you’re set up, continue to the [Deployment](#deployment) section below.
 
-```bash
-juno login
-```
+---
 
-### 3. Deploy
+## Deployment
 
-Build your app:
+Use this guide to deploy your project to production — directly to a smart contract on mainnet.
 
-```bash
-npm run build
-```
+import Deploy from "./components/deploy.mdx";
 
-Deploy your project by running the following command from your project’s root folder:
-
-```bash
-juno deploy
-```
-
-When prompted to provide the name or path of the folder containing your built dapp files, answer `dist`.
-
-### 4. Open
-
-Open your browser and you should see your deployed app or website.
-
-```bash
-juno open
-```
+<Deploy index={1} />
 
 [satellite]: ../terminology.md#satellite

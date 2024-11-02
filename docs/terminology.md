@@ -1,7 +1,3 @@
----
-sidebar_position: 9
----
-
 # Terminology
 
 In Juno, we use some terms that may be unfamiliar to some. This page provides a summary of the most commonly used terms.

@@ -40,7 +40,7 @@ Let’s start building our first decentralized application, or “dapp” for sh
 
 ### Initialization
 
-Before you can integrate Juno into your Angular app, you’ll need to create a satellite. This process is explained in detail in the [documentation](https://juno.build/docs/add-juno-to-an-app/create-a-satellite).
+Before you can integrate Juno into your Angular app, you’ll need to create a satellite. This process is explained in detail in the [documentation](https://juno.build/docs/create-a-satellite).
 
 Moreover, you also need to install the SDK.
 
