@@ -4,7 +4,7 @@ description: Explore Juno's smart contracts, serverless functions, and hosting c
 
 # Getting Started
 
-Start your Juno journey by launching your first **[Satellite](/docs/create-a-satellite.md)** – a feature-packed smart contract designed for your project.
+Start your Juno journey by launching your first **[Satellite](./create-a-satellite.md)** – a feature-packed smart contract designed for your project.
 
 A Satellite is your project’s all-in-one container, **giving you full control 🔐** over authentication, a key-pair datastore (akin to a simple "database"), file storage, serverless functions, and hosting.
 

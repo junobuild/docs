@@ -177,7 +177,7 @@ const config: Config = {
               },
               {
                 label: "Add Juno to an app",
-                to: "/docs/add-juno-to-an-app/create-a-satellite"
+                to: "/docs/create-a-satellite"
               },
               {
                 label: "Guides and examples",

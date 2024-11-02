@@ -57,7 +57,7 @@ const redirects: StorageConfigRedirect[] = [
   },
   {
     source: "/docs/add-juno-to-an-app/setup",
-    location: "/docs/guides/setup-the-sdk",
+    location: "/docs/setup-the-sdk",
     code: 301
   },
   {
