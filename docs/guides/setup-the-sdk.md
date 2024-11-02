@@ -1,12 +1,20 @@
 ---
 sidebar_position: 10
+description: Learn how to set up the Juno SDK in your web application to access advanced features, including authentication, datastore, and storage options. This guide provides step-by-step instructions for configuring and initializing Juno, with options for both automated and manual setup.
+keyowrds: [Juno SDK setup, Juno integration, web app features, authentication, datastore, storage, satellite configuration, Next.js plugin, Vite plugin, Juno hosting, Juno deployment, initialize Juno]
 ---
 
 # Setup the SDK
 
-If you intend to use Juno solely for [hosting](../build/hosting.md) purposes, you may skip the following steps, which are necessary only for implementing advanced features such as [authentication](../build/authentication.md), [datastore](../build/datastore.md) or [storage](../build/storage.md).
+To add rich features to your web app, follow these steps to connect Juno and enable advanced functionality.
 
-Conversely, if you plan to utilize these rich features, here is how you can connect Juno to your web app.
+:::info
+
+If you intend to use Juno solely for **[hosting](build/hosting.md)** purposes, you may skip the following steps.
+
+:::
+
+---
 
 ## Initialization
 
