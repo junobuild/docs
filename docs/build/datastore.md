@@ -264,7 +264,11 @@ The function requires a collection and accepts various optional parameters, incl
    - **Description**: The key of the collection from which documents are to be listed.
    - **Type**: `string`
 
-2. **`matcher`** (optional)
+2. **`filter`** (optional)
+
+   - **Description**: An optional object that can be used to provide various parameters to filter documents.
+
+   a. **`matcher`** (optional)
 
    - **Description**: An object used to filter documents based on their keys or descriptions using regular expressions.
    - **Type**: `ListMatcher`
@@ -318,7 +322,7 @@ The function requires a collection and accepts various optional parameters, incl
      - **timestamp**: Used with `equal`, `greaterThan`, and `lessThan` matchers to specify the exact timestamp for comparison.
      - **timestamps**: Used with the `between` matcher to specify a range of timestamps. The range is inclusive of both the start and end values.
 
-3. **`paginate`** (optional)
+   b. **`paginate`** (optional)
 
    - **Description**: An object to control pagination of the results
    - **Type**: `ListPaginate`
@@ -333,7 +337,7 @@ The function requires a collection and accepts various optional parameters, incl
      - **startAfter**: A string key to start listing documents after this key.
      - **limit**: The maximum number of documents to return.
 
-4. **`order`** (optional)
+   c. **`order`** (optional)
 
    - **Description**: Control the sorting order of the results.
    - **Type**: `ListOrder`
@@ -347,7 +351,7 @@ The function requires a collection and accepts various optional parameters, incl
      type ListOrderField = "keys" | "updated_at" | "created_at";
      ```
 
-5. **`owner`** (optional)
+   d. **`owner`** (optional)
 
    - **Description**: The owner of the documents.
    - **Type**: `ListOwner`
@@ -356,39 +360,39 @@ The function requires a collection and accepts various optional parameters, incl
      type ListOwner = string | Principal;
      ```
 
-:::note
-Example of usage of the parameters:
+:::note[Example]
+Usage of the parameters:
 
 ```typescript
 import { listDocs } from "@junobuild/core";
 
 const myList = await listDocs({
   collection: "my_collection_key",
-  owner: "some_owner_id_or_principal",
-  matcher: {
-    key: "^doc_",
-    description: "example",
-    createdAt: {
-      matcher: "greaterThan",
-      timestamp: 1627776000n
-    },
-    updatedAt: {
-      matcher: "between",
-      timestamps: {
-        start: 1627770000n,
-        end: 1627900000n
-      }
-    }
-  },
-  paginate: {
-    startAfter: "doc_10",
-    limit: 5
-  },
   filter: {
+    matcher: {
+      key: "^doc_",
+      description: "example",
+      createdAt: {
+        matcher: "greaterThan",
+        timestamp: 1627776000n
+      },
+      updatedAt: {
+        matcher: "between",
+        timestamps: {
+          start: 1627770000n,
+          end: 1627900000n
+        }
+      }
+    },
+    paginate: {
+      startAfter: "doc_10",
+      limit: 5
+    },
     order: {
       desc: true,
       field: "updated_at"
-    }
+    },
+    owner: "some_owner_id_or_principal"
   }
 });
 ```
