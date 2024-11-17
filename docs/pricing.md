@@ -23,7 +23,7 @@ There are two types of costs associated with using Juno.
 
 :::note
 
-Last update: Dec. 22, 2023
+Last update: Nov. 17, 2024
 
 :::
 
@@ -39,9 +39,9 @@ You can top up your cycle balance in the Juno [console](https://console.juno.bui
 
 New developers who join Juno are granted credits to create a mission control and their initial [satellite].
 
-To create additional satellites, a fee of 0.3 ICP is necessary, along with the infrastructure costs for setting up the smart contract.
+To create additional satellites, a fee of 0.4 ICP is necessary, along with the infrastructure costs for setting up the smart contract.
 
-Similarly, enabling analytics by creating an [orbiter] entails a fee of 0.3 ICP, plus the infrastructure costs for creating the smart contract.
+Similarly, enabling analytics by creating an [orbiter] entails a fee of 0.4 ICP, plus the infrastructure costs for creating the smart contract.
 
 Please note that additional transaction fees may be introduced in the future, and pricing and models are subject to change.
 
