@@ -326,7 +326,11 @@ The return value is the same as the `items_length` property from the `listAssets
 
 ---
 
-## Delete asset
+## Delete
+
+There are multiple ways to delete assets from your Storage.
+
+### Delete asset
 
 To delete an asset, you only need to provide its `fullPath`. Unlike the [datastore](datastore.md), there is no timestamp validation performed when deleting an asset.
 
@@ -339,9 +343,7 @@ await deleteAsset({
 });
 ```
 
----
-
-## Delete multiple assets
+### Delete multiple assets
 
 To delete multiple assets in an atomic manner, you can use the function `deleteManyAssets`:
 
@@ -359,6 +361,21 @@ const myAsset2 = {
 };
 
 await deleteManyAssets({ assets: [myAsset1, myAsset2] });
+```
+
+### Delete filtered assets
+
+The `deleteFilteredAssets` function allows you to delete multiple assets from a collection based on specific filter criteria. This function simplifies bulk deletions by leveraging the same parameters as the [listAssets](#list-assets) function for filtering.
+
+```typescript
+import { deleteFilteredAssets } from "@junobuild/core";
+
+await deleteFilteredAssets({
+  collection: "my_collection_key",
+  filter: {
+    // Same options as filter of listAssets
+  }
+});
 ```
 
 ---

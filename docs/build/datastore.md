@@ -435,7 +435,11 @@ The return value is the same as the `items_length` property from the `listDocs` 
 
 ---
 
-## Delete a document
+## Delete
+
+There are multiple ways to delete documents from your Datastore.
+
+### Delete a document
 
 To delete a document, use the `deleteDoc` function, which performs version validation to ensure that the most recent document is being deleted:
 
@@ -450,9 +454,7 @@ await deleteDoc({
 
 The document must include the current `version` from the latest entry within the satellite; otherwise, the call will fail. This prevents unexpected concurrent overwrites, which is particularly useful if your users access your projects simultaneously on multiple devices.
 
----
-
-## Delete multiple documents
+### Delete multiple documents
 
 To delete multiple documents in an atomic manner, you can use the function `deleteManyDocs`:
 
@@ -460,6 +462,21 @@ To delete multiple documents in an atomic manner, you can use the function `dele
 import { deleteManyDocs } from "@junobuild/core";
 
 await deleteManyDocs({ docs: [myDoc1, myDo2, myDoc3] });
+```
+
+### Delete filtered documents
+
+The `deleteFilteredDocs` function allows you to delete multiple documents from a collection based on specific filter criteria. This function simplifies bulk deletions by leveraging the same parameters as the [listDocs](#list-documents) function for filtering.
+
+```typescript
+import { deleteFilteredDocs } from "@junobuild/core";
+
+await deleteFilteredDocs({
+  collection: "my_collection_key",
+  filter: {
+    // Same options as filter of listDocs
+  }
+});
 ```
 
 ---
