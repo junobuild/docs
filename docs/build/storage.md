@@ -384,10 +384,6 @@ await deleteFilteredAssets({
 
 The Storage supports various configuration options to optimize its behavior, such as HTTP headers, redirects, and iFrame support. For a detailed explanation of all available options, see the [configuration](../miscellaneous/configuration.mdx) section.
 
-
-
-
-
 :::note
 
 If you are looking to configure the hosting behavior of your site, check out the related [documentation](./hosting.mdx#configure-hosting-behavior).
@@ -401,8 +397,6 @@ You define your Storage configuration in your Juno configuration file. The CLI a
 #### How do you apply your changes?
 
 To apply any changes you make in your configuration to your satellite, execute the [juno config](../miscellaneous/cli.mdx#config) command with the CLI.
-
-
 
 [satellite]: ../terminology.md#satellite
 [controllers]: ../terminology.md#controller
