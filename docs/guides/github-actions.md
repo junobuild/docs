@@ -7,15 +7,13 @@ sidebar_position: 8
 
 # GitHub Actions
 
-Using any features offered by the Juno [CLI] within GitHub Actions is possible.
+You can leverage the Juno [CLI] to perform tasks within GitHub Actions.
+
+This guide will show you how to set up and deploy your decentralized app to Juno satellites using the action [junobuild/juno-action](https://github.com/junobuild/juno-action).
 
 ---
 
-## Using GitHub Actions to Deploy Your Decentralized App
-
-This guide will walk you through deploying your decentralized app to Juno satellites using the [junobuild/juno-action](https://github.com/junobuild/juno-action) GitHub Action.
-
-### Adding a Secret Token for Automation
+## 1. Add a Secret Token for Automation
 
 Before you can effectively implement automation, it is necessary to add a secret token to your GitHub repository or organization. This token will enable the CI (Continuous Integration) to deploy to your [satellite].
 
@@ -35,7 +33,35 @@ While you can generate a controller with administrative permission, we strongly 
 
 :::
 
-### Creating the GitHub Action
+---
+
+## 2. Configure your project
+
+If you already have a `juno.config` file at the root of your project, you can skip to the next chapter. Otherwise, you need to create one. The configuration file can be a TypeScript, JavaScript, or JSON file (`juno.config.ts`, `juno.config.js|.mjs`, or `juno.config.json`), depending on your preference.
+
+At a minimum, the configuration file must include the following:
+
+- **Satellite ID**: A unique identifier for your satellite.
+- **Source**: The directory containing the built assets for your satellite. This is typically the output folder of your build process (e.g., `/dist` or `/build`), generated after running a command like `npm run build`.
+
+Here’s an example configuration file:
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai", // Replace with your satellite ID
+    source: "build" // Replace with your build output directory
+  }
+});
+```
+
+For detailed information about all available configuration options, refer to the [configuration](../miscellaneous/configuration.mdx) section.
+
+---
+
+## 3. Create the GitHub Action
 
 To configure the action, follow these steps:
 
