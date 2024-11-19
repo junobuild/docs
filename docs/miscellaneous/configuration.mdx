@@ -1,10 +1,13 @@
 ---
 sidebar_position: 3
+toc_max_heading_level: 4
 ---
 
 # Configuration
 
-When running `juno` from the command line, it will automatically attempt to locate a config file named `juno.config.ts` or `juno.config.js` or `juno.config.json` within your project's root directory.
+When the `juno` command is run from your terminal or used in a CI environment, it will automatically attempt to locate a config file named `juno.config.ts` or `juno.config.js` or `juno.config.json` within your project's root directory.
+
+The Juno config file defines the settings and options needed for managing and deploying your satellites and other project modules, ensuring consistency across environments.
 
 A basic config file looks like this:
 
@@ -13,15 +16,87 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "aaaaa-bbbbb-ccccc-ddddd-cai",
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
     source: "build"
+  },
+  orbiter: {
+    id: "eeeee-fffff-ddddd-11111-cai"
   }
 });
 ```
 
+At the top level, the Juno configuration includes two main sections:
+
+1. `satellite` (required): This defines the behavior of your satellite.
+2. `orbiter` (optional): This is useful to automatically map your analytics in your application.
+
 ---
 
-## Config Intellisense
+## Satellite Configuration
+
+The satellite configuration must include at least an `id`. Additionally, it can support multiple identifiers if you plan to deploy your satellite across different environments (see related chapters below in this documentation).
+
+### Storage
+
+The storage configuration accepts the following options and parameters:
+
+#### Source
+
+import Source from "../build/components/source.mdx";
+
+<Source />
+
+#### Ignore files
+
+import IgnoreFiles from "../build/components/ignore-files.mdx";
+
+<IgnoreFiles />
+
+#### HTTP Headers
+
+import HttpHeaders from "../build/components/http-headers.mdx";
+
+<HttpHeaders />
+
+#### Redirects
+
+import Redirects from "../build/components/redirects.mdx";
+
+<Redirects />
+
+#### Rewrites
+
+import Rewrites from "../build/components/rewrites.mdx";
+
+<Rewrites />
+
+#### GZIP
+
+import Gzip from "../build/components/gzip.mdx";
+
+<Gzip />
+
+#### Encoding types
+
+import Encoding from "../build/components/encoding.mdx";
+
+<Encoding />
+
+#### iframe
+
+import IFrame from "../build/components/iframe.mdx";
+
+<IFrame />
+
+### Assertions
+
+import Assertions from "../build/components/assertions.mdx";
+
+<Assertions />
+
+---
+
+## Intellisense
 
 To enable intellisense in your IDE for TypeScript or JavaScript configurations, you will need to install the necessary types:
 

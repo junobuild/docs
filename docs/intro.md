@@ -61,7 +61,7 @@ Dive deeper into Juno’s capabilities with our feature-rich documentation:
 - [Authentication](build/authentication.md)
 - [Datastore](build/datastore.md)
 - [Storage](build/storage.md)
-- [Hosting](build/hosting.md)
+- [Hosting](build/hosting.mdx)
 - [Analytics](build/analytics.md)
 
 ---

@@ -1,0 +1,33 @@
+The CLI conducts several assertions when interacting with your Satellite, one of which involves monitoring the heap memory size. Typically, the CLI checks to ensure that the heap memory does not exceed the 1 GB limit before deployment. For instance, if your heap memory usage is close to 900 MB, the CLI will prompt you to confirm the deployment.
+
+You can customize this behavior by adjusting the heap memory limit in bytes. For example, to set a new limit of 678 MB, update your configuration as follows:
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    assertions: {
+      heapMemory: 678000000
+    }
+  }
+});
+```
+
+Alternatively, these checks can be completely disabled. To do so, set the `heapMemory` assertion to `false`:
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    assertions: {
+      heapMemory: false
+    }
+  }
+});
+```

@@ -386,7 +386,7 @@ You can configure various settings of the Storage.
 
 :::note
 
-If you are looking to configure the hosting behavior of your site, check out the related [documentation](./hosting.md#configure-hosting-behavior).
+If you are looking to configure the hosting behavior of your site, check out the related [documentation](./hosting.mdx#configure-hosting-behavior).
 
 :::
 

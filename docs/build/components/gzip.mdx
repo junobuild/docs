@@ -1,0 +1,31 @@
+When deploying your application, the CLI automatically searches for JavaScript (js), ES Module (mjs), and CSS (css) files in the `source` folder and optimizes them using Gzip compression. This is useful because neither the protocol nor a satellite can compress these files, ensuring the best web performance.
+
+If you wish to customize this behavior, you have the option to disable it or provide a different file matching pattern using glob syntax.
+
+To opt-out of Gzip compression, simply set the `gzip` option to `false` in your configuration:
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    gzip: false
+  }
+});
+```
+
+If you want to customize the default pattern `**/*.+(css|js|mjs)` to better suit your needs, you can specify your own pattern. For example:
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    gzip: "**/*.jpg"
+  }
+});
+```

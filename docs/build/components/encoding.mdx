@@ -1,0 +1,27 @@
+When deploying, the CLI automatically maps the encoding type based on the file extension. The encoding information is then used in the satellite to provide the appropriate HTTP response header `Content-Encoding`.
+
+The default mappings are as follows:
+
+- `.Z` = `compress`
+- `.gz` = `gzip`
+- `.br` = `br`
+- `.zlib` = `deflate`
+- rest = `identity` (no compression)
+
+You can also customize the encoding behavior by using the "encoding" attribute in the configuration file.
+
+This attribute works similarly to Git's `.gitignore`, and you can specify which files to ignore using globs.
+
+Here is an example of how the "encoding" attribute can be utilized:
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    encoding: [["**/releases/*.gz", "identity"]]
+  }
+});
+```

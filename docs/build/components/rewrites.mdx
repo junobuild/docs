@@ -1,0 +1,31 @@
+You can utilize optional rewrites to display the same content for multiple URLs. Rewrites are especially useful when combined with pattern matching, allowing acceptance of any URL that matches the pattern.
+
+Here's the basic structure for a `rewrites` attribute.
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    storage: {
+      rewrites: [
+        {
+          source: "/hello/**",
+          destination: "/hello/world.html"
+        }
+      ]
+    }
+  }
+});
+```
+
+This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the rewrites using globs.
+
+:::note
+
+- Rewrites are only applied to requests that do not match any existing resources.
+- By default, all unknown paths are automatically rewritten to `/index.html` (or `/404.html` if you provide such a page). You cannot disable this default behavior.
+
+:::
