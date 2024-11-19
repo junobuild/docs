@@ -32,15 +32,19 @@ In the stock Satellite, custom hooks are not active by default. Developers shoul
 
 ## Available Hooks
 
-| Hook                    | Provider  | Description                                            |
-| ----------------------- | --------- | ------------------------------------------------------ |
-| `on_set_doc`            | Datastore | Triggered when a document is created or updated.       |
-| `on_set_many_docs`      | Datastore | Activated for operations involving multiple documents. |
-| `on_delete_doc`         | Datastore | Invoked when a document is deleted.                    |
-| `on_delete_many_docs`   | Datastore | Used when multiple documents are deleted.              |
-| `on_upload_asset`       | Storage   | Triggered during asset upload.                         |
-| `on_delete_asset`       | Storage   | Activated when an asset is deleted.                    |
-| `on_delete_many_assets` | Storage   | Used for deleting multiple assets.                     |
+| Hook                         | Provider  | Description                                                     |
+| ---------------------------- | --------- | --------------------------------------------------------------- |
+| `on_set_doc`                 | Datastore | Triggered when a document is created or updated.                |
+| `on_set_many_docs`           | Datastore | Activated for operations involving multiple documents.          |
+| `on_delete_doc`              | Datastore | Invoked when a document is deleted.                             |
+| `on_delete_many_docs`        | Datastore | Used when multiple documents are deleted.                       |
+| `on_delete_filtered_docs`    | Datastore | Invoked when documents are deleted according filters.           |
+| `on_upload_asset`            | Storage   | Triggered during asset upload.                                  |
+| `on_delete_asset`            | Storage   | Activated when an asset is deleted.                             |
+| `on_delete_many_assets`      | Storage   | Used for deleting multiple assets.                              |
+| `on_delete_filtered_asserts` | Storage   | Invoked when assets are deleted according filters.              |
+| `on_init`                    | Satellite | Called during the initialization of the satellite.              |
+| `on_post_upgrade`            | Satellite | Invoked after the satellite has been upgraded to a new version. |
 
 ---
 
@@ -177,6 +181,20 @@ async fn on_delete_many_docs(context: OnDeleteManyDocsContext) -> Result<(), Str
 
 Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
 
+### on_delete_filtered_docs
+
+Invoked when documents are deleted according to specified filters in the datastore.
+
+```rust
+#[on_delete_filtered_docs]
+async fn on_delete_filtered_docs(context: OnDeleteFilteredDocsContext) -> Result<(), String> {
+    // Custom logic for handling the deletion of filtered documents
+    Ok(())
+}
+```
+
+Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
+
 ### on_upload_asset
 
 Triggered during the process of uploading an asset.
@@ -218,6 +236,62 @@ async fn on_delete_many_assets(context: OnDeleteManyAssetsContext) -> Result<(),
 ```
 
 Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
+
+### on_delete_filtered_assets
+
+Invoked when assets are deleted according to specified filters in the storage.
+
+```rust
+#[on_delete_filtered_assets]
+async fn on_delete_filtered_assets(context: OnDeleteFilteredAssetsContext) -> Result<(), String> {
+    // Custom logic for handling the deletion of filtered assets
+    Ok(())
+}
+```
+
+Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
+
+### on_init
+
+Called during the initialization of the satellite. This hook is invoked when the satellite is first deployed and can be used to set up initial configurations or resources.
+
+```rust
+#[on_init]
+fn on_init() -> Result<(), String> {
+    // Custom logic for initialization
+    Ok(())
+}
+```
+
+Unlike datastore or storage hooks, `on_init` cannot be scoped to specific collections or assets, as it is meant to handle global initialization logic.
+
+This feature is not enabled by default. To use it, you’ll need to opt in by updating your `Cargo.toml` file.
+
+```toml
+[dependencies]
+junobuild-satellite = { version = "*", features = ["default", "on_init"] }
+```
+
+### on_post_upgrade
+
+Invoked after the satellite has been upgraded to a new version. This hook is typically used to manage migration tasks, or starting custom processes like timers.
+
+```rust
+#[on_post_upgrade]
+fn on_post_upgrade() -> Result<(), String> {
+    // Custom logic for post-upgrade tasks
+    Ok(())
+}
+```
+
+Similar to `on_init`, the `on_post_upgrade` hook cannot be scoped to collections or assets. It operates globally to handle upgrade-related operations.
+
+This feature is not enabled by default. To use it, you’ll need to opt in by updating your `Cargo.toml` file.
+
+```toml
+[dependencies]
+junobuild-satellite = { version = "*", features = ["default", "on_post_upgrade"] }
+```
 
 ### assert_set_doc
 
