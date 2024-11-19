@@ -191,39 +191,37 @@ export interface JunoDevConfig {
 
 If, for example, we want to configure a "metadata" collection in the Datastore, a "content" collection in the Storage, and provide an additional controller, we could use the following configuration:
 
-```typescript title="juno.dev.config.ts"
-import { defineDevConfig } from "@junobuild/config";
-
-export default defineDevConfig(() => ({
-  satellite: {
-    collections: {
-      db: [
+```json title="juno.dev.config.json"
+{
+  "satellite": {
+    "collections": {
+      "db": [
         {
-          collection: "metadata",
-          read: "managed",
-          write: "managed",
-          memory: "stable",
-          mutablePermissions: true
+          "collection": "metadata",
+          "read": "managed",
+          "write": "managed",
+          "memory": "stable",
+          "mutablePermissions": true
         }
       ],
-      storage: [
+      "storage": [
         {
-          collection: "content",
-          read: "public",
-          write: "public",
-          memory: "stable",
-          mutablePermissions: true
+          "collection": "content",
+          "read": "public",
+          "write": "public",
+          "memory": "stable",
+          "mutablePermissions": true
         }
       ]
     },
-    controllers: [
+    "controllers": [
       {
-        id: "535yc-uxytb-gfk7h-tny7p-vjkoe-i4krp-3qmcl-uqfgr-cpgej-yqtjq-rqe",
-        scope: "admin"
+        "id": "535yc-uxytb-gfk7h-tny7p-vjkoe-i4krp-3qmcl-uqfgr-cpgej-yqtjq-rqe",
+        "scope": "admin"
       }
     ]
   }
-}));
+}
 ```
 
 ### Path and name
