@@ -1,3 +1,15 @@
-Where should Juno search for the files to deploy in your project directory.
+The `source` field specifies the directory containing the built assets for your satellite. This is typically the output directory of your build process, such as `/dist` or `/build`, created after running a command like `npm run build`.
 
-This is commonly the output folder of `npm run build`, such as `/dist` or `/build`.
+Juno uses this directory to locate the files that will be deployed as part of your satellite. Ensure that this directory includes all the necessary assets, such as HTML, JavaScript, CSS, and any other static or dynamic resources your application requires.
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist"
+  }
+});
+```
+

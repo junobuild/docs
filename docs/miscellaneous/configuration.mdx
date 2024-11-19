@@ -34,23 +34,90 @@ At the top level, the Juno configuration includes two main sections:
 
 ## Satellite Configuration
 
-The satellite configuration must include at least an `id`. Additionally, it can support multiple identifiers if you plan to deploy your satellite across different environments (see related chapters below in this documentation).
+Satellites are the core component of your application in Juno. The satellite configuration defines how the satellite operates, including its identifier, datastore, storage, authentication, and more. This configuration is crucial for managing the satellite’s behavior and deploying it across different environments.
 
-### Storage
+The satellite configuration is defined in your Juno configuration file. Below is a detailed explanation of how to configure it.
 
-The storage configuration accepts the following options and parameters:
+### ID or IDs
 
-#### Source
+Each satellite must be uniquely identified using either:
+
+- `id`: A single identifier for the satellite.
+- `ids`: A mapping of identifiers for multiple environments, such as staging or production.
+
+You can use one of these options but not both simultaneously. See the [Environments - Multiple Satellites](#environments---multiple-satellites) chapter below for details on setting up multiple ids.
+
+### Source
 
 import Source from "../build/components/source.mdx";
 
 <Source />
 
-#### Ignore files
+### Ignore files
 
 import IgnoreFiles from "../build/components/ignore-files.mdx";
 
 <IgnoreFiles />
+
+### GZIP
+
+import Gzip from "../build/components/gzip.mdx";
+
+<Gzip />
+
+### Encoding
+
+import Encoding from "../build/components/encoding.mdx";
+
+<Encoding />
+
+### Predeploy
+
+The predeploy option allows you to define a list of scripts or commands to be executed before the deployment process begins. This is particularly useful for automating tasks such as:
+
+- Compiling assets.
+- Running tests or linters.
+- Preparing production-ready files.
+
+These scripts are executed sequentially in the order they are listed.
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    predeploy: ["npm run build", "npm run lint"]
+  }
+});
+```
+
+### Postdeploy
+
+The postdeploy option allows you to define a list of scripts or commands to be executed after the deployment process completes. This can be used for various follow-up tasks, such as:
+
+- Sending notifications or alerts to administrators.
+- Cleaning up temporary files.
+- Logging deployment information for auditing.
+
+Like `predeploy`, these scripts are executed sequentially in the order they are listed.
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    postdeploy: ["./scripts/notify-admins.sh", "echo 'Deployment complete'"]
+  }
+});
+```
+
+### Storage
+
+The storage configuration accepts the following options and parameters:
 
 #### HTTP Headers
 
@@ -58,35 +125,72 @@ import HttpHeaders from "../build/components/http-headers.mdx";
 
 <HttpHeaders />
 
-#### Redirects
-
-import Redirects from "../build/components/redirects.mdx";
-
-<Redirects />
-
 #### Rewrites
 
 import Rewrites from "../build/components/rewrites.mdx";
 
 <Rewrites />
 
-#### GZIP
+#### Redirects
 
-import Gzip from "../build/components/gzip.mdx";
+import Redirects from "../build/components/redirects.mdx";
 
-<Gzip />
-
-#### Encoding types
-
-import Encoding from "../build/components/encoding.mdx";
-
-<Encoding />
+<Redirects />
 
 #### iframe
 
 import IFrame from "../build/components/iframe.mdx";
 
 <IFrame />
+
+#### Maximum Memory Size
+
+You can configure optional limits on heap and stable memory for your smart contract to control the creation and update of assets in your storage.
+
+When the limit is reached, the Storage and smart contract will continue to operate normally but will reject the upload of new assets.
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    storage: {
+      maxMemorySize: {
+        stable: 1_073_741_824n // For example max. 1 GiB in bytes of Stable memory
+      }
+    }
+  }
+});
+```
+
+### Datastore
+
+The datastore configuration accepts the following options and parameters:
+
+#### Maximum Memory Size
+
+You can configure optional limits on heap and stable memory for your smart contract to control the creation and update of documentations in your Datastore.
+
+When the limit is reached, the Datastore and smart contract will continue to operate normally but will reject changes to documents.
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    datastore: {
+      maxMemorySize: {
+        stable: 1_073_741_824n // For example max. 1 GiB in bytes of Stable memory
+      }
+    }
+  }
+});
+```
+
 
 ### Assertions
 

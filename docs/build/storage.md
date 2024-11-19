@@ -382,7 +382,11 @@ await deleteFilteredAssets({
 
 ## Configuration
 
-You can configure various settings of the Storage.
+The Storage supports various configuration options to optimize its behavior, such as HTTP headers, redirects, and iFrame support. For a detailed explanation of all available options, see the [configuration](../miscellaneous/configuration.mdx) section.
+
+
+
+
 
 :::note
 
@@ -398,27 +402,7 @@ You define your Storage configuration in your Juno configuration file. The CLI a
 
 To apply any changes you make in your configuration to your satellite, execute the [juno config](../miscellaneous/cli.mdx#config) command with the CLI.
 
-### Maximum Memory Size
 
-You can configure optional limits on heap and stable memory for your smart contract to control the creation and update of assets in your storage.
-
-When the limit is reached, the Storage and smart contract will continue to operate normally but will reject the upload of new assets.
-
-```javascript
-import { defineConfig } from "@junobuild/config";
-
-export default defineConfig({
-  satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
-    source: "dist",
-    storage: {
-      maxMemorySize: {
-        stable: 1_073_741_824n // For example max. 1 GiB in bytes of Stable memory
-      }
-    }
-  }
-});
-```
 
 [satellite]: ../terminology.md#satellite
 [controllers]: ../terminology.md#controller

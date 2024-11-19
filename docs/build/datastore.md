@@ -483,37 +483,7 @@ await deleteFilteredDocs({
 
 ## Configuration
 
-You can configure various settings of the Datastore.
-
-#### Where do you define your Datastore configuration?
-
-You define your Datastore configuration in your Juno configuration file. The CLI automatically creates the file at the root of your project directory when you run the [juno init](../miscellaneous/cli.mdx#init) or [juno deploy](../miscellaneous/cli.mdx#deploy) command for the first time.
-
-#### How do you apply your changes?
-
-To apply any changes you make in your configuration to your satellite, execute the [juno config](../miscellaneous/cli.mdx#config) command with the CLI.
-
-### Maximum Memory Size
-
-You can configure optional limits on heap and stable memory for your smart contract to control the creation and update of documentations in your Datastore.
-
-When the limit is reached, the Datastore and smart contract will continue to operate normally but will reject changes to documents.
-
-```javascript
-import { defineConfig } from "@junobuild/config";
-
-export default defineConfig({
-  satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
-    source: "dist",
-    datastore: {
-      maxMemorySize: {
-        stable: 1_073_741_824n // For example max. 1 GiB in bytes of Stable memory
-      }
-    }
-  }
-});
-```
+The Datastore supports various configuration options to fine-tune its behavior, such as resource limits and operational constraints. For a detailed explanation of all available options, see the [configuration](../miscellaneous/configuration.mdx) section.
 
 [satellite]: ../terminology.md#satellite
 [controllers]: ../terminology.md#controller
