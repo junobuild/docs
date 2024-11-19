@@ -205,6 +205,8 @@ Finally, add a command to your `package.json` that executes the script:
 
 - If you prefer to specify a custom path for the worker, you can use the `initOrbiter` function with the additional parameter `{worker?: {path?: string}}` for this purpose.
 
+- In the explanation above, analytics are initialized for any use case. However, it is recommended not to initialize them during local development. This helps avoid cluttering your data with test results and minimizes the amount of cycles required to collect statistics.
+
 :::
 
 ---
