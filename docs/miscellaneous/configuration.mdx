@@ -47,6 +47,10 @@ Each satellite must be uniquely identified using either:
 
 You can use one of these options but not both simultaneously. See the [Environments - Multiple Satellites](#environments---multiple-satellites) chapter below for details on setting up multiple ids.
 
+import Plugins from "./components/plugins.mdx";
+
+<Plugins />
+
 ### Source
 
 import Source from "../build/components/source.mdx";
@@ -254,6 +258,18 @@ export default defineConfig({
 ```
 
 For a complete explanation of all [settings](./settings.md), including detailed examples and calculations, see the Settings section.
+
+---
+
+## Orbiter Configuration
+
+Orbiters are an optional component of your application used for analytics.
+
+### ID
+
+An orbiter has a unique identifier (id). This ID is used to reference the orbiter during operations and deployments.
+
+<Plugins />
 
 ---
 
