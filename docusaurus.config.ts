@@ -68,6 +68,7 @@ const config: Config = {
           editUrl: "https://github.com/junobuild/docs/edit/main/",
           exclude: [
             "**/miscellaneous/cli/**",
+            "**/miscellaneous/components/**",
             "**/guides/components/**",
             "**/build/components/**"
           ]
