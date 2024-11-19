@@ -117,7 +117,7 @@ export default defineConfig({
 
 ### Storage
 
-The storage configuration accepts the following options and parameters:
+The `storage` configuration accepts the following options and parameters:
 
 #### HTTP Headers
 
@@ -167,7 +167,7 @@ export default defineConfig({
 
 ### Datastore
 
-The datastore configuration accepts the following options and parameters:
+The `datastore` configuration accepts the following options and parameters:
 
 #### Maximum Memory Size
 
@@ -193,7 +193,7 @@ export default defineConfig({
 
 ### Authentication
 
-The authentication configuration accepts the following options and parameters:
+The `authentication` configuration accepts the following options and parameters:
 
 #### Derivation origin
 
@@ -221,6 +221,39 @@ export default defineConfig({
 import Assertions from "../build/components/assertions.mdx";
 
 <Assertions />
+
+### Settings
+
+The `settings` field allows you to configure various aspects of the module’s behavior and resource usage, such as memory limits, compute allocation, and log visibility.
+
+Overview:
+
+- **Freezing Threshold**: Prevents the module from being deleted by pausing operations when cycles drop below a certain level.
+- **Reserved Cycles Limit**: Ensures a minimum number of cycles are available for future operations.
+- **Log Visibility**: Controls who can access the module’s logs.
+- **Heap Memory Limit**: Sets the hard maximum heap memory available to the module.
+- **Memory Allocation**: Pre-allocates memory for optimized performance.
+- **Compute Allocation**: Reserves a percentage of the subnet’s compute resources.
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    settings: {
+      freezingThreshold: 2_592_000n,
+      reservedCyclesLimit: 5_000_000_000_000n,
+      logVisibility: "controllers",
+      heapMemoryLimit: 2048n,
+      memoryAllocation: 1_073_741_824n,
+      computeAllocation: 50n
+    }
+  }
+});
+```
+
+For a complete explanation of all [settings](./settings.md), including detailed examples and calculations, see the Settings section.
 
 ---
 
