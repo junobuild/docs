@@ -66,7 +66,11 @@ const config: Config = {
         docs: {
           sidebarPath: "sidebars.ts",
           editUrl: "https://github.com/junobuild/docs/edit/main/",
-          exclude: ["**/miscellaneous/cli/**", "**/guides/components/**"]
+          exclude: [
+            "**/miscellaneous/cli/**",
+            "**/guides/components/**",
+            "**/build/components/**"
+          ]
         },
         blog: {
           showReadingTime: true,

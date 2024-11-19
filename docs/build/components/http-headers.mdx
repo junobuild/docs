@@ -1,0 +1,47 @@
+Headers allow the client and the satellite to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
+
+For instance, you may want to set a specific `Cache-Control` for performance reasons.
+
+Here's an example of the `headers` object:
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    storage: {
+      headers: [
+        {
+          source: "/",
+          headers: [["Cache-Control", "public,max-age=0,must-revalidate"]]
+        },
+        {
+          source: "assets/fonts/*",
+          headers: [["Cache-Control", "max-age=31536000"]]
+        },
+        {
+          source: "**/*.jpg",
+          headers: [
+            ["Cache-Control", "max-age=31536000"],
+            ["Access-Control-Allow-Origin", "*"]
+          ]
+        }
+      ]
+    }
+  }
+});
+```
+
+This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the headers using globs.
+
+The `headers` is an array of objects, each containing `key` and `value`, and these apply to the matching paths.
+
+:::note
+
+- The `Content-Type` header is calculated automatically and cannot be altered.
+- No validation or check for uniqueness is performed. For example, if a header matches a file based on multiple rules, multiple headers will be set.
+- Likewise, if you provide the same header when you [upload](https://juno.build/docs/build/storage#upload-asset) file to your "Storage" and within the configuration, both headers will be set in the response.
+
+:::
