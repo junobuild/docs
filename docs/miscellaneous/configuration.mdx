@@ -191,6 +191,30 @@ export default defineConfig({
 });
 ```
 
+### Authentication
+
+The authentication configuration accepts the following options and parameters:
+
+#### Derivation origin
+
+The behavior of Internet Identity can be customized to ensure that users are recognized consistently across different domains or subdomains of your application.
+
+For example, if you set `derivationOrigin` to "hello.com", a user signing in at https://hello.com will receive the same identifier (principal) as when signing in at https://www.hello.com.
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    authentication: {
+      internetIdentity: {
+        derivationOrigin: "hello.com"
+      }
+    }
+  }
+});
+```
 
 ### Assertions
 
