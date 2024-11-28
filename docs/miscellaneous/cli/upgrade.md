@@ -1,13 +1,14 @@
-Upgrade your satellite to a specific version code.
+Upgrade a module to a new version.
 
 ```bash
 Usage: juno upgrade [options]
 
 Options:
-  -t, --target          What type of segment should be upgraded. Valid targets are satellite, mission-control or orbiter.
-  -s, --src             A local gzipped wasm file for the upgrade.
+  -t, --target          Which module type should be upgraded? Valid targets are satellite, mission-control or orbiter.
+  -s, --src             An optional local gzipped WASM file for the upgrade. By default, the CDN will be used.
   -r, --reset           Reset to the initial state.
   -n, --nocheck         Skip assertions and execute upgrade without prompts.
+  -c, --clear-chunks    Clear any previously uploaded WASM chunks (applies if the WASM size is greater than 2MB).
   -m, --mode            Set env mode. For example production or a custom string. Default is production.
   -h, --help            Output usage information.
 
