@@ -7,14 +7,13 @@ Options:
   -t, --target          Which module type should be upgraded? Valid targets are satellite, mission-control or orbiter.
   -s, --src             An optional local gzipped WASM file for the upgrade. By default, the CDN will be used.
   -r, --reset           Reset to the initial state.
-  -n, --nocheck         Skip assertions and execute upgrade without prompts.
-  -c, --clear-chunks    Clear any previously uploaded WASM chunks (applies if the WASM size is greater than 2MB).
+  -cc, --clear-chunks   Clear any previously uploaded WASM chunks (applies if the WASM size is greater than 2MB).
+  -nb, --no-backup      Skip creating a backup before upgrading.
   -m, --mode            Set env mode. For example production or a custom string. Default is production.
   -h, --help            Output usage information.
 
 Notes:
 
 - Resetting a mission control is not possible.
-- Disabling checks bypasses the verification of the target hash and skips the validation for build types.
 - Targets can be shortened to s for satellite, m for mission-control and o for orbiter.
 ```
