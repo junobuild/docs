@@ -6,6 +6,7 @@ import Head from "@site/src/components/Head";
 import Hero from "@site/src/components/Hero";
 import Newsletter from "@site/src/components/Newsletter";
 import Outro from "@site/src/components/Outro";
+import Screenshot from "@site/src/components/Screenshot";
 import Layout from "@theme/Layout";
 import { useEffect } from "react";
 
@@ -40,6 +41,8 @@ export default function Home(): JSX.Element {
       <div className={styles.home}>
         <section className={`container ${styles.main}`}>
           <Hero />
+
+          <Screenshot />
         </section>
 
         <section className={`container ${styles.section}`}>
