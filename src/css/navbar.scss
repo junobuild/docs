@@ -11,6 +11,12 @@ div[class*="announcementBar_"][role="banner"] {
   a {
     color: var(--button-shadow-color);
   }
+
+  button.close {
+    svg {
+      width: 12px;
+    }
+  }
 }
 
 .navbar {
