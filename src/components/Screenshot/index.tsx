@@ -2,17 +2,14 @@ import BrowserOnly from "@docusaurus/BrowserOnly";
 import { ThemedComponent } from "@docusaurus/theme-common";
 import Dark1024px from "@site/static/screenshots/dark-1024px.webp";
 import Dark1640px from "@site/static/screenshots/dark-1640px.webp";
-import Dark480px from "@site/static/screenshots/dark-480px.webp";
 import Dark768px from "@site/static/screenshots/dark-768px.webp";
 import Light1024px from "@site/static/screenshots/light-1024px.webp";
 import Light1640px from "@site/static/screenshots/light-1640px.webp";
-import Light480px from "@site/static/screenshots/light-480px.webp";
 import Light768px from "@site/static/screenshots/light-768px.webp";
 import type { ComponentProps } from "react";
 import styles from "./styles.module.scss";
 
 interface ThemedResponsiveImage {
-  src: string;
   src768px: string;
   src1024px: string;
   src1640px: string;
@@ -38,7 +35,7 @@ function ThemedResponsiveImage(props: ThemedResponsiveImageProps): JSX.Element {
           dataset: { hasHydrated }
         } = documentElement;
 
-        const { src, src768px, src1024px, src1640px } = sources[theme];
+        const { src768px, src1024px, src1640px } = sources[theme];
 
         return (
           (theme === rootDataTheme || hasHydrated !== undefined) && (
@@ -47,7 +44,7 @@ function ThemedResponsiveImage(props: ThemedResponsiveImageProps): JSX.Element {
               <source srcSet={src1024px} media="(min-width: 768px)" />
               <source srcSet={src768px} media="(min-width: 480px)" />
 
-              <img src={src} alt={alt} />
+              <img src="" alt={alt} />
             </picture>
           )
         );
@@ -65,13 +62,11 @@ export default function Screenshot(): JSX.Element {
             alt="A screenshot of the Juno Console application"
             sources={{
               light: {
-                src: Light480px,
                 src768px: Light768px,
                 src1024px: Light1024px,
                 src1640px: Light1640px
               },
               dark: {
-                src: Dark480px,
                 src768px: Dark768px,
                 src1024px: Dark1024px,
                 src1640px: Dark1640px
