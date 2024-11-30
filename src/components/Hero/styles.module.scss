@@ -7,6 +7,12 @@
   --ifm-hero-background-color: transparent;
 
   position: relative;
+
+  min-height: 480px;
+
+  @media screen and (min-width: 768px) {
+    min-height: 520px;
+  }
 }
 
 .container {
