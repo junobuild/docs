@@ -10,6 +10,14 @@ const headers: StorageConfigHeader[] = [
     headers: [["Cache-Control", "max-age=2592000"]]
   },
   {
+    source: "**/*.png",
+    headers: [["Cache-Control", "max-age=2592000"]]
+  },
+  {
+    source: "**/*.webp",
+    headers: [["Cache-Control", "max-age=2592000"]]
+  },
+  {
     source: "/animations/**/*.lottie",
     headers: [["Cache-Control", "max-age=2592000"]]
   },
