@@ -1,6 +1,6 @@
 ---
-slug: latest-tooling-features
-title: Latest Tooling Features
+slug: whats-new-in-juno-november-2024-edition
+title: "What’s New in Juno (November 2024 Edition)"
 description: Discover Juno's latest tooling features, including automated backups, support for large WASM modules, and the ability to buy cycles with Stripe.
 authors: [peterpeterparker]
 tags: [developer tools, release, updates]
