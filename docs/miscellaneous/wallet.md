@@ -40,7 +40,7 @@ Select "Account identifier".
 
 ![A screenshot of the wallet "Receive" modal with an arrow pointing to the Account Identifier option](../img/wallet/wallet-receive-account-identifier.png)
 
-Either copy your **Account identifier** or use the provided QR code. This is the address you should use to receive ICP from the outside world.
+Either copy your account identifier or use the provided QR code. This is the address you should use to receive ICP from the outside world.
 
 ![A screenshot of the Account Identifier and QR code](../img/wallet/wallet-receive-account-identifier-qrcode.png)
 
@@ -60,7 +60,7 @@ If you wish to use a QR code, click "Receive" and select "Wallet ID".
 
 ![A screenshot of the wallet "Receive" modal with an arrow pointing to the Wallet ID option](../img/wallet/wallet-receive-wallet-id.png)
 
-Either copy your **Account identifier** or use the provided QR code. This is the address you should use to transfer ICP within the ecosystem.
+Either copy your account identifier or use the provided QR code. This is the address you should use to transfer ICP within the ecosystem.
 
 ![A screenshot of the Wallet ID and QR code](../img/wallet/wallet-receive-wallet-id-qrcode.png)
 
