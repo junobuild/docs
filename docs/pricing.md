@@ -23,7 +23,7 @@ There are two types of costs associated with using Juno.
 
 :::note
 
-Last update: Nov. 17, 2024
+Last update: Dec. 3, 2024
 
 :::
 
@@ -33,7 +33,11 @@ As the owner of your mission control, satellites and orbiters, you are responsib
 
 To ensure that your infrastructure usage is covered, you must maintain a minimum balance of [cycles](terminology.md#cycles).
 
-You can top up your cycle balance in the Juno [console](https://console.juno.build/) using ICP from your mission control or from anywhere else on the [Internet Computer](https://internetcomputer.org/).
+You can top up your cycle balance in the Juno [console](https://console.juno.build/) through one of the following methods:
+
+- Using ICP from your wallet.
+- Purchasing cycles with Stripe, thanks to our friends at [cycle.express](https://cycle.express).
+- Transferring cycles between modules, such as moving cycles from one Satellite to another.
 
 ## Transaction costs
 
@@ -45,9 +49,15 @@ Similarly, enabling analytics by creating an [orbiter] entails a fee of 0.4 ICP,
 
 Please note that additional transaction fees may be introduced in the future, and pricing and models are subject to change.
 
-## Cost examples
+## Estimating Costs
 
-Here are a few examples of costs provided for explanatory purposes only and without guarantee. Please note also that these cost estimates are subject to change and may vary depending on network conditions and usage patterns.
+Below are a few examples of costs provided for explanatory purposes only and without guarantee. Please note that these cost estimates are subject to change and may vary depending on network conditions and usage patterns.
+
+:::tip
+
+You can use the [Pricing Calculator](https://internetcomputer.org/docs/current/developer-docs/cost-estimations-and-examples) to get a better rough estimate of how much your project might cost.
+
+:::
 
 ### Storage
 
@@ -55,15 +65,15 @@ The estimated annual cost of storing 1 gigabyte of data in a smart contract is $
 
 To calculate the estimated monthly cost for 1 gigabyte of storage, you can refer to the table provided on the Internet Computer [website](https://internetcomputer.org/docs/current/developer-docs/gas-cost).
 
-| Transaction                | 13-node Application Subnets | 34-node Application Subnets |
-| -------------------------- | --------------------------- | --------------------------- |
-| GB Storage Per Second      | $0.00000016622522           | $0.00000043474178           |
-| Derived to a 30-day month  | $0.431                      | $1.127                      |
-| Derived to a 12-month year | $5.172                      | $13.524                     |
+| Transaction                | 13-node Application Subnets  | 34-node Application Subnets  |
+| -------------------------- |------------------------------|------------------------------|
+| GB Storage Per Second      | $0.000000169749              | $0.000000443960              |
+| Derived to a 30-day month  | $0.439                       | $1.149                       |
+| Derived to a 12-month year | $5.268                       | $13.788                      |
 
 ### Deployment
 
-Based on our experimentation, deploying an entire website on-chain, such as the website http://juno.build, which consists of 273 files and is approximately 17 MB in size, is estimated to cost around 0.16 ICP ($0.64).
+Based on our experimentation, deploying an entire website on-chain, such as the website http://juno.build, which consists of approximately 900 files (including compressed versions of the files) and is 40 MB in size, is estimated to cost around 0.114 T Cycles, which converts to 0.0105 ICP ($0.15).
 
 It's important to note that subsequent deployments of your project can have significantly lower costs if the build consistency of your application is maintained. Juno only uploads new files to your satellites, which helps reduce costs compared to initial deployments.
 

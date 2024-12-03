@@ -22,15 +22,24 @@ For more detailed information, please refer to the dedicated [documentation](mis
 
 Cycles are used to pay for [infrastructure] usage. Your [mission control] or [satellite] consumes cycles while it's active.
 
-The amount of cycles available determines whether a smart contract will be active or inactive.
+The amount of cycles available determines whether a smart contract will be active, inactive, or eventually decommissioned (deleted).
 
 This ensures that related costs cannot surpass the amount of cycles available.
+
+Think of cycles like prepaid mobile data:
+
+- Just like your mobile plan allows you to make calls and browse the internet, cycles enable your smart contracts to process computations and store data.
+- When your data (cycles) runs out, your service (smart contract) becomes inactive.
+- To keep your smart contract running smoothly, you need to top up your cycles regularly.
+- If you don’t top it up, after some time, it will be decommissioned, similar to losing your prepaid number due to prolonged inactivity.
 
 Learn more about [computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/gas-cost).
 
 ## ICP
 
 The ICP token is the cryptocurrency used to pay for transactions on Juno's [infrastructure].
+
+It can also be converted into cycles, which are used to pay for computation and storage. Unlike the market price of ICP, the price of cycles remains constant, ensuring predictable costs for infrastructure usage.
 
 ## Internet Identity
 
