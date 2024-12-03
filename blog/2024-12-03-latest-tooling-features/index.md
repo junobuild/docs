@@ -4,7 +4,7 @@ title: Latest Tooling Features
 description: Discover Juno's latest tooling features, including automated backups, support for large WASM modules, and the ability to buy cycles with Stripe.
 authors: [peterpeterparker]
 tags: [developer tools, release, updates]
-image: https://juno.build/assets/images/satellite-09d7ff40ba0d777f933e75c11863746b.png
+image: https://juno.build/assets/images/satellite-default-web-page-51e0f6ca60bd6781344ef5abb33395ea.png
 ---
 
 Hey everyone 👋
