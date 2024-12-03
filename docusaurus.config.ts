@@ -87,7 +87,12 @@ const config: Config = {
   ],
 
   plugins: [
-    "docusaurus-plugin-sass",
+    [
+      "docusaurus-plugin-sass",
+      {
+        api: "modern-compiler"
+      }
+    ],
     join(process.cwd(), "docusaurus.showcase.plugin.ts"),
     join(process.cwd(), "docusaurus.changelog.plugin.ts")
   ],

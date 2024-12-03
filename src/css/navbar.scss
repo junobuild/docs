@@ -20,11 +20,12 @@ div[class*="announcementBar_"][role="banner"] {
 }
 
 .navbar {
+  height: 75px;
+  border-bottom: 1px solid var(--button-shadow-color);
+
   @media screen and (min-width: 1280px) {
     padding-inline: 3rem;
   }
-  height: 75px;
-  border-bottom: 1px solid var(--button-shadow-color);
 }
 
 .navbar__brand {
