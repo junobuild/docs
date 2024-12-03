@@ -26,13 +26,7 @@ It provides independence by allowing you to top up your modules without relying 
 
 ---
 
-## Receiving ICP
-
-You can receive ICP into your wallet either by buying it from the outside world or by transferring it from within the ecosystem.
-
----
-
-### Buying ICP
+## Buying ICP
 
 To get ICP from the outside world into your wallet, you can use most cryptocurrency exchange platforms that allow you to buy ICP (refer to this [list](https://coinranking.com/fr/coin/aMNLwaUbY+internetcomputerdfinity-icp/exchanges) of major ones). These platforms let you convert dollars (or other currencies) into ICP. Keep in mind that exchanges charge a fee for this service.
 
@@ -40,13 +34,19 @@ Once you have obtained ICP on those platforms, you can initiate a transaction to
 
 You can locate the destination address in Juno's [console]. Once you've logged in, go to your [wallet](https://console.juno.build/wallet) and click "Receive".
 
+![A screenshot of the wallet with the "Receive" button](../img/wallet/wallet-receive.png)
+
 Select "Account identifier".
+
+![A screenshot of the wallet "Receive" modal with an arrow pointing to the Account Identifier option](../img/wallet/wallet-receive-account-identifier.png)
 
 Either copy your **Account identifier** or use the provided QR code. This is the address you should use to receive ICP from the outside world.
 
-![Where to find the account identifier of your mission control](../img/account-identifier.webp)
+![A screenshot of the Account Identifier and QR code](../img/wallet/wallet-receive-account-identifier-qrcode.png)
 
-### Transferring ICP
+---
+
+## Receiving ICP
 
 If you already hold ICP, you can transfer it from wallets within the ecosystem such as the [NNS dapp](https://nns.internetcomputer.org/), [OISY](https://oisy.com) or [others](https://internetcomputer.org/ecosystem?tag=Wallet).
 
@@ -54,10 +54,34 @@ To initiate a transaction to send it to your wallet, you will need to provide a 
 
 You can locate your wallet ID in Juno's [console]. Once you've logged in, go to your [wallet](https://console.juno.build/wallet), where the information is easy to find.
 
+![A screenshot of the wallet with "Wallet ID" information](../img/wallet/wallet-id.png)
+
 If you wish to use a QR code, click "Receive" and select "Wallet ID".
 
-Select "Wallet ID".
+![A screenshot of the wallet "Receive" modal with an arrow pointing to the Wallet ID option](../img/wallet/wallet-receive-wallet-id.png)
+
+Either copy your **Account identifier** or use the provided QR code. This is the address you should use to transfer ICP within the ecosystem.
+
+![A screenshot of the Wallet ID and QR code](../img/wallet/wallet-receive-wallet-id-qrcode.png)
 
 If you are using OISY, you can also connect this third-party wallet to Juno's console to initiate the transaction and proceed with the approval. This eliminates the need to copy, paste, or scan any addresses.
+
+![A screenshot of the wallet "Receive" modal with an arrow pointing to the OISY option](../img/wallet/wallet-receive-oisy.png)
+
+---
+
+## Send ICP
+
+Sending ICP to the ecosystem or the outside world can be initiated from your wallet in Juno's [console]. To start a transaction, click "Send".
+
+![A screenshot of the wallet with the "Send" button](../img/wallet/wallet-send.png)
+
+Enter the destination wallet ID or account identifier where you want to send ICP, along with the amount.
+
+![A screenshot of the wallet send form](../img/wallet/wallet-send-form.png)
+
+Review the transaction details and confirm to execute it.
+
+![A screenshot of the wallet send review mask](../img/wallet/wallet-send-review.png)
 
 [console]: https://console.juno.build
