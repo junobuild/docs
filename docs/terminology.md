@@ -6,8 +6,6 @@ In Juno, we use some terms that may be unfamiliar to some. This page provides a 
 
 An "Account Identifier" is an address, serving as the textual representation of an account on the Internet Computer (ICP) ledger. It can represent an account owned by an individual or a smart contract.
 
-When you send ICP from a cryptocurrency exchange or wallet, as explained in the [documentation](./pricing.md#sending-icp-to-your-mission-control), you are sending it to the "Account Identifier" associated with your [mission control].
-
 ## Console
 
 The "console" refers to Juno's administration application, located at [https://console.juno.build](https://console.juno.build).
@@ -53,7 +51,7 @@ A mission control is a dedicated smart contract designed for managing your modul
 
 Think of it like the command center for a space mission. Just as NASA's mission control coordinates spacecraft and satellites, your mission control manages all your [satellites] or [orbiters](#orbiter).
 
-Because it can hold ICP and is only controlled by you, your mission control also functions as your [wallet](#wallet). 
+Because it can hold ICP and is only controlled by you, your mission control also functions as your [wallet](#wallet).
 
 For a schematic representation, refer to the [Architecture](./white-paper/architecture.md) documentation page.
 
