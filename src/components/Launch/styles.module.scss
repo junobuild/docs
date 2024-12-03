@@ -23,8 +23,8 @@
 }
 
 .title {
-  @include fonts.h2;
   margin: 1rem 0 0.75rem;
+  @include fonts.h2;
 }
 
 .code {

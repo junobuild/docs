@@ -29,6 +29,6 @@
 }
 
 .grid {
-  @include grid.columns;
   --grid-gap: 3rem;
+  @include grid.columns;
 }

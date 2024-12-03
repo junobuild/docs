@@ -28,12 +28,12 @@
   font-weight: bold;
   font-size: 40px;
   line-height: 50px;
+  margin-bottom: 0.5rem;
   @media screen and (min-width: 768px) {
     font-size: 60px;
     line-height: 76px;
     max-width: 612px;
   }
-  margin-bottom: 0.5rem;
 }
 
 .subText {

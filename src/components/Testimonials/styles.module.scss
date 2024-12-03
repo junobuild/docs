@@ -5,9 +5,9 @@
 }
 
 .grid {
-  @include grid.columns;
   --grid-gap: 3rem;
   margin: 0 0 4rem;
   padding: 0;
   list-style: none;
+  @include grid.columns;
 }

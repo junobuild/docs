@@ -16,9 +16,9 @@
 }
 
 .sub {
-  @include fonts.h2;
   margin: 6rem 0 0.75rem;
   text-align: center;
+  @include fonts.h2;
 }
 
 .build {
