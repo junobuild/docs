@@ -49,7 +49,11 @@ It is free, passwordless, and does not track user activity. It also integrates W
 
 ## Mission control
 
-A mission control is a dedicated smart contract designed for managing your [satellites]. It is under your exclusive control, allowing it to hold ICP and perform various operations such as topping up your [satellites] and itself.
+A mission control is a dedicated smart contract designed for managing your modules. It is under your exclusive control, allowing it, for example, to hold ICP and perform various operations such as topping up your modules.
+
+Think of it like the command center for a space mission. Just as NASA's mission control coordinates spacecraft and satellites, your mission control manages all your [satellites] or [orbiters](#orbiter).
+
+Because it can hold ICP and is only controlled by you, your mission control also functions as your [wallet](#wallet). 
 
 For a schematic representation, refer to the [Architecture](./white-paper/architecture.md) documentation page.
 
@@ -92,6 +96,18 @@ A subnet is like a group of smart contracts (programs) working together on the I
 When you create a module, like a Satellite, it's deployed on the same subnet as the Juno Console by default: [6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae](https://dashboard.internetcomputer.org/subnet/6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae).
 
 Communicating between modules on different subnets takes longer due to the extra steps required for coordination (about 4 additional consensus rounds in the best case). This is why placing all your interacting smart contracts on the same subnet can lead to significant performance improvements.
+
+## Wallet
+
+A wallet is your secure repository for managing and storing crypto money. Your wallet is controlled exclusively by you, ensuring that no one, including Juno, can ever access it.
+
+Think of it like a digital vault:
+
+- It securely stores your ICP tokens.
+- It acts as your gateway for transactions within the Juno ecosystem.
+- It allows you to top up your modules with cycles.
+
+Because your wallet is also your [mission-control](#mission-control) and therefore a smart contract, which requires resources to stay alive, we recommend holding a reasonable amount of tokens. Think of it like a day-to-day wallet for frequent operations rather than one for savings.
 
 [console]: terminology.md#console
 [satellite]: terminology.md#satellite
