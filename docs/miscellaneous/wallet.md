@@ -30,7 +30,7 @@ It provides independence by allowing you to top up your modules without relying 
 
 To get ICP from the outside world into your wallet, you can use most cryptocurrency exchange platforms that allow you to buy ICP (refer to this [list](https://coinranking.com/fr/coin/aMNLwaUbY+internetcomputerdfinity-icp/exchanges) of major ones). These platforms let you convert dollars (or other currencies) into ICP. Keep in mind that exchanges charge a fee for this service.
 
-Once you have obtained ICP on those platforms, you can initiate a transaction to send it to your wallet. For this purpose, you will need to provide a destination address where the ICP should be sent. This destination address corresponds to the [Account Identifier](./terminology.md#account-identifier) of your wallet.
+Once you have obtained ICP on those platforms, you can initiate a transaction to send it to your wallet. For this purpose, you will need to provide a destination address where the ICP should be sent. This destination address corresponds to the [Account Identifier](../terminology.md#account-identifier) of your wallet.
 
 You can locate the destination address in Juno's [console]. Once you've logged in, go to your [wallet](https://console.juno.build/wallet) and click "Receive".
 
