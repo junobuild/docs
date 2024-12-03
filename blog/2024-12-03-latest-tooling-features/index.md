@@ -9,7 +9,7 @@ image: https://juno.build/assets/images/satellite-09d7ff40ba0d777f933e75c1186374
 
 Hey everyone 👋
 
-November’s been an exciting month, especially since I’ve officially started working full-time on Juno — thanks to the recently announced funding! This shift has already led to delivering some fantastic new features for developers, like automated backups (finally!!!), support for large WASM modules, the ability to buy cycles with Stripe, and a few other goodies.
+November’s been an exciting month, especially since I’ve officially started working full-time on Juno — thanks to the recently [announced](/blog/a-new-chapter-awakens) funding! This shift has already led to delivering some fantastic new features for developers, like automated backups (finally!!!), support for large WASM modules, the ability to buy cycles with Stripe, and a few other goodies.
 
 These updates are all about making development smoother and more efficient, whether you’re building dapps, smart contracts, or managing your projects. Let’s dive into what’s new! 
 
