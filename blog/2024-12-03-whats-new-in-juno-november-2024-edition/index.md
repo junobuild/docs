@@ -41,7 +41,7 @@ With this integration, developers can simply make a payment, and the cycles are 
 
 ## Get ICP directly from OISY
 
-This was both a useful feature, as it makes it easy to transfer ICP from Oisy to the developer's wallet on Juno, and an opportunity for me to try out the integration with various ICRC standards I implemented for the foundation.
+This was both a useful feature, as it makes it easy to transfer ICP from [OISY](https://oisy.com) to the developer's wallet on Juno, and an opportunity for me to try out the integration with various ICRC standards I implemented for the foundation.
 
 ![A screenshot of the integration with OISY](./oisy.png)
 
