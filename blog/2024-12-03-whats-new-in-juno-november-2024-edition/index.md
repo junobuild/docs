@@ -110,7 +110,7 @@ export default defineConfig({
 
 ## Darker Dark Theme
 
-Maybe not the most groundbreaking update, but the dark theme just got even darker. 🧛‍♂️🦇 Perfect for those late-night coding sessions—or if you just enjoy the vibe!
+Maybe not the most groundbreaking update, but the dark theme got even darker. 🧛‍♂️🦇 Perfect for those late-night coding sessions—or if you just enjoy the vibe!
 
 ![A screenshot of the darker dark theme](./darker-mode.png)
 
