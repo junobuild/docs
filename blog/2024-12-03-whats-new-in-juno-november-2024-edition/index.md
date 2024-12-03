@@ -94,15 +94,15 @@ import { defineConfig } from '@junobuild/config';
 
 /** @type {import('@junobuild/config').JunoConfig} */
 export default defineConfig({
-	satellite: {
-		id: 'ck4tp-aaaaa-aaaaa-abbbb-cai',
-		source: 'build',
-		predeploy: [
-			'npm run lint',
-			'npm run build'
-		],
-		postdeploy: ['node hello.mjs']
-	}
+  satellite: {
+    id: 'ck4tp-aaaaa-aaaaa-abbbb-cai',
+    source: 'build',
+    predeploy: [
+    'npm run lint',
+    'npm run build'
+    ],
+    postdeploy: ['node hello.mjs']
+  }
 });
 ```
 
