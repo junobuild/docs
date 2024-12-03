@@ -11,7 +11,7 @@ Hey everyone 👋
 
 November’s been an exciting month, especially since I’ve officially started working full-time on Juno — thanks to the recently [announced](/blog/a-new-chapter-awakens) funding! This shift has already led to delivering some fantastic new features for developers, like automated backups (finally!!!), support for large WASM modules, the ability to buy cycles with Stripe, and a few other goodies.
 
-These updates are all about making development smoother and more efficient, whether you’re building dapps, smart contracts, or managing your projects. Let’s dive into what’s new! 
+These updates are all about making development smoother and more efficient, whether you’re building dapps, smart contracts, or managing your projects. Let’s dive into what’s new!
 
 ---
 
@@ -23,7 +23,7 @@ This addition brings a crucial layer of security for developers, letting you saf
 
 ![A screenshot of the steps for an upgrade](./upgrade-backup.png)
 
-Here’s how it works: Currently, one backup per module is supported. You can manage backups manually via both the Console UI and the CLI, with options to create, restore, or delete them.  Additionally, backups are automatically created during the upgrade process, taking a snapshot before transitioning to a new version. For those who prefer full control, advanced options let you skip creating a backup or avoid overwriting an existing one.
+Here’s how it works: Currently, one backup per module is supported. You can manage backups manually via both the Console UI and the CLI, with options to create, restore, or delete them. Additionally, backups are automatically created during the upgrade process, taking a snapshot before transitioning to a new version. For those who prefer full control, advanced options let you skip creating a backup or avoid overwriting an existing one.
 
 For anyone who, like me, feels a bit tense whenever it’s time to execute an upgrade, this feature is a huge relief. It’s really a great addition!
 
@@ -37,7 +37,7 @@ Getting cycles has become more straightforward, particularly for newcomers and n
 
 With this integration, developers can simply make a payment, and the cycles are added directly to their module.
 
---- 
+---
 
 ## Get ICP directly from the OISY Wallet
 
@@ -90,18 +90,15 @@ Likewise, post-deploy scripts come in handy for follow-up tasks, such as:
 - Logging deployment information for auditing.
 
 ```typescript
-import { defineConfig } from '@junobuild/config';
+import { defineConfig } from "@junobuild/config";
 
 /** @type {import('@junobuild/config').JunoConfig} */
 export default defineConfig({
   satellite: {
-    id: 'ck4tp-aaaaa-aaaaa-abbbb-cai',
-    source: 'build',
-    predeploy: [
-    'npm run lint',
-    'npm run build'
-    ],
-    postdeploy: ['node hello.mjs']
+    id: "ck4tp-aaaaa-aaaaa-abbbb-cai",
+    source: "build",
+    predeploy: ["npm run lint", "npm run build"],
+    postdeploy: ["node hello.mjs"]
   }
 });
 ```
