@@ -1,6 +1,6 @@
 {
   "name": "@junobuild/docs",
-  "version": "2.1.0",
+  "version": "2.3.0",
   "private": true,
   "author": "David Dal Busco <david@fluster.io>",
   "license": "AGPL-3.0-or-later",
@@ -17,6 +17,7 @@
     "dev": "npm run start",
     "start": "docusaurus start",
     "build": "docusaurus build",
+    "docs:cli": "./cli-to-md.sh",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -27,12 +28,12 @@
     "format": "prettier . --write ."
   },
   "dependencies": {
-    "@docusaurus/core": "^3.5.2",
-    "@docusaurus/preset-classic": "^3.5.2",
-    "@junobuild/analytics": "^0.0.27",
-    "@mdx-js/react": "^3.0.1",
+    "@docusaurus/core": "^3.6.3",
+    "@docusaurus/preset-classic": "^3.6.3",
+    "@junobuild/analytics": "^0.0.30",
+    "@mdx-js/react": "^3.1.0",
     "clsx": "^2.1.1",
-    "prism-react-renderer": "^2.3.1",
+    "prism-react-renderer": "^2.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
@@ -40,15 +41,15 @@
     "use-mailchimp-form": "^3.1.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.5.2",
-    "@docusaurus/tsconfig": "^3.5.2",
-    "@docusaurus/types": "^3.4.0",
-    "@junobuild/config": "^0.0.14",
-    "@types/react": "^18.3.3",
+    "@docusaurus/module-type-aliases": "^3.6.3",
+    "@docusaurus/tsconfig": "^3.6.1",
+    "@docusaurus/types": "^3.6.1",
+    "@junobuild/config": "^0.0.17",
+    "@types/react": "^18.3.12",
     "docusaurus-plugin-sass": "^0.2.5",
-    "prettier": "^3.3.2",
-    "prettier-plugin-organize-imports": "^3.2.4",
-    "sass": "^1.80.4",
+    "prettier": "^3.3.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "sass": "^1.77.4",
     "typescript": "^5.4.5"
   },
   "browserslist": {

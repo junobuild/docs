@@ -1,3 +1,13 @@
+---
+description: Discover the potential applications and benefits of using Juno in decentralized apps, content management, and supply chain management.
+keywords:
+  [
+    Decentralized Applications (dApps),
+    Content Management Systems (CMS),
+    Blockchain Supply Chain Management
+  ]
+---
+
 # Use Cases
 
 The following list provides an example of potential applications and benefits of using Juno in various scenarios:

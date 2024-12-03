@@ -1,0 +1,17 @@
+The `ignore` attribute allows you to exclude certain files from being deployed to your satellite.
+
+This attribute works similarly to Git's `.gitignore`, and you can specify which files to ignore using globs.
+
+Here is an example of how the ignore attribute can be utilized:
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist",
+    ignore: ["**/*.txt", ".tmp/"]
+  }
+});
+```

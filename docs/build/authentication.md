@@ -1,5 +1,14 @@
 ---
 sidebar_position: 1
+description: Learn how to securely identify users anonymously and save their data on the blockchain using Juno's authentication services.
+keywords:
+  [
+    authentication,
+    secure user identification,
+    blockchain authentication,
+    Internet Identity,
+    NFID
+  ]
 ---
 
 # Authentication
@@ -14,7 +23,7 @@ You can manage your users in the [authentication](https://console.juno.build/auh
 
 :::note
 
-The Juno SDK must be [installed](../add-juno-to-an-app/setup) and initialized in your app to use the authentication features.
+The Juno SDK must be [installed](../setup-the-sdk) and initialized in your app to use the authentication features.
 
 :::
 

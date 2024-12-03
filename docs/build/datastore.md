@@ -1,5 +1,7 @@
 ---
 sidebar_position: 2
+description: Learn how Juno's Datastore simplifies blockchain data storage with easy-to-use SDK and comprehensive documentation.
+keywords: [blockchain data storage, collection, document, key, data]
 ---
 
 # Datastore
@@ -8,7 +10,7 @@ The Juno Datastore offers a simple key-value model, organized by collections con
 
 :::note
 
-To use these features, the Juno SDK must be [installed](../add-juno-to-an-app/setup) and initialized in your app.
+To use these features, the Juno SDK must be [installed](../setup-the-sdk) and initialized in your app.
 
 :::
 
@@ -262,7 +264,11 @@ The function requires a collection and accepts various optional parameters, incl
    - **Description**: The key of the collection from which documents are to be listed.
    - **Type**: `string`
 
-2. **`matcher`** (optional)
+2. **`filter`** (optional)
+
+   - **Description**: An optional object that can be used to provide various parameters to filter documents.
+
+   a. **`matcher`** (optional)
 
    - **Description**: An object used to filter documents based on their keys or descriptions using regular expressions.
    - **Type**: `ListMatcher`
@@ -316,7 +322,7 @@ The function requires a collection and accepts various optional parameters, incl
      - **timestamp**: Used with `equal`, `greaterThan`, and `lessThan` matchers to specify the exact timestamp for comparison.
      - **timestamps**: Used with the `between` matcher to specify a range of timestamps. The range is inclusive of both the start and end values.
 
-3. **`paginate`** (optional)
+   b. **`paginate`** (optional)
 
    - **Description**: An object to control pagination of the results
    - **Type**: `ListPaginate`
@@ -331,7 +337,7 @@ The function requires a collection and accepts various optional parameters, incl
      - **startAfter**: A string key to start listing documents after this key.
      - **limit**: The maximum number of documents to return.
 
-4. **`order`** (optional)
+   c. **`order`** (optional)
 
    - **Description**: Control the sorting order of the results.
    - **Type**: `ListOrder`
@@ -345,7 +351,7 @@ The function requires a collection and accepts various optional parameters, incl
      type ListOrderField = "keys" | "updated_at" | "created_at";
      ```
 
-5. **`owner`** (optional)
+   d. **`owner`** (optional)
 
    - **Description**: The owner of the documents.
    - **Type**: `ListOwner`
@@ -354,39 +360,39 @@ The function requires a collection and accepts various optional parameters, incl
      type ListOwner = string | Principal;
      ```
 
-:::note
-Example of usage of the parameters:
+:::note[Example]
+Usage of the parameters:
 
 ```typescript
 import { listDocs } from "@junobuild/core";
 
 const myList = await listDocs({
   collection: "my_collection_key",
-  owner: "some_owner_id_or_principal",
-  matcher: {
-    key: "^doc_",
-    description: "example",
-    createdAt: {
-      matcher: "greaterThan",
-      timestamp: 1627776000n
-    },
-    updatedAt: {
-      matcher: "between",
-      timestamps: {
-        start: 1627770000n,
-        end: 1627900000n
-      }
-    }
-  },
-  paginate: {
-    startAfter: "doc_10",
-    limit: 5
-  },
   filter: {
+    matcher: {
+      key: "^doc_",
+      description: "example",
+      createdAt: {
+        matcher: "greaterThan",
+        timestamp: 1627776000n
+      },
+      updatedAt: {
+        matcher: "between",
+        timestamps: {
+          start: 1627770000n,
+          end: 1627900000n
+        }
+      }
+    },
+    paginate: {
+      startAfter: "doc_10",
+      limit: 5
+    },
     order: {
       desc: true,
       field: "updated_at"
-    }
+    },
+    owner: "some_owner_id_or_principal"
   }
 });
 ```
@@ -429,7 +435,11 @@ The return value is the same as the `items_length` property from the `listDocs` 
 
 ---
 
-## Delete a document
+## Delete
+
+There are multiple ways to delete documents from your Datastore.
+
+### Delete a document
 
 To delete a document, use the `deleteDoc` function, which performs version validation to ensure that the most recent document is being deleted:
 
@@ -444,9 +454,7 @@ await deleteDoc({
 
 The document must include the current `version` from the latest entry within the satellite; otherwise, the call will fail. This prevents unexpected concurrent overwrites, which is particularly useful if your users access your projects simultaneously on multiple devices.
 
----
-
-## Delete multiple documents
+### Delete multiple documents
 
 To delete multiple documents in an atomic manner, you can use the function `deleteManyDocs`:
 
@@ -456,41 +464,26 @@ import { deleteManyDocs } from "@junobuild/core";
 await deleteManyDocs({ docs: [myDoc1, myDo2, myDoc3] });
 ```
 
+### Delete filtered documents
+
+The `deleteFilteredDocs` function allows you to delete multiple documents from a collection based on specific filter criteria. This function simplifies bulk deletions by leveraging the same parameters as the [listDocs](#list-documents) function for filtering.
+
+```typescript
+import { deleteFilteredDocs } from "@junobuild/core";
+
+await deleteFilteredDocs({
+  collection: "my_collection_key",
+  filter: {
+    // Same options as filter of listDocs
+  }
+});
+```
+
 ---
 
 ## Configuration
 
-You can configure various settings of the Datastore.
-
-#### Where do you define your Datastore configuration?
-
-You define your Datastore configuration in your Juno configuration file. The CLI automatically creates the file at the root of your project directory when you run the [juno init](../miscellaneous/cli.md#init) or [juno deploy](../miscellaneous/cli.md#deploy) command for the first time.
-
-#### How do you apply your changes?
-
-To apply any changes you make in your configuration to your satellite, execute the [juno config](../miscellaneous/cli.md#config) command with the CLI.
-
-### Maximum Memory Size
-
-You can configure optional limits on heap and stable memory for your smart contract to control the creation and update of documentations in your Datastore.
-
-When the limit is reached, the Datastore and smart contract will continue to operate normally but will reject changes to documents.
-
-```javascript
-import { defineConfig } from "@junobuild/config";
-
-export default defineConfig({
-  satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
-    source: "dist",
-    datastore: {
-      maxMemorySize: {
-        stable: 1_073_741_824n // For example max. 1 GiB in bytes of Stable memory
-      }
-    }
-  }
-});
-```
+The Datastore supports various configuration options to fine-tune its behavior, such as resource limits and operational constraints. For a detailed explanation of all available options, see the [configuration](../miscellaneous/configuration.mdx) section.
 
 [satellite]: ../terminology.md#satellite
 [controllers]: ../terminology.md#controller

@@ -1,5 +1,12 @@
 [
   {
+    "title": "AllTracks",
+    "url": "https://orkad-xyaaa-aaaal-ai7ta-cai.icp0.io",
+    "description": "A web application for tracking hiking activities, managing trails, and organizing hiking events.",
+    "img": "/showcase/alltracks.webp",
+    "github": "https://github.com/bytesun/suntrack"
+  },
+  {
     "title": "Solutio Feedback & Ideation Incubator",
     "url": "https://home.solutio.one",
     "description": "Request any app, earn for ideas, crowdfund & crowdbuild open-source.",

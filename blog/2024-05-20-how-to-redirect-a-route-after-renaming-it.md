@@ -64,7 +64,7 @@ Deploy your updated website using GitHub Actions or by running the `juno deploy`
 
 Next, configure the redirection in your Juno configuration. This involves specifying the old route and the new route so that requests to the old route are redirected to the new one.
 
-For example, we recently renamed [https://juno.build/docs/add-juno-to-an-app/install-the-sdk-and-initialize-juno](https://juno.build/docs/add-juno-to-an-app/install-the-sdk-and-initialize-juno) to [https://juno.build/docs/add-juno-to-an-app/setup](https://juno.build/docs/add-juno-to-an-app/setup). Therefore, we added the following redirection in our [juno.config.ts](https://github.com/junobuild/docs/blob/main/juno.config.ts) file:
+For example, we recently renamed [https://juno.build/docs/install-the-sdk-and-initialize-juno](https://juno.build/docs/install-the-sdk-and-initialize-juno) to [https://juno.build/docs/setup](https://juno.build/docs/setup). Therefore, we added the following redirection in our [juno.config.ts](https://github.com/junobuild/docs/blob/main/juno.config.ts) file:
 
 ```typescript
 import { defineConfig } from "@junobuild/config";

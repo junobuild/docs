@@ -2,7 +2,7 @@
 id: local-development
 title: Local Development
 description: Set-up the local emulator with Docker
-sidebar_position: 9
+sidebar_position: 11
 ---
 
 # Local Development
@@ -45,6 +45,7 @@ services:
     image: junobuild/satellite:latest
     ports:
       - 5987:5987
+      - 5999:5999
     volumes:
       - my_dapp:/juno/.juno
       - ./juno.dev.config.json:/juno/juno.dev.config.json
@@ -94,7 +95,11 @@ Modify the following information of the `docker-compose.yml` file to tweak the c
 
 ### Ports
 
-The default port is 5987. If, for example, you would like to use port 8080, modify the value `5987:5987` to `8080:5987`. The latter is the port exposed by the container.
+The default port `5987` is used for communication with the locally deployed satellites and other modules in the local environment (replica). This is the primary port for interaction with the application.
+
+The container also exposes a small admin server for internal management on port `5999`.
+
+If you want to use a different port, such as 8080, update for example the mapping from `5987:5987` to `8080:5987`, where the first value (8080) is the port you can call, and the second (5987) is the actual container port.
 
 ### Volumes
 
@@ -114,6 +119,7 @@ services:
     image: junobuild/satellite:latest
     ports:
       - 5987:5987
+      - 5999:5999
     volumes:
       - hello_world:/juno/.juno # <-------- hello_world modified here
       - ./juno.dev.config.json:/juno/juno.dev.config.json
@@ -148,6 +154,7 @@ export interface Rule {
   maxSize?: number;
   maxCapacity?: number;
   mutablePermissions: boolean;
+  maxTokens?: number;
 }
 
 export type SatelliteDevDbCollection = Omit<
@@ -227,6 +234,7 @@ services:
     image: junobuild/satellite:latest
     ports:
       - 5987:5987
+      - 5999:5999
     volumes:
       - my_dapp:/juno/.juno
       - /your/custom/path/your_config_file.json:/juno/juno.dev.config.json # <-------- Modify location and file name of the left hand part
@@ -273,4 +281,34 @@ await initSatellite({
     : "aaaaa-bbbbb-ccccc-ddddd-cai",
   container: true
 });
+```
+
+---
+
+## Tips and Tricks
+
+The admin server running on port `5999` provides a variety of internal management. Below are some tips and example scripts to make use of this little server.
+
+### Example: Get ICP
+
+You might want to transfer some ICP from the ledger to a specified principal, which can be particularly useful when you're just getting started developing your app and no users currently own ICP. This can be achieved by querying:
+
+```
+http://localhost:5999/ledger/transfer/?to=$PRINCIPAL
+```
+
+For example, you can use the following script:
+
+```bash
+#!/usr/bin/env bash
+
+# Check if a principal is passed as an argument; otherwise, prompt for it
+if [ -z "$1" ]; then
+  read -r -p "Enter the Wallet ID (owner account, principal): " PRINCIPAL
+else
+  PRINCIPAL=$1
+fi
+
+# Make a transfer request to the admin server
+curl "http://localhost:5999/ledger/transfer/?to=$PRINCIPAL"
 ```

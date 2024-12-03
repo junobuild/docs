@@ -1,0 +1,172 @@
+---
+sidebar_position: 4
+description: "Discover Juno Hosting: Fast, Secure, Blockchain-Powered Web Hosting. Deploy with ease and custom domains."
+keywords: [Fast hosting, Secure hosting, Blockchain hosting, Custom domains]
+---
+
+# Hosting
+
+Juno Hosting offers fast and secure hosting powered by 100% blockchain technology.
+
+With just one [CLI] command, you can effortlessly deploy your web applications, static, and dynamic content to your [satellite].
+
+---
+
+## Custom Domain Support
+
+You can maintain your unique brand identity with Juno Hosting. Use your custom domain, such as "yolo.com" or "hello.world.com", instead of the default domain name provided by Juno.
+
+Our infrastructure automatically provisions an SSL certificate for each of your domains, ensuring secure connections for your users.
+
+### Connecting Your Domain
+
+To connect your custom domain, follow these steps:
+
+1. Start the custom domain wizard from the Juno console [hosting](https://console.juno.build/hosting) page
+2. Enter the desired domain name for your satellite
+3. Log into your domain provider's site and configure the DNS records as indicated by Juno
+4. Continue the process in Juno
+
+Please note that it may take several minutes to set up your custom domain after the wizard is completed and up to 24 hours for your domain provider to reflect the changes.
+
+### About DNS records
+
+To configure DNS records, you will be requested to use `CNAME` records. Some domain providers do not provide such types. Instead, DNS providers often support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `icp1.io`.
+
+Some DNS providers require you to specify the main domain. For example, you might have to specify your full domain `foo.bar.com` for the `CNAME` entry related to `icp1.io` instead of only `foo` as displayed by our [console].
+
+If you ever encounter issues configuring your DNS, you can also refer to the [Troubleshooting](https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/#troubleshooting) section for further assistance.
+
+### Cloudflare
+
+The DNS entries presented in the console are exactly the ones that should be configured in Cloudflare.
+
+However, based on our experience, to enable the custom domain properly, the following settings in Cloudflare should be disabled:
+
+- DNS > Settings > Disable DNSSEC
+- SSL/TLS > Overview > Set "Your SSL/TLS encryption mode" to "Off (not secure)". A SSL certificate will be automatically ordered by configuring the custom domain.
+- SSL/TLS > Edge Certificates > Disable Universal SSL
+
+Additionally, we recommend not proxying the DNS entries ("DNS only").
+
+### Namecheap
+
+This external guide provides instructions on how to configure the DNS records for [Namecheap](https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/dns-setup#namecheap).
+
+### GoDaddy
+
+This external guide provides instructions on how to configure the DNS records for [GoDaddy](https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/dns-setup#godaddy).
+
+### Google Domains
+
+Google Domains does not support `CNAME` records for the apex domain. For this reason, we suggest transferring the domain to [Cloudflare](#cloudflare).
+
+### Other Limited Providers
+
+We are aware of a few other providers that also do not support `CNAME` records for the apex domain. Similar to Google Domains, we advise transferring the domain to [Cloudflare](#cloudflare) in order to overcome this limitation.
+
+- HostGator
+- Infomaniak
+
+### Status
+
+The status of the configuration of your custom domain can be one of the following:
+
+- `PendingOrder`: The registration request has been submitted and is waiting to be picked up.
+- `PendingChallengeResponse`: The certificate has been ordered.
+- `PendingAcmeApproval`: The challenge has been completed.
+- `Available`: The registration request has been successfully processed. Your custom domain is ready.
+- `Failed`: The registration request failed.
+
+If one of the status `Pending...` is reached, the console will automatically refresh the status every few seconds until your domain is available.
+
+---
+
+## Configure Hosting behavior
+
+You can configure customized hosting behavior for requests to your site.
+
+#### What can you configure?
+
+- Specify which `source` files in your local project directory you want to deploy? [Learn how.](#source)
+- Ignore some files during deployment. [Learn how.](#ignore-files)
+- Configure HTTP `headers` to pass along additional information about a request or a response. [Learn how.](#http-headers)
+- Serve a customized 404 page. [Learn how.](#customize-a-404not-found-page)
+- Set up `redirects` for pages that you've moved or deleted. [Learn how.](#redirects)
+- Set up `rewrites`. [Learn how.](#rewrites)
+- Tweak `gzip` compression for best performance. [Learn how.](#gzip)
+- Customize the `encoding` behavior of your files. [Learn how.](#encoding-types)
+- Allow your project to be embedded as an `iframe`. [Learn how.](#iframe)
+- Customize `assertions` to modify the default verification behavior of the CLI. [Learn how.](#assertions)
+
+#### Where do you define your Hosting configuration?
+
+You define your Hosting configuration in your Juno configuration file. The CLI automatically creates the file at the root of your project directory when you run the [juno init](../miscellaneous/cli.mdx#init) or [juno deploy](../miscellaneous/cli.mdx#deploy) command for the first time.
+
+#### How do you apply your changes?
+
+To apply any changes you make in your configuration to your satellite, execute the [juno config](../miscellaneous/cli.mdx#config) command with the CLI.
+
+### Source
+
+import Source from "./components/source.mdx";
+
+<Source />
+
+### Ignore files
+
+import IgnoreFiles from "./components/ignore-files.mdx";
+
+<IgnoreFiles />
+
+### HTTP Headers
+
+import HttpHeaders from "./components/http-headers.mdx";
+
+<HttpHeaders />
+
+### Customize a 404/Not Found page
+
+By default, all unknown paths are automatically rewritten to `/index.html`. However, if you wish to serve a custom `404 Not Found` error when a user attempts to access a non-existent page, you can do so without requiring additional configuration.
+
+Simply upload a custom `404.html` file to your satellite that should be served from the root path of your site.
+
+### Redirects
+
+import Redirects from "./components/redirects.mdx";
+
+<Redirects />
+
+### Rewrites
+
+import Rewrites from "./components/rewrites.mdx";
+
+<Rewrites />
+
+### GZIP
+
+import Gzip from "./components/gzip.mdx";
+
+<Gzip />
+
+### Encoding types
+
+import Encoding from "./components/encoding.mdx";
+
+<Encoding />
+
+### iframe
+
+import IFrame from "./components/iframe.mdx";
+
+<IFrame />
+
+### Assertions
+
+import Assertions from "./components/assertions.mdx";
+
+<Assertions />
+
+[CLI]: ../miscellaneous/cli.mdx
+[satellite]: ../terminology.md#satellite
+[console]: ../terminology.md#console

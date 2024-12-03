@@ -1,19 +1,19 @@
 ---
 id: github-actions
 title: GitHub Actions
-description: Continuous integration and deployment
+description: Learn how to use GitHub Actions for continuous integration and deployment.
 sidebar_position: 8
 ---
 
 # GitHub Actions
 
-Using any features offered by the Juno [CLI] within GitHub Actions is possible.
+You can leverage the Juno [CLI] to perform tasks within GitHub Actions.
 
-## Using GitHub Actions to Deploy Your Decentralized App
+This guide will show you how to set up and deploy your decentralized app to Juno satellites using the action [junobuild/juno-action](https://github.com/junobuild/juno-action).
 
-This documentation will guide you through the process of deploying your decentralized app to Juno satellites using the [junobuild/juno-action](https://github.com/junobuild/juno-action) GitHub Action.
+---
 
-### Adding a Secret Token for Automation
+## 1. Add a Secret Token for Automation
 
 Before you can effectively implement automation, it is necessary to add a secret token to your GitHub repository or organization. This token will enable the CI (Continuous Integration) to deploy to your [satellite].
 
@@ -29,11 +29,39 @@ Follow the steps below to generate a new controller:
 
 :::info
 
-Although it is possible to generate a controller with administrative permission, we strongly recommend using the "Read-write" scope. This ensures that GitHub does not have the capability to operate your smart contract, such as stopping or deleting your satellite. By opting for the "Read-write" scope, you maintain full control over your decentralized app and minimize the risk of unwanted interference from GitHub.
+While you can generate a controller with administrative permission, we strongly recommend using the "Read-write" scope. This ensures that GitHub does not have the capability to operate your smart contract, such as stopping or deleting your satellite. By opting for the "Read-write" scope, you maintain full control over your decentralized app and minimize the risk of unwanted interference from GitHub.
 
 :::
 
-### Creating the GitHub Action
+---
+
+## 2. Configure your project
+
+If you already have a `juno.config` file at the root of your project, you can skip to the next chapter. Otherwise, you need to create one. The configuration file can be a TypeScript, JavaScript, or JSON file (`juno.config.ts`, `juno.config.js|.mjs`, or `juno.config.json`), depending on your preference.
+
+At a minimum, the configuration file must include the following:
+
+- **Satellite ID**: A unique identifier for your satellite.
+- **Source**: The directory containing the built assets for your satellite. This is typically the output folder of your build process (e.g., `/dist` or `/build`), generated after running a command like `npm run build`.
+
+Here’s an example configuration file:
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai", // Replace with your satellite ID
+    source: "build" // Replace with your build output directory
+  }
+});
+```
+
+For detailed information about all available configuration options, refer to the [configuration](../miscellaneous/configuration.mdx) section.
+
+---
+
+## 3. Create the GitHub Action
 
 To configure the action, follow these steps:
 
@@ -56,7 +84,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
+          node-version: 22
           registry-url: "https://registry.npmjs.org"
 
       - name: Install Dependencies
@@ -92,6 +120,6 @@ on:
 
 :::
 
-[CLI]: ../miscellaneous/cli.md
+[CLI]: ../miscellaneous/cli.mdx
 [satellite]: ../terminology.md#satellite
 [cycles]: ../terminology.md#cycles

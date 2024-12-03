@@ -1,0 +1,244 @@
+---
+id: sveltekit
+title: SvelteKit
+description: Use Juno with SvelteKit
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+sidebar_position: 3
+pagination_next: null
+pagination_prev: null
+---
+
+# Use Juno with SvelteKit
+
+Explore how to create a Juno project developed with SvelteKit.
+
+import Choice from "./components/choice.mdx";
+
+<Choice />
+
+---
+
+## Build
+
+import Build from "./components/build.mdx";
+
+<Build />
+
+---
+
+### Step-by-step
+
+This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing SvelteKit app.
+
+Additionally, it covers how to develop against a production environment or locally.
+
+#### 1. Choose Your Integration Path
+
+You can either start a new project or add Juno to an existing app.
+
+##### Path A: Start a new project with a template
+
+Create a new project using the Juno quickstart CLI:
+
+```bash
+npm create juno@latest -- --template sveltekit-starter
+```
+
+##### Path B: Integrate Juno into an existing SvelteKit app
+
+Navigate to your existing app directory and install Juno SDK:
+
+```bash
+cd your-existing-app
+npm i @junobuild/core-peer
+```
+
+#### 2. Configure Datastore
+
+##### Production Path
+
+To use production, set up a satellite and new collection:
+
+- [Create a new satellite](../create-a-satellite.md) in the Juno's console.
+- After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
+
+##### Local Development Path
+
+To develop with the local emulator, add a collection named `demo` within the `juno.dev.config.ts` file.
+
+```typescript
+import { defineDevConfig } from "@junobuild/config";
+
+export default defineDevConfig(() => ({
+  satellite: {
+    collections: {
+      db: [
+        {
+          collection: "demo",
+          read: "managed" as const,
+          write: "managed" as const,
+          memory: "stable" as const,
+          mutablePermissions: true
+        }
+      ]
+    }
+  }
+}));
+```
+
+- Once set, run the local emulator:
+
+```bash
+juno dev start
+```
+
+- If the Juno admin CLI (required for deployment, configuration, or to run the emulator) is not installed yet, run:
+
+```
+npm i -g @junobuild/cli
+```
+
+#### 3. Insert data from your app
+
+Create a new file `+layout.svelte` in `src/routes` and initialize the library with the satellite ID you have created for production, or use `jx5yt-yyaaa-aaaal-abzbq-cai` if you are developing locally with the emulator.
+
+```html title="+layout.svelte"
+<script>
+  import { onMount } from "svelte";
+  import { initSatellite } from "@junobuild/core";
+
+  onMount(async () => await initSatellite());
+</script>
+
+<slot />
+```
+
+Replace the existing content in your `+page.svelte` file in the same `routes` directory with the following code.
+
+```html title="+page.svelte"
+<script>
+  import { setDoc } from "@junobuild/core";
+
+  let doc;
+
+  const insert = async () =>
+    (doc = await setDoc({
+      collection: "demo",
+      doc: {
+        key: `my-key-${new Date().getTime()}`,
+        data: {
+          hello: "world"
+        }
+      }
+    }));
+</script>
+
+<button on:click="{insert}">Insert a document</button>
+
+{#if doc !== undefined}
+<span>Key: {doc.key}</span>
+{/if}
+```
+
+#### 4. Start the app
+
+Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite on the blockchain.
+
+import WhatsNext from "./components/whats-next.md";
+
+<WhatsNext />
+
+---
+
+### Quickstart
+
+This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
+
+- [Authentication](../build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
+- [Datastore](../build/datastore.md): a simple key-pair database for storing user data and other information.
+- [Storage](../build/storage.md): a file storage system to store and serve user-generated content, such as photos.
+
+Using the Juno CLI, you can easily scaffold this app. To start, run the appropriate command based on your package manager:
+
+NPM:
+
+```bash
+npm create juno@latest -- --template sveltekit-example
+```
+
+Yarn:
+
+```bash
+yarn create juno -- --template sveltekit-example
+```
+
+PNPM:
+
+```bash
+pnpm create juno -- --template sveltekit-example
+```
+
+<br />
+Follow the CLI prompts to choose the note-taking app example and select local
+development. The CLI will manage all configurations and dependencies, allowing
+you to focus on exploring and customizing your app right away.
+
+---
+
+## Hosting
+
+If you already have an [SvelteKit](https://svelte.dev/) app, you're all set — proceed to the [Deployment](#deployment) section to upload your project to production.
+
+Otherwise, you can bootstrap a new website using the Juno template by running the following command:
+
+```bash
+npm create juno@latest -- --template sveltekit-starter
+```
+
+Once you’re set up, continue to the [Deployment](#deployment) section below.
+
+---
+
+## Deployment
+
+Use this guide to deploy your project to production — directly to a smart contract on mainnet.
+
+### 1. Static site generation
+
+The Internet Computer, including Juno, currently does not support Server Side Rendering (_without workaround_). Therefore, it is recommended to generate a pre-rendered or client-side-only frontend application.
+
+We suggest using the [adapter-static](https://kit.svelte.dev/docs/adapter-static) option from SvelteKit and replacing the default adapter.
+
+Remove and install the adapter:
+
+```bash
+npm rm @sveltejs/adapter-auto && npm i -D @sveltejs/adapter-static
+```
+
+Update the import in `svelte.config.js` file:
+
+```javascript title="svelte.config.js"
+import adapter from "@sveltejs/adapter-static";
+
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+  kit: {
+    adapter: adapter()
+  }
+};
+
+export default config;
+```
+
+Create a file `+layout.js` in `src/routes` to set the prerender option:
+
+```javascript title="+layout.js"
+export const prerender = true;
+```
+
+import Deploy from "./components/deploy.mdx";
+
+<Deploy index={2} />
+
+[satellite]: ../terminology.md#satellite

@@ -105,3 +105,25 @@ a.card {
     margin-top: 0;
   }
 }
+
+// Alerts
+:root {
+  &[data-theme="dark"] {
+    .alert--secondary {
+      --ifm-alert-background-color: #181818;
+    }
+
+    .alert--info {
+      --ifm-alert-background-color: var(--ifm-color-primary-lighter);
+      --ifm-alert-foreground-color: black;
+      --ifm-alert-border-color: var(--ifm-color-primary);
+      --ifm-alert-background-color-highlight: var(--ifm-color-primary);
+    }
+
+    .alert--success {
+      --ifm-alert-background-color: transparent;
+      --ifm-alert-border-color: var(--ifm-color-primary);
+      --ifm-alert-background-color-highlight: var(--ifm-color-primary);
+    }
+  }
+}

@@ -1,6 +1,18 @@
+---
+description: Juno offers a decentralized, blockchainless platform for Web3 development, ensuring data privacy, security, and cost efficiency.
+keywords:
+  [
+    Decentralized Web3,
+    blockchainless platform,
+    data privacy,
+    security,
+    cost efficiency
+  ]
+---
+
 # Solution
 
-Juno addresses the inherent limitations of traditional Web2 cloud providers by offering a decentralized, blockchainless platform designed specifically for the needs of modern Web3 development.
+Juno solves the limitations of traditional Web2 cloud providers by offering a decentralized, blockchainless platform designed specifically for the needs of modern Web3 development.
 
 ## 1. Decentralization
 

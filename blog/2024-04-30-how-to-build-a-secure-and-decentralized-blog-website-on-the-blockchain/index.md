@@ -312,11 +312,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - uses: actions/setup-node@v3
         with:
-          node-version: "20.x"
+          node-version: 22
           registry-url: "https://registry.npmjs.org"
 
       - name: Install Dependencies

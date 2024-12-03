@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+description: Juno Storage offers a powerful and cost-effective object storage solution on the blockchain for app developers. Learn how to store and serve user-generated content securely.
 ---
 
 # Storage
@@ -10,7 +11,7 @@ It offers a powerful and cost-effective object storage solution on the blockchai
 
 :::note
 
-To use Juno Storage's features, you must [install](../add-juno-to-an-app/setup) and initialize the Juno SDK in your app.
+To use Juno Storage's features, you must [install](../setup-the-sdk) and initialize the Juno SDK in your app.
 
 :::
 
@@ -154,7 +155,11 @@ The function requires a collection and accepts various optional parameters, incl
    - **Description**: The key of the collection from which assets are to be listed.
    - **Type**: `string`
 
-2. **`matcher`** (optional)
+2. **`filter`** (optional)
+
+   - **Description**: An optional object that can be used to provide various parameters to filter assets.
+
+   a. **`matcher`** (optional)
 
    - **Description**: An object used to filter assets based on their keys (fullPaths) or descriptions using regular expressions.
    - **Type**: `ListMatcher`
@@ -208,7 +213,7 @@ The function requires a collection and accepts various optional parameters, incl
      - **timestamp**: Used with `equal`, `greaterThan`, and `lessThan` matchers to specify the exact timestamp for comparison.
      - **timestamps**: Used with the `between` matcher to specify a range of timestamps. The range is inclusive of both the start and end values.
 
-3. **`paginate`** (optional)
+   b. **`paginate`** (optional)
 
    - **Description**: An object to control pagination of the results
    - **Type**: `ListPaginate`
@@ -223,7 +228,7 @@ The function requires a collection and accepts various optional parameters, incl
      - **startAfter**: A string key to start listing assets after this key.
      - **limit**: The maximum number of assets to return.
 
-4. **`order`** (optional)
+   c. **`order`** (optional)
 
    - **Description**: Control the sorting order of the results.
    - **Type**: `ListOrder`
@@ -237,7 +242,7 @@ The function requires a collection and accepts various optional parameters, incl
      type ListOrderField = "keys" | "updated_at" | "created_at";
      ```
 
-5. **`owner`** (optional)
+   d. **`owner`** (optional)
 
    - **Description**: The owner of the assets.
    - **Type**: `ListOwner`
@@ -246,39 +251,39 @@ The function requires a collection and accepts various optional parameters, incl
      type ListOwner = string | Principal;
      ```
 
-:::note
-Example of usage of the parameters:
+:::note[Example]
+Usage of the parameters:
 
 ```typescript
 import { listDocs } from "@junobuild/core";
 
 const myList = await listDocs({
   collection: "my_collection_key",
-  owner: "some_owner_id_or_principal",
-  matcher: {
-    key: ".*.png$", // match assets with .png extension
-    description: "holiday", // match description containing 'holiday'
-    createdAt: {
-      matcher: "greaterThan",
-      timestamp: 1627776000n
-    },
-    updatedAt: {
-      matcher: "between",
-      timestamps: {
-        start: 1627770000n,
-        end: 1627900000n
-      }
-    }
-  },
-  paginate: {
-    startAfter: "doc_10",
-    limit: 5
-  },
   filter: {
+    matcher: {
+      key: ".*.png$", // match assets with .png extension
+      description: "holiday", // match description containing 'holiday'
+      createdAt: {
+        matcher: "greaterThan",
+        timestamp: 1627776000n
+      },
+      updatedAt: {
+        matcher: "between",
+        timestamps: {
+          start: 1627770000n,
+          end: 1627900000n
+        }
+      }
+    },
+    paginate: {
+      startAfter: "doc_10",
+      limit: 5
+    },
     order: {
       desc: true,
       field: "updated_at"
-    }
+    },
+    owner: "some_owner_id_or_principal"
   }
 });
 ```
@@ -321,7 +326,11 @@ The return value is the same as the `items_length` property from the `listAssets
 
 ---
 
-## Delete asset
+## Delete
+
+There are multiple ways to delete assets from your Storage.
+
+### Delete asset
 
 To delete an asset, you only need to provide its `fullPath`. Unlike the [datastore](datastore.md), there is no timestamp validation performed when deleting an asset.
 
@@ -334,9 +343,7 @@ await deleteAsset({
 });
 ```
 
----
-
-## Delete multiple assets
+### Delete multiple assets
 
 To delete multiple assets in an atomic manner, you can use the function `deleteManyAssets`:
 
@@ -356,47 +363,40 @@ const myAsset2 = {
 await deleteManyAssets({ assets: [myAsset1, myAsset2] });
 ```
 
+### Delete filtered assets
+
+The `deleteFilteredAssets` function allows you to delete multiple assets from a collection based on specific filter criteria. This function simplifies bulk deletions by leveraging the same parameters as the [listAssets](#list-assets) function for filtering.
+
+```typescript
+import { deleteFilteredAssets } from "@junobuild/core";
+
+await deleteFilteredAssets({
+  collection: "my_collection_key",
+  filter: {
+    // Same options as filter of listAssets
+  }
+});
+```
+
 ---
 
 ## Configuration
 
-You can configure various settings of the Storage.
+The Storage supports various configuration options to optimize its behavior, such as HTTP headers, redirects, and iFrame support. For a detailed explanation of all available options, see the [configuration](../miscellaneous/configuration.mdx) section.
 
 :::note
 
-If you are looking to configure the hosting behavior of your site, check out the related [documentation](./hosting.md#configure-hosting-behavior).
+If you are looking to configure the hosting behavior of your site, check out the related [documentation](./hosting.mdx#configure-hosting-behavior).
 
 :::
 
 #### Where do you define your Storage configuration?
 
-You define your Storage configuration in your Juno configuration file. The CLI automatically creates the file at the root of your project directory when you run the [juno init](../miscellaneous/cli.md#init) or [juno deploy](../miscellaneous/cli.md#deploy) command for the first time.
+You define your Storage configuration in your Juno configuration file. The CLI automatically creates the file at the root of your project directory when you run the [juno init](../miscellaneous/cli.mdx#init) or [juno deploy](../miscellaneous/cli.mdx#deploy) command for the first time.
 
 #### How do you apply your changes?
 
-To apply any changes you make in your configuration to your satellite, execute the [juno config](../miscellaneous/cli.md#config) command with the CLI.
-
-### Maximum Memory Size
-
-You can configure optional limits on heap and stable memory for your smart contract to control the creation and update of assets in your storage.
-
-When the limit is reached, the Storage and smart contract will continue to operate normally but will reject the upload of new assets.
-
-```javascript
-import { defineConfig } from "@junobuild/config";
-
-export default defineConfig({
-  satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
-    source: "dist",
-    storage: {
-      maxMemorySize: {
-        stable: 1_073_741_824n // For example max. 1 GiB in bytes of Stable memory
-      }
-    }
-  }
-});
-```
+To apply any changes you make in your configuration to your satellite, execute the [juno config](../miscellaneous/cli.mdx#config) command with the CLI.
 
 [satellite]: ../terminology.md#satellite
 [controllers]: ../terminology.md#controller

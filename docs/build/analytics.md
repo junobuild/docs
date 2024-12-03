@@ -1,5 +1,15 @@
 ---
 sidebar_position: 6
+description: Juno Analytics offers a privacy-focused, cookie-free, open-source web3 analytics solution. Ensure user anonymity while gaining valuable insights.
+keywords:
+  [
+    Analytics,
+    Juno Analytics,
+    Web3 Analytics,
+    Privacy-Focused Analytics,
+    Cookie-Free Analytics,
+    Open-Source Analytics
+  ]
 ---
 
 # Analytics
@@ -195,6 +205,8 @@ Finally, add a command to your `package.json` that executes the script:
 
 - If you prefer to specify a custom path for the worker, you can use the `initOrbiter` function with the additional parameter `{worker?: {path?: string}}` for this purpose.
 
+- In the explanation above, analytics are initialized for any use case. However, it is recommended not to initialize them during local development. This helps avoid cluttering your data with test results and minimizes the amount of cycles required to collect statistics.
+
 :::
 
 ---
@@ -277,7 +289,7 @@ await initOrbiter({
 });
 ```
 
-[CLI]: ../miscellaneous/cli.md
+[CLI]: ../miscellaneous/cli.mdx
 [satellites]: ../terminology.md#satellite
 [orbiter]: ../terminology.md#orbiter
 [controllers]: ../terminology.md#controller

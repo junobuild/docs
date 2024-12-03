@@ -10,6 +10,14 @@ const headers: StorageConfigHeader[] = [
     headers: [["Cache-Control", "max-age=2592000"]]
   },
   {
+    source: "**/*.png",
+    headers: [["Cache-Control", "max-age=2592000"]]
+  },
+  {
+    source: "**/*.webp",
+    headers: [["Cache-Control", "max-age=2592000"]]
+  },
+  {
     source: "/animations/**/*.lottie",
     headers: [["Cache-Control", "max-age=2592000"]]
   },
@@ -32,12 +40,37 @@ const redirects: StorageConfigRedirect[] = [
   },
   {
     source: "/docs/add-juno-to-an-app/install-the-sdk-and-initialize-juno",
-    location: "/docs/add-juno-to-an-app/setup",
+    location: "/docs/add-juno-to-an-app/setup-the-sdk",
     code: 301
   },
   {
     source: "/docs/add-juno-to-an-app/deploy-your-app",
     location: "/docs/add-juno-to-an-app/deploy",
+    code: 301
+  },
+  {
+    source: "/docs/add-juno-to-an-app/deploy",
+    location: "/docs/category/guides-and-examples",
+    code: 301
+  },
+  {
+    source: "/docs/category/add-juno-to-an-app",
+    location: "/docs/category/guides-and-examples",
+    code: 301
+  },
+  {
+    source: "/docs/add-juno-to-an-app/create-a-satellite",
+    location: "/docs/create-a-satellite",
+    code: 301
+  },
+  {
+    source: "/docs/add-juno-to-an-app/setup-the-sdk",
+    location: "/docs/setup-the-sdk",
+    code: 301
+  },
+  {
+    source: "/docs/add-juno-to-an-app/setup",
+    location: "/docs/setup-the-sdk",
     code: 301
   },
   {
@@ -87,6 +120,62 @@ const redirects: StorageConfigRedirect[] = [
     source:
       "/assets/files/juno-white-paper-47063bc5d28d71fe7534bfa249ce3f14.pdf",
     location: "/files/juno-white-paper.pdf",
+    code: 301
+  },
+  // Pages redirected after SNS DAO failure.
+  {
+    source: "/files/juno-white-paper.pdf",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/category/tokenomics",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/purpose",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/outgoings",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/total-supply",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/token-distribution",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/voting-power",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/initial-sns-configuration",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/tokenomics/sns-swap-configuration",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/legal-umbrella",
+    location: "/docs/white-paper/intro",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/contributors",
+    location: "/docs/white-paper/intro",
     code: 301
   }
 ];

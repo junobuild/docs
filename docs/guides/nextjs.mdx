@@ -1,0 +1,234 @@
+---
+id: nextjs
+title: Next.js
+description: Learn how to integrate Juno with Next.js. Follow our quickstart guide and examples to get started.
+keywords: [Juno, Next.js, integration, quickstart, guide, examples, hosting]
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+sidebar_position: 1
+pagination_next: null
+pagination_prev: null
+---
+
+# Use Juno with Next.js
+
+Explore how to create a Juno project developed with Next.js.
+
+import Choice from "./components/choice.mdx";
+
+<Choice />
+
+---
+
+## Build
+
+import Build from "./components/build.mdx";
+
+<Build />
+
+---
+
+### Step-by-step
+
+This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing Next.js app.
+
+Additionally, it covers how to develop against a production environment or locally.
+
+#### 1. Choose Your Integration Path
+
+You can either start a new project or add Juno to an existing app.
+
+##### Path A: Start a new project with a template
+
+Create a new project using the Juno quickstart CLI:
+
+```bash
+npm create juno@latest -- --template nextjs-starter
+```
+
+##### Path B: Integrate Juno into an existing Next.js app
+
+Navigate to your existing app directory and install Juno SDK:
+
+```bash
+cd your-existing-app
+npm i @junobuild/core-peer
+```
+
+#### 2. Configure Datastore
+
+##### Production Path
+
+To use production, set up a satellite and new collection:
+
+- [Create a new satellite](../create-a-satellite.md) in the Juno's console.
+- After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
+
+##### Local Development Path
+
+To develop with the local emulator, add a collection named `demo` within the `juno.dev.config.ts` file.
+
+```typescript
+import { defineDevConfig } from "@junobuild/config";
+
+export default defineDevConfig(() => ({
+  satellite: {
+    collections: {
+      db: [
+        {
+          collection: "demo",
+          read: "managed" as const,
+          write: "managed" as const,
+          memory: "stable" as const,
+          mutablePermissions: true
+        }
+      ]
+    }
+  }
+}));
+```
+
+- Once set, run the local emulator:
+
+```bash
+juno dev start
+```
+
+- If the Juno admin CLI (required for deployment, configuration, or to run the emulator) is not installed yet, run:
+
+```
+npm i -g @junobuild/cli
+```
+
+#### 3. Insert data from your app
+
+In `Page.tsx`, (if using TypeScript) or the corresponding JavaScript file, initialize the library with the satellite ID you have created for production, or use `jx5yt-yyaaa-aaaal-abzbq-cai` if you are developing locally with the emulator.
+
+Add an `insert` function to persist a document as well.
+
+```typescript title="Page.tsx"
+"use client";
+
+import { useEffect, useState } from "react";
+import { type Doc, initSatellite, setDoc } from "@junobuild/core-peer";
+
+type Record = {
+  hello: string;
+};
+
+export default function Home() {
+  const [record, setRecord] = useState<Doc<Record> | undefined>(undefined);
+
+  useEffect(() => {
+    (async () =>
+      await initSatellite())();
+  }, []);
+
+  const insert = async () => {
+    const doc = await setDoc({
+      collection: "demo",
+      doc: {
+        key: `my-key-${new Date().getTime()}`,
+        data: {
+          hello: "world",
+        },
+      },
+    });
+
+    setRecord(doc);
+  };
+
+  return (
+    <>
+      <button onClick={insert}>Insert a document</button>
+      {record !== undefined && <span>Key: {record.key}</span>}
+    </>
+  );
+}
+```
+
+#### 4. Start the app
+
+Start the app and go to [http://localhost:3000](http://localhost:3000) in a browser. Click "Insert a document" to see the data successfully persisted in your satellite on the blockchain.
+
+import WhatsNext from "./components/whats-next.md";
+
+<WhatsNext />
+
+---
+
+### Quickstart
+
+This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
+
+- [Authentication](../build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
+- [Datastore](../build/datastore.md): a simple key-pair database for storing user data and other information.
+- [Storage](../build/storage.md): a file storage system to store and serve user-generated content, such as photos.
+
+Using the Juno CLI, you can easily scaffold this app. To start, run the appropriate command based on your package manager:
+
+NPM:
+
+```bash
+npm create juno@latest -- --template nextjs-example
+```
+
+Yarn:
+
+```bash
+yarn create juno -- --template nextjs-example
+```
+
+PNPM:
+
+```bash
+pnpm create juno -- --template nextjs-example
+```
+
+<br />
+Follow the CLI prompts to choose the note-taking app example and select local
+development. The CLI will manage all configurations and dependencies, allowing
+you to focus on exploring and customizing your app right away.
+
+---
+
+## Hosting
+
+If you already have an [Next.js](https://nextjs.org/) app, you're all set — proceed to the [Deployment](#deployment) section to upload your project to production.
+
+Otherwise, you can bootstrap a new website using the Juno template by running the following command:
+
+```bash
+npm create juno@latest -- --template nextjs-starter
+```
+
+Once you’re set up, continue to the [Deployment](#deployment) section below.
+
+---
+
+## Deployment
+
+Use this guide to deploy your project to production — directly to a smart contract on mainnet.
+
+### 1. Static exports
+
+The Internet Computer, including Juno, currently does not support Server Side Rendering (_without workaround_). Therefore, it is recommended to generate a pre-rendered or client-side-only frontend application.
+
+We suggest using the [static exports](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) option from Next.js.
+
+In `next.config.js` file:
+
+```javascript title="next.config.js"
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: "export"
+};
+
+module.exports = nextConfig;
+```
+
+import Deploy from "./components/deploy.mdx";
+
+<Deploy index={2} />
+
+[satellite]: ../terminology.md#satellite
