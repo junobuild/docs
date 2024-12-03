@@ -21,7 +21,6 @@
 }
 
 .grid {
-  @include grid.columns;
-
   margin: 0 1rem 6rem;
+  @include grid.columns;
 }

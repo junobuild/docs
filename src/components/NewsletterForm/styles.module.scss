@@ -8,10 +8,6 @@
 }
 
 .input {
-  @media screen and (min-width: 960px) {
-    max-width: 600px;
-  }
-
   border: 2px solid var(--ifm-color-primary);
   border-radius: 5px;
   padding: 1rem;
@@ -26,6 +22,10 @@
     &::placeholder {
       color: #707070;
     }
+  }
+
+  @media screen and (min-width: 960px) {
+    max-width: 600px;
   }
 }
 
