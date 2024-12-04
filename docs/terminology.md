@@ -95,6 +95,12 @@ When you create a module, like a Satellite, it's deployed on the same subnet as 
 
 Communicating between modules on different subnets takes longer due to the extra steps required for coordination (about 4 additional consensus rounds in the best case). This is why placing all your interacting smart contracts on the same subnet can lead to significant performance improvements.
 
+Think of it like a huge playground with lots of groups of kids playing different games. Each group has its own area to play, and that area is called a subnet.
+
+If you want to play with kids in your own group, it’s super fast and easy because you’re all together. But if you want to play with a kid in a different group, it might take a little longer since you have to cross the playground to reach them.
+
+By picking the right group (or subnet), everyone can play faster and have more fun.
+
 ## Wallet
 
 A wallet is your secure repository for managing and storing crypto money. Your wallet is controlled exclusively by you, ensuring that no one, including Juno, can ever access it.
