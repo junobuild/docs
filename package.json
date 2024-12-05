@@ -18,6 +18,7 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "docs:cli": "./cli-to-md.sh",
+    "docs:subnets": "./scripts/subnets.mjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
