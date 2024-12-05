@@ -1,4 +1,3 @@
-import BrowserOnly from "@docusaurus/BrowserOnly";
 import { ThemedComponent } from "@docusaurus/theme-common";
 import Dark1024px from "@site/static/screenshots/dark-1024px.webp";
 import Dark1640px from "@site/static/screenshots/dark-1640px.webp";
@@ -29,24 +28,16 @@ function ThemedResponsiveImage(props: ThemedResponsiveImageProps): JSX.Element {
   return (
     <ThemedComponent className={parentClassName}>
       {({ theme, className }) => {
-        const { documentElement } = document;
-        const rootDataTheme = documentElement.getAttribute("data-theme");
-        const {
-          dataset: { hasHydrated }
-        } = documentElement;
-
         const { src768px, src1024px, src1640px } = sources[theme];
 
         return (
-          (theme === rootDataTheme || hasHydrated !== undefined) && (
-            <picture className={className} {...propsRest}>
-              <source srcSet={src1640px} media="(min-width: 1024px)" />
-              <source srcSet={src1024px} media="(min-width: 768px)" />
-              <source srcSet={src768px} media="(min-width: 480px)" />
+          <picture className={className} {...propsRest}>
+            <source srcSet={src1640px} media="(min-width: 1024px)" />
+            <source srcSet={src1024px} media="(min-width: 768px)" />
+            <source srcSet={src768px} media="(min-width: 480px)" />
 
-              <img src="" alt={alt} />
-            </picture>
-          )
+            <img src="" alt={alt} />
+          </picture>
         );
       }}
     </ThemedComponent>
@@ -56,25 +47,21 @@ function ThemedResponsiveImage(props: ThemedResponsiveImageProps): JSX.Element {
 export default function Screenshot(): JSX.Element {
   return (
     <div className={styles.screenshot}>
-      <BrowserOnly>
-        {() => (
-          <ThemedResponsiveImage
-            alt="A screenshot of the Juno Console application"
-            sources={{
-              light: {
-                src768px: Light768px,
-                src1024px: Light1024px,
-                src1640px: Light1640px
-              },
-              dark: {
-                src768px: Dark768px,
-                src1024px: Dark1024px,
-                src1640px: Dark1640px
-              }
-            }}
-          />
-        )}
-      </BrowserOnly>
+      <ThemedResponsiveImage
+        alt="A screenshot of the Juno Console application"
+        sources={{
+          light: {
+            src768px: Light768px,
+            src1024px: Light1024px,
+            src1640px: Light1640px
+          },
+          dark: {
+            src768px: Dark768px,
+            src1024px: Dark1024px,
+            src1640px: Dark1640px
+          }
+        }}
+      />
     </div>
   );
 }
