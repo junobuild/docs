@@ -88,8 +88,8 @@ const config: Config = {
         api: "modern-compiler"
       }
     ],
-    join(process.cwd(), "docusaurus.showcase.plugin.ts"),
-    join(process.cwd(), "docusaurus.changelog.plugin.ts")
+    join(process.cwd(), "plugins", "docusaurus.showcase.plugin.ts"),
+    join(process.cwd(), "plugins", "docusaurus.changelog.plugin.ts")
   ],
 
   themeConfig:
