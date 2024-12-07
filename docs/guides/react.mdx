@@ -41,9 +41,13 @@ You can either start a new project or add Juno to an existing app.
 
 Create a new project using the Juno quickstart CLI:
 
-```bash
-npm create juno@latest -- --template react-starter
-```
+import { Bash } from "../components/bash.mdx";
+
+<Bash
+  npm="npm create juno@latest -- --template react-starter"
+  yarn="yarn create juno -- --template react-starter"
+  pnpm="pnpm create juno -- --template react-starter"
+/>
 
 ##### Path B: Integrate Juno into an existing React app
 
@@ -160,25 +164,13 @@ This example demonstrates how to quickly deploy a basic note-taking app that int
 - [Datastore](../build/datastore.md): a simple key-pair database for storing user data and other information.
 - [Storage](../build/storage.md): a file storage system to store and serve user-generated content, such as photos.
 
-Using the Juno CLI, you can easily scaffold this app. To start, run the appropriate command based on your package manager:
+Using the Juno CLI, you can easily scaffold this app.
 
-NPM:
-
-```bash
-npm create juno@latest -- --template react-example
-```
-
-Yarn:
-
-```bash
-yarn create juno -- --template react-example
-```
-
-PNPM:
-
-```bash
-pnpm create juno -- --template react-example
-```
+<Bash
+  npm="npm create juno@latest -- --template react-example"
+  yarn="yarn create juno -- --template react-example"
+  pnpm="pnpm create juno -- --template react-example"
+/>
 
 <br />
 Follow the CLI prompts to choose the note-taking app example and select local
@@ -193,9 +185,11 @@ If you already have an [React](https://react.dev/) app, you're all set — proce
 
 Otherwise, you can bootstrap a new website using the Juno template by running the following command:
 
-```bash
-npm create juno@latest -- --template react-starter
-```
+<Bash
+  npm="npm create juno@latest -- --template react-starter"
+  yarn="yarn create juno -- --template react-starter"
+  pnpm="pnpm create juno -- --template react-starter"
+/>
 
 Once you’re set up, continue to the [Deployment](#deployment) section below.
 

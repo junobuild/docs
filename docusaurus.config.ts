@@ -1,3 +1,4 @@
+import npm2yarn from "@docusaurus/remark-plugin-npm2yarn";
 import type { Config } from "@docusaurus/types";
 import { join } from "node:path";
 
@@ -66,13 +67,18 @@ const config: Config = {
         docs: {
           sidebarPath: "sidebars.ts",
           editUrl: "https://github.com/junobuild/docs/edit/main/",
-          exclude: ["**/miscellaneous/cli/**", "**/components/**"]
+          exclude: ["**/miscellaneous/cli/**", "**/components/**"],
+          remarkPlugins: [npm2yarn]
+        },
+        pages: {
+          remarkPlugins: [npm2yarn]
         },
         blog: {
           showReadingTime: true,
           blogSidebarTitle: "All our posts",
           blogSidebarCount: "ALL",
-          editUrl: "https://github.com/junobuild/docs/edit/main/"
+          editUrl: "https://github.com/junobuild/docs/edit/main/",
+          remarkPlugins: [npm2yarn]
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss")

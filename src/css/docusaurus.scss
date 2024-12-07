@@ -1,6 +1,8 @@
 :root {
   --ifm-code-border-radius: var(--juno-border-radius);
   --ifm-global-shadow-lw: none;
+  --ifm-tabs-padding-vertical: 0.25rem;
+  --ifm-tabs-color-active: #ff5df9;
 }
 
 .container {
@@ -24,7 +26,7 @@
   }
 }
 
-.markdown li {
+.markdown li:not(.tabs__item) {
   margin-bottom: var(--ifm-global-spacing);
 }
 

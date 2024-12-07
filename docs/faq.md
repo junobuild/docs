@@ -52,7 +52,7 @@ Community-supported libraries and contributions are warmly welcomed.
 
 ### Where can I find resources about Juno?
 
-The [documentation](./intro.md) is a great starting point to explore Juno.
+The [documentation](./intro.mdx) is a great starting point to explore Juno.
 
 Additionally, the [blog](https://juno.build/blog) provides insightful tutorials for various frameworks.
 
