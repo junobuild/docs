@@ -10,7 +10,7 @@ The Juno Datastore offers a simple key-value model, organized by collections con
 
 :::note
 
-To use these features, the Juno SDK must be [installed](../setup-the-sdk) and initialized in your app.
+To use these features, the Juno SDK must be [installed](../setup-the-sdk.mdx) and initialized in your app.
 
 :::
 
