@@ -46,7 +46,7 @@ In contrast, Juno takes a different approach. Developers pre-charge their smart 
 
 ### Do you have a library for [some other language]?
 
-We officially support [JavaScript](setup-the-sdk).
+We officially support [JavaScript](setup-the-sdk.mdx).
 
 Community-supported libraries and contributions are warmly welcomed.
 
