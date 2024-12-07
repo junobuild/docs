@@ -1,0 +1,20 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+export const Bash = ({ npm, yarn, pnpm }) => (
+  <Tabs groupId="npm2yarn">
+    <TabItem value="npm">
+      <CodeBlock language="bash">{npm}</CodeBlock>
+    </TabItem>
+
+    <TabItem value="yarn" label="yarn">
+      <CodeBlock language="bash">{yarn}</CodeBlock>
+    </TabItem>
+
+    <TabItem value="pnpm" label="pnpm">
+      <CodeBlock language="bash">{pnpm}</CodeBlock>
+    </TabItem>
+
+  </Tabs>
+);

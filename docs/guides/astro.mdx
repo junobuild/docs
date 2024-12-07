@@ -34,9 +34,13 @@ You can either start a new project or add Juno to an existing app.
 
 Create a new project using the Juno quickstart CLI:
 
-```bash
-npm create juno@latest -- --template astro-starter
-```
+import { Bash } from "../components/bash.mdx";
+
+<Bash
+  npm="npm create juno@latest -- --template astro-starter"
+  yarn="yarn create juno -- --template astro-starter"
+  pnpm="pnpm create juno -- --template astro-starter"
+/>
 
 #### Path B: Integrate Juno into an existing Astro app
 
@@ -162,9 +166,11 @@ If you already have an [Astro](https://astro.build/) app, you're all set — pro
 
 Otherwise, you can bootstrap a new website using the Juno template by running the following command:
 
-```bash
-npm create juno@latest -- --template astro-starter
-```
+<Bash
+  npm="npm create juno@latest -- --template astro-starter"
+  yarn="yarn create juno -- --template astro-starter"
+  pnpm="pnpm create juno -- --template astro-starter"
+/>
 
 Once you’re set up, continue to the [Deployment](#deployment) section below.
 
