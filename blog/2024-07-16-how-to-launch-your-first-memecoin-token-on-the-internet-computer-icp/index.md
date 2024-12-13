@@ -260,7 +260,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_SOCIAL_IMAGE } from "../consts";
           <div class="flex flex-col justify-center gap-2 items-center">
             <img src="https://github.com/sam-thetutor/images/blob/main/imgs/frogie6.png?raw=true" class="h-[100px] w-[100px] flex rounded-full" alt="">
             <h2 class="text-2xl">Vibrant Community</h2>
-            <p class="text-center flex ">Join thousands of fellow memers and hodlers!</p>
+            <p class="text-center flex ">Join thousands of fellow members and hodlers!</p>
           </div>
           <div class="flex flex-col justify-center gap-2 items-center">
             <img src="https://github.com/sam-thetutor/images/blob/main/imgs/frogie7.png?raw=true" alt="Meme icon" class="w-[100px] h-[100px] flex rounded-full" />
@@ -373,11 +373,11 @@ We will create a proposal to add our token on ICPSwap in the following steps.
 ![makeproposal](./makeproposal.png)
 
 - Select `MOTION` as the proposal type
-- Add a descriptive title, somthing like "ADD FROGIE TO THE TOKEN LIST"
+- Add a descriptive title, something like "ADD FROGIE TO THE TOKEN LIST"
 - In the summary section,add all the details about your token forexample the token canister address, social media handles and any other information you feel will help the voter to understand more about your token
-- Once your have filled all the fields, click submit and the proposal will be sumbitted.
+- Once your have filled all the fields, click submit and the proposal will be submitted.
 
-> **NOTE:** You will be charged a fee of 50 ICS for this service, therefore ensure you have enough ICS balance before you peform this step.
+> **NOTE:** You will be charged a fee of 50 ICS for this service, therefore ensure you have enough ICS balance before you perform this step.
 
 ![kk](./makepropsdetails.png)
 
