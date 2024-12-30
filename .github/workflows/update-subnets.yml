@@ -1,8 +1,6 @@
 name: Update Subnets documentation
 
 on:
-  schedule:
-    - cron: "30 4 * * MON"
   workflow_dispatch:
 
 jobs:
