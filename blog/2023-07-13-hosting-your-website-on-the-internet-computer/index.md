@@ -56,7 +56,7 @@ We affectionately refer to these feature-rich smart contracts as â€œSatellites.â
 
 ![Launch a satellite](./launch-a-satellite.png)
 
-That wraps up the setup phase. Your canister now lives on the Internet Computer, solely owned by you and and you alone.
+That wraps up the setup phase. Your canister now lives on the Internet Computer, solely owned by you and you alone.
 
 ---
 
