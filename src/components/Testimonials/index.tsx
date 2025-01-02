@@ -30,9 +30,9 @@ export default function Testimonials(): JSX.Element {
       text: "I know you will love it when you try it out. I was amazed by how it is very easy to deploy an app on Juno."
     },
     {
-      name: "SwissyP ∞",
-      twitter: "swissyp_",
-      img: "https://pbs.twimg.com/profile_images/1752515991186313216/oWgCb-aX_400x400.png",
+      name: "Swissy ∞",
+      twitter: "swissy_icp",
+      img: "https://pbs.twimg.com/profile_images/1870241290094301184/StoU-tQ6_400x400.jpg",
       text: "I’m still amazed at how Juno has simplified the development process on ICP. It’s like a magic wand for devs - I get to focus on frontend and Juno handles the rest."
     },
     {
