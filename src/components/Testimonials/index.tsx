@@ -18,9 +18,9 @@ export default function Testimonials(): JSX.Element {
       text: "Yes so easy build MVP with Juno 😍"
     },
     {
-      name: "GoldToothRichards",
+      name: "Jacob Crabtree",
       twitter: "crabtr26",
-      img: "https://pbs.twimg.com/profile_images/1433815048758169601/5_nuQ72g_400x400.jpg",
+      img: "https://pbs.twimg.com/profile_images/1854279105920823304/-0-W42jG_400x400.jpg",
       text: "Juno is my favorite hosting service, Web3 or otherwise."
     },
     {
