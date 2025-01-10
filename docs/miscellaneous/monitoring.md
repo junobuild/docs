@@ -31,7 +31,7 @@ Keeping your modules running smoothly is essential for any application. The moni
 
 ## Why Enable Monitoring?
 
-When a module runs out of [cycles], it stops functioning, which can disrupt your application or service. Enabling monitoring provides peace of mind by automating the management of cycles, ensuring your modules are always ready to perform. It also saves a little time by eliminating the need for manual top-ups.
+When a smart contract runs out of [cycles] on the [Internet Computer](https://internetcomputer.org), it stops functioning, which can disrupt your application or service. Enabling monitoring provides peace of mind by automating the management of cycles, ensuring your modules are always ready to perform. It also saves a little time by eliminating the need for manual top-ups.
 
 It’s important to note that if your smart contracts — whether it’s your wallet or a module — run out of cycles, they will enter a grace period. During this time, the module stops working but can still be restored. If no action is taken, the module eventually gets deleted, resulting in the permanent loss of its data and functionality.
 
