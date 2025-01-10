@@ -4,7 +4,7 @@ sidebar_position: 7
 
 # Monitoring
 
-Your [mission control] and satellites smart contracts consume resources while they operate.
+Your mission control and satellites smart contracts consume resources while they operate.
 
 These resources are known as [Cycles], which are [operating costs](../pricing#operating-costs) for which you are responsible. The amount of cycles available determines whether a smart contract will be active or inactive. When the amount reaches zero, your smart contracts will stop operating.
 
