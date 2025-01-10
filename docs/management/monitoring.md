@@ -12,8 +12,6 @@ keywords:
   ]
 ---
 
----
-
 # Monitoring
 
 Keeping your modules running smoothly is essential for any application. The monitoring feature ensures your [Mission Control] (your wallet) and modules — Satellites and Orbiter (Analytics) — stay operational by automatically refilling cycles when they run low. This helps prevent unexpected downtime, allowing you to focus on building and growing your product without worrying about cycle balances.
