@@ -177,7 +177,12 @@ const redirects: StorageConfigRedirect[] = [
     source: "/docs/white-paper/contributors",
     location: "/docs/white-paper/intro",
     code: 301
-  }
+  },
+  {
+    source: "/docs/miscellaneous/monitoring",
+    location: "/docs/build/monitoring",
+    code: 301
+  },
 ];
 
 export default defineConfig({
