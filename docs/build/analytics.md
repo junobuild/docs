@@ -99,7 +99,7 @@ Similar to other analytics services in the Web2 environment, an Orbiter accepts 
 Consequently, this leaves the canister open to potential attacks that can pollute the data and consume cycles. For this reason, we recommend the following:
 
 1. Avoid topping up the smart contract with excessive cycles.
-2. Utilize the [monitoring](monitoring.md) feature with a lean approach.
+2. Utilize the [monitoring](../miscellaneous/monitoring.md) feature with a lean approach.
 3. Interpret the statistics provided by this feature with some reservation, similar to any other analytics data, considering potential inaccuracies.
 
 :::
