@@ -1,5 +1,17 @@
 ---
 sidebar_position: 7
+description: Juno Monitoring ensures your smart contracts remain operational by automatically managing cycle balances. Monitor your modules, configure thresholds, and enable auto-refill to prevent downtime effortlessly.
+keywords:
+  [
+    Smart Contract Monitoring,
+    Cycle Management,
+    Auto-Refill,
+    Internet Computer Monitoring,
+    Module Monitoring,
+    Operational Management
+  ]
+---
+
 ---
 
 # Monitoring
