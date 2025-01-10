@@ -28,7 +28,7 @@ When collecting statuses, if your mission control is detected to be running low 
 
 ## Reporting
 
-Juno stores statuses in memory for 30 days, which are only accessible to you. With this information, Juno can provide informative reports on the overall behavior and performance of your segments.
+Juno stores statuses in memory for 30 days, which are only accessible to you. With this information, Juno can provide informative reports on the overall behavior and performance of your modules.
 
 [satellite]: ../terminology.md#satellite
 [mission control]: ../terminology.md#mission-control
