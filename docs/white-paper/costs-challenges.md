@@ -1,6 +1,6 @@
 # Costs Challenges
 
-While Juno’s architecture and business model have been, to some extension, validated, it is important to acknowledge two cost-related challenges:
+While Juno’s architecture and business model have been, to some extent, validated, it is important to acknowledge two cost-related challenges:
 
 - **Cost of Acquisition**: The current cost of acquisition is relatively high, given that two smart contracts are spun up for each new developer.
 

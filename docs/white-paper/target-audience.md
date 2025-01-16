@@ -8,4 +8,4 @@ Juno is primarily designed for web developers. Whether those are individual prog
 
 Juno is ideal for developers aiming to build fully decentralized projects or decentralize parts of their current applications. Moreover, it is an excellent tool for those looking to bootstrap or develop a prototype rapidly.
 
-While Juno does not currently target professionals within larger organizations directly, this can be envisioned for the future as Juno aims to support developers, any developers.
+While Juno does not currently target professionals within larger organizations directly, this can be envisioned for the future as Juno aims to support all developers.
