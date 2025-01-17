@@ -367,6 +367,8 @@ cargo clippy --target=wasm32-unknown-unknown
 
 Logging is a crucial tool for debugging and monitoring your code. Serverless Functions offer you the option to utilize loggers to report status effectively.
 
+![A screenshot of the Juno's Console feature to browse logs](../img/satellite/functions.webp)
+
 ### How does it work?
 
 Logs are stored in stable memory, accommodating up to 100 entries. Once this limit is reached, the oldest entry is discarded. It's important to note that since logs are saved in memory, your hooks should return a success—meaning they should not trap—otherwise, the information cannot be preserved.
