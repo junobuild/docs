@@ -16,7 +16,7 @@ keywords:
 
 Juno Analytics, a simple, performant, and open-source web3 analytics solution that respects your users' privacy and doesn't use cookies, ensuring anonymity while providing valuable user insights.
 
-![Juno's Analytics screenshot](../img/analytics.webp)
+![A screenshot of the Juno's Analytics dashboard](../img/analytics/analytics-dashboard.webp)
 
 ---
 

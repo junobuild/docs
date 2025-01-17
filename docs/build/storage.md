@@ -9,6 +9,8 @@ Juno Storage is designed for app developers who need to store and serve user-gen
 
 It offers a powerful and cost-effective object storage solution on the blockchain.
 
+![A screenshot of the Storage in Juno's Console](../img/satellite/storage.webp)
+
 :::note
 
 To use Juno Storage's features, you must [install](../setup-the-sdk.mdx) and initialize the Juno SDK in your app.
