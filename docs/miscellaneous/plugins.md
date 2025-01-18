@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 description: Learn how to use Juno Build plugins to optimize your development workflow. Detailed guides and examples included.
 keywords:
   [
