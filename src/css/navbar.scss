@@ -1,27 +1,13 @@
-div[class*="announcementBar_"][role="banner"] {
-  border: none;
-
-  font-size: 14px;
-
-  @media screen and (min-width: 960px) {
-    font-size: inherit;
-    padding-top: 0.45rem;
-  }
-
-  a {
-    color: var(--button-shadow-color);
-  }
-
-  button.close {
-    svg {
-      width: 12px;
+:root {
+  &.docs-wrapper {
+    .navbar {
+      border-bottom: 1px solid var(--ifm-toc-border-color);
     }
   }
 }
 
 .navbar {
-  height: 75px;
-  border-bottom: 1px solid var(--button-shadow-color);
+  height: 68px;
 
   @media screen and (min-width: 1280px) {
     padding-inline: 3rem;
