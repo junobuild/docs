@@ -68,7 +68,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Authentication"
-              text="Maximize security and privacy with anonymous user access."
+              text="Maximize security and privacy with anonymous decentralyzed user access."
               link={
                 <Link to="/docs/build/authentication" className={styles.link}>
                   Learn more
@@ -86,7 +86,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Datastore"
-              text="Store data in a simple key-value model, organized by collections of documents."
+              text="Store data on the blockchain in a simple key-value model, organized by collections of documents."
               link={
                 <Link to="/docs/build/datastore" className={styles.link}>
                   Learn more
@@ -122,7 +122,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Hosting"
-              text="Hosting powered by blockchain with support for custom domains to maintain your brand identity."
+              text="Hosting powered by smart contracts with support for custom domains to maintain your brand identity."
               link={
                 <Link to="/docs/build/hosting" className={styles.link}>
                   Learn more
@@ -140,7 +140,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Functions"
-              text="Extend Juno's smart contracts and develop custom serverless features."
+              text="Extend Juno's features and develop custom serverless functions."
               link={
                 <Link to="/docs/build/functions" className={styles.link}>
                   Learn more
