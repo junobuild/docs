@@ -157,6 +157,8 @@ Leave all other fields empty or with default values.
 
 c. Save the webhook.
 
+### 8.You're All Set!
+
 Once the webhook is saved, every time you publish content on Sanity, a deployment will be triggered and reflected in the GitHub Actions section of your repository 🥳.
 
 ---
