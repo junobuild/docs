@@ -42,7 +42,7 @@ Some benefits include:
 
 ## About the Template
 
-This template is brought to you by the [ICP HUB Italy & Ticino](https://x.com/icphub_it), the Italian hub for Web3 education and acceleration on the Internet Computer.
+This template is brought to you by our friends at [ICP HUB Italy & Ticino](https://x.com/icphub_it), the Italian hub for Web3 education and acceleration on the Internet Computer.
 
 This template combines [Astro](https://astro.build/), a lightweight framework best suited for websites, with Sanity CMS for content management. It's set up to work with Juno, making deployment straightforward.
 
