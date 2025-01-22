@@ -13,7 +13,7 @@ image: https://juno.build/assets/images/take-your-sanity-cms-site-to-the-interne
 
 :::info TL;DR
 
-Get started deploying on the Internet Computer using Sanity CMS and Juno with the help of this template: [ic-sanity](https://github.com/ICP-HUB-Italy-Ticino/ic-sanity).
+Get started deploying on the Internet Computer using Sanity CMS and Juno with the help of this template: [ic-sanity](https://github.com/icp-hub-itti/ic-sanity).
 
 :::
 
@@ -60,7 +60,7 @@ This template combines [Astro](https://astro.build/), a lightweight framework be
 
 ## Getting Started
 
-The following steps have been designed to minimize the required technical know-how. However, if you are an experienced developer, feel free to follow your own workflow. The template's [README](https://github.com/ICP-HUB-Italy-Ticino/ic-sanity) provides more technical details on deploying with GitHub Actions or even without using the Juno CLI on your local machine.
+The following steps have been designed to minimize the required technical know-how. However, if you are an experienced developer, feel free to follow your own workflow. The template's [README](https://github.com/icp-hub-itti/ic-sanity) provides more technical details on deploying with GitHub Actions or even without using the Juno CLI on your local machine.
 
 Once you complete these setup steps, Sanity will be connected to your project and deployments will happen automatically. No further configuration will be required.
 
@@ -72,7 +72,7 @@ You'll need a [GitHub](https://github.com) account.
 
 ### 1. Fork the Template on GitHub
 
-Go to the template [repository](https://github.com/ICP-HUB-Italy-Ticino/ic-sanity) on GitHub and click on **"Use this template"**, then select **"Create a new repository"** to get started.
+Go to the template [repository](https://github.com/icp-hub-itti/ic-sanity) on GitHub and click on **"Use this template"**, then select **"Create a new repository"** to get started.
 
 ![A screenshot of the template repository with an arrow pointing to the 'Use this template' button](./github-use-template.png)
 
