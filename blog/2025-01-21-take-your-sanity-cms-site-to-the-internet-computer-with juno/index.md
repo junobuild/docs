@@ -134,7 +134,6 @@ b. Configure the webhook\*\* with the following settings:
 - **URL**: `https://api.github.com/repos/<your-github-username>/<your-repo>/dispatches`
 - **Dataset**: Select the datasets you want to trigger the deployment on.
 - **Trigger on**: Choose all available options: _Create_, _Update_, _Delete_
-- **URL**: `https://<your-satellite-id>.icp0.io/.netlify/functions/sanity`
 - **Projection**:
 
   ```json
