@@ -100,7 +100,13 @@ Find the placeholder `<your-satellite-id>` and replace it with the Satellite ID 
 
 You'll be asked to confirm the changes—simply click **"Commit changes"** to finalize the update.
 
-### 4. Grant GitHub Deployment Permissions
+### 4. Configure your Site URL
+
+Follow the same steps again to update the `astro.config.mjs` file with the final website URL. For now, make sure it includes the Satellite ID.
+
+![A screenshot showing where to replace the satellite ID for the final deployed website URL configuration](./github-edit-astro-config.png)
+
+### 5. Grant GitHub Deployment Permissions
 
 While your project now has a repository linked to your Satellite on chain, you still need to grant GitHub permission to push files to it. Naturally, not just anyone can deploy files 😉.
 
@@ -108,13 +114,13 @@ Follow this [guide](/docs/guides/github-actions#1-add-a-secret-token-for-automat
 
 Once this step is complete, you're all set with the Juno and Web3 configuration. Your project is now ready to deploy content seamlessly.
 
-### 5. Set Up Your Sanity Project
+### 6. Set Up Your Sanity Project
 
 To manage your content, create a new project with a dataset on Sanity. Follow the official [Sanity guide](https://www.sanity.io/docs/getting-started-with-sanity) to set up your project.
 
 Once the setup is complete, copy your **Project ID** and **Dataset name**, and configure these as GitHub Action variables by following this [guide](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables#creating-configuration-variables-for-a-repository).
 
-### 6. Set Up Sanity Deployments
+### 7. Set Up Sanity Deployments
 
 To ensure your website updates automatically whenever you save content in Sanity, you now need to configure Sanity to trigger deployments on GitHub.
 
@@ -122,7 +128,7 @@ Unlike the previous steps where GitHub was configured to access an external serv
 
 To do this, you'll need to obtain a GitHub personal access token. Follow the guide [Authenticating with a personal access token](https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api?apiVersion=2022-11-28#authenticating-with-a-personal-access-token), and ensure you grant **Read and Write** permissions for [contents](https://docs.github.com/en/rest/authentication/permissions-required-for-fine-grained-personal-access-tokens?apiVersion=2022-11-28#repository-permissions-for-contents).
 
-### 7. Create a Webhook in Sanity
+### 8. Create a Webhook in Sanity
 
 Once you have generated the token, you can configure a webhook in Sanity to trigger deployments.
 
@@ -156,7 +162,7 @@ Leave all other fields empty or with default values.
 
 c. Save the webhook.
 
-### 8.You're All Set!
+### 9.You're All Set!
 
 Once the webhook is saved, every time you publish content on Sanity, a deployment will be triggered and reflected in the GitHub Actions section of your repository 🥳.
 
