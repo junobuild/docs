@@ -72,6 +72,7 @@ To configure the action, follow these steps:
 name: Deploy to Juno
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
 
