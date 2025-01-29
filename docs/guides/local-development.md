@@ -85,7 +85,7 @@ It's worth noting that you can run multiple containers simultaneously, as long a
 
 ## Hot Reload
 
-The local container supports live reloading. When you modify your [configuration](#configuration) or build custom [Functions](../build/functions/index) to enhance Juno's capabilities with serverless features, those changes will be automatically redeployed.
+The local container supports live reloading. When you modify your [configuration](#configuration) or build custom [Functions](../build/functions/index.md) to enhance Juno's capabilities with serverless features, those changes will be automatically redeployed.
 
 ---
 
