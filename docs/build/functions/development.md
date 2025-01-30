@@ -291,3 +291,9 @@ For instance:
 ```bash
 cargo clippy --target=wasm32-unknown-unknown
 ```
+
+---
+
+## Further Resources
+
+For more in-depth explanations and real-world implementations, check out the [Examples](../../guides/rust.mdx) page, which showcases practical use cases and provides sample projects available on GitHub.
