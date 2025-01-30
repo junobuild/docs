@@ -9,25 +9,23 @@ sidebar_position: 6
 
 # Code Functions in Rust
 
-Explore serverless functions written in Rust for Juno projects.
-
-## Table of contents
-
-- [Quickstart](#quickstart)
-- [Hooks and Data Operations](#hooks-and-data-operations)
-- [HTTP outcalls](#http-outcalls)
+Learn how to develop, integrate, and extend Juno Satellites with serverless functions written in Rust.
 
 ---
 
-## Quickstart
+## Getting Started
 
-Learn how to set up your environment to develop additional features for a [satellite].
+Set up your environment to develop and extend a Satellite with custom serverless functions using Rust.
 
-:::note
+First, ensure you have the Juno CLI installed. If you haven't installed it yet, run:
 
-Make sure you have Juno's [CLI](/docs/miscellaneous/cli#installing-the-juno-cli) tool installed on your machine.
+import { Bash } from "../components/bash.mdx";
 
-:::
+<Bash
+  npm="npm i -g @junobuild/cli"
+  yarn="yarn global add @junobuild/cli"
+  pnpm="pnpm add -g @junobuild/cli"
+/>
 
 At the root of application, eject the Satellite. This step prepares your project for local development. Open your terminal and run:
 
@@ -301,5 +299,3 @@ include_satellite!();
 ```
 
 As with the previous example, the hook will asynchronously update the document. If you wait a bit before retrieving the document in your frontend, you might notice that the source of the image has been updated by your hook.
-
-[satellite]: ../terminology.md#satellite
