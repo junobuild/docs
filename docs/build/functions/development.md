@@ -44,3 +44,35 @@ This process updates your Satellite with the custom Functions, making them live 
 | `juno dev start`                                         | Starts the local development environment using Docker.                       |
 | `juno dev build`                                         | Compiles your custom Satellite's code. Changes are automatically redeployed. |
 | `juno upgrade -t s -s ./target/deploy/satellite.wasm.gz` | Upgrades your Satellite in production.                                       |
+
+---
+
+## **Maintenance**
+
+After deployment, keeping your Satellite functional and optimized requires ongoing monitoring and updates. Staying up to date is also a key factor, as we may introduce new features that need to be integrated into your Satellite to ensure full functionality within the Juno Console.
+
+Since your project includes all Satellite features using `include_satellite!();`, it's essential to stay in sync with Juno’s updates to maintain compatibility.
+
+:::caution
+
+Always upgrade iteratively and avoid skipping version numbers. While we strive to minimize breaking changes, it's crucial to upgrade through each released version sequentially.
+
+For example, if you're on **v0.0.23** and the latest release is **v0.0.26**, first upgrade to **v0.0.24**, then **v0.0.25**, and finally **v0.0.26**. Skipping versions could lead to unexpected issues.
+
+:::
+
+### Updating Your Satellite
+
+To upgrade your Satellite, bump the dependencies in your `Cargo.toml` file located in `/src/satellite/`. The key dependencies to check and update are:
+
+- `junobuild-satellite`
+- `junobuild-storage`
+- `junobuild-macros`
+- `ic_cdk`
+- `candid`
+
+If other crates in your project depend on these, they should also be upgraded accordingly.
+
+The recommended versions for each release can be found in the [changelog](/changelog) or [release notes on GitHub](https://github.com/junobuild/juno/releases).
+
+If you need assistance, feel free to reach out through the available support channels.
