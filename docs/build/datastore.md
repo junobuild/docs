@@ -1,5 +1,4 @@
 ---
-sidebar_position: 2
 description: Learn how Juno's Datastore simplifies blockchain data storage with easy-to-use SDK and comprehensive documentation.
 keywords: [blockchain data storage, collection, document, key, data]
 ---
