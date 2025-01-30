@@ -170,6 +170,12 @@ As outlined in the [Quickstart](#quickstart) chapter, run `juno dev build` to co
 
 [HTTPS outcalls](https://internetcomputer.org/https-outcalls) are a feature of the Internet Computer, enabling smart contracts to directly connect to the Web 2.0 world by querying APIs with HTTP requests.
 
+:::tip
+
+This example is also available on [GitHub](https://github.com/junobuild/examples/tree/main/rust/https-outcalls).
+
+:::
+
 For this example, we'll skip a few steps as the logic remains consistent:
 
 - Your frontend makes a call to the Satellite.
@@ -313,3 +319,40 @@ If replication or IPv6 support is not available, a common workaround is to use a
 - [`ic-http-proxy`](https://github.com/omnia-network/ic-http-proxy) from Omnia Network ([announcement](https://forum.dfinity.org/t/non-replicated-https-outcalls/26627))
 - [`idempotent-proxy`](https://github.com/ldclabs/idempotent-proxy) from LDC Labs ([announcement](https://forum.dfinity.org/t/idempotent-proxy-show-proxy-https-outcalls-to-any-web2-service/32754))
 - A similar approach to the optimistic solution we currently used for transmitting emails ([repo](https://github.com/junobuild/proxy))
+
+---
+
+## More Examples
+
+Here are additional examples showcasing different use cases for blockchainless in Juno. Each example is hosted on GitHub and provides a working implementation you can explore and modify.
+
+### Essential Hooks
+
+A minimal app demonstrating how serverless function hooks work in Juno. This example provides a frontend interface for setting a document in the datastore or uploading a file to storage.
+
+The associated hooks perform basic operations:
+
+- Printing a message when triggered.
+- Demonstrating how to deserialize and serialize a document before updating and persisting it.
+
+This example serves as a great starting point for understanding how to interact with Juno's event-driven hooks in both datastore and storage contexts.
+
+[🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/rust/hooks)
+
+### Ethereum Address
+
+A sample app demonstrating how to derive an Ethereum address for an authenticated Juno user on the Internet Computer. The hook is triggered upon user registration and generates an Ethereum address using threshold ECDSA, with its public representation stored in the Satellite.
+
+In this use case, the private key is never fully generated or stored on a single node. Instead, the Internet Computer’s threshold ECDSA mechanism distributes the key material across multiple nodes, ensuring that no single party has access to the complete key.
+
+Additionally, the app includes a balance action that fetches the balance of the Ethereum address from the Sepolia network using Etherscan. This is done via public queries without requiring an API key.
+
+[🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/rust/ethereum-address)
+
+## Generating JSON Files
+
+An example that demonstrates how to generate a JSON file within a serverless function on Juno.
+
+When a document is set, the corresponding hook creates a JSON file based on the document's data and automatically uploads it to storage. This makes the file accessible via an HTTPS URL, allowing it to be retrieved and used directly on the web.
+
+[🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/rust/json)
