@@ -320,6 +320,19 @@ If replication or IPv6 support is not available, a common workaround is to use a
 
 Here are additional examples showcasing different use cases for blockchainless in Juno. Each example is hosted on GitHub and provides a working implementation you can explore and modify.
 
+### Essential Hooks
+
+A minimal app demonstrating how serverless function hooks work in Juno. This example provides a frontend interface for setting a document in the datastore or uploading a file to storage.
+
+The associated hooks perform basic operations:
+
+- Printing a message when triggered.
+- Demonstrating how to deserialize and serialize a document before updating and persisting it.
+
+This example serves as a great starting point for understanding how to interact with Juno's event-driven hooks in both datastore and storage contexts.
+
+[🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/rust/hooks)
+
 ### Ethereum Address
 
 A sample app demonstrating how to derive an Ethereum address for an authenticated Juno user on the Internet Computer. The hook is triggered upon user registration and generates an Ethereum address using threshold ECDSA, with its public representation stored in the Satellite.
