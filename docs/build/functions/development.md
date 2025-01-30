@@ -253,9 +253,32 @@ fn assert_delete_asset(_context: AssertDeleteAssetContext) -> Result<(), String>
 
 After defining your Functions, at the very end of your `lib.rs` module, include the Satellite to ensure that your custom logic and the default features or Juno are properly registered and executable within the Juno ecosystem.
 
+:::important
+
+This is crucial for compatibility with the Juno Console and CLI, as it expects the Satellite to expose the necessary functionality for monitoring, deployment, and interaction. Without this macro, certain features in the Console may not function correctly.
+
+:::
+
 ```rust
 include_satellite!();
 ```
+
+---
+
+## Feature Selection
+
+When you run `juno dev eject`, all the available hooks and assertions are scaffolded in your `lib.rs` module. However, if you don’t have to implement all of them for example to improve readability or reduce unnecessary logic, you can selectively enable only the features you need.
+
+To do this, disable the default features in your `Cargo.toml` and explicitly specify only the ones you want to use.
+
+For example, if you only need `on_set_doc` and `assert_set_doc`, configure your `Cargo.toml` like this:
+
+```toml
+[dependencies]
+junobuild-satellite = { version = "0.0.21", default-features = false, features = ["on_set_doc", "assert_set_doc"] }
+```
+
+With this setup, only `on_set_doc` and `assert_set_doc` must be implemented with custom logic, while other hooks and assertions will not be included in your Satellite.
 
 ---
 
