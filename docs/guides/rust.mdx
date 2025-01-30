@@ -348,3 +348,11 @@ In this use case, the private key is never fully generated or stored on a single
 Additionally, the app includes a balance action that fetches the balance of the Ethereum address from the Sepolia network using Etherscan. This is done via public queries without requiring an API key.
 
 [🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/rust/ethereum-address)
+
+## Generating JSON Files
+
+An example that demonstrates how to generate a JSON file within a serverless function on Juno.
+
+When a document is set, the corresponding hook creates a JSON file based on the document's data and automatically uploads it to storage. This makes the file accessible via an HTTPS URL, allowing it to be retrieved and used directly on the web.
+
+[🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/rust/json)
