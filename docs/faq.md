@@ -8,6 +8,24 @@ For help and questions about best practices, join our [Discord](https://discord.
 
 Getting started is free. Developers are responsible for operating costs. Transaction costs may apply for some features. [Detailed information and estimations](./pricing.md) are available.
 
+### How do I verify an upgrade?
+
+Before approving an upgrade, developers can verify the proposed changes by checking the release details on [GitHub](https://github.com/junobuild/juno/releases). Each release includes a list of modules proposed for update, along with a checksums.txt file that contains the SHA-256 hashes of the module binaries. For example:
+
+```
+68c1978c4fe7ad98cc95fd73e20f42feaf66f010e8fe91a7047116001dfcab13  ./console.wasm.gz
+31647e69cd5a3639bda65300e37a8f44eb5feb3562e81f29c1ab17a31a867b42  ./mission_control.wasm.gz
+87a18c56889690a05adf2b4289b911714c0ac6449108ae0c588203680c2c54d2  ./observatory.wasm.gz
+5a74b1224a5a5d14e5d9f0ebe49a4ba6d51780dbde983525b5ef16a976c28f14  ./orbiter.wasm.gz
+40b77e22e13aee86ac3872352640443fa27a9bdc098847f15bfafe844a9f58ab  ./satellite.wasm.gz
+```
+
+If the hash of a module differs from the one listed in the release, the upgrade should not be approved. It's also important to check the release notes to confirm which modules are actually included in the update, as the build process always prints all hashes.
+
+Developers can also validate the data by querying the [CDN](https://github.com/junobuild/cdn), which provides each module with a certificate. Since the CDN itself is backed by a Juno Satellite, this guarantees that the delivered WebAssembly modules have not been tampered with.
+
+For reproducibility, developers can run the official Docker build for Juno and its modules. If everything matches, the same versions should be produced.
+
 ### What happens if Juno disappears?
 
 In the unlikely event of Juno's disappearance, you, as the sole controller of your [mission control] and [satellites], would retain full control over your creations. They would continue to function independently without any reliance on Juno.
