@@ -49,4 +49,4 @@ The libraries, CLI and other tools around the core features are released under M
 
 ## Audit Considerations
 
-It is important to note that the codebase has not yet been audited. Currently, I see an audit as a complication and an investment that may not be fully justified given the current amount of funds held across the ecosystem. However, in the future, particularly after the development of the Mission Control wallet is complete (see chapter “Roadmap”), an audit will become valuable. At that point, it will be up to the DAO to support such an investment.
+It is important to note that the codebase has not yet been audited. Currently, an audit may be seen as a complication and an investment that may not be fully justified given the current amount of funds held across the ecosystem. However, in the future, particularly after the development of the Mission Control wallet is complete (see chapter “Roadmap”), an audit will become valuable.
