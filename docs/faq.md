@@ -46,7 +46,9 @@ In contrast, Juno takes a different approach. Developers pre-charge their smart 
 
 ### Do you have a library for [some other language]?
 
-We officially support [JavaScript](setup-the-sdk.mdx).
+We officially support [JavaScript](setup-the-sdk.mdx) for anything frontend.
+
+Extending smart contract capabilities is done in [Rust](build/functions/index.md).
 
 Community-supported libraries and contributions are warmly welcomed.
 
