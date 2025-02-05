@@ -29,7 +29,18 @@ const sidebars: SidebarsConfig = {
           "Learn about Juno features to build apps running 100% on blockchain without the need to manage servers or write any backend code."
       },
       items: [
-        "build/authentication",
+        {
+          type: "category",
+          label: "Authentication",
+          link: {
+            type: "doc",
+            id: "build/authentication/index"
+          },
+          items: [
+            "build/authentication/development",
+            "build/authentication/customization"
+          ]
+        },
         "build/datastore",
         "build/storage",
         "build/hosting",
