@@ -90,7 +90,7 @@ await initSatellite({
 
 The `auth` option can accept either `true`, which will default to using a worker located at https://yourapp/workers/auth.worker.js, or a custom `string` to provide your own URL.
 
-When the session expires, it will automatically be terminated with a standard [sign-out](#sign-out). Additionally, an event called `junoSignOutAuthTimer` will be thrown at the `document` level. This event can be used, for example, to display a warning to your users or if you wish to reload the window.
+When the session expires, it will automatically be terminated with a standard [sign-out](./development.md#sign-out). Additionally, an event called `junoSignOutAuthTimer` will be thrown at the `document` level. This event can be used, for example, to display a warning to your users or if you wish to reload the window.
 
 ```javascript
 document.addEventListener("junoSignOutAuthTimer", () => {
