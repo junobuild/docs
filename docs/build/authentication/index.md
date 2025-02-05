@@ -26,7 +26,7 @@ You can manage your users in the [authentication](https://console.juno.build/aut
 
 ## Domain-Based User Identity
 
-For privacy reasons and to prevent tracking between sites, Juno's [authentication](index) is linked to the domains you use.
+For privacy reasons and to prevent tracking between sites, Juno's authentication is linked to the domains you use.
 
 This means that if a user signs in to your app on the default domain (`icp0.io`) and a custom domain, they will, by default, be treated as two separate users.
 
