@@ -4,25 +4,40 @@ You can create or update a collection in the "Collections" tab in Juno's console
 
 ---
 
-## Rules
+## Configuration
 
-A rule is assigned to a collection to define read and write permissions, which can be configured as `public`, `private`, `managed`, or `controllers`.
+Each collection has a set of configurable options that define its behavior and limitations:
 
-- `public`: everyone can read from (resp. write to) any document in the collection
-- `private`: only the owner of a document can read from (resp. write to) a document in the collection
-- `managed`: the owner of a document _and_ the [controllers] of the satellite can read from (resp. write to) a document in the collection
-- `controllers`: only the controllers of the satellite can read from (resp. write to) any document in the collection
+| Option                 | Mandatory | Description                                                                                                                                                                                                                                            |
+| ---------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Key                    | Yes       | A unique identifier for the collection. The key that you will use in your code to interact with a particular collection.                                                                                                                               |
+| Read permission        | Yes       | Defines who can read documents in the collection. See [Permissions](#permissions) below.                                                                                                                                                               |
+| Write permission       | Yes       | Defines who can create, update, or delete documents. See [Permissions](#permissions) below.                                                                                                                                                            |
+| Memory                 | Yes       | Specifies whether the collection uses `heap` or `stable` memory. This setting is permanent and cannot be changed after creation. The default is `stable` memory. For more information, see the related [documentation](../../miscellaneous/memory.md). |
+| Max capacity           | No        | The maximum number of documents that can be stored in the collection, applying to the entire collection regardless of individual users.                                                                                                                |
+| Max updates per minute | No        | Limits the number of creation, update and delete operations per minute to prevent excessive updates.                                                                                                                                                   |
+| Immutable permissions  | No        | If enabled, read and write permissions cannot be modified after creation.                                                                                                                                                                              |
+
+---
+
+## Permissions
+
+A permission defines who can read and write documents in a collection. Permissions can be set to one of the following types: `public`, `private`, `managed`, or `controllers`.
+
+| Permission Type | Description                                                                                             |
+| --------------- | ------------------------------------------------------------------------------------------------------- |
+| public          | Everyone can read or write to any document in the collection.                                           |
+| private         | Only the owner of a document can read or write to it.                                                   |
+| managed         | The owner of a document and the controllers of the satellite can read or write to it in the collection. |
+| controllers     | Only the controllers of the satellite can read or write to any document in the collection.              |
+
+If not set to immutable, you can modify the permissions at any time, and the changes will take effect immediately.
 
 :::tip
 
-- You can modify the rules at any time, and changes will take effect immediately.
-- Any collection with read permissions set to `public`, `managed` or `controllers` can be viewed by the satellite's controllers in the console under the [datastore](https://console.juno.build/datastore) view.
+Any collection with read permissions set to `public`, `managed` or `controllers` will allow the controllers to view its content in the console under the [datastore](https://console.juno.build/datastore) view.
 
 :::
-
-## Memory
-
-When you create a collection, it's assigned to either heap or stable memory. This assignment is permanent and cannot be changed once the collection is created. The default allocation is `stable` memory.
 
 [satellite]: ../../terminology.md#satellite
 [controllers]: ../../terminology.md#controller
