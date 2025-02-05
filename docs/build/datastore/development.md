@@ -1,69 +1,12 @@
----
-description: Learn how Juno's Datastore simplifies blockchain data storage with easy-to-use SDK and comprehensive documentation.
-keywords: [blockchain data storage, collection, document, key, data]
----
+# Development
 
-# Datastore
-
-The Juno Datastore offers a simple key-value model, organized by collections containing documents, for storing data on the blockchain. It eliminates the need to write backend code, allowing easy management of distributed, cross-user data.
-
-![A screenshot of the Datastore in Juno's Console](../img/satellite/datastore.webp)
+This page provides an overview of how to integrate and manage documents using the Juno SDK, including adding, retrieving, updating, listing, and deleting documents within your app.
 
 :::note
 
-To use these features, the Juno SDK must be [installed](../setup-the-sdk.mdx) and initialized in your app.
+To use these features, the Juno SDK must be [installed](../../setup-the-sdk.mdx) and initialized in your app.
 
 :::
-
----
-
-## How does it work?
-
-Each [satellite] you create has a "Datastore", which can have as many collections as you wish.
-
-A collection contains a list of documents, each identified by a textual key that you define.
-
-Each document is a record that holds the data you want to persist on chain, along with timestamps (created and last updated) and an associated owner (the creator of the document).
-
-Timestamps are used to prevent data from being overwritten, and the associated owner is used to grant read and write permissions.
-
-Each document is identified by a `key` (unique within a collection).
-
-In essence, a "Datastore" functions as a keypair store.
-
----
-
-## Limitation
-
-Each satellite has specific memory limits. For detailed information, please refer to the related [documentation](../miscellaneous/memory.md) page.
-
-As for documents, they can be up to 2MB in size. However, larger files can be saved in the [storage](build/storage.md).
-
----
-
-## Collections
-
-You can create or update a collection in the "Collections" tab in Juno's console under the [datastore](https://console.juno.build/datastore) view.
-
-### Rules
-
-A rule is assigned to a collection to define read and write permissions, which can be configured as `public`, `private`, `managed`, or `controllers`.
-
-- `public`: everyone can read from (resp. write to) any document in the collection
-- `private`: only the owner of a document can read from (resp. write to) a document in the collection
-- `managed`: the owner of a document _and_ the [controllers] of the satellite can read from (resp. write to) a document in the collection
-- `controllers`: only the controllers of the satellite can read from (resp. write to) any document in the collection
-
-:::tip
-
-- You can modify the rules at any time, and changes will take effect immediately.
-- Any collection with read permissions set to `public`, `managed` or `controllers` can be viewed by the satellite's controllers in the console under the [datastore](https://console.juno.build/datastore) view.
-
-:::
-
-### Memory
-
-When you create a collection, it's assigned to either heap or stable memory. This assignment is permanent and cannot be changed once the collection is created. The default allocation is `stable` memory.
 
 ---
 
@@ -480,12 +423,4 @@ await deleteFilteredDocs({
 });
 ```
 
----
-
-## Configuration
-
-The Datastore supports various configuration options to fine-tune its behavior, such as resource limits and operational constraints. For a detailed explanation of all available options, see the [configuration](../miscellaneous/configuration.mdx) section.
-
-[satellite]: ../terminology.md#satellite
-[controllers]: ../terminology.md#controller
 [JSON]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#description
