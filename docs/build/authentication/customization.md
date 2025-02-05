@@ -6,13 +6,13 @@ Here are some customization options to tailor your sign-in flow and handle sessi
 
 ## Sign-In Providers
 
-Juno currently supports Internet Identity and NFID, with NFID offering additional authentication methods such as Google, Metamask, and WalletConnect.
+Juno supports Internet Identity and NFID, which also offers additional authentication methods like Google and email.
 
 ### Internet Identity
 
 Internet Identity is available at two different URLs: `internetcomputer.org` and `ic0.app`.
 
-By default, the SDK uses `internetcomputer.org` as we anticipate it will become the main domain in the future, and we believe it offers a better user experience and branding.
+By default, the SDK uses `internetcomputer.org`.
 
 ```typescript
 import { signIn, InternetIdentityProvider } from "@junobuild/core";
@@ -23,7 +23,7 @@ await signIn({
 });
 ```
 
-To switch to the `ic0.app`, set the domain option as follows.
+You can switch to `ic0.app` by setting the domain option accordingly.
 
 ```typescript
 import { signIn, InternetIdentityProvider } from "@junobuild/core";
@@ -34,6 +34,8 @@ await signIn({
   })
 });
 ```
+
+We stick with the former due to a long story, but we believe it provides a better user experience and branding.
 
 ### NFID
 

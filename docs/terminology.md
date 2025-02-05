@@ -41,9 +41,9 @@ It can also be converted into cycles, which are used to pay for computation and 
 
 ## Internet Identity
 
-[Internet Identity](https://internetcomputer.org/internet-identity) is a Web3 authentication provider that offers a secure blockchain login experience with a user-friendly Web2 interface.
+[Internet Identity](https://internetcomputer.org/internet-identity) is a decentralized authentication provider that offers a secure blockchain login experience with a user-friendly Web2 interface.
 
-It is free, passwordless, and does not track user activity. It also integrates WebAuthn for maximum compatibility.
+It is free and passwordless. It integrates WebAuthn for maximum compatibility and, unlike other Web3 authentication solutions, it does not require you to save a private key on your device or in an application.
 
 ## Mission control
 

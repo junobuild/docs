@@ -20,12 +20,14 @@ import { signIn } from "@junobuild/core";
 await signIn();
 ```
 
-The sign-in feature offers customization options for authentication:
+The sign-in feature supports following customization options:
 
-- `maxTimeToLive`: Specifies the duration for the session (defaults to **4 hours**, represented as `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)`). It's **important** to note that this duration remains constant, whether the users are active or inactive.
-- `windowed`: By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead.
-- `derivationOrigin`: The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your satellite’s URLs they use to access your application.
-- `allowPin`: We consider the specific PIN authentication method of [Internet Identity](https://internetcomputer.org/docs/current/references/ii-spec#client-authentication-protocol) as "insecure" because users can easily lose their login information if they do not register a passphrase, particularly as Safari clears the browser cache every two weeks in cases of inactivity. This is why we **disable** it by default.
+| Option             | Default Value                              | Description                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ------------------ | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `maxTimeToLive`    | `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)` | Specifies the duration for the session (defaults to **4 hours**). It's **important** to note that this duration remains constant, whether the users are active or inactive.                                                                                                                                                                                                                                        |
+| `windowed`         | `true`                                     | By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead.                                                                                                                                                |
+| `derivationOrigin` | —                                          | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your satellite’s URLs they use to access your application.                                                                                                                                                                                                                                          |
+| `allowPin`         | `false`                                    | We consider the specific PIN authentication method of [Internet Identity](https://internetcomputer.org/docs/current/references/ii-spec#client-authentication-protocol) as "insecure" because users can easily lose their login information if they do not register a passphrase, particularly as Safari clears the browser cache every two weeks in cases of inactivity. This is why we **disable** it by default. |
 
 You can configure the default sign-in flow that uses Internet Identity. You can also set NFID as a provider. Check out the [advanced Sign-in guidelines](./customization.md#sign-in-providers) for more details.
 
@@ -51,7 +53,9 @@ This will clear the sign-in information stored in IndexedDB.
 
 ## Subscription
 
-You can subscribe to the user state (signed-in or out) by using the subscriber function. This function provides a technical user and will trigger whenever the user's state changes.
+You can subscribe to the user state using the subscriber function. This function provides a technical user and triggers whenever the user's state changes.
+
+In other words, using this callback allows you to monitor whether the user is signed in or signed out.
 
 ```typescript
 import { authSubscribe } from "@junobuild/core";
