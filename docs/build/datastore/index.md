@@ -17,9 +17,9 @@ Each [satellite] you create has a "Datastore", which can have as many [collectio
 
 A collection contains a list of documents, each identified by a textual key that you define.
 
-Each document is a record that holds the data you want to persist on chain, along with timestamps (created and last updated) and an associated owner (the creator of the document).
+Each document is a record that holds the data you want to persist on-chain, along with timestamps (created and last updated), an associated owner (the creator of the document), and a version.
 
-Timestamps are used to prevent data from being overwritten, and the associated owner is used to grant read and write permissions.
+The version is used to prevent data from being overwritten, and the associated owner is used to grant read and write permissions.
 
 Each document is identified by a `key` (unique within a collection).
 
@@ -37,6 +37,6 @@ As for documents, they can be up to 2MB in size. However, larger files can be sa
 
 ## Configuration
 
-The Datastore supports various configuration options to fine-tune its behavior, such as resource limits and operational constraints. For a detailed explanation of all available options, see the [configuration](../../miscellaneous/configuration.mdx) section.
+The Datastore supports various configuration options to fine-tune its behavior, such as resource limits and operational constraints. For a detailed explanation of all available options, see the [configuration](../../miscellaneous/configuration.mdx#datastore) section.
 
 [satellite]: ../../terminology.md#satellite
