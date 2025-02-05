@@ -41,7 +41,15 @@ const sidebars: SidebarsConfig = {
             "build/authentication/customization"
           ]
         },
-        "build/datastore",
+        {
+          type: "category",
+          label: "Datastore",
+          link: {
+            type: "doc",
+            id: "build/datastore/index"
+          },
+          items: ["build/datastore/collections", "build/datastore/development"]
+        },
         "build/storage",
         "build/hosting",
         {

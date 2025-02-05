@@ -18,7 +18,7 @@ On the contrary, `stable` memory doesn't require processing during an upgrade. H
 
 ## Recommendations
 
-There are no strict rules governing the choice of memory type for your use case. Ultimately, the decision lies with you, based on what best suits your project. This is why both the [datastore](../build/datastore.md) and [storage](../build/storage.md) support both memory types.
+There are no strict rules governing the choice of memory type for your use case. Ultimately, the decision lies with you, based on what best suits your project. This is why both the [datastore](../build/datastore/index.md) and [storage](../build/storage.md) support both memory types.
 
 In practice, `heap` memory can be recommended for small datasets or data that require quick or frequent access, while `stable` memory is preferred for large data or data accessed less often.
 
