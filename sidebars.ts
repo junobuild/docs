@@ -59,7 +59,15 @@ const sidebars: SidebarsConfig = {
           },
           items: ["build/storage/collections", "build/storage/development"]
         },
-        "build/hosting",
+        {
+          type: "category",
+          label: "Hosting",
+          link: {
+            type: "doc",
+            id: "build/hosting/index"
+          },
+          items: ["build/hosting/development", "build/hosting/configuration"]
+        },
         {
           type: "category",
           label: "Functions",

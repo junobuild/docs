@@ -42,7 +42,7 @@ There is no specific limit on the size of assets (files) that can be uploaded to
 
 The Storage system offers various configuration options to fine-tune its behavior, including HTTP headers, redirects, and iFrame support. These settings help optimize how stored files are accessed and delivered.
 
-If you're configuring the hosting behavior of your site, start by checking out the [Hosting Configuration](../hosting.mdx#configure-hosting-behavior) section, as Storage is an integral part of the hosting system.
+If you're configuring the hosting behavior of your site, start by checking out the [Hosting Configuration](../hosting/configuration.mdx) section, as Storage is an integral part of the hosting system.
 
 For a complete list of available Storage options, refer to the [configuration](../../miscellaneous/configuration.mdx) section.
 
