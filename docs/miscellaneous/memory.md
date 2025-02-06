@@ -32,7 +32,7 @@ That's why the default option for creating new collections is set to `stable` fo
 
 As mentioned in the previous chapter, your dapp's bundle and assets (everything you deploy to your satellite using `juno deploy`), are stored in the `heap` memory.
 
-In contrast, your users (as of Satellite version 0.0.16) and the [analytics](../build/analytics.md) data are saved within `stable` memory.
+In contrast, your users (as of Satellite version 0.0.16) and the [analytics](../build/analytics/index.md) data are saved within `stable` memory.
 
 ## Summary
 
