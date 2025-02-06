@@ -31,7 +31,7 @@ In essence, a "Datastore" functions as a keypair store.
 
 Each satellite has specific memory limits. For detailed information, please refer to the related [documentation](../../miscellaneous/memory.md) page.
 
-As for documents, they can be up to 2MB in size. However, larger files can be saved in the [storage](build/storage.md).
+As for documents, they can be up to 2MB in size. However, larger files can be saved in the [storage](build/storage/index.md).
 
 ---
 
