@@ -50,7 +50,15 @@ const sidebars: SidebarsConfig = {
           },
           items: ["build/datastore/collections", "build/datastore/development"]
         },
-        "build/storage",
+        {
+          type: "category",
+          label: "Storage",
+          link: {
+            type: "doc",
+            id: "build/storage/index"
+          },
+          items: ["build/storage/collections", "build/storage/development"]
+        },
         "build/hosting",
         {
           type: "category",

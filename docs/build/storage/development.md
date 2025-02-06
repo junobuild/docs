@@ -1,80 +1,12 @@
----
-description: Juno Storage offers a powerful and cost-effective object storage solution on the blockchain for app developers. Learn how to store and serve user-generated content securely.
----
+# Development
 
-# Storage
-
-Juno Storage is designed for app developers who need to store and serve user-generated content, such as photos or files.
-
-It offers a powerful and cost-effective object storage solution on the blockchain.
-
-![A screenshot of the Storage in Juno's Console](../img/satellite/storage.webp)
+This page explains how to manage assets using the Juno SDK, including uploading, listing, counting, and deleting files within your application. It also covers configuration options for optimizing storage and access control.
 
 :::note
 
-To use Juno Storage's features, you must [install](../setup-the-sdk.mdx) and initialize the Juno SDK in your app.
+To use these features, the Juno SDK must be [installed](../../setup-the-sdk.mdx) and initialized in your app.
 
 :::
-
----
-
-## How does it work?
-
-Each [satellite] you create includes a "Storage" provider, which can store assets (images, documents, etc.) that are automatically made available on the internet.
-
-Assets are stored in "collections" and you can have as many collections as you wish.
-
-Each asset within a collection is identified by a `path` -- e.g. `/images/a-user-image.jpg` -- unique within all collections. Assets hold the data you want to persist on chain, along with metadata (the "owner" or creator of the asset).
-
-:::caution
-
-Unless you use the optional [`token` parameter](#protected-asset) to persist an asset in your satellite and make its URL difficult to guess, any asset stored in Juno Storage will be publicly available on the internet.
-
-:::
-
----
-
-## Limitation
-
-Each satellite has specific memory limits. For detailed information, please refer to the related [documentation](../miscellaneous/memory.md) page.
-
-There is no specific limit on the size of assets (files) that can be uploaded to Juno, unless you choose to set an optional [rule](#rules) to restrict it.
-
----
-
-## Collections
-
-You can create or update a collection in the "Collections" tab in Juno's console under the [storage](https://console.juno.build/storage) view.
-
-### Rules
-
-A rule is assigned to a collection to define read and write permissions, which can be configured as `public`, `private`, `managed`, or `controllers`.
-
-:::caution
-
-Assets are publicly accessible on the Internet regardless of the permission schema. The rules are only applied when reading or writing the data through the library.
-
-:::
-
-- `public`: everyone can read from (resp. write to) any asset in the collection
-- `private`: only the owner of a asset and can read from (resp. write to) a asset in the collection
-- `managed`: the owner of an asset _and_ the [controllers] of the satellite can read from (resp. write to) an asset in the collection
-- `controllers`: only the controllers of the satellite can read from (resp. write to) any asset in the collection
-
-:::tip
-
-- Rules can be modified at any time and changes will be applied immediately
-- Any collection with read permission set as `public`, `managed` or `controllers` can be viewed in the console's [storage](https://console.juno.build/storage) view.
-
-:::
-
-### Memory
-
-When you create a collection, it's assigned to either heap or stable memory. This assignment is permanent and cannot be changed once the collection is created. The default allocation is `stable` memory.
-
-### Max size
-
-You can also set an optional parameter that limits the size, in bytes, of assets that can be uploaded to a collection.
 
 ---
 
@@ -333,7 +265,7 @@ There are multiple ways to delete assets from your Storage.
 
 ### Delete asset
 
-To delete an asset, you only need to provide its `fullPath`. Unlike the [datastore](./datastore/index.md), there is no timestamp validation performed when deleting an asset.
+To delete an asset, you only need to provide its `fullPath`. Unlike the [datastore](../datastore/index.md), there is no timestamp validation performed when deleting an asset.
 
 ```typescript
 import { deleteAsset } from "@junobuild/core";
@@ -378,26 +310,3 @@ await deleteFilteredAssets({
   }
 });
 ```
-
----
-
-## Configuration
-
-The Storage supports various configuration options to optimize its behavior, such as HTTP headers, redirects, and iFrame support. For a detailed explanation of all available options, see the [configuration](../miscellaneous/configuration.mdx) section.
-
-:::note
-
-If you are looking to configure the hosting behavior of your site, check out the related [documentation](./hosting.mdx#configure-hosting-behavior).
-
-:::
-
-#### Where do you define your Storage configuration?
-
-You define your Storage configuration in your Juno configuration file. The CLI automatically creates the file at the root of your project directory when you run the [juno init](../miscellaneous/cli.mdx#init) or [juno deploy](../miscellaneous/cli.mdx#deploy) command for the first time.
-
-#### How do you apply your changes?
-
-To apply any changes you make in your configuration to your satellite, execute the [juno config](../miscellaneous/cli.mdx#config) command with the CLI.
-
-[satellite]: ../terminology.md#satellite
-[controllers]: ../terminology.md#controller
