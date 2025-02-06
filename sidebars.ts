@@ -73,7 +73,15 @@ const sidebars: SidebarsConfig = {
             "build/functions/logs"
           ]
         },
-        "build/analytics"
+        {
+          type: "category",
+          label: "Analytics",
+          link: {
+            type: "doc",
+            id: "build/analytics/index"
+          },
+          items: ["build/analytics/development"]
+        }
       ]
     },
     {

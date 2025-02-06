@@ -136,7 +136,7 @@ To enable monitoring, go to the [Monitoring Section](https://console.juno.build/
 
 The wizard simplifies the setup process, making it easy to configure monitoring according to your needs.
 
-[Analytics]: ../build/analytics.md
+[Analytics]: ../build/analytics/index.md
 [Satellites]: ../terminology.md#satellite
 [Mission Control]: ../terminology.md#mission-control
 [cycles]: ../terminology.md#cycles
