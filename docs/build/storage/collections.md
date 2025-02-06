@@ -22,7 +22,7 @@ Each collection has a set of configurable options that define its behavior and l
 
 ## Permissions
 
-A permission defines who can read and write documents in a collection. Permissions can be set to one of the following types: `public`, `private`, `managed`, or `controllers`.
+Permissions define who can read and write assets in a collection. Writing includes creating (uploading), updating, and deleting assets.
 
 :::caution
 
@@ -30,12 +30,12 @@ Assets are publicly accessible on the Internet regardless of the permission sche
 
 :::
 
-| Permission Type | Description                                                                                             |
-| --------------- | ------------------------------------------------------------------------------------------------------- |
-| public          | Everyone can read or write to any document in the collection.                                           |
-| private         | Only the owner of a document can read or write to it.                                                   |
-| managed         | The owner of a document and the controllers of the satellite can read or write to it in the collection. |
-| controllers     | Only the controllers of the satellite can read or write to any document in the collection.              |
+| Permission Type | Description                                                                                                                                                                                                                             |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| public          | Anyone can read or write assets in the collection.                                                                                                                                                                                      |
+| private         | Only the creator (owner) of the asset can read or write to it. However, note that since satellite controllers manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
+| managed         | The owner of an asset and the controllers of the satellite can read or write to it in the collection.                                                                                                                                   |
+| controllers     | Only satellite controllers can read or write any asset in the collection.                                                                                                                                                               |
 
 If not set to immutable, you can modify the permissions at any time, and the changes will take effect immediately.
 
