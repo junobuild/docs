@@ -1,8 +1,6 @@
-## Configure Hosting behavior
+# Configuration
 
-You can configure customized hosting behavior for requests to your site.
-
-#### What can you configure?
+You can customize your hosting environment to fit your needs, including:
 
 - Specify which `source` files in your local project directory you want to deploy? [Learn how.](#source)
 - Ignore some files during deployment. [Learn how.](#ignore-files)
@@ -15,13 +13,23 @@ You can configure customized hosting behavior for requests to your site.
 - Allow your project to be embedded as an `iframe`. [Learn how.](#iframe)
 - Customize `assertions` to modify the default verification behavior of the CLI. [Learn how.](#assertions)
 
-#### Where do you define your Hosting configuration?
+---
 
-You define your Hosting configuration in your Juno configuration file. The CLI automatically creates the file at the root of your project directory when you run the [juno init](../../miscellaneous/cli#init) or [juno deploy](../../miscellaneous/cli#deploy) command for the first time.
+## Where do you define your Hosting configuration?
 
-#### How do you apply your changes?
+Your hosting configuration is defined in the Juno [configuration](../../miscellaneous/configuration.mdx) file, which is automatically created when you run [juno init](../../miscellaneous/cli#init) or [juno deploy](../../miscellaneous/cli#deploy) for the first time.
 
-To apply any changes you make in your configuration to your satellite, execute the [juno config](../../miscellaneous/cli#config) command with the CLI.
+---
+
+## How do you apply your changes?
+
+To apply any changes, execute the [juno config](../../miscellaneous/cli#config) command with the CLI.
+
+---
+
+## Options
+
+The list below outlines the available hosting options you can configure to tailor your hosting.
 
 ### Source
 
