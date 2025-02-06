@@ -31,6 +31,30 @@ The sign-in feature supports following customization options:
 
 You can configure the default sign-in flow that uses Internet Identity. You can also set NFID as a provider. Check out the [advanced Sign-in guidelines](./customization.md#sign-in-providers) for more details.
 
+### Handling Errors
+
+If the sign-in flow encounters an error, an exception will be thrown.
+
+When a user cancels sign-in (e.g., by closing the modal), the library throws a `SignInUserInterruptError`. This error indicates that the user intentionally interrupted the sign-in process, and it's generally best practice to ignore it rather than showing an error message.
+
+```typescript
+import { signIn } from "@junobuild/core";
+
+try {
+  await signIn();
+} catch (error: unknown) {
+  if (error instanceof SignInUserInterruptError) {
+    // User canceled sign-in, no need to show an error
+    return;
+  }
+
+  // Handle other errors
+  console.error("Sign-in failed:", error);
+}
+```
+
+
+
 ---
 
 ## Sign-out
