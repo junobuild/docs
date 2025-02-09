@@ -7,7 +7,7 @@ sidebar_position: 9
 
 # Manual Deployment
 
-While we recommend using [GitHub Actions](./github-actions.md) for efficient and automated deployments, this guide covers how to manually deploy your Astro app to Juno from your device using the Juno CLI. Follow these steps to set up, build, and deploy your application to a Juno Satellite.
+While we recommend using [GitHub Actions](./github-actions.mdx) for efficient and automated deployments, this guide covers how to manually deploy your Astro app to Juno from your device using the Juno CLI. Follow these steps to set up, build, and deploy your application to a Juno Satellite.
 
 This approach is ideal for testing or personal projects.
 
