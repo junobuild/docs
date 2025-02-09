@@ -197,7 +197,8 @@ export default defineConfig({
     storage: {
       headers,
       redirects
-    }
+    },
+    predeploy: ["npm run build"]
   },
   orbiter: {
     id: "3iier-sqaaa-aaaal-aczaa-cai"
