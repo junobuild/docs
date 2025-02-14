@@ -38,7 +38,8 @@ const sidebars: SidebarsConfig = {
           },
           items: [
             "build/authentication/development",
-            "build/authentication/customization"
+            "build/authentication/customization",
+            "build/authentication/management"
           ]
         },
         {
