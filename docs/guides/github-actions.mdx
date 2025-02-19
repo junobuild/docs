@@ -126,13 +126,7 @@ Whenever code is pushed to your `main` branch, this action performs the followin
 
 That's it—your pipeline is set! 🥳
 
----
-
-## Additional Notes
-
-Here are some notes about the setup.
-
-### Build
+:::note
 
 If your `juno.config` file does not build your application using a `predeploy` field, you might need to add an additional step to your YAML file to do so:
 
@@ -141,7 +135,15 @@ If your `juno.config` file does not build your application using a `predeploy` f
   run: npm run build
 ```
 
-### Reproducibility
+:::
+
+---
+
+## Optimization & Best Practices
+
+Below are key considerations to ensure efficient and cost-effective deployment of your project.
+
+### Build Reproducibility
 
 Only new resources will be deployed to your satellite. Changes are detected through sha256 comparison. Therefore, ensuring the build reproducibility of your application is crucial to accurately identify and deploy the necessary updates.
 
