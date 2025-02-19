@@ -3,6 +3,8 @@ id: github-actions
 title: GitHub Actions
 description: Learn how to use GitHub Actions for continuous integration and deployment.
 sidebar_position: 8
+toc_min_heading_level: 2
+toc_max_heading_level: 2
 ---
 
 # GitHub Actions
@@ -37,18 +39,34 @@ While you can generate a controller with administrative permission, we strongly 
 
 ## 2. Configure your project
 
-If you already have a `juno.config` file at the root of your project, you can skip to the next chapter. Otherwise, you need to create one. The configuration file can be a TypeScript, JavaScript, or JSON file (`juno.config.ts`, `juno.config.js|.mjs`, or `juno.config.json`), depending on your preference.
+If you already have a `juno.config` file at the root of your project, you can skip to the next chapter. Otherwise, you need to create one [manually](#configuration-file-example) or by running:
+
+```bash
+npx juno init --minimal
+```
+
+The configuration file can be a TypeScript, JavaScript, or JSON file (`juno.config.ts`, `juno.config.js|.mjs`, or `juno.config.json`), depending on your preference.
 
 At a minimum, the configuration file must include the following:
 
 - **Satellite ID**: A unique identifier for your satellite.
 - **Source**: The directory containing the built assets for your satellite. This is typically the output folder of your build process, generated after running a command like `npm run build`.
 
+### Satellite ID
+
+Your Satellite ID can be found in the 'Overview' tab.
+
+![A screenshot of the Overview tab in Juno Console where the Satellite ID finds place](../img/satellite/overview.png)
+
+### Source
+
 import Examples from "../build/components/source-examples.mdx";
 
 <Examples />
 
-Here’s an example configuration file:
+### Configuration File Example
+
+Here’s an example of configuration file:
 
 ```javascript
 import { defineConfig } from "@junobuild/config";
@@ -56,7 +74,7 @@ import { defineConfig } from "@junobuild/config";
 export default defineConfig({
   satellite: {
     id: "qsgjb-riaaa-aaaaa-aaaga-cai", // Replace with your satellite ID
-    source: "build" // Replace with your build output directory
+    source: "dist" // Replace with your build output directory
   }
 });
 ```
