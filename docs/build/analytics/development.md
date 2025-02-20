@@ -8,8 +8,8 @@ This section covers how to integrate and configure Juno Analytics in your app or
 
 Before integrating Juno Analytics into your app or website, you need to create an orbiter. Here's a step-by-step guide to help you get started:
 
-1. Sign in to the Juno [console](https://console.juno.build).
-2. Navigate to "Analytics" in the astronaut entry menu at the top right of your screen.
+1. Sign in to the Juno [Console](https://console.juno.build)
+2. Navigate to [Analytics](https://console.juno.build/analytics/)
 3. Click on **Get started**
 4. Confirm by selecting **Create analytics**
 
