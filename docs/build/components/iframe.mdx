@@ -2,7 +2,7 @@ For security reasons and to prevent click-jacking attacks, dapps deployed with J
 
 You can customize this behavior by setting the `iframe` option to either `same-origin`, which restricts your pages to be displayed only if all ancestor frames have the same origin as the page itself, or `allow-any`, which allows your project to be embeddable by any site.
 
-```javascript
+```javascript title="juno.config.js"
 import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({

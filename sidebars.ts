@@ -89,7 +89,7 @@ const sidebars: SidebarsConfig = {
             type: "doc",
             id: "build/analytics/index"
           },
-          items: ["build/analytics/development"]
+          items: ["build/analytics/setup", "build/analytics/development"]
         }
       ]
     },

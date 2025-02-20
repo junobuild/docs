@@ -1,0 +1,161 @@
+---
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+
+# Setup
+
+This section covers how to integrate and configure Juno Analytics in your app or website.
+
+---
+
+## Getting Started
+
+Before integrating Juno Analytics into your app or website, you need to create an Orbiter - the smart contract that implements analytics features and gathers data. Here's a step-by-step guide to help you get started:
+
+1. Sign in to the Juno [Console](https://console.juno.build)
+2. Navigate to [Analytics](https://console.juno.build/analytics/)
+3. Click on **Get started**
+4. Confirm by selecting **Create analytics**
+
+The platform will then create the resources. Once the process is complete, click "Close" to terminate the creation wizard.
+
+At this point, you have successfully created the analytics; however, you have not yet listed which satellites are eligible to track page views and events.
+
+5. To complete the configuration, proceed to the [Setup](https://console.juno.build/analytics/?tab=setup) tab of the Analytics page to configure them.
+
+---
+
+## Installation
+
+1. Install the Analytics SDK:
+
+import Analytics from "../components/analytics.mdx";
+
+<Analytics />
+
+2. Copy the pre-packaged web worker provided by the library to your `public` or `static` folder, where your project's static assets are located.
+
+- You can achieve this by adding a post-install script to your `package.json`. Here's an example of an inline command:
+
+```json
+{
+  "scripts": {
+    "postinstall": "node -e \"require('fs').cpSync('node_modules/@junobuild/analytics/dist/workers/', './static/workers', {recursive: true});\""
+  }
+}
+```
+
+- Alternatively, you can create a script, e.g., `copy-juno-workers.mjs`, at the root of your project with the following code:
+
+```javascript
+import { cp } from "node:fs";
+import { extname } from "node:path";
+
+await cp(
+  "node_modules/@junobuild/analytics/dist/workers/",
+  "./static/workers",
+  {
+    recursive: true
+  },
+  (err) => {
+    if (err === null) {
+      return;
+    }
+
+    console.error(err);
+  }
+);
+```
+
+Finally, add a command to your `package.json` that executes the script:
+
+```json
+{
+  "scripts": {
+    "postinstall": "node ./scripts/copy-juno-workers.mjs"
+  }
+}
+```
+
+3. Once configured, run `npm run postinstall` manually to trigger the initial copy. Every time you run `npm ci`, the post-install target will execute, ensuring the worker is copied.
+
+:::warning
+
+The above scripts assume that `/static` is the folder holding your static assets (e.g., images, favicons, etc.). If you copy/paste those snippets, adjust the path according to your application. For example with React, the static folder might sometimes be called `/public`.
+
+:::
+
+---
+
+## Configuration
+
+We recommend using the plugins to simplify configuration. Once you have installed either the [Next.js](../../miscellaneous/plugins.md#nextjs-plugin) or [Vite](../../miscellaneous/plugins.md#vite-plugin) plugin, extend your configuration with your Orbiter ID.
+
+:::info
+
+If you are not using these plugins or prefer not to, you can skip to the next chapter and ignore this configuration.
+
+:::
+
+```javascript title="juno.config.js"
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist"
+  },
+  orbiter: {
+    id: "aaaa-bbbbb-ccccc-ddddd-cai" // <-- Replace with your ID
+  }
+});
+```
+
+---
+
+## Initialization
+
+Lastly, you need to initialize the Orbiter within your app or website so that it knows at runtime which Satellite to use and where to gather metrics.
+
+If you are using the plugins and configuration as described in previous chapter, simply initialize the orbiter, preferably as soon as possible when your app starts.
+
+```typescript
+import { initOrbiter } from "@junobuild/analytics";
+
+await initOrbiter();
+```
+
+If you are not using the plugins, you will need to provide the `satelliteId` and `orbiterId` manually.
+
+```typescript
+import { initOrbiter } from "@junobuild/analytics";
+
+// TODO: Replace the following satelliteId and orbiterId with the effective ID.
+await initOrbiter({
+  satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+  orbiterId: "eeeee-fffff-ddddd-11111-cai"
+});
+```
+
+---
+
+## Additional Notes
+
+Below you'll find few additional options.
+
+### Custom Worker Path
+
+If you prefer to specify a custom path for the worker, you can use the `initOrbiter` function with the additional parameter `{worker?: {path?: string}}` for this purpose.
+
+### Production vs Development
+
+In the explanation above, analytics are initialized for any use case. However, it is recommended not to initialize them during local development. This helps avoid cluttering your data with test results and minimizes the amount of cycles required to collect statistics.
+
+```javascript
+if (DEV) {
+  return;
+}
+
+await initOrbiter();
+```
