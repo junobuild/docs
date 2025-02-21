@@ -1,9 +1,10 @@
-Check the version of the modules and cli.
+Check the version of the modules and CLI.
 
 ```bash
-Usage: juno version [options]
+Usage: juno init [options]
 
 Options:
-  -h, --help            Output usage information.
+  -c, --cli         Check only the version of the CLI.
   -m, --mode            Set env mode. For example production or a custom string. Default is production.
+  -h, --help            Output usage information.
 ```

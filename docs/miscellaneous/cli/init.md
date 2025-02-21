@@ -1,4 +1,4 @@
-Open your satellite in your browser.
+Set up your project.
 
 ```bash
 Usage: juno init [options]
