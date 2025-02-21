@@ -7,13 +7,11 @@ sidebar_position: 9
 
 # Manual Deployment
 
-While we recommend using [GitHub Actions](./github-actions.mdx) for efficient and automated deployments, this guide covers how to manually deploy your Astro app to Juno from your device using the Juno CLI. Follow these steps to set up, build, and deploy your application to a Juno Satellite.
-
-This approach is ideal for testing or personal projects.
+We recommend using [GitHub Actions](./github-actions.mdx) for automated and efficient deployments. However, this guide walks you through manually deploying your app using the Juno CLI, covering the setup, build, and deployment process to your Juno Satellite.
 
 ---
 
-### 1. Install Juno CLI and log in
+### 1. Install Juno CLI
 
 Install the Juno command line interface by executing the following command in your terminal:
 
@@ -21,21 +19,35 @@ import Cli from "./components/cli.mdx";
 
 <Cli />
 
-After the CLI is ready, log in to your satellite from your terminal to authenticate your device.
+---
+
+### 2. Initialization
+
+Once the CLI is set up, initialize your project by running:
 
 ```bash
-juno login
+juno init
 ```
 
-Running this command will open Juno's console in your browser. You will be prompted to grant permissions for your modules (Mission Control — i.e., your wallet, Satellite(s), or Analytics) to access from your machine.
+This command generates a configuration file and prompts you to log in to your Satellite from the terminal to authenticate your device.
 
-### 2. Deploy
+Upon execution, Juno’s Console will open in your browser, where you’ll be asked to grant permissions for your modules. These include Mission Control (your wallet), Satellite(s), and Analytics, allowing secure access from your machine.
+
+:::info
+
+If the login process opens in a different browser than the one where you're already signed into, simply copy the URL and paste it into your authenticated browser to continue.
+
+This can occur if you've signed into the Juno Console in a browser other than your system's default.
+
+:::
+
+### 3. Deploy
 
 Build your project:
 
-```bash
-npm run build
-```
+import { Bash } from "../components/bash.mdx";
+
+<Bash npm="npm run build" yarn="yarn build" pnpm="pnpm build" />
 
 Deploy your application or website by running the following command from your project’s root folder:
 
