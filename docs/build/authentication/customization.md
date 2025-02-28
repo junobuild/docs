@@ -8,6 +8,14 @@ Here are some customization options to tailor your sign-in flow and handle sessi
 
 Juno supports Internet Identity and NFID, which also offers additional authentication methods like Google and email.
 
+:::note
+
+You can implement the `signIn` function in your application as many times as you wish, with various configurations. It is perfectly acceptable to use both Internet Identity and NFID within the same project.
+
+:::
+
+---
+
 ### Internet Identity
 
 Internet Identity is available at two different URLs: `internetcomputer.org` and `ic0.app`.
@@ -35,7 +43,15 @@ await signIn({
 });
 ```
 
-We stick with the former due to a long story, but we believe it provides a better user experience and branding.
+We use the former by default because we believe it offers a better user experience and branding.
+
+:::note
+
+It is worth mentioning that your users will be able to sign in with Internet Identity, regardless of which of those two domains they originally created their identity on.
+
+:::
+
+---
 
 ### NFID
 
@@ -51,12 +67,6 @@ await signIn({
   })
 });
 ```
-
-:::note
-
-You can implement the `signIn` function in your application as many times as you wish, with various configurations. It is perfectly acceptable to use both Internet Identity and NFID within the same project.
-
-:::
 
 ---
 
