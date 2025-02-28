@@ -187,6 +187,11 @@ const redirects: StorageConfigRedirect[] = [
     source: "/docs/miscellaneous/monitoring",
     location: "/docs/management/monitoring",
     code: 301
+  },
+  {
+    source: "/docs/management/backups",
+    location: "/docs/management/snapshots",
+    code: 301
   }
 ];
 
