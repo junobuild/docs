@@ -8,7 +8,7 @@ Options:
   -s, --src             An optional local gzipped WASM file for the upgrade. By default, the CDN will be used.
   -r, --reset           Reset to the initial state.
   -cc, --clear-chunks   Clear any previously uploaded WASM chunks (applies if the WASM size is greater than 2MB).
-  -nb, --no-backup      Skip creating a backup before upgrading.
+  -ns, --no-snapshot    Skip creating a snapshot before upgrading.
   -m, --mode            Set env mode. For example production or a custom string. Default is production.
   -h, --help            Output usage information.
 
