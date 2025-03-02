@@ -47,7 +47,7 @@ We use the former by default because we believe it offers a better user experien
 
 :::note
 
-It is worth mentioning that your users will be able to sign in with Internet Identity, regardless of which of those two domains they originally created their identity on.
+It is worth mentioning that your users will be able to sign in to your app with Internet Identity, regardless of which of those two domains they originally created their identity on.
 
 :::
 
