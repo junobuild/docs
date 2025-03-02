@@ -10,7 +10,7 @@ Juno supports Internet Identity and NFID, which also offers additional authentic
 
 :::note
 
-You can implement the `signIn` function in your application as many times as you wish, with various configurations. It is perfectly acceptable to use both Internet Identity and NFID within the same project.
+You can implement the `signIn` function in your application as many times as you wish, with various configurations. It is also perfectly acceptable to use both Internet Identity and NFID within the same project.
 
 :::
 
