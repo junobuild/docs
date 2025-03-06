@@ -285,7 +285,7 @@ await initSatellite({
 
 ---
 
-## Tips and Tricks
+## Administration
 
 The admin server running on port `5999` provides a variety of internal management. Below are some tips and example scripts to make use of this little server.
 
@@ -312,3 +312,31 @@ fi
 # Make a transfer request to the admin server
 curl "http://localhost:5999/ledger/transfer/?to=$PRINCIPAL"
 ```
+
+---
+
+## Tips and Tricks
+
+In the local environment, several modules (also known as "canisters" on the Internet Computer) are automatically spun up. This ensures that developers have everything they need to start building right out of the box. Thanks to built-in plugins and tooling, these modules are automatically integrated into the environment, eliminating the need for devs to manually manage their bindings.
+
+However, in some cases, it may be useful to explicitly reference module IDs. Below is a list of the modules and their respective IDs that are automatically mounted.
+
+:::note
+
+Except for the Satellite ID, which differs from your production environment, all other IDs match the actual smart contract IDs on the mainnet.
+
+:::
+
+| Module                                                                                           | ID                            |
+| ------------------------------------------------------------------------------------------------ | ----------------------------- |
+| Satellite (local only)                                                                           | `x5yt-yyaaa-aaaal-abzbq-cai`  |
+| [Internet Identity](https://dashboard.internetcomputer.org/canister/rdmx6-jaaaa-aaaaa-aaadq-cai) | `rdmx6-jaaaa-aaaaa-aaadq-cai` |
+| [ICP Ledger](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai)        | `ryjl3-tyaaa-aaaaa-aaaba-cai` |
+| [ICP Index](https://dashboard.internetcomputer.org/canister/qhbym-qaaaa-aaaaa-aaafq-cai)         | `qhbym-qaaaa-aaaaa-aaafq-cai` |
+
+If you're using the Docker image intended for developing the Console, you get access to some extra modules that we may eventually merge into the development container. Let us know if you're interested!
+
+| Module                                                                                        | ID                            |
+| --------------------------------------------------------------------------------------------- | ----------------------------- |
+| [CMC](https://dashboard.internetcomputer.org/canister/rkp4c-7iaaa-aaaaa-aaaca-cai)            | `rkp4c-7iaaa-aaaaa-aaaca-cai` |
+| [NNS Governance](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai) | `rrkah-fqaaa-aaaaa-aaaaq-cai` |
