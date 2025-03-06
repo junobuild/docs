@@ -157,6 +157,17 @@ on:
     types: [released]
 ```
 
+---
+
+## Environment Variables
+
+When using the Actions, you can configure the following environment variables:
+
+| Environment Variable | Mandatory | Description                                                                                                                                                                                |
+| -------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `JUNO_TOKEN`         | Yes       | The token to use for authentication. It can be generated through Juno's [Console](https://console.juno.build). Prefer a controller with "Read-write" permission rather than administrator. |
+| `PROJECT_PATH`       | No        | The path to the folder containing the `juno.config` file if it doesn't exist at the root of your repository. e.g. `./my-app-subfolder`.                                                    |
+
 [CLI]: ../miscellaneous/cli.mdx
 [satellite]: ../terminology.md#satellite
 [cycles]: ../terminology.md#cycles
