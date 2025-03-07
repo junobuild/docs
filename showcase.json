@@ -19,12 +19,6 @@
     "img": "/showcase/icphats.png"
   },
   {
-    "title": "Windoge98",
-    "url": "https://windoge98.com",
-    "description": "An art/memecoin launched on the Internet Computer Protocol (ICP).",
-    "img": "/showcase/windoge98.jpg"
-  },
-  {
     "title": "Spellkaster",
     "url": "https://spellkaster.app",
     "description": "Cast spells on internet computer things 🪄.",
@@ -35,13 +29,6 @@
     "url": "https://m5rwi-daaaa-aaaal-acrpq-cai.icp0.io",
     "description": "An adventure around the world to meet great souls and promote good stuff.",
     "img": "/showcase/aegir.jpg"
-  },
-  {
-    "title": "ICPFA",
-    "url": "https://icpfa.org",
-    "description": "The Future of Community Football.",
-    "img": "/showcase/icpfa.jpg",
-    "twitter": "OpenFPL_DAO"
   },
   {
     "title": "BEE-2B PLATFORM",
@@ -116,12 +103,6 @@
     "img": "/showcase/web3marketing-landscape-ufostart.png"
   },
   {
-    "title": "Paste.digital",
-    "url": "https://paste.digital",
-    "description": "Text and code sharing app. Zero to DAPP Hackaton best use of Juno award",
-    "img": "/showcase/paste.png"
-  },
-  {
     "title": "Artem Korotkikh, designer",
     "url": "https://artkorotkikh.com/",
     "description": "As a product designer, I bridge user needs with business goals, turning ideas into digital solutions.",
@@ -154,13 +135,6 @@
     "description": "First tap to earn meme coin on Internet Computer.",
     "img": "/showcase/stik.png",
     "twitter": "icpstik"
-  },
-  {
-    "title": "Metaviz",
-    "url": "https://ic.metaviz.net",
-    "description": "Metaviz is a visual project collaboration workspace. Good for making diagrams, project management, storing files and media.",
-    "img": "/showcase/metaviz.jpg",
-    "twitter": "MetavizOfficial"
   },
   {
     "title": "Bridge23",
