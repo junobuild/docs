@@ -252,7 +252,7 @@ const config: Config = {
       },
       prism: {
         theme: codeTheme,
-        additionalLanguages: ["bash", "json"]
+        additionalLanguages: ["bash", "json", "toml"]
       },
       algolia: {
         appId: "FEZV8HILVI",

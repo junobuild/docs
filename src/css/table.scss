@@ -20,6 +20,13 @@ table {
     border: 2px solid var(--docsearch-text-color);
     box-shadow: 6px 6px var(--docsearch-text-color);
 
+    td {
+      a {
+        color: var(--ifm-table-cell-color);
+        text-decoration: underline;
+      }
+    }
+
     tr:nth-child(even) {
       background: var(--ifm-color-primary-lightest);
     }

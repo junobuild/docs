@@ -79,7 +79,6 @@ a.card {
     a.pagination-nav__link,
     a.card {
       border: 1px solid #fff;
-      box-shadow: 2px 2px #fff;
 
       &:active,
       &:active:focus {
@@ -134,4 +133,8 @@ a.card {
 
 .theme-doc-sidebar-container a img {
   height: 25px;
+}
+
+table {
+  --ifm-spacing-vertical: 2.5rem;
 }

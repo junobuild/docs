@@ -4,7 +4,7 @@ If you wish to customize this behavior, you have the option to disable it or pro
 
 To opt-out of Gzip compression, simply set the `gzip` option to `false` in your configuration:
 
-```javascript
+```javascript title="juno.config.js"
 import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
@@ -18,7 +18,7 @@ export default defineConfig({
 
 If you want to customize the default pattern `**/*.+(css|js|mjs)` to better suit your needs, you can specify your own pattern. For example:
 
-```javascript
+```javascript title="juno.config.js"
 import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({

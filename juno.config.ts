@@ -180,12 +180,17 @@ const redirects: StorageConfigRedirect[] = [
   },
   {
     source: "/docs/miscellaneous/backups",
-    location: "/docs/management/backups",
+    location: "/docs/management/snapshots",
     code: 301
   },
   {
     source: "/docs/miscellaneous/monitoring",
     location: "/docs/management/monitoring",
+    code: 301
+  },
+  {
+    source: "/docs/management/backups",
+    location: "/docs/management/snapshots",
     code: 301
   }
 ];
@@ -197,7 +202,8 @@ export default defineConfig({
     storage: {
       headers,
       redirects
-    }
+    },
+    predeploy: ["npm run build"]
   },
   orbiter: {
     id: "3iier-sqaaa-aaaal-aczaa-cai"

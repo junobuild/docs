@@ -3,31 +3,25 @@ id: rust
 title: Rust
 description: Code serverless Functions
 toc_min_heading_level: 2
-toc_max_heading_level: 2
+toc_max_heading_level: 3
 sidebar_position: 6
 ---
 
 # Code Functions in Rust
 
-Explore serverless functions written in Rust for Juno projects.
-
-## Table of contents
-
-- [Quickstart](#quickstart)
-- [Hooks and Data Operations](#hooks-and-data-operations)
-- [HTTP outcalls](#http-outcalls)
+Learn how to develop, integrate, and extend Juno Satellites with serverless functions written in Rust.
 
 ---
 
 ## Quickstart
 
-Learn how to set up your environment to develop additional features for a [satellite].
+Set up your environment to develop and extend a Satellite with custom serverless functions using Rust.
 
-:::note
+First, ensure you have the Juno CLI installed. If you haven't installed it yet, run:
 
-Make sure you have Juno's [CLI](/docs/miscellaneous/cli#installing-the-juno-cli) tool installed on your machine.
+import Cli from "./components/cli.mdx";
 
-:::
+<Cli />
 
 At the root of application, eject the Satellite. This step prepares your project for local development. Open your terminal and run:
 
@@ -55,7 +49,7 @@ The local environment detects changes and automatically deploys them, allowing y
 
 ## Hooks and Data Operations
 
-Serverless Functions are triggered by hooks, which in turn respond to events executed in the Satellite, such as setting a document. Before we delve into implementing a hook that manipulates data, let's first set up a JavaScript function in your frontend dApp.
+Serverless Functions are triggered by hooks, which respond to events occurring in the Satellite, such as setting a document. Before implementing a hook that manipulates data ("backend"), let's first set up a JavaScript function in your ("frontend") dApp.
 
 Define a setter function in your frontend dApp as follows:
 
@@ -168,9 +162,15 @@ As outlined in the [Quickstart](#quickstart) chapter, run `juno dev build` to co
 
 ---
 
-## HTTP outcalls
+## HTTPS outcalls
 
-[HTTP outcalls](https://internetcomputer.org/https-outcalls) are a feature of the Internet Computer, enabling smart contracts to directly connect to the Web 2.0 world by querying APIs with HTTP requests.
+[HTTPS outcalls](https://internetcomputer.org/https-outcalls) are a feature of the Internet Computer, enabling smart contracts to directly connect to the Web 2.0 world by querying APIs with HTTP requests.
+
+:::tip
+
+This example is also available on [GitHub](https://github.com/junobuild/examples/tree/main/rust/https-outcalls).
+
+:::
 
 For this example, we'll skip a few steps as the logic remains consistent:
 
@@ -179,14 +179,6 @@ For this example, we'll skip a few steps as the logic remains consistent:
 - If everything succeeds, the Satellite triggers a hook before returning the result of the call.
 
 Here is an example of an `on_set_doc` hook which fetches an API to get the link to an image of a dog and saves that information within the Datastore. While this might not be a practical real-world use case, it is simple enough to demonstrate the feature.
-
-:::caution
-
-HTTP outcalls require cycles to execute the request. At the time of writing this example, the cost was calculated using the formula `(3_000_000 + 60_000 * n) * n` for the base fee and `400 * n` each request byte and `800 * n` for each response byte, where n is the number of nodes in the subnet.
-
-Please refer to the documentation for the actual calculation method and costs.
-
-:::
 
 ```rust
 use ic_cdk::api::management_canister::http_request::{
@@ -302,4 +294,61 @@ include_satellite!();
 
 As with the previous example, the hook will asynchronously update the document. If you wait a bit before retrieving the document in your frontend, you might notice that the source of the image has been updated by your hook.
 
-[satellite]: ../terminology.md#satellite
+### Costs
+
+HTTPS outcalls require cycles to execute the request. At the time of writing this example, the cost was calculated using the formula `(3_000_000 + 60_000 * n) * n` for the base fee and `400 * n` each request byte and `800 * n` for each response byte, where n is the number of nodes in the subnet.
+
+You can use the [HTTPS Outcalls Cost Calculator](https://7joko-hiaaa-aaaal-ajz7a-cai.icp0.io/) to estimate the cost of your request (source code is available on [GitHub](https://github.com/domwoe/HTTPS-Outcalls-Calculator)).
+
+Alternatively, refer to the [documentation](https://internetcomputer.org/docs/current/references/https-outcalls-how-it-works#pricing) for the actual calculation method and costs.
+
+### Technical Requirements
+
+The goal of HTTPS outcalls is to ensure that a request to the Web2 world returns a valid and verifiable response. To achieve this, calls are replicated when executed on mainnet. This means the blockchain will perform multiple identical requests and compare their results. The response will only succeed if all returned results are exactly the same.
+
+Many Web APIs do not natively support such replicated calls. More advanced APIs offer a way to handle this by using an **idempotency key**, a unique key that allows the server to recognize and return the same response for repeated requests.
+
+Another requirement is that the API must be accessible over **IPv6**.
+
+If replication or IPv6 support is not available, a common workaround is to use a proxy service. Developers can consider the following solutions:
+
+- [`ic-http-proxy`](https://github.com/omnia-network/ic-http-proxy) from Omnia Network ([announcement](https://forum.dfinity.org/t/non-replicated-https-outcalls/26627))
+- [`idempotent-proxy`](https://github.com/ldclabs/idempotent-proxy) from LDC Labs ([announcement](https://forum.dfinity.org/t/idempotent-proxy-show-proxy-https-outcalls-to-any-web2-service/32754))
+- A similar approach to the optimistic solution we currently used for transmitting emails ([repo](https://github.com/junobuild/proxy))
+
+---
+
+## More Examples
+
+Here are additional examples showcasing different use cases for blockchainless in Juno. Each example is hosted on GitHub and provides a working implementation you can explore and modify.
+
+### Essential Hooks
+
+A minimal app demonstrating how serverless function hooks work in Juno. This example provides a frontend interface for setting a document in the datastore or uploading a file to storage.
+
+The associated hooks perform basic operations:
+
+- Printing a message when triggered.
+- Demonstrating how to deserialize and serialize a document before updating and persisting it.
+
+This example serves as a great starting point for understanding how to interact with Juno's event-driven hooks in both datastore and storage contexts.
+
+[🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/rust/hooks)
+
+### Ethereum Address
+
+A sample app demonstrating how to derive an Ethereum address for an authenticated Juno user on the Internet Computer. The hook is triggered upon user registration and generates an Ethereum address using threshold ECDSA, with its public representation stored in the Satellite.
+
+In this use case, the private key is never fully generated or stored on a single node. Instead, the Internet Computer’s threshold ECDSA mechanism distributes the key material across multiple nodes, ensuring that no single party has access to the complete key.
+
+Additionally, the app includes a balance action that fetches the balance of the Ethereum address from the Sepolia network using Etherscan. This is done via public queries without requiring an API key.
+
+[🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/rust/ethereum-address)
+
+### Generating JSON Files
+
+An example that demonstrates how to generate a JSON file within a serverless function on Juno.
+
+When a document is set, the corresponding hook creates a JSON file based on the document's data and automatically uploads it to storage. This makes the file accessible via an HTTPS URL, allowing it to be retrieved and used directly on the web.
+
+[🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/rust/json)

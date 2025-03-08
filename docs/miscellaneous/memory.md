@@ -18,7 +18,7 @@ On the contrary, `stable` memory doesn't require processing during an upgrade. H
 
 ## Recommendations
 
-There are no strict rules governing the choice of memory type for your use case. Ultimately, the decision lies with you, based on what best suits your project. This is why both the [datastore](../build/datastore.md) and [storage](../build/storage.md) support both memory types.
+There are no strict rules governing the choice of memory type for your use case. Ultimately, the decision lies with you, based on what best suits your project. This is why both the [datastore](../build/datastore/index.md) and [storage](../build/storage/index.md) support both memory types.
 
 In practice, `heap` memory can be recommended for small datasets or data that require quick or frequent access, while `stable` memory is preferred for large data or data accessed less often.
 
@@ -32,7 +32,7 @@ That's why the default option for creating new collections is set to `stable` fo
 
 As mentioned in the previous chapter, your dapp's bundle and assets (everything you deploy to your satellite using `juno deploy`), are stored in the `heap` memory.
 
-In contrast, your users (as of Satellite version 0.0.16) and the [analytics](../build/analytics.md) data are saved within `stable` memory.
+In contrast, your users (as of Satellite version 0.0.16) and the [analytics](../build/analytics/index.md) data are saved within `stable` memory.
 
 ## Summary
 
