@@ -1,11 +1,11 @@
-Handle development-related tasks such as building and deploying locally using Cargo and Docker.
+Handle development tasks like building serverless functions or running a local Internet Computer instance.
 
 ```bash
-Usage: juno dev <subcommand>
+Usage: juno dev <subcommand> [options]
 
 Subcommands:
-  build               Compile satellite features using Cargo.
-  eject               Create a Rust template for custom satellite feature hooks and extensions.
-  start               Start a local Internet Computer network, encapsulated in a Docker environment.
-  stop                Stop the Docker environment.
+  build               Build your serverless functions. The local server supports live reloading.
+  eject               Scaffold the necessary files to start coding and building functions in your project.
+  start               Start a local Internet Computer network in a container.
+  stop                Stop the local network.
 ```
