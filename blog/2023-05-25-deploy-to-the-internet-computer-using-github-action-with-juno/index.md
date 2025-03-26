@@ -50,8 +50,8 @@ Note: While it is possible to generate a controller with administrative permissi
 
 To configure the GitHub Action and complete the deployment process, follow these final steps:
 
-1. Create a `deploy.yaml` file in the `.github/workflows` subfolder of your repository.
-2. Copy and paste the following code into the `deploy.yaml` file:
+1. Create a `deploy.yml` file in the `.github/workflows` subfolder of your repository.
+2. Copy and paste the following code into the `deploy.yml` file:
 
 ```yaml
 name: Deploy to Juno

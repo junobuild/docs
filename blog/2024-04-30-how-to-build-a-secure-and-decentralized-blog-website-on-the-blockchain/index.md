@@ -298,7 +298,7 @@ If you have reached this step, well done, you have successfully deployed your fi
 
 If you noticed in the previous steps, every time we make changes to our project, we have to manually run the commands that compile and deploy our code to the satellite. But in this section, we will learn how to automate these tasks using [Gihtub Actions](https://docs.github.com/en/actions) so that whenever we make changes to our project, these changes are automatically deployed to oour satellite
 
-In our project, we have a folder `.github` which contains the file `deploy.yaml`. This file has all the configurations required to setup Github Actions in our project. This folder must be present in your poject to successfully setup Github Actions. You can add it manually if you dont have it in your project. Below are the contents of the `deploy.yaml` file
+In our project, we have a folder `.github` which contains the file `deploy.yml`. This file has all the configurations required to setup Github Actions in our project. This folder must be present in your poject to successfully setup Github Actions. You can add it manually if you dont have it in your project. Below are the contents of the `deploy.yaml` file
 
 ```yaml
 name: Deploy to Juno
