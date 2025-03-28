@@ -24,3 +24,12 @@ sam-the-tutor:
   socials:
     x: samthetutor2
     github: sam-thetutor
+
+ilbertt:
+  name: Luca Bertelli
+  url: https://x.com/ilbert_luca
+  image_url: https://github.com/ilbertt.png
+  page: true
+  socials:
+    x: ilbert_luca
+    github: ilbertt
