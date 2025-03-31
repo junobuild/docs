@@ -2,9 +2,15 @@ import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
 
 const sidebars: SidebarsConfig = {
   docs: [
-    "intro",
-    "create-a-satellite",
-    "setup-the-sdk",
+    {
+      type: "category",
+      label: "Getting Started",
+      link: {
+        type: "doc",
+        id: "intro"
+      },
+      items: ["create-a-satellite", "setup-the-sdk"]
+    },
     {
       type: "category",
       label: "Guides",
