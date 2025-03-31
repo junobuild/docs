@@ -1,6 +1,6 @@
 Upgrade a module to a new version.
 
-```bash
+```
 Usage: juno upgrade [options]
 
 Options:

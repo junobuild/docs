@@ -1,6 +1,6 @@
 Apply configuration to satellite.
 
-```bash
+```
 Usage: juno config [options]
 
 Options:

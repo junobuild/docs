@@ -1,6 +1,6 @@
 Stop a module.
 
-```bash
+```
 Usage: juno stop [options]
 
 Options:

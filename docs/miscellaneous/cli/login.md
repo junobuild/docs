@@ -1,6 +1,6 @@
 Generate an authentication for use in non-interactive environments.
 
-```bash
+```
 Usage: juno login [options]
 
 Options:

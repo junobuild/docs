@@ -1,6 +1,6 @@
 Handle development tasks like building serverless functions or running a local Internet Computer instance.
 
-```bash
+```
 Usage: juno dev <subcommand> [options]
 
 Subcommands:

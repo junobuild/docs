@@ -1,6 +1,6 @@
 Deploy your dapp to your satellite.
 
-```bash
+```
 Usage: juno deploy [options]
 
 Options:

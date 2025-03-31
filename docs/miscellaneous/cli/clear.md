@@ -1,6 +1,6 @@
 Clear existing dapp code by removing JavaScript, HTML, CSS, and other files from your satellite.
 
-```bash
+```
 Usage: juno clear [options]
 
 Options:

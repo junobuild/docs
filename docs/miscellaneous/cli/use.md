@@ -1,6 +1,6 @@
 Switch between multiple profiles.
 
-```bash
+```
 Usage: juno use [options]
 
 Options:
