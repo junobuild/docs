@@ -7,7 +7,11 @@ sidebar_position: 11
 
 # Local Development
 
-When you get started with Juno, you are using your smart contract deployed on the blockchain in production. If you are interested in developing or testing your apps in continuous integration workflows, this guide will show you how you can run a Satellite in a Docker sandbox.
+The tooling is designed with local-first development in mind. Whether you're using the official [plugins](../reference/plugins.md) (Next.js, Vite) or creating a new project with `npm create juno@latest`, local development is the default experience.
+
+When running `npm run dev` (or `start`), your app connects to a locally simulated Satellite via the provided emulator — so you can build and test your backend logic without deploying to the live network.
+
+For continuous integration workflows or advanced setups, this guide shows how to run a Docker-based sandbox that closely mirrors the production environment.
 
 ---
 
@@ -25,61 +29,29 @@ For MacBooks with M processors, it is important to use Docker Desktop version 4.
 
 ## Getting Started
 
-There are two ways to start a local developer environment:
+The easiest way to run the local developer environment is through the CLI.
 
-### Automated
+If you haven’t installed it yet, run:
 
-If you've installed Juno's CLI on your machine, you can start a local container by simply running the `juno dev start` command in your terminal.
+import Cli from "./components/cli.mdx";
 
-The first time you execute this command, it will prompt you to automatically populate the required configuration.
+<Cli />
 
-To start the container, run this command whenever needed. Use `juno dev stop` to halt the container.
+Then, in your project folder, start the local emulator with:
 
-### Manually
-
-In a folder, create a `docker-compose.yml` file.
-
-```yml title="docker-compose.yml"
-services:
-  juno-satellite:
-    image: junobuild/satellite:latest
-    ports:
-      - 5987:5987
-      - 5999:5999
-    volumes:
-      - my_dapp:/juno/.juno
-      - ./juno.dev.config.json:/juno/juno.dev.config.json
-      - ./target/deploy:/juno/target/deploy/
-
-volumes:
-  my_dapp:
+```bash
+juno dev start
 ```
 
-In addition, create a file named `juno.dev.config.json` next to your Docker Compose file and populate it with the required fields.
+This will launch a local Satellite along with a local Internet Identity, allowing you to develop and test without deploying anything live.
 
-```json title="juno.dev.config.json"
-{
-  "satellite": {
-    "collections": {}
-  }
-}
+We recommend running this in a dedicated terminal window or tab, while your frontend project (e.g. using Vite or Next.js) runs separately using npm run dev or similar.
+
+To stop the emulator, run:
+
+```bash
+juno dev stop
 ```
-
-Once the configuration is set, start the container using the following Docker command:
-
-```
-docker compose up
-```
-
-That's all it takes to run the local environment. At this point, you should have a container that exposes a Satellite and an Internet Identity for local development or end-to-end testing purposes.
-
-:::note
-
-You can run or compose the Juno Docker image from your terminal. This guide explains the latter.
-
-It's worth noting that you can run multiple containers simultaneously, as long as they operate on different ports. Additionally, you can apply various configurations for different projects.
-
-:::
 
 ---
 
@@ -247,39 +219,35 @@ volumes:
 
 ## Usage
 
-When integrating your application with the container during Juno initialization, you have two primary options. The first is to set a specific parameter to `true`, which applies the default container configuration. The second option is to provide a custom `string` as the URL of the container, which is especially beneficial if you're using a custom port.
+During local development, your app connects to the local emulator (container) by default — no extra configuration needed.
 
-### Plugins
+This is handled automatically when using the [plugins](../reference/plugins.md), or when starting from a template.
 
-If you are utilizing the [Vite](../reference/plugins.md#vite-plugin) or [NextJS](../reference/plugins.md#nextjs-plugin), you can configure the container directly within the plugin settings:
-
-```javascript title="vite.config.js"
-import juno from "@junobuild/vite-plugin";
-
-export default defineConfig({
-  plugins: [
-    juno({
-      container: true
-    })
-  ]
-});
-```
-
-The plugin will automatically load the necessary environment variables for the container configuration so that your app uses it when you develop.
+If needed, you can opt out of the container behavior by explicitly setting `container: false`.
 
 ### Manual Initialization
 
-If you are not using the plugins, you should set the satellite ID to the static ID used in the container, which is `jx5yt-yyaaa-aaaal-abzbq-cai`. The initialization would look like this:
+If you're not using a plugin and are initializing Juno manually, here's how to configure it to use the local container:
 
-```typescript
+```javascript
 import { initSatellite } from "@junobuild/core";
 
+const container = import.meta.env.DEV === true;
+
 await initSatellite({
-  // TODO: replace DEV flag according your need and the production satellite ID as well
-  satelliteId: DEV
+  satelliteId: container
     ? "jx5yt-yyaaa-aaaal-abzbq-cai"
     : "aaaaa-bbbbb-ccccc-ddddd-cai",
-  container: true
+  container
+});
+```
+
+The SDK will automatically detect the container in local development. If you want to disable that behavior and connect directly to a remote canister (e.g. in CI or production testing), you can do:
+
+```javascript
+await initSatellite({
+  satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+  container: false
 });
 ```
 
