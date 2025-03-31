@@ -50,12 +50,12 @@ const redirects: StorageConfigRedirect[] = [
   },
   {
     source: "/docs/add-juno-to-an-app/deploy",
-    location: "/docs/category/guides-and-examples",
+    location: "/docs/category/deployment",
     code: 301
   },
   {
     source: "/docs/category/add-juno-to-an-app",
-    location: "/docs/category/guides-and-examples",
+    location: "/docs/category/guides",
     code: 301
   },
   {
@@ -211,6 +211,11 @@ const redirects: StorageConfigRedirect[] = [
   {
     source: "/docs/miscellaneous/settings",
     location: "/docs/reference/settings",
+    code: 301
+  },
+  {
+    source: "/docs/category/guides-and-examples",
+    location: "/docs/category/guides",
     code: 301
   }
 ];
