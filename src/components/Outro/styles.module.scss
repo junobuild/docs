@@ -4,6 +4,7 @@
   height: 650px;
   background: var(--ifm-color-primary);
   padding-inline: 1rem;
+
   @media screen and (min-width: 768px) {
     padding-inline: 2rem;
   }
@@ -26,11 +27,11 @@
 }
 
 .sub {
-  @include fonts.h2;
-
   color: black;
 
   margin-bottom: 0.5rem;
+
+  @include fonts.h2;
 }
 
 .subText {
@@ -47,6 +48,7 @@
 
 .start {
   background: white;
+
   html[data-theme="dark"] & {
     --ifm-button-border-color: black !important;
     --button-shadow-color: black !important;
