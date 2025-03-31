@@ -1,6 +1,6 @@
 Start a module.
 
-```bash
+```
 Usage: juno start [options]
 
 Options:

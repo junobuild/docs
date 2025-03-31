@@ -1,6 +1,6 @@
 Generate the required files to begin developing serverless functions in your project.
 
-```bash
+```
 Usage: juno dev eject [options]
 
 Options:

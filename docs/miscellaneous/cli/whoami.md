@@ -1,6 +1,6 @@
 Display your current profile, controller, and links to your satellite.
 
-```bash
+```
 Usage: juno whoami [options]
 
 Options:

@@ -1,6 +1,6 @@
 Open your satellite in your browser.
 
-```bash
+```
 Usage: juno open [options]
 
 Options:

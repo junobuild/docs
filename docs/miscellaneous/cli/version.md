@@ -1,6 +1,6 @@
 Check the version of the modules and CLI.
 
-```bash
+```
 Usage: juno init [options]
 
 Options:

@@ -1,6 +1,6 @@
 Build your serverless functions.
 
-```bash
+```
 Usage: juno dev build [options]
 
 Options:

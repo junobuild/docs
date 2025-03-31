@@ -1,6 +1,6 @@
 Handle snapshot-related tasks.
 
-```bash
+```
 Usage: juno snapshot <subcommand> [options]
 
 Subcommands:
