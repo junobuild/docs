@@ -191,8 +191,8 @@ const config: Config = {
                 to: "/docs/create-a-satellite"
               },
               {
-                label: "Guides and examples",
-                to: "/docs/category/guides-and-examples"
+                label: "Guides",
+                to: "/docs/category/guides"
               }
             ]
           },
