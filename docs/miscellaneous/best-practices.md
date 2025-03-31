@@ -1,7 +1,3 @@
----
-sidebar_position: 7
----
-
 # Best Practices
 
 This page provides recommendations to improve your application when developing and deploying with Juno.

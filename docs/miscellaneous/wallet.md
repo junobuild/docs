@@ -1,7 +1,3 @@
----
-sidebar_position: 8
----
-
 # Wallet
 
 This section provides guidance on managing your assets and cycles with your [wallet](../terminology.md#wallet), which are essential for maintaining and providing enough resources for your modules in the Juno ecosystem.

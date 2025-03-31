@@ -1,0 +1,25 @@
+# Provisioning Options
+
+The creation wizard for Satellites and Orbiters includes advanced provisioning options for developers who need more control.
+
+---
+
+### Selecting a Subnet
+
+If you want more control over where your module is provisioned, you can select a [subnet] during the creation process.
+
+Below is a list of available subnets with relevant metadata to help you choose the most appropriate one:
+
+:::note
+
+Satellites and Orbiters running on larger subnets with more nodes will incur higher cycle costs compared to those on the standard 13-node subnets. However, this increased cost comes with the benefit of enhanced security due to the greater size of the subnet.
+
+For most applications, we recommend using the default subnets and staying on the same subnet as Juno.
+
+:::
+
+import Subnets from "../components/subnets.md";
+
+<Subnets />
+
+[subnet]: terminology.md#subnet

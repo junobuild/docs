@@ -1,7 +1,3 @@
----
-sidebar_position: 4
----
-
 # Memory
 
 A [satellite] can store data using two types of memory: `heap` and `stable`. While both types are forms of random-access memory that only exist as long as the smart contract lives, they can be compared to a familiar analogy. Think of `heap` as similar to the RAM in a computer, and `stable` as more akin to ROM.
