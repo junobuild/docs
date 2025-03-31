@@ -7,10 +7,9 @@ export default function Outro(): JSX.Element {
     <section className={styles.section}>
       <div className={`container ${styles.container}`}>
         <div>
-          <h2 className={`${styles.sub}`}>Your Work. Your Way.</h2>
+          <h2 className={`${styles.sub}`}>Your apps. Your terms.</h2>
           <p className={styles.subText}>
-            Build and deploy without limits — your apps, your rules, your
-            control.
+            No setup. No ops. No strings attached.
           </p>
           <Start position="footer" className={`button-lg ${styles.start}`} />
         </div>
