@@ -44,6 +44,6 @@ The Storage system offers various configuration options to fine-tune its behavio
 
 If you're configuring the hosting behavior of your site, start by checking out the [Hosting Configuration](../hosting/configuration.mdx) section, as Storage is an integral part of the hosting system.
 
-For a complete list of available Storage options, refer to the [configuration](../../miscellaneous/configuration.mdx) section.
+For a complete list of available Storage options, refer to the [configuration](../../reference/configuration.mdx) section.
 
 [satellite]: ../../terminology.md#satellite

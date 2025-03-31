@@ -141,6 +141,12 @@ const sidebars: SidebarsConfig = {
     "white-paper/target-audience",
     "white-paper/market-size",
     "white-paper/conclusion"
+  ],
+  references: [
+    "reference/cli",
+    "reference/configuration",
+    "reference/plugins",
+    "reference/settings"
   ]
 };
 

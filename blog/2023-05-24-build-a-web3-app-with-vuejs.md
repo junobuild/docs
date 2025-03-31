@@ -320,13 +320,13 @@ Similar to the previous example with documents, we will keep this example minima
 
 ### Deployment 🚀
 
-After you have developed and built your application, the next step is to deploy it on the blockchain. To do this, you need to install the Juno [command line interface (CLI)](https://juno.build/docs/miscellaneous/cli) by executing the following command in your terminal:
+After you have developed and built your application, the next step is to deploy it on the blockchain. To do this, you need to install the Juno [command line interface (CLI)](https://juno.build/docs/reference/cli) by executing the following command in your terminal:
 
 ```bash
 npm i -g @junobuild/cli
 ```
 
-After the installation process is finished, you can gain access to your satellite by following the instructions in the [documentation](https://juno.build/docs/miscellaneous/cli#login) and logging in from the terminal. This will enable your machine to control your satellite.
+After the installation process is finished, you can gain access to your satellite by following the instructions in the [documentation](https://juno.build/docs/reference/cli#login) and logging in from the terminal. This will enable your machine to control your satellite.
 
 ```bash
 juno login

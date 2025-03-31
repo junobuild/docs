@@ -117,7 +117,7 @@ Maybe not the most groundbreaking update, but the dark theme got even darker. �
 
 Another area that saw improvement is the documentation. I aimed to make it more intuitive and useful for both newcomers and experienced developers. That’s why I revamped the [guides](https://juno.build/docs/category/guides-and-examples) section. Now, when you visit, you’ll be greeted with a simple question: “What are you looking to do? Build or Host?” 🎯. This approach should hopefully make onboarding smoother and more straightforward for developers.
 
-The [CLI](https://juno.build/docs/miscellaneous/cli) documentation also received an upgrade. Updating it manually was a hassle, so I automated the process. Now, CLI help commands generate markdown files that are automatically embedded into the website every week. No more manual updates for me, and it’s always up to date for you! 😄
+The [CLI](https://juno.build/docs/reference/cli) documentation also received an upgrade. Updating it manually was a hassle, so I automated the process. Now, CLI help commands generate markdown files that are automatically embedded into the website every week. No more manual updates for me, and it’s always up to date for you! 😄
 
 I also dedicated time to documenting all the [configuration](https://juno.build/docs/miscellaneous/configuration) options in detail, ensuring every setting is clearly explained.
 

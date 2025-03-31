@@ -92,4 +92,4 @@ There are different ways to resolve this issue, and the best approach depends on
 
 In any case, the best course of action is to reach out so we can assess your situation and find a tailored solution together.
 
-[CLI]: miscellaneous/cli.mdx
+[CLI]: reference/cli.mdx

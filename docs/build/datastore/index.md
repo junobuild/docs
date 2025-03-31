@@ -37,6 +37,6 @@ As for documents, they can be up to 2MB in size. However, larger files can be sa
 
 ## Configuration
 
-The Datastore supports various configuration options to fine-tune its behavior, such as resource limits and operational constraints. For a detailed explanation of all available options, see the [configuration](../../miscellaneous/configuration.mdx#datastore) section.
+The Datastore supports various configuration options to fine-tune its behavior, such as resource limits and operational constraints. For a detailed explanation of all available options, see the [configuration](../../reference/configuration.mdx#datastore) section.
 
 [satellite]: ../../terminology.md#satellite

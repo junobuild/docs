@@ -19,6 +19,6 @@ You can maintain your unique brand identity with Juno Hosting. Use your custom d
 
 Our infrastructure automatically provisions an SSL certificate for each of your domains, ensuring secure connections for your users.
 
-[CLI]: ../../miscellaneous/cli.mdx
+[CLI]: ../../reference/cli.mdx
 [satellite]: ../../terminology.md#satellite
 [console]: ../../terminology.md#console
