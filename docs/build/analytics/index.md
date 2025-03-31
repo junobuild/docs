@@ -103,6 +103,6 @@ Consequently, this leaves the canister open to potential attacks that can pollut
 
 :::
 
-[CLI]: ../../miscellaneous/cli.mdx
+[CLI]: ../../reference/cli.mdx
 [satellites]: ../../terminology.md#satellite
 [orbiter]: ../../terminology.md#orbiter

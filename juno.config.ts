@@ -192,7 +192,27 @@ const redirects: StorageConfigRedirect[] = [
     source: "/docs/management/backups",
     location: "/docs/management/snapshots",
     code: 301
-  }
+  },
+  {
+    source: "/docs/miscellaneous/cli",
+    location: "/docs/reference/cli",
+    code: 301
+  },
+  {
+    source: "/docs/miscellaneous/configuration",
+    location: "/docs/reference/configuration",
+    code: 301
+  },
+  {
+    source: "/docs/miscellaneous/plugins",
+    location: "/docs/reference/plugins",
+    code: 301
+  },
+  {
+    source: "/docs/miscellaneous/settings",
+    location: "/docs/reference/settings",
+    code: 301
+  },
 ];
 
 export default defineConfig({

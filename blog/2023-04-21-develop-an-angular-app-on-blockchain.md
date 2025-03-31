@@ -446,13 +446,13 @@ export class AssetsComponent {
 
 ### Deployment 🚀
 
-Once your application is developed and built, the next step is to launch it on the blockchain. To accomplish this, you must install the Juno [command line interface](https://juno.build/docs/miscellaneous/cli) by executing the following command in your terminal:
+Once your application is developed and built, the next step is to launch it on the blockchain. To accomplish this, you must install the Juno [command line interface](https://juno.build/docs/reference/cli) by executing the following command in your terminal:
 
 ```bash
 npm i -g @junobuild/cli
 ```
 
-After the installation process is finished, you can gain access to your satellite by following the instructions in the [documentation](https://juno.build/docs/miscellaneous/cli#login) and logging in from the terminal. This will enable your machine to control your satellite.
+After the installation process is finished, you can gain access to your satellite by following the instructions in the [documentation](https://juno.build/docs/reference/cli#login) and logging in from the terminal. This will enable your machine to control your satellite.
 
 ```bash
 juno login

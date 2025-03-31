@@ -22,7 +22,7 @@ Controllers play a critical role in Juno, as they are used to grant administrati
 
 In previous versions, controllers were recorded and displayed only as IDs, which could be confusing. It was difficult to track which controller was granted on which machine and for what purpose.
 
-To address this issue, we have reworked the system to give developers the option to set a "profile" for a controller when they [log in](/docs/miscellaneous/cli#login).
+To address this issue, we have reworked the system to give developers the option to set a "profile" for a controller when they [log in](/docs/reference/cli#login).
 
 ![Login screenshot](./login.png)
 
@@ -121,7 +121,7 @@ To provide a more natural experience, Juno uses now a default behavior of a moda
 
 ![Login with II screenshot](./login-ii.png)
 
-Several iterations of the [CLI](/docs/miscellaneous/cli) were developed to support the deployment of these new features. Despite adding many of those, we aimed to keep the interface simple and avoid overcomplicating things unnecessarily.
+Several iterations of the [CLI](/docs/reference/cli) were developed to support the deployment of these new features. Despite adding many of those, we aimed to keep the interface simple and avoid overcomplicating things unnecessarily.
 
 ![CLI screenshot](./cli.png)
 

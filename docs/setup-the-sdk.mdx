@@ -53,13 +53,13 @@ It is generally recommended to initialize globally the library at the top of you
 
 To connect your application with your smart contract (your Satellite) and other necessary resources, some configuration is required. This setup ensures your application can securely access and initialize the correct Satellite instance, environment variables, and key settings.
 
-For most developers, the [Next.js](miscellaneous/plugins.md#nextjs-plugin) or [Vite](miscellaneous/plugins.md#vite-plugin) plugins streamline this process by managing environment variables automatically. However, if you’re not using one of these plugins, a bit of manual configuration is needed.
+For most developers, the [Next.js](reference/plugins.md#nextjs-plugin) or [Vite](reference/plugins.md#vite-plugin) plugins streamline this process by managing environment variables automatically. However, if you’re not using one of these plugins, a bit of manual configuration is needed.
 
 ### Automated
 
 When using the plugins, the configuration handled through a `juno.config` file (TypeScript, JavaScript, or JSON) at your project root is automatically injected within your application. The plugins read the file and automatically load the required information when you build and run your dApp.
 
-Juno’s provided templates come preconfigured with these plugins, so you can quickly get started. For details on setting up the plugin yourself, refer to the [Next.js](miscellaneous/plugins.md#nextjs-plugin) or [Vite](miscellaneous/plugins.md#vite-plugin) documentation.
+Juno’s provided templates come preconfigured with these plugins, so you can quickly get started. For details on setting up the plugin yourself, refer to the [Next.js](reference/plugins.md#nextjs-plugin) or [Vite](reference/plugins.md#vite-plugin) documentation.
 
 ### Manually configure your application
 

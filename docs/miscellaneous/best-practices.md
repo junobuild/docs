@@ -35,7 +35,7 @@ Add a CSP as the first `<meta>` tag of the `<head>` in your HTML file.
 
 2. **Via Configuration**
 
-Configure your Satellite to send a CSP header as part of the HTTP response. Headers can be configured as specified in this [chapter](configuration.mdx#http-headers) of the documentation.
+Configure your Satellite to send a CSP header as part of the HTTP response. Headers can be configured as specified in this [chapter](../reference/configuration.mdx#http-headers) of the documentation.
 
 ```javascript
 import { defineConfig } from "@junobuild/config";

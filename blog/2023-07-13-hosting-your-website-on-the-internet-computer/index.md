@@ -64,7 +64,7 @@ That wraps up the setup phase. Your canister now lives on the Internet Computer,
 
 While deploying your dapp in a continuous deployment environment like GitHub Actions is certainly possible, for the sake of simplicity, we will assume that you prefer to perform your initial website deployment from your computer.
 
-To accomplish this, ensure that [Node.js is installed](https://nodejs.org/en/download) on your machine (if it isn’t already), and proceed to install the Juno [command line interface](https://juno.build/docs/miscellaneous/cli). You can do this by executing the following command in your terminal:
+To accomplish this, ensure that [Node.js is installed](https://nodejs.org/en/download) on your machine (if it isn’t already), and proceed to install the Juno [command line interface](https://juno.build/docs/reference/cli). You can do this by executing the following command in your terminal:
 
 ```bash
 npm i -g @junobuild/cli

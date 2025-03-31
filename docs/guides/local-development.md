@@ -251,7 +251,7 @@ When integrating your application with the container during Juno initialization,
 
 ### Plugins
 
-If you are utilizing the [Vite](../miscellaneous/plugins.md#vite-plugin) or [NextJS](../miscellaneous/plugins.md#nextjs-plugin), you can configure the container directly within the plugin settings:
+If you are utilizing the [Vite](../reference/plugins.md#vite-plugin) or [NextJS](../reference/plugins.md#nextjs-plugin), you can configure the container directly within the plugin settings:
 
 ```javascript title="vite.config.js"
 import juno from "@junobuild/vite-plugin";

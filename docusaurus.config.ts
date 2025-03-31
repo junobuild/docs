@@ -67,7 +67,7 @@ const config: Config = {
         docs: {
           sidebarPath: "sidebars.ts",
           editUrl: "https://github.com/junobuild/docs/edit/main/",
-          exclude: ["**/miscellaneous/cli/**", "**/components/**"],
+          exclude: ["**/reference/cli/**", "**/components/**"],
           remarkPlugins: [npm2yarn]
         },
         pages: {
@@ -126,17 +126,17 @@ const config: Config = {
           {
             type: "docSidebar",
             position: "left",
-            sidebarId: "white-paper",
-            label: "White Paper"
+            sidebarId: "references",
+            label: "References"
           },
           {
             type: "dropdown",
             label: "More",
             position: "left",
             items: [
+              { to: "/docs/white-paper/intro", label: "White Paper" },
               { to: "/showcase", label: "Showcase" },
               { to: "/blog", label: "Blog" },
-              { to: "/changelog", label: "Changelog" },
               { to: "/newsletter", label: "Newsletter" }
             ]
           },
@@ -225,10 +225,6 @@ const config: Config = {
           {
             title: "More",
             items: [
-              {
-                label: "White Paper",
-                to: "/docs/white-paper/intro"
-              },
               {
                 label: "Blog",
                 to: "/blog"
