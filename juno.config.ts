@@ -212,7 +212,7 @@ const redirects: StorageConfigRedirect[] = [
     source: "/docs/miscellaneous/settings",
     location: "/docs/reference/settings",
     code: 301
-  },
+  }
 ];
 
 export default defineConfig({
