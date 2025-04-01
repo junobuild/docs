@@ -4,41 +4,39 @@ import { join } from "node:path";
 
 const { themes } = require("prism-react-renderer");
 const codeTheme = themes.oneDark;
+
 codeTheme.plain.backgroundColor = "black";
+codeTheme.plain.color = "white";
+
 codeTheme.styles = [
   ...codeTheme.styles,
   {
-    types: ["property", "tag", "symbol", "deleted", "important"],
-    style: { color: "#00fff5" }
+    types: ["comment"],
+    style: { color: "#707070", fontStyle: "italic" }
   },
-  { types: ["keyword"], style: { color: "rgb(163, 174, 255)" } },
   {
-    types: [
-      "selector",
-      "string",
-      "char",
-      "builtin",
-      "inserted",
-      "regex",
-      "attr-value"
-    ],
+    types: ["keyword", "atrule"],
+    style: { color: "#b0baff" }
+  },
+  {
+    types: ["function", "builtin"],
     style: { color: "#ff5df9" }
   },
   {
-    types: ["variable", "operator", "function"],
-    style: { color: "#ff5df9" }
+    types: ["string", "inserted", "attr-value"],
+    style: { color: "#b0baff" }
   },
   {
-    types: [
-      "attr-name",
-      "class-name",
-      "maybe-class-name",
-      "boolean",
-      "constant",
-      "number",
-      "atrule"
-    ],
-    style: { color: "#F7AF9D" }
+    types: ["constant", "boolean", "number"],
+    style: { color: "white" }
+  },
+  {
+    types: ["class-name", "maybe-class-name", "tag"],
+    style: { color: "#b0baff" }
+  },
+  {
+    types: ["property", "variable", "operator", "symbol"],
+    style: { color: "white" }
   }
 ];
 
