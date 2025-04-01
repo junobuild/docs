@@ -1,6 +1,10 @@
 .link {
   color: inherit;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &:hover,
   &:active {
     color: inherit;
