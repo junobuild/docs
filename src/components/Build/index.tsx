@@ -49,7 +49,7 @@ export default function Build(): JSX.Element {
           link="/docs/guides/astro"
           icon={<Astro />}
         />
-        •
+        <span className={styles.separator}>•</span>
         <Guide
           title="Juno can also be extended with serverless functions written in Rust."
           link="/docs/guides/rust"
