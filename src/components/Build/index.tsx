@@ -15,7 +15,7 @@ export default function Build(): JSX.Element {
       <h2 className={styles.sub}>Crafted for Web Devs</h2>
       <p className={styles.build}>
         Use the frontend frameworks you{" "}
-        <span className="visually-hidden">love</span>❤️ and extend serverless
+        <span className="visually-hidden">love</span>❤️ and write serverless
         functions in Rust or TypeScript.
       </p>
 
