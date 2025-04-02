@@ -216,12 +216,21 @@ const sidebars: SidebarsConfig = {
             description:
               "API reference for writing serverless functions in Rust."
           },
-          items: [
-            "reference/functions/rust/utils"
-          ]
+          items: ["reference/functions/rust/utils"]
         },
+        {
+          type: "category",
+          label: "TypeScript",
+          link: {
+            type: "generated-index",
+            slug: "/reference/functions/typescript",
+            description:
+              "API reference for writing serverless functions with TypeScript."
+          },
+          items: ["reference/functions/typescript/utils"]
+        }
       ]
-    },
+    }
   ]
 };
 

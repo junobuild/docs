@@ -1,0 +1,59 @@
+# Utils
+
+The following utilities are provided to help you work with document and asset data inside your Satellite. They simplify tasks such as decoding and encoding data, serializing custom types, and interacting with Juno’s core features in a consistent way.
+
+:::note[📦 Library]
+
+All utilities on this page are provided by the [@junobuild/functions](https://www.npmjs.com/package/@junobuild/functions) library.
+
+To use them, add this to your project:
+
+import { Bash } from "../../../components/bash.mdx";
+
+<Bash
+  npm="npm i @junobuild/functions"
+  yarn="yarn add @junobuild/functions"
+  pnpm="pnpm add @junobuild/functions"
+/>
+
+:::
+
+---
+
+## decodeDocData
+
+Decodes the raw data of a document into a typed object. Use this inside hooks or assertions to retrieve the original contents of a document.
+
+```typescript
+function decodeDocData<T>(data: Uint8Array): T;
+```
+
+📦 Import from `@junobuild/functions/utils`
+
+Parameters:
+
+- `data`: A Uint8Array containing the raw binary document data.
+
+Returns:
+
+- A deserialized object of type `T`.
+
+---
+
+## encodeDocData
+
+Encodes an object into a raw binary format for storing document data. Use this when creating or modifying a document inside a hook or assertion.
+
+```typescript
+function encodeDocData<T>(data: T): Uint8Array;
+```
+
+📦 Import from `@junobuild/functions/utils`
+
+Parameters:
+
+- `data`: A JavaScript object to serialize.
+
+Returns:
+
+- A `Uint8Array` containing the encoded binary data.
