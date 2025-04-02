@@ -13,21 +13,11 @@ Learn how to develop, integrate, and extend Juno Satellites with serverless func
 
 ## Quickstart
 
-Set up your environment to develop and extend a Satellite with custom serverless functions using Rust.
+import Setup from "./components/setup.mdx";
 
-First, ensure you have the Juno CLI installed. If you haven't installed it yet, run:
+<Setup />
 
-import Cli from "./components/cli.mdx";
-
-<Cli />
-
-At the root of application, eject the Satellite. This step prepares your project for local development. Open your terminal and run:
-
-```bash
-juno dev eject
-```
-
-In a new terminal window, kick off the local development environment that leverages Docker:
+In a new terminal window, kick off the emulator (requires Docker):
 
 ```bash
 juno dev start
@@ -41,13 +31,7 @@ Once you're ready to see your changes in action, compile your code:
 juno dev build
 ```
 
-The local environment detects changes and automatically deploys them, allowing you to test your custom code locally almost immediately.
-
-If you'd like to upgrade your Satellite in production, use this command:
-
-```bash
-juno upgrade -t s -s ./target/deploy/satellite.wasm.gz
-```
+Changes are detected and automatically deployed, allowing you to test your custom code locally almost immediately.
 
 ---
 
