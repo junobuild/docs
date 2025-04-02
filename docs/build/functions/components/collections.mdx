@@ -1,0 +1,62 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import styles from "./collections.module.scss";
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust" attributes={{className: styles.hidden}}>
+```
+
+When no attributes are provided, the hook is triggered for any document set in any collection. For better control and performance, it’s recommended to scope the hook to a specific list of `collections`.
+
+This behavior applies to **all hooks and assertions**, except for the lifecycle hooks such as `on_init` or `on_post_upgrade`, which operate globally.
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript" attributes={{className: styles.hidden}}>
+```
+
+A hook is only executed if the function is declared and exported. Additionally, the `collections` field must be defined. If it's empty, the hook will not run.
+
+This behavior applies to **all hooks and assertions**, except for the lifecycle hooks such as `on_init` or `on_post_upgrade`, which operate globally.
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust">
+```
+
+```rust
+#[on_set_doc(collections = ["demo"])]
+async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
+    // Custom logic for handling document creation or updates
+    Ok(())
+}
+```
+
+The attributes accept a list of comma-separated collections. If the attribute array is left empty, the hook will never be called.
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript">
+```
+
+```typescript
+export const onSetDoc = defineHook<OnSetDoc>({
+  collections: ["demo"],
+  run: async (context) => {
+    // Custom logic for handling document creation or updates
+  }
+});
+```
+
+The `collections` attribute accepts a list of comma-separated collection names.
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
