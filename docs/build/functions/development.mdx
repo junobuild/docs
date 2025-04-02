@@ -82,51 +82,27 @@ Assertions enable validation checks before specific actions are executed within 
 
 ### assert_set_doc
 
-Ensures a document can be created or updated.
+import AssertSetDoc from "./components/assert-set-doc.mdx";
 
-```rust
-#[assert_set_doc]
-fn assert_set_doc(_context: AssertSetDocContext) -> Result<(), String> {
-    // Custom logic for asserting a document's creation or update is possible
-    Ok(())
-}
-```
+<AssertSetDoc />
 
 ### assert_delete_doc
 
-Verifies that a document can be deleted.
+import AssertDeleteDoc from "./components/assert-delete-doc.mdx";
 
-```rust
-#[assert_delete_doc]
-fn assert_delete_doc(context: AssertDeleteDocContext) -> Result<(), String> {
-    // Custom logic for asserting a document can be deleted
-    Ok(())
-}
-```
+<AssertDeleteDoc />
 
 ### assert_upload_asset
 
-Confirms an asset upload can be committed.
+import AssertUploadAsset from "./components/assert-upload-asset.mdx";
 
-```rust
-#[assert_upload_asset]
-fn assert_upload_asset(_context: AssertUploadAssetContext) -> Result<(), String> {
-    // Custom logic for asserting an asset upload is possible
-    Ok(())
-}
-```
+<AssertUploadAsset />
 
 ### assert_delete_asset
 
-Checks that an asset can be deleted.
+import AssertDeleteAsset from "./components/assert-delete-asset.mdx";
 
-```rust
-#[assert_delete_asset]
-fn assert_delete_asset(_context: AssertDeleteAssetContext) -> Result<(), String> {
-    // Custom logic for asserting an asset can be deleted
-    Ok(())
-}
-```
+<AssertDeleteAsset />
 
 ---
 

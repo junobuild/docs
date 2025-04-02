@@ -1,0 +1,38 @@
+Ensures a document can be created or updated.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust">
+```
+
+```rust
+#[assert_set_doc]
+fn assert_set_doc(_context: AssertSetDocContext) -> Result<(), String> {
+    // Custom logic for asserting a document's creation or update is possible
+    // Return an error if the condition fails to prevent the action
+    Ok(())
+}
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript">
+```
+
+```typescript
+export const assertSetDoc = defineAssert<AssertSetDoc>({
+  collections: [],
+  assert: (context) => {
+    // Custom logic for asserting a document's creation or update is possible
+    // Throw an error if the condition fails to prevent the action
+  }
+});
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```

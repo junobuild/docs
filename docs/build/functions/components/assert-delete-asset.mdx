@@ -1,0 +1,38 @@
+Checks that an asset can be deleted.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust">
+```
+
+```rust
+#[assert_delete_asset]
+fn assert_delete_asset(_context: AssertDeleteAssetContext) -> Result<(), String> {
+    // Custom logic for asserting an asset can be deleted
+    // Return an error if the condition fails to prevent the action
+    Ok(())
+}
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript">
+```
+
+```typescript
+export const assertDeleteAsset = defineAssert<AssertDeleteAsset>({
+  collections: [],
+  assert: (context) => {
+    // Custom logic for asserting an asset can be deleted
+    // Throw an error if the condition fails to prevent the action
+  }
+});
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
