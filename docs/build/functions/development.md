@@ -2,12 +2,6 @@
 
 When you're ready to implement Functions within your Juno Satellite, you'll have a variety of event-driven macros at your disposal, enabling custom logic execution in response to specific actions. Here's how to implement each available Function:
 
-:::note
-
-Running `juno dev eject` not only prepares your environment for the serverless development but also scaffolds a default `lib.rs` module. This module is pre-configured with the necessary structure and examples to get started with all the Functions features listed below.
-
-:::
-
 ---
 
 ## Hooks
