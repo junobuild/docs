@@ -68,3 +68,29 @@ In addition to hooks, developers have the option to expand the native rule set o
 | `assert_delete_doc`   | Datastore | Verifies that a document can be deleted.      |
 | `assert_upload_asset` | Storage   | Confirms an asset upload can be committed.    |
 | `assert_delete_asset` | Storage   | Checks that an asset can be deleted.          |
+
+---
+
+## Rust vs. TypeScript
+
+You can write serverless functions in either [Rust](./development/rust.mdx) or [TypeScript](./development/typescript.mdx), depending on your needs and project goals.
+
+Rust will always be more performant than TypeScript because TypeScript code is evaluated by the Rust runtime under the hood. This means that, no matter how optimized, functions written in Rust will consume fewer cycles and execute faster. That said, not every project needs maximum performance from day one. For smaller apps, rapid prototypes, or internal tools, TypeScript can be a perfect fit.
+
+The Rust ecosystem is also more mature, having been supported on the Internet Computer from the beginning. It benefits from better compatibility with libraries that support `wasm32-unknown-unknown`.
+
+TypeScript support was introduced on Juno in April 2025. While developer-friendly, it currently lacks Node.js polyfills, which means many npm libraries may not work out of the box. That said, we’re actively improving this — and if there's a specific package or feature you'd like to use, reach out. We're happy to explore adding support.
+
+It is worth to note that in both environments, there is no standard library or file system access. Functions like reading from or writing to disk aren’t available. Instead, e.g. Juno provides purpose-built features such as Storage.
+
+Despite their differences, Rust and TypeScript serverless functions are designed with interoperability in mind. The API surface and structure are intentionally aligned, so migrating from TypeScript to Rust later should feel intuitive and straightforward.
+
+### Summary
+
+| Feature / Consideration | Rust                                       | TypeScript                                                  |
+| ----------------------- | ------------------------------------------ | ----------------------------------------------------------- |
+| **Performance**         | ✅ Highest, runs natively in WASM          | ⚠️ Interpreted by Rust, slower                              |
+| **Library Support**     | ✅ Many crates                             | ⚠️ Limited (only few Node.js polyfills currently supported) |
+| **Ease of Use**         | ✅ Developer-friendly (with or without AI) | ✅ Developer-friendly (with or without AI)                  |
+| **Migration Path**      | —                                          | ✅ Can migrate to Rust easily                               |
+| **Recommended For**     | Production apps, performance-critical code | Prototypes, smaller tools, quick dev cycles                 |
