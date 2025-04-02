@@ -1,0 +1,85 @@
+---
+id: typescript
+title: TypeScript
+toc_min_heading_level: 2
+toc_max_heading_level: 3
+---
+
+# Code Functions in TypeScript
+
+Learn how to develop, integrate, and extend Juno Satellites with serverless functions written in TypeScript.
+
+---
+
+## Quickstart
+
+import Setup from "./components/functions/setup.mdx";
+
+<Setup />
+
+In a new terminal window, kick off the emulator (requires Docker):
+
+```bash
+juno dev start --watch
+```
+
+Now, your local development environment is up and running, ready for you to start coding.
+
+Every time you make changes to your code, it will automatically recompile and reload.
+
+---
+
+## Hooks and Data Operations
+
+import Hooks from "./components/functions/hooks.md";
+
+<Hooks />
+
+Now, let's create a hook within `src/satellite/index.ts` with the following implementation:
+
+```typescript
+import { defineHook, type OnSetDoc } from "@junobuild/functions";
+import {
+  decodeDocData,
+  encodeDocData,
+  setDocStore
+} from "@junobuild/functions/sdk";
+
+// The data shape stored in the Satellite's Datastore
+interface Person {
+  hello: string;
+}
+
+// We declare a hook that listens to changes in the "demo" collection
+export const onSetDoc = defineHook<OnSetDoc>({
+  collections: ["demo"],
+  run: async (context) => {
+    // Decode the document's data (stored as a blob)
+    const data = decodeDocData<Person>(context.data.data.after.data);
+
+    // Update the document's data by enhancing the "hello" field
+    const updated = {
+      hello: `${data.hello} checked`
+    };
+
+    // Encode the data back to blob format
+    const encoded = encodeDocData(updated);
+
+    // Save the updated document using the same caller, collection, and key
+    await setDocStore({
+      caller: context.caller,
+      collection: context.data.collection,
+      key: context.data.key,
+      doc: {
+        data: encoded,
+        description: context.data.data.after.description,
+        version: context.data.data.after.version
+      }
+    });
+  }
+});
+```
+
+Once saved, your code should be automatically compiled and deployed.
+
+When testing this feature, if you wait a bit before calling the getter, you should now receive the modified "hello: world checked" text set by the hook. This delay occurs because serverless Functions execute fully asynchronously, separate from the request-response cycle between your frontend and the Satellite.

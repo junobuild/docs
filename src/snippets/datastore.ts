@@ -17,7 +17,6 @@ await setDoc({
   },
 });
 
-
 // Retrieve a document by collection and key
 const myDoc = await getDoc({
   collection,

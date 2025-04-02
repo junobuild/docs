@@ -1,0 +1,36 @@
+Triggered when a document is created or updated in the datastore.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust">
+```
+
+```rust
+#[on_set_doc]
+async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
+    // Custom logic for handling document creation or updates
+    Ok(())
+}
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript">
+```
+
+```typescript
+export const onSetDoc = defineHook<OnSetDoc>({
+  collections: [],
+  run: async (context) => {
+    // Custom logic for handling document creation or updates
+  }
+});
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```

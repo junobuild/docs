@@ -1,0 +1,45 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import styles from "./styles.module.scss";
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust" attributes={{className: styles.hidden}}>
+```
+
+<p className={styles.revertMarginTop}>
+  Invoked after the satellite has been upgraded to a new version. This hook is
+  typically used to manage migration tasks, or starting custom processes like
+  timers.
+</p>
+
+```rust
+#[on_post_upgrade]
+fn on_post_upgrade() -> Result<(), String> {
+    // Custom logic for post-upgrade tasks
+    Ok(())
+}
+```
+
+Similar to `on_init`, the `on_post_upgrade` hook cannot be scoped to collections or assets. It operates globally to handle upgrade-related operations.
+
+This feature is not enabled by default. To use it, you’ll need to opt in by updating your `Cargo.toml` file.
+
+```toml
+[dependencies]
+junobuild-satellite = { version = "*", features = ["default", "on_post_upgrade"] }
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript" attributes={{className: styles.hidden}}>
+```
+
+<p className={`${styles.revertMarginTop} ${styles.italic}`}>
+  This hook is not available when writing functions in TypeScript.
+</p>
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```

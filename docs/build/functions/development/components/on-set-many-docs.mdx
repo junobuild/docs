@@ -1,0 +1,36 @@
+Invoked for batch operations involving multiple document creations or updates.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust">
+```
+
+```rust
+#[on_set_many_docs]
+async fn on_set_many_docs(context: OnSetManyDocsContext) -> Result<(), String> {
+    // Custom logic for handling multiple document creations or updates
+    Ok(())
+}
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript">
+```
+
+```typescript
+export const onSetManyDocs = defineHook<OnSetManyDocs>({
+  collections: [],
+  run: async (context) => {
+    // Custom logic for handling multiple document creations or updates
+  }
+});
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```

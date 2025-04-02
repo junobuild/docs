@@ -1,0 +1,36 @@
+Used for operations that involve deleting multiple assets in a batch.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust">
+```
+
+```rust
+#[on_delete_many_assets]
+async fn on_delete_many_assets(context: OnDeleteManyAssetsContext) -> Result<(), String> {
+    // Custom logic for handling the deletion of multiple assets
+    Ok(())
+}
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript">
+```
+
+```typescript
+export const onDeleteManyAssets = defineHook<OnDeleteManyAssets>({
+  collections: [],
+  run: async (context) => {
+    // Custom logic for handling the deletion of multiple assets
+  }
+});
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```

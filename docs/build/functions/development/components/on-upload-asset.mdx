@@ -1,0 +1,36 @@
+Triggered during the process of uploading an asset.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust">
+```
+
+```rust
+#[on_upload_asset]
+async fn on_upload_asset(context: OnUploadAssetContext) -> Result<(), String> {
+    // Custom logic for handling asset uploads
+    Ok(())
+}
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript">
+```
+
+```typescript
+export const onUploadAsset = defineHook<OnUploadAsset>({
+  collections: [],
+  run: async (context) => {
+    // Custom logic for handling asset uploads
+  }
+});
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```

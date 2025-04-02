@@ -1,0 +1,36 @@
+Activated when an asset is removed from the datastore.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust">
+```
+
+```rust
+#[on_delete_asset]
+async fn on_delete_asset(context: OnDeleteAssetContext) -> Result<(), String> {
+    // Custom logic for handling asset deletion
+    Ok(())
+}
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript">
+```
+
+```typescript
+export const onDeleteAsset = defineHook<OnDeleteAsset>({
+  collections: [],
+  run: async (context) => {
+    // Custom logic for handling asset deletion
+  }
+});
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```

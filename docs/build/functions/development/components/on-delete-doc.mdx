@@ -1,0 +1,36 @@
+Invoked when a document is deleted from the datastore.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust">
+```
+
+```rust
+#[on_delete_doc]
+async fn on_delete_doc(context: OnDeleteDocContext) -> Result<(), String> {
+    // Custom logic for handling document deletion
+    Ok(())
+}
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript">
+```
+
+```typescript
+export const onDeleteDoc = defineHook<OnDeleteDoc>({
+  collections: [],
+  run: async (context) => {
+    // Custom logic for handling document deletion
+  }
+});
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```

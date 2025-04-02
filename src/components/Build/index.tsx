@@ -5,6 +5,7 @@ import NextJS from "@site/static/icons/nextjs.svg";
 import ReactLogo from "@site/static/icons/react.svg";
 import Rust from "@site/static/icons/rust.svg";
 import Svelte from "@site/static/icons/svelte.svg";
+import TypeScript from "@site/static/icons/typescript.svg";
 import Vue from "@site/static/icons/vue.svg";
 import styles from "./styles.module.scss";
 
@@ -15,7 +16,7 @@ export default function Build(): JSX.Element {
       <p className={styles.build}>
         Use the frontend frameworks you{" "}
         <span className="visually-hidden">love</span>❤️ and write serverless
-        functions in Rust.
+        functions in Rust or TypeScript.
       </p>
 
       <div className={styles.grid}>
@@ -51,9 +52,14 @@ export default function Build(): JSX.Element {
         />
         <span className={styles.separator}>•</span>
         <Guide
-          title="Juno can also be extended with serverless functions written in Rust."
+          title="Write serverless functions in Rust"
           link="/docs/guides/rust"
           icon={<Rust />}
+        />
+        <Guide
+          title="Write serverless functions in TypeScript"
+          link="/docs/guides/typescript"
+          icon={<TypeScript />}
         />
       </div>
     </div>
