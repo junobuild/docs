@@ -45,7 +45,7 @@ const sidebars: SidebarsConfig = {
             description:
               "Build serverless functions to run backend code in response to events or requests."
           },
-          items: ["guides/rust"]
+          items: ["guides/rust", "guides/typescript"]
         },
         {
           type: "category",
