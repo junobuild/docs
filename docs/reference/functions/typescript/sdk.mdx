@@ -1,0 +1,53 @@
+# SDK
+
+The following functions are provided to help you work with document and asset data inside your Satellite. They are part of the tools available when writing serverless functions in Rust and support common tasks such as interacting with the datastore, storage, and custom hook logic.
+
+:::note[📦 Library]
+
+The SDK is provided by the [@junobuild/functions](https://www.npmjs.com/package/@junobuild/functions) library.
+
+To add it to your project:
+
+import { Bash } from "../../../components/bash.mdx";
+
+<Bash
+  npm="npm i @junobuild/functions"
+  yarn="yarn add @junobuild/functions"
+  pnpm="pnpm add @junobuild/functions"
+/>
+
+You have to follow the pace of the Juno release to ensure compatibility. Refer to the [maintenance guide](../../../build/functions/development/typescript.mdx#maintenance) for instructions.
+
+:::
+
+---
+
+## setDocStore
+
+Sets a document in a collection’s of the datastore. Use this to insert or update document data.
+
+```typescript
+function setDocStore(params: SetDocStoreParams): void;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+Parameters:
+
+- `params`: An object containing the following fields:
+  - `caller`: The caller initiating the operation (`RawUserId` or `UserId`).
+  - `collection`: The name of the collection where the document will be stored.
+  - `key`: The key identifying the document.
+  - `doc`: The document content including:
+    - `data`: A Uint8Array produced by encodeDocData.
+    - `description` (optional): A short description linked with the document.
+    - `version` (optional if new): An expected version number to prevent overwrite.
+
+Returns:
+
+- `void`
+
+Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation is rejected by the Satellite (e.g. due to a failed assertion or validation error).
