@@ -1,0 +1,40 @@
+Used when multiple documents are deleted in a batch operation.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```mdx-code-block
+<Tabs groupId="hooks">
+<TabItem value="Rust">
+```
+
+```rust
+#[on_delete_many_docs]
+async fn on_delete_many_docs(context: OnDeleteManyDocsContext) -> Result<(), String> {
+    // Custom logic for handling the deletion of multiple documents
+    Ok(())
+}
+```
+
+Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript">
+```
+
+```typescript
+export const onDeleteManyDocs = defineHook<OnDeleteManyDocs>({
+  collections: [],
+  run: async (context) => {
+    // Custom logic for handling the deletion of multiple documents
+  }
+});
+```
+
+Similarly to [on_set_doc](#on_set_doc), the hook must scope the events to a particular list of collections. If the array is left empty, the hook will never be called.
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
