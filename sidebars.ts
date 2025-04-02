@@ -196,7 +196,32 @@ const sidebars: SidebarsConfig = {
     "reference/cli",
     "reference/configuration",
     "reference/plugins",
-    "reference/settings"
+    "reference/settings",
+    {
+      type: "category",
+      label: "Functions",
+      link: {
+        type: "generated-index",
+        slug: "/reference/functions",
+        description:
+          "API reference for writing serverless functions in Rust or TypeScript."
+      },
+      items: [
+        {
+          type: "category",
+          label: "Rust",
+          link: {
+            type: "generated-index",
+            slug: "/reference/functions/rust",
+            description:
+              "API reference for writing serverless functions in Rust."
+          },
+          items: [
+            "reference/functions/rust/utils"
+          ]
+        },
+      ]
+    },
   ]
 };
 
