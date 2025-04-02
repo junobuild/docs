@@ -13,7 +13,7 @@ Learn how to develop, integrate, and extend Juno Satellites with serverless func
 
 ## Quickstart
 
-import Setup from "./components/setup.mdx";
+import Setup from "./components/functions/setup.mdx";
 
 <Setup />
 
@@ -37,58 +37,11 @@ Changes are detected and automatically deployed, allowing you to test your custo
 
 ## Hooks and Data Operations
 
-Serverless Functions are triggered by hooks, which respond to events occurring in the Satellite, such as setting a document. Before implementing a hook that manipulates data ("backend"), let's first set up a JavaScript function in your ("frontend") dApp.
+import Hooks from "./components/functions/hooks.md";
 
-Define a setter function in your frontend dApp as follows:
+<Hooks />
 
-```typescript
-import { nanoid } from "nanoid";
-
-interface Example {
-  hello: string;
-}
-
-let key: string | undefined;
-
-const set = async () => {
-  key = nanoid();
-
-  const record = await setDoc<Example>({
-    collection: "demo",
-    doc: {
-      key,
-      data: {
-        hello: "world"
-      }
-    }
-  });
-
-  console.log("Set done", record);
-};
-```
-
-This code generates a key using `nanoid` and persists a document in a collection named "demo" in the Datastore.
-
-Additionally, add a getter to your code:
-
-```typescript
-const get = async () => {
-  if (key === undefined) {
-    return;
-  }
-
-  const record = await getDoc({
-    collection: "demo",
-    key
-  });
-
-  console.log("Get done", record);
-};
-```
-
-Without a hook, executing these two operations one after the other would result in a record containing "hello: world".
-
-Now, let's create a hook in the Satellite you've ejected, within `src/satellite/src/lib.rs`. Replace the default empty `on_set_doc` hook with the following implementation:
+Now, let's create a hook within `src/satellite/src/lib.rs` with the following implementation:
 
 ```rust
 use ic_cdk::print;
@@ -146,7 +99,9 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
 include_satellite!();
 ```
 
-As outlined in the [Quickstart](#quickstart) chapter, run `juno dev build` to compile and deploy the code locally. When testing this feature, if you wait a bit before calling the getter, unlike in the previous step, you should now receive the modified "hello: world checked" text set by the hook. This delay occurs because serverless Functions run fully asynchronously from the request-response between your frontend and the Satellite.
+As outlined in the [Quickstart](#quickstart) chapter, run `juno dev build` to compile and deploy the code locally.
+
+When testing this feature, if you wait a bit before calling the getter, unlike in the previous step, you should now receive the modified "hello: world checked" text set by the hook. This delay occurs because serverless Functions run fully asynchronously from the request-response between your frontend and the Satellite.
 
 ---
 
