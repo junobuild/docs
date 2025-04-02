@@ -1,0 +1,80 @@
+# Rust
+
+This page covers advanced options for writing serverless functions in Rust.
+
+---
+
+## Including the Satellite
+
+After defining your Functions, at the very end of your `lib.rs` module, include the Satellite to ensure that your custom logic and the default features or Juno are properly registered and executable within the Juno ecosystem.
+
+:::important
+
+This is crucial for compatibility with the Juno Console and CLI, as it expects the Satellite to expose the necessary functionality for monitoring, deployment, and interaction. Without this macro, certain features in the Console may not function correctly.
+
+:::
+
+```rust
+include_satellite!();
+```
+
+---
+
+## Feature Selection
+
+When you run `juno dev eject`, all the available hooks and assertions are scaffolded in your `lib.rs` module. However, if you don’t have to implement all of them for example to improve readability or reduce unnecessary logic, you can selectively enable only the features you need.
+
+To do this, disable the default features in your `Cargo.toml` and explicitly specify only the ones you want to use.
+
+For example, if you only need `on_set_doc` and `assert_set_doc`, configure your `Cargo.toml` like this:
+
+```toml
+[dependencies]
+junobuild-satellite = { version = "0.0.21", default-features = false, features = ["on_set_doc", "assert_set_doc"] }
+```
+
+With this setup, only `on_set_doc` and `assert_set_doc` must be implemented with custom logic, while other hooks and assertions will not be included in your Satellite.
+
+---
+
+## Maintenance
+
+After deployment, keeping your Satellite functional and optimized requires ongoing monitoring and updates. Staying up to date is also a key factor, as we may introduce new features that need to be integrated into your Satellite to ensure full functionality within the Juno Console.
+
+Since your project includes all Satellite features using `include_satellite!();`, it's essential to stay in sync with Juno’s updates to maintain compatibility.
+
+:::caution
+
+Always upgrade iteratively and avoid skipping version numbers. While we strive to minimize breaking changes, it's crucial to upgrade through each released version sequentially.
+
+For example, if you're on **v0.0.23** and the latest release is **v0.0.26**, first upgrade to **v0.0.24**, then **v0.0.25**, and finally **v0.0.26**. Skipping versions could lead to unexpected issues.
+
+:::
+
+### Updating Your Satellite
+
+To upgrade your Satellite, bump the dependencies in your `Cargo.toml` file located in `/src/satellite/`. The key dependencies to check and update are:
+
+- `junobuild-satellite`
+- `junobuild-storage`
+- `junobuild-macros`
+- `ic_cdk`
+- `candid`
+
+If other crates in your project depend on these, they should also be upgraded accordingly.
+
+The recommended versions for each release can be found in the [changelog](/changelog) or [release notes on GitHub](https://github.com/junobuild/juno/releases).
+
+If you need assistance, feel free to reach out through the available support channels.
+
+---
+
+## Additional Notes
+
+WebAssembly (Wasm) binaries serve as the compilation target for the Satellites. While Juno's CLI automatically specifies this target for you, manual execution of certain `cargo` commands necessitates explicitly providing this target.
+
+For instance:
+
+```bash
+cargo clippy --target=wasm32-unknown-unknown
+```

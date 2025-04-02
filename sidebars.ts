@@ -117,7 +117,17 @@ const sidebars: SidebarsConfig = {
           },
           items: [
             "build/functions/lifecycle",
-            "build/functions/development",
+            {
+              type: "category",
+              label: "Development",
+              link: {
+                type: "doc",
+                id: "build/functions/development/index"
+              },
+              items: [
+                "build/functions/development/rust"
+              ]
+            },
             "build/functions/logs"
           ]
         },
