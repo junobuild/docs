@@ -125,7 +125,8 @@ const sidebars: SidebarsConfig = {
                 id: "build/functions/development/index"
               },
               items: [
-                "build/functions/development/rust"
+                "build/functions/development/rust",
+                "build/functions/development/typescript"
               ]
             },
             "build/functions/logs"
