@@ -40,59 +40,27 @@ import OnDeleteFilteredDocs from "./components/on-delete-filtered-docs.mdx";
 
 ### on_upload_asset
 
-Triggered during the process of uploading an asset.
+import OnUploadAsset from "./components/on-upload-asset.mdx";
 
-```rust
-#[on_upload_asset]
-async fn on_upload_asset(context: OnUploadAssetContext) -> Result<(), String> {
-    // Custom logic for handling asset uploads
-    Ok(())
-}
-```
-
-Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
+<OnUploadAsset />
 
 ### on_delete_asset
 
-Activated when an asset is removed from the datastore.
+import OnDeleteAsset from "./components/on-delete-asset.mdx";
 
-```rust
-#[on_delete_asset]
-async fn on_delete_asset(context: OnDeleteAssetContext) -> Result<(), String> {
-    // Custom logic for handling asset deletion
-    Ok(())
-}
-```
-
-Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
+<OnDeleteAsset />
 
 ### on_delete_many_assets
 
-Used for operations that involve deleting multiple assets in a batch.
+import OnDeleteManyAssets from "./components/on-delete-many-assets.mdx";
 
-```rust
-#[on_delete_many_assets]
-async fn on_delete_many_assets(context: OnDeleteManyAssetsContext) -> Result<(), String> {
-    // Custom logic for handling the deletion of multiple assets
-    Ok(())
-}
-```
-
-Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
+<OnDeleteManyAssets />
 
 ### on_delete_filtered_assets
 
-Invoked when assets are deleted according to specified filters in the storage.
+import OnDeleteFilteredAssets from "./components/on-delete-filtered-assets.mdx";
 
-```rust
-#[on_delete_filtered_assets]
-async fn on_delete_filtered_assets(context: OnDeleteFilteredAssetsContext) -> Result<(), String> {
-    // Custom logic for handling the deletion of filtered assets
-    Ok(())
-}
-```
-
-Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
+<OnDeleteFilteredAssets />
 
 ### on_init
 

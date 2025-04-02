@@ -1,0 +1,40 @@
+Invoked when assets are deleted according to specified filters in the storage.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust">
+```
+
+```rust
+#[on_delete_filtered_assets]
+async fn on_delete_filtered_assets(context: OnDeleteFilteredAssetsContext) -> Result<(), String> {
+    // Custom logic for handling the deletion of filtered assets
+    Ok(())
+}
+```
+
+Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript">
+```
+
+```typescript
+export const onDeleteFilteredAssets = defineHook<OnDeleteFilteredAssets>({
+  collections: [],
+  run: async (context) => {
+    // Custom logic for handling the deletion of filtered assets
+  }
+});
+```
+
+Similarly to [on_set_doc](#on_set_doc), the hook must scope the events to a particular list of collections. If the array is left empty, the hook will never be called.
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```

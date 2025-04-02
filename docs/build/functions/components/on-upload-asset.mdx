@@ -1,0 +1,40 @@
+Triggered during the process of uploading an asset.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust">
+```
+
+```rust
+#[on_upload_asset]
+async fn on_upload_asset(context: OnUploadAssetContext) -> Result<(), String> {
+    // Custom logic for handling asset uploads
+    Ok(())
+}
+```
+
+Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript">
+```
+
+```typescript
+export const onUploadAsset = defineHook<OnUploadAsset>({
+  collections: [],
+  run: async (context) => {
+    // Custom logic for handling asset uploads
+  }
+});
+```
+
+Similarly to [on_set_doc](#on_set_doc), the hook must scope the events to a particular list of collections. If the array is left empty, the hook will never be called.
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
