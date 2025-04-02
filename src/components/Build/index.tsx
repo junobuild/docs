@@ -52,13 +52,13 @@ export default function Build(): JSX.Element {
         />
         <span className={styles.separator}>•</span>
         <Guide
-          title="Juno can also be extended with serverless functions written in Rust."
+          title="Write serverless functions in Rust"
           link="/docs/guides/rust"
           icon={<Rust />}
         />
         <Guide
-          title="Use Juno in non-interactive environment with NodeJS."
-          link="/docs/guides/nodejs"
+          title="Write serverless functions in TypeScript"
+          link="/docs/guides/typescript"
           icon={<TypeScript />}
         />
       </div>
