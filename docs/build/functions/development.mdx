@@ -10,28 +10,9 @@ Hooks allow you to define event-driven logic that responds to specific actions w
 
 ### on_set_doc
 
-Triggered when a document is created or updated in the datastore.
+import OnSetDoc from "./components/on-set-doc.mdx";
 
-```rust
-#[on_set_doc]
-async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
-    // Custom logic for handling document creation or updates
-    Ok(())
-}
-```
-
-When no attributes are provided, the hook is triggered for any document set within any collection.
-You can scope the events to a particular list of collections.
-
-```rust
-#[on_set_doc(collections = ["demo"])]
-async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
-    // Custom logic for handling document creation or updates
-    Ok(())
-}
-```
-
-The attributes accept a list of comma-separated collections. If the attribute array is left empty, the hook will never be called.
+<OnSetDoc />
 
 ### on_set_many_docs
 
