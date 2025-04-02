@@ -1,0 +1,45 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import styles from "./styles.module.scss";
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust" attributes={{className: styles.hidden}}>
+```
+
+<p className={styles.revertMarginTop}>
+  Called during the initialization of the satellite. This hook is invoked when
+  the satellite is first deployed and can be used to set up initial
+  configurations or resources.
+</p>
+
+```rust
+#[on_init]
+fn on_init() -> Result<(), String> {
+    // Custom logic for initialization
+    Ok(())
+}
+```
+
+Unlike datastore or storage hooks, `on_init` cannot be scoped to specific collections or assets, as it is meant to handle global initialization logic.
+
+This feature is not enabled by default. To use it, you’ll need to opt in by updating your `Cargo.toml` file.
+
+```toml
+[dependencies]
+junobuild-satellite = { version = "*", features = ["default", "on_init"] }
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript" attributes={{className: styles.hidden}}>
+```
+
+<p className={styles.revertMarginTop}>
+  This hook is not available when writing functions in TypeScript.
+</p>
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
