@@ -16,17 +16,9 @@ import OnSetDoc from "./components/on-set-doc.mdx";
 
 ### on_set_many_docs
 
-Activated for batch operations involving multiple document creations or updates.
+import OnSetManyDocs from "./components/on-set-many-docs.mdx";
 
-```rust
-#[on_set_many_docs]
-async fn on_set_many_docs(context: OnSetManyDocsContext) -> Result<(), String> {
-    // Custom logic for handling multiple document creations or updates
-    Ok(())
-}
-```
-
-Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
+<OnSetManyDocs />
 
 ### on_delete_doc
 

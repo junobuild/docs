@@ -1,0 +1,40 @@
+Invoked for batch operations involving multiple document creations or updates.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Rust">
+```
+
+```rust
+#[on_set_many_docs]
+async fn on_set_many_docs(context: OnSetManyDocsContext) -> Result<(), String> {
+    // Custom logic for handling multiple document creations or updates
+    Ok(())
+}
+```
+
+Similarly to [on_set_doc](#on_set_doc), the hook can scope the events to a particular list of collections or be left empty if it should never fire.
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript">
+```
+
+```typescript
+export const onSetManyDocs = defineHook<OnSetManyDocs>({
+  collections: [],
+  run: async (context) => {
+    // Custom logic for handling multiple document creations or updates
+  }
+});
+```
+
+Similarly to [on_set_doc](#on_set_doc), the hook must scope the events to a particular list of collections. If the array is left empty, the hook will never be called.
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
