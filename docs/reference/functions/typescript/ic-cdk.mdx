@@ -1,0 +1,79 @@
+# IC-CDK
+
+import IcCdk from "../components/ic-cdk.md";
+
+<IcCdk />
+
+Juno exposes a growing set of these features for TypeScript, allowing you to build serverless functions that interact with the IC using a familiar developer experience.
+
+These features are made available through a layer that acts as a proxy between the Rust-based IC-CDK and JavaScript.
+
+:::note[📦 Library]
+
+The IC-CDK for JS/TS is provided by the [@junobuild/functions](https://www.npmjs.com/package/@junobuild/functions) library.
+
+To add it to your project:
+
+import { Bash } from "../../../components/bash.mdx";
+
+<Bash
+  npm="npm i @junobuild/functions"
+  yarn="yarn add @junobuild/functions"
+  pnpm="pnpm add @junobuild/functions"
+/>
+
+You have to follow the pace of the Juno release to ensure compatibility. Refer to the [maintenance guide](../../../build/functions/development/typescript.mdx#maintenance) for instructions.
+
+:::
+
+---
+
+## id
+
+Retrieves the Principal ID of the current Satellite.
+
+This is useful when you want to use functions such as [setDocStore](./sdk.mdx#setDocStore) with the caller set as the administrator. Since the code is running on the backend side (inside the container), the Satellite itself is considered the caller and has admin-level permissions.
+
+```typescript
+function id(): Principal;
+```
+
+📦 Import from `@junobuild/functions/ic-cdk`
+
+#### Returns:
+
+- `Principal`: The Principal ID of the currently executing Satellite.
+
+#### Notes:
+
+- This function is a JavaScript binding for the Rust function [ic_cdk::id()](https://docs.rs/ic-cdk/latest/ic_cdk/fn.id.html).
+
+---
+
+## call
+
+Makes an asynchronous call to a canister on the Internet Computer.
+
+Use this function inside your serverless functions to interact with other canisters. It encodes arguments using Candid, performs the call, and decodes the response based on the expected result type.
+
+```typescript
+function call<T>(params: CallParams): Promise<T | undefined>;
+```
+
+📦 Import from `@junobuild/functions/ic-cdk`
+
+#### Parameters:
+
+- `params`: The parameters required to make the canister call.
+  - `canisterId`: The target canister's ID.
+  - `method`: The name of the method to call. Must be at least one character long.
+  - `args` (optional): An array of tuples containing each argument’s Candid type and its corresponding value.
+  - `result` (optional): The expected result type used for decoding the response.
+
+#### Returns:
+
+- A promise resolving to the decoded result of the call. If the canister returns no value, `undefined` is returned.
+
+#### Notes:
+
+- This function is a JavaScript binding for the Rust function [ic_cdk::call()](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.call.html).
