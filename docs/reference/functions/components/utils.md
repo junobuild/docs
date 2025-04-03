@@ -1,0 +1,1 @@
+The following utilities are provided to help you work with document and asset data inside your Satellite. They simplify tasks such as decoding and encoding data, serializing custom types, and interacting with Juno’s core features in a consistent way.
