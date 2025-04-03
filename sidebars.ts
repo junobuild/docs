@@ -218,7 +218,8 @@ const sidebars: SidebarsConfig = {
           },
           items: [
             "reference/functions/rust/sdk",
-            "reference/functions/rust/utils"
+            "reference/functions/rust/utils",
+            "reference/functions/rust/ic-cdk"
           ]
         },
         {
@@ -232,7 +233,8 @@ const sidebars: SidebarsConfig = {
           },
           items: [
             "reference/functions/typescript/sdk",
-            "reference/functions/typescript/utils"
+            "reference/functions/typescript/utils",
+            "reference/functions/typescript/ic-cdk"
           ]
         }
       ]
