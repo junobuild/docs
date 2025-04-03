@@ -34,7 +34,7 @@ function setDocStore(params: SetDocStoreParams): void;
 
 📦 Import from `@junobuild/functions/sdk`
 
-Parameters:
+#### Parameters:
 
 - `params`: An object containing the following fields:
   - `caller`: The caller initiating the operation (`RawUserId` or `UserId`).
@@ -45,11 +45,11 @@ Parameters:
     - `description` (optional): A short description linked with the document.
     - `version` (optional if new): An expected version number to prevent overwrite.
 
-Returns:
+#### Returns:
 
 - `void`
 
-Throws:
+#### Throws:
 
 - `ZodError` if the input schema is invalid.
 - `Error` if the operation is rejected by the Satellite (e.g. due to a failed assertion or validation error).
