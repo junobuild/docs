@@ -8,7 +8,7 @@ export default function Testimonials(): JSX.Element {
     {
       name: "Krzysztof Woś",
       twitter: "krzysztofwos",
-      img: "https://pbs.twimg.com/profile_images/1576076457209913344/mujUWJ8V_400x400.jpg",
+      img: "https://pbs.twimg.com/profile_images/1905138464590594048/Y5MsHA2V_400x400.jpg",
       text: "Juno is the best Web3 app out there."
     },
     {
