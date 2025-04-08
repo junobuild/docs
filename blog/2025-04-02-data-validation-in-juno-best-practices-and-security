@@ -3,20 +3,19 @@ draft: true
 ___
 
 
-# Data Validation in Juno: Best Practices and Security
+# Data Validation in Juno: Best Practices and Security Considerations
 
 ## Why Data Validation Matters in Decentralized Apps
 
-When building applications with Juno's Datastore, data validation is crucial for several reasons:
+Data validation is always important. However, web3 comes with its own set of challenges which makes validation an even more important part of building trustworthy apps:
 
 1. **No Central Administrator**: Unlike traditional systems, decentralized apps have no admin backdoor to fix data issues
+3. **Limited Data Access**: Developers often can't directly access or examine user data due to encryption and/or privacy
 2. **Data Immutability**: Once written to the blockchain, data can be difficult or impossible to modify
-3. **Limited Data Access**: Developers often can't directly access or examine user data due to encryption
-4. **Client-Side Vulnerability**: Front-end validation can always be bypassed by determined users
+4. **Client-Side Vulnerability**: Front-end validation can be bypassed by determined users (like in web2)
 5. **Security Risks**: Invalid or malicious data can compromise application integrity and user trust
-6. **Reputation Stakes**: In reputation systems, data integrity is directly tied to valuable user standing
 
-Getting validation right from the start is not just a best practice—it's essential for the secure and reliable operation of your decentralized application.
+Getting validation right from the start is not just a best practice—it's essential for the secure and reliable operation of your application.
 
 ## Available Approaches
 
@@ -38,82 +37,96 @@ This allows for many use-cases, even for certain types of validation, but this h
 // Example of validation and cleanup in on_set_doc
 #[on_set_doc(collections = ["users"])]
 async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
-    // Step 1: Get the data from the context
-    let user_data: UserData = decode_doc_data(&context.data.data.after.data)?;
+    // Step 1: Get all context data we'll need upfront
+    let collection = context.data.collection;
+    let key = context.data.key;
+    let doc = &context.data.data.after;  // Reference to the full document after update
+    let user_data: UserData = decode_doc_data(&doc.data)?;  // Decoded custom data from the document
     
     // Step 2: Validate the data
     if user_data.username.len() < 3 {
-        // Step 3: If validation fails, delete the document
-        delete_doc(
-            String::from("users"),
-            Document {
-                key: context.data.key.clone(),
-                version: context.data.data.after.version,
-                ..Default::default()
+        // Step 3: If validation fails, delete the document using low-level store function
+        delete_doc_store(
+            ic_cdk::id(),  // Use canister's Principal ID since this is a system operation
+            collection,
+            key,
+            DelDoc {
+                version: Some(doc.version),  // Use the version from our doc reference
             }
         ).await?;
         
-        return Err("Username must be at least 3 characters".to_string());
+        // Log the error instead of returning it to avoid trapping
+        ic_cdk::print("Username must be at least 3 characters");
+        return Ok(());
     }
     
     Ok(())
 }
 ```
 
-This allows for many use-cases, even for certain types of validation, but this hook runs *after* the data has already been written.
 
 **Issues:**
 
-- Only executes AFTER data is already written to the database, which is not ideal for validation.
-- Can trigger cascading effects if not carefully managed
+- The on_set_doc hook only executes AFTER data is already written to the database, which is not ideal for validation.
+- Since it only happens after the data is already written, it can lead to unwanted cascading effects. For example: let's say each new user needs to be added to some list. If the user is invalid, we can't add them to the list, but since the hook runs after the data is written, the user will be added to the list before we can reject them. This adds unwanted complexity to your code, forcing the developer to manage multiple on_set_doc hooks in the same function.
 - Overhead: invalid data is written (costly operation) then might be rejected and need to be deleted (another costly operation)
 - Not ideal for validation since it can't prevent invalid writes
 - Can't return success/error messages to the frontend
 
 There are also other Juno hooks, but in general, they provide a way to execute custom logic whenever data is added, modified, or deleted from a Juno datastore collection.
 
-### Custom Endpoints
+### Custom Endpoints using Serverless Functions
 
 Custom Endpoints are Juno serverless functions that expose new API endpoints through Candid (the Internet Computer's interface description language). They provide a validation layer through custom API routes before data reaches Juno's datastore, allowing for complex multi-step operations with custom validation logic.
 
 ```rust
-// First, define the validation using assert_set_doc
-#[assert_set_doc(collections = ["users"])]
-fn assert_set_doc(context: AssertSetDocContext) -> Result<(), String> {
+use junobuild_satellite::{set_doc_store, SetDoc};  // SetDoc is the struct type for document creation/updates
+use junobuild_utils::encode_doc_data;
+use ic_cdk::caller;
+use candid::{CandidType, Deserialize};
 
-    // Validate the data that has been written to the database
-    let user_data: UserData = decode_doc_data(&context.data.data.proposed.data)?;
-    
-    if user_data.username.len() < 3 {
-        return Err("Username must be at least 3 characters".to_string());
+// Simple user data structure
+#[derive(CandidType, Deserialize)]
+struct UserData {
+    username: String,
+}
+
+// Custom endpoint for user creation with basic validation
+#[ic_cdk_macros::update]
+async fn create_user(key: String, user_data: UserData) -> Result<(), String> {
+    // Step 1: Validate username (only alphanumeric characters)
+    if !user_data.username.chars().all(|c| c.is_alphanumeric()) {
+        return Err("Username must contain only letters and numbers".to_string());
     }
     
-    Ok(())
-}
-
-// Then, handle any cleanup needed after saving
-#[on_set_doc(collections = ["users"])]
-async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
-    // Process the user document after it's been saved
-    // This is where you'd do any post-save operations
-    // For example, creating related records, sending notifications, etc.
-    Ok(())
-}
-
-// Finally, expose the endpoint for creating users
-#[update]
-async fn create_user(user_data: UserData) -> Result<(), String> {
-    // Save the data - validation will happen via assert_set_doc
-    set_doc(
-        String::from("users"),
-        Document {
-            key: nanoid(),
-            data: user_data,
-            ..Default::default()
-        }
-    ).await?;
+    // Step 2: Create and store document
+    // First encode our data into a blob that Juno can store into the 'data' field
+    let encoded_data = encode_doc_data(&user_data)
+        .map_err(|e| format!("Failed to encode user data: {}", e))?;
     
-    Ok(())
+    // Create a SetDoc instance - this is the required format for setting documents in Juno
+    // SetDoc contains only what we want to store - Juno handles all metadata:
+    // - created_at/updated_at timestamps
+    // - owner (based on caller's Principal)
+    // - version management
+    let doc = SetDoc {
+        data: encoded_data,        // The actual data we want to store (as encoded blob)
+        description: None,         // Optional field for filtering/searching
+        version: None             // None for new docs, Some(version) for updates
+    };
+    
+    // Use set_doc_store to save the document
+    // This is Juno's low-level storage function that:
+    // 1. Takes ownership of the document (caller's Principal)
+    // 2. Adds timestamps (created_at, updated_at)
+    // 3. Handles versioning
+    // 4. Stores the document in the specified collection
+    set_doc_store(
+        caller(),                 // Who is creating this document
+        String::from("users"),    // Which collection to store in
+        key,                      // The document's unique key
+        doc                       // The SetDoc we prepared above
+    ).await
 }
 ```
 
@@ -147,7 +160,7 @@ Unlike other approaches, `assert_set_doc` hooks:
 - Allow users to continue using the standard Juno SDK
 - Keep validation logic directly in your data model
 - Conserve blockchain resources by validating before storage
-- Return clear error messages to guide users
+- Can reject invalid data with descriptive error messages that flow back to the frontend (unlike on_set_doc which runs after storage and can't return validation errors to users)
 
 ```rust
 // Simple assert_set_doc example
@@ -224,7 +237,7 @@ Here's the sequence of events during a document write operation:
 
 - Complex multi-step workflows
 - User interface integration
-- Specialized authentication flows
+- Specialized flows with custom logic
 - Operations requiring external APIs
 - Batch processing
 - Rate limiting
@@ -442,160 +455,13 @@ fn validate_time_periods(periods: &[TimePeriod]) -> Result<(), String> {
 }
 ```
 
-### on_set_doc Example
-
-```rust
-#[on_set_doc(collections = ["votes"])]
-async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
-    match context.data.collection.as_str() {
-        "votes" => {
-            // Whenever a new vote is cast (stored in the votes collection),
-            // this hook will be triggered and the process_vote function will be called
-            process_vote(&context).await
-        },
-        _ => Ok(())
-    }
-}
-
-// This is the function being called by the on_set_doc hook
-async fn process_vote(context: &OnSetDocContext) -> Result<(), String> {
-
-    // First we get the vote data out of the context, which is passed in from the on_set_doc hook
-    // The context contains the data that was set, as well as the before and after states of the document
-    // In this case, the before state is the vote data before it was updated, and the after state is the vote data after it was updated
-    // We are interested in the after state, so we get that out of the context
-    let vote_doc = &context.data.data.after;
-    
-    // Decode vote details
-    // Document data is encoded in CBOR (Concise Binary Object Representation), so we need to decode it
-    // We use decode_doc_data to decode the vote data
-    // Included by default in the junobuild_satellite crate
-    let vote_data: VoteData = decode_doc_data(&vote_doc.data)
-        .map_err(|e| format!("Failed to decode vote data: {}", e))?;
-    
-    // Log the new vote using Juno's native logging
-    ic_cdk::print(&format!(
-        "New vote processed: author={} voted {} on target={} in tag={}",
-        vote_data.author_key,
-        vote_data.value,
-        vote_data.target_key,
-        vote_data.tag_key
-    ));
-    
-    // Update the target user's reputation score
-    let _updated_rep = recalculate_reputation(&vote_data.target_key, &vote_data.tag_key).await
-        .map_err(|e| format!("Failed to update reputation: {}", e))?;
-    
-    // Update the voting user's reputation (for casting a vote)
-    let _voter_rep = update_voter_reputation(&vote_data.author_key, &vote_data.tag_key).await
-        .map_err(|e| format!("Failed to update voter reputation: {}", e))?;
-    
-    Ok(())
-}
-```
-
-### Custom Endpoint Example
-
-```typescript
-// Multi-step voting process with validation and rate limiting
-export async function castVote(req, res) {
-  const { targetUserId, tagId, voteValue } = req.body;
-  const userId = req.auth.userId; // From auth middleware
-  
-  try {
-    // Step 1: Validate inputs
-    if (!targetUserId || !tagId || typeof voteValue !== 'number') {
-      return res.status(400).json({ error: 'Missing or invalid parameters' });
-    }
-    
-    if (voteValue !== 1 && voteValue !== -1) {
-      return res.status(400).json({ error: 'Vote value must be +1 or -1' });
-    }
-    
-    if (targetUserId === userId) {
-      return res.status(400).json({ error: 'Cannot vote for yourself' });
-    }
-    
-    // Step 2: Check rate limiting
-    const recentVotes = await listDocs({
-      collection: "votes",
-      filter: {
-        matcher: {
-          description: `owner=${userId};`,
-          createdAt: {
-            matcher: "greaterThan",
-            timestamp: BigInt(Date.now() - 3600000) * 1000000n // Last hour
-          }
-        }
-      }
-    });
-    
-    if (recentVotes.items.length >= 10) {
-      return res.status(429).json({ error: 'Rate limit exceeded: maximum 10 votes per hour' });
-    }
-    
-    // Step 3: Check for duplicate vote
-    const existingVotes = await listDocs({
-      collection: "votes",
-      filter: {
-        matcher: {
-          description: `owner=${userId};target=${targetUserId};tag=${tagId};`
-        }
-      }
-    });
-    
-    let voteDoc;
-    
-    if (existingVotes.items.length > 0) {
-      // Update existing vote
-      const [existingKey, existingVote] = existingVotes.items[0];
-      
-      voteDoc = await setDoc({
-        collection: "votes",
-        doc: {
-          key: existingKey,
-          data: {
-            ...existingVote.data,
-            value: voteValue
-          },
-          version: existingVote.version
-        }
-      });
-    } else {
-      // Create new vote
-      voteDoc = await setDoc({
-        collection: "votes",
-        doc: {
-          key: nanoid(),
-          data: {
-            authorId: userId,
-            targetId: targetUserId,
-            tagId: tagId,
-            value: voteValue,
-            timestamp: Date.now()
-          }
-        }
-      });
-    }
-    
-    // Step 4: Return success with the updated document
-    res.status(200).json({
-      success: true,
-      vote: voteDoc
-    });
-    
-  } catch (error) {
-    console.error("Vote error:", error);
-    res.status(500).json({ error: "Failed to process vote" });
-  }
-}
-```
-
 Remember: Security is about preventing unauthorized or invalid operations, not just making them difficult. assert_set_doc hooks provide the only guaranteed way to validate all data operations in Juno's Datastore.
 
 ## Reference: Available Juno Hooks and Context Types
 
 This section provides a comprehensive reference of all available Juno hooks and their corresponding context types.
+
+Note: For up-to date information on the available context types and utilities, refer to the [Juno Satellite API Reference](https://docs.rs/junobuild-satellite/0.0.21/junobuild_satellite/index.html#usage).
 
 ### Available Macro Decorators
 
@@ -638,31 +504,7 @@ use junobuild_satellite::{
 };
 ```
 
-### Hook Types and Use Cases
-
-1. **Document Management Hooks**
-These happen *after* the document has been written to the database.
-   - `on_set_doc`: Triggered when a document is created or updated
-   - `on_set_many_docs`: Triggered for batch operations involving multiple documents
-   - `on_delete_doc`: Invoked when a document is deleted
-   - `on_delete_many_docs`: Used when multiple documents are deleted
-   - `on_delete_filtered_docs`: Invoked when documents are deleted according to filters
-
-2. **Asset Management Hooks**
-These happen *after* the asset has been uploaded to the database.
-   - `on_upload_asset`: Triggered during asset upload
-   - `on_delete_asset`: Activated when an asset is deleted
-   - `on_delete_many_assets`: Used for deleting multiple assets
-   - `on_delete_filtered_assets`: Invoked when assets are deleted according to filters
-
-3. **Assertion Hooks**
-These happen *before* the document has been written to the database, ideal for validation.
-   - `assert_set_doc`: Ensures a document can be created or updated
-   - `assert_delete_doc`: Verifies that a document can be deleted
-   - `assert_upload_asset`: Confirms an asset upload can be committed
-   - `assert_delete_asset`: Checks that an asset can be deleted
-
-### Feature Selection
+### Where to find the hooks and assertions in your project
 
 When you run `juno dev eject`, all available hooks and assertions are scaffolded in your `lib.rs` module. However, you can selectively enable only the features you need by disabling default features in your `Cargo.toml` and explicitly specifying the ones you want to use.
 
@@ -673,26 +515,4 @@ Example configuration for using only `on_set_doc` and `assert_set_doc`:
 junobuild-satellite = { version = "0.0.21", default-features = false, features = ["on_set_doc", "assert_set_doc"] }
 ```
 
-### Best Practices
 
-1. **Collection Scoping**
-   - Use the `collections` attribute to scope hooks to specific collections
-   - Leave the attribute array empty if the hook should never fire
-   - Example: `#[on_set_doc(collections = ["users"])]`
-
-2. **Error Handling**
-   - Return `Result<(), String>` from hooks
-   - Use descriptive error messages
-   - Handle all potential error cases
-
-3. **Performance**
-   - Keep hook logic lightweight
-   - Avoid unnecessary database operations
-   - Use batch operations when possible
-
-4. **Security**
-   - Validate all input data
-   - Check permissions before operations
-   - Sanitize error messages
-
-For more detailed information about specific hooks and their implementation, refer to the [Juno Functions documentation](/docs/build/functions). 
