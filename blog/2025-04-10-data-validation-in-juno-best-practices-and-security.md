@@ -1,21 +1,31 @@
 ---
+slug: data-validation-in-juno-best-practices-and-security
+title: "Data Validation in Juno: Best Practices and Security Considerations"
+authors: [fairtale]
+tags: [programming, development, assertion, validation]
+image: https://images.unsplash.com/photo-1525011268546-bf3f9b007f6a?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 draft: true
 ---
 
+![](https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?q=80&w=2946&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
-# Data Validation in Juno: Best Practices and Security Considerations
+_Photo by [Johann Walter Bantz](https://unsplash.com/fr/@1walter2)_
+
+---
 
 ## Why Data Validation Matters in Decentralized Apps
 
 Data validation is always important. However, web3 comes with its own set of challenges which makes validation an even more important part of building trustworthy apps:
 
 1. **No Central Administrator**: Unlike traditional systems, decentralized apps have no admin backdoor to fix data issues
-3. **Limited Data Access**: Developers often can't directly access or examine user data due to encryption and/or privacy
-2. **Data Immutability**: Once written to the blockchain, data can be difficult or impossible to modify
+2. **Limited Data Access**: Developers often can't directly access or examine user data due to encryption and/or privacy
+3. **Data Immutability**: Once written to the blockchain, data can be difficult or impossible to modify
 4. **Client-Side Vulnerability**: Front-end validation can be bypassed by determined users (like in web2)
 5. **Security Risks**: Invalid or malicious data can compromise application integrity and user trust
 
 Getting validation right from the start is not just a best practice—it's essential for the secure and reliable operation of your application.
+
+---
 
 ## Available Approaches
 
@@ -23,15 +33,17 @@ Juno offers three main approaches for data validation:
 
 1. **Hooks (on_set_doc)**
 2. **Custom Endpoints**
-3. **Assertion Hooks (assert_set_doc)** <--- Recommended approach
+3. **Assertion Hooks (assert_set_doc)** #---- Recommended approach
 
 Let's explore each approach with simple examples:
+
+---
 
 ### on_set_doc Hooks
 
 `on_set_doc` is a Hook that is triggered after a document has been written to the database. It offers a way to execute custom logic whenever data is added or updated to a collection using the set_doc function.
 
-This allows for many use-cases, even for certain types of validation, but this hook runs *after* the data has already been written.
+This allows for many use-cases, even for certain types of validation, but this hook runs _after_ the data has already been written.
 
 ```rust
 // Example of validation and cleanup in on_set_doc
@@ -42,7 +54,7 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     let key = context.data.key;
     let doc = &context.data.data.after;  // Reference to the full document after update
     let user_data: UserData = decode_doc_data(&doc.data)?;  // Decoded custom data from the document
-    
+
     // Step 2: Validate the data
     if user_data.username.len() < 3 {
         // Step 3: If validation fails, delete the document using low-level store function
@@ -54,16 +66,15 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
                 version: Some(doc.version),  // Use the version from our doc reference
             }
         ).await?;
-        
+
         // Log the error instead of returning it to avoid trapping
         ic_cdk::print("Username must be at least 3 characters");
         return Ok(());
     }
-    
+
     Ok(())
 }
 ```
-
 
 **Issues:**
 
@@ -74,6 +85,8 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
 - Can't return success/error messages to the frontend
 
 There are also other Juno hooks, but in general, they provide a way to execute custom logic whenever data is added, modified, or deleted from a Juno datastore collection.
+
+---
 
 ### Custom Endpoints using Serverless Functions
 
@@ -98,12 +111,12 @@ async fn create_user(key: String, user_data: UserData) -> Result<(), String> {
     if !user_data.username.chars().all(|c| c.is_alphanumeric()) {
         return Err("Username must contain only letters and numbers".to_string());
     }
-    
+
     // Step 2: Create and store document
     // First encode our data into a blob that Juno can store into the 'data' field
     let encoded_data = encode_doc_data(&user_data)
         .map_err(|e| format!("Failed to encode user data: {}", e))?;
-    
+
     // Create a SetDoc instance - this is the required format for setting documents in Juno
     // SetDoc contains only what we want to store - Juno handles all metadata:
     // - created_at/updated_at timestamps
@@ -114,7 +127,7 @@ async fn create_user(key: String, user_data: UserData) -> Result<(), String> {
         description: None,         // Optional field for filtering/searching
         version: None             // None for new docs, Some(version) for updates
     };
-    
+
     // Use set_doc_store to save the document
     // This is Juno's low-level storage function that:
     // 1. Takes ownership of the document (caller's Principal)
@@ -147,6 +160,8 @@ The common workaround is to restrict the datastore collection to "controller" ac
 - Requires building a custom permission system from scratch
 - Splits validation logic from data storage
 
+---
+
 ### assert_set_doc Hooks (Recommended)
 
 The `assert_set_doc` hook runs BEFORE any data is written to the database, allowing you to validate and reject invalid submissions immediately. This is the most secure validation method in Juno as it integrates directly with the core data storage mechanism.
@@ -171,16 +186,16 @@ fn assert_set_doc(context: AssertSetDocContext) -> Result<(), String> {
             // Access username from the document
             let data = context.data.data.proposed.data.as_object()
                 .ok_or("Invalid data format")?;
-            
+
             let username = data.get("username")
                 .and_then(|v| v.as_str())
                 .ok_or("Username is required")?;
-            
+
             // Validate username
             if username.len() < 3 {
                 return Err("Username must be at least 3 characters".to_string());
             }
-            
+
             Ok(())
         },
         _ => Ok(())
@@ -201,6 +216,8 @@ fn assert_set_doc(context: AssertSetDocContext) -> Result<(), String> {
 - Allows users to use setDoc as intended in Juno
 - Can return custom error messages to the frontend
 
+---
+
 ## Hook Execution Flow
 
 Here's the sequence of events during a document write operation:
@@ -212,6 +229,8 @@ Here's the sequence of events during a document write operation:
 3. Data is written to Datastore
 4. `on_set_doc` hook runs (post-processing)
 5. Operation completes
+
+---
 
 ## When and How to Use Each Approach
 
@@ -242,6 +261,8 @@ Here's the sequence of events during a document write operation:
 - Batch processing
 - Rate limiting
 
+---
+
 ## Best Practices Summary
 
 1. **Use assert_set_doc for Validation**: Always validate data before storage
@@ -251,6 +272,8 @@ Here's the sequence of events during a document write operation:
 5. **Use Version Control**: Prevent race conditions with proper versioning
 6. **Implement Error Handling**: Provide clear feedback for validation failures
 7. **Maintain Audit Trails**: Log validation events for security analysis
+
+---
 
 ## Production Use-Case Examples
 
@@ -280,12 +303,12 @@ fn validate_user_document(context: &AssertSetDocContext) -> Result<(), String> {
     // Decode and validate the user data structure
     let user_data: UserData = decode_doc_data(&context.data.data.proposed.data)
         .map_err(|e| format!("Invalid user data format: {}", e))?;
-    
+
     // Validate username format (3-20 chars, alphanumeric + limited symbols)
     if !is_valid_username(&user_data.username) {
         return Err("Username must be 3-20 characters and contain only letters, numbers, and underscores".to_string());
     }
-    
+
     // Check username uniqueness by searching existing documents
     let search_pattern = format!("username={};", user_data.username.to_lowercase());
     let existing_users = list_docs(
@@ -298,17 +321,17 @@ fn validate_user_document(context: &AssertSetDocContext) -> Result<(), String> {
             ..Default::default()
         },
     );
-    
+
     // If this is an update operation, exclude the current document
     let is_update = context.data.data.before.is_some();
     for (doc_key, _) in existing_users.items {
         if is_update && doc_key == context.data.key {
             continue;
         }
-        
+
         return Err(format!("Username '{}' is already taken", user_data.username));
     }
-    
+
     Ok(())
 }
 
@@ -316,17 +339,17 @@ fn validate_vote_document(context: &AssertSetDocContext) -> Result<(), String> {
     // Decode vote data
     let vote_data: VoteData = decode_doc_data(&context.data.data.proposed.data)
         .map_err(|e| format!("Invalid vote data format: {}", e))?;
-    
+
     // Validate vote value constraints
     if vote_data.value < -1.0 || vote_data.value > 1.0 {
         return Err(format!("Vote value must be -1, 0, or 1 (got: {})", vote_data.value));
     }
-    
+
     // Validate vote weight constraints
     if vote_data.weight < 0.0 || vote_data.weight > 1.0 {
         return Err(format!("Vote weight must be between 0.0 and 1.0 (got: {})", vote_data.weight));
     }
-    
+
     // Validate tag exists
     let tag_params = ListParams {
         matcher: Some(ListMatcher {
@@ -335,17 +358,17 @@ fn validate_vote_document(context: &AssertSetDocContext) -> Result<(), String> {
         }),
         ..Default::default()
     };
-    
+
     let existing_tags = list_docs(String::from("tags"), tag_params);
     if existing_tags.items.is_empty() {
         return Err(format!("Tag not found: {}", vote_data.tag_key));
     }
-    
+
     // Prevent self-voting
     if vote_data.author_key == vote_data.target_key {
         return Err("Users cannot vote on themselves".to_string());
     }
-    
+
     Ok(())
 }
 
@@ -353,12 +376,12 @@ fn validate_tag_document(context: &AssertSetDocContext) -> Result<(), String> {
     // Decode tag data
     let tag_data: TagData = decode_doc_data(&context.data.data.proposed.data)
         .map_err(|e| format!("Invalid tag data format: {}", e))?;
-    
+
     // Validate tag name format and uniqueness
     if !is_valid_tag_name(&tag_data.name) {
         return Err("Tag name must be 3-50 characters and contain only letters, numbers, and underscores".to_string());
     }
-    
+
     // Check tag name uniqueness
     let search_pattern = format!("name={};", tag_data.name.to_lowercase());
     let existing_tags = list_docs(
@@ -371,7 +394,7 @@ fn validate_tag_document(context: &AssertSetDocContext) -> Result<(), String> {
             ..Default::default()
         },
     );
-    
+
     let is_update = context.data.data.before.is_some();
     for (doc_key, _) in existing_tags.items {
         if is_update && doc_key == context.data.key {
@@ -379,7 +402,7 @@ fn validate_tag_document(context: &AssertSetDocContext) -> Result<(), String> {
         }
         return Err(format!("Tag name '{}' is already taken", tag_data.name));
     }
-    
+
     // Validate description length
     if tag_data.description.len() > 1024 {
         return Err(format!(
@@ -387,10 +410,10 @@ fn validate_tag_document(context: &AssertSetDocContext) -> Result<(), String> {
             tag_data.description.len()
         ));
     }
-    
+
     // Validate time periods
     validate_time_periods(&tag_data.time_periods)?;
-    
+
     // Validate vote reward
     if tag_data.vote_reward < 0.0 || tag_data.vote_reward > 1.0 {
         return Err(format!(
@@ -398,7 +421,7 @@ fn validate_tag_document(context: &AssertSetDocContext) -> Result<(), String> {
             tag_data.vote_reward
         ));
     }
-    
+
     Ok(())
 }
 
@@ -412,7 +435,7 @@ fn validate_time_periods(periods: &[TimePeriod]) -> Result<(), String> {
             periods.len()
         ));
     }
-    
+
     // Last period must be "infinity" (999 months)
     let last_period = periods.last().unwrap();
     if last_period.months != 999 {
@@ -421,7 +444,7 @@ fn validate_time_periods(periods: &[TimePeriod]) -> Result<(), String> {
             last_period.months
         ));
     }
-    
+
     // Validate each period's configuration
     for (i, period) in periods.iter().enumerate() {
         // Validate multiplier range (0.05 to 10.0)
@@ -431,7 +454,7 @@ fn validate_time_periods(periods: &[TimePeriod]) -> Result<(), String> {
                 i + 1, period.multiplier
             ));
         }
-        
+
         // Validate multiplier step increments (0.05)
         let multiplier_int = (period.multiplier * 100.0).round();
         let remainder = multiplier_int % 5.0;
@@ -441,7 +464,7 @@ fn validate_time_periods(periods: &[TimePeriod]) -> Result<(), String> {
                 i + 1, period.multiplier
             ));
         }
-        
+
         // Validate month duration
         if period.months == 0 {
             return Err(format!(
@@ -450,12 +473,14 @@ fn validate_time_periods(periods: &[TimePeriod]) -> Result<(), String> {
             ));
         }
     }
-    
+
     Ok(())
 }
 ```
 
 Remember: Security is about preventing unauthorized or invalid operations, not just making them difficult. assert_set_doc hooks provide the only guaranteed way to validate all data operations in Juno's Datastore.
+
+---
 
 ## Reference: Available Juno Hooks and Context Types
 
@@ -504,6 +529,8 @@ use junobuild_satellite::{
 };
 ```
 
+---
+
 ### Where to find the hooks and assertions in your project
 
 When you run `juno dev eject`, all available hooks and assertions are scaffolded in your `lib.rs` module. However, you can selectively enable only the features you need by disabling default features in your `Cargo.toml` and explicitly specifying the ones you want to use.
@@ -514,5 +541,3 @@ Example configuration for using only `on_set_doc` and `assert_set_doc`:
 [dependencies]
 junobuild-satellite = { version = "0.0.21", default-features = false, features = ["on_set_doc", "assert_set_doc"] }
 ```
-
-

@@ -24,3 +24,12 @@ sam-the-tutor:
   socials:
     x: samthetutor2
     github: sam-thetutor
+
+fairtale:
+  name: Fairtale
+  url: https://x.com/fairtal3
+  image_url: https://pbs.twimg.com/profile_images/1869034633737752576/buJ6oZQs_400x400.jpg
+  page: true
+  socials:
+    x: fairtal3
+    github: fairtale5
