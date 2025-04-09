@@ -239,7 +239,7 @@ Here's the sequence of events during a document write operation:
 
 ## When and How to Use Each Approach
 
-### Use assert_set_doc Hooks For
+### Use assert_set_doc For
 
 - Essential data validation
 - Structure and format verification
@@ -248,7 +248,7 @@ Here's the sequence of events during a document write operation:
 - Uniqueness validation
 - Relationship verification
 
-### Use on_set_doc Hooks For:
+### Use on_set_doc For:
 
 - Post-processing operations
 - Notifications and logging
@@ -260,11 +260,8 @@ Here's the sequence of events during a document write operation:
 ### Use Custom Endpoints For:
 
 - Complex multi-step workflows
-- User interface integration
 - Specialized flows with custom logic
-- Operations requiring external APIs
 - Batch processing
-- Rate limiting
 
 ---
 
