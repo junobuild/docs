@@ -148,7 +148,7 @@ async fn create_user(key: String, user_data: UserData) -> Result<(), String> {
 }
 ```
 
-While custom endpoints offer great flexibility for building specialized workflows, they come with significant security challenges. The main problem is that the original `setDoc` endpoint remains fully accessible to users, allowing them to bypass your custom validation entirely by simply calling the standard Juno SDK functions directly.
+While custom endpoints offer great flexibility for building specialized workflows, they introduce important security considerations. A key issue is that the original `setDoc` endpoint remains accessible — meaning users can, to some extension, still bypass your custom validation logic by calling the standard Juno SDK methods directly from the frontend. As a result, even if you've added strict validation in your custom endpoints, the underlying collection can still be modified unless you take additional steps to restrict access.
 
 The common workaround is to restrict the datastore collection to "controller" access so the public can't write to it directly, forcing users to interact only through your custom functions. However, this approach creates its own problems:
 
