@@ -91,6 +91,12 @@ There are also other Juno hooks, but in general, they provide a way to execute c
 
 Custom Endpoints are Juno serverless functions that expose new API endpoints through Candid (the Internet Computer's interface description language). They provide a validation layer through custom API routes before data reaches Juno's datastore, allowing for complex multi-step operations with custom validation logic.
 
+:::caution
+
+This example is provided as-is and is intended for demonstration purposes only. It does not include comprehensive security validations.
+
+:::
+
 ```rust
 use junobuild_satellite::{set_doc_store, SetDoc};  // SetDoc is the struct type for document creation/updates
 use junobuild_utils::encode_doc_data;
