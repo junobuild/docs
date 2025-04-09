@@ -171,7 +171,7 @@ The common workaround is to restrict the datastore collection to "controller" ac
 
 The `assert_set_doc` hook runs BEFORE any data is written to the database, allowing you to validate and reject invalid submissions immediately. This is the most secure validation method in Juno as it integrates directly with the core data storage mechanism.
 
-When a user calls `setDoc` through the Juno SDK, the `assert_set_doc` hook is automatically triggered before any data is written to the blockchain. If your validation logic returns an error, the entire operation is cancelled, and the error is returned to the frontend. This ensures invalid data never reaches your datastore in the first place, saving computational resources and maintaining data integrity.
+When a user calls `setDoc` through the Juno SDK, the `assert_set_doc` hook is automatically triggered before any data is written to the blockchain. If your validation logic returns an error, the entire operation is cancelled and any changes are rolled back, and the error is returned to the frontend. This ensures invalid data never reaches your datastore in the first place, saving computational resources and maintaining data integrity.
 
 Unlike other approaches, `assert_set_doc` hooks:
 
