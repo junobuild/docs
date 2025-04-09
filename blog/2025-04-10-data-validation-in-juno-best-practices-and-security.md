@@ -3,7 +3,7 @@ slug: data-validation-in-juno-best-practices-and-security
 title: "Data Validation in Juno: Best Practices and Security Considerations"
 authors: [fairtale]
 tags: [programming, development, assertion, validation]
-image: https://images.unsplash.com/photo-1525011268546-bf3f9b007f6a?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+image: https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?q=80&w=2946&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 draft: true
 ---
 
@@ -41,14 +41,14 @@ Let's explore each approach with simple examples:
 
 ### on_set_doc Hooks
 
-`on_set_doc` is a Hook that is triggered after a document has been written to the database. It offers a way to execute custom logic whenever data is added or updated to a collection using the set_doc function.
+`on_set_doc` is a Hook that is triggered after a document has been written to the database. It offers a way to execute custom logic whenever data is added or updated to a collection using the `setDoc` function executed on the client side.
 
 This allows for many use-cases, even for certain types of validation, but this hook runs _after_ the data has already been written.
 
 ```rust
 // Example of validation and cleanup in on_set_doc
 #[on_set_doc(collections = ["users"])]
-async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
+fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     // Step 1: Get all context data we'll need upfront
     let collection = context.data.collection;
     let key = context.data.key;
@@ -59,17 +59,16 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     if user_data.username.len() < 3 {
         // Step 3: If validation fails, delete the document using low-level store function
         delete_doc_store(
-            ic_cdk::id(),  // Use canister's Principal ID since this is a system operation
+            ic_cdk::id(),  // Use Satellite's Principal ID since this is a system operation
             collection,
             key,
             DelDoc {
                 version: Some(doc.version),  // Use the version from our doc reference
             }
-        ).await?;
+        )?;
 
         // Log the error instead of returning it to avoid trapping
         ic_cdk::print("Username must be at least 3 characters");
-        return Ok(());
     }
 
     Ok(())
@@ -79,7 +78,7 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
 **Issues:**
 
 - The on_set_doc hook only executes AFTER data is already written to the database, which is not ideal for validation.
-- Since it only happens after the data is already written, it can lead to unwanted cascading effects. For example: let's say each new user needs to be added to some list. If the user is invalid, we can't add them to the list, but since the hook runs after the data is written, the user will be added to the list before we can reject them. This adds unwanted complexity to your code, forcing the developer to manage multiple on_set_doc hooks in the same function.
+- Since it only happens after the data is already written, it can lead to unwanted effects. For example: let's say a new data needs to be added to some list. If it is invalid, we can't add it to the list, but since the hook runs after the data is written, the data will be added to the list anyway before we can reject them. This adds unwanted complexity to your code, forcing the developer to manage multiple on_set_doc hooks in the same function.
 - Overhead: invalid data is written (costly operation) then might be rejected and need to be deleted (another costly operation)
 - Not ideal for validation since it can't prevent invalid writes
 - Can't return success/error messages to the frontend
@@ -91,6 +90,12 @@ There are also other Juno hooks, but in general, they provide a way to execute c
 ### Custom Endpoints using Serverless Functions
 
 Custom Endpoints are Juno serverless functions that expose new API endpoints through Candid (the Internet Computer's interface description language). They provide a validation layer through custom API routes before data reaches Juno's datastore, allowing for complex multi-step operations with custom validation logic.
+
+:::caution
+
+This example is provided as-is and is intended for demonstration purposes only. It does not include comprehensive security validations.
+
+:::
 
 ```rust
 use junobuild_satellite::{set_doc_store, SetDoc};  // SetDoc is the struct type for document creation/updates
@@ -143,7 +148,7 @@ async fn create_user(key: String, user_data: UserData) -> Result<(), String> {
 }
 ```
 
-While custom endpoints offer great flexibility for building specialized workflows, they come with significant security challenges. The main problem is that the original `setDoc` endpoint remains fully accessible to users, allowing them to bypass your custom validation entirely by simply calling the standard Juno SDK functions directly.
+While custom endpoints offer great flexibility for building specialized workflows, they introduce important security considerations. A key issue is that the original `setDoc` endpoint remains accessible — meaning users can, to some extension, still bypass your custom validation logic by calling the standard Juno SDK methods directly from the frontend. As a result, even if you've added strict validation in your custom endpoints, the underlying collection can still be modified unless you take additional steps to restrict access.
 
 The common workaround is to restrict the datastore collection to "controller" access so the public can't write to it directly, forcing users to interact only through your custom functions. However, this approach creates its own problems:
 
@@ -166,7 +171,7 @@ The common workaround is to restrict the datastore collection to "controller" ac
 
 The `assert_set_doc` hook runs BEFORE any data is written to the database, allowing you to validate and reject invalid submissions immediately. This is the most secure validation method in Juno as it integrates directly with the core data storage mechanism.
 
-When a user calls `setDoc` through the Juno SDK, the `assert_set_doc` hook is automatically triggered before any data is written to the blockchain. If your validation logic returns an error, the entire operation is cancelled, and the error is returned to the frontend. This ensures invalid data never reaches your datastore in the first place, saving computational resources and maintaining data integrity.
+When a user calls `setDoc` through the Juno SDK, the `assert_set_doc` hook is automatically triggered before any data is written to the blockchain. If your validation logic returns an error, the entire operation is cancelled and any changes are rolled back, and the error is returned to the frontend. This ensures invalid data never reaches your datastore in the first place, saving computational resources and maintaining data integrity.
 
 Unlike other approaches, `assert_set_doc` hooks:
 
@@ -234,7 +239,7 @@ Here's the sequence of events during a document write operation:
 
 ## When and How to Use Each Approach
 
-### Use assert_set_doc Hooks For
+### Use assert_set_doc For
 
 - Essential data validation
 - Structure and format verification
@@ -243,7 +248,7 @@ Here's the sequence of events during a document write operation:
 - Uniqueness validation
 - Relationship verification
 
-### Use on_set_doc Hooks For:
+### Use on_set_doc For:
 
 - Post-processing operations
 - Notifications and logging
@@ -255,11 +260,8 @@ Here's the sequence of events during a document write operation:
 ### Use Custom Endpoints For:
 
 - Complex multi-step workflows
-- User interface integration
 - Specialized flows with custom logic
-- Operations requiring external APIs
 - Batch processing
-- Rate limiting
 
 ---
 
@@ -482,62 +484,17 @@ Remember: Security is about preventing unauthorized or invalid operations, not j
 
 ---
 
-## Reference: Available Juno Hooks and Context Types
+## References
 
-This section provides a comprehensive reference of all available Juno hooks and their corresponding context types.
-
-Note: For up-to date information on the available context types and utilities, refer to the [Juno Satellite API Reference](https://docs.rs/junobuild-satellite/0.0.21/junobuild_satellite/index.html#usage).
-
-### Available Macro Decorators
-
-```rust
-use junobuild_macros::{
-    assert_delete_asset,          // For asserting asset deletion
-    assert_delete_doc,            // For asserting document deletion
-    assert_set_doc,               // For asserting document creation/update
-    assert_upload_asset,          // For asserting asset upload
-    on_delete_asset,              // For handling asset deletion
-    on_delete_doc,                // For handling document deletion
-    on_delete_filtered_assets,    // For handling filtered asset deletion
-    on_delete_filtered_docs,      // For handling filtered document deletion
-    on_delete_many_assets,        // For handling batch asset deletion
-    on_delete_many_docs,          // For handling batch document deletion
-    on_set_doc,                   // For handling document creation/update
-    on_set_many_docs,             // For handling batch document creation/update
-    on_upload_asset,              // For handling asset upload
-};
-```
-
-### Available Context Types and Utilities
-
-```rust
-use junobuild_satellite::{
-    include_satellite,              // Required macro for Juno integration
-    AssertDeleteAssetContext,       // Context for asset deletion assertion
-    AssertDeleteDocContext,         // Context for document deletion assertion
-    AssertSetDocContext,            // Context for document creation/update assertion
-    AssertUploadAssetContext,       // Context for asset upload assertion
-    OnDeleteAssetContext,           // Context for asset deletion handler
-    OnDeleteDocContext,             // Context for document deletion handler
-    OnDeleteFilteredAssetsContext,  // Context for filtered asset deletion
-    OnDeleteFilteredDocsContext,    // Context for filtered document deletion
-    OnDeleteManyAssetsContext,      // Context for batch asset deletion
-    OnDeleteManyDocsContext,        // Context for batch document deletion
-    OnSetDocContext,                // Context for document creation/update
-    OnSetManyDocsContext,           // Context for batch document creation/update
-    OnUploadAssetContext,           // Context for asset upload handler
-};
-```
+- [Deep Dive into Serverless Functions](/docs/build/functions/)
+- [Available Hooks](/docs/build/functions/#available-hooks)
+- [List of Assertions](/docs/build/functions/#assertions)
+- [Examples of Writing Functions in Rust](/docs/guides/rust)
 
 ---
 
-### Where to find the hooks and assertions in your project
+✍️ **This blog post was contributed by [Fairtale](https://x.com/fairtal3), creators of [Solutio](https://solutio.one/).**
 
-When you run `juno dev eject`, all available hooks and assertions are scaffolded in your `lib.rs` module. However, you can selectively enable only the features you need by disabling default features in your `Cargo.toml` and explicitly specifying the ones you want to use.
+Solutio is a new kind of platform where users crowdfund the software they need, and developers earn by building it. Instead of waiting for maintainers or hiring devs alone, communities can come together to fund bug fixes, new features, or even entire tools — paying only when the result meets their expectations.
 
-Example configuration for using only `on_set_doc` and `assert_set_doc`:
-
-```toml
-[dependencies]
-junobuild-satellite = { version = "0.0.21", default-features = false, features = ["on_set_doc", "assert_set_doc"] }
-```
+[![Solutio – Request software you need and share the costs with others](https://solutio.one/solutio-images/LogoSolutio_Wide_Black_Orange.png)](https://solutio.one/)
