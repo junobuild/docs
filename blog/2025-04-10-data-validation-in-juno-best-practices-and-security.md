@@ -1,6 +1,6 @@
 ---
 draft: true
-___
+---
 
 
 # Data Validation in Juno: Best Practices and Security Considerations
