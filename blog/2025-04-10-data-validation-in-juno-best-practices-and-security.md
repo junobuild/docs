@@ -78,7 +78,7 @@ fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
 **Issues:**
 
 - The on_set_doc hook only executes AFTER data is already written to the database, which is not ideal for validation.
-- Since it only happens after the data is already written, it can lead to unwanted cascading effects. For example: let's say each new user needs to be added to some list. If the user is invalid, we can't add them to the list, but since the hook runs after the data is written, the user will be added to the list before we can reject them. This adds unwanted complexity to your code, forcing the developer to manage multiple on_set_doc hooks in the same function.
+- Since it only happens after the data is already written, it can lead to unwanted effects. For example: let's say a new data needs to be added to some list. If it is invalid, we can't add it to the list, but since the hook runs after the data is written, the data will be added to the list anyway before we can reject them. This adds unwanted complexity to your code, forcing the developer to manage multiple on_set_doc hooks in the same function.
 - Overhead: invalid data is written (costly operation) then might be rejected and need to be deleted (another costly operation)
 - Not ideal for validation since it can't prevent invalid writes
 - Can't return success/error messages to the frontend
