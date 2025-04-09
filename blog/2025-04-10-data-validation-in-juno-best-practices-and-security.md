@@ -33,7 +33,7 @@ Juno offers three main approaches for data validation:
 
 1. **Hooks (on_set_doc)**
 2. **Custom Endpoints**
-3. **Assertion Hooks (assert_set_doc)** #---- Recommended approach
+3. **Assertion Hooks (assert_set_doc)** 👈 --- Recommended approach
 
 Let's explore each approach with simple examples:
 
