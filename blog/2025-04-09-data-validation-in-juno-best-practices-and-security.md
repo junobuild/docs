@@ -4,7 +4,6 @@ title: "Data Validation in Juno: Best Practices and Security Considerations"
 authors: [fairtale]
 tags: [programming, development, assertion, validation]
 image: https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?q=80&w=2946&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-draft: true
 ---
 
 ![](https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?q=80&w=2946&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
