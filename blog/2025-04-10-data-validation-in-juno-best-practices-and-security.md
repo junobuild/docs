@@ -3,7 +3,7 @@ slug: data-validation-in-juno-best-practices-and-security
 title: "Data Validation in Juno: Best Practices and Security Considerations"
 authors: [fairtale]
 tags: [programming, development, assertion, validation]
-image: https://images.unsplash.com/photo-1525011268546-bf3f9b007f6a?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+image: https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?q=80&w=2946&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 draft: true
 ---
 
@@ -484,62 +484,17 @@ Remember: Security is about preventing unauthorized or invalid operations, not j
 
 ---
 
-## Reference: Available Juno Hooks and Context Types
+## References
 
-This section provides a comprehensive reference of all available Juno hooks and their corresponding context types.
-
-Note: For up-to date information on the available context types and utilities, refer to the [Juno Satellite API Reference](https://docs.rs/junobuild-satellite/0.0.21/junobuild_satellite/index.html#usage).
-
-### Available Macro Decorators
-
-```rust
-use junobuild_macros::{
-    assert_delete_asset,          // For asserting asset deletion
-    assert_delete_doc,            // For asserting document deletion
-    assert_set_doc,               // For asserting document creation/update
-    assert_upload_asset,          // For asserting asset upload
-    on_delete_asset,              // For handling asset deletion
-    on_delete_doc,                // For handling document deletion
-    on_delete_filtered_assets,    // For handling filtered asset deletion
-    on_delete_filtered_docs,      // For handling filtered document deletion
-    on_delete_many_assets,        // For handling batch asset deletion
-    on_delete_many_docs,          // For handling batch document deletion
-    on_set_doc,                   // For handling document creation/update
-    on_set_many_docs,             // For handling batch document creation/update
-    on_upload_asset,              // For handling asset upload
-};
-```
-
-### Available Context Types and Utilities
-
-```rust
-use junobuild_satellite::{
-    include_satellite,              // Required macro for Juno integration
-    AssertDeleteAssetContext,       // Context for asset deletion assertion
-    AssertDeleteDocContext,         // Context for document deletion assertion
-    AssertSetDocContext,            // Context for document creation/update assertion
-    AssertUploadAssetContext,       // Context for asset upload assertion
-    OnDeleteAssetContext,           // Context for asset deletion handler
-    OnDeleteDocContext,             // Context for document deletion handler
-    OnDeleteFilteredAssetsContext,  // Context for filtered asset deletion
-    OnDeleteFilteredDocsContext,    // Context for filtered document deletion
-    OnDeleteManyAssetsContext,      // Context for batch asset deletion
-    OnDeleteManyDocsContext,        // Context for batch document deletion
-    OnSetDocContext,                // Context for document creation/update
-    OnSetManyDocsContext,           // Context for batch document creation/update
-    OnUploadAssetContext,           // Context for asset upload handler
-};
-```
+- [Deep Dive into Serverless Functions](/docs/build/functions/)
+- [Available Hooks](/docs/build/functions/#available-hooks)
+- [List of Assertions](/docs/build/functions/#assertions)
+- [Examples of Writing Functions in Rust](/docs/guides/rust)
 
 ---
 
-### Where to find the hooks and assertions in your project
+✍️ **This blog post was contributed by [Fairtale](https://x.com/fairtal3), creators of [Solutio](https://solutio.one/).**
 
-When you run `juno dev eject`, all available hooks and assertions are scaffolded in your `lib.rs` module. However, you can selectively enable only the features you need by disabling default features in your `Cargo.toml` and explicitly specifying the ones you want to use.
+Solutio is a new kind of platform where users crowdfund the software they need, and developers earn by building it. Instead of waiting for maintainers or hiring devs alone, communities can come together to fund bug fixes, new features, or even entire tools — paying only when the result meets their expectations.
 
-Example configuration for using only `on_set_doc` and `assert_set_doc`:
-
-```toml
-[dependencies]
-junobuild-satellite = { version = "0.0.21", default-features = false, features = ["on_set_doc", "assert_set_doc"] }
-```
+[![Solutio – Request software you need and share the costs with others](https://solutio.one/solutio-images/LogoSolutio_Wide_Black_Orange.png)](https://solutio.one/)
