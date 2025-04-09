@@ -41,14 +41,14 @@ Let's explore each approach with simple examples:
 
 ### on_set_doc Hooks
 
-`on_set_doc` is a Hook that is triggered after a document has been written to the database. It offers a way to execute custom logic whenever data is added or updated to a collection using the set_doc function.
+`on_set_doc` is a Hook that is triggered after a document has been written to the database. It offers a way to execute custom logic whenever data is added or updated to a collection using the `setDoc` function executed on the client side.
 
 This allows for many use-cases, even for certain types of validation, but this hook runs _after_ the data has already been written.
 
 ```rust
 // Example of validation and cleanup in on_set_doc
 #[on_set_doc(collections = ["users"])]
-async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
+fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     // Step 1: Get all context data we'll need upfront
     let collection = context.data.collection;
     let key = context.data.key;
@@ -59,17 +59,16 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     if user_data.username.len() < 3 {
         // Step 3: If validation fails, delete the document using low-level store function
         delete_doc_store(
-            ic_cdk::id(),  // Use canister's Principal ID since this is a system operation
+            ic_cdk::id(),  // Use Satellite's Principal ID since this is a system operation
             collection,
             key,
             DelDoc {
                 version: Some(doc.version),  // Use the version from our doc reference
             }
-        ).await?;
+        )?;
 
         // Log the error instead of returning it to avoid trapping
         ic_cdk::print("Username must be at least 3 characters");
-        return Ok(());
     }
 
     Ok(())
