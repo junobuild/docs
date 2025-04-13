@@ -35,3 +35,11 @@ export default defineConfig({
   }
 });
 ```
+
+---
+
+## Accessing the Console UI
+
+When running Skylab, the Console UI is available at http://localhost:5866.
+
+This is the same interface used in production at [console.juno.build](https://console.juno.build), allowing you to create Satellites and Orbiters, inspect your wallet, manage your Datastore and Storage, etc.
