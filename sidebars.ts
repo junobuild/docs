@@ -238,6 +238,21 @@ const sidebars: SidebarsConfig = {
           ]
         }
       ]
+    },
+    {
+      type: "category",
+      label: "Emulator",
+      link: {
+        type: "generated-index",
+        slug: "/reference/emulator",
+        description:
+          "The emulator provides a complete local environment to build, test, and run your project without deploying anything live. There are two images available, depending on your needs:"
+      },
+      items: [
+        "reference/emulator/skylab",
+        "reference/emulator/satellite",
+        "reference/emulator/infrastructure"
+      ]
     }
   ]
 };

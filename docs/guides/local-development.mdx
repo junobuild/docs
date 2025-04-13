@@ -6,17 +6,25 @@ description: Set-up the local emulator with Docker
 
 # Local Development
 
-The tooling is designed with local-first development in mind. Whether you're using the official [plugins](../reference/plugins.md) (Next.js, Vite) or creating a new project with `npm create juno@latest`, local development is the default experience.
+Juno offers something most platforms don’t: a full local development environment that closely mirrors production.
 
-When running `npm run dev` (or `start`), your app connects to a locally simulated Satellite via the provided emulator — so you can build and test your backend logic without deploying to the live network.
+When you develop locally, you're running an emulator that includes the well known infrastructure services — including the actual administration Console UI.
 
-For continuous integration workflows or advanced setups, this guide shows how to run a Docker-based sandbox that closely mirrors the production environment.
+This enables:
+
+- A development experience that mirrors mainnet, helping you build with confidence
+- A smooth dev loop, from prototype to deployment
+- A unique way to build, debug, and validate smart contract logic and frontend behavior — all in one place
+
+![A screenshot of the DEV Console UI login screen](../img/dev-console/login.webp)
 
 ---
 
 ## Before you begin
 
-Make sure you have Docker installed on your machine ([Windows](https://docs.docker.com/desktop/install/windows-install/), [MacOS](https://docs.docker.com/desktop/install/mac-install/), or [Linux](https://docs.docker.com/desktop/install/linux-install/)).
+Docker is used to run a self-contained local environment with all services, replicas, and the Console UI.
+
+Make sure the tool is installed on your machine ([Windows](https://docs.docker.com/desktop/install/windows-install/), [MacOS](https://docs.docker.com/desktop/install/mac-install/), or [Linux](https://docs.docker.com/desktop/install/linux-install/)).
 
 :::note
 
@@ -42,7 +50,7 @@ Then, in your project folder, start the local emulator with:
 juno dev start
 ```
 
-This will launch a local Satellite along with a local Internet Identity, allowing you to develop and test without deploying anything live.
+This will launch the emulator along with all the services needed to develop your project.
 
 We recommend running this in a dedicated terminal window or tab, while your frontend project (e.g. using Vite or Next.js) runs separately using npm run dev or similar.
 
@@ -51,6 +59,43 @@ To stop the emulator, run:
 ```bash
 juno dev stop
 ```
+
+---
+
+## Available Images
+
+Juno supports two main environments for running your project locally, each tailored to different use cases.
+
+| Image                 | Description                                  | Includes Console UI | Best for                    |
+| --------------------- | -------------------------------------------- | ------------------- | --------------------------- |
+| `junobuild/skylab`    | All-in-one local environment like production | ✅                  | End-to-end dev, exploration |
+| `junobuild/satellite` | Lightweight setup running a single Satellite | ❌                  | CI, focused app testing     |
+
+Both variants run on a local network, services and support live-reloading for serverless functions written in Rust or TypeScript.
+
+- Use **Skylab** for the full experience, including the Console UI and supporting infrastructure.
+- Use **Satellite** when you want a faster, minimal setup for a specific app or automated tests.
+
+The table below shows which modules are available in each image and helps clarify what’s included when running locally with Skylab or Satellite.
+
+| Module                                      | Skylab ✅ | Satellite ✅ |
+| ------------------------------------------- | --------- | ------------ |
+| Console (Backend)                           | ✅        | ❌           |
+| Console (UI)                                | ✅        | ❌           |
+| Create Satellites / Orbiters via Console UI | ✅        | ❌           |
+| Default (auto-deployed) Satellite           | ❌        | ✅           |
+| Observatory                                 | ✅        | ❌           |
+| Internet Identity                           | ✅        | ✅           |
+| ICP Ledger                                  | ✅        | ✅           |
+| ICP Index                                   | ✅        | ✅           |
+| NNS Governance                              | ✅        | ❌           |
+| Cycles Minting (CMC)                        | ✅        | ❌           |
+
+:::note
+
+The default (auto-deployed) Satellite is available with a predefined canister ID `jx5yt-yyaaa-aaaal-abzbq-cai`.
+
+:::
 
 ---
 
@@ -68,7 +113,11 @@ Modify the following information of the `docker-compose.yml` file to tweak the c
 
 The default port `5987` is used for communication with the locally deployed satellites and other modules in the local environment (replica). This is the primary port for interaction with the application.
 
-The container also exposes a small admin server for internal management on port `5999`.
+The container also exposes:
+
+- a small admin server for internal management on port `5999`
+
+- the Console UI on port `5866`
 
 If you want to use a different port, such as 8080, update for example the mapping from `5987:5987` to `8080:5987`, where the first value (8080) is the port you can call, and the second (5987) is the actual container port.
 
@@ -80,138 +129,23 @@ The Docker Compose feature automatically creates the volume, so all you need to 
 
 Naming the volume is particularly useful when developing multiple dApps locally, as it allows you to maintain separate states for each project.
 
-Replace `my_dapp` in the configuration with another volume name to suit your needs.
-
 For example, if you are developing a "Hello World" project, you could change the volume name to "hello_world".
 
 ```yml title="docker-compose.yml"
 services:
-  juno-satellite:
-    image: junobuild/satellite:latest
+  juno-skylab:
+    image: junobuild/skylab:latest
     ports:
       - 5987:5987
       - 5999:5999
+      - 5866:5866
     volumes:
       - hello_world:/juno/.juno # <-------- hello_world modified here
-      - ./juno.dev.config.json:/juno/juno.dev.config.json
+      - ./juno.config.ts:/juno/juno.config.ts
       - ./target/deploy:/juno/target/deploy/
 
 volumes:
   hello_world: # <-------- and here
-```
-
----
-
-## Configuration
-
-The behavior of the Satellite running in the Docker container can be configured with the help of a local configuration file commonly named `juno.dev.config.json`.
-
-This configuration file enables you to define the collections of the Datastore and Storage that run locally, but it also allows for defining additional controllers for your satellite.
-
-The definition is as follows:
-
-```typescript
-export type PermissionText = "public" | "private" | "managed" | "controllers";
-export type MemoryText = "heap" | "stable";
-export type RulesType = "db" | "storage";
-
-export interface Rule {
-  collection: string;
-  read: PermissionText;
-  write: PermissionText;
-  memory: MemoryText;
-  createdAt?: bigint;
-  updatedAt?: bigint;
-  maxSize?: number;
-  maxCapacity?: number;
-  mutablePermissions: boolean;
-  maxTokens?: number;
-}
-
-export type SatelliteDevDbCollection = Omit<
-  Rule,
-  "createdAt" | "updatedAt" | "maxSize"
->;
-
-export type SatelliteDevStorageCollection = Omit<
-  Rule,
-  "createdAt" | "updatedAt" | "maxCapacity"
->;
-
-export interface SatelliteDevCollections {
-  db?: SatelliteDevDbCollection[];
-  storage?: SatelliteDevStorageCollection[];
-}
-
-export interface SatelliteDevController {
-  id: string;
-  scope: "write" | "admin";
-}
-
-export interface SatelliteDevConfig {
-  collections: SatelliteDevCollections;
-  controllers?: SatelliteDevController[];
-}
-
-export interface JunoDevConfig {
-  satellite: SatelliteDevConfig;
-}
-```
-
-### Example
-
-If, for example, we want to configure a "metadata" collection in the Datastore, a "content" collection in the Storage, and provide an additional controller, we could use the following configuration:
-
-```json title="juno.dev.config.json"
-{
-  "satellite": {
-    "collections": {
-      "db": [
-        {
-          "collection": "metadata",
-          "read": "managed",
-          "write": "managed",
-          "memory": "stable",
-          "mutablePermissions": true
-        }
-      ],
-      "storage": [
-        {
-          "collection": "content",
-          "read": "public",
-          "write": "public",
-          "memory": "stable",
-          "mutablePermissions": true
-        }
-      ]
-    },
-    "controllers": [
-      {
-        "id": "535yc-uxytb-gfk7h-tny7p-vjkoe-i4krp-3qmcl-uqfgr-cpgej-yqtjq-rqe",
-        "scope": "admin"
-      }
-    ]
-  }
-}
-```
-
-### Path and name
-
-The configuration can be placed in a location other than next to the compose file and can be named whatever suits your needs. If you do so, make sure to adapt the compose file accordingly.
-
-```yml title="docker-compose.yml"
-services:
-  juno-satellite:
-    image: junobuild/satellite:latest
-    ports:
-      - 5987:5987
-      - 5999:5999
-    volumes:
-      - my_dapp:/juno/.juno
-      - /your/custom/path/your_config_file.json:/juno/juno.dev.config.json # <-------- Modify location and file name of the left hand part
-
-volumes:
-  my_dapp:
 ```
 
 ---
@@ -258,6 +192,10 @@ The admin server running on port `5999` provides a variety of internal managemen
 
 ### Get ICP
 
+If you're using the full environment, the Console UI includes a "Get ICP" button in the wallet. It’s a quick way to get ICP out of the box.
+
+![A screenshot of the wallet with the Get ICP call to action of Console UI in dev mode](../img/dev-console/wallet.webp)
+
 You might want to transfer some ICP from the ledger to a specified principal, which can be particularly useful when you're just getting started developing your app and no users currently own ICP. This can be achieved by querying:
 
 ```
@@ -279,31 +217,3 @@ fi
 # Make a transfer request to the admin server
 curl "http://localhost:5999/ledger/transfer/?to=$PRINCIPAL"
 ```
-
----
-
-## Tips and Tricks
-
-In the local environment, several modules (also known as "canisters" on the Internet Computer) are automatically spun up. This ensures that developers have everything they need to start building right out of the box. Thanks to built-in plugins and tooling, these modules are automatically integrated into the environment, eliminating the need for devs to manually manage their bindings.
-
-However, in some cases, it may be useful to explicitly reference module IDs. Below is a list of the modules and their respective IDs that are automatically mounted.
-
-:::note
-
-Except for the Satellite ID, which differs from your production environment, all other IDs match the actual smart contract IDs on the mainnet.
-
-:::
-
-| Module                                                                                           | ID                            |
-| ------------------------------------------------------------------------------------------------ | ----------------------------- |
-| Satellite (local only)                                                                           | `x5yt-yyaaa-aaaal-abzbq-cai`  |
-| [Internet Identity](https://dashboard.internetcomputer.org/canister/rdmx6-jaaaa-aaaaa-aaadq-cai) | `rdmx6-jaaaa-aaaaa-aaadq-cai` |
-| [ICP Ledger](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai)        | `ryjl3-tyaaa-aaaaa-aaaba-cai` |
-| [ICP Index](https://dashboard.internetcomputer.org/canister/qhbym-qaaaa-aaaaa-aaafq-cai)         | `qhbym-qaaaa-aaaaa-aaafq-cai` |
-
-If you're using the Docker image intended for developing the Console, you get access to some extra modules that we may eventually merge into the development container. Let us know if you're interested!
-
-| Module                                                                                        | ID                            |
-| --------------------------------------------------------------------------------------------- | ----------------------------- |
-| [CMC](https://dashboard.internetcomputer.org/canister/rkp4c-7iaaa-aaaaa-aaaca-cai)            | `rkp4c-7iaaa-aaaaa-aaaca-cai` |
-| [NNS Governance](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai) | `rrkah-fqaaa-aaaaa-aaaaq-cai` |
