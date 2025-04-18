@@ -58,6 +58,186 @@ function setDocStore(params: SetDocStoreParams): void;
 - `ZodError` if the input schema is invalid.
 - `Error` if the operation is rejected by the Satellite (e.g. due to a failed assertion or validation error).
 
+### getDocStore
+
+Retrieves a document from the datastore.
+
+```typescript
+function getDocStore(params: GetDocStoreParams): OptionDoc;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+  - `caller`: The caller requesting the document (RawUserId or UserId).
+  - `collection`: The collection containing the document.
+  - `key`: The key identifying the document.
+
+#### Returns:
+
+- `OptionDoc`: The document if found, or undefined.
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if retrieval fails.
+
+### listDocsStore
+
+Lists documents in a collection using optional filters, pagination, and sorting.
+
+```typescript
+function listDocsStore(params: ListDocsStoreParams): ListResults<Doc>;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+  - `caller`: The caller initiating the request (RawUserId or UserId).
+  - `collection`: The collection to list documents from.
+  - `params`: A ListParams object with pagination, filtering, or sorting options.
+
+#### Returns:
+
+- `ListResults<Doc>`: Matching documents and pagination metadata.
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if listing fails.
+
+### countDocsStore
+
+Counts documents matching filter criteria.
+
+```typescript
+function countDocsStore(params: CountDocsStoreParams): bigint;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+  - `caller`: The caller initiating the operation.
+  - `collection`: The collection to count documents in.
+  - `params`: A ListParams object with filter and pagination options.
+
+#### Returns:
+
+- `bigint`: Number of documents matching the filter.
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation fails.
+
+### countCollectionDocsStore
+
+Counts the total number of documents in a collection.
+
+```typescript
+function countCollectionDocsStore(
+  params: CountCollectionDocsStoreParams
+): bigint;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+  - `collection`: The collection to count documents in.
+
+#### Returns:
+
+- `bigint`: The total number of documents.
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation fails.
+
+### deleteDocStore
+
+Deletes a document from the datastore.
+
+```typescript
+function deleteDocStore(params: DeleteDocStoreParams): DocContext<OptionDoc>;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+  - `caller`: The caller initiating the deletion (RawUserId or UserId).
+  - `collection`: The collection where the document is stored.
+  - `key`: The key identifying the document.
+  - `doc`: The document deletion metadata including:
+  - `version`: The expected version of the document.
+
+#### Returns:
+
+- `DocContext<OptionDoc>`: Includes the key, collection, and optionally the previous document data.
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if validation fails or the document cannot be deleted.
+
+### deleteDocsStore
+
+Deletes all documents in a specific collection.
+
+```typescript
+function deleteDocsStore(params: DeleteDocsStoreParams): void;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+  - `collection`: The collection to delete.
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation fails.
+
+### deleteFilteredDocsStore
+
+Deletes documents matching filter criteria.
+
+```typescript
+function deleteFilteredDocsStore(
+  params: DeleteFilteredDocsStoreParams
+): DocContext<OptionDoc>[];
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+  - `caller`: The caller initiating the deletion.
+  - `collection`: The collection to target.
+  - `params`: A ListParams object with filter and pagination options.
+
+#### Returns:
+
+- `DocContext<OptionDoc>[]`: Context for each deleted document.
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation fails.
+
 ---
 
 ## Storage
