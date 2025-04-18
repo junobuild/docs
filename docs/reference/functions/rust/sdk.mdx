@@ -249,6 +249,20 @@ pub fn delete_filtered_assets_store(
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.delete_filtered_assets_store.html)
 
+### get_content_chunks_store
+
+Retrieves content chunks of an asset. Particularly useful when stable memory is used.
+
+```rust
+pub fn get_content_chunks_store(
+    encoding: &AssetEncoding,
+    chunk_index: usize,
+    memory: &Memory,
+) -> Option<Blob>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_content_chunks_store.html)
+
 ---
 
 ## Controllers
@@ -296,5 +310,3 @@ pub fn random() -> Result<i32, String>
 ```
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.random.html)
-
-
