@@ -40,6 +40,241 @@ pub fn set_doc_store(
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.set_doc_store.html)
 
+### get_doc_store
+
+Retrieves a document from a collection.
+
+```rust
+pub fn get_doc_store(
+    caller: UserId,
+    collection: CollectionKey,
+    key: Key,
+) -> Result<Option<Doc>, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_doc_store.html)
+
+### list_docs_store
+
+Lists documents in a collection based on filter criteria.
+
+```rust
+pub fn list_docs_store(
+    caller: Principal,
+    collection: CollectionKey,
+    filter: &ListParams,
+) -> Result<ListResults<Doc>, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.list_docs_store.html)
+
+### count_docs_store
+
+Counts documents in a collection based on filter criteria.
+
+```rust
+pub fn count_docs_store(
+    caller: Principal,
+    collection: CollectionKey,
+    filter: &ListParams,
+) -> Result<usize, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.count_docs_store.html)
+
+### count_collection_docs_store
+
+Counts all documents in a collection.
+
+```rust
+pub fn count_collection_docs_store(
+    collection: &CollectionKey
+) -> Result<usize, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.count_collection_docs_store.html)
+
+### delete_doc_store
+
+Deletes a document from a collection.
+
+```rust
+pub fn delete_doc_store(
+    caller: UserId,
+    collection: CollectionKey,
+    key: Key,
+    value: DelDoc,
+) -> Result<DocContext<Option<Doc>>, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.delete_doc_store.html)
+
+### delete_docs_store
+
+Deletes all documents in a collection.
+
+```rust
+pub fn delete_docs_store(
+    collection: &CollectionKey
+) -> Result<(), String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.delete_docs_store.html)
+
+### delete_filtered_docs_store
+
+Deletes documents matching filter criteria.
+
+```rust
+pub fn delete_filtered_docs_store(
+    caller: Principal,
+    collection: CollectionKey,
+    filter: &ListParams,
+) -> Result<Vec<DocContext<Option<Doc>>>, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.delete_filtered_docs_store.html)
+
+---
+
+## Storage
+
+The following functions can be used to manage assets within the Storage from your serverless functions.
+
+### set_asset_handler
+
+Sets an asset in the store for the identity encoding (no compression applied).
+
+```rust
+pub fn set_asset_handler(
+    key: &AssetKey,
+    content: &Blob,
+    headers: &[HeaderField],
+) -> Result<(), String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.set_asset_handler.html)
+
+### get_asset_store
+
+Retrieves an asset from a collection.
+
+```rust
+pub fn get_asset_store(
+    caller: Principal,
+    collection: &CollectionKey,
+    full_path: FullPath,
+) -> Result<Option<Asset>, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_asset_store.html)
+
+### list_assets_store
+
+Lists assets in a collection, excluding their content.
+
+```rust
+pub fn list_assets_store(
+    caller: Principal,
+    collection: &CollectionKey,
+    filters: &ListParams,
+) -> Result<ListResults<AssetNoContent>, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.list_assets_store.html)
+
+### count_assets_store
+
+Counts assets in a collection matching the filter criteria.
+
+```rust
+pub fn count_assets_store(
+    caller: Principal,
+    collection: &CollectionKey,
+    filters: &ListParams,
+) -> Result<usize, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.count_assets_store.html)
+
+### count_collection_assets_store
+
+Counts all assets in a collection.
+
+```rust
+pub fn count_collection_assets_store(
+    collection: &CollectionKey,
+) -> Result<usize, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.count_collection_assets_store.html)
+
+### delete_asset_store
+
+Deletes an asset from a collection.
+
+```rust
+pub fn delete_asset_store(
+    caller: Principal,
+    collection: &CollectionKey,
+    full_path: FullPath,
+) -> Result<Option<Asset>, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.delete_asset_store.html)
+
+### delete_assets_store
+
+Deletes all assets in a collection.
+
+```rust
+pub fn delete_assets_store(
+    collection: &CollectionKey,
+) -> Result<(), String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.delete_assets_store.html)
+
+### delete_filtered_assets_store
+
+Deletes assets matching filter criteria.
+
+```rust
+pub fn delete_filtered_assets_store(
+    caller: Principal,
+    collection: CollectionKey,
+    filters: &ListParams,
+) -> Result<Vec<Option<Asset>>, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.delete_filtered_assets_store.html)
+
+---
+
+## Controllers
+
+The following functions allow you to inspect and assert the controllers of your Satellite.
+
+### get_controllers
+
+Retrieves all controllers of the Satellite.
+
+```rust
+pub fn get_controllers() -> Controllers
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_controllers.html)
+
+### get_admin_controllers
+
+Retrieves only the admin controllers of the Satellite.
+
+```rust
+pub fn get_admin_controllers() -> Controllers
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_admin_controllers.html)
+
 ---
 
 ## Others
