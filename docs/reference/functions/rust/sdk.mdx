@@ -21,7 +21,11 @@ You have to follow the pace of the Juno release to ensure compatibility. Refer t
 
 ---
 
-## set_doc_store
+## Datastore
+
+The following functions can be used to manage documents within the Datastore from your serverless functions.
+
+### set_doc_store
 
 Sets a document in a collection’s of the datastore. Use this to insert or update document data.
 
@@ -35,3 +39,27 @@ pub fn set_doc_store(
 ```
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.set_doc_store.html)
+
+---
+
+## Others
+
+The SDK also provides various Satellite-specific functions
+
+### random
+
+Generates a random `i32`.
+
+:::caution
+
+The generator is seeded once after upgrade of the Satellite. This makes it unsuitable for use cases requiring unpredictable randomness, like lotteries.
+
+:::
+
+```rust
+pub fn random() -> Result<i32, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.random.html)
+
+
