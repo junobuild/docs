@@ -234,7 +234,8 @@ const sidebars: SidebarsConfig = {
           items: [
             "reference/functions/typescript/sdk",
             "reference/functions/typescript/utils",
-            "reference/functions/typescript/ic-cdk"
+            "reference/functions/typescript/ic-cdk",
+            "reference/functions/typescript/node"
           ]
         }
       ]
