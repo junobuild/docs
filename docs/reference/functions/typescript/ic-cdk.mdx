@@ -77,3 +77,25 @@ function call<T>(params: CallParams): Promise<T | undefined>;
 #### Notes:
 
 - This function is a JavaScript binding for the Rust function [ic_cdk::call()](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.call.html).
+
+---
+
+## time
+
+Returns the current timestamp in nanoseconds since the Unix epoch.
+
+This is useful when generating timestamps that match the Internet Computer's consensus state.
+
+```typescript
+function time(): bigint;
+```
+
+📦 Import from `@junobuild/functions/ic-cdk`
+
+#### Returns:
+
+- `bigint`: The current timestamp in nanoseconds.
+
+#### Notes:
+
+- This function is a JavaScript binding for the Rust function [ic_cdk::time()](https://docs.rs/ic-cdk/latest/ic_cdk/api/fn.time.html).
