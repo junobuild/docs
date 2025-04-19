@@ -24,7 +24,7 @@ Those assets hold the data you want to persist on chain, along with metadata (th
 
 :::caution
 
-Unless you use the optional [`token` parameter](./development.md#protected-asset) to persist an asset in your satellite and make its URL difficult to guess, any asset stored in Juno Storage will be publicly available on the internet.
+Unless you use the optional [`token` parameter](development.mdx#protected-asset) to persist an asset in your satellite and make its URL difficult to guess, any asset stored in Juno Storage will be publicly available on the internet.
 
 :::
 
