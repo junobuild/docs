@@ -28,6 +28,8 @@ You have to follow the pace of the Juno release to ensure compatibility. Refer t
 
 The following functions can be used to manage documents within the Datastore from your serverless functions.
 
+---
+
 ### setDocStore
 
 Sets a document in a collection’s of the datastore. Use this to insert or update document data.
@@ -58,6 +60,8 @@ function setDocStore(params: SetDocStoreParams): void;
 - `ZodError` if the input schema is invalid.
 - `Error` if the operation is rejected by the Satellite (e.g. due to a failed assertion or validation error).
 
+---
+
 ### getDocStore
 
 Retrieves a document from the datastore.
@@ -83,6 +87,8 @@ function getDocStore(params: GetDocStoreParams): OptionDoc;
 
 - `ZodError` if the input schema is invalid.
 - `Error` if retrieval fails.
+
+---
 
 ### listDocsStore
 
@@ -110,6 +116,8 @@ function listDocsStore(params: ListDocsStoreParams): ListResults<Doc>;
 - `ZodError` if the input schema is invalid.
 - `Error` if listing fails.
 
+---
+
 ### countDocsStore
 
 Counts documents matching filter criteria.
@@ -136,6 +144,8 @@ function countDocsStore(params: CountDocsStoreParams): bigint;
 - `ZodError` if the input schema is invalid.
 - `Error` if the operation fails.
 
+---
+
 ### countCollectionDocsStore
 
 Counts the total number of documents in a collection.
@@ -161,6 +171,8 @@ function countCollectionDocsStore(
 
 - `ZodError` if the input schema is invalid.
 - `Error` if the operation fails.
+
+---
 
 ### deleteDocStore
 
@@ -190,6 +202,8 @@ function deleteDocStore(params: DeleteDocStoreParams): DocContext<OptionDoc>;
 - `ZodError` if the input schema is invalid.
 - `Error` if validation fails or the document cannot be deleted.
 
+---
+
 ### deleteDocsStore
 
 Deletes all documents in a specific collection.
@@ -209,6 +223,8 @@ function deleteDocsStore(params: DeleteDocsStoreParams): void;
 
 - `ZodError` if the input schema is invalid.
 - `Error` if the operation fails.
+
+---
 
 ### deleteFilteredDocsStore
 
@@ -243,3 +259,256 @@ function deleteFilteredDocsStore(
 ## Storage
 
 The following functions can be used to manage assets within the Storage from your serverless functions.
+
+---
+
+### setAssetHandler
+
+Sets or updates an asset using identity encoding (no compression).
+
+```typescript
+function setAssetHandler(params: SetAssetHandlerParams): void;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing: - `key`: An object identifying the asset, including: - `name`: The asset filename (e.g., logo.png). - `full_path`: The asset path (e.g., /images/logo.png). - `collection`: The collection it belongs to. - `owner`: The caller principal. - `token` (optional): An access token if required. - `description` (optional): A short description. - `content`: A Uint8Array representing the raw content of the asset. - `headers`: An array of header fields to store with the asset.
+
+#### Returns:
+
+- `void`
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation fails.
+
+---
+
+### getAssetStore
+
+Retrieves an asset from the Storage.
+
+```typescript
+function getAssetStore(params: GetAssetStoreParams): OptionAsset;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+- `caller`: The identity requesting the asset (`RawUserId` or `UserId`).
+- `collection`: The collection name.
+- `full_path`: The asset path.
+
+#### Returns:
+
+- `OptionAsset`: The asset if found, or `undefined`.
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation fails.
+
+---
+
+### listAssetsStore
+
+Lists assets in a collection without their content.
+
+```typescript
+function listAssetsStore(
+  params: ListAssetsStoreParams
+): ListResults<AssetNoContent>;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+- `caller`: The identity making the request.
+- `collection`: The collection name.
+- `params`: A `ListParams` object to filter, sort, or paginate.
+
+#### Returns:
+
+- `ListResults<AssetNoContent>`: Matching assets without content chunks.
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation fails.
+
+---
+
+### countCollectionAssetsStore
+
+Counts all assets in a collection.
+
+```typescript
+function countCollectionAssetsStore(
+  params: CountCollectionAssetsStoreParams
+): bigint;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+- `collection`: The collection name.
+
+#### Returns:
+
+- `bigint`: Number of assets in the collection.
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation fails.
+
+---
+
+### countAssetsStore
+
+Counts assets in a collection matching filter criteria.
+
+```typescript
+function countAssetsStore(params: CountAssetsStoreParams): bigint;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+- `caller`: The identity making the request.
+- `collection`: The collection name.
+- `params`: A `ListParams` object to filter the count.
+
+#### Returns:
+
+- `bigint`: Number of matching assets.
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation fails.
+
+---
+
+### deleteAssetStore
+
+Deletes a single asset from the Storage.
+
+```typescript
+function deleteAssetStore(params: DeleteAssetStoreParams): OptionAsset;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+- `caller`: The identity initiating the deletion.
+- `collection`: The collection name.
+- `full_path`: The asset path to delete.
+
+#### Returns:
+
+- `OptionAsset`: The deleted asset, or `undefined`.
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation fails.
+
+---
+
+### deleteAssetsStore
+
+Deletes all assets in a collection.
+
+```typescript
+function deleteAssetsStore(params: DeleteAssetsStoreParams): void;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+- `collection`: The collection to delete.
+
+#### Returns:
+
+- `void`
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation fails.
+
+---
+
+### deleteFilteredAssetsStore
+
+Deletes assets matching filters in a collection.
+
+```typescript
+function deleteFilteredAssetsStore(
+  params: DeleteFilteredAssetsStoreParams
+): OptionAsset[];
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+- `caller`: The identity initiating the operation.
+- `collection`: The collection name.
+- `params`: A `ListParams` object to define the filters.
+
+#### Returns:
+
+- `OptionAsset[]`: List of deleted assets.
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation fails.
+
+---
+
+### getContentChunksStore
+
+Retrieves a specific chunk of an asset.
+
+```typescript
+function getContentChunksStore(
+  params: GetContentChunksStoreParams
+): Blob | undefined;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+- `encoding`: The `AssetEncoding` to retrieve from.
+- `chunk_index`: The index of the chunk (starting from 0).
+- `memory`: Either `Heap` or `Stable`.
+
+#### Returns:
+
+- `Blob | undefined`: The content chunk if found.
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation fails.

@@ -25,6 +25,8 @@ You have to follow the pace of the Juno release to ensure compatibility. Refer t
 
 The following functions can be used to manage documents within the Datastore from your serverless functions.
 
+---
+
 ### set_doc_store
 
 Sets a document in a collection’s of the datastore. Use this to insert or update document data.
@@ -40,6 +42,8 @@ pub fn set_doc_store(
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.set_doc_store.html)
 
+---
+
 ### get_doc_store
 
 Retrieves a document from a collection.
@@ -53,6 +57,8 @@ pub fn get_doc_store(
 ```
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_doc_store.html)
+
+---
 
 ### list_docs_store
 
@@ -68,6 +74,8 @@ pub fn list_docs_store(
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.list_docs_store.html)
 
+---
+
 ### count_docs_store
 
 Counts documents in a collection based on filter criteria.
@@ -82,6 +90,8 @@ pub fn count_docs_store(
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.count_docs_store.html)
 
+---
+
 ### count_collection_docs_store
 
 Counts all documents in a collection.
@@ -93,6 +103,8 @@ pub fn count_collection_docs_store(
 ```
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.count_collection_docs_store.html)
+
+---
 
 ### delete_doc_store
 
@@ -109,6 +121,8 @@ pub fn delete_doc_store(
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.delete_doc_store.html)
 
+---
+
 ### delete_docs_store
 
 Deletes all documents in a collection.
@@ -120,6 +134,8 @@ pub fn delete_docs_store(
 ```
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.delete_docs_store.html)
+
+---
 
 ### delete_filtered_docs_store
 
@@ -141,6 +157,8 @@ pub fn delete_filtered_docs_store(
 
 The following functions can be used to manage assets within the Storage from your serverless functions.
 
+---
+
 ### set_asset_handler
 
 Sets an asset in the store for the identity encoding (no compression applied).
@@ -154,6 +172,8 @@ pub fn set_asset_handler(
 ```
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.set_asset_handler.html)
+
+---
 
 ### get_asset_store
 
@@ -169,6 +189,8 @@ pub fn get_asset_store(
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_asset_store.html)
 
+---
+
 ### list_assets_store
 
 Lists assets in a collection, excluding their content.
@@ -182,6 +204,8 @@ pub fn list_assets_store(
 ```
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.list_assets_store.html)
+
+---
 
 ### count_assets_store
 
@@ -197,6 +221,8 @@ pub fn count_assets_store(
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.count_assets_store.html)
 
+---
+
 ### count_collection_assets_store
 
 Counts all assets in a collection.
@@ -208,6 +234,8 @@ pub fn count_collection_assets_store(
 ```
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.count_collection_assets_store.html)
+
+---
 
 ### delete_asset_store
 
@@ -223,6 +251,8 @@ pub fn delete_asset_store(
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.delete_asset_store.html)
 
+---
+
 ### delete_assets_store
 
 Deletes all assets in a collection.
@@ -234,6 +264,8 @@ pub fn delete_assets_store(
 ```
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.delete_assets_store.html)
+
+---
 
 ### delete_filtered_assets_store
 
@@ -248,6 +280,8 @@ pub fn delete_filtered_assets_store(
 ```
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.delete_filtered_assets_store.html)
+
+---
 
 ### get_content_chunks_store
 
@@ -269,6 +303,8 @@ pub fn get_content_chunks_store(
 
 The following functions allow you to inspect and assert the controllers of your Satellite.
 
+---
+
 ### get_controllers
 
 Retrieves all controllers of the Satellite.
@@ -278,6 +314,8 @@ pub fn get_controllers() -> Controllers
 ```
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_controllers.html)
+
+---
 
 ### get_admin_controllers
 
@@ -294,6 +332,8 @@ pub fn get_admin_controllers() -> Controllers
 ## Others
 
 The SDK also provides various Satellite-specific functions
+
+---
 
 ### random
 
