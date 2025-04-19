@@ -105,6 +105,36 @@ When testing this feature, if you wait a bit before calling the getter, unlike i
 
 ---
 
+## Assertions
+
+import { Assertions } from "./components/functions/assertions.mdx";
+
+<Assertions
+  code={`use junobuild_macros::assert_set_doc;
+use junobuild_satellite::AssertSetDocContext;
+use junobuild_utils::decode_doc_data;
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize)]
+struct NoteData {
+text: String,
+}
+
+#[assert_set_doc(collections = ["notes"])]
+fn assert_set_doc(context: AssertSetDocContext) -> Result<(), String> {
+let data: NoteData = decode_doc_data(&context.data.data.proposed.data)?;
+
+    if data.text.to_lowercase().contains("hello") {
+        return Err("The text must not include the word 'hello'".to_string());
+    }
+
+    Ok(())
+
+}`}
+/>
+
+---
+
 ## HTTPS outcalls
 
 [HTTPS outcalls](https://internetcomputer.org/https-outcalls) are a feature of the Internet Computer, enabling smart contracts to directly connect to the Web 2.0 world by querying APIs with HTTP requests.

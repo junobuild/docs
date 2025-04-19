@@ -1,0 +1,20 @@
+import CodeBlock from "@theme/CodeBlock";
+
+export const Assertions = ({ code, language = "rust" }) => {
+  return (
+  <>
+    <p>
+      Assertions allow you to validate or reject operations before they are executed.
+      They're useful for enforcing data integrity, security policies, or business rules
+      inside your Satellite, and they run synchronously during the request lifecycle.
+    </p>
+
+    <CodeBlock language={language}>{code}</CodeBlock>
+
+    <p>
+      This example ensures that any document added to the <code>notes</code> collection does not contain the word <code>"hello"</code> (case-insensitive). If it does, the operation is rejected before the data is saved.
+    </p>
+
+  </>
+  );
+}

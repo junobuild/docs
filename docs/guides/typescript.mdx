@@ -83,3 +83,71 @@ export const onSetDoc = defineHook<OnSetDoc>({
 Once saved, your code should be automatically compiled and deployed.
 
 When testing this feature, if you wait a bit before calling the getter, you should now receive the modified "hello: world checked" text set by the hook. This delay occurs because serverless Functions execute fully asynchronously, separate from the request-response cycle between your frontend and the Satellite.
+
+---
+
+## Assertions
+
+import { Assertions } from "./components/functions/assertions.mdx";
+
+<Assertions
+  language="typescript"
+  code={`import { decodeDocData } from "@junobuild/functions/sdk";
+import {
+  defineAssert,
+  type AssertSetDoc,
+} from "@junobuild/functions";
+
+interface NoteData {
+text: string;
+}
+
+export const assertSetDoc = defineAssert<AssertSetDoc>({
+  collections: ["notes"],
+  assert: (context) => {
+    const data = decodeDocData<NoteData>(context.data.data.proposed.data);
+
+    if (data.text.toLowerCase().includes("hello")) {
+      throw new Error("The text must not include the word 'hello'");
+    }
+
+},
+});`}
+/>
+
+---
+
+### Validating with Zod
+
+To simplify and strengthen your assertions, we recommend using [Zod](https://zod.dev/) — a TypeScript-first schema validation library. It's already bundled as a dependency of the `@junobuild/functions` package, so there's nothing else to install.
+
+Here's how you can rewrite your assertion using Zod for a cleaner and more declarative approach:
+
+```typescript
+import { z } from "zod";
+import { decodeDocData } from "@junobuild/functions/sdk";
+import { defineAssert, type AssertSetDoc } from "@junobuild/functions";
+
+interface NoteData {
+  text: string;
+}
+
+const noteSchema = z.object({
+  text: z
+    .string()
+    .refine(
+      (value) => !value.toLowerCase().includes("hello"),
+      "The text must not include the word 'hello'"
+    )
+});
+
+export const assertSetDoc = defineAssert<AssertSetDoc>({
+  collections: ["notes"],
+  assert: (context) => {
+    const data = decodeDocData<NoteData>(context.data.data.proposed.data);
+    noteSchema.parse(data);
+  }
+});
+```
+
+This approach is more expressive, easier to extend, and automatically gives you type safety and error messaging. If the validation fails, `parse()` will throw and reject the request.
