@@ -135,6 +135,58 @@ let data: NoteData = decode_doc_data(&context.data.data.proposed.data)?;
 
 ---
 
+## Calling Canisters on ICP
+
+You can make calls to other canisters on the Internet Computer directly from your serverless functions using `ic_cdk::call`.
+
+import { Call } from "./components/functions/call.mdx";
+
+<Call
+  code={`use candid::{CandidType, Principal, Nat};
+use ic_cdk::api::call;
+use ic_cdk::print;
+use junobuild_macros::on_set_doc;
+use junobuild_satellite::{OnSetDocContext};
+
+#[derive(CandidType)]
+struct SubAccount(Vec<u8>);
+
+#[derive(CandidType)]
+struct Account {
+    owner: Principal,
+    subaccount: Option<SubAccount>,
+}
+
+type Icrc1Tokens = Nat;
+
+#[on_set_doc(collections = ["demo"])]
+async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
+    let account = Account {
+        owner: context.caller,
+        subaccount: None,
+    };
+
+    let icp_ledger_id = Principal::from_text("ryjl3-tyaaa-aaaaa-aaaba-cai").unwrap();
+
+    let (balance,): (Nat,) = call(icp_ledger_id, "icrc1_balance_of", (account,))
+        .await
+        .map_err(|e| format!("Failed to call ICRC ledger icrc_balance_of: {:?}", e))
+        .map_err(|e| format!("Failed to get the balance: {:?}", e))?;
+
+    print(format!("Balance: {}", balance));
+
+    Ok(())
+}`}
+/>
+
+This example performs a call to the ICP Ledger canister using the `icrc1_balance_of` method to retrieve the token balance for the calling user. The response is printed to the log with `ic_cdk::print`.
+
+Note the use of tuple unpacking with `(balance,)`, which is required because `ic_cdk::call` always returns a tuple, even for single values.
+
+To encode and decode the call, you need Rust structures that match the Candid types used by the target canister. Candid is the format canisters use to talk to each other. You’ll usually find these types in the canister’s source code, its `.did` file, or you can generate them using tools like `didc` or `candid-extractor`. Feel free to reach out if you have questions.
+
+---
+
 ## HTTPS outcalls
 
 [HTTPS outcalls](https://internetcomputer.org/https-outcalls) are a feature of the Internet Computer, enabling smart contracts to directly connect to the Web 2.0 world by querying APIs with HTTP requests.
