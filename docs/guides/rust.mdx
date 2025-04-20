@@ -107,10 +107,10 @@ When testing this feature, if you wait a bit before calling the getter, unlike i
 
 ## Assertions
 
-import { Assertions } from "./components/functions/assertions.mdx";
+Assertions allow you to validate or reject operations before they are executed. They're useful for enforcing data integrity, security policies, or business rules inside your Satellite, and they run synchronously during the request lifecycle.
 
-<Assertions
-  code={`use junobuild_macros::assert_set_doc;
+```rust
+use junobuild_macros::assert_set_doc;
 use junobuild_satellite::AssertSetDocContext;
 use junobuild_utils::decode_doc_data;
 use serde::{Deserialize, Serialize};
@@ -130,8 +130,10 @@ let data: NoteData = decode_doc_data(&context.data.data.proposed.data)?;
 
     Ok(())
 
-}`}
-/>
+}
+```
+
+This example ensures that any document added to the <code>notes</code> collection does not contain the word <code>"hello"</code> (case-insensitive). If it does, the operation is rejected before the data is saved.
 
 ---
 
@@ -139,10 +141,12 @@ let data: NoteData = decode_doc_data(&context.data.data.proposed.data)?;
 
 You can make calls to other canisters on the Internet Computer directly from your serverless functions using `ic_cdk::call`.
 
-import { Call } from "./components/functions/call.mdx";
+import Call from "./components/functions/call.md";
 
-<Call
-  code={`use candid::{CandidType, Principal, Nat};
+<Call />
+
+```rust
+use candid::{CandidType, Principal, Nat};
 use ic_cdk::api::call;
 use ic_cdk::print;
 use junobuild_macros::on_set_doc;
@@ -176,8 +180,8 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     print(format!("Balance: {}", balance));
 
     Ok(())
-}`}
-/>
+}
+```
 
 This example performs a call to the ICP Ledger canister using the `icrc1_balance_of` method to retrieve the token balance for the calling user. The response is printed to the log with `ic_cdk::print`.
 
