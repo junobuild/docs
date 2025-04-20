@@ -65,6 +65,22 @@ If you need assistance, feel free to reach out through the available support cha
 
 ---
 
+## Versioning
+
+Every Satellite that runs your serverless functions includes a version number, defined in the `Cargo.toml` file of your project:
+
+```toml
+[package]
+name = "satellite"
+version = "0.1.0"
+```
+
+import Versioning from "./components/versioning.md";
+
+<Versioning />
+
+---
+
 ## Additional Notes
 
 WebAssembly (Wasm) binaries serve as the compilation target for the Satellites. While Juno's CLI automatically specifies this target for you, manual execution of certain `cargo` commands necessitates explicitly providing this target.

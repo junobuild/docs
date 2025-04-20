@@ -13,3 +13,36 @@ Always check the [releases](https://github.com/junobuild/juno/releases) page for
 import Caution from "./components/upgrade-caution.mdx";
 
 <Caution />
+
+---
+
+## Versioning
+
+When writing serverless functions in TypeScript, Juno uses the version defined in your project’s `package.json`. This version is embedded into the compiled Wasm module and shown in the Juno Console, making it easier to keep track of deployments.
+
+By default, the version is inherited from the root-level `version` field:
+
+```json
+{
+  "name": "demo",
+  "version": "0.0.10"
+}
+```
+
+However, if you want to version your functions independently from your app or workspace, you can define a custom version field specifically for Juno Functions:
+
+```json
+{
+  "name": "demo",
+  "version": "0.0.10",
+  "juno": {
+    "functions": {
+      "version": "0.0.4"
+    }
+  }
+}
+```
+
+import Versioning from "./components/versioning.md";
+
+<Versioning />
