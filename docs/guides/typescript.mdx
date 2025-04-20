@@ -88,18 +88,14 @@ When testing this feature, if you wait a bit before calling the getter, you shou
 
 ## Assertions
 
-import { Assertions } from "./components/functions/assertions.mdx";
+Assertions allow you to validate or reject operations before they are executed. They're useful for enforcing data integrity, security policies, or business rules inside your Satellite, and they run synchronously during the request lifecycle.
 
-<Assertions
-  language="typescript"
-  code={`import { decodeDocData } from "@junobuild/functions/sdk";
-import {
-  defineAssert,
-  type AssertSetDoc,
-} from "@junobuild/functions";
+```typescript
+import { decodeDocData } from "@junobuild/functions/sdk";
+import { defineAssert, type AssertSetDoc } from "@junobuild/functions";
 
 interface NoteData {
-text: string;
+  text: string;
 }
 
 export const assertSetDoc = defineAssert<AssertSetDoc>({
@@ -110,10 +106,11 @@ export const assertSetDoc = defineAssert<AssertSetDoc>({
     if (data.text.toLowerCase().includes("hello")) {
       throw new Error("The text must not include the word 'hello'");
     }
+  }
+});
+```
 
-},
-});`}
-/>
+This example ensures that any document added to the <code>notes</code> collection does not contain the word <code>"hello"</code> (case-insensitive). If it does, the operation is rejected before the data is saved.
 
 ---
 
@@ -156,25 +153,21 @@ This approach is more expressive, easier to extend, and automatically gives you 
 
 ## Calling Canisters on ICP
 
-import { Call } from "./components/functions/call.mdx";
+import Call from "./components/functions/call.md";
 
-You can use `call` from `@junobuild/functions/ic-cdk` to perform inter-canister calls from your Satellite to other canisters on the Internet Computer.
+<Call />
 
-<Call
-  language="typescript"
-  code={`import { call } from "@junobuild/functions/ic-cdk";
-import {
-  defineHook,
-  type OnSetDoc,
-} from "@junobuild/functions";
+```typescript
+import { call } from "@junobuild/functions/ic-cdk";
+import { defineHook, type OnSetDoc } from "@junobuild/functions";
 import { IDL } from "@dfinity/candid";
 import { Principal } from "@dfinity/principal";
 
 // Define Candid types
 const SubAccount = IDL.Vec(IDL.Nat8);
 const Account = IDL.Record({
-owner: IDL.Principal,
-subaccount: IDL.Opt(SubAccount),
+  owner: IDL.Principal,
+  subaccount: IDL.Opt(SubAccount)
 });
 
 const Icrc1Tokens = IDL.Nat;
@@ -191,12 +184,12 @@ export type Icrc1TokensType = bigint;
 
 // Define the onSetDoc hook
 export const onSetDoc = defineHook<OnSetDoc>({
-collections: ["notes"],
-run: async (context) => {
-const account: AccountType = {
-owner: Principal.from(context.caller),
-subaccount: [],
-};
+  collections: ["notes"],
+  run: async (context) => {
+    const account: AccountType = {
+      owner: Principal.from(context.caller),
+      subaccount: []
+    };
 
     const icpLedgerId = Principal.fromText("ryjl3-tyaaa-aaaaa-aaaba-cai");
 
@@ -204,15 +197,13 @@ subaccount: [],
       canisterId: icpLedgerId,
       method: "icrc1_balance_of",
       args: [[Account, account]],
-      result: Icrc1Tokens,
+      result: Icrc1Tokens
     });
 
     console.log("Balance:", balance);
-
-},
+  }
 });
-`}
-/>
+```
 
 This example performs a call to the ICP Ledger canister using the ` icrc1_balance_of` method to retrieve the token balance for the calling user. The result is printed to the log using `console.log`.
 
