@@ -2,7 +2,7 @@ name: Update Subnets documentation
 
 on:
   schedule:
-    - cron: "30 8 * * MON"
+    - cron: '30 8 1-7 * 1'
   workflow_dispatch:
 
 permissions:
