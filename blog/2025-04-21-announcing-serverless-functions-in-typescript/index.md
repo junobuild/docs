@@ -14,7 +14,7 @@ image: https://juno.build/assets/images/announcing-serverless-functions-in-types
 One of the goals with Juno has always been to make building decentralized, secure apps feel like something you're already used to. No weird mental models. No boilerplate-heavy magic. Just code that does what you expect, without touching infrastructure.
 
 And with this release, we're taking another step in that direction:
-You can now write serverless functions in **TypeScript**.
+You can now write **serverless functions in TypeScript**.
 
 If you're a JavaScript developer, you can define backend behavior right inside your container. It runs in a secure, isolated environment with access to the same hooks and assertions you'd use in a typical Juno Satellite.
 
@@ -118,9 +118,9 @@ In short: just code your functions. The container does the heavy lifting.
 
 This isn’t just a feature announcement — serverless functions in TypeScript are already live and powering real functionality.
 
-I used them to build the ICP-to-cycles swap on cycles.watch, including all the backend logic and assertions. The whole process was documented over a few livestreams, from setup to deployment.
+I used them to build the ICP-to-cycles swap on [cycles.watch](https://cycles.watch), including all the backend logic and assertions. The whole process was documented over a few livestreams, from setup to deployment.
 
-If you're curious, the code is on GitHub, and there’s a playlist on YouTube if you want to follow along and see how it all came together.
+If you're curious, the code is on [GitHub](github.com/peterpeterparker/cycles.watch/), and there’s a [playlist on YouTube](https://www.youtube.com/watch?v=dtcQVwh4wCA&list=PLfZci1pMwtjJsd0sacU1iWA1rPxhn8iV0) if you want to follow along and see how it all came together.
 
 ![A screenshot of cycles.watch that integrates with OISY and use serverless functions in TypeScript to swap ICP for cycles](cycles-dot-watch-serverless-functions.png)
 
@@ -128,7 +128,7 @@ If you're curious, the code is on GitHub, and there’s a playlist on YouTube if
 
 ## ▶️ Try It Out
 
-We've put together docs, examples, and even livestreams to help you get started. If you're already using the Juno CLI, you're just one `juno dev eject` away from writing your first function — or start fresh with `npm create juno@latest`.
+We've put together [docs](/docs/build/functions/) and [guides](/docs/guides/typescript) to help you get started. If you're already using the Juno CLI, you're just one `juno dev eject` away from writing your first function or start fresh with `npm create juno@latest`.
 
 To infinite and beyond,<br/>
 David
