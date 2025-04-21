@@ -120,7 +120,7 @@ This isn’t just a feature announcement — serverless functions in TypeScript 
 
 I used them to build the ICP-to-cycles swap on [cycles.watch](https://cycles.watch), including all the backend logic and assertions. The whole process was documented over a few livestreams, from setup to deployment.
 
-If you're curious, the code is on [GitHub](github.com/peterpeterparker/cycles.watch/), and there’s a [playlist on YouTube](https://www.youtube.com/watch?v=dtcQVwh4wCA&list=PLfZci1pMwtjJsd0sacU1iWA1rPxhn8iV0) if you want to follow along and see how it all came together.
+If you're curious, the code is on [GitHub](https://github.com/peterpeterparker/cycles.watch/), and there’s a [playlist on YouTube](https://www.youtube.com/watch?v=dtcQVwh4wCA&list=PLfZci1pMwtjJsd0sacU1iWA1rPxhn8iV0) if you want to follow along and see how it all came together.
 
 ![A screenshot of cycles.watch that integrates with OISY and use serverless functions in TypeScript to swap ICP for cycles](cycles-dot-watch-serverless-functions.png)
 
