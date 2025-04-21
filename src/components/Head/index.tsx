@@ -6,27 +6,24 @@ export default function Home({ children }): JSX.Element {
 
   return (
     <Head>
-      <title>{`${siteConfig.title} | Build Web3 at Lightning Speed`}</title>
+      <title>{`${siteConfig.title} | Run ideas in your container`}</title>
       <meta
-        content="Juno is a zero-knowledge Web3 development platform that equips developers with all the essential tools to create any decentralized application (dApp)."
+        content="Juno is an open-source, next-gen serverless platform that helps developers build and ship secure projects at scale."
         name="description"
       />
       <meta content="Juno" property="og:title" />
-      <meta content="Build Web3 at Lightning Speed" property="og:description" />
+      <meta content="Run ideas in your container" property="og:description" />
       <meta content="website" property="og:type" />
       <meta content="https://juno.build" property="og:url" />
       <meta
-        content="https://juno.build/img/social_image_v6.jpg"
+        content="https://juno.build/img/social_image_v7.jpg"
         property="og:image"
       />
       <meta content="summary_large_image" name="twitter:card" />
       <meta content="Juno" name="twitter:title" />
+      <meta content="Run ideas in your container" name="twitter:description" />
       <meta
-        content="Build Web3 at Lightning Speed"
-        name="twitter:description"
-      />
-      <meta
-        content="https://juno.build/img/social_image_v6.jpg"
+        content="https://juno.build/img/social_image_v7.jpg"
         name="twitter:image"
       />
       <meta content="@JunoBuild" name="twitter:creator" />
