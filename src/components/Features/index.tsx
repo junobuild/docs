@@ -12,7 +12,7 @@ export default function Features(): JSX.Element {
         <aside>
           <h2>Bootstrap in a Weekend</h2>
           <p>
-            Bring your ideas to life with a comprehensive toolkit designed to
+            Bring your apps to life with a comprehensive toolkit designed to
             accelerate your development.
           </p>
         </aside>
