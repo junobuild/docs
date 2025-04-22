@@ -56,7 +56,11 @@
 
   letter-spacing: -0.05rem;
   line-height: 1.1;
-  font-size: 2.5rem;
+  font-size: 2.35rem;
+
+  @media screen and (min-width: 480px) {
+    font-size: 2.5rem;
+  }
 
   @media screen and (min-width: 768px) {
     max-width: 720px;
@@ -75,4 +79,8 @@
   @media screen and (min-width: 768px) {
     flex-direction: row;
   }
+}
+
+.typing {
+  color: var(--ifm-color-primary);
 }
