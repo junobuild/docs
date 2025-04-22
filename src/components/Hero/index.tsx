@@ -3,6 +3,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Start from "@site/src/components/Start";
 import { trackEvent } from "@site/src/providers/analytics.providers";
 import clsx from "clsx";
+import { ReactTyped } from "react-typed";
 import styles from "./styles.module.scss";
 
 export default function Hero(): JSX.Element {
@@ -11,7 +12,18 @@ export default function Hero(): JSX.Element {
     <article className={clsx("hero", styles.heroBanner)}>
       <div className={`${styles.container}`}>
         <h1 className={`hero__title ${styles.title} ${styles.item}`}>
-          Run ideas in your container
+          <ReactTyped
+            strings={["Build", "Ship", "Run"]}
+            typeSpeed={50}
+            backSpeed={50}
+            backDelay={3500}
+            loop
+            cursorChar=""
+            className={styles.typing}
+          />{" "}
+          ideas in
+          <br />
+          your container
         </h1>
         <p className={`${styles.item}`}>
           Juno is an open-source, next-gen serverless platform that helps
