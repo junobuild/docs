@@ -26,7 +26,7 @@ export default function Hero(): JSX.Element {
       });
 
       setTypedLoaded(true);
-    }, 3500);
+    }, 2500);
 
     return () => {
       typed?.destroy();
