@@ -33,9 +33,9 @@ Think of cycles like prepaid mobile data:
 
 Learn more about [computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/gas-cost).
 
-## Doc (Document of the Datastore)
+## Doc
 
-"doc" is a commonly used shorthand in Juno for a "document of the Datastore". Wherever you see the term "doc" in the codebase or documentation, it refers specifically to a document entity managed by the Datastore. This abbreviation is used for brevity and consistency throughout the project.
+"doc" is a commonly used shorthand in Juno for a "document of the Datastore". Wherever you see the term "doc" in the codebase or documentation, it refers specifically to a document entity managed by the [Datastore](./build/datastore/index.md). This abbreviation is used for brevity and consistency throughout the project.
 
 ## ICP
 
