@@ -12,7 +12,6 @@
     "url": "https://github.com/junobuild/docs/issues"
   },
   "scripts": {
-    "postinstall": "rsync -aqz node_modules/@junobuild/analytics/dist/workers/*.* --exclude *.map static/workers/",
     "docusaurus": "docusaurus",
     "dev": "npm run start",
     "start": "docusaurus start",
@@ -32,7 +31,7 @@
     "@docusaurus/core": "^3.7.0",
     "@docusaurus/preset-classic": "^3.7.0",
     "@docusaurus/remark-plugin-npm2yarn": "^3.7.0",
-    "@junobuild/analytics": "^0.1.8",
+    "@junobuild/analytics": "^0.2.0",
     "@mdx-js/react": "^3.1.0",
     "clsx": "^2.1.1",
     "prism-react-renderer": "^2.4.1",
