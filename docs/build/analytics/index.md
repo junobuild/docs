@@ -13,7 +13,7 @@ keywords:
 
 # Analytics
 
-Juno Analytics, a simple, performant, and open-source web3 analytics solution that respects your users' privacy and doesn't use cookies, ensuring anonymity while providing valuable user insights.
+Juno Analytics, a simple, performant, and open-source analytics solution that respects your users' privacy and doesn't use cookies, ensuring anonymity while providing valuable user insights.
 
 ![A screenshot of the Juno's Analytics dashboard](../../img/analytics/analytics-dashboard.webp)
 
@@ -23,27 +23,29 @@ Juno Analytics, a simple, performant, and open-source web3 analytics solution th
 
 Juno Analytics offers several advantages for developers:
 
-### No cookie banners required
+### 🍪 No Cookie Banners Needed
 
 Just like all of Juno's features, Analytics prioritizes privacy. It conducts dapp and site measurements entirely anonymously, without using cookies or collecting personal data. There are no persistent identifiers, cross-site tracking, or cross-device tracking. Your analytics data is not used for any other purposes.
 
-### Performance-Optimized Script
+### ⚡️ Tiny & Blazing Fast
 
-Juno's JavaScript library for statistics is optimized for performance. It consists of a minimal main script that seamlessly integrates with your application's UI and a dedicated worker responsible for handling logic and cryptography. This design ensures that adding analytics won't impact your application's performance, including its boot time, and per extension preserving your customer acquisition rate.
+Juno’s analytics library is built for speed and simplicity. It’s a tiny JavaScript snippet (under 3KB gzipped) that integrates seamlessly with your application’s UI without affecting performance or boot time. This lightweight design ensures that analytics tracking won’t interfere with your user experience or your conversion rates.
 
-### Track goal conversions and campaigns
+### 🎯 Track What Matters
 
 Beyond standard page views, you can gain valuable insights into your visitors by creating custom events to track conversions and attribution.
 
-### Gather and aggregate performance metrics
+### 📊 Web Vitals Insights Built-In
 
 In addition to tracking user interactions, the Analytics can also automatically collect key performance metrics using [Web Vitals](https://web.dev/articles/vitals). These metrics are essential for measuring user experience accurately, aligning with how they are captured by Chrome and reported to other Google tools. This enhancement is valuable for developers aiming to optimize the UI performance of their applications, ensuring a smoother and more responsive user experience.
 
-### Transparent and fully open source
+### 🔍 Transparent & Open Source
 
 Juno is fully open source, including all its Analytics features, setting it apart from proprietary tools like Google Analytics.
 
-Furthermore, unlike any other analytics alternative or solution, Juno's long-term vision is to evolve into a decentralized organization (DAO), embracing a new paradigm in the analytics industry.
+### 🧑‍🚀 Built for the Future
+
+Unlike any other analytics alternative or solution, Juno's long-term vision is to evolve into a decentralized organization (DAO), embracing a new paradigm in the analytics industry.
 
 ---
 
@@ -53,13 +55,13 @@ In deploying Juno Analytics, it's important to understand various aspects that c
 
 ### GDPR and PECR compliance
 
-Juno Analytics refrains from generating persistent identifiers. Temporary anonymous data is stored in IndexedDB until it is synchronized with the smart contract. It employs a random unique string to calculate unique visitor sessions on a website with each new visit.
+Juno Analytics refrains from generating persistent identifiers. It employs a random unique string to calculate unique visitor sessions on a website with each new visit.
 
 While we are not legal experts and the responsibility for adding analytics to your project ultimately rests with you, the above approach aligns our analytics with various cookie laws and privacy regulations, including GDPR and PECR.
 
 ### Hosted on the blockchain
 
-All tracked data is securely stored on the blockchain without any specific geolocation. Currently, Analytics is not guaranteed to be located in Europe.
+All tracked data is securely stored on the blockchain, without any specific geolocation by default. However, if you select a European subnet when creating the Orbiter for Analytics, your data will be stored in Europe. This gives you flexibility based on your data residency needs.
 
 ### No cross-dapp tracking
 
@@ -93,12 +95,12 @@ Currently, an orbiter can store up to 400 GB of data.
 
 :::caution
 
-Similar to other analytics services in the Web2 environment, an Orbiter accepts data submitted from any source as long as the requested payload matches the expected format, and the targeted satellite is configured to accept analytics. This is because the origin of the HTTP request cannot be accessed, for a valid reason – to prevent tracking. Therefore, calls cannot be limited to the domain of your dapps.
+Similar to other analytics services, an Orbiter accepts data submitted from any source as long as the requested payload matches the expected format, and the targeted satellite is configured to accept analytics. This is because the origin of the HTTP request cannot be accessed, for a valid reason – to prevent tracking. Therefore, calls cannot be limited to the domain of your dapps.
 
 Consequently, this leaves the canister open to potential attacks that can pollute the data and consume cycles. For this reason, we recommend the following:
 
 1. Avoid topping up the smart contract with excessive cycles; instead, adopt a lean approach.
-2. Utilize the [monitoring](../../management/monitoring.md) feature to stay informed about the status.
+2. Enable [monitoring](../../management/monitoring.md) to ensure your modules are automatically refueled and stay online.
 3. Interpret the statistics provided by this feature with some reservation, similar to any other analytics data, considering potential inaccuracies.
 
 :::
