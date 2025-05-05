@@ -1,13 +1,12 @@
 export const code = {
   lang: "language-javascript",
-  value: `// Analytics events are gathered using a web worker
-// and a library that requires minimal configuration
+  value: `// Analytics events are collected using a tiny library (< 3KB gzipped)
 import { initOrbiter, trackEvent } from "@junobuild/analytics";
 
 await initOrbiter();
 
 // In addition to standard metrics such as sessions, page views, etc.,
-// it also gathers web vitals out of the box
+// it can also gather web vitals out of the box
 await initOrbiter({
   options: {
     performance: true
