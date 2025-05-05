@@ -25,11 +25,10 @@ export default function Home(): JSX.Element {
       return;
     }
 
-    (async () =>
-      initOrbiter({
-        satelliteId: "ucnx3-aqaaa-aaaal-ab3ea-cai",
-        orbiterId: "3iier-sqaaa-aaaal-aczaa-cai"
-      }))();
+    initOrbiter({
+      satelliteId: "ucnx3-aqaaa-aaaal-ab3ea-cai",
+      orbiterId: "3iier-sqaaa-aaaal-aczaa-cai"
+    });
   }, []);
 
   return (
