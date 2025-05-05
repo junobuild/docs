@@ -200,6 +200,18 @@ Once you’re set up, continue to the [Deployment](#deployment) section below.
 
 Use this guide to deploy your project to production — directly to a smart contract on mainnet.
 
+:::note
+
+When following the steps below, make sure to:
+
+1. Register the `satelliteId` in the environment:
+When you create the satellite using juno build, a `satelliteId` is generated. This `satelliteId` must be copied into the `src/environments/environment.prod.ts` file.
+
+2. Configure the dist folder correctly:
+In Angular, the build artifacts are not always placed directly under the `dist` folder. Instead, they may be located at `dist/<application-name>` or `dist/<application-name>/browser`. When running `juno init`, you need to provide the full path to ensure that `juno deploy` works as expected.
+
+:::
+
 import Deploy from "./components/deploy.mdx";
 
 <Deploy index={1} />
