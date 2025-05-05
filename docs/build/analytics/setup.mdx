@@ -91,11 +91,60 @@ initOrbiter({
 
 ---
 
-## Performance Metrics
+## Optional Features
+
+The SDK includes a few optional features you can enable to enrich your analytics. By default, these are disabled to keep your bundle small and your app fast.
+
+---
+
+### UA Parser
+
+By default, the library uses a naive approach to analyze the user agent string — enough to detect general categories (like mobile vs desktop) — while keeping the bundle lean and fast.
+
+If you need more detailed insights such as browser name, OS, or device model, you can opt in to use a full UA parser.
+
+#### What It Adds
+
+When enabled, the parser collects:
+
+- Browser name and version
+- Operating system
+- Device type (e.g., mobile, desktop, tablet)
+
+These enrich the stats visible in the dashboard, including OS and better browser breakdowns.
+
+#### Why It's Opt-In
+
+- Adds a few extra kilobytes to the app bundle
+- Disabled by default to preserve performance and minimize boot time
+
+:::note
+
+A more complete UA parsing approach could be performed inside a container, but this would currently require too many resources impacting both performance and cost. Delegating it to the frontend keeps things fast and efficient.
+
+:::
+
+#### How to Enable
+
+Pass `userAgentParser: true` when calling `initOrbiter()`:
+
+```typescript
+import { initOrbiter } from "@junobuild/analytics";
+
+initOrbiter({
+  options: {
+    userAgentParser: true
+  }
+});
+```
+
+---
+
+### Performance Metrics
 
 Juno Analytics supports tracking key performance metrics using [Web Vitals](https://github.com/GoogleChrome/web-vitals). This feature is **opt-in** and requires configuration in both the Console and your app's code.
 
-### Key Metrics
+#### Key Metrics
 
 When enabled, the following Web Vitals are tracked:
 
@@ -105,7 +154,7 @@ When enabled, the following Web Vitals are tracked:
 - **Cumulative Layout Shift <small>(CLS)</small>**: Quantifies unexpected layout shifts during loading, reflecting visual stability.
 - **Interaction to Next Paint <small>(INP)</small>**: Measures the latency of interactions, such as clicks, to evaluate application responsiveness.
 
-### How to Enable Web Vitals
+#### How to Enable Web Vitals
 
 To start collecting performance metrics, you need to enable it in two places:
 
