@@ -91,6 +91,45 @@ initOrbiter({
 
 ---
 
+## Performance Metrics
+
+Juno Analytics supports tracking key performance metrics using [Web Vitals](https://github.com/GoogleChrome/web-vitals). This feature is **opt-in** and requires configuration in both the Console and your app's code.
+
+### Key Metrics
+
+When enabled, the following Web Vitals are tracked:
+
+- **Time to First Byte <small>(TTFB)</small>**: Measures the time it takes for the first byte of data to reach the user's browser, indicating server responsiveness.
+- **First Contentful Paint <small>(FCP)</small>**: Marks the time when the first piece of content is rendered, helping assess initial loading speed.
+- **Largest Contentful Paint <small>(LCP)</small>**: Tracks the time when the largest content element becomes visible, indicating when the main content is likely fully loaded.
+- **Cumulative Layout Shift <small>(CLS)</small>**: Quantifies unexpected layout shifts during loading, reflecting visual stability.
+- **Interaction to Next Paint <small>(INP)</small>**: Measures the latency of interactions, such as clicks, to evaluate application responsiveness.
+
+### How to Enable Web Vitals
+
+To start collecting performance metrics, you need to enable it in two places:
+
+1. **In the Console**
+
+Go to your Orbiter's [Setup tab](https://console.juno.build/analytics/?tab=setup) and click "Edit Configuration".
+Enable the "Web Vitals" option under the "Advance Options" to allow the Orbiter to store performance data.
+
+2. **In your App**
+
+Enable Web Vitals in the SDK during initialization. This ensures that the additional logic is only loaded when needed, helping keep your app’s initial load size minimal.
+
+```typescript
+import { initOrbiter } from "@junobuild/analytics";
+
+initOrbiter({
+  options: {
+    performance: true
+  }
+});
+```
+
+---
+
 ## Best Practices
 
 Here are some useful tips for working with the analytics.

@@ -47,37 +47,3 @@ For scalability and optimization reasons, the data collected must adhere to cert
 For detailed information about these rules, please refer to Juno's GitHub [repository](https://github.com/junobuild/juno).
 
 :::
-
----
-
-## Performance Metrics with Web Vitals
-
-Juno Analytics also tracks performance metrics using [Web Vitals](https://github.com/GoogleChrome/web-vitals) with no additional setup required. Once you configure and initialize the orbiter, these metrics are automatically collected, providing valuable insights into your application's performance.
-
-### Key Metrics
-
-The following Web Vitals are tracked:
-
-- **Time to First Byte <small>(TTFB)</small>**: Measures the time it takes for the first byte of data to reach the user's browser, indicating server responsiveness.
-- **First Contentful Paint <small>(FCP)</small>**: Marks the time when the first piece of content is rendered, helping assess initial loading speed.
-- **Largest Contentful Paint <small>(LCP)</small>**: Tracks the time when the largest content element becomes visible, indicating when the main content is likely fully loaded.
-- **Cumulative Layout Shift <small>(CLS)</small>**: Quantifies unexpected layout shifts during loading, reflecting visual stability.
-- **Interaction to Next Paint <small>(INP)</small>**: Measures the latency of interactions, such as clicks, to evaluate application responsiveness.
-
-### Opting Out
-
-While these metrics are gathered automatically, developers have the option to opt out during the initialization of the Orbiter. To opt out, simply modify the `initOrbiter` function. If you choose to opt out, the Web Vitals library will not be loaded, ensuring that no additional resources are used.
-
-Here's an example of how to opt out:
-
-```typescript
-import { initOrbiter } from "@junobuild/analytics";
-
-await initOrbiter({
-  satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
-  orbiterId: "eeeee-fffff-ddddd-11111-cai",
-  options: {
-    performance: false
-  }
-});
-```
