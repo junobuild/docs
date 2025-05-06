@@ -12,24 +12,10 @@ To help you understand and optimize memory usage, the Console displays a detaile
 
 ### Metrics
 
-| Metric                  | Description                                                                                                                                 | Keyword   |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| `wasm_memory_size`      | Heap memory used by the module's to save data.                                                                                              | Heap      |
-| `stable_memory_size`    | Stable memory used by the module to save data.                                                                                              | Stable    |
-| `global_memory_size`    | Memory used for global variables declared in the module's code. For example, the in memory default static `index.html` page of a Satellite. | Variables |
-| `wasm_binary_size`      | Size of the deployed container's code — specifically, the installed gzipped WASM binary.                                                    | Code      |
-| `wasm_chunk_store_size` | Memory used for storing chunks when installing large containers's code (WASM > 2MB).                                                        | Chunks    |
-| `custom_sections_size`  | Memory used to store metadata like version info or API definitions, stored in the WASM binary's custom sections.                            | Metadata  |
-| `canister_history_size` | Memory used by the module's history (e.g., creation, installation, upgrade, or controller changes).                                         | History   |
-| `snapshots_size`        | Memory consumed by snapshots created for the module.                                                                                        | Snapshots |
-
-### Metrics
-
 | Metric                  | Description                                                                                                                         | Keyword   |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |-----------|
 | `wasm_memory_size`      | Heap memory used by the module to save data.                                                                                        | Heap      |
 | `stable_memory_size`    | Stable memory used by the module to save data.                                                                                      | Stable    |
-| `global_memory_size`    | Memory used for global variables declared in the module's code. For example, the in-memory static `index.html` page of a Satellite. | Variables |
 | `wasm_binary_size`      | Size of the deployed container's code — specifically, the size of the installed gzipped WASM binary.                                | Code      |
 | `wasm_chunk_store_size` | Memory used for storing chunks of the code when installing large containers (WASM > 2 MB).                                          | Chunks    |
 | `custom_sections_size`  | Memory used to store metadata like version info or API definitions, stored in the container WASM binary's custom sections.          | Metadata  |
