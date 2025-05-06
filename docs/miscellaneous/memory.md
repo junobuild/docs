@@ -12,15 +12,15 @@ To help you understand and optimize memory usage, the Console displays a detaile
 
 ### Metrics
 
-| Metric                  | Description                                                                                                                         | Keyword   |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |-----------|
-| `wasm_memory_size`      | Heap memory used by the module to save data.                                                                                        | Heap      |
-| `stable_memory_size`    | Stable memory used by the module to save data.                                                                                      | Stable    |
-| `wasm_binary_size`      | Size of the deployed container's code — specifically, the size of the installed gzipped WASM binary.                                | Code      |
-| `wasm_chunk_store_size` | Memory used for storing chunks of the code when installing large containers (WASM > 2 MB).                                          | Chunks    |
-| `custom_sections_size`  | Memory used to store metadata like version info or API definitions, stored in the container WASM binary's custom sections.          | Metadata  |
-| `canister_history_size` | Memory used by the module's history (e.g. creation, installation, upgrade, or controller changes).                                  | History   |
-| `snapshots_size`        | Memory consumed by snapshots created for the module.                                                                                | Snapshots |
+| Metric                  | Description                                                                                                                | Keyword   |
+| ----------------------- |----------------------------------------------------------------------------------------------------------------------------|-----------|
+| `wasm_memory_size`      | Heap memory used by the module to save data.                                                                               | Heap      |
+| `stable_memory_size`    | Stable memory used by the module to save data.                                                                             | Stable    |
+| `wasm_binary_size`      | Size of the deployed container's code — specifically, the size of the installed gzipped WASM binary.                       | Code      |
+| `wasm_chunk_store_size` | Memory used for storing chunks of the code when installing large containers (WASM > 2 MB). Used only in Mission Control.   | Chunks    |
+| `custom_sections_size`  | Memory used to store metadata like version info or API definitions, stored in the container WASM binary's custom sections. | Metadata  |
+| `canister_history_size` | Memory used by the module's history (e.g. creation, installation, upgrade, or controller changes).                         | History   |
+| `snapshots_size`        | Memory consumed by snapshots created for the module.                                                                       | Snapshots |
 
 ---
 
