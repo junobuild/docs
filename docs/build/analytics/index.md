@@ -91,7 +91,7 @@ Additionally, a unique random session ID is generated for all data. Each time a 
 
 ## Limitation
 
-Currently, an orbiter can store up to 400 GB of data.
+Currently, an orbiter can store up to 500 GB of data.
 
 :::caution
 

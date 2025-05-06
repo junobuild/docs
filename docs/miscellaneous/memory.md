@@ -32,7 +32,7 @@ A [satellite] can store data using two types of memory: `heap` and `stable`. Whi
 
 `Heap` memory offers the best performance for accessing data, both for reading and writing. However, it has a limited capacity in terms of the space it can occupy, with a max of 1 GB.
 
-On the other hand, `stable` memory has a higher memory threshold with a maximum limit of 400 GB minus the heap size, allowing it to store more data in terms of size. However, it is slightly slower.
+On the other hand, `stable` memory has a higher memory threshold with a maximum limit of 500 GB minus the heap size, allowing it to store more data in terms of size. However, it is slightly slower.
 
 Additionally, `heap` memory needs to be deserialized and serialized each time you upgrade the smart contract's code. This process becomes heavier as the heap memory size grows.
 
@@ -59,8 +59,8 @@ In contrast, your users (as of Satellite version 0.0.16) and the [analytics](../
 ### Summary
 
 | Aspect          | Heap Memory                                          | Stable Memory                                       |
-| --------------- | ---------------------------------------------------- | --------------------------------------------------- |
-| **Capacity**    | Max 1 GB                                             | Max 400 GB (minus heap size)                        |
+| --------------- | ---------------------------------------------------- |-----------------------------------------------------|
+| **Capacity**    | Max 1 GB                                             | Max 500 GB (minus heap size)                        |
 | **Performance** | Fast for read and write operations                   | Slightly slower                                     |
 | **Cost**        | Lower cost                                           | Higher cost (~20x)                                  |
 | **Upgrades**    | Data must be deserialized/serialized during upgrades | Data are not processed during upgrades              |
