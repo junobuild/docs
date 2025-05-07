@@ -30,8 +30,6 @@ import Build from "./components/build.mdx";
 
 This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing SvelteKit app.
 
-Additionally, it covers how to develop against a production environment or locally.
-
 #### 1. Choose Your Integration Path
 
 You can either start a new project or add Juno to an existing app.
@@ -62,61 +60,49 @@ import Core from "../components/core.mdx";
 
 <Core />
 
-#### 2. Configure Datastore
+#### 2. Start the Emulator
 
-##### Production Path
+import Emulator from "./components/emulator.mdx";
 
-To use production, set up a satellite and new collection:
+<Emulator />
 
-- [Create a new satellite](../create-a-satellite.mdx) in the Juno's console.
-- After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
+#### 3. Configure
 
-##### Local Development Path
+To initialize the library with the Satellite ID you created, configure it in the `juno.config.ts` file (or other extension), which should be available at the root of your project.
 
-To develop with the local emulator, add a collection named `demo` within the `juno.dev.config.ts` file.
+Replace `<DEV_SATELLITE_ID>` with the ID.
 
 ```typescript
-import { defineDevConfig } from "@junobuild/config";
+import { defineConfig } from "@junobuild/config";
 
-export default defineDevConfig(() => ({
+export default defineConfig({
   satellite: {
-    collections: {
-      db: [
-        {
-          collection: "demo",
-          read: "managed" as const,
-          write: "managed" as const,
-          memory: "stable" as const,
-          mutablePermissions: true
-        }
-      ]
-    }
+    ids: {
+      development: "<DEV_SATELLITE_ID>",
+      production: "<PROD_SATELLITE_ID>"
+    },
+    source: "build",
+    predeploy: ["npm run build"]
   }
-}));
+});
 ```
 
-- Once set, run the local emulator:
+#### 4. Install the Plugin (If Needed)
 
-```bash
-juno dev start
-```
+If you didn't start your project from a template, you'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
 
-- If the Juno admin CLI (required for deployment, configuration, or to run the emulator) is not installed yet, run:
+Proceed as documented [here](../reference/plugins.md#vite-plugin).
 
-```
-npm i -g @junobuild/cli
-```
+#### 5. Insert data from your app
 
-#### 3. Insert data from your app
-
-Create a new file `+layout.svelte` in `src/routes` and initialize the library with the satellite ID you have created for production, or use `jx5yt-yyaaa-aaaal-abzbq-cai` if you are developing locally with the emulator.
+Create a new file `+layout.svelte` in `src/routes` and initialize your Satellite for your app.
 
 ```html title="+layout.svelte"
 <script>
   import { onMount } from "svelte";
   import { initSatellite } from "@junobuild/core";
 
-  onMount(async () => await initSatellite());
+  onMount(initSatellite);
 </script>
 
 <slot />
@@ -134,7 +120,7 @@ Replace the existing content in your `+page.svelte` file in the same `routes` di
     (doc = await setDoc({
       collection: "demo",
       doc: {
-        key: `my-key-${new Date().getTime()}`,
+        key: window.crypto.randomUUID(),
         data: {
           hello: "world"
         }
@@ -149,7 +135,7 @@ Replace the existing content in your `+page.svelte` file in the same `routes` di
 {/if}
 ```
 
-#### 4. Start the app
+#### 6. Start the app
 
 Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite on the blockchain.
 

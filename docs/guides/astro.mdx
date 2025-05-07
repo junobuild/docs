@@ -23,7 +23,7 @@ import Choice from "./components/choice.mdx";
 
 ## Build
 
-This guide provides quickstart instructions for integrating Juno and building a feature-rich application. It also includes guidance on developing in a production environment or locally.
+This guide provides quickstart instructions for integrating Juno and building a feature-rich application. It also includes guidance on developing locally.
 
 ### 1. Choose Your Integration Path
 
@@ -55,55 +55,61 @@ import Core from "../components/core.mdx";
 
 <Core />
 
-### 2. Configure Datastore
+### 2. Start the Emulator
 
-#### Production Path
+import Emulator from "./components/emulator.mdx";
 
-To use production, set up a satellite and new collection:
+<Emulator />
 
-- [Create a new satellite](../create-a-satellite.mdx) in the Juno's console.
-- After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
+### 3. Configure
 
-#### Local Development Path
+To initialize the library with the Satellite ID you created, configure it in the `juno.config.mjs` file (or other extension), which should be available at the root of your project.
 
-To develop with the local emulator, add a collection named `demo` within the `juno.dev.config.mjs` file.
+Replace `<DEV_SATELLITE_ID>` with the ID.
 
 ```typescript
-import { defineDevConfig } from "@junobuild/config";
+import { defineConfig } from "@junobuild/config";
 
-/** @type {import('@junobuild/config').JunoDevConfig} */
-export default defineDevConfig(() => ({
+/** @type {import('@junobuild/config').JunoConfig} */
+export default defineConfig({
   satellite: {
-    collections: {
-      db: [
-        {
-          collection: "demo",
-          read: "managed",
-          write: "managed",
-          memory: "stable",
-          mutablePermissions: true
-        }
-      ]
-    }
+    ids: {
+      development: "<DEV_SATELLITE_ID>",
+      production: "<PROD_SATELLITE_ID>"
+    },
+    source: "out",
+    predeploy: ["npm run build"]
   }
-}));
+});
 ```
 
-- Once set, run the local emulator:
+### 4. Install the Plugin
 
-```bash
-juno dev start
+You'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
+
+Proceed as documented [here](../reference/plugins.md#vite-plugin).
+
+```javascript title="astro.config.mjs"
+import { defineConfig } from "astro/config";
+import juno from "@junobuild/vite-plugin";
+import sitemap from "@astrojs/sitemap";
+
+// https://astro.build/config
+export default defineConfig({
+  site: "https://hello.com",
+  integrations: [sitemap()],
+  vite: {
+    plugins: [juno()]
+  },
+  devToolbar: {
+    enabled: false
+  }
+});
 ```
 
-- If the Juno admin CLI (required for deployment, configuration, or to run the emulator) is not installed yet, run:
+### 5. Insert data from your app
 
-```
-npm i -g @junobuild/cli
-```
-
-### 3. Insert data from your app
-
-In `index.astro`, initialize the library with the satellite ID you have created for production, or use `jx5yt-yyaaa-aaaal-abzbq-cai` if you are developing locally with the emulator.
+In `index.astro`, initialize the Satellite.
 
 Add an `insert` function to persist a document.
 
@@ -119,20 +125,16 @@ Add an `insert` function to persist a document.
         import { initSatellite, setDoc } from "@junobuild/core";
 
         // Initialize Juno's satellite
-        document.addEventListener(
-          "DOMContentLoaded",
-          async () => {
-            await initSatellite();
-          },
-          { once: true }
-        );
+        document.addEventListener("DOMContentLoaded", initSatellite, {
+          once: true
+        });
 
         // Insert a document in Juno's datastore
         const insert = async () => {
           const doc = await setDoc({
             collection: "demo",
             doc: {
-              key: `my-key-${new Date().getTime()}`,
+              key: window.crypto.randomUUID(),
               data: {
                 hello: "world"
               }
@@ -154,7 +156,7 @@ Add an `insert` function to persist a document.
 </html>
 ```
 
-### 5. Start the app
+### 6. Start the app
 
 Start the app, go to [http://localhost:4321/](http://localhost:4321/) in a browser, click "Insert a document", and you should see the data successfully persisted in your satellite on the blockchain.
 
