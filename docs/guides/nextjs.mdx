@@ -31,8 +31,6 @@ import Build from "./components/build.mdx";
 
 This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing Next.js app.
 
-Additionally, it covers how to develop against a production environment or locally.
-
 #### 1. Choose Your Integration Path
 
 You can either start a new project or add Juno to an existing app.
@@ -63,54 +61,43 @@ import Core from "../components/core.mdx";
 
 <Core />
 
-#### 2. Configure Datastore
+#### 2. Start the Emulator
 
-##### Production Path
+import Emulator from "./components/emulator.mdx";
 
-To use production, set up a satellite and new collection:
+<Emulator />
 
-- [Create a new satellite](../create-a-satellite.mdx) in the Juno's console.
-- After your project is ready, create a collection in your datastore, which we'll call `demo`, using the [console](https://console.juno.build).
+#### 3. Configure
 
-##### Local Development Path
+To initialize the library with the Satellite ID you created, configure it in the `juno.config.mjs` file (or other extension), which should be available at the root of your project.
 
-To develop with the local emulator, add a collection named `demo` within the `juno.dev.config.ts` file.
+Replace `<DEV_SATELLITE_ID>` with the ID.
 
 ```typescript
-import { defineDevConfig } from "@junobuild/config";
+import { defineConfig } from "@junobuild/config";
 
-export default defineDevConfig(() => ({
+/** @type {import('@junobuild/config').JunoConfig} */
+export default defineConfig({
   satellite: {
-    collections: {
-      db: [
-        {
-          collection: "demo",
-          read: "managed" as const,
-          write: "managed" as const,
-          memory: "stable" as const,
-          mutablePermissions: true
-        }
-      ]
-    }
+    ids: {
+      development: "<DEV_SATELLITE_ID>",
+      production: "<PROD_SATELLITE_ID>"
+    },
+    source: "out",
+    predeploy: ["npm run build"]
   }
-}));
+});
 ```
 
-- Once set, run the local emulator:
+#### 4. Install the Plugin (If Needed)
 
-```bash
-juno dev start
-```
+If you didn't start your project from a template, you'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
 
-- If the Juno admin CLI (required for deployment, configuration, or to run the emulator) is not installed yet, run:
+Proceed as documented [here](../reference/plugins.md#nextjs-plugin).
 
-```
-npm i -g @junobuild/cli
-```
+#### 5. Insert data from your app
 
-#### 3. Insert data from your app
-
-In `Page.tsx`, (if using TypeScript) or the corresponding JavaScript file, initialize the library with the satellite ID you have created for production, or use `jx5yt-yyaaa-aaaal-abzbq-cai` if you are developing locally with the emulator.
+In `Page.tsx`, (if using TypeScript) or the corresponding JavaScript file, initialize the Satellite.
 
 Add an `insert` function to persist a document as well.
 
@@ -136,7 +123,7 @@ export default function Home() {
     const doc = await setDoc({
       collection: "demo",
       doc: {
-        key: `my-key-${new Date().getTime()}`,
+        key: window.crypto.randomUUID(),
         data: {
           hello: "world",
         },
@@ -155,7 +142,7 @@ export default function Home() {
 }
 ```
 
-#### 4. Start the app
+#### 6. Start the app
 
 Start the app and go to [http://localhost:3000](http://localhost:3000) in a browser. Click "Insert a document" to see the data successfully persisted in your satellite on the blockchain.
 
