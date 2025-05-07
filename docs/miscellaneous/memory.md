@@ -13,7 +13,7 @@ To help you understand and optimize memory usage, the Console displays a detaile
 ### Metrics
 
 | Metric                  | Description                                                                                                                | Keyword   |
-| ----------------------- |----------------------------------------------------------------------------------------------------------------------------|-----------|
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------- | --------- |
 | `wasm_memory_size`      | Heap memory used by the module to save data.                                                                               | Heap      |
 | `stable_memory_size`    | Stable memory used by the module to save data.                                                                             | Stable    |
 | `wasm_binary_size`      | Size of the deployed container's code — specifically, the size of the installed gzipped WASM binary.                       | Code      |
@@ -59,7 +59,7 @@ In contrast, your users (as of Satellite version 0.0.16) and the [analytics](../
 ### Summary
 
 | Aspect          | Heap Memory                                          | Stable Memory                                       |
-| --------------- | ---------------------------------------------------- |-----------------------------------------------------|
+| --------------- | ---------------------------------------------------- | --------------------------------------------------- |
 | **Capacity**    | Max 1 GB                                             | Max 500 GB (minus heap size)                        |
 | **Performance** | Fast for read and write operations                   | Slightly slower                                     |
 | **Cost**        | Lower cost                                           | Higher cost (~20x)                                  |
