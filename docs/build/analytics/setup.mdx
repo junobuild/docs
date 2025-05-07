@@ -15,7 +15,7 @@ Before integrating Juno Analytics into your app or website, you need to create a
 5. (Optional) In **Advanced Options**, choose a European subnet if you want your data stored in Europe
 6. Once the setup completes, click **Close** to exit the wizard
 
-🎉 You’ve now created your Analytics Orbiter!
+🎉 You've now created your Analytics Orbiter!
 
 But you're not done yet — you still need to tell it which Satellites (apps) can send data.
 
@@ -27,11 +27,19 @@ Go to the [Setup](https://console.juno.build/analytics/?tab=setup) tab in the An
 
 ## Setup
 
-Everything you need to get Juno Analytics up and running in your app.
+There are two ways to integrate Juno Analytics into your project:
+
+1. Using your favorite package manager (`npm`, `yarn`, `pnpm`). [Learn how](#1-with-package-manager).
+
+2. Without installation by fetching the library from a CDN. [Learn how](#2-from-a-cdn).
 
 ---
 
-### Install the Library
+### 1. With Package Manager
+
+Follow these steps to install and initialize the SDK using your preferred package manager.
+
+#### Install the Library
 
 To install the analytics library, run the following command:
 
@@ -39,11 +47,9 @@ import Analytics from "../components/analytics.mdx";
 
 <Analytics />
 
----
+#### Configure
 
-### Configure
-
-If you're using the [Next.js](../../reference/plugins.md#nextjs-plugin) or [Vite](../../reference/plugins.md#vite-plugin), add your configuration in `juno.config`.
+If you're using the [Next.js](../../reference/plugins.md#nextjs-plugin) or [Vite](../../reference/plugins.md#vite-plugin), you can define your configuration in your `juno.config` file.
 
 ```javascript title="juno.config.js"
 import { defineConfig } from "@junobuild/config";
@@ -61,9 +67,7 @@ export default defineConfig({
 
 If you're not using a plugin, you can skip this step and instead provide the IDs manually when initializing the Orbiter (see next section).
 
----
-
-### Initialize
+#### Initialize
 
 ✅ Using plugins and config
 
@@ -82,11 +86,36 @@ Pass your Satellite and Orbiter IDs manually:
 ```typescript
 import { initOrbiter } from "@junobuild/analytics";
 
-// TODO: Replace the following satelliteId and orbiterId with the effective ID.
 initOrbiter({
-  satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
-  orbiterId: "eeeee-fffff-ddddd-11111-cai"
+  satelliteId: "<SATELLITE_ID>", // replace with your Satellite ID
+  orbiterId: "<ORBITER_ID>" // replace with your Orbiter ID
 });
+```
+
+---
+
+### 2. From a CDN
+
+If you don't want to - or cannot - install anything locally, you can load the SDK directly from a CDN.
+
+Add the following script to your HTML (for example, in `index.html`). This will fetch the library from [jsDelivr](https://www.jsdelivr.com/) and start the analytics when someone loads your site:
+
+```html
+<script type="module">
+  import { initOrbiter } from "https://cdn.jsdelivr.net/npm/@junobuild/analytics@0.2.0/+esm";
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    () =>
+      initOrbiter({
+        satelliteId: "<SATELLITE_ID>", // replace with your Satellite ID
+        orbiterId: "<ORBITER_ID>" // replace with your Orbiter ID
+      }),
+    {
+      once: true
+    }
+  );
+</script>
 ```
 
 ---
@@ -165,7 +194,7 @@ Enable the "Web Vitals" option under the "Advance Options" to allow the Orbiter 
 
 2. **In your App**
 
-Enable Web Vitals in the SDK during initialization. This ensures that the additional logic is only loaded when needed, helping keep your app’s initial load size minimal.
+Enable Web Vitals in the SDK during initialization. This ensures that the additional logic is only loaded when needed, helping keep your app's initial load size minimal.
 
 ```typescript
 import { initOrbiter } from "@junobuild/analytics";
@@ -185,7 +214,7 @@ Here are some useful tips for working with the analytics.
 
 ### Production vs Development
 
-While the example above shows analytics being initialized in all cases, it’s recommended to **disable analytics during local development**. This prevents test data from polluting your metrics if your local environment is connected to production, and avoids errors when analytics aren't set up locally which is often the case during development.
+While the example above shows analytics being initialized in all cases, it's recommended to **disable analytics during local development**. This prevents test data from polluting your metrics if your local environment is connected to production, and avoids errors when analytics aren't set up locally which is often the case during development.
 
 ```javascript
 if (DEV) {
