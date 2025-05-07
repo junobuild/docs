@@ -15,7 +15,7 @@ export default function Hero(): JSX.Element {
   useEffect(() => {
     let typed: Typed | undefined;
 
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       typed = new Typed(el.current, {
         strings: ["Run", "Ship", "Build"],
         typeSpeed: 50,
@@ -29,6 +29,7 @@ export default function Hero(): JSX.Element {
     }, 2500);
 
     return () => {
+      clearTimeout(timeout);
       typed?.destroy();
     };
   }, []);
