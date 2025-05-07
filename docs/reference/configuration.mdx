@@ -327,7 +327,10 @@ export default defineConfig(({ mode }) => ({
   satellite: {
     id: "aaaaa-bbbbb-ccccc-ddddd-cai",
     source: "dist",
-    ...(mode === "production" && { iframe: true })
+    storage: {
+      ...(mode === "staging" && { iframe: "allow-any" })
+    },
+    predeploy: [`npm run build -- --mode ${mode}`]
   }
 }));
 ```
