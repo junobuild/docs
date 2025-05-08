@@ -16,39 +16,42 @@ For sensitive applications that requires several resources, developers can set a
 
 The default value is `2_592_000n` (30 days).
 
+### In Other Words
+
+To remain active and able to respond to state-changing requests—like updating data—a module must maintain a cycles balance that covers the cost of the freezing threshold period.
+
+For example, if a module currently has 1 TCycles but needs 5 TCycles to stay alive for the 30-day freezing threshold, it will be considered frozen. If it is topped up to 5.1 TCycles, it becomes active again and can resume processing requests—until that extra 0.1 TCycles is consumed.
+
 ### Example of calculation
 
-We are interested in finding out how close we are to hitting its threshold. So, let's consider a module with the following details:
+We want to calculate how many cycles are required to keep a module from being frozen, based on the freezing threshold and idle cycle burn rate.
 
-- Cycles Balance: 0.937 T Cycles (937 billion cycles)
-- Memory Usage: 14.32 MB (14,320,000 bytes)
-- Freezing Threshold: 15,552,000 seconds (180 days)
+Let’s say:
 
-#### Memory Cost Calculation
+- **Freezing Threshold**: 2,592,000 seconds (30 days)
+- **Idle Cycles Burned per Day**: 0.01 T Cycles (i.e. 10,000,000,000 cycles)
 
-1. We assume a cost per byte per second is 0.0000001 cycles
-2. Total memory cost per second: 14,320,000 bytes × 0.0000001 cycles/byte/second = 1.432 cycles/second
-3. Total memory cost for 180 days: 1.432 cycles / second × 180 × 24 × 60 × 60 = 22,272,768 cycles
+To compute the required cycles for the freezing threshold:
 
-#### Total Cost for 180 Days
+```
+required_cycles = (idle_cycles_burned_per_day × freezing_threshold_seconds) / 86,400
+```
 
-Total cost = Memory cost for 180 days + Compute cost for 180 days
+> 86,400 is the number of seconds in one day
 
-We assume the compute allocation is the default 0% in this scenario.
+Substitute the values:
 
-Total cost = 22,272,768 cycles
+```
+required_cycles = (10,000,000,000 × 2,592,000) / 86,400
+= 25,920,000,000,000,000 / 86,400
+= 300,000,000,000 cycles
+= 0.3 T Cycles
+```
 
-#### Estimate Remaining Time
+Result ✅:
 
-1. Current Cycles Balance: 0.937 × 1012 = 937,000,000,0000 cycles
-2. Total cost for 180 days: 22,272,768 cycles
-3. Remaining time: 937,000,000,0000 cycles / 22,272,768 cycles ≈ 42,060 180-day periods
-
-Remaining time = 42,060 × 180 days ≈ 7,570,800 days
-
-#### Summary
-
-With a cycles balance of 937 billion cycles and memory usage of 14.32 MB, a module can survive for approximately 7,570,800 days (or about 20,741 years) before hitting the freezing threshold, assuming constant usage patterns.
+With a freezing threshold of 30 days and an idle burn rate of 0.01 T Cycles per day,  
+the module must have a cycles balance greater than 0.3 T Cycles to avoid being frozen and to continue processing update requests.
 
 ---
 
