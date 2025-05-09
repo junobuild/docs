@@ -26,15 +26,13 @@ You can manage your users in the [authentication](https://console.juno.build/aut
 
 ## Domain-Based User Identity
 
-For privacy reasons and to prevent tracking between sites, Juno's authentication is linked to the domains you use.
+For privacy reasons and to prevent tracking across sites, Juno's authentication is tied to the domain your app uses.
 
-This means that if a user signs in to your app on the default domain (`icp0.io`) and a custom domain, they will, by default, be treated as two separate users.
+This means that if a user signs in on both the default domain (`icp0.io`) and a custom domain, they will be treated as two separate users by default.
 
-Similarly, a user signing in on your custom domain `hello.com` and a subdomain such as `www.hello.com` will also be treated as separate users.
+The same applies to subdomains: signing in on `hello.com` and `www.hello.com` will result in two separate user identities.
 
-That is why, when you set up a domain in the Console, you will be prompted about which primary domain should be used to identify users. This ensures that, regardless of whether they sign in on the default or a custom domain, users will be identified with the same public ID.
-
-This feature is also known as "derivation origin" or "alternative origins". See the [documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/internet-identity/alternative-origins/) for more details about the specification.
+That's why, when setting up a domain in the Console, you're prompted to choose a **primary domain**. This domain is used to consistently identify users, regardless of whether they sign in via the default or a custom domain.
 
 :::important
 
@@ -43,6 +41,23 @@ This feature is also known as "derivation origin" or "alternative origins". See 
 - In addition to configuring settings, you must also instruct your application to use the main domain you have selected by setting the `derivationOrigin` parameter to the sign-in options.
 
 :::
+
+### Recommendation
+
+If you're unsure which domain to use as the primary domain, here are two common approaches:
+
+- **Use your custom domain** (e.g. `mydomain.com`) if you're confident it will remain the main entry point for users. This ensures a consistent user experience — users will always see and recognize the same URL when signing in.
+
+- Alternatively, stick with **the default domain** (`{satellite-id}.icp0.io`) if:
+  - You're still experimenting with your domain setup and might change it later.
+  - You're not ready to commit to a long-term domain.
+  - You plan to host multiple satellites under different domains and don't want to tie user identity to just one.
+
+Choosing the right derivation origin early helps avoid identity issues later, but both approaches are valid depending on your goals.
+
+### More Information
+
+This mechanism is called the "derivation origin" (or "alternative origins"). See the [documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/internet-identity/alternative-origins/) for more details about the specification.
 
 [Internet Identity]: ../../terminology.md#internet-identity
 [NFID]: ../../terminology.md#nfid
