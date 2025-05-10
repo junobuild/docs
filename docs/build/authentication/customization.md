@@ -107,7 +107,7 @@ When the session expires, it will automatically be terminated with a standard [s
 ```javascript
 document.addEventListener("junoSignOutAuthTimer", () => {
     // Display an information to your users
-}), {passive: true});
+}, {passive: true});
 ```
 
 The worker also emits an event named `junoDelegationRemainingTime`, which provides the remaining duration in milliseconds of the authentication delegation. This can be useful if you want to display to your users how much time remains in their active session.
@@ -115,5 +115,5 @@ The worker also emits an event named `junoDelegationRemainingTime`, which provid
 ```javascript
 document.addEventListener("junoDelegationRemainingTime", ({detail: remainingTime}) => {
     // Display the remaining session duration to your users
-}), {passive: true});
+}, {passive: true});
 ```
