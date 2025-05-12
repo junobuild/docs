@@ -105,15 +105,23 @@ The `auth` option can accept either `true`, which will default to using a worker
 When the session expires, it will automatically be terminated with a standard [sign-out](./development.md#sign-out). Additionally, an event called `junoSignOutAuthTimer` will be thrown at the `document` level. This event can be used, for example, to display a warning to your users or if you wish to reload the window.
 
 ```javascript
-document.addEventListener("junoSignOutAuthTimer", () => {
+document.addEventListener(
+  "junoSignOutAuthTimer",
+  () => {
     // Display an information to your users
-}, {passive: true});
+  },
+  { passive: true }
+);
 ```
 
 The worker also emits an event named `junoDelegationRemainingTime`, which provides the remaining duration in milliseconds of the authentication delegation. This can be useful if you want to display to your users how much time remains in their active session.
 
 ```javascript
-document.addEventListener("junoDelegationRemainingTime", ({detail: remainingTime}) => {
+document.addEventListener(
+  "junoDelegationRemainingTime",
+  ({ detail: remainingTime }) => {
     // Display the remaining session duration to your users
-}, {passive: true});
+  },
+  { passive: true }
+);
 ```
