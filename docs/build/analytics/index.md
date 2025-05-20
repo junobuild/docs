@@ -35,6 +35,10 @@ Juno’s analytics library is built for speed and simplicity. It’s a tiny Java
 
 Beyond standard page views, you can gain valuable insights into your visitors by creating custom events to track conversions and attribution.
 
+## 📣 Understand Campaign Performance
+
+Measure the impact of your campaigns using `utm` parameters. See how people find your app — whether through ads, newsletters, or social posts — and track which sources drive the most traffic, all from your dashboard.
+
 ### 📊 Web Vitals Insights Built-In
 
 In addition to tracking user interactions, the Analytics can also automatically collect key performance metrics using [Web Vitals](https://web.dev/articles/vitals). These metrics are essential for measuring user experience accurately, aligning with how they are captured by Chrome and reported to other Google tools. This enhancement is valuable for developers aiming to optimize the UI performance of their applications, ensuring a smoother and more responsive user experience.
