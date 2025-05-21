@@ -166,7 +166,8 @@ const config: Config = {
               { to: "/docs/white-paper/intro", label: "White Paper" },
               { to: "/showcase", label: "Showcase" },
               { to: "/blog", label: "Blog" },
-              { to: "/newsletter", label: "Newsletter" }
+              { to: "/newsletter", label: "Newsletter" },
+              { to: "/sponsorship", label: "Sponsorship" }
             ]
           },
           {
@@ -288,8 +289,24 @@ const config: Config = {
             title: "More",
             items: [
               {
+                label: "White Paper",
+                to: "/docs/white-paper/intro"
+              },
+              {
+                label: "Showcase",
+                to: "/showcase"
+              },
+              {
                 label: "Blog",
                 to: "/blog"
+              },
+              {
+                label: "Newsletter",
+                to: "/newsletter"
+              },
+              {
+                label: "Sponsorship",
+                to: "/sponsorship"
               },
               {
                 label: "Changelog",
