@@ -1,5 +1,5 @@
 import type { DocusaurusConfig } from "@docusaurus/types";
-import { trackEvent as trackEventOrbiter } from "@junobuild/analytics";
+import { trackEventAsync as trackEventOrbiter } from "@junobuild/analytics";
 
 export const trackEvent = async ({
   name,
