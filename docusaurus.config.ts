@@ -116,10 +116,41 @@ const config: Config = {
         hideOnScroll: true,
         items: [
           {
+            type: "dropdown",
+            label: "Products",
+            position: "left",
+            items: [
+              {
+                to: "/docs/build/authentication",
+                html: `<span style="display: flex; align-items: center; gap: 0.45rem;"><span style="display: flex; justify-content: center; align-items: center; width: 1.25rem; height: 1.25rem; padding: 0.25rem; border-radius: 50%; background: #fff;"><img src="/icons/authentication.svg" style="height: 1em;" alt="" /></span>Authentication</span>`
+              },
+              {
+                to: "/docs/build/datastore",
+                html: `<span style="display: flex; align-items: center; gap: 0.45rem;"><span style="display: flex; justify-content: center; align-items: center; width: 1.25rem; height: 1.25rem; padding: 0.25rem; border-radius: 50%; background: #fff;"><img src="/icons/datastore.svg" style="height: 1em;" alt="" /></span>Datastore</span>`
+              },
+              {
+                to: "/docs/build/storage",
+                html: `<span style="display: flex; align-items: center; gap: 0.45rem;"><span style="display: flex; justify-content: center; align-items: center; width: 1.25rem; height: 1.25rem; padding: 0.25rem; border-radius: 50%; background: #fff;"><img src="/icons/storage.svg" style="height: 1em;" alt="" /></span>Storage</span>`
+              },
+              {
+                to: "/docs/build/hosting",
+                html: `<span style="display: flex; align-items: center; gap: 0.45rem;"><span style="display: flex; justify-content: center; align-items: center; width: 1.25rem; height: 1.25rem; padding: 0.25rem; border-radius: 50%; background: #fff;"><img src="/icons/hosting.svg" style="height: 1em;" alt="" /></span>Hosting</span>`
+              },
+              {
+                to: "/docs/build/functions",
+                html: `<span style="display: flex; align-items: center; gap: 0.45rem;"><span style="display: flex; justify-content: center; align-items: center; width: 1.25rem; height: 1.25rem; padding: 0.25rem; border-radius: 50%; background: #fff;"><img src="/icons/functions.svg" style="height: 1em;" alt="" /></span>Functions</span>`
+              },
+              {
+                to: "/docs/build/analytics",
+                html: `<span style="display: flex; align-items: center; gap: 0.45rem;"><span style="display: flex; justify-content: center; align-items: center; width: 1.25rem; height: 1.25rem; padding: 0.25rem; border-radius: 50%; background: #fff;"><img src="/icons/analytics.svg" style="height: 1em;" alt="" /></span>Analytics</span>`
+              }
+            ]
+          },
+          {
             type: "doc",
             docId: "intro",
             position: "left",
-            label: "Documentation"
+            label: "Docs"
           },
           {
             type: "docSidebar",
@@ -191,6 +222,39 @@ const config: Config = {
               {
                 label: "Guides",
                 to: "/docs/category/guides"
+              },
+              {
+                label: "References",
+                to: "/docs/reference/cli"
+              }
+            ]
+          },
+          {
+            title: "Products",
+            items: [
+              {
+                label: "Authentication",
+                to: "/docs/build/authentication"
+              },
+              {
+                label: "Datastore",
+                to: "/docs/build/datastore"
+              },
+              {
+                label: "Storage",
+                to: "/docs/build/storage"
+              },
+              {
+                label: "Hosting",
+                to: "/docs/build/hosting"
+              },
+              {
+                label: "Functions",
+                to: "/docs/build/functions"
+              },
+              {
+                label: "Analytics",
+                to: "/docs/build/analytics"
               }
             ]
           },
