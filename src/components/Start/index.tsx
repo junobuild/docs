@@ -1,4 +1,5 @@
 import Link from "@docusaurus/Link";
+import { useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { ReactNode } from "react";
 import { trackEvent } from "../../providers/analytics.providers";
@@ -16,6 +17,10 @@ export default function Start({
 }: StartProps): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const utmSource = queryParams.get("utm_source");
+
   return (
     <Link
       className={`button button--hero ${className}`}
@@ -25,7 +30,8 @@ export default function Start({
         trackEvent({
           name: "start_building",
           metadata: {
-            position
+            position,
+            ...(utmSource && utmSource !== "" ? { utm_source: utmSource } : {})
           },
           siteConfig
         })
