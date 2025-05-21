@@ -51,7 +51,7 @@
     "docusaurus-plugin-sass": "^0.2.6",
     "prettier": "^3.5.3",
     "prettier-plugin-organize-imports": "^4.1.0",
-    "sass": "^1.86.3",
+    "sass": "^1.89.0",
     "typescript": "^5.8.3"
   },
   "browserslist": {
