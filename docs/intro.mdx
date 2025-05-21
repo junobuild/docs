@@ -9,7 +9,7 @@ Start your journey by [launching](./create-a-satellite.mdx) your first Satellite
 
 It gives you full control 🔐 over authentication, a key-pair datastore (akin to a simple 'database'), file storage, your own serverless functions, and hosting.
 
-It’s everything you need to run your app. Zero DevOps, no external resources required.
+It's everything you need to run your app. Zero DevOps, no external resources required.
 
 ---
 
@@ -23,7 +23,7 @@ After creating your Satellite, you're ready to put it to use. Follow our [step-b
 
 Are you starting a fresh project? We've got your back.
 
-Whether it’s a website, blog, or app, leverage Juno's onboarding CLI to scaffold your project with ready-made templates for popular frontend frameworks like Astro, Next.js, React, SvelteKit, Vue, and Angular.
+Whether it's a website, blog, or app, leverage Juno's onboarding CLI to scaffold your project with ready-made templates for popular frontend frameworks like Astro, Next.js, React, SvelteKit, Vue, and Angular.
 
 Just run:
 
@@ -47,9 +47,33 @@ With the provided [emulator](./guides/local-development.mdx), you can build and 
 
 ---
 
+## How It Works
+
+Juno is your own self-contained execution space.
+
+No DevOps. No backend boilerplate. No surprise complexity.
+
+You build your frontend using the frameworks you love — React, SvelteKit, Next.js, you name it.
+
+Need backend logic? Just drop in a serverless function written in Rust or TypeScript.
+
+Everything gets bundled into a single deployable WebAssembly (WASM) container. One artifact. One push. That's your app. It runs in an unstoppable environment that holds its entire state — data, logic, and storage.
+
+And here's the beauty of it: Juno controls nothing.
+
+It has zero access to your code, data, or infrastructure. Everything runs under your ownership. Think of it as the space between self-hosting and the serverless cloud — a reimagined model for application development.
+
+You manage your projects and supporting modules — themed around space mythology — using either a CLI or the Console UI, depending on your workflow.
+
+To strengthen this principle of non-interference, deploys and upgrades can be handled via GitHub Actions if you choose to opt in — which themselves can't start or stop your app once it's live.
+
+And during development, the environment mirrors production as closely as possible — so you're never caught by “but it worked locally.”
+
+---
+
 ## Further Details
 
-Dive deeper into Juno’s capabilities with our feature-rich documentation:
+Learn more about the available products, from auth and data to hosting and functions.
 
 - [Authentication](build/authentication/index.md)
 - [Datastore](build/datastore/index.md)
@@ -59,9 +83,3 @@ Dive deeper into Juno’s capabilities with our feature-rich documentation:
 - [Analytics](build/analytics/index.md)
 - [Monitoring](management/monitoring.md)
 - [Snapshots](management/snapshots.md)
-
----
-
-## Learn concepts
-
-Familiarize yourself with Juno's [infrastructure](white-paper/infrastructure.md) and [architecture](white-paper/architecture.md) to understand its operation better.
