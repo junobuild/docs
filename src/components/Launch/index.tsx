@@ -25,10 +25,10 @@ export default function Launch(): JSX.Element {
   return (
     <div className={styles.sub}>
       <article>
-        <h2 className={styles.title}>Launch your app now</h2>
+        <h2 className={styles.title}>Starting a new project?</h2>
         <p>
-          Whether you're planning to build a website, blog, or application,
-          quickly scaffold your project with ready-made templates.
+          We've got you covered. Quickly scaffold your project with ready-made
+          templates.
         </p>
 
         <div

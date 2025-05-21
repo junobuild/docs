@@ -10,10 +10,10 @@ export default function Features(): JSX.Element {
           <CloudIllustration />
         </picture>
         <aside>
-          <h2>Bootstrap in a Weekend</h2>
+          <h2>Move Fast. Ship Smart.</h2>
           <p>
-            Bring your apps to life with a comprehensive toolkit designed to
-            accelerate your development.
+            Develop modern apps with zero backend setup. Build, test and deploy
+            your way.
           </p>
         </aside>
       </div>
