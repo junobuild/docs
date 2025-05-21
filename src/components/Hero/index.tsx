@@ -51,7 +51,7 @@ export default function Hero(): JSX.Element {
         </p>
         <p className={`${styles.item}`}></p>
         <div className={`${styles.item} ${styles.actions}`}>
-          <Start position="hero" />
+          <Start position="hero">Get Started</Start>
           <Link
             className="button button--juno"
             to="/docs/intro"

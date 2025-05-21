@@ -1,15 +1,18 @@
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { ReactNode } from "react";
 import { trackEvent } from "../../providers/analytics.providers";
 
 type StartProps = {
   position: string;
   className?: string;
+  children: ReactNode;
 };
 
 export default function Start({
   position,
-  className = ""
+  className = "",
+  children
 }: StartProps): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
 
@@ -28,7 +31,7 @@ export default function Start({
         })
       }
     >
-      Get started
+      {children}
     </Link>
   );
 }

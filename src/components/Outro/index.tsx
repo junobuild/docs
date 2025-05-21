@@ -11,7 +11,9 @@ export default function Outro(): JSX.Element {
           <p className={styles.subText}>
             No setup. No DevOps. No strings attached.
           </p>
-          <Start position="footer" className={`button-lg ${styles.start}`} />
+          <Start position="footer" className={`button-lg ${styles.start}`}>
+            Start Building
+          </Start>
         </div>
         <picture aria-label="An astronaut planting a flag reading 'Juno' on a small planet, giving a thumbs up.">
           <MoonIllustration />
