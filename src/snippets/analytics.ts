@@ -3,11 +3,11 @@ export const code = {
   value: `// Analytics events are collected using a tiny library (< 3KB gzipped)
 import { initOrbiter, trackEvent } from "@junobuild/analytics";
 
-await initOrbiter();
+initOrbiter();
 
 // In addition to standard metrics such as sessions, page views, etc.,
 // it can also gather web vitals out of the box
-await initOrbiter({
+initOrbiter({
   options: {
     performance: true
   }

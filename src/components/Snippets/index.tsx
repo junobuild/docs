@@ -86,7 +86,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Datastore"
-              text="Store data on the blockchain in a simple key-value model, organized by collections of documents."
+              text="Store data in a simple key-value model, organized by collections of documents."
               link={
                 <Link to="/docs/build/datastore" className={styles.link}>
                   Learn more
@@ -104,7 +104,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Storage"
-              text="Easily upload and serve user-generated content, such as files, and images, on Web3."
+              text="Easily upload and serve user-generated content, such as files, and images."
               link={
                 <Link to="/docs/build/storage" className={styles.link}>
                   Learn more
@@ -122,7 +122,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Hosting"
-              text="Hosting powered by smart contracts with support for custom domains to maintain your brand identity."
+              text="Serve your app globally with custom domains. No infra, just config."
               link={
                 <Link to="/docs/build/hosting" className={styles.link}>
                   Learn more

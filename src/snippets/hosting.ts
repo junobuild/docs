@@ -9,8 +9,12 @@ import { defineConfig } from "@junobuild/config";
 // Headers, redirects, rewrites, 404s, etc., are supported.
 export default defineConfig({
   satellite: {
-    id: "ucnx3-aqaaa-aaaal-ab3ea-cai",
+    ids: {
+      production: "ucnx3-aqaaa-aaaal-ab3ea-cai",
+      development: "ffff-eeee-ddddd-ccccc-cai"
+    },
     source: "build",
+    predeploy: ["npm run build"]
     storage: {
       headers: [
         {
@@ -21,17 +25,5 @@ export default defineConfig({
     }
   }
 });
-
-// Deploy your app using the CLI
-❯ npm i -g @junobuild/cli
-❯ juno deploy
-
-// Or with GitHub Actions
-- name: Deploy to Juno
-  uses: junobuild/juno-action@main
-  with:
-    args: deploy
-  env:
-    JUNO_TOKEN: ...
 `
 };
