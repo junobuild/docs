@@ -28,7 +28,7 @@ export default function Start({
         })
       }
     >
-      Start Building
+      Get started
     </Link>
   );
 }

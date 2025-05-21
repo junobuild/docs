@@ -61,9 +61,10 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Build",
+      label: "Products",
       link: {
         type: "generated-index",
+        slug: "/category/build", // For backward compatibility, we use /build in the URL even though the label is now "Products" (it was originally called "Build")
         description:
           "Learn about Juno features to build apps running 100% on blockchain without the need to manage servers or write any backend code."
       },
