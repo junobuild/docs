@@ -10,6 +10,14 @@ Page views, such as when a visitor opens your website or navigates to a subpage,
 
 There's **no need** for additional development work!
 
+However, if you (really) want to trigger page view tracking manually, you can do so using the `trackPageView()` function provided by the SDK.
+
+```typescript
+import { trackPageView, trackPageViewAsync } from "@junobuild/analytics";
+
+trackPageView(); // or await trackPageViewAsync();
+```
+
 ---
 
 ## Track custom events
@@ -27,8 +35,18 @@ Custom events are useful if you want to take an extra step and collect your own 
 Here's an example of how to use it:
 
 ```javascript
-import { trackEvent } from "@junobuild/analytics";
+import { trackEvent, trackEventAsync } from "@junobuild/analytics";
 
+// Fire-and-forget
+trackEvent({
+  name: "Your custom event",
+  metadata: {
+    your_key: "A value",
+    your_other_key: "Another value"
+  }
+});
+
+// Or await it if needed
 await trackEvent({
   name: "Your custom event",
   metadata: {
@@ -38,9 +56,11 @@ await trackEvent({
 });
 ```
 
-This allows you to track specific events and gather data relevant to your application.
+Use the `async` version if you're tracking events for which you want to absolutely ensure delivery before continuing the flow — for example, before navigating away or submitting critical user input.
 
-:::note
+That said, the tracker sends data using `keepalive` fetch requests by default, so in most cases there’s no difference in reliability — the choice is mostly a matter of convenience and flow control.
+
+:::important
 
 For scalability and optimization reasons, the data collected must adhere to certain rules, particularly regarding their length. For instance, a randomly generated key should not exceed 36 bytes in length.
 
