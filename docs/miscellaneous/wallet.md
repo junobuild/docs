@@ -2,6 +2,18 @@
 
 This section provides guidance on managing your assets and cycles with your [wallet](../terminology.md#wallet), which are essential for maintaining and providing enough resources for your modules in the Juno ecosystem.
 
+:::important
+
+Just like your modules, your wallet is fully under your control — Juno cannot access, move, or recover the ICP or cycles held inside.
+
+Because of this non-custodial model, there are no refunds, reversals, or recovery options. Always double-check destination addresses before sending funds.
+
+As a best practice, we recommend not holding large amounts of ICP in your Juno wallet unless necessary. Use it as a utility wallet for fueling your modules — not as a long-term vault.
+
+We also recommend enabling [monitoring](../management/monitoring.md) to ensure your Mission Control stays alive and responsive at all times.
+
+:::
+
 ---
 
 ## What are ICP?
