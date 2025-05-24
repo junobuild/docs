@@ -106,7 +106,7 @@ const config: Config = {
             "Web3, blockchain platform, decentralized applications, Web3 development, passwordless authentication, datastore, file storage, hosting, serverless functions, analytics, open source"
         }
       ],
-      image: "img/social_image_v8.jpg",
+      image: "img/social_image_v9.jpg",
       navbar: {
         logo: {
           alt: "Juno Logo",
