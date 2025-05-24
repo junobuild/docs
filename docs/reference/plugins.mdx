@@ -26,32 +26,43 @@ If you are developing your app using Next.js, this plugin automatically loads Sa
 These values allow you to instantiate Juno in your code without the need to manually define environment variables.
 
 ```javascript
-await Promise.all([initSatellite(), initOrbiter()]);
+// Init a Satellite
+await initSatellite();
+
+// Init the analytics
+initOrbiter();
 ```
 
 However, if you wish to explicitly use the environment variables that are loaded by the plugin, you can do so. This is notably required if you specify a prefix other than `NEXT_PUBLIC_`.
 
 ```javascript
-await Promise.all([
-  initSatellite({
-    satelliteId: process.env.NEXT_PUBLIC_SATELLITE_ID
-  }),
-  initOrbiter({
-    satelliteId: process.env.NEXT_PUBLIC_SATELLITE_ID,
-    orbiterId: process.env.NEXT_PUBLIC_ORBITER_ID
-  })
-]);
+// Init a Satellite
+await initSatellite({ satelliteId: process.env.NEXT_PUBLIC_SATELLITE_ID });
+
+// Init the analytics
+initOrbiter({
+  satelliteId: process.env.NEXT_PUBLIC_SATELLITE_ID,
+  orbiterId: process.env.NEXT_PUBLIC_ORBITER_ID
+});
 ```
 
 ### Installation
 
-```bash
-npm i @junobuild/nextjs-plugin -D
-```
+Add it to your dev dependencies with:
+
+import { Bash } from "../components/bash.mdx";
+
+<Bash
+  npm="npm i @junobuild/nextjs-plugin -D"
+  yarn="yarn add @junobuild/nextjs-plugin -D"
+  pnpm="pnpm add @junobuild/nextjs-plugin -D"
+/>
 
 ### Usage
 
-```javascript title="next.config.mjs"
+In your Next.js config file — whether it's `next.config.js`, `next.config.ts`, `next.config.mjs` or else — wrap your configuration with `withJuno` to automatically load Juno settings:
+
+```javascript
 import { withJuno } from "@junobuild/nextjs-plugin";
 
 export default withJuno();
@@ -59,7 +70,7 @@ export default withJuno();
 
 The plugin sets the build output to `export` by default. You can override the option or provide additional options as follows:
 
-```javascript title="next.config.mjs"
+```javascript
 import { withJuno } from "@junobuild/nextjs-plugin";
 
 /** @type {import('next').NextConfig} */
@@ -70,9 +81,16 @@ const nextConfig = {
 export default withJuno({ nextConfig });
 ```
 
+In other words, if you want to include additional Next.js configuration (e.g. `i18n`, `env` etc.), just define them in your `nextConfig` object and pass it to `withJuno`.
+
 ### Local development
 
-When developing locally, use the `container` option to inform the plugin that it should accommodate local environment variables.
+By default, the plugin supports local development and loads environment variables accordingly.
+
+You can use the `container` option to:
+
+- Provide a custom container URL (e.g. for an emulator running on a specific port), or
+- Set it to `false` to disable local development behavior entirely.
 
 ```javascript title="next.config.mjs"
 import { withJuno } from "@junobuild/nextjs-plugin";
@@ -82,7 +100,7 @@ const nextConfig = {
   output: "export"
 };
 
-export default withJuno({ nextConfig, juno: { container: true } });
+export default withJuno({ nextConfig, juno: { container: false } });
 ```
 
 ### More information
@@ -98,30 +116,39 @@ If you are developing your app using Vite, this plugin automatically loads the S
 These values allow you to instantiate Juno in your code without the need to manually define environment variables.
 
 ```javascript
-await Promise.all([initSatellite(), initOrbiter()]);
+// Init a Satellite
+await initSatellite();
+
+// Init the analytics
+initOrbiter();
 ```
 
 However, if you wish to explicitly use the environment variables that are loaded by the plugin, you can do so. This is notably required if you specify a prefix other than the default, such as `VITE_` or `PUBLIC_`.
 
 ```javascript
-await Promise.all([
-  initSatellite({
-    satelliteId: import.meta.env.VITE_SATELLITE_ID
-  }),
-  initOrbiter({
-    satelliteId: import.meta.env.VITE_SATELLITE_ID,
-    orbiterId: import.meta.env.VITE_ORBITER_ID
-  })
-]);
+// Init a Satellite
+await initSatellite({ satelliteId: import.meta.env.VITE_SATELLITE_ID });
+
+// Init the analytics
+initOrbiter({
+  satelliteId: import.meta.env.VITE_SATELLITE_ID,
+  orbiterId: import.meta.env.VITE_ORBITER_ID
+});
 ```
 
 ### Installation
 
-```bash
-npm i @junobuild/vite-plugin -D
-```
+Add it to your dev dependencies with:
+
+<Bash
+  npm="npm i @junobuild/vite-plugin -D"
+  yarn="yarn add @junobuild/vite-plugin -D"
+  pnpm="pnpm add @junobuild/vite-plugin -D"
+/>
 
 ### Usage
+
+Add the plugin to your Vite configuration — whether you're using TypeScript or JavaScript — to automatically load Juno settings:
 
 ```javascript title="vite.config.js"
 import juno from "@junobuild/vite-plugin";
@@ -133,7 +160,12 @@ export default defineConfig({
 
 ### Local development
 
-When developing locally, use the `container` option to inform the plugin that it should accommodate local environment variables.
+By default, the plugin supports local development and loads environment variables accordingly.
+
+You can use the `container` option to:
+
+- Provide a custom container URL (e.g. for an emulator running on a specific port), or
+- Set it to `false` to disable local development behavior entirely.
 
 ```javascript title="vite.config.js"
 import juno from "@junobuild/vite-plugin";
@@ -141,7 +173,7 @@ import juno from "@junobuild/vite-plugin";
 export default defineConfig({
   plugins: [
     juno({
-      container: true
+      container: false
     })
   ]
 });
