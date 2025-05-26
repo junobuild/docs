@@ -8,23 +8,27 @@
     max-width: 684px;
     padding-top: 1.75rem;
   }
-
-  img {
-    width: 100%;
-    margin: 0 auto;
-
-    display: none;
-
-    @media screen and (min-width: 960px) {
-      max-width: 460px;
-      display: block;
-    }
-  }
 }
 
 .title {
   margin: 1rem 0 0.75rem;
   @include fonts.h2;
+}
+
+.img {
+  width: 100%;
+  margin: 0 auto;
+
+  display: none;
+
+  @media screen and (min-width: 960px) {
+    max-width: 460px;
+    display: block;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 560px;
+  }
 }
 
 .code {
