@@ -1,6 +1,6 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { LaunchIllustration } from "@site/src/icons/LaunchIllustration";
 import { trackEvent } from "@site/src/providers/analytics.providers";
-import LaunchIllustration from "@site/static/img/launch.png";
 import CodeBlock from "@theme/CodeBlock";
 import { useRef } from "react";
 import styles from "./styles.module.scss";
@@ -50,11 +50,12 @@ export default function Launch(): JSX.Element {
         </div>
       </article>
 
-      <img
-        src={LaunchIllustration}
-        loading="lazy"
-        alt="An satellite being launch to space through the clouds."
-      />
+      <picture
+        aria-label="An satellite being launch to space through the clouds."
+        className={styles.img}
+      >
+        <LaunchIllustration />
+      </picture>
     </div>
   );
 }
