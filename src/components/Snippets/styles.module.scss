@@ -36,6 +36,9 @@
 }
 
 .btn {
+  display: flex;
+  flex-direction: column;
+
   border-width: 4px;
   max-width: 100%;
   white-space: pre-wrap;
@@ -117,12 +120,12 @@
     }
 
     html[data-theme="dark"] & {
-      background: white;
-      color: black;
+      background: black;
+      color: white;
 
       &:hover,
       &:focus {
-        background: white;
+        background: black;
         border-color: #7888ff;
       }
     }
