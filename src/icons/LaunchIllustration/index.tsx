@@ -32,7 +32,7 @@ export const LaunchIllustration = (): JSX.Element => {
             stopOpacity=".95"
           />
           <stop
-            offset=".70"
+            offset=".7"
             stopColor="rgba(120,136,255,.88)"
             stopOpacity=".88"
           />
