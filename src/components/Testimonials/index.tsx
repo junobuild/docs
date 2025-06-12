@@ -44,7 +44,7 @@ export default function Testimonials(): JSX.Element {
     {
       name: "Coti",
       twitter: "JuanRezzio",
-      img: "https://pbs.twimg.com/profile_images/1789664405740736512/PBu6OhgZ_400x400.jpg",
+      img: "https://pbs.twimg.com/profile_images/1925235715077545984/i9OMCPHB_400x400.jpg",
       text: "Thanks to Juno's well-documented get-started guide, we had it up and running in under 5 minutes. Our first decentralized analytics tool is now live and kicking!"
     },
     {
