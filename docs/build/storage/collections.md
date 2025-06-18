@@ -31,18 +31,18 @@ Assets are publicly accessible on the Internet regardless of the permission sche
 
 :::
 
-| Permission Type | Description                                                                                                                                                                                                                             |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| public          | Anyone can read or write assets in the collection.                                                                                                                                                                                      |
-| private         | Only the creator (owner) of the asset can read or write to it. However, note that since satellite controllers manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
-| managed         | The owner of an asset and the controllers of the satellite can read or write to it in the collection.                                                                                                                                   |
-| controllers     | Only satellite controllers can read or write any asset in the collection.                                                                                                                                                               |
+| Permission     | Description                                                                                                                                                                                                                                |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Public**     | Anyone can read or write assets in the collection.                                                                                                                                                                                         |
+| **Private**    | Only the creator (owner) of the asset can read or write to it. However, note that since satellite administrators manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
+| **Managed**    | The owner of an asset, the administrator and editor of the satellite can read or write to it in the collection.                                                                                                                            |
+| **Restricted** | Only satellite administrator and editor can read or write any asset in the collection.                                                                                                                                                     |
 
 If not set to immutable, you can modify the permissions at any time, and the changes will take effect immediately.
 
 :::tip
 
-Any collection with read permissions set to `public`, `managed` or `controllers` will allow the controllers to view its content in the console under the [storage](https://console.juno.build/storage) view.
+Any collection with read permissions set to `public`, `managed` or `restricted` will allow the developer to view its content in the console under the [storage](https://console.juno.build/storage) view.
 
 :::
 
