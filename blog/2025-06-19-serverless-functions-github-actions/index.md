@@ -170,3 +170,11 @@ Ship it.
 
 To infinity and beyond,  
 David
+
+---
+
+Stay connected with Juno by following us on [X/Twitter](https://twitter.com/junobuild).
+
+Reach out on [Discord](https://discord.gg/wHZ57Z2RAG) or [OpenChat](https://oc.app/community/vxgpi-nqaaa-aaaar-ar4lq-cai/?ref=xanzv-uaaaa-aaaaf-aneba-cai) for any questions.
+
+⭐️⭐️⭐️ stars are also much appreciated: visit the [GitHub repo](https://github.com/junobuild/juno) and show your support!
