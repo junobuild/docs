@@ -14,7 +14,8 @@ When you create a [satellite], you and your mission control become its owners. P
 
 :::note
 
-One access key is identified by a [principal](../terminology.md#principal).
+- What was previously referred to as _controllers_ in earlier versions of the documentation is now called _administrative access keys_. The concept remains the same — only the terminology has been updated for clarity and consistency.
+- One access key is identified by a [principal](../terminology.md#principal).
 
 :::
 
