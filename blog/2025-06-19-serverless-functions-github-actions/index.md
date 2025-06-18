@@ -4,7 +4,7 @@ title: "Build and Publish Serverless Functions with GitHub Actions"
 description: "Serverless functions in TypeScript or Rust can now be built and published automatically using GitHub Actions. Full control. No compromises."
 authors: [peterpeterparker]
 tags: [serverless, github-actions, ci, devtools, typescript, rust]
-image: https://juno.build/assets/images/announcing-serverless-functions-in-typescript-0c3a8c1d217b5d622a7f52e6364716f8.png
+image: https://juno.build/assets/images/serverless-functions-github-actions-b19d1f12963712cd2e85a9ef25355758.png
 ---
 
 ![](serverless-functions-github-actions.png)
