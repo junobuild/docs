@@ -217,6 +217,11 @@ const redirects: StorageConfigRedirect[] = [
     source: "/docs/category/guides-and-examples",
     location: "/docs/category/guides",
     code: 301
+  },
+  {
+    source: "/docs/miscellaneous/controllers",
+    location: "/docs/miscellaneous/access-keys",
+    code: 301
   }
 ];
 
