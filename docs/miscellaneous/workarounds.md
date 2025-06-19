@@ -16,20 +16,20 @@ Nevertheless, for this tutorial, "account" refers to someone able to sign in int
 
 :::
 
-#### 1. Add the new controllers to the Satellite
+#### 1. Add the new access key to the Satellite
 
 :::danger
 
-Never ever add controllers to your modules without being absolutely certain of their validity. Double-check everything before performing such a procedure.
+Never ever add access keys to your modules without being absolutely certain of their validity. Double-check everything before performing such a procedure.
 
 :::
 
-In your satellite, assign the controllers of the destination account with administrative permissions:
+In your satellite, assign the access key of the destination account with administrative permissions:
 
 - The Mission Control ID
 - The Developer ID (available under "Preferences")
 
-In other words, ask your friend or colleague for their Developer ID and Mission Control ID, and add those as new controllers. Again, **please be absolutely certain** before adding the controllers.
+In other words, ask your friend or colleague for their Developer ID and Mission Control ID, and add those as new access keys. Again, **please be absolutely certain** before adding the controllers.
 
 #### 2. Attach Satellite in destination account
 
@@ -45,7 +45,7 @@ At this stage, the satellite is linked to both accounts, making it accessible fr
 
 #### 3. Remove Unnecessary Controllers
 
-The destination account — your friend or colleague, who is now the owner of the satellite — can then remove the controllers that should no longer be listed, specifically your own Developer ID and your Mission Control ID.
+The destination account — your friend or colleague, who is now the owner of the satellite — can then remove the access key(s) that should no longer be listed, specifically your own Developer ID and your Mission Control ID.
 
 #### 4. Confirm and Detach
 
@@ -55,7 +55,7 @@ Wait for confirmation that the destination account has completed all the steps a
 
 ## How to collaborate on the same "project"
 
-Since team collaboration isn't available yet, developers often find ways to share a satellite with friends or colleagues by either adding controllers—explained in the previous section—or by sharing an Internet Identity. With the latter approach, everyone in the group logs into the Juno Console using the same identity, allowing them to access the same data effortlessly.
+Since team collaboration isn't available yet, developers often find ways to share a satellite with friends or colleagues by either adding access keys—explained in the previous section—or by sharing an Internet Identity. With the latter approach, everyone in the group logs into the Juno Console using the same identity, allowing them to access the same data effortlessly.
 
 While this method falls outside Juno's intended scope, it works similarly to adding multiple passkeys to your own Internet Identity. Here’s a simple guide to help you set it up.
 

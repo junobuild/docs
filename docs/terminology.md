@@ -16,7 +16,7 @@ On the Internet Computer, a controller is a [principal](#principal) (such as a u
 
 In earlier versions of Juno, the term _controller_ was used to describe access permissions to [mission controls], [satellites] and [orbiters]. This concept has since been replaced by access keys, which provide more flexibility and support for different roles.
 
-For current usage and setup, refer to the [Access Keys documentation](miscellaneous/controllers.md).
+For current usage and setup, refer to the [Access Keys documentation](miscellaneous/access-keys.md).
 
 ## Cycles
 
