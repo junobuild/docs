@@ -25,18 +25,18 @@ Each collection has a set of configurable options that define its behavior and l
 
 Permissions define who can read and write documents in a collection. Writing includes creating, updating, and deleting documents.
 
-| Permission Type | Description                                                                                                                                                                                                                              |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| public          | Anyone can read or write documents in the collection.                                                                                                                                                                                    |
-| private         | Only the creator (owner) of a document can read or write to it. However, note that since satellite controllers manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
-| managed         | The owner of a document and the controllers of the satellite can read or write to it in the collection.                                                                                                                                  |
-| controllers     | Only satellite controllers can read or write any document in the collection.                                                                                                                                                             |
+| Permission     | Description                                                                                                                                                                                                                                 |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Public**     | Anyone can read or write documents in the collection.                                                                                                                                                                                       |
+| **Private**    | Only the creator (owner) of a document can read or write to it. However, note that since satellite administrators manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
+| **Managed**    | The owner of a document, the administrator and editor of the satellite can read or write to it in the collection.                                                                                                                           |
+| **Restricted** | Only satellite administrator and editor can read or write any document in the collection.                                                                                                                                                   |
 
 If not set to immutable, you can modify the permissions at any time, and the changes will take effect immediately.
 
 :::tip
 
-Any collection with read permissions set to `public`, `managed` or `controllers` will allow the controllers to view its content in the console under the [datastore](https://console.juno.build/datastore) view.
+Any collection with read permissions set to `public`, `managed` or `restricted` will allow the developer to view its content in the console under the [datastore](https://console.juno.build/datastore) view.
 
 :::
 
