@@ -1,13 +1,12 @@
-Deploy your app to your satellite.
+Publish a new version of your serverless functions.
 
 ```
-Usage: juno deploy [options]
+Usage: juno functions publish [options]
 
 Options:
-  -c, --clear           Clear existing app files before proceeding with deployment.
-  --no-apply            Submit the deployment as a change but do not apply it yet.
+  --no-apply            Submit the release as a change but do not apply it yet.
   -k, --keep-staged     Keep staged assets in memory after applying the change.
-  -i, --immediate       Deploy files instantly (bypasses the change workflow).
+  -s, --src             A path to a specific local gzipped WASM file to publish.
   -m, --mode            Set env mode. For example production or a custom string. Default is production.
   --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.
   --console-url         Specify a custom URL to access the developer Console.
