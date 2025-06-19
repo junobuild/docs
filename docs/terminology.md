@@ -12,9 +12,11 @@ The "console" refers to Juno's administration application, located at [https://c
 
 ## Controller
 
-Controllers are used to grant permissions to [mission controls] and [satellites] in Juno.
+On the Internet Computer, a controller is a [principal](#principal) (such as a user or service) that has full administrative control over a deployed module.
 
-For more detailed information, please refer to the dedicated [documentation](miscellaneous/access-keys.md).
+In earlier versions of Juno, the term _controller_ was used to describe access permissions to [mission controls], [satellites] and [orbiters]. This concept has since been replaced by access keys, which provide more flexibility and support for different roles.
+
+For current usage and setup, refer to the [Access Keys documentation](miscellaneous/access-keys.md).
 
 ## Cycles
 
@@ -120,6 +122,7 @@ Because your wallet is also your [mission-control](#mission-control) and therefo
 [console]: terminology.md#console
 [satellite]: terminology.md#satellite
 [satellites]: terminology.md#satellite
+[orbiters]: terminology.md#orbiter
 [mission control]: terminology.md#mission-control
 [mission controls]: terminology.md#mission-control
 [infrastructure]: ./white-paper/infrastructure.md
