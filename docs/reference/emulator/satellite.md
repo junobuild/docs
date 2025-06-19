@@ -2,7 +2,7 @@
 
 Unlike Skylab, the image [junobuild/satellite](https://hub.docker.com/r/junobuild/satellite) runs a single Satellite in a sandboxed local environment.
 
-You can configure the behavior of Satellite with a specific configuration file to define Datastore and Storage collections, additional controllers, and optional serverless extensions. Like Skylab, it also supports live reloading for these serverless functions through a shared folder.
+You can configure the behavior of Satellite with a specific configuration file to define Datastore and Storage collections, additional administrative access keys, and optional serverless extensions. Like Skylab, it also supports live reloading for these serverless functions through a shared folder.
 
 The CLI watches configuration files and a dedicated `deploy` folder, automatically applying changes and upgrading modules as needed.
 
@@ -12,7 +12,7 @@ The CLI watches configuration files and a dedicated `deploy` folder, automatical
 
 The behavior of the Satellite running in the Docker container can be configured with the help of a local configuration file commonly named `juno.dev.config.ts` (or JavaScript or JSON).
 
-This configuration file enables you to define the collections of the Datastore and Storage that run locally, but it also allows for defining additional controllers for your satellite.
+This configuration file enables you to define the collections of the Datastore and Storage that run locally, but it also allows for defining additional controllers - i.e. administrative access keys - for your satellite.
 
 The definition is as follows:
 

@@ -14,7 +14,7 @@ The "console" refers to Juno's administration application, located at [https://c
 
 Controllers are used to grant permissions to [mission controls] and [satellites] in Juno.
 
-For more detailed information, please refer to the dedicated [documentation](miscellaneous/controllers.md).
+For more detailed information, please refer to the dedicated [documentation](miscellaneous/access-keys.md).
 
 ## Cycles
 

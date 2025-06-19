@@ -3,36 +3,30 @@ id: github-actions
 title: GitHub Actions
 description: Learn how to use GitHub Actions for continuous integration and deployment.
 toc_min_heading_level: 2
-toc_max_heading_level: 2
+toc_max_heading_level: 3
 ---
 
 # GitHub Actions
 
 You can leverage the Juno [CLI] to perform tasks within GitHub Actions.
 
-This guide will show you how to set up and deploy your decentralized app to Juno satellites using the action [junobuild/juno-action](https://github.com/junobuild/juno-action).
+This guide will show you how to use the [junobuild/juno-action](https://github.com/junobuild/juno-action) to deploy your frontend assets, build and publish serverless functions, and optionally upgrade your WASM container.
 
 ---
 
 ## 1. Add a Secret Token for Automation
 
-Before you can effectively implement automation, it is necessary to add a secret token to your GitHub repository or organization. This token will enable the CI (Continuous Integration) to deploy to your [satellite].
+Before you can effectively implement automation, it is necessary to add a secret token to your GitHub repository or organization. This token will enable the CI (Continuous Integration) to interact with your [satellite].
 
 Follow the steps below to generate a new controller:
 
 1. Go to the Juno's [console](https://console.juno.build).
 2. Select your satellite.
 3. On the satellite's dashboard, navigate to the "Setup" tab.
-4. Click on "Add a controller".
-5. Generate a new controller (default option) with a permission scope set to "Read-write".
+4. Click on "Add an access key".
+5. Generate a new key (default option) and assign it an appropriate role based on your workflow. [Learn more about the available roles and their permissions](../miscellaneous/controllers.md) to choose the appropriate level of access for your use case.
 6. Click "Submit".
-7. Upon successful creation, a new controller will be generated, and a "Secret token" will be displayed. Copy the token value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your repository or organization, using the key `JUNO_TOKEN`.
-
-:::info
-
-While you can generate a controller with administrative permission, we strongly recommend using the "Read-write" scope. This ensures that GitHub does not have the capability to operate your smart contract, such as stopping or deleting your satellite. By opting for the "Read-write" scope, you maintain full control over your decentralized app and minimize the risk of unwanted interference from GitHub.
-
-:::
+7. Upon successful creation, a new access key will be generated, and a "Secret token" will be displayed. Copy the token value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your repository or organization, using the key `JUNO_TOKEN`.
 
 ---
 
@@ -72,7 +66,9 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai", // Replace with your satellite ID
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai" // Replace with your satellite ID
+    },
     source: "dist", // Replace with your build output directory
     predeploy: ["npm run build"] // Adjust based on your package manager
   }
@@ -85,13 +81,25 @@ For detailed information about all available configuration options, refer to the
 
 ## 3. Create the GitHub Action
 
-To configure the action, follow these steps:
+You can use GitHub Actions to automate different parts of your Juno deployment workflow:
 
-1. Create a `deploy.yml` file in the `.github/workflows` subfolder of your repository. If the folder doesn't exist, create it.
-2. Paste the following code into a new `deploy.yml` file.
+- 🪄 Deploy frontend assets to your Satellite. [Learn how.](#a--deploy-frontend-assets)
+- 🛠️ Build and publish serverless functions (TypeScript or Rust). [Learn how.](#b-%EF%B8%8F-build-and-publish-serverless-functions)
+- ⚠️ Optionally upgrade your Satellite's WASM container. [Learn how.](#c-%EF%B8%8F-upgrade-serverless-functions-optional)
 
-```yaml
-name: Deploy to Juno
+Each task can be performed independently or combined, depending on your project setup.
+
+---
+
+### a) 🪄 Deploy Frontend Assets
+
+To configure an action to deploy your frontend assets, follow these steps:
+
+1. Create or edit a `deploy.yml` file in the `.github/workflows` subfolder of your repository. If the folders do not exist, create those.
+2. Paste the following code into the file:
+
+```yaml title="deploy.yml"
+name: Deploy Frontend to Juno
 
 on:
   workflow_dispatch:
@@ -99,7 +107,7 @@ on:
     branches: [main]
 
 jobs:
-  publish:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -138,15 +146,15 @@ If your `juno.config` file does not build your application using a `predeploy` f
 
 ---
 
-## Optimization & Best Practices
+#### Optimization & Best Practices
 
 Below are key considerations to ensure efficient and cost-effective deployment of your project.
 
-### Build Reproducibility
+##### Build Reproducibility
 
 Only new resources will be deployed to your satellite. Changes are detected through sha256 comparison. Therefore, ensuring the build reproducibility of your application is crucial to accurately identify and deploy the necessary updates.
 
-### Deployment Costs
+##### Deployment Costs
 
 Deploying new assets consumes [cycles], and the cost increases with both the frequency of deployments and the number of items to deploy. While the above code snippet demonstrates a more frequent lifecycle, as a general recommendation, consider minimizing your deployment expenses with less frequent deployments. For instance, you can trigger the action on releases instead.
 
@@ -154,6 +162,135 @@ Deploying new assets consumes [cycles], and the cost increases with both the fre
 on:
   release:
     types: [released]
+```
+
+---
+
+### b) 🛠️ Build and Publish Serverless Functions
+
+To configure an action to build and publish serverless functions, follow these steps:
+
+1. Create or edit `publish.yml` in `.github/workflows/`.
+2. Paste the following code into the file:
+
+```yaml title="publish.yml"
+name: Publish Serverless Functions
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        uses: junobuild/juno-action@main
+        with:
+          args: functions build
+
+      - name: Publish
+        uses: junobuild/juno-action@main
+        with:
+          args: functions publish
+        env:
+          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+This action will build and publish your serverless function bundle.
+
+If your access key has a **write** role, the changes will be automatically deployed to your Satellite's CDN.
+
+If your key only has a **submit** role, the release will be submitted as a pending change for manual approval. To avoid errors in submit-only workflows, you can explicitly use the `--no-apply` flag to skip auto-application.
+
+```yaml
+- name: Publish
+  uses: junobuild/juno-action@main
+  with:
+    args: functions publish --no-apply
+  env:
+    JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+---
+
+#### Optimization & Best Practices
+
+Below are key considerations to ensure efficient and cost-effective publication of your functions.
+
+##### Triggering on Release
+
+You can adjust the trigger to publish your serverless function only on releases, which helps reduce unnecessary CI runs and deployments.
+
+```yaml
+on:
+  release:
+    types: [released]
+```
+
+This ensures that your function bundle is built and published only when a GitHub release is published.
+
+---
+
+### c) 🛠️ Upgrade Serverless Functions (Optional)
+
+:::caution
+
+We do not recommend upgrading your container directly from CI in **production**.
+This approach hands over control to automation, which may not be suitable for critical environments.
+Prefer a change workflow and executing the upgrade with your CLI or in the Console UI.
+
+:::
+
+To configure an action to upgrade your Satellite container, follow these steps:
+
+1. Create an `upgrade.yml` file in the `.github/workflows` subfolder of your repository.
+2. Paste the following code into the file:
+
+```yaml title="upgrade.yml"
+name: Upgrade Satellite Container
+
+on:
+  workflow_dispatch:
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        uses: junobuild/juno-action@main
+        with:
+          args: functions build
+
+      - name: Upgrade
+        uses: junobuild/juno-action@main
+        with:
+          args: functions upgrade
+        env:
+          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
 ---
