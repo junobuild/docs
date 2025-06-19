@@ -75,6 +75,12 @@ You can find the logs in the "Functions" section of Juno's administration Consol
 
 The default value is `controllers`.
 
+:::tip
+
+On Juno, an administrative access key is a controller.
+
+:::
+
 ### Example
 
 If you set log visibility to `public`, anyone can view the logs of the module.

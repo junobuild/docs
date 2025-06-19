@@ -124,11 +124,7 @@ If Mission Control doesn't have enough cycles or ICP to perform a refill, the to
 
 After each successful top-up, developers who have opted-in will receive an email notification. These notifications provide details such as the module that was refilled and the amount of cycles added.
 
-:::note
-
-Currently, there are no notifications for failed top-up attempts (e.g., when Mission Control or a module cannot be refilled). Adding this feature is part of our roadmap.
-
-:::
+In the case of failed attempts (e.g., when Mission Control or a module could not be refilled), a single email notification is sent per day to avoid spamming developers in the event of repeated failures.
 
 ---
 

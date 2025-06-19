@@ -1,4 +1,4 @@
-Log out of the current device. ⚠️ This action does not remove controllers from the module.
+Log out of the current device. ⚠️ This action does not remove the access keys from the module.
 
 ```
 Usage: juno logout [options]
