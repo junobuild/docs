@@ -57,7 +57,7 @@ To accomplish this, you have two main options.
 
 When creating a new Satellite, it’s very likely that you’ll want to generate access keys for local development or to enable automated deployments from CI. Check out the guides:
 
-- [GitHub Actions](../guides/github-actions.mdx)
+- [GitHub Actions](../guides/github-actions/index.mdx)
 - [Manual Deployments](../guides/manual-deployment.mdx)
 
 :::

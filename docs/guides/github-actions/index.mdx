@@ -1,0 +1,104 @@
+---
+title: GitHub Actions
+description: Learn how to use GitHub Actions for continuous integration and deployment.
+toc_min_heading_level: 2
+toc_max_heading_level: 3
+---
+
+# GitHub Actions
+
+You can leverage the Juno [CLI] to perform tasks within GitHub Actions.
+
+This guide will show you how to use the [junobuild/juno-action](https://github.com/junobuild/juno-action) to deploy your frontend assets, build and publish serverless functions, and optionally upgrade your WASM container.
+
+---
+
+## 1. Add a Secret Token for Automation
+
+Before you can effectively implement automation, it is necessary to add a secret token to your GitHub repository or organization. This token will enable the CI (Continuous Integration) to interact with your [satellite].
+
+Follow the steps below to generate a new controller:
+
+1. Go to the Juno's [console](https://console.juno.build).
+2. Select your satellite.
+3. On the satellite's dashboard, navigate to the "Setup" tab.
+4. Click on "Add an access key".
+5. Generate a new key (default option) and assign it an appropriate role based on your workflow. [Learn more about the available roles and their permissions](../miscellaneous/access-keys.md) to choose the appropriate level of access for your use case.
+6. Click "Submit".
+7. Upon successful creation, a new access key will be generated, and a "Secret token" will be displayed. Copy the token value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your repository or organization, using the key `JUNO_TOKEN`.
+
+---
+
+## 2. Configure your project
+
+If you already have a `juno.config` file at the root of your project, you can skip to the next chapter. Otherwise, you need to create one [manually](#configuration-file-example) or by running:
+
+```bash
+npx @junobuild/cli init --minimal
+```
+
+The configuration file can be a TypeScript, JavaScript, or JSON file (`juno.config.ts`, `juno.config.js|.mjs`, or `juno.config.json`), depending on your preference.
+
+At a minimum, the configuration file must include the following:
+
+- **Satellite ID**: A unique identifier for your satellite.
+- **Source**: The directory containing the built assets for your satellite. This is typically the output folder of your build process, generated after running a command like `npm run build`.
+
+### Satellite ID
+
+Your Satellite ID can be found in the 'Overview' tab.
+
+![A screenshot of the Overview tab in Juno Console where the Satellite ID finds place](../../img/satellite/overview.png)
+
+### Source
+
+import Examples from "../../build/components/source-examples.mdx";
+
+<Examples />
+
+### Configuration File Example
+
+Here’s an example of configuration file:
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai" // Replace with your satellite ID
+    },
+    source: "dist", // Replace with your build output directory
+    predeploy: ["npm run build"] // Adjust based on your package manager
+  }
+});
+```
+
+For detailed information about all available configuration options, refer to the [configuration](../reference/configuration.mdx) section.
+
+---
+
+## 3. Create the GitHub Action
+
+You can use GitHub Actions to automate different parts of your Juno deployment workflow:
+
+- 🪄 Deploy frontend assets to your Satellite. [Learn how.](./deploy-frontend.md)
+- 🛠️ Build and publish serverless functions (TypeScript or Rust). [Learn how.](./publish-functions.md)
+- ⚠️ Optionally upgrade your Satellite's WASM container. [Learn how.](./upgrade-functions.md)
+
+Each task can be performed independently or combined, depending on your project setup.
+
+---
+
+## Environment Variables
+
+When using the Actions, you can configure the following environment variables:
+
+| Environment Variable | Mandatory | Description                                                                                                                                                                                |
+| -------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `JUNO_TOKEN`         | Yes       | The token to use for authentication. It can be generated through Juno's [Console](https://console.juno.build). Prefer a controller with "Read-write" permission rather than administrator. |
+| `PROJECT_PATH`       | No        | The path to the folder containing the `juno.config` file if it doesn't exist at the root of your repository. e.g. `./my-app-subfolder`.                                                    |
+
+[CLI]: ../reference/cli.mdx
+[satellite]: ../terminology.md#satellite
+[cycles]: ../terminology.md#cycles
