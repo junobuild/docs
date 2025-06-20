@@ -54,7 +54,22 @@ const sidebars: SidebarsConfig = {
             type: "generated-index",
             description: "Deploy your app to Juno Satellites"
           },
-          items: ["guides/github-actions", "guides/manual-deployment"]
+          items: [
+            {
+              type: "category",
+              label: "GitHub Actions",
+              link: {
+                type: "doc",
+                id: "guides/github-actions/index"
+              },
+              items: [
+                "guides/github-actions/deploy-frontend",
+                "guides/github-actions/publish-functions",
+                "guides/github-actions/upgrade-functions"
+              ]
+            },
+            "guides/manual-deployment"
+          ]
         },
         "guides/local-development"
       ]
