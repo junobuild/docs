@@ -23,7 +23,7 @@ Follow the steps below to generate a new controller:
 2. Select your satellite.
 3. On the satellite's dashboard, navigate to the "Setup" tab.
 4. Click on "Add an access key".
-5. Generate a new key (default option) and assign it an appropriate role based on your workflow. [Learn more about the available roles and their permissions](../miscellaneous/access-keys.md) to choose the appropriate level of access for your use case.
+5. Generate a new key (default option) and assign it an appropriate role based on your workflow. [Learn more about the available roles and their permissions](../../miscellaneous/access-keys.md) to choose the appropriate level of access for your use case.
 6. Click "Submit".
 7. Upon successful creation, a new access key will be generated, and a "Secret token" will be displayed. Copy the token value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your repository or organization, using the key `JUNO_TOKEN`.
 
@@ -74,7 +74,7 @@ export default defineConfig({
 });
 ```
 
-For detailed information about all available configuration options, refer to the [configuration](../reference/configuration.mdx) section.
+For detailed information about all available configuration options, refer to the [configuration](../../reference/configuration.mdx) section.
 
 ---
 
@@ -99,6 +99,6 @@ When using the Actions, you can configure the following environment variables:
 | `JUNO_TOKEN`         | Yes       | The token to use for authentication. It can be generated through Juno's [Console](https://console.juno.build). Prefer a controller with "Read-write" permission rather than administrator. |
 | `PROJECT_PATH`       | No        | The path to the folder containing the `juno.config` file if it doesn't exist at the root of your repository. e.g. `./my-app-subfolder`.                                                    |
 
-[CLI]: ../reference/cli.mdx
-[satellite]: ../terminology.md#satellite
-[cycles]: ../terminology.md#cycles
+[CLI]: ../../reference/cli.mdx
+[satellite]: ../../terminology.md#satellite
+[cycles]: ../../terminology.md#cycles
