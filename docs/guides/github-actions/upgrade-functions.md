@@ -43,12 +43,12 @@ jobs:
         run: npm ci
 
       - name: Build
-        uses: junobuild/juno-action@main
+        uses: junobuild/juno-action@full
         with:
           args: functions build
 
       - name: Upgrade
-        uses: junobuild/juno-action@main
+        uses: junobuild/juno-action@full
         with:
           args: functions upgrade
         env:

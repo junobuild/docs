@@ -39,12 +39,12 @@ jobs:
         run: npm ci
 
       - name: Build
-        uses: junobuild/juno-action@main
+        uses: junobuild/juno-action@full
         with:
           args: functions build
 
       - name: Publish
-        uses: junobuild/juno-action@main
+        uses: junobuild/juno-action@full
         with:
           args: functions publish
         env:
@@ -59,7 +59,7 @@ If your key only has a **submit** role, the release will be submitted as a pendi
 
 ```yaml
 - name: Publish
-  uses: junobuild/juno-action@main
+  uses: junobuild/juno-action@full
   with:
     args: functions publish --no-apply
   env:
