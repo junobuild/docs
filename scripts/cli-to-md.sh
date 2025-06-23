@@ -7,7 +7,7 @@ function generate_command_markdown() {
   eval "juno "$cmd" --headless --help --doc" | sed 's/\x1b\[[0-9;]*m//g' > docs/reference/cli/"$output".md
 }
 
-COMMANDS=clear,config,deploy,dev,functions,init,login,logout,open,snapshot,start,stop,upgrade,use,version,whoami
+COMMANDS=clear,config,deploy,dev,functions,changes,init,login,logout,open,snapshot,start,stop,upgrade,use,version,whoami
 
 for cmd in $(echo $COMMANDS | sed "s/,/ /g"); do
   generate_command_markdown "$cmd"
@@ -23,6 +23,12 @@ FUNCTIONS_COMMANDS=build,eject,publish,upgrade
 
 for cmd in $(echo $FUNCTIONS_COMMANDS | sed "s/,/ /g"); do
   generate_command_markdown "functions $cmd"
+done
+
+CHANGES_COMMANDS=apply,list,reject
+
+for cmd in $(echo $CHANGES_COMMANDS | sed "s/,/ /g"); do
+  generate_command_markdown "changes $cmd"
 done
 
 npm run format
