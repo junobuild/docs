@@ -36,6 +36,8 @@ export default defineConfig({
 });
 ```
 
+For more advanced options like customizing ports, image name, or CI setup, see the [Emulator Configuration](../configuration.mdx#emulator-configuration) section.
+
 ---
 
 ## Accessing the Console UI

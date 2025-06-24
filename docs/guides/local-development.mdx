@@ -105,48 +105,16 @@ The local container supports live reloading. When you modify your [configuration
 
 ---
 
-## Options
+## Configuration Options
 
-Modify the following information of the `docker-compose.yml` file to tweak the container behavior to your needs:
+To customize the behavior of the local emulator—such as changing ports, setting a persistent volume name, or overriding the runner image — refer to the [Emulator Configuration](../reference/configuration.mdx#emulator-configuration) section.
 
-### Ports
+There you'll find detailed information about available options including:
 
-The default port `5987` is used for communication with the locally deployed satellites and other modules in the local environment (replica). This is the primary port for interaction with the application.
-
-The container also exposes:
-
-- a small admin server for internal management on port `5999`
-
-- the Console UI on port `5866`
-
-If you want to use a different port, such as 8080, update for example the mapping from `5987:5987` to `8080:5987`, where the first value (8080) is the port you can call, and the second (5987) is the actual container port.
-
-### Volumes
-
-The image requires a volume to preserve its state. This ensures that when you stop and restart your container, it will resume with the previous state - for instance, if you persist data in its Datastore or Storage, those files will be retained.
-
-The Docker Compose feature automatically creates the volume, so all you need to do is specify it once.
-
-Naming the volume is particularly useful when developing multiple dApps locally, as it allows you to maintain separate states for each project.
-
-For example, if you are developing a "Hello World" project, you could change the volume name to "hello_world".
-
-```yml title="docker-compose.yml"
-services:
-  juno-skylab:
-    image: junobuild/skylab:latest
-    ports:
-      - 5987:5987
-      - 5999:5999
-      - 5866:5866
-    volumes:
-      - hello_world:/juno/.juno # <-------- hello_world modified here
-      - ./juno.config.ts:/juno/juno.config.ts
-      - ./target/deploy:/juno/target/deploy/
-
-volumes:
-  hello_world: # <-------- and here
-```
+- ⚙️ Runner settings (e.g. image, platform, volume)
+- 🔌 Custom port mappings
+- 📁 Shared folders and hot reloading
+- 🧪 CI and test environment tips
 
 ---
 

@@ -101,21 +101,6 @@ If, for example, we want to configure a "metadata" collection in the Datastore, 
 }
 ```
 
-### Path and name
+### More Options
 
-The configuration can be placed in a location other than next to the compose file and can be named whatever suits your needs. If you do so, make sure to adapt the compose file accordingly.
-
-```yml title="docker-compose.yml"
-services:
-  juno-satellite:
-    image: junobuild/satellite:latest
-    ports:
-      - 5987:5987
-      - 5999:5999
-    volumes:
-      - my_dapp:/juno/.juno
-      - /your/custom/path/your_config_file.json:/juno/juno.dev.config.json # <-------- Modify location and file name of the left hand part
-
-volumes:
-  my_dapp:
-```
+For more advanced options like customizing ports, image name, or CI setup, see the [Emulator Configuration](../configuration.mdx#emulator-configuration) section.
