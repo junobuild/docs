@@ -279,6 +279,74 @@ An orbiter has a unique identifier (id). This ID is used to reference the orbite
 
 ---
 
+## Emulator Configuration
+
+For local development or when running an E2E test environment in a CI, you'll use the emulator. When running `juno dev start`, it defaults to booting Skylab with the default options. If you wish to tweak options or use another image, you can set the `emulator` field in your configuration file.
+
+A basic example of a custom emulator configuration:
+
+```ts title="juno.config.ts"
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist"
+  },
+  emulator: {
+    runner: {
+      type: "docker",
+      image: "junobuild/skylab:latest",
+      name: "juno-skylab",
+      volume: "juno",
+      platform: "linux/amd64"
+    },
+    skylab: {
+      ports: {
+        server: 5987,
+        admin: 5999,
+        console: 5866
+      }
+    }
+  }
+});
+```
+
+### Runner Options
+
+The `runner` field allows you to customize how the emulator container is run via Docker.
+
+| Option   | Required | Description                                                               | Default                                                                  |
+| -------- | -------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| type     | ✅       | Container runtime used (currently only `"docker"` is supported).          |                                                                          |
+| image    |          | Docker image used to start the emulator.                                  | `junobuild/skylab:latest`                                                |
+| name     |          | Custom name for the container instance.                                   | Derived from your `package.json` field `name` or falling on `juno-image` |
+| volume   |          | A volume used to persist internal state - saves the data across sessions. | The container name adapted (replace `-` by `_`)                          |
+| target   |          | Shared folder for deploying and hot-reloading serverless functions.       | `$PWD/target/deploy`                                                     |
+| platform |          | Platform to run the emulator on (`linux/amd64` or `linux/arm64`).         | Automatic                                                                |
+
+### Emulator
+
+You can choose from three emulator types, depending on which part of the stack you want to run locally:
+
+- `skylab`: A full emulator stack including the Console UI.
+- `console`: A minimal emulator for Console-only scenarios.
+- `satellite`: Runs just a Satellite container for focused development.
+
+Each type has its own `ports` configuration.
+
+#### Ports
+
+You can customize the ports exposed by the emulator:
+
+| Field   | Description                                                                      | Default |
+| ------- | -------------------------------------------------------------------------------- | ------- |
+| server  | The local Internet Computer replica port. Your app or project interacts with it. | `5987`  |
+| admin   | Admin server used for internal tasks (e.g., ICP transfer).                       | `5999`  |
+| console | Console UI port (only used with `skylab`).                                       | `5866`  |
+
+---
+
 ## Apply Changes
 
 Configurations such as above [storage](#storage), [datastore](#datastore), [authentication](#authentication), and [settings](#settings) require explicit application to your smart contract as they directly impact its behavior.
