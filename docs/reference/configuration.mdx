@@ -314,12 +314,12 @@ export default defineConfig({
 
 ### Runner Options
 
-The `runner` field allows you to customize how the emulator container is run via Docker.
+The `runner` field allows you to customize how the emulator container is run.
 
 | Option   | Required | Description                                                               | Default                                                                  |
 | -------- | -------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| type     | ✅       | Container runtime used (currently only `"docker"` is supported).          |                                                                          |
-| image    |          | Docker image used to start the emulator.                                  | `junobuild/skylab:latest`                                                |
+| type     | ✅       | Container runtime used. Supports `docker` and `podman`.                   | `docker`                                                                 |
+| image    |          | The image used to start the emulator.                                     | `junobuild/skylab:latest`                                                |
 | name     |          | Custom name for the container instance.                                   | Derived from your `package.json` field `name` or falling on `juno-image` |
 | volume   |          | A volume used to persist internal state - saves the data across sessions. | The container name adapted (replace `-` by `_`)                          |
 | target   |          | Shared folder for deploying and hot-reloading serverless functions.       | `$PWD/target/deploy`                                                     |
