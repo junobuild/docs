@@ -1,7 +1,7 @@
 ---
 id: local-development
 title: Local Development
-description: Set-up the local emulator with Docker
+description: Set-up the local emulator with Docker or Podman
 ---
 
 # Local Development
@@ -22,13 +22,20 @@ This enables:
 
 ## Before you begin
 
-Docker is used to run a self-contained local environment with all services, replicas, and the Console UI.
+An emulator — a self-contained local environment that includes services, replicas, and the Console UI — is run using containers. You can use [Docker](https://www.docker.com/) (default) or [Podman](https://podman.io/) as the container runtime.
 
-Make sure the tool is installed on your machine ([Windows](https://docs.docker.com/desktop/install/windows-install/), [MacOS](https://docs.docker.com/desktop/install/mac-install/), or [Linux](https://docs.docker.com/desktop/install/linux-install/)).
+Make sure either tool is installed on your machine:
 
-:::note
+- [Docker: Windows](https://docs.docker.com/desktop/install/windows-install/)
+- [Docker: macOS](https://docs.docker.com/desktop/install/mac-install/)
+- [Docker: Linux](https://docs.docker.com/desktop/install/linux-install/)
+- [Podman: Installation guide](https://podman.io/getting-started/installation)
 
-For MacBooks with M processors, it is important to use Docker Desktop version 4.25.0 or later, ideally the latest available version.
+:::important
+
+For MacBooks with M-series processors, if you aim to use **Docker**, it is important to install Docker Desktop **version 4.25.0 or later**, ideally the latest available version.
+
+For **Podman**, we are not aware of any particular version requirements at this time.
 
 :::
 
