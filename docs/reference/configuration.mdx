@@ -325,6 +325,35 @@ The `runner` field allows you to customize how the emulator container is run.
 | target   |          | Shared folder for deploying and hot-reloading serverless functions.       | `$PWD/target/deploy`                                                     |
 | platform |          | Platform to run the emulator on (`linux/amd64` or `linux/arm64`).         | Automatic                                                                |
 
+:::note
+
+When defining a `runner`, you must also set the corresponding image configuration (`skylab`, `satellite`, or `console`), which can be left empty. This ensures the emulator knows which component to launch.
+
+:::
+
+#### Example using Podman
+
+If you're using Podman instead of Docker, you can specify it with the `type` field:
+
+```ts title="juno.config.ts"
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    source: "dist"
+  },
+  emulator: {
+    runner: {
+      type: "podman"
+    },
+    skylab: {}
+  }
+});
+```
+
+This will use the default image and settings, but with Podman as the container runtime. You can customize the image, volume, and other options just like you would with Docker.
+
 ### Emulator
 
 You can choose from three emulator types, depending on which part of the stack you want to run locally:
