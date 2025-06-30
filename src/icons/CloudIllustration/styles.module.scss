@@ -1,0 +1,78 @@
+.uuid-2a92185e-e4be-4c64-83e8-ac632198b475,
+.uuid-45633947-3064-4a5e-8700-5bc49a02d2c8,
+.uuid-49c0131b-3ba9-4faf-8aa6-2777ee50f622,
+.uuid-daa43f00-42fc-452b-8a11-00b73aacecba {
+  stroke-width: 0;
+}
+.uuid-2a92185e-e4be-4c64-83e8-ac632198b475 {
+  fill: #7888ff;
+}
+.uuid-49c0131b-3ba9-4faf-8aa6-2777ee50f622 {
+  fill: #c9cfff;
+}
+.uuid-45633947-3064-4a5e-8700-5bc49a02d2c8 {
+  fill: #fff;
+}
+
+.astronaut-in-clouds {
+  transform-origin: center;
+  transform-box: content-box;
+  opacity: 0;
+  transform: translateY(100px);
+  transition:
+    opacity 0.5s ease-in-out,
+    transform 0.5s cubic-bezier(0.3, 0.7, 0, 1);
+}
+
+.cloud,
+.body,
+.pc,
+.backpack,
+.head {
+  transform: translateY(calc(var(--anim, 0) * -10px));
+  animation: updown 1.5s ease-in-out infinite alternate;
+  transition: transform 0.3s cubic-bezier(0.3, 0.7, 0, 1);
+}
+
+.cloud--left {
+  animation-delay: 0.25s;
+}
+
+.cloud--right {
+  animation-delay: 0.5s;
+}
+
+.cloud--large {
+  animation-delay: 0.1s;
+}
+
+.head {
+  animation-delay: 0.15s;
+}
+
+.loaded {
+  .astronaut-in-clouds {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  svg {
+    overflow: visible;
+  }
+}
+
+@property --anim {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@keyframes updown {
+  0% {
+    --anim: 0;
+  }
+
+  100% {
+    --anim: 1;
+  }
+}
