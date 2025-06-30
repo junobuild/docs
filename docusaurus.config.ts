@@ -90,10 +90,16 @@ const config: Config = {
       "docusaurus-plugin-sass",
       {
         api: "modern-compiler"
-      }
+      },
     ],
     join(process.cwd(), "plugins", "docusaurus.showcase.plugin.ts"),
-    join(process.cwd(), "plugins", "docusaurus.changelog.plugin.ts")
+    join(process.cwd(), "plugins", "docusaurus.changelog.plugin.ts"),
+    [
+      join(process.cwd(), "plugins", "docusaurus.llms.plugin.ts"),
+      {
+        test: "ello"
+      }
+    ],
   ],
 
   themeConfig:
