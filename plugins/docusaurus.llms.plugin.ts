@@ -25,12 +25,12 @@ export default function docusaurusPluginLLMs(
 
       const options = { docsDir: "docs", ...userOptions };
 
-      const allDocFiles = await collectDocFiles({ context, options });
+      const allDocFiles = await collectDocsFiles({ context, options });
     }
   };
 }
 
-const collectDocFiles = async ({
+const collectDocsFiles = async ({
   context,
   options
 }: {
@@ -41,20 +41,23 @@ const collectDocFiles = async ({
   const { ignorePatterns = [], docsDir } = options;
 
   const fullDocsDir = join(siteDir, docsDir);
-  const docFiles = await findAllDocFilePaths({
+  const docFiles = await findAllDocsFilePaths({
     dir: fullDocsDir,
     ignorePatterns
   });
 
-  for (const docFile of docFiles) {
-    const htmlFile = join(outDir, relative(siteDir, docFile).replace(/\.mdx?$/, "/index.html"));
-    console.log(htmlFile, existsSync(htmlFile));
-  }
+  const generatedDocFiles = docFiles.filter((docFile) => {
+    const htmlFile = join(
+      outDir,
+      relative(siteDir, docFile).replace(/\.mdx?$/, "/index.html")
+    );
+    return existsSync(htmlFile);
+  });
 
   return docFiles;
 };
 
-const findAllDocFilePaths = async ({
+const findAllDocsFilePaths = async ({
   dir,
   ignorePatterns
 }: {
@@ -73,7 +76,7 @@ const findAllDocFilePaths = async ({
     // TODO: ignorePatterns
 
     if (entry.isDirectory()) {
-      const subFiles = await findAllDocFilePaths({
+      const subFiles = await findAllDocsFilePaths({
         dir: fullPath,
         ignorePatterns
       });
