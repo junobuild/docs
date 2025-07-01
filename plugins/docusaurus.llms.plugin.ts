@@ -1,11 +1,11 @@
-import type { LoadContext, Plugin, RouteConfig } from "@docusaurus/types";
-import { Props } from "@docusaurus/types/src/context";
-import { flattenRoutes } from "@docusaurus/utils";
-import { dirname } from "node:path";
+import type { LoadContext, Plugin } from "@docusaurus/types";
+import { existsSync } from "node:fs";
+import { readFile, writeFile } from "node:fs/promises";
+import { dirname, join, relative } from "node:path";
+import TurndownService, { Options, Node as TurndownNode } from "turndown";
 
 interface PluginOptions {
   docsDir: string;
-  sidebars?: string[];
 }
 
 /**
@@ -23,117 +23,145 @@ export default function docusaurusPluginLLMs(
     async postBuild({ routes, routesBuildMetadata }): Promise<void> {
       console.log("Generating /llms.txt documentation...");
 
-      const { sidebars, ...options } = {
+      const { docsDir, ...options } = {
         docsDir: "docs",
-        sidebars: ["docs", "references"],
         ...userOptions
       };
 
-      const allRoutes = await collectDocsRoutes({ routes, sidebars });
+      // Collect all generated documentation routes
+      const allRoutes = Object.keys(routesBuildMetadata).filter((path) =>
+        path.startsWith(`/${docsDir}/`)
+      );
 
-      console.log(routesBuildMetadata);
+      // Group
+      const groupedRoutes = allRoutes.reduce<
+        Record<string, { children: string[] }>
+      >((acc, path) => {
+        if (path.endsWith("/")) {
+          const category = path.slice(0, -1);
+
+          return {
+            ...acc,
+            [category]: {
+              ...(acc[category] ?? { children: [] })
+            }
+          };
+        }
+
+        const category = dirname(path);
+
+        return {
+          ...acc,
+          [category]: {
+            ...(acc[category] ?? {}),
+            children: [...(acc[category]?.children ?? []), path]
+          }
+        };
+      }, {});
+
+      // Generate markdown files
+
+      const { outDir } = context;
+
+      const turndownService = new TurndownService();
+      turndownService.remove("script");
+      turndownService.remove("head");
+      turndownService.remove("nav");
+      turndownService.remove("aside");
+      turndownService.remove("footer");
+      turndownService.remove("title");
+
+      turndownService.addRule("docusaurus-skip-to-main-content", {
+        filter: (element: HTMLElement, _options: Options): boolean =>
+          element.getAttribute("role") === "region" &&
+          element.parentElement.getAttribute("id") === "__docusaurus",
+        replacement: (
+          _content: string,
+          _node: TurndownNode,
+          _options: Options
+        ) => ""
+      });
+
+      turndownService.addRule("docusaurus-doc-toc", {
+        filter: (element: HTMLElement, _options: Options): boolean =>
+          element.classList.contains("theme-doc-toc-mobile") ||
+          element.classList.contains("theme-doc-toc-desktop"),
+        replacement: (
+          _content: string,
+          _node: TurndownNode,
+          _options: Options
+        ) => ""
+      });
+
+      // Trim start and end and remove ZeroWidthSpace
+      const cleanZeroWidthSpace = (text: string): string =>
+        text.trim().replace(/[\u200B-\u200D\uFEFF]/g, "");
+
+      turndownService.addRule("convert-link-to-markdown", {
+        filter: (element: HTMLElement, _options: Options): boolean =>
+          element.nodeName.toLowerCase() === "a",
+        replacement: (
+          content: string,
+          node: TurndownNode,
+          _options: Options
+        ) => {
+          if (!("getAttribute" in node)) {
+            return content;
+          }
+
+          const href = (node as HTMLElement).getAttribute("href");
+
+          if (href.startsWith("#")) {
+            // Anchor are rendered after titles - e.g "<h3> Something[#](#anchor)" which is handy for the web but,
+            // a bit noise in markdown. So we try to clean those.
+            const empty = cleanZeroWidthSpace(content) === "";
+
+            if (empty) {
+              return "";
+            }
+
+            return `([${content}](${href}))`;
+          }
+
+          // Not a link to the documentation can be printed as standard link
+          if (!href.startsWith(`/${docsDir}/`)) {
+            return `[${content.trim()}](${href})`;
+          }
+
+          const [link, anchor] = href.split("#");
+
+          // For the documentation we manipulate the URL to point to the generated Markdown file
+          const htmlPath = join(outDir, link, "index.html");
+
+          if (!existsSync(htmlPath)) {
+            return `[${content.trim()}](${href})`;
+          }
+
+          const mdPath = `/${relative(outDir, dirname(htmlPath))}.md`;
+          const md = `[${content.trim()}](${mdPath}${anchor !== undefined ? `#${anchor}` : ""})`;
+
+          return md;
+        }
+      });
+
+      const generate = async ({ route }: { route: string }) => {
+        const htmlSourcePath = join(outDir, route, "index.html");
+        const html = await readFile(htmlSourcePath, "utf8");
+
+        const md = turndownService.turndown(html);
+
+        const cleanMd = cleanZeroWidthSpace(md);
+
+        const mdDestPath = join(
+          outDir,
+          route.endsWith("/") ? `${route.slice(0, -1)}.md` : `${route}.md`
+        );
+        await writeFile(mdDestPath.replace(".html", ".md"), cleanMd, "utf8");
+      };
+
+      for (const route of allRoutes) {
+        await generate({ route });
+      }
     }
   };
 }
-
-type RoutePath = string;
-type TreeRoute = {
-  config?: RouteConfig;
-  children: RouteConfig[];
-};
-
-type Routes = Record<RoutePath, TreeRoute>;
-
-const collectDocsRoutes = async ({
-  routes,
-  sidebars
-}: Pick<Props, "routes"> &
-  Required<Pick<PluginOptions, "sidebars">>): Promise<Routes> => {
-  const finalRoutes = flattenRoutes(routes);
-
-  const filteredRoutes = finalRoutes.filter(
-    ({ sidebar }) => typeof sidebar === "string" && sidebars.includes(sidebar)
-  );
-
-  const categoryRoutes = filteredRoutes.filter(
-    ({ component }) => component === "@theme/DocCategoryGeneratedIndexPage"
-  );
-
-  const allTreeRoutes = filteredRoutes.filter((route) => {
-    const isPathTree =
-      filteredRoutes.find(
-        ({ path }) => path.startsWith(route.path) && path !== route.path
-      ) !== undefined;
-
-    return isPathTree;
-  });
-
-  // We flatten the routes. For example if the tree contains both
-  // /docs/build/functions/
-  // and
-  // /docs/build/functions/rust/
-  // as anchors. We keep only the shortest one assuming it is the anchor for the all group.
-  const flattenTreeRoutes = allTreeRoutes.filter(
-    ({ path }) =>
-      allTreeRoutes.find(
-        ({ path: routePath }) =>
-          path.startsWith(routePath) && path !== routePath
-      ) === undefined
-  );
-
-  const categorisedTreeRoutes = flattenTreeRoutes.reduce<Routes>(
-    (acc, { path, ...rest }) => {
-      const children = filteredRoutes.filter(
-        ({ path: childPath }) =>
-          childPath.startsWith(path) && childPath !== path
-      );
-
-      return {
-        ...acc,
-        [path]: {
-          config: {
-            path,
-            ...rest
-          },
-          children
-        }
-      };
-    },
-    {}
-  );
-
-  const leafRoutes = filteredRoutes.filter(({ path: routePath }) => {
-    const isTreeRoute =
-      Object.entries(categorisedTreeRoutes).find(
-        ([treePath, { children }]) =>
-          routePath.startsWith(treePath) ||
-          routePath === treePath ||
-          children.find(({ path }) => path === routePath) !== undefined
-      ) !== undefined;
-
-    const isCategoryRoute =
-      categoryRoutes.find(
-        ({ path: categoryPath }) =>
-          routePath.startsWith(categoryPath) || routePath === categoryPath
-      ) !== undefined;
-
-    return !isTreeRoute && !isCategoryRoute;
-  });
-
-  const leafTreeRoutes = leafRoutes.reduce<Routes>((acc, { path, ...rest }) => {
-    const category = dirname(path);
-
-    return {
-      ...acc,
-      [category]: {
-        ...(acc[category] ?? {}),
-        children: [...(acc[category]?.children ?? []), { path, ...rest }]
-      }
-    };
-  }, {});
-
-  return {
-    ...leafTreeRoutes,
-    ...categorisedTreeRoutes
-  };
-};
