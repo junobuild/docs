@@ -87,6 +87,7 @@ export default function docusaurusPluginLLMs(
         groupedRoutes,
         dataRoutes,
         description,
+        docsDir,
         ...context
       });
     }
@@ -241,9 +242,9 @@ const prepareMarkdown = async ({
 
     return {
       title: title?.replaceAll(` | ${siteTitle}`, ""),
-      description: dom.window.document.head.querySelector(
-        'meta[name="description"]'
-      )?.getAttribute("content"),
+      description: dom.window.document.head
+        .querySelector('meta[name="description"]')
+        ?.getAttribute("content")
     };
   };
 
@@ -260,12 +261,13 @@ const generateLlmsTxt = async ({
   dataRoutes,
   siteConfig: { title, tagline, url },
   outDir,
-  description
+  description,
+  docsDir
 }: {
   groupedRoutes: GroupedRoutes;
   dataRoutes: RoutesData;
 } & Pick<LoadContext, "siteConfig" | "outDir"> &
-  Pick<PluginOptions, "description">) => {
+  Pick<PluginOptions, "description" | "docsDir">) => {
   const buildLink = (route: string): string | undefined => {
     const data = dataRoutes.get(route);
 
@@ -281,9 +283,26 @@ const generateLlmsTxt = async ({
     return `- [${title ?? ""}](${url}${relativePath})${description !== undefined && description !== "" ? `: ${description}` : ""}`;
   };
 
+  const buildTitle = (key: string) => {
+    if (key === `/${docsDir}`) {
+      return `## General`;
+    }
+
+    const capitalize = (text: string): string =>
+      text.replace(/./, (c) => c.toUpperCase());
+
+    const titles = key
+      .replaceAll(`/${docsDir}/`, "")
+      .split("/")
+      .map(capitalize)
+      .join(" - ");
+
+    return `## ${titles}`;
+  };
+
   const content = Object.entries(groupedRoutes)
     .map(
-      ([key, { children }]) => `## ${key}
+      ([key, { children }]) => `${buildTitle(key)}
   
 ${children.map(buildLink).join("\n")}`
     )
