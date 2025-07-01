@@ -136,7 +136,7 @@ const prepareMarkdown = async ({
   Pick<PluginOptions, "docsDir"> & {
     route: string;
   }): Promise<RouteData> => {
-  const turndownService = new TurndownService();
+  const turndownService = new TurndownService({headingStyle: "atx", hr: "---"});
 
   // Extend support for tables
   // Source: https://github.com/mixmark-io/turndown/issues/416#issuecomment-1701341446
