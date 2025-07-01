@@ -136,7 +136,10 @@ const prepareMarkdown = async ({
   Pick<PluginOptions, "docsDir"> & {
     route: string;
   }): Promise<RouteData> => {
-  const turndownService = new TurndownService({headingStyle: "atx", hr: "---"});
+  const turndownService = new TurndownService({
+    headingStyle: "atx",
+    hr: "---"
+  });
 
   // Extend support for tables
   // Source: https://github.com/mixmark-io/turndown/issues/416#issuecomment-1701341446
@@ -163,6 +166,14 @@ const prepareMarkdown = async ({
       element.classList.contains("theme-doc-toc-desktop"),
     replacement: (_content: string, _node: TurndownNode, _options: Options) =>
       ""
+  });
+
+  turndownService.addRule("docusaurus-admonition", {
+    filter: (element: HTMLElement, _options: Options): boolean =>
+      element.parentElement.classList.contains("theme-admonition") &&
+      element.className.includes("admonitionHeading"),
+    replacement: (content: string, _node: TurndownNode, _options: Options) =>
+      `**${capitalize(content)}:**`
   });
 
   // Trim start and end and remove ZeroWidthSpace
@@ -308,9 +319,6 @@ const generateLlmsTxt = async ({
       return `## General`;
     }
 
-    const capitalize = (text: string): string =>
-      text.replace(/./, (c) => c.toUpperCase());
-
     const titles = key
       .replaceAll(`/${docsDir}/`, "")
       .split("/")
@@ -339,3 +347,6 @@ ${content}`;
 
   await writeFile(outputPath, llmsTxt, "utf-8");
 };
+
+const capitalize = (text: string): string =>
+  text.replace(/./, (c) => c.toUpperCase());
