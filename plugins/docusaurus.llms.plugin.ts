@@ -5,6 +5,8 @@ import { readFile, writeFile } from "node:fs/promises";
 import { dirname, join, relative } from "node:path";
 import TurndownService, { Options, Node as TurndownNode } from "turndown";
 
+const { gfm } = require("@joplin/turndown-plugin-gfm");
+
 interface PluginOptions {
   docsDir: string;
   // An optional description appended after the title
@@ -135,6 +137,11 @@ const prepareMarkdown = async ({
     route: string;
   }): Promise<RouteData> => {
   const turndownService = new TurndownService();
+
+  // Extend support for tables
+  // Source: https://github.com/mixmark-io/turndown/issues/416#issuecomment-1701341446
+  turndownService.use(gfm);
+
   turndownService.remove("script");
   turndownService.remove("head");
   turndownService.remove("nav");
