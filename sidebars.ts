@@ -71,7 +71,8 @@ const sidebars: SidebarsConfig = {
             "guides/manual-deployment"
           ]
         },
-        "guides/local-development"
+        "guides/local-development",
+        "guides/ai"
       ]
     },
     {
