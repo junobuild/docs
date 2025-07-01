@@ -8,6 +8,7 @@ import TurndownService, { Options, Node as TurndownNode } from "turndown";
 interface PluginOptions {
   docsDir: string;
   description?: string;
+  ignorePaths?: string[];
 }
 
 /**
@@ -22,17 +23,24 @@ export default function docusaurusPluginLLMs(
   return {
     name: "docusaurus-llms-txt-plugin",
 
-    async postBuild({ routes, routesBuildMetadata }): Promise<void> {
+    async postBuild({ routesBuildMetadata }): Promise<void> {
       console.log("Generating /llms.txt documentation...");
 
-      const { docsDir, description } = {
+      const {
+        docsDir,
+        description,
+        ignorePaths = []
+      } = {
         docsDir: "docs",
         ...userOptions
       };
 
       // Collect all generated documentation routes
-      const allRoutes = Object.keys(routesBuildMetadata).filter((path) =>
-        path.startsWith(`/${docsDir}/`)
+      const allRoutes = Object.keys(routesBuildMetadata).filter(
+        (path) =>
+          path.startsWith(`/${docsDir}/`) &&
+          ignorePaths.find((pathToIgnore) => path.includes(pathToIgnore)) ===
+            undefined
       );
 
       // Group
