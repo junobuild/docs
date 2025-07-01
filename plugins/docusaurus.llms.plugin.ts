@@ -309,6 +309,7 @@ const generateLlmsTxt = async ({
   };
 
   const content = Object.entries(groupedRoutes)
+    .sort(([keyA, _], [keyB, __]) => keyA.localeCompare(keyB))
     .map(
       ([key, { children }]) => `${buildTitle(key)}
   
