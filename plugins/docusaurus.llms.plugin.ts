@@ -138,7 +138,8 @@ const prepareMarkdown = async ({
   }): Promise<RouteData> => {
   const turndownService = new TurndownService({
     headingStyle: "atx",
-    hr: "---"
+    hr: "---",
+    codeBlockStyle: "fenced"
   });
 
   // Extend support for tables
