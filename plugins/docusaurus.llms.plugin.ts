@@ -251,11 +251,13 @@ const prepareMarkdown = async ({
 
     const title = dom.window.document.querySelector("title")?.textContent;
 
+    const description = dom.window.document.head
+      .querySelector('meta[name="description"]')
+      ?.getAttribute("content");
+
     return {
-      title: title?.replaceAll(` | ${siteTitle}`, ""),
-      description: dom.window.document.head
-        .querySelector('meta[name="description"]')
-        ?.getAttribute("content")
+      title: title?.replace(` | ${siteTitle}`, ""),
+      description: description?.replace("---", "")
     };
   };
 
