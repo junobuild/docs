@@ -1,4 +1,5 @@
 import type { LoadContext, Plugin } from "@docusaurus/types";
+import { JSDOM } from "jsdom";
 import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
 import { dirname, join, relative } from "node:path";
@@ -60,45 +61,67 @@ export default function docusaurusPluginLLMs(
 
       // Prepare markdown content and path
 
-      const { outDir } = context;
+      const { outDir, siteConfig } = context;
 
-      const markdownRoutes: RoutesMarkdown = new Map();
+      const dataRoutes: RoutesData = new Map();
 
       for (const route of allRoutes) {
-        const markdown = await prepareMarkdown({ route, outDir, docsDir });
-        markdownRoutes.set(route, markdown);
+        const markdown = await prepareMarkdown({
+          route,
+          outDir,
+          docsDir,
+          siteConfig
+        });
+        dataRoutes.set(route, markdown);
       }
 
       // Write MD files
       await Promise.all(
-        [...markdownRoutes.values()].map(({ markdown, outputPath }) =>
+        [...dataRoutes.values()].map(({ markdown: { markdown, outputPath } }) =>
           writeFile(outputPath, markdown, "utf-8")
         )
       );
 
       // Create /llms.txt
-      await generateLlmsTxt({ groupedRoutes, markdownRoutes, description, ...context });
+      await generateLlmsTxt({
+        groupedRoutes,
+        dataRoutes,
+        description,
+        ...context
+      });
     }
   };
 }
 
 type GroupedRoutes = Record<string, { children: string[] }>;
 
-interface RouteMarkdown {
+interface RouteMarkdownData {
+  relativePath: string;
   markdown: string;
   outputPath: string;
 }
 
-type RoutesMarkdown = Map<string, RouteMarkdown>;
+interface RouteMetadata {
+  title?: string;
+  description?: string;
+}
+
+interface RouteData {
+  markdown: RouteMarkdownData;
+  metadata: RouteMetadata;
+}
+
+type RoutesData = Map<string, RouteData>;
 
 const prepareMarkdown = async ({
   outDir,
   docsDir,
-  route
-}: Pick<LoadContext, "outDir"> &
+  route,
+  siteConfig: { title: siteTitle }
+}: Pick<LoadContext, "outDir" | "siteConfig"> &
   Pick<PluginOptions, "docsDir"> & {
     route: string;
-  }): Promise<RouteMarkdown> => {
+  }): Promise<RouteData> => {
   const turndownService = new TurndownService();
   turndownService.remove("script");
   turndownService.remove("head");
@@ -163,6 +186,8 @@ const prepareMarkdown = async ({
         return `[${content.trim()}](${href})`;
       }
 
+      // TODO: technically speaking there is a chance of deadlink because the parser we use to generate the file path effectively
+      // is not the same as the one we use here to manipulate the link.
       const mdPath = `/${relative(outDir, dirname(htmlPath))}.md`;
       const md = `[${content.trim()}](${mdPath}${anchor !== undefined ? `#${anchor}` : ""})`;
 
@@ -170,48 +195,105 @@ const prepareMarkdown = async ({
     }
   });
 
-  const generate = async ({
+  const readHtmlSource = async ({
     route
   }: {
     route: string;
-  }): Promise<RouteMarkdown> => {
+  }): Promise<string> => {
     const htmlSourcePath = join(outDir, route, "index.html");
-    const html = await readFile(htmlSourcePath, "utf8");
+    return await readFile(htmlSourcePath, "utf8");
+  };
+
+  const generateMarkdown = async ({
+    route
+  }: {
+    route: string;
+  }): Promise<RouteMarkdownData> => {
+    const html = await readHtmlSource({ route });
 
     const md = turndownService.turndown(html);
 
     const cleanMd = cleanZeroWidthSpace(md);
 
-    const mdDestPath = join(
-      outDir,
-      route.endsWith("/") ? `${route.slice(0, -1)}.md` : `${route}.md`
-    );
+    const relativePath = route.endsWith("/")
+      ? `${route.slice(0, -1)}.md`
+      : `${route}.md`;
+
+    const outputPath = join(outDir, relativePath);
 
     return {
-      outputPath: mdDestPath.replace(".html", ".md"),
+      relativePath,
+      outputPath,
       markdown: cleanMd
     };
   };
 
-  return await generate({ route });
+  const generateMetadata = async ({
+    route
+  }: {
+    route: string;
+  }): Promise<RouteMetadata> => {
+    const html = await readHtmlSource({ route });
+
+    const dom = new JSDOM(html);
+
+    const title = dom.window.document.querySelector("title")?.textContent;
+
+    return {
+      title: title?.replaceAll(` | ${siteTitle}`, ""),
+      description: dom.window.document.head.querySelector(
+        'meta[name="description"]'
+      )?.getAttribute("content"),
+    };
+  };
+
+  return {
+    markdown: await generateMarkdown({ route }),
+    metadata: await generateMetadata({ route })
+  };
 };
 
 const LLMS_TXT = "llms.txt";
 
 const generateLlmsTxt = async ({
   groupedRoutes,
-  markdownRoutes,
-  siteConfig: { title, tagline },
+  dataRoutes,
+  siteConfig: { title, tagline, url },
   outDir,
   description
 }: {
   groupedRoutes: GroupedRoutes;
-  markdownRoutes: RoutesMarkdown;
+  dataRoutes: RoutesData;
 } & Pick<LoadContext, "siteConfig" | "outDir"> &
   Pick<PluginOptions, "description">) => {
+  const buildLink = (route: string): string | undefined => {
+    const data = dataRoutes.get(route);
+
+    if (data === undefined) {
+      return undefined;
+    }
+
+    const {
+      markdown: { relativePath },
+      metadata: { title, description }
+    } = data;
+
+    return `- [${title ?? ""}](${url}${relativePath})${description !== undefined && description !== "" ? `: ${description}` : ""}`;
+  };
+
+  const content = Object.entries(groupedRoutes)
+    .map(
+      ([key, { children }]) => `## ${key}
+  
+${children.map(buildLink).join("\n")}`
+    )
+    .join("\n\n");
+
   const llmsTxt = `# ${title}
 
-> ${description ?? tagline}`;
+${description ?? tagline}
+
+${content}`;
 
   const outputPath = join(outDir, LLMS_TXT);
 
