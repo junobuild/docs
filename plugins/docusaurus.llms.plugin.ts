@@ -103,6 +103,15 @@ export default function docusaurusPluginLLMs(
         docsDir,
         ...context
       });
+
+      // Create /llms-full.txt
+      await generateLlmsTxtFull({
+        groupedRoutes,
+        dataRoutes,
+        description,
+        docsDir,
+        ...context
+      });
     }
   };
 }
@@ -287,11 +296,12 @@ const prepareMarkdown = async ({
 };
 
 const LLMS_TXT = "llms.txt";
+const LLMS_TXT_FULL = "llms-full.txt";
 
 const generateLlmsTxt = async ({
   groupedRoutes,
   dataRoutes,
-  siteConfig: { title, tagline, url },
+  siteConfig: { url, ...restSiteConfig },
   outDir,
   description,
   docsDir
@@ -338,15 +348,73 @@ ${children.map(buildLink).join("\n")}`
     )
     .join("\n\n");
 
-  const llmsTxt = `# ${title}
+  await generateLlmsTxtFile({
+    file: LLMS_TXT,
+    content,
+    siteConfig: { url, ...restSiteConfig },
+    description,
+    outDir
+  });
+};
+
+const generateLlmsTxtFull = async ({
+  groupedRoutes,
+  dataRoutes,
+  siteConfig: { url, ...restSiteConfig },
+  outDir,
+  description
+}: {
+  groupedRoutes: GroupedRoutes;
+  dataRoutes: RoutesData;
+} & Pick<LoadContext, "siteConfig" | "outDir"> &
+  Pick<PluginOptions, "description" | "docsDir">) => {
+  const buildMarkdown = (route: string): string | undefined => {
+    const data = dataRoutes.get(route);
+
+    if (data === undefined) {
+      return undefined;
+    }
+
+    const {
+      markdown: { markdown }
+    } = data;
+
+    return markdown;
+  };
+
+  const content = Object.entries(groupedRoutes)
+    .sort(([keyA, _], [keyB, __]) => keyA.localeCompare(keyB))
+    .map(([_, { children }]) => children.map(buildMarkdown).join("\n\n"))
+    .join("\n\n");
+
+  await generateLlmsTxtFile({
+    file: LLMS_TXT_FULL,
+    content,
+    siteConfig: { url, ...restSiteConfig },
+    description,
+    outDir
+  });
+};
+
+const generateLlmsTxtFile = async ({
+  file,
+  content,
+  siteConfig: { title, tagline },
+  outDir,
+  description
+}: { file: typeof LLMS_TXT | typeof LLMS_TXT_FULL } & {
+  content: string;
+} & Pick<LoadContext, "siteConfig" | "outDir"> &
+  Pick<PluginOptions, "description">) => {
+  const llmsTxtContent = `# ${title}
 
 ${description ?? tagline}
 
 ${content}`;
 
-  const outputPath = join(outDir, LLMS_TXT);
+  const outputPath = join(outDir, file);
 
-  await writeFile(outputPath, llmsTxt, "utf-8");
+  await writeFile(outputPath, llmsTxtContent, "utf-8");
 };
 
 const capitalize = (text: string): string =>
