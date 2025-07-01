@@ -7,7 +7,9 @@ import TurndownService, { Options, Node as TurndownNode } from "turndown";
 
 interface PluginOptions {
   docsDir: string;
+  // An optional description appended after the title
   description?: string;
+  // Additional path to ignore in addition to the categories
   ignorePaths?: string[];
 }
 
@@ -39,8 +41,9 @@ export default function docusaurusPluginLLMs(
       const allRoutes = Object.keys(routesBuildMetadata).filter(
         (path) =>
           path.startsWith(`/${docsDir}/`) &&
-          ignorePaths.find((pathToIgnore) => path.includes(pathToIgnore)) ===
-            undefined
+          [`/category/`, ...ignorePaths].find((pathToIgnore) =>
+            path.includes(pathToIgnore)
+          ) === undefined
       );
 
       // Group
