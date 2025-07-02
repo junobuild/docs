@@ -96,7 +96,10 @@ const sidebars: SidebarsConfig = {
             "examples/nextjs",
             "examples/react-typescript",
             "examples/react-javascript",
-            "examples/angular"
+            "examples/vue",
+            "examples/sveltekit",
+            "examples/angular",
+            "examples/vanilla-javascript"
           ]
         },
         {

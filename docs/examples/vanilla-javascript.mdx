@@ -1,0 +1,144 @@
+---
+title: Vanilla JavaScript Example
+description: A fullstack note-taking app built with vanilla JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.
+tags: [javascript, frontend, example, template, juno]
+sidebar_label: Vanilla JavaScript
+---
+
+# Vanilla JavaScript Example
+
+This project is a note-taking app template built with **vanilla JavaScript** and **Tailwind CSS**, designed to demonstrate integration with [Juno](https://juno.build) for app development. It showcases authentication, data storage, and file storage using Juno's Satellite container.
+
+You can scaffold it using the following command, or browse the source code:
+
+```bash
+npm create juno@latest -- --template vanilla-js-example
+```
+
+Source: [github.com/junobuild/create-juno/templates/vanilla-js-example](https://github.com/junobuild/create-juno/tree/main/templates/vanilla-js-example)
+
+---
+
+## Folder Structure
+
+```
+vanilla-js-example/
+├── public/                # Static assets
+├── src/
+│   ├── components/        # JS UI components (auth, table, modal, banner, etc.)
+│   ├── main.js            # Main entry point
+│   └── style.css          # Tailwind CSS styles
+├── juno.config.mjs        # Juno Satellite configuration
+├── package.json           # Project dependencies and scripts
+├── vite.config.js         # Vite build configuration
+├── README.md              # User-facing documentation
+└── ...                    # Other config and build files
+```
+
+---
+
+## Key Features
+
+- **Juno Integration**: Uses Juno's Satellite for authentication, Datastore, and Storage.
+- **Authentication**: Login/logout flow.
+- **Notes Collection**: Users can create, view, and delete notes (text, with optional file URL).
+- **Images Collection**: Supports file storage for images.
+- **Responsive UI**: Built with Tailwind CSS for modern styling.
+- **Banner**: Warns if the Satellite is not configured for local development.
+
+---
+
+## Main Components
+
+- **src/main.js**: Main entry point, initializes Juno Satellite, handles authentication state.
+- **components/**: Contains UI and logic for authentication, notes table, modal, banner, etc.
+
+---
+
+## Data Structure
+
+- **Note** (used in table.js, modal.js, etc.):
+```js
+// Example note object
+{
+  key: string,
+  data: {
+    text: string,
+    url?: string
+  }
+}
+  ```
+
+---
+
+## How to Run
+
+1. **Install dependencies**:
+```sh
+npm install
+   ```
+
+2. **Start Juno local emulator**:
+
+> Requires the Juno CLI to be available `npm i -g @junobuild/cli`
+
+```sh
+juno dev start
+   ```
+
+3. **Create a Satellite** for local dev:
+- Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
+- Update `juno.config.mjs` with your Satellite ID.
+
+4. **Start the frontend dev server**:
+```sh
+npm run dev
+   ```
+
+5. **Create required collections**:
+- `notes` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
+- `images` in Storage: [http://localhost:5866/storage](http://localhost:5866/storage)
+
+---
+
+## Juno-Specific Configuration
+
+- **juno.config.mjs**: Defines Satellite IDs for development/production, build source, and predeploy steps.
+
+---
+
+## Production Deployment
+
+- Create a Satellite on the [Juno Console](https://juno.build) for mainnet.
+- Update `juno.config.mjs` with the production Satellite ID.
+- Build and deploy:
+```sh
+npm run build
+juno deploy
+  ```
+
+---
+
+## Notes
+
+- The app is intended as a starting point for Juno-based projects.
+- All logic is in vanilla JavaScript modules.
+- The app is fully client-side (Server Side Rendering is not supported yet) and interacts with Juno via the Satellite container.
+
+---
+
+## Juno SDK Used
+
+The following functions from `@junobuild/core` are used in this example:
+
+| Function         | Purpose/Description                 | Where Used (File/Component)                                                                                | Juno Docs/Source Reference                                                             |
+|------------------|-------------------------------------|------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| `initSatellite`  | Initialize Juno Satellite container | [`src/main.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/main.js) | [initSatellite](https://juno.build/docs/setup-the-sdk#initialization)                  |
+| `authSubscribe`  | Subscribe to auth state changes     | [`src/main.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/main.js), [`src/components/modal.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/modal.js) | [authSubscribe](https://juno.build/docs/build/authentication/development#subscription) |
+| `signIn`         | Sign in user                        | [`src/components/login.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/login.js)                                                                                 | [signIn](https://juno.build/docs/build/authentication/development#sign-in)             |
+| `signOut`        | Sign out user                       | [`src/components/logout.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/logout.js)                                                                                | [signOut](https://juno.build/docs/build/authentication/development#sign-out)           |
+| `listDocs`       | List documents in a collection      | [`src/components/table.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/table.js)                                                                                 | [listDocs](https://juno.build/docs/build/datastore/development#list-documents)                              |
+| `setDoc`         | Create or update a document         | [`src/components/modal.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/modal.js)                                                                                 | [setDoc](https://juno.build/docs/build/datastore/development#add-a-document)                                  |
+| `deleteDoc`      | Delete a document                   | [`src/components/delete.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/delete.js)                                                                                | [deleteDoc](https://juno.build/docs/build/datastore/development#delete-a-document)                            |
+| `uploadFile`     | Upload a file to storage            | [`src/components/modal.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/modal.js)                                                                                 | [uploadFile](https://juno.build/docs/build/storage/development#upload-asset)                          |
+| `deleteAsset`    | Delete a file from storage          | [`src/components/delete.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/delete.js)                                                                                | [deleteAsset](https://juno.build/docs/build/storage/development#delete-asset)                        |
