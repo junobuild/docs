@@ -69,34 +69,18 @@ import KeyFeatures from "./components/key-features.md";
 
 ## How to Run
 
-1. **Install dependencies**:
+import HowToStart from "./components/how-to-start.md";
 
-   ```sh
-   npm install
-   ```
-
-2. **Start Juno local emulator**:
-
-   > Requires the Juno CLI to be available `npm i -g @junobuild/cli`
-
-   ```sh
-   juno dev start
-   ```
+<HowToStart />
 
 3. **Create a Satellite** for local dev:
 
    - Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
    - Update `src/environments/environment.ts` with your Satellite ID.
 
-4. **Start the frontend dev server**:
+import HowToRun from "./components/how-to-run.md";
 
-   ```sh
-   npm run start
-   ```
-
-5. **Create required collections**:
-   - `notes` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
-   - `images` in Storage: [http://localhost:5866/storage](http://localhost:5866/storage)
+<HowToRun />
 
 ---
 
@@ -113,7 +97,7 @@ import KeyFeatures from "./components/key-features.md";
 - Create a Satellite on the [Juno Console](https://console.juno.build) for mainnet.
 - Update `src/environments/environment.prod.ts` and `juno.config.mjs` with the production Satellite ID.
 - Build and deploy:
-  ```sh
+  ```bash
   npm run build
   juno deploy
   ```
