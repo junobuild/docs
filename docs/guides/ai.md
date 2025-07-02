@@ -18,8 +18,8 @@ An [LLMs.txt](https://llmstxt.org/) file is a plain text file that provides inst
 
 We provide several `llms.txt` routes. Use the one that works best with your AI tool:
 
-- [`llms.txt`](https://juno.build/llms.txt): Table of contents with links to individual Markdown docs
-- [`llms-full.txt`](https://juno.build/llms-full.txt): Entire documentation in a single Markdown file
+- [`llms.txt`](pathname:///llms.txt): Table of contents with links to individual Markdown docs
+- [`llms-full.txt`](pathname:///llms-full.txt): Entire documentation in a single Markdown file
 
 ### How to use it
 
