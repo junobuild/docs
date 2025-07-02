@@ -7,7 +7,7 @@ sidebar_label: Vue
 
 # Vue Example
 
-This project is a note-taking app template built with **Vue**, **TypeScript**, and **Tailwind CSS**, designed to demonstrate integration with [Juno](https://juno.build) for app development. It showcases authentication, data storage, and file storage using Juno's Satellite container.
+This project is a note-taking app template built with **Vue**, **TypeScript**, and **Tailwind CSS**, designed to demonstrate integration with Juno for app development. It showcases authentication, data storage, and file storage using Juno's Satellite container.
 
 You can scaffold it using the following command, or browse the source code:
 
@@ -41,12 +41,9 @@ vue-example/
 
 ## Key Features
 
-- **Juno Integration**: Uses Juno's Satellite for authentication, Datastore, and Storage.
-- **Authentication**: Login/logout flow.
-- **Notes Collection**: Users can create, view, and delete notes (text, with optional file URL).
-- **Images Collection**: Supports file storage for images.
-- **Responsive UI**: Built with Tailwind CSS for modern styling.
-- **Banner**: Warns if the Satellite is not configured for local development.
+import KeyFeatures from "./components/key-features.md";
+
+<KeyFeatures />
 
 ---
 
@@ -62,21 +59,23 @@ vue-example/
 ## Data Structure
 
 - **Note** (`src/types/note.ts`):
+
 ```ts
 export interface Note {
   text: string;
   url?: string;
 }
-  ```
+```
 
 ---
 
 ## How to Run
 
 1. **Install dependencies**:
+
 ```sh
 npm install
-   ```
+```
 
 2. **Start Juno local emulator**:
 
@@ -84,18 +83,21 @@ npm install
 
 ```sh
 juno dev start
-   ```
+```
 
 3. **Create a Satellite** for local dev:
+
 - Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 - Update `juno.config.ts` with your Satellite ID.
 
 4. **Start the frontend dev server**:
+
 ```sh
 npm run dev
-   ```
+```
 
 5. **Create required collections**:
+
 - `notes` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
 - `images` in Storage: [http://localhost:5866/storage](http://localhost:5866/storage)
 
@@ -112,10 +114,11 @@ npm run dev
 - Create a Satellite on the [Juno Console](https://juno.build) for mainnet.
 - Update `juno.config.ts` with the production Satellite ID.
 - Build and deploy:
+
 ```sh
 npm run build
 juno deploy
-  ```
+```
 
 ---
 
@@ -131,14 +134,14 @@ juno deploy
 
 The following functions from `@junobuild/core` are used in this example:
 
-| Function         | Purpose/Description                 | Where Used (File/Component)                                                                                | Juno Docs/Source Reference                                                             |
-|------------------|-------------------------------------|------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
-| `initSatellite`  | Initialize Juno Satellite container | [`src/App.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/App.vue) | [initSatellite](https://juno.build/docs/setup-the-sdk#initialization)                  |
-| `authSubscribe`  | Subscribe to auth state changes     | [`src/stores/auth.store.ts`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/stores/auth.store.ts)                                                                                  | [authSubscribe](https://juno.build/docs/build/authentication/development#subscription) |
-| `signIn`         | Sign in user                        | [`src/components/Login.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Login.vue)                                                                                 | [signIn](https://juno.build/docs/build/authentication/development#sign-in)             |
-| `signOut`        | Sign out user                       | [`src/components/Logout.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Logout.vue)                                                                                | [signOut](https://juno.build/docs/build/authentication/development#sign-out)           |
-| `listDocs`       | List documents in a collection      | [`src/components/Table.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Table.vue)                                                                                 | [listDocs](https://juno.build/docs/build/datastore/development#list-documents)                              |
-| `setDoc`         | Create or update a document         | [`src/components/Modal.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Modal.vue)                                                                                 | [setDoc](https://juno.build/docs/build/datastore/development#add-a-document)                                  |
-| `deleteDoc`      | Delete a document                   | [`src/components/Delete.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Delete.vue)                                                                                | [deleteDoc](https://juno.build/docs/build/datastore/development#delete-a-document)                            |
-| `uploadFile`     | Upload a file to storage            | [`src/components/Modal.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Modal.vue)                                                                                 | [uploadFile](https://juno.build/docs/build/storage/development#upload-asset)                          |
-| `deleteAsset`    | Delete a file from storage          | [`src/components/Delete.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Delete.vue)                                                                                | [deleteAsset](https://juno.build/docs/build/storage/development#delete-asset)                        |
+| Function        | Purpose/Description                 | Where Used (File/Component)                                                                                                       | Juno Docs/Source Reference                                                             |
+| --------------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `initSatellite` | Initialize Juno Satellite container | [`src/App.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/App.vue)                             | [initSatellite](https://juno.build/docs/setup-the-sdk#initialization)                  |
+| `authSubscribe` | Subscribe to auth state changes     | [`src/stores/auth.store.ts`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/stores/auth.store.ts)   | [authSubscribe](https://juno.build/docs/build/authentication/development#subscription) |
+| `signIn`        | Sign in user                        | [`src/components/Login.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Login.vue)   | [signIn](https://juno.build/docs/build/authentication/development#sign-in)             |
+| `signOut`       | Sign out user                       | [`src/components/Logout.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Logout.vue) | [signOut](https://juno.build/docs/build/authentication/development#sign-out)           |
+| `listDocs`      | List documents in a collection      | [`src/components/Table.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Table.vue)   | [listDocs](https://juno.build/docs/build/datastore/development#list-documents)         |
+| `setDoc`        | Create or update a document         | [`src/components/Modal.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Modal.vue)   | [setDoc](https://juno.build/docs/build/datastore/development#add-a-document)           |
+| `deleteDoc`     | Delete a document                   | [`src/components/Delete.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Delete.vue) | [deleteDoc](https://juno.build/docs/build/datastore/development#delete-a-document)     |
+| `uploadFile`    | Upload a file to storage            | [`src/components/Modal.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Modal.vue)   | [uploadFile](https://juno.build/docs/build/storage/development#upload-asset)           |
+| `deleteAsset`   | Delete a file from storage          | [`src/components/Delete.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Delete.vue) | [deleteAsset](https://juno.build/docs/build/storage/development#delete-asset)          |
