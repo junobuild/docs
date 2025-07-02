@@ -33,4 +33,4 @@ Here are some examples of how the `llms.txt` files can be used with AI tools.
 
 ### Cursor
 
-You can add custom documentation as context in Cursor using the `@Docs` feature. [Read more about it here.](https://docs.cursor.com/context/@-symbols/@-docs).
+You can add custom documentation as context in Cursor using the `@Docs` feature or by navigating to `Cursor Settings` > `Features` > `Docs`. [Read more about it here](https://docs.cursor.com/context/@-symbols/@-docs).
