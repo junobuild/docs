@@ -130,5 +130,5 @@ juno deploy
 ## Notes
 
 - The app is intended as a starting point for Juno-based projects.
-- All logic is in TypeScript and React function components.
+- All logic is in JavaScript and React function components.
 - The app is fully client-side (Server Side Rendering is not supported yet) and interacts with Juno via the Satellite container.
