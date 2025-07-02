@@ -1,49 +1,20 @@
 ---
 title: Getting Started
-description: Explore Juno's smart contracts, serverless functions, and hosting capabilities. Start building with Juno today!
+description: Explore Juno's serverless functions, hosting, and data capabilities. Start building with Juno today — no DevOps, no setup friction.
 ---
 
 # Getting Started with Juno
 
-Start your journey by [launching](./create-a-satellite.mdx) your first Satellite – a feature-packed container for your project.
+Unless you're looking to solely host your static website, the recommended way to start with Juno is by developing locally using the emulator — a production-like environment with full support for data, authentication, storage, and serverless functions.
 
-It gives you full control 🔐 over authentication, a key-pair datastore (akin to a simple 'database'), file storage, your own serverless functions, and hosting.
+It gives you everything you need to build and test your app before deploying anything live.
 
-It's everything you need to run your app. Zero DevOps, no external resources required.
+Here are a few solid places to go from here:
 
----
-
-## Integrating Juno into an Existing App
-
-After creating your Satellite, you're ready to put it to use. Follow our [step-by-step guidance](setup-the-sdk) to install the SDK and initialize your app, connecting it to your container.
-
----
-
-## Starting a brand new project
-
-Are you starting a fresh project? We've got your back.
-
-Whether it's a website, blog, or app, leverage Juno's onboarding CLI to scaffold your project with ready-made templates for popular frontend frameworks like Astro, Next.js, React, SvelteKit, Vue, and Angular.
-
-Just run:
-
-import { Bash } from "./components/bash.mdx";
-
-<Bash
-  npm="npm create juno@latest"
-  yarn="yarn create juno"
-  pnpm="pnpm create juno"
-/>
-
-...and follow the prompts.
-
----
-
-## Local development
-
-Juno's tooling is designed for local-first development. Whether you're using the Next.js or Vite [plugins](reference/plugins.mdx), or creating a new app with `npm create juno@latest`, your project runs locally by default.
-
-With the provided [emulator](./guides/local-development.mdx), you can build and test your projects in an environment that closely mirrors production, without the need to deploy live until you're ready.
+- 🚀 [Start a new project](./start-a-new-project.mdx) – Scaffold a brand new project with your favorite frontend framework.
+- 🔌 [Set up the SDK](./setup-the-sdk.mdx) – Integrate Juno into an existing app.
+- 🧪 [Run your project locally](./guides/local-development.mdx) – Use the emulator to build and test locally in an environment that mirrors production.
+- 🛰️ [Deploy with a Satellite](./create-a-satellite.mdx) – When you're ready to go live, deploy your project to its own container.
 
 ---
 

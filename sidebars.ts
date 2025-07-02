@@ -9,7 +9,7 @@ const sidebars: SidebarsConfig = {
         type: "doc",
         id: "intro"
       },
-      items: ["create-a-satellite", "setup-the-sdk"]
+      items: ["start-a-new-project", "setup-the-sdk", "create-a-satellite"]
     },
     {
       type: "category",

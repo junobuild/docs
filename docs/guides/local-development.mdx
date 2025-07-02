@@ -106,6 +106,18 @@ The default (auto-deployed) Satellite is available with a predefined canister ID
 
 ---
 
+## Console UI
+
+When using the `junobuild/skylab` image, the Console UI becomes available by default at:
+
+```bash
+http://localhost:5866/
+```
+
+Once the emulator is running (`juno dev start`), visit this URL in your browser to explore the Console — where you can create and manage Satellites, and explore features like Datastore, Authentication, Storage, and more.
+
+---
+
 ## Hot Reload
 
 The local container supports live reloading. When you modify your [configuration](../reference/emulator/satellite#configuration) or build custom [Functions](../build/functions/index.md) to enhance Juno's capabilities with serverless features, those changes will be automatically redeployed.
