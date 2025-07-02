@@ -92,7 +92,12 @@ const sidebars: SidebarsConfig = {
             description:
               "Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more."
           },
-          items: ["examples/react-typescript", "examples/react-javascript", "examples/angular"]
+          items: [
+            "examples/nextjs",
+            "examples/react-typescript",
+            "examples/react-javascript",
+            "examples/angular"
+          ]
         },
         {
           type: "category",
