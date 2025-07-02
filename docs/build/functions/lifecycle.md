@@ -24,7 +24,7 @@ If you start the emulator (see chapter below) in watch mode, your functions will
 
 ## Local Development
 
-For local development and testing, a sandbox environment is essential. With Docker and the CLI, you can establish this environment by running `juno dev start`.
+For local development and testing, a sandbox environment is essential. You can establish this environment by running the CLI command `juno dev start`.
 
 :::info
 
@@ -144,7 +144,7 @@ A quick reference for the most common CLI commands and deployment workflows when
 | Command(s)             | Scenario                                                                             |
 | ---------------------- | ------------------------------------------------------------------------------------ |
 | `juno functions eject` | Initializes your project for writing serverless functions.                           |
-| `juno dev start`       | Starts the local development environment using Docker.                               |
+| `juno dev start`       | Starts the emulator.                                                                 |
 | `juno functions build` | Compiles your custom Satellite's code. Changes are automatically redeployed locally. |
 
 ### 🚀 Deployment Scenarios

@@ -10,7 +10,7 @@ The CLI watches configuration files and a dedicated `deploy` folder, automatical
 
 ## Configuration
 
-The behavior of the Satellite running in the Docker container can be configured with the help of a local configuration file commonly named `juno.dev.config.ts` (or JavaScript or JSON).
+The behavior of the Satellite running in a container can be configured with the help of a local configuration file commonly named `juno.dev.config.ts` (or JavaScript or JSON).
 
 This configuration file enables you to define the collections of the Datastore and Storage that run locally, but it also allows for defining additional controllers - i.e. administrative access keys - for your satellite.
 
