@@ -73,6 +73,7 @@ angular-example/
 ## How to Run
 
 1. **Install dependencies**:
+
    ```sh
    npm install
    ```
@@ -86,17 +87,19 @@ angular-example/
    ```
 
 3. **Create a Satellite** for local dev:
-    - Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
-    - Update `src/environments/environment.ts` with your Satellite ID.
+
+   - Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
+   - Update `src/environments/environment.ts` with your Satellite ID.
 
 4. **Start the frontend dev server**:
+
    ```sh
    npm run start
    ```
 
 5. **Create required collections**:
-    - `notes` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
-    - `images` in Storage: [http://localhost:5866/storage](http://localhost:5866/storage)
+   - `notes` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
+   - `images` in Storage: [http://localhost:5866/storage](http://localhost:5866/storage)
 
 ---
 
@@ -124,4 +127,22 @@ angular-example/
 
 - The app is intended as a starting point for Juno-based projects.
 - All logic is in TypeScript and Angular components/services.
-- The app is fully client-side (Server Side Rendering is not supported yet) and interacts with Juno via the Satellite container.  
+- The app is fully client-side (Server Side Rendering is not supported yet) and interacts with Juno via the Satellite container.
+
+---
+
+## Juno SDK Used
+
+The following functions from `@junobuild/core` are used in this example:
+
+| Function        | Purpose/Description                 | Where Used (File/Component)                                                                                                                                                   | Juno Docs/Source Reference                                                             |
+| --------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `initSatellite` | Initialize Juno Satellite container | [`src/app/app.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/app.component.ts)                                           | [initSatellite](https://juno.build/docs/setup-the-sdk#initialization)                  |
+| `authSubscribe` | Subscribe to auth state changes     | [`src/app/services/auth.service.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/services/auth.service.ts)                           | [authSubscribe](https://juno.build/docs/build/authentication/development#subscription) |
+| `signIn`        | Sign in user                        | [`src/app/components/login/login.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/login/login.component.ts)     | [signIn](https://juno.build/docs/build/authentication/development#sign-in)             |
+| `signOut`       | Sign out user                       | [`src/app/components/logout/logout.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/logout/logout.component.ts) | [signOut](https://juno.build/docs/build/authentication/development#sign-out)           |
+| `listDocs`      | List documents in a collection      | [`src/app/services/docs.service.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/services/docs.service.ts)                           | [listDocs](https://juno.build/docs/build/datastore/development#list-documents)         |
+| `setDoc`        | Create or update a document         | [`src/app/components/modal/modal.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/modal/modal.component.ts)     | [setDoc](https://juno.build/docs/build/datastore/development#add-a-document)           |
+| `deleteDoc`     | Delete a document                   | [`src/app/components/delete/delete.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/delete/delete.component.ts) | [deleteDoc](https://juno.build/docs/build/datastore/development#delete-a-document)     |
+| `uploadFile`    | Upload a file to storage            | [`src/app/components/modal/modal.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/modal/modal.component.ts)     | [uploadFile](https://juno.build/docs/build/storage/development#upload-asset)           |
+| `deleteAsset`   | Delete a file from storage          | [`src/app/components/delete/delete.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/delete/delete.component.ts) | [deleteAsset](https://juno.build/docs/build/storage/development#delete-asset)          |

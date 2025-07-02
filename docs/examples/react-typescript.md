@@ -132,3 +132,21 @@ juno deploy
 - The app is intended as a starting point for Juno-based projects.
 - All logic is in JavaScript and React function components.
 - The app is fully client-side (Server Side Rendering is not supported yet) and interacts with Juno via the Satellite container.
+
+---
+
+## Juno SDK Used
+
+The following functions from `@junobuild/core` are used in this example:
+
+| Function        | Purpose/Description                 | Where Used (File/Component)                                                                                                            | Juno Docs/Source Reference                                                             |
+| --------------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `initSatellite` | Initialize Juno Satellite container | [`src/App.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/App.tsx)                             | [initSatellite](https://juno.build/docs/setup-the-sdk#initialization)                  |
+| `authSubscribe` | Subscribe to auth state changes     | [`src/components/Auth.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Auth.tsx)     | [authSubscribe](https://juno.build/docs/build/authentication/development#subscription) |
+| `signIn`        | Sign in user                        | [`src/components/Login.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Login.tsx)   | [signIn](https://juno.build/docs/build/authentication/development#sign-in)             |
+| `signOut`       | Sign out user                       | [`src/components/Logout.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Logout.tsx) | [signOut](https://juno.build/docs/build/authentication/development#sign-out)           |
+| `listDocs`      | List documents in a collection      | [`src/components/Table.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Table.tsx)   | [listDocs](https://juno.build/docs/build/datastore/development#list-documents)         |
+| `setDoc`        | Create or update a document         | [`src/components/Modal.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Modal.tsx)   | [setDoc](https://juno.build/docs/build/datastore/development#add-a-document)           |
+| `deleteDoc`     | Delete a document                   | [`src/components/Delete.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Delete.tsx) | [deleteDoc](https://juno.build/docs/build/datastore/development#delete-a-document)     |
+| `uploadFile`    | Upload a file to storage            | [`src/components/Modal.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Modal.tsx)   | [uploadFile](https://juno.build/docs/build/storage/development#upload-asset)           |
+| `deleteAsset`   | Delete a file from storage          | [`src/components/Delete.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Delete.tsx) | [deleteAsset](https://juno.build/docs/build/storage/development#delete-asset)          |
