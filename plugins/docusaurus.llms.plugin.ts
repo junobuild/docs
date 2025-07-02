@@ -13,6 +13,8 @@ interface PluginOptions {
   description?: string;
   // Additional path to ignore in addition to the categories
   ignorePaths?: string[];
+  // A title for the links that are identified at the root. By default: General
+  generalCategoryTitle?: string;
 }
 
 /**
@@ -33,7 +35,8 @@ export default function docusaurusPluginLLMs(
       const {
         docsDir,
         description,
-        ignorePaths = []
+        ignorePaths = [],
+        generalCategoryTitle = "General"
       } = {
         docsDir: "docs",
         ...userOptions
@@ -101,6 +104,7 @@ export default function docusaurusPluginLLMs(
         dataRoutes,
         description,
         docsDir,
+        generalCategoryTitle,
         ...context
       });
 
@@ -304,12 +308,14 @@ const generateLlmsTxt = async ({
   siteConfig: { url, ...restSiteConfig },
   outDir,
   description,
-  docsDir
+  docsDir,
+  generalCategoryTitle
 }: {
   groupedRoutes: GroupedRoutes;
   dataRoutes: RoutesData;
 } & Pick<LoadContext, "siteConfig" | "outDir"> &
-  Pick<PluginOptions, "description" | "docsDir">) => {
+  Pick<PluginOptions, "description" | "docsDir"> &
+  Required<Pick<PluginOptions, "generalCategoryTitle">>) => {
   const buildLink = (route: string): string | undefined => {
     const data = dataRoutes.get(route);
 
@@ -327,7 +333,7 @@ const generateLlmsTxt = async ({
 
   const buildTitle = (key: string) => {
     if (key === `/${docsDir}`) {
-      return `## General`;
+      return `## ${generalCategoryTitle}`;
     }
 
     const titles = key
