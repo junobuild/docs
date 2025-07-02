@@ -77,6 +77,45 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Examples",
+      link: {
+        type: "generated-index",
+        description:
+          "Explore projects that show how to build with Juno using different frontend frameworks and serverless function setups. Includes full-stack apps built with React, SvelteKit, Angular, and Next.js, as well as serverless function patterns written in TypeScript and Rust."
+      },
+      items: [
+        {
+          type: "category",
+          label: "Frontend",
+          link: {
+            type: "generated-index",
+            description:
+              "Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more."
+          },
+          items: [
+            "examples/nextjs",
+            "examples/react-typescript",
+            "examples/react-javascript",
+            "examples/vue",
+            "examples/sveltekit",
+            "examples/angular",
+            "examples/vanilla-javascript"
+          ]
+        },
+        {
+          type: "category",
+          label: "Functions",
+          link: {
+            type: "generated-index",
+            description:
+              "Write serverless backend logic for your app using TypeScript or Rust. These examples show how to use hooks, assertions, and common function patterns on Juno."
+          },
+          items: []
+        }
+      ]
+    },
+    {
+      type: "category",
       label: "Products",
       link: {
         type: "generated-index",

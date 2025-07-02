@@ -1,0 +1,6 @@
+- **Juno Integration**: Uses Juno's Satellite for authentication, Datastore, and Storage.
+- **Authentication**: Login/logout flow.
+- **Notes Collection**: Users can create, view, and delete notes (text, with optional file URL).
+- **Images Collection**: Supports file storage for images.
+- **Responsive UI**: Built with Tailwind CSS for modern styling.
+- **Banner**: Warns if the Satellite is not configured for local development.

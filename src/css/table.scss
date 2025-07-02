@@ -24,6 +24,7 @@ table {
       a {
         color: var(--ifm-table-cell-color);
         text-decoration: underline;
+        word-break: break-word;
       }
     }
 
