@@ -6,13 +6,15 @@ description: Learn how to use Juno's llms.txt files to provide AI tools with bet
 
 # Using Juno with AI
 
-If you’re using AI to build with Juno, you can use our `llms.txt` files to help AI tools better understand the platform.
+If you're using AI to build with Juno, you can use our `llms.txt` files to help AI tools better understand the platform.
 
 ---
 
 ## LLMs.txt
 
 An [LLMs.txt](https://llmstxt.org/) file is a plain text file that provides instructions or metadata for large language models (LLMs). It often specifies how LLMs should process or interact with content. It's similar to a `robots.txt` or `sitemap.xml` file, but tailored for AI models.
+
+---
 
 ### Available routes
 
@@ -33,4 +35,33 @@ Here are some examples of how the `llms.txt` files can be used with AI tools.
 
 ### Cursor
 
-You can add custom documentation as context in Cursor using the `@Docs` feature or by navigating to `Cursor Settings` > `Features` > `Docs`. [Read more about it here](https://docs.cursor.com/context/@-symbols/@-docs).
+You can use custom documentation in Cursor's context using the `@Docs` feature.
+
+#### Setup
+
+To add custom documentation, type `@Docs` and select **Add new doc**, or go to `Cursor Settings` > `Features` > `Docs`.
+
+Add both `llms.txt` URLs:
+
+| Name         | Entry point                                              |
+|--------------|----------------------------------------------------------|
+| Juno         | [llms.txt](https://juno.build/llms.txt)                 |
+| Juno (full)  | [llms-full.txt](https://juno.build/llms-full.txt)       |
+
+Cursor will index all subpages.
+
+#### Usage
+
+Type `@Docs` in chat to view available docs and select the Juno entries to begin using the references.
+
+:::important
+
+You must reference the Juno docs in chat using `@Docs` — Cursor won't use them otherwise.
+
+:::
+
+For example, you could start a conversation with: _I want to create a web shop app with Next.js using @Juno and @Juno (full)._
+
+#### Resources
+
+Read more in the [Cursor documentation](https://docs.cursor.com/context/@-symbols/@-docs).
