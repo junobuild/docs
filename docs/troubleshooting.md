@@ -53,6 +53,38 @@ Make sure these two requirements are correctly met before restarting the command
 
 ---
 
+### Invalid character: "&lt;"
+
+When you scaffold an app with a template, the `juno.config` file includes placeholder values for the satellite IDs:
+
+```typescript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      development: "<DEV_SATELLITE_ID>",
+      production: "<PROD_SATELLITE_ID>"
+    },
+    source: "dist"
+  }
+});
+```
+
+If you start your frontend development server without replacing these placeholders, you may encounter an error like: `Invalid character: "&lt;"` while running your app in the browser.
+
+This happens because the app tries to parse the config at runtime and encounters the invalid placeholder character `<` in the ID values.
+
+Continue with your setup or tutorial until you receive your actual satellite ID(s). Once you’ve updated the config with real values, make sure to restart your development server.
+
+:::note
+
+Note: `vite` may cache the configuration — if the error persists after updating the file, try restarting the dev server with the `--force` flag or make a small code change to trigger a rebuild.
+
+:::
+
+---
+
 ### Canister exceeded its current Wasm memory limit
 
 Every Satellite, and generally any module on Juno, starts with a default heap memory limit of 1 GB. While you can increase this limit in the settings, it's not recommended to go beyond it, as it may cause issues when upgrading your module.
