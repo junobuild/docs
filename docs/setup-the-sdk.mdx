@@ -53,25 +53,43 @@ It is generally recommended to initialize globally the library at the top of you
 
 ## Configuration
 
-To connect your application with a container (your Satellite) and other necessary resources, some configuration is required. This setup ensures your application can securely access and initialize the correct Satellite instance, environment variables, and key settings.
-
-For most developers, the [Next.js](reference/plugins.mdx#nextjs-plugin) or [Vite](reference/plugins.mdx#vite-plugin) plugins streamline this process by managing environment variables automatically. However, if you're not using one of these plugins, a bit of manual configuration is needed.
-
-### Automated
-
-When using the plugins, the configuration handled through a `juno.config` file (TypeScript, JavaScript, or JSON) at your project root is automatically injected within your application. The plugins read the file and automatically load the required information when you build and run your dApp.
-
-Juno's provided templates come preconfigured with these plugins, so you can quickly get started. For details on setting up the plugin yourself, refer to the [Next.js](reference/plugins.mdx#nextjs-plugin) or [Vite](reference/plugins.mdx#vite-plugin) documentation.
-
-To scaffold a minimal `juno.config` file, run:
+Juno uses a configuration file to determine which Satellite to connect to. Scaffold a minimal config file using:
 
 ```bash
 npx @junobuild/cli init --minimal
 ```
 
-### Manually configure your application
+This creates a `juno.config` file — in TypeScript, JavaScript, or JSON depending on your preferences — at the root of your project.
 
-If you aren't using a plugin, you can still configure your application by providing the `satelliteId` directly. In this case, add or update the following in your configuration file:
+From there, if you're using **Next.js** or **Vite**, install the official plugin. It reads your config file and injects environment variables automatically for the SDK — no need to pass anything manually.
+
+- [Next.js Plugin](reference/plugins.mdx#nextjs-plugin)
+
+```javascript title="next.config.js"
+import { withJuno } from "@junobuild/nextjs-plugin";
+
+export default withJuno();
+```
+
+- [Vite Plugin](reference/plugins.mdx#vite-plugin)
+
+```javascript title="vite.config.js"
+import juno from "@junobuild/vite-plugin";
+
+export default defineConfig({
+  plugins: [juno()]
+});
+```
+
+:::note
+
+The templates already include both the config file and the plugin setup.
+
+:::
+
+#### Not using a plugin?
+
+You can also pass the Satellite ID manually to the SDK, though using the plugins is the preferred approach:
 
 ```typescript
 import { initSatellite } from "@junobuild/core";
@@ -80,7 +98,5 @@ await initSatellite({
   satelliteId: "your-actual-satellite-id"
 });
 ```
-
-Replace `your-actual-satellite-id` with your actual ID, available in the [console](https://console.juno.build) on the overview page.
 
 [satellite]: terminology.md#satellite

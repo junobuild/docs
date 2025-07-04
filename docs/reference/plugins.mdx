@@ -49,7 +49,7 @@ import { Bash } from "../components/bash.mdx";
 
 In your Next.js config file — whether it's `next.config.js`, `next.config.ts`, `next.config.mjs` or else — wrap your configuration with `withJuno` to automatically load Juno settings:
 
-```javascript
+```javascript title="next.config.js"
 import { withJuno } from "@junobuild/nextjs-plugin";
 
 export default withJuno();
@@ -63,7 +63,7 @@ The plugin supports following options:
 
 The plugin sets the build output to `export` by default. You can provide additional options as follows:
 
-```javascript
+```javascript title="next.config.js"
 import { withJuno } from "@junobuild/nextjs-plugin";
 
 /** @type {import('next').NextConfig} */
@@ -83,7 +83,7 @@ You can use the `container` option to:
 - Provide a custom container URL (e.g. for an emulator running on a specific port), or
 - Set it to `false` to disable local development behavior entirely.
 
-```javascript title="next.config.mjs"
+```javascript title="next.config.js"
 import { withJuno } from "@junobuild/nextjs-plugin";
 
 /** @type {import('next').NextConfig} */
