@@ -7,14 +7,29 @@ import TurndownService, { Options, Node as TurndownNode } from "turndown";
 
 const { gfm } = require("@joplin/turndown-plugin-gfm");
 
+interface PluginOptionGroupMatcher {
+  matcher: string;
+  position?: number;
+  title?: string;
+}
+
+interface PluginOptionGroup {
+  matchers: PluginOptionGroupMatcher[];
+  parentPath: string;
+  title: string;
+}
+
 interface PluginOptions {
   docsDir: string;
   // An optional description appended after the title
   description?: string;
-  // Additional path to ignore in addition to the categories
+  // Additional paths to ignore, in addition to the categories.
   ignorePaths?: string[];
-  // A title for the links that are identified at the root. By default: General
-  generalCategoryTitle?: string;
+  // A title for the links that are identified at the root. By default: Miscellaneous
+  miscCategoryTitle?: string;
+  // A custom list of groups. Matching routes will be listed under these.
+  // Particularly useful to reorganize routes available at the root.
+  groups?: PluginOptionGroup[];
 }
 
 /**
@@ -36,7 +51,8 @@ export default function docusaurusPluginLLMs(
         docsDir,
         description,
         ignorePaths = [],
-        generalCategoryTitle = "General"
+        miscCategoryTitle = "Miscellaneous",
+        groups = []
       } = {
         docsDir: "docs",
         ...userOptions
@@ -51,7 +67,7 @@ export default function docusaurusPluginLLMs(
           ) === undefined
       );
 
-      // Group
+      // Group routes
       const groupedRoutes = allRoutes.reduce<GroupedRoutes>((acc, path) => {
         if (path.endsWith("/")) {
           const category = path.slice(0, -1);
@@ -64,16 +80,94 @@ export default function docusaurusPluginLLMs(
           };
         }
 
-        const category = dirname(path);
+        const resolveGroup = ():
+          | {
+              group: PluginOptionGroup;
+              matcher: PluginOptionGroupMatcher;
+            }
+          | undefined => {
+          for (const { matchers, ...rest } of groups) {
+            const matcher = matchers.find(({ matcher }) =>
+              path.includes(matcher)
+            );
+
+            if (matcher !== undefined) {
+              return { group: { matchers, ...rest }, matcher };
+            }
+          }
+
+          return undefined;
+        };
+
+        const matchingGroup = resolveGroup();
+
+        if (matchingGroup === undefined) {
+          const groupPath = dirname(path);
+
+          return {
+            ...acc,
+            [groupPath]: {
+              ...(acc[groupPath] ?? {}),
+              children: [...(acc[groupPath]?.children ?? []), { path }]
+            }
+          };
+        }
+
+        const {
+          group: { parentPath, title, matchers },
+          matcher: { title: matcherTitle }
+        } = matchingGroup;
+
+        const children = [
+          ...(acc[parentPath]?.children ?? []),
+          { path, ...(matcherTitle !== undefined && { title: matcherTitle }) }
+        ].sort(({ path: pathA }, { path: pathB }) => {
+          const findPosition = (childPath: string): number | undefined =>
+            matchers.find(({ matcher }) => childPath.includes(matcher))
+              ?.position;
+
+          const positionPathA = findPosition(pathA);
+          const positionPathB = findPosition(pathB);
+
+          return (positionPathA ?? 0) - (positionPathB ?? 0);
+        });
 
         return {
           ...acc,
-          [category]: {
-            ...(acc[category] ?? {}),
-            children: [...(acc[category]?.children ?? []), path]
+          [parentPath]: {
+            ...(acc[parentPath] ?? {}),
+            ...(title !== undefined && { title }),
+            children
           }
         };
       }, {});
+
+      const sortedGroupedRoutes = Object.entries(groupedRoutes).sort(
+        ([keyA, _], [keyB, __]) => {
+          // We want groups first.
+          const isGroup = (key: string): boolean =>
+            groups.find(({ parentPath }) => parentPath === key) !== undefined;
+
+          if (isGroup(keyA)) {
+            return -1;
+          }
+
+          if (isGroup(keyB)) {
+            return 1;
+          }
+
+          // We want "Misc" at the end.
+          if (keyA === `/${docsDir}`) {
+            return 1;
+          }
+
+          if (keyB === `/${docsDir}`) {
+            return -1;
+          }
+
+          return keyA.localeCompare(keyB);
+        }
+      );
 
       // Prepare markdown content and path
 
@@ -100,17 +194,17 @@ export default function docusaurusPluginLLMs(
 
       // Create /llms.txt
       await generateLlmsTxt({
-        groupedRoutes,
+        groupedRoutes: sortedGroupedRoutes,
         dataRoutes,
         description,
         docsDir,
-        generalCategoryTitle,
+        miscCategoryTitle,
         ...context
       });
 
       // Create /llms-full.txt
       await generateLlmsTxtFull({
-        groupedRoutes,
+        groupedRoutes: sortedGroupedRoutes,
         dataRoutes,
         description,
         docsDir,
@@ -120,7 +214,19 @@ export default function docusaurusPluginLLMs(
   };
 }
 
-type GroupedRoutes = Record<string, { children: string[] }>;
+interface GroupedRouteChild {
+  path: string;
+  title?: string;
+}
+
+interface GroupedRoute {
+  title?: string;
+  children: GroupedRouteChild[];
+}
+
+type GroupedRoutes = Record<string, GroupedRoute>;
+
+type SortedGroupedRoutes = [string, GroupedRoute][];
 
 interface RouteMarkdownData {
   relativePath: string;
@@ -309,15 +415,18 @@ const generateLlmsTxt = async ({
   outDir,
   description,
   docsDir,
-  generalCategoryTitle
+  miscCategoryTitle
 }: {
-  groupedRoutes: GroupedRoutes;
+  groupedRoutes: SortedGroupedRoutes;
   dataRoutes: RoutesData;
 } & Pick<LoadContext, "siteConfig" | "outDir"> &
   Pick<PluginOptions, "description" | "docsDir"> &
-  Required<Pick<PluginOptions, "generalCategoryTitle">>) => {
-  const buildLink = (route: string): string | undefined => {
-    const data = dataRoutes.get(route);
+  Required<Pick<PluginOptions, "miscCategoryTitle">>) => {
+  const buildLink = ({
+    path,
+    title: customTitle
+  }: GroupedRouteChild): string | undefined => {
+    const data = dataRoutes.get(path);
 
     if (data === undefined) {
       return undefined;
@@ -328,27 +437,24 @@ const generateLlmsTxt = async ({
       metadata: { title, description }
     } = data;
 
-    return `- [${title ?? ""}](${url}${relativePath})${description !== undefined && description !== "" ? `: ${description}` : ""}`;
+    return `- [${customTitle ?? title ?? ""}](${url}${relativePath})${description !== undefined && description !== "" ? `: ${description}` : ""}`;
   };
 
-  const buildTitle = (key: string) => {
+  const buildTitle = ({ key, title }: { key: string; title?: string }) => {
     if (key === `/${docsDir}`) {
-      return `## ${generalCategoryTitle}`;
+      return `## ${miscCategoryTitle}`;
     }
 
-    const titles = key
-      .replaceAll(`/${docsDir}/`, "")
-      .split("/")
-      .map(capitalize)
-      .join(" - ");
+    const titles =
+      title ??
+      key.replaceAll(`/${docsDir}/`, "").split("/").map(capitalize).join(" - ");
 
     return `## ${titles}`;
   };
 
-  const content = Object.entries(groupedRoutes)
-    .sort(([keyA, _], [keyB, __]) => keyA.localeCompare(keyB))
+  const content = groupedRoutes
     .map(
-      ([key, { children }]) => `${buildTitle(key)}
+      ([key, { children, title }]) => `${buildTitle({ key, title })}
   
 ${children.map(buildLink).join("\n")}`
     )
@@ -370,12 +476,12 @@ const generateLlmsTxtFull = async ({
   outDir,
   description
 }: {
-  groupedRoutes: GroupedRoutes;
+  groupedRoutes: SortedGroupedRoutes;
   dataRoutes: RoutesData;
 } & Pick<LoadContext, "siteConfig" | "outDir"> &
   Pick<PluginOptions, "description" | "docsDir">) => {
-  const buildMarkdown = (route: string): string | undefined => {
-    const data = dataRoutes.get(route);
+  const buildMarkdown = ({ path }: GroupedRouteChild): string | undefined => {
+    const data = dataRoutes.get(path);
 
     if (data === undefined) {
       return undefined;
@@ -388,8 +494,7 @@ const generateLlmsTxtFull = async ({
     return markdown;
   };
 
-  const content = Object.entries(groupedRoutes)
-    .sort(([keyA, _], [keyB, __]) => keyA.localeCompare(keyB))
+  const content = groupedRoutes
     .map(([_, { children }]) => children.map(buildMarkdown).join("\n\n"))
     .join("\n\n");
 
