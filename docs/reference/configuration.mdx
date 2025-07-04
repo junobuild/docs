@@ -16,11 +16,15 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
     source: "build"
   },
   orbiter: {
-    id: "eeeee-fffff-ddddd-11111-cai"
+    ids: {
+      production: "eeeee-fffff-ddddd-11111-cai"
+    }
   }
 });
 ```
@@ -96,7 +100,9 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
     source: "dist",
     predeploy: ["npm run build", "npm run lint"]
   }
@@ -118,7 +124,9 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
     source: "dist",
     postdeploy: ["./scripts/notify-admins.sh", "echo 'Deployment complete'"]
   }
@@ -164,7 +172,9 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
     source: "dist",
     storage: {
       maxMemorySize: {
@@ -190,7 +200,9 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
     source: "dist",
     datastore: {
       maxMemorySize: {
@@ -216,7 +228,9 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
     authentication: {
       internetIdentity: {
         derivationOrigin: "hello.com"
@@ -250,7 +264,9 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
     settings: {
       freezingThreshold: 2_592_000n,
       reservedCyclesLimit: 5_000_000_000_000n,
@@ -290,7 +306,9 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
     source: "dist"
   },
   emulator: {
@@ -340,7 +358,9 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
     source: "dist"
   },
   emulator: {
@@ -422,7 +442,9 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig(({ mode }) => ({
   satellite: {
-    id: "aaaaa-bbbbb-ccccc-ddddd-cai",
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
     source: "dist",
     storage: {
       ...(mode === "staging" && { iframe: "allow-any" })
@@ -448,27 +470,9 @@ juno deploy --mode staging
 
 ---
 
-## Environments - Multiple satellites
+## Multiple Environments
 
-You might want to deploy or manage a similar project across different environments. Using [modes](#modes), you can deploy the same application on multiple satellites, such as staging and production environments.
-
-To accommodate different satellite IDs, you can use a [conditional config](#conditional-config):
-
-```javascript title="juno.config.js"
-import { defineConfig } from "@junobuild/config";
-
-export default defineConfig(({ mode }) => ({
-  satellite: {
-    id:
-      mode === "staging"
-        ? "11111-22222-33333-44444-cai"
-        : "aaaaa-bbbbb-ccccc-ddddd-cai",
-    source: "dist"
-  }
-}));
-```
-
-Or explicitly list the IDs:
+You might want to deploy or manage a project across different environments, such as staging and production. Juno supports this through the `ids` field, allowing you to define separate Satellite IDs for each [mode](#modes).
 
 ```javascript title="juno.config.js"
 import { defineConfig } from "@junobuild/config";
@@ -476,6 +480,7 @@ import { defineConfig } from "@junobuild/config";
 export default defineConfig({
   satellite: {
     ids: {
+      development: "xxxxx-zzzzz-wwwww-77777-cai",
       staging: "11111-22222-33333-44444-cai",
       production: "aaaaa-bbbbb-ccccc-ddddd-cai"
     },
@@ -484,18 +489,8 @@ export default defineConfig({
 });
 ```
 
-The latter method is also compatible with JSON configuration:
+:::note
 
-```json title="juno.config.json"
-{
-  "satellite": {
-    "ids": {
-      "staging": "11111-22222-33333-44444-cai",
-      "production": "aaaaa-bbbbb-ccccc-ddddd-cai"
-    },
-    "source": "dist"
-  }
-}
-```
+A similar configuration is also available for the `orbiter` field used for analytics.
 
-Note that defining an `id` or at least a `production` entry in `ids` is mandatory.
+:::

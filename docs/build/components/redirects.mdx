@@ -7,7 +7,9 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
     source: "dist",
     storage: {
       redirects: [
