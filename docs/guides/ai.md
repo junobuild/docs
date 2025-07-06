@@ -43,10 +43,10 @@ To add custom documentation, type `@Docs` and select **Add new doc**, or go to `
 
 Add both `llms.txt` URLs:
 
-| Name         | Entry point                                              |
-|--------------|----------------------------------------------------------|
-| Juno         | [llms.txt](https://juno.build/llms.txt)                 |
-| Juno (full)  | [llms-full.txt](https://juno.build/llms-full.txt)       |
+| Name        | Entry point                                       |
+| ----------- | ------------------------------------------------- |
+| Juno        | [llms.txt](https://juno.build/llms.txt)           |
+| Juno (full) | [llms-full.txt](https://juno.build/llms-full.txt) |
 
 Cursor will index all subpages.
 
