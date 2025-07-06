@@ -1,14 +1,20 @@
 ---
-description: Scaffold a new full-stack project with Juno using your favorite frontend framework. Includes emulator support, serverless functions, and everything preconfigured.
+description: Build a full-stack app with Juno — scaffold a new project using your favorite frontend framework, or integrate Juno into an existing codebase with serverless functions, data, and local emulator support.---
 ---
 
-# Start a new project
+# Start a New Project
 
-Are you starting a fresh project? We've got your back.
+With Juno, a project typically lives in a single repository — combining your frontend, serverless functions, and configuration. Whether you're starting from scratch or extending an existing app, the result is a full-stack project that deploys as a single container.
 
-Whether it's a website, blog, or app, leverage Juno's onboarding CLI to scaffold your project with ready-made templates for popular frontend frameworks like Astro, Next.js, React, SvelteKit, Vue, and Angular.
+Choose the path that fits where you are in your journey:
 
-Just run:
+---
+
+## 🚀 1. Scaffold with a Juno Template
+
+One way to get started is by scaffolding a full-stack project using our prebuilt templates — it sets up your frontend framework of choice along with serverless functions and emulator support.
+
+To create a new project, just run:
 
 import { Bash } from "./components/bash.mdx";
 
@@ -18,16 +24,39 @@ import { Bash } from "./components/bash.mdx";
   pnpm="pnpm create juno"
 />
 
-...and follow the prompts.
+:::note
+Supports Astro, Next.js, React, SvelteKit, Vue, and Angular.
+:::
 
 ---
 
-This will generate a working project with:
+## ✨ 2. Start with Your Favorite Framework
 
-- A frontend app using your selected framework
-- Preconfigured emulator support
-- Sample serverless functions (TypeScript or Rust)
-- Built-in auth, data, and storage integration
-- Or a minimal template if you just want to host a static site
+Prefer to begin with `npx create-next-app`, `npm create svelte@latest`, or any other starter you know well? Totally fine. Set up your frontend however you like, then bring in Juno afterward.
 
-You can run the project locally right away, explore the code, and start building.
+Once your app is ready, head over to the [SDK Setup Guide](./setup-the-sdk.mdx) to:
+
+- Install the SDK
+- Enable emulator support
+- Add serverless functions
+- Configure deployment
+
+This gives you full flexibility while keeping everything in one repo.
+
+---
+
+## 🧩 3. Add Juno to an Existing Project
+
+Already have a project in development or production? You can integrate Juno incrementally.
+
+Start with the [SDK Setup Guide](./setup-the-sdk.mdx) and bring in only what you need — whether that's authentication, datastore, serverless functions, or all of the above.
+
+---
+
+## One Repo, One App
+
+No matter how you start, Juno follows a simple principle: **one project = one repo = one container**.
+
+Everything — frontend, backend, and app state — is bundled into a single WebAssembly (WASM) container and deployed together.
+
+This architecture keeps development and deployment straightforward, reliable, and fully yours.
