@@ -40,35 +40,108 @@ On the contrary, `stable` memory doesn't require processing during an upgrade. H
 
 ### Recommendations
 
-There are no strict rules governing the choice of memory type for your use case. Ultimately, the decision lies with you, based on what best suits your project. This is why both the [datastore](../build/datastore/index.md) and [storage](../build/storage/index.md) support both memory types.
+There are no strict rules governing the choice of memory type for your use case. Ultimately, the decision depends on your patterns and strategy. That said, **stable memory is strongly recommended** for the vast majority of data storage scenarios.
 
-In practice, `heap` memory can be recommended for small datasets or data that require quick or frequent access, while `stable` memory is preferred for large data or data accessed less often.
+Why? Because:
 
-This is why, for example, your dapp's bundle assets (including JS, HTML, images, etc.) are stored within the `heap` memory of satellites.
+- It allows you to offload large or infrequently accessed data from the limited heap space.
+- It avoids serialization overhead during upgrades.
+- It supports much larger data volumes.
 
-However, this decision, along with the memory limitations, results in a significant portion of the `heap` memory being allocated. Although `stable` memory is slightly slower and comes at a higher cost, it is well-suited for storing data and ensuring smooth smart contract upgrades. This is particularly important for the operation and lifecycle of a project.
+In contrast, `heap` memory is best reserved for:
 
-That's why the default option for creating new collections is set to `stable` for both datastore and storage.
+- Serving your frontend assets (HTML, JS, images, etc.).
+- Small, ephemeral datasets that benefit from fast access and won't push the 1 GB heap limit.
+
+This is why both the [datastore](../build/datastore/index.md) and [storage](../build/storage/index.md) support both memory types — but default to `stable`, which is also the **recommended** option.
 
 ### Default usage
 
-As mentioned in the previous chapter, your dapp's bundle and assets (everything you deploy to your satellite using `juno deploy`), are stored in the `heap` memory.
+By default, the memory model aligns with these best practices:
 
-In contrast, your users (as of Satellite version 0.0.16) and the [analytics](../build/analytics/index.md) data are saved within `stable` memory.
+- Your dapp's frontend assets — everything deployed using `juno deploy` — are stored in `heap` memory.
+- In contrast, your users (as of Satellite version 0.0.16) and the [analytics](../build/analytics/index.md) data are saved within `stable` memory.
 
 ### Summary
 
-| Aspect          | Heap Memory                                          | Stable Memory                                       |
-| --------------- | ---------------------------------------------------- | --------------------------------------------------- |
-| **Capacity**    | Max 1 GB                                             | Max 500 GB (minus heap size)                        |
-| **Performance** | Fast for read and write operations                   | Slightly slower                                     |
-| **Cost**        | Lower cost                                           | Higher cost (~20x)                                  |
-| **Upgrades**    | Data must be deserialized/serialized during upgrades | Data are not processed during upgrades              |
-| **Usage**       | Suitable for small or frequently accessed data       | Suitable for large or less frequently accessed data |
+| Aspect             | Heap Memory                                             | Stable Memory                                       |
+| ------------------ | ------------------------------------------------------- | --------------------------------------------------- |
+| **Capacity**       | Max 1 GB                                                | Max 500 GB (minus heap size)                        |
+| **Performance**    | Fast for read and write operations                      | Slightly slower                                     |
+| **Cost**           | Lower cost                                              | Higher cost (~20x)                                  |
+| **Upgrades**       | Data must be deserialized/serialized during upgrades    | Data are not processed during upgrades              |
+| **Usage**          | Suitable for small or frequently accessed data          | Suitable for large or less frequently accessed data |
+| **Recommendation** | Use sparingly to avoid upgrade friction and size limits | Default and recommended for most use cases          |
+
+---
+
+## Behavior
+
+When discussing memory, it's important to understand how WebAssembly (WASM) memory behaves at a lower level.
+
+### Memory Growth and Reuse
+
+WASM memory can **grow**, but it **cannot shrink**. This behavior is **not specific to Juno** — it's part of the WASM standard and applies across all platforms using WASM.
+
+- Once the memory size increases (e.g. due to allocations or data structure growth), the total allocated memory **remains fixed at the new size**, even if you later free or remove data.
+- However, memory that is no longer in use is **internally reused or reallocated**, so your container is not constantly allocating more memory unless needed.
+
+### What to Expect
+
+- It's normal to see your module's reported memory usage increase over time and **not decrease**, even after deletions or optimizations.
+- The **only time this memory resets** is during an **upgrade**, which reinitializes the heap with the new WASM binary and runtime state.
+- As a result, a growing memory footprint isn't necessarily a problem — but it's worth monitoring, particularly when it comes to the heap, which should not exceed the 1 GB limit.
+
+### Best Practices
+
+- As recommended in this documentation, **use stable memory** for large or infrequently accessed data to reduce heap pressure and avoid excessive memory growth. In other words, try to avoid using heap memory for anything beyond serving your frontend app.
+- **Keep your heap size well below the 1 GB limit**, especially if you expect frequent upgrades or manage large in-memory state.
+- **Ensure reproducible builds** of your frontend application. On deploy, only actual changes should be pushed to avoid unintentionally bloating memory usage. [Why this matters.](#ensure-your-frontend-build-is-reproducible)
+- Use the Console UI's available tools and metrics to track memory usage and growth patterns over time.
+
+---
+
+## Exceeding the Heap Memory Limit
+
+Every Satellite, and generally any module on Juno, starts with a default heap memory limit of 1 GB. While you can increase this limit in the settings, it's not recommended to go beyond it, as it may cause issues when upgrading your module.
+
+The heap includes a bit of metadata, any collections you've created in Datastore and Storage (where using stable memory is advised), and the assets of your frontend application.
+
+If you're deploying a really large application (>1 GB) or frequently pushing updates to an application that isn’t reproducible, your heap memory usage can grow unexpectedly and eventually hit the limit.
+
+When that happens, your next deployment or update might fail to prevent exceeding the limit, which could lead to issues with your module.
+
+```
+Request ID: d7be9..bfcb8
+  Reject code: 5
+  Reject text: Error from Canister aaaaa-bbbbb-ccccc-ddddd-cai: Canister exceeded its current Wasm memory limit of 1073741824 bytes. The peak Wasm memory usage was 1073872896 bytes. If the canister reaches 4GiB, then it may stop functioning and may become unrecoverable. Please reach out to the canister owner to investigate the reason for the increased memory usage. It might be necessary to move data from the Wasm memory to the stable memory. If such high Wasm memory usage is expected and safe, then the developer can increase the Wasm memory limit in the canister settings..
+Try checking the canister for a possible memory leak or modifying it to use more stable memory instead of Wasm memory. See documentation: https://internetcomputer.org/docs/current/references/execution-errors#wasm-memory-limit-exceeded
+```
+
+### Preventing Heap Memory Issues
+
+To avoid running into memory limits, it's important to monitor memory usage and follow two key best practices:
+
+#### Ensure Your Frontend Build is Reproducible
+
+When building your frontend (e.g. with `npm run build`), the output should be identical to the previous build if no changes were made.
+
+Why does this help? When you deploy your application, Juno does not clear existing files—it only adds new ones. To optimize this process, Juno compares the names and content (hash values) of all files with those already uploaded. If a file hasn't changed, it is skipped, reducing unnecessary memory usage and saving cycles.
+
+If your build output isn’t reproducible, every deployment could introduce slightly different files, even if nothing has changed in your code. Over time, this would lead to unnecessary file accumulation, increasing heap memory usage and eventually causing issues.
+
+#### Resolving Heap Memory Issues
+
+There are different ways to resolve this issue, and the best approach depends on the features you're using. If you're using Datastore and Storage, we need to find a solution that prevents data loss. If you're only hosting a website, the steps to fix the issue will be much simpler.
+
+In any case, the best course of action is to reach out so we can assess your situation and find a tailored solution together.
+
+---
 
 ## Resources
 
 - [Measure different collection libraries written in Rust](https://dfinity.github.io/canister-profiling/collections/)
+- [Question about freeing/shrinking memory in WebAssembly design](https://github.com/WebAssembly/design/issues/1300)
 
 [satellite]: ../terminology.md#satellite
 [orbiter]: ../terminology.md#orbiter
