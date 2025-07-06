@@ -18,10 +18,12 @@ An [LLMs.txt](https://llmstxt.org/) file is a plain text file that provides inst
 
 ### Available routes
 
-We provide several `llms.txt` routes. Use the one that works best with your AI tool:
+We provide several `llms.txt` routes.
 
 - [`llms.txt`](pathname:///llms.txt): Table of contents with links to individual Markdown docs
 - [`llms-full.txt`](pathname:///llms-full.txt): Entire documentation in a single Markdown file
+
+Most AI tools work best with one of these formats. Some tools (like Cursor) can benefit from indexing both. Use the combination that works best with your workflow.
 
 ### How to use it
 
@@ -48,7 +50,7 @@ Add both `llms.txt` URLs:
 | Juno        | [llms.txt](https://juno.build/llms.txt)           |
 | Juno (full) | [llms-full.txt](https://juno.build/llms-full.txt) |
 
-Cursor will index all subpages.
+Cursor will index all subpages and use both files to improve context and coverage.
 
 #### Usage
 
