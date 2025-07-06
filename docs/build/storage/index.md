@@ -1,12 +1,19 @@
 ---
-description: Juno Storage offers a powerful and cost-effective object storage solution on the blockchain for app developers. Learn how to store and serve user-generated content securely.
+description: Learn how Juno Storage handles files like images or user content through a simple and efficient storage model.
+keywords: [file storage, object storage, binary files, uploads, user content]
 ---
 
 # Storage
 
-Juno Storage is designed for app developers who need to store and serve user-generated content, such as photos or files.
+Juno Storage is for files — like images or other user-generated content.
 
-It offers a powerful and cost-effective object storage solution on the blockchain.
+It provides a simple way to upload, serve, and delete files, with support for multiple encodings and custom headers.
+
+:::tip
+
+For structured data, use the [Datastore](../datastore/index.md) instead.
+
+:::
 
 ![A screenshot of the Storage in Juno's Console](../../img/satellite/storage.webp)
 
