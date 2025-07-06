@@ -53,21 +53,26 @@ It is generally recommended to initialize globally the library at the top of you
 
 ## Configuration
 
-Juno uses a configuration file to determine which Satellite to connect to. Scaffold a minimal config file using:
+Juno uses a configuration file to determine which Satellite to connect to.
+
+You can scaffold a minimal `juno.config` file using:
 
 ```bash
 npx @junobuild/cli init --minimal
 ```
 
-This creates a `juno.config` file — in TypeScript, JavaScript, or JSON depending on your preferences — at the root of your project.
+This creates a `juno.config` file — in TypeScript, JavaScript, or JSON depending on your preferences — at the root of your project. It contains metadata such as the Satellite ID used during SDK initialization.
 
-From there, if you're using **Next.js** or **Vite**, install the official plugin. It reads your config file and injects environment variables automatically for the SDK — no need to pass anything manually.
+If you're using **Next.js** or **Vite**, we recommend installing the official plugin. It automatically loads values from your config file and injects them into your build as environment variables.
+
+This means you can call `initSatellite()` without passing any parameters, the SDK will read them automatically from `process.env` or `import.meta.env`.
 
 - [Next.js Plugin](reference/plugins.mdx#nextjs-plugin)
 
 ```javascript title="next.config.js"
 import { withJuno } from "@junobuild/nextjs-plugin";
 
+// withJuno wraps your Next.js config and injects values from juno.config
 export default withJuno();
 ```
 
@@ -76,6 +81,7 @@ export default withJuno();
 ```javascript title="vite.config.js"
 import juno from "@junobuild/vite-plugin";
 
+// Automatically injects values from juno.config for the build
 export default defineConfig({
   plugins: [juno()]
 });
