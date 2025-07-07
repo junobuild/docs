@@ -6,7 +6,7 @@ This page explains how memory works conceptually and how you can monitor its usa
 
 ## General Memory Usage
 
-Every module — whether it's a [satellite], [orbiter], or your [mission control] — consumes memory in multiple ways. Some of that memory is directly controlled by your code, like the data you store in your [datastore](../build/datastore/index.md) or [storage](../build/storage/index.md). Other parts are more structural: global variables, the WASM binary (the container code itself), snapshots, and even system metadata contribute to your overall memory footprint.
+Every module — whether it's a [satellite], [orbiter], or your [mission control] — consumes memory in multiple ways. Some of that memory is directly controlled by your code, like the data you store in your [datastore](../build/datastore/index.mdx) or [storage](../build/storage/index.mdx). Other parts are more structural: global variables, the WASM binary (the container code itself), snapshots, and even system metadata contribute to your overall memory footprint.
 
 To help you understand and optimize memory usage, the Console displays a detailed breakdown under each module's overview tab. These metrics are especially helpful for staying within limits, controlling costs, and avoiding issues during upgrades.
 
@@ -53,7 +53,7 @@ In contrast, `heap` memory is best reserved for:
 - Serving your frontend assets (HTML, JS, images, etc.).
 - Small, ephemeral datasets that benefit from fast access and won't push the 1 GB heap limit.
 
-This is why both the [datastore](../build/datastore/index.md) and [storage](../build/storage/index.md) support both memory types — but default to `stable`, which is also the **recommended** option.
+This is why both the [datastore](../build/datastore/index.mdx) and [storage](../build/storage/index.mdx) support both memory types — but default to `stable`, which is also the **recommended** option.
 
 ### Default usage
 
