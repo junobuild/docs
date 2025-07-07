@@ -8,9 +8,11 @@ import ClientSide from "../components/client-side.mdx";
 
 ---
 
-## Upload asset
+## Upload file
 
-To upload an asset, use the following code:
+When you upload a file, it becomes an **asset** stored in the Storage of your Satellite. Assets are accessible over the web and can be listed, deleted, or protected using tokens.
+
+To upload a file, use the following code:
 
 ```typescript
 import { uploadFile } from "@junobuild/core";
@@ -21,7 +23,9 @@ const result = await uploadFile({
 });
 ```
 
-The `data` parameter is the file you want to upload. This is typically selected using an HTML `<input type="file" /> ` element.
+#### Parameters
+
+The `data` parameter is the file you want to upload. This is a `Blob`, typically selected using an HTML `<input type="file" />` element.
 
 The `uploadFile` function provides various options, including:
 
@@ -38,7 +42,36 @@ The `uploadFile` function provides various options, including:
 
 :::
 
-### Protected asset
+#### Returns
+
+The function returns the uploaded asset key as an object with the following fields:
+
+- `fullPath`: The unique path to the asset. Example: `/images/myimage.jpg`.
+- `name`: The name of the asset (typically the filename). Example: `myimage.jpg`.
+- `downloadUrl`: The URL to access the asset on the web or to download it. This URL can be used in a browser or embedded directly in HTML elements like `<img>` or `<a>`.
+
+---
+
+## Upload blob
+
+The `uploadBlob` function works like [`uploadFile`](#upload-file) but does **not** infer the filename from the data.
+You must explicitly provide the `filename`.
+
+```typescript
+import { uploadBlob } from "@junobuild/core";
+
+const result = await uploadBlob({
+  data: new Blob([myBuffer]),
+  filename: "generated.jpg",
+  collection: "images"
+});
+```
+
+This is useful when uploading raw binary data that wasn't selected via a file input.
+
+---
+
+## Protected assets
 
 While all assets can be found on the internet, it is possible to make their URL difficult to guess so that they remain undiscoverable (**as long as they are not shared**) and considered "private".
 
@@ -71,7 +104,7 @@ const myList = await listAssets({
 });
 ```
 
-### Parameters
+#### Parameters
 
 The function requires a collection and accepts various optional parameters, including a matcher (a regex applied to the assets fullPaths and descriptions), pagination options, and sorting order.
 
@@ -225,13 +258,65 @@ The function returns the assets and various information, in the form of an objec
 
 ```typescript
 {
-  items: []; // The data - array of assets
+  items: []; // The data - array of assets without their content
   items_length: bigint; // The number of assets - basically items.length
   items_page?: bigint; // If the query is paginated, at what page (starting from 0) do the items find the place
   matches_length: bigint; // The total number of matching results
   matches_pages?: bigint; // If the query is paginated, the total number (starting from 0) of pages
 }
 ```
+
+---
+
+## Download URL
+
+The `downloadUrl` function is used to generate a public URL for accessing a specific asset stored on a Satellite.
+
+:::note
+
+You get similar information directly from the result of an upload.
+This function can be used to generate the URL on the fly.
+
+:::
+
+This URL can be used to:
+
+- Open the file directly in a browser
+- Embed the asset in HTML elements such as `<img src="...">` or `<a href="...">`
+- Trigger a download when used in an `<a href="..." download>` link
+
+```typescript
+import { downloadUrl } from "@junobuild/core";
+
+const url = downloadUrl({
+  assetKey: {
+    fullPath: "/images/logo.png",
+    token: "a-secret-token" // optional
+  }
+});
+
+// Example usage
+<img src={url} alt="Logo" />
+```
+
+#### Parameters
+
+- **`assetKey`** (required)
+- **`fullPath`**: The full path to the asset (e.g., `/images/file.jpg`).
+- **`token`** (optional): A secret token used to access protected assets.
+
+- **`satellite`** (optional)
+  Required only in Node.js environments to specify which Satellite to use.
+
+#### Returns
+
+- A `string` representing the full URL to access the asset.
+
+:::note
+
+If a `token` is provided when uploading the asset, it must also be included in the URL to access it. This makes the asset effectively private until shared with the token.
+
+:::
 
 ---
 
@@ -247,7 +332,7 @@ const assetCount = await countAssets({
 });
 ```
 
-### Usage
+#### Usage
 
 This function accepts similar parameters as the `listAssets` function, including `collection`, `matcher`, and `owner`, and returns the count of matching documents.
 
@@ -304,7 +389,7 @@ import { deleteFilteredAssets } from "@junobuild/core";
 await deleteFilteredAssets({
   collection: "my_collection_key",
   filter: {
-    // Same options as filter of listAssets
+    // Uses the same filter options as listAssets
   }
 });
 ```
