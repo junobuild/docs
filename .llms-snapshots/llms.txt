@@ -46,15 +46,15 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [Collections](https://juno.build/docs/build/storage/collections.md): You can create or update a collection in the "Collections" tab in Juno's console under the storage view.
 - [Development](https://juno.build/docs/build/storage/development.md): This page explains how to manage assets using the Juno SDK, including uploading, listing, counting, and deleting files within your application. It also covers configuration options for optimizing storage and access control.
 
-## Examples
+## Examples - Frontend
   
-- [Angular Example](https://juno.build/docs/examples/angular.md): A fullstack note-taking app built with Angular, and Tailwind CSS using Juno for authentication, data, and file storage.
-- [Next.js Example](https://juno.build/docs/examples/nextjs.md): A fullstack note-taking app built with Next.js, and Tailwind CSS using Juno for authentication, data, and file storage.
-- [React JavaScript Example](https://juno.build/docs/examples/react-javascript.md): A fullstack note-taking app built with React, JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.
-- [React TypeScript Example](https://juno.build/docs/examples/react-typescript.md): A fullstack note-taking app built with React, TypeScript, and Tailwind CSS using Juno for authentication, data, and file storage.
-- [SvelteKit Example](https://juno.build/docs/examples/sveltekit.md): A fullstack note-taking app built with SvelteKit, and Tailwind CSS using Juno for authentication, data, and file storage.
-- [Vanilla JavaScript Example](https://juno.build/docs/examples/vanilla-javascript.md): A fullstack note-taking app built with vanilla JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.
-- [Vue Example](https://juno.build/docs/examples/vue.md): A fullstack note-taking app built with Vue, and Tailwind CSS using Juno for authentication, data, and file storage.
+- [Angular Example](https://juno.build/docs/examples/frontend/angular.md): A fullstack note-taking app built with Angular, and Tailwind CSS using Juno for authentication, data, and file storage.
+- [Next.js Example](https://juno.build/docs/examples/frontend/nextjs.md): A fullstack note-taking app built with Next.js, and Tailwind CSS using Juno for authentication, data, and file storage.
+- [React JavaScript Example](https://juno.build/docs/examples/frontend/react-javascript.md): A fullstack note-taking app built with React, JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.
+- [React TypeScript Example](https://juno.build/docs/examples/frontend/react-typescript.md): A fullstack note-taking app built with React, TypeScript, and Tailwind CSS using Juno for authentication, data, and file storage.
+- [SvelteKit Example](https://juno.build/docs/examples/frontend/sveltekit.md): A fullstack note-taking app built with SvelteKit, and Tailwind CSS using Juno for authentication, data, and file storage.
+- [Vanilla JavaScript Example](https://juno.build/docs/examples/frontend/vanilla-javascript.md): A fullstack note-taking app built with vanilla JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.
+- [Vue Example](https://juno.build/docs/examples/frontend/vue.md): A fullstack note-taking app built with Vue, and Tailwind CSS using Juno for authentication, data, and file storage.
 
 ## Guides
   
