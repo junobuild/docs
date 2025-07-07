@@ -6,5 +6,5 @@
 5. **Start the frontend dev server** (in a separate terminal):
 
 ```bash
-npm run start
+npm run dev
 ```
