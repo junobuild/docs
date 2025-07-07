@@ -12,7 +12,7 @@ Use it for structured data like user profiles, tasks, settings, or other data of
 
 :::tip
 
-For binary files like images or files, use the [Storage](../storage/index.md) instead.
+For binary files like images or files, use the [Storage](../storage/index.mdx) instead.
 
 :::
 
@@ -40,7 +40,7 @@ In essence, a "Datastore" functions as a keypair store.
 
 Each satellite has specific memory limits. For detailed information, please refer to the related [documentation](../../miscellaneous/memory.md) page.
 
-As for documents, they can be up to 2MB in size. However, larger files can be saved in the [storage](build/storage/index.md).
+As for documents, they can be up to 2MB in size. However, larger files can be saved in the [storage](build/storage/index.mdx).
 
 ---
 
@@ -49,3 +49,11 @@ As for documents, they can be up to 2MB in size. However, larger files can be sa
 The Datastore supports various configuration options to fine-tune its behavior, such as resource limits and operational constraints. For a detailed explanation of all available options, see the [configuration](../../reference/configuration.mdx#datastore) section.
 
 [satellite]: ../../terminology.md#satellite
+
+---
+
+## Datastore vs Storage
+
+import DatastoreVsStorage from "../components/datastore-storage.md";
+
+<DatastoreVsStorage />

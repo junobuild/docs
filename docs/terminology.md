@@ -37,7 +37,7 @@ Learn more about [computation and storage costs](https://internetcomputer.org/do
 
 ## Doc
 
-"doc" is a commonly used shorthand in Juno for a "document of the Datastore". Wherever you see the term "doc" in the codebase or documentation, it refers specifically to a document entity managed by the [Datastore](./build/datastore/index.md). This abbreviation is used for brevity and consistency throughout the project.
+"doc" is a commonly used shorthand in Juno for a "document of the Datastore". Wherever you see the term "doc" in the codebase or documentation, it refers specifically to a document entity managed by the [Datastore](build/datastore/index.mdx). This abbreviation is used for brevity and consistency throughout the project.
 
 ## ICP
 

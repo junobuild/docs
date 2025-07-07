@@ -32,7 +32,7 @@ In the unlikely event of Juno's disappearance, you, as the sole controller of yo
 
 ### Can I just deploy my website on the Internet Computer?
 
-Absolutely! With Juno, you have the flexibility to choose the level of functionality you want for your project. Whether you simply want to host your static website on the [Internet Computer] or take advantage of Juno's rich features like [authentication](build/authentication/index.md), [datastore](./build/datastore/index.md), and [storage](./build/storage/index.md) for building dynamic dapps, the choice is yours.
+Absolutely! With Juno, you have the flexibility to choose the level of functionality you want for your project. Whether you simply want to host your static website on the [Internet Computer] or take advantage of Juno's rich features like [authentication](build/authentication/index.md), [datastore](build/datastore/index.mdx), and [storage](build/storage/index.mdx) for building dynamic dapps, the choice is yours.
 
 ### Is Juno a project of the DFINITY foundation?
 

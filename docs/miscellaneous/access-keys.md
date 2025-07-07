@@ -31,7 +31,7 @@ Each access key is assigned a **role** that defines what it can do:
 | **Write**       | Editor        | ✅         | ✅               | ✅                     | ❌                      |
 | **Submit**      | Submitter     | ✅         | ❌               | ❌                     | ❌                      |
 
-An **administrator** can perform tasks such as configuring or deploying an app, topping up a mission control or satellite, creating a new collection in the [datastore](../build/datastore/index.md) or [storage](../build/storage/index.md), or configuring a custom domain in the [hosting](../build/hosting/index.md).
+An **administrator** can perform tasks such as configuring or deploying an app, topping up a mission control or satellite, creating a new collection in the [datastore](../build/datastore/index.mdx) or [storage](../build/storage/index.mdx), or configuring a custom domain in the [hosting](../build/hosting/index.md).
 
 An **editor** can publish new serverless function versions to a Satellite’s CDN, deploy your frontend application, and read data from a collection. However, it cannot directly upgrade a Satellite or start/stop a module.
 

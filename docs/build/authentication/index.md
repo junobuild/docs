@@ -16,7 +16,7 @@ Juno allows you to securely identify users **anonymously** and save their data o
 
 Our easy-to-use SDKs support authentication through [Internet Identity] and [NFID].
 
-Juno Authentication integrates tightly with other Juno services like [datastore](../datastore/index.md) and [storage](../storage/index.md).
+Juno Authentication integrates tightly with other Juno services like [datastore](../datastore/index.mdx) and [storage](../storage/index.mdx).
 
 You can manage your users in the [authentication](https://console.juno.build/authentication) view in Juno's console. A new entry is created when a user successfully signs in.
 
