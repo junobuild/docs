@@ -102,5 +102,33 @@ const unsubscribe = authSubscribe((user: User | null) => {
 unsubscribe();
 ```
 
+---
+
+## Imperative Access to Identity
+
+For advanced use cases, you may need direct access to the user's identity. You can use `getIdentityOnce` to retrieve the identity if the user is currently authenticated.
+
+:::caution
+
+Use this function **imperatively only**. Do **not** persist the identity in global state or store it for reuse. This function is intended for short-lived, one-time operations only.
+
+:::
+
+```ts
+import { getIdentityOnce } from "@junobuild/core";
+
+// Returns null if the user is not authenticated
+const identity = await getIdentityOnce();
+
+if (identity !== null) {
+  // Use the identity to perform calls on the Internet Computer
+}
+```
+
+Typical use case for this function is to enable developers to implement custom features for the Internet Computer:
+
+- Passing the identity to temporarily create an actor or agent to call a canister
+- Signing a message or making a one-time authenticated call
+
 [Internet Identity]: ../../terminology.md#internet-identity
 [NFID]: ../../terminology.md#nfid
