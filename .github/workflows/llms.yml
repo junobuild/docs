@@ -38,4 +38,4 @@ jobs:
         with:
           add: .llms-snapshots
           default_author: github_actions
-          message: '📄 Update LLMs.txt snapshot for PR review'
+          message: "📄 Update LLMs.txt snapshot for PR review"
