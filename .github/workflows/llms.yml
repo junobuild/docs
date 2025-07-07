@@ -1,0 +1,41 @@
+# A GitHub Actions workflow that builds the site and snapshots LLM plugin output for review
+
+name: Check LLMs.txt snapshot
+
+on:
+  push:
+    branches-ignore:
+      - main
+  workflow_dispatch:
+
+jobs:
+  snapshot-llms:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare environment
+        uses: ./.github/actions/prepare
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Docusaurus site
+        run: npm run build
+
+      - name: Copy LLM plugin output for snapshot
+        run: |
+          mkdir -p .llms-snapshots
+          cp ./build/llms.txt .llms-snapshots/llms.txt
+          cp ./build/llms-full.txt .llms-snapshots/llms-full.txt
+
+      - name: Commit snapshot
+        uses: EndBug/add-and-commit@v9
+        # This step is skipped on main; snapshot updates are reviewed in PRs
+        if: ${{ github.ref != 'refs/heads/main' }}
+        with:
+          add: .llms-snapshots
+          default_author: github_actions
+          message: '📄 Update LLMs.txt snapshot for PR review'
