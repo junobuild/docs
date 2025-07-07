@@ -3241,6 +3241,16 @@ It’s a great reference for more advanced setups and multi-collection coordinat
 *   [Configuration Reference](/docs/reference/configuration.md)
 *   [Datastore Collections](/docs/build/datastore/collections.md)
 
+---
+
+## Crate Docs
+
+These crates are used to build and extend serverless functions in Rust with Juno:
+
+*   [junobuild-satellite](https://docs.rs/junobuild-satellite): Core features and runtime for building a Satellite in Rust, including hooks, assertions, and datastore integration.
+*   [junobuild-macros](https://docs.rs/junobuild-macros): Procedural macros for declaratively attaching hooks and assertions (e.g., `#[assert_set_doc]`, `#[on_delete_doc]`).
+*   [junobuild-utils](https://docs.rs/junobuild-utils): Utility helpers for working with documents, including data encoding, decoding, and assertion context handling.
+
 # Using Juno with AI
 
 If you're using AI to build with Juno, you can use our `llms.txt` files to help AI tools better understand the platform.
