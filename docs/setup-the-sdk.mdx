@@ -1,5 +1,5 @@
 ---
-description: Learn how to set up the Juno SDK in your web application to access advanced features, including authentication, datastore, and storage options. This guide provides step-by-step instructions for configuring and initializing Juno, with options for both automated and manual setup.
+description: Connect your web app to a Juno Satellite to unlock features like auth, data, storage, and functions. This guide shows how to set up the SDK with or without build plugins.
 keywords:
   [
     Juno SDK setup,
@@ -19,7 +19,9 @@ keywords:
 
 # Setup the SDK
 
-To add rich features to your web app, follow these steps to connect Juno and enable advanced functionality.
+To connect your app to a Satellite and use Juno's features — like authentication, data, storage, and serverless functions — you'll need to initialize the SDK.
+
+This guide walks you through how to do that, whether you're using a plugin (Next.js, Vite) or setting things up manually.
 
 :::info
 
@@ -51,19 +53,49 @@ It is generally recommended to initialize globally the library at the top of you
 
 ## Configuration
 
-To connect your application with your smart contract (your Satellite) and other necessary resources, some configuration is required. This setup ensures your application can securely access and initialize the correct Satellite instance, environment variables, and key settings.
+Juno uses a configuration file to determine which Satellite to connect to.
 
-For most developers, the [Next.js](reference/plugins.mdx#nextjs-plugin) or [Vite](reference/plugins.mdx#vite-plugin) plugins streamline this process by managing environment variables automatically. However, if you’re not using one of these plugins, a bit of manual configuration is needed.
+You can scaffold a minimal `juno.config` file using:
 
-### Automated
+```bash
+npx @junobuild/cli init --minimal
+```
 
-When using the plugins, the configuration handled through a `juno.config` file (TypeScript, JavaScript, or JSON) at your project root is automatically injected within your application. The plugins read the file and automatically load the required information when you build and run your dApp.
+This creates a `juno.config` file — in TypeScript, JavaScript, or JSON depending on your preferences — at the root of your project. It contains metadata such as the Satellite ID used during SDK initialization.
 
-Juno’s provided templates come preconfigured with these plugins, so you can quickly get started. For details on setting up the plugin yourself, refer to the [Next.js](reference/plugins.mdx#nextjs-plugin) or [Vite](reference/plugins.mdx#vite-plugin) documentation.
+If you're using **Next.js** or **Vite**, we recommend installing the official plugin. It automatically loads values from your config file and injects them into your build as environment variables.
 
-### Manually configure your application
+This means you can call `initSatellite()` without passing any parameters, the SDK will read them automatically from `process.env` or `import.meta.env`.
 
-If you aren’t using a plugin, you can still configure your application by providing the `satelliteId` directly. In this case, add or update the following in your configuration file:
+- [Next.js Plugin](reference/plugins.mdx#nextjs-plugin)
+
+```javascript title="next.config.js"
+import { withJuno } from "@junobuild/nextjs-plugin";
+
+// withJuno wraps your Next.js config and injects values from juno.config
+export default withJuno();
+```
+
+- [Vite Plugin](reference/plugins.mdx#vite-plugin)
+
+```javascript title="vite.config.js"
+import juno from "@junobuild/vite-plugin";
+
+// Automatically injects values from juno.config for the build
+export default defineConfig({
+  plugins: [juno()]
+});
+```
+
+:::note
+
+The templates already include both the config file and the plugin setup.
+
+:::
+
+#### Not using a plugin?
+
+You can also pass the Satellite ID manually to the SDK, though using the plugins is the preferred approach:
 
 ```typescript
 import { initSatellite } from "@junobuild/core";
@@ -72,7 +104,5 @@ await initSatellite({
   satelliteId: "your-actual-satellite-id"
 });
 ```
-
-Replace `your-actual-satellite-id` with your actual ID, available in the [console](https://console.juno.build) on the overview page.
 
 [satellite]: terminology.md#satellite

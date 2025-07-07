@@ -93,7 +93,36 @@ const config: Config = {
       }
     ],
     join(process.cwd(), "plugins", "docusaurus.showcase.plugin.ts"),
-    join(process.cwd(), "plugins", "docusaurus.changelog.plugin.ts")
+    join(process.cwd(), "plugins", "docusaurus.changelog.plugin.ts"),
+    [
+      join(process.cwd(), "plugins", "docusaurus.llms.plugin.ts"),
+      {
+        description:
+          "Juno is your self-contained serverless platform for building full-stack web apps without DevOps or backend boilerplate. Developers use their favorite frontend frameworks like React, SvelteKit, or Next.js, and write backend logic in Rust or TypeScript as serverless functions. Everything is bundled into a single WebAssembly (WASM) artifact that runs in a decentralized, stateful environment — under full user ownership — on the Internet Computer. Juno cannot access or modify your code, data, or infrastructure. It supports GitHub Actions for deploys and upgrades, and provides both a CLI and web Console UI for managing projects. The local development environment closely mirrors production, ensuring smooth transitions from build to deployment.",
+        ignorePaths: ["/white-paper/"],
+        groups: [
+          {
+            matchers: [
+              { matcher: "intro", position: 0, title: "Introduction to Juno" },
+              { matcher: "start-a-new-project", position: 1 },
+              { matcher: "setup-the-sdk", position: 2 },
+              {
+                matcher: "local-development",
+                position: 3,
+                title: "Run your project locally"
+              },
+              {
+                matcher: "create-a-satellite",
+                position: 4,
+                title: "Deploy with a Satellite"
+              }
+            ],
+            parentPath: "/docs/getting-started",
+            title: "Getting Started"
+          }
+        ]
+      }
+    ]
   ],
 
   themeConfig:

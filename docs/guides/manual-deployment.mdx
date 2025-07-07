@@ -6,11 +6,11 @@ description: Learn how to deploy an application to a Juno Satellite from your de
 
 # Manual Deployment
 
-We recommend using [GitHub Actions](./github-actions.mdx) for automated and efficient deployments. However, this guide walks you through manually deploying your app using the Juno CLI, covering the setup, build, and deployment process to your Juno Satellite.
+We recommend using [GitHub Actions](./github-actions/index.mdx) for automated and efficient deployments. However, this guide walks you through manually deploying your app using the Juno CLI, covering the setup, build, and deployment process to your Juno Satellite.
 
 ---
 
-### 1. Install Juno CLI
+## 1. Install Juno CLI
 
 Install the Juno command line interface by executing the following command in your terminal:
 
@@ -20,7 +20,7 @@ import Cli from "./components/cli.mdx";
 
 ---
 
-### 2. Initialization
+## 2. Initialization
 
 Once the CLI is set up, initialize your project by running:
 
@@ -40,9 +40,20 @@ This can occur if you've signed into the Juno Console in a browser other than yo
 
 :::
 
-### 3. Deploy
+---
 
-Build your project:
+## 3. Deploy Your Project
+
+You can use the CLI to manually deploy different parts of your app:
+
+- 🪄 Deploy frontend assets to your Satellite. Learn how.
+- 🛠️ Build, publish and upgrade serverless functions (TypeScript or Rust). Learn how.
+
+---
+
+### a) 🪄 Deploy Frontend Assets
+
+Get your app ready for deployment:
 
 import { Bash } from "../components/bash.mdx";
 
@@ -61,3 +72,20 @@ When prompted for the name or path of the folder containing your built dapp file
 :::
 
 Wait for the deploy to complete. Once uploaded, it will be live on your Juno Satellite and accessible on the web.
+
+---
+
+### b) 🛠️ Build, Publish, and Upgrade Serverless Functions
+
+To build and deploy your serverless functions written in TypeScript or Rust, you can use the CLI.
+
+```bash
+juno functions build
+juno functions publish
+juno functions upgrade
+```
+
+- Use publish `--no-apply` if your access key only has a **submit** role and cannot directly upgrade.
+- You can then approve and apply the change using the CLI (with another key) or Console UI.
+
+For a full overview of the serverless lifecycle—including setup, development, local testing, publishing, approvals, and upgrades — see the Serverless Functions Lifecycle guide.

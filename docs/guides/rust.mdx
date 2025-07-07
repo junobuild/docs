@@ -17,7 +17,7 @@ import Setup from "./components/functions/setup.mdx";
 
 <Setup />
 
-In a new terminal window, kick off the emulator (requires Docker):
+In a new terminal window, kick off the emulator:
 
 ```bash
 juno dev start
@@ -363,16 +363,6 @@ The associated hooks perform basic operations:
 This example serves as a great starting point for understanding how to interact with Juno's event-driven hooks in both datastore and storage contexts.
 
 [🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/rust/hooks)
-
-### Ethereum Address
-
-A sample app demonstrating how to derive an Ethereum address for an authenticated Juno user on the Internet Computer. The hook is triggered upon user registration and generates an Ethereum address using threshold ECDSA, with its public representation stored in the Satellite.
-
-In this use case, the private key is never fully generated or stored on a single node. Instead, the Internet Computer’s threshold ECDSA mechanism distributes the key material across multiple nodes, ensuring that no single party has access to the complete key.
-
-Additionally, the app includes a balance action that fetches the balance of the Ethereum address from the Sepolia network using Etherscan. This is done via public queries without requiring an API key.
-
-[🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/rust/ethereum-address)
 
 ### Generating JSON Files
 

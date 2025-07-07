@@ -1,12 +1,25 @@
 ---
 id: local-development
 title: Local Development
-description: Set-up the local emulator with Docker
+description: Run a full local development environment with the Juno emulator using Docker or Podman, complete with Console UI, live reload, and smart contract support.
 ---
 
 # Local Development
 
 Juno offers something most platforms don’t: a full local development environment that closely mirrors production.
+
+## TL;DR
+
+| What              | How                                            |
+| ----------------- | ---------------------------------------------- |
+| Runtime supported | Docker or Podman                               |
+| Start emulator    | `juno dev start`                               |
+| Stop emulator     | `juno dev stop`                                |
+| Console UI URL    | [http://localhost:5866](http://localhost:5866) |
+
+---
+
+## What the Emulator Includes
 
 When you develop locally, you're running an emulator that includes the well known infrastructure services — including the actual administration Console UI.
 
@@ -22,13 +35,20 @@ This enables:
 
 ## Before you begin
 
-Docker is used to run a self-contained local environment with all services, replicas, and the Console UI.
+The emulator is a self-contained local environment that runs in a container managed entirely by Juno — using either [Docker](https://www.docker.com/) or [Podman](https://podman.io/) under the hood.
 
-Make sure the tool is installed on your machine ([Windows](https://docs.docker.com/desktop/install/windows-install/), [MacOS](https://docs.docker.com/desktop/install/mac-install/), or [Linux](https://docs.docker.com/desktop/install/linux-install/)).
+Make sure your preferred runtime is installed on your machine:
 
-:::note
+- [Docker: Windows](https://docs.docker.com/desktop/install/windows-install/)
+- [Docker: macOS](https://docs.docker.com/desktop/install/mac-install/)
+- [Docker: Linux](https://docs.docker.com/desktop/install/linux-install/)
+- [Podman: Installation guide](https://podman.io/getting-started/installation)
 
-For MacBooks with M processors, it is important to use Docker Desktop version 4.25.0 or later, ideally the latest available version.
+:::important
+
+For MacBooks with M-series processors, if you aim to use **Docker**, it is important to install Docker Desktop **version 4.25.0 or later**, ideally the latest available version.
+
+For **Podman**, we are not aware of any particular version requirements at this time.
 
 :::
 
@@ -36,7 +56,7 @@ For MacBooks with M processors, it is important to use Docker Desktop version 4.
 
 ## Getting Started
 
-The easiest way to run the local developer environment is through the CLI.
+To run the emulator for local development, you need to have the Juno CLI installed.
 
 If you haven’t installed it yet, run:
 
@@ -60,21 +80,37 @@ To stop the emulator, run:
 juno dev stop
 ```
 
+:::note
+
+While you could technically start the emulator using `docker run` or `podman run`, we recommend using the Juno CLI to manage the emulator lifecycle. It handles important checks, sets the correct configuration, and ensures everything runs as expected.
+
+:::
+
 ---
 
 ## Available Images
 
-Juno supports two main environments for running your project locally, each tailored to different use cases.
+Juno provides two local environments. Most developers should start with **Skylab**, but Satellite is available for advanced or specialized workflows.
 
-| Image                 | Description                                  | Includes Console UI | Best for                    |
-| --------------------- | -------------------------------------------- | ------------------- | --------------------------- |
-| `junobuild/skylab`    | All-in-one local environment like production | ✅                  | End-to-end dev, exploration |
-| `junobuild/satellite` | Lightweight setup running a single Satellite | ❌                  | CI, focused app testing     |
+### 🧪 Skylab: Full Local Stack (Recommended)
 
-Both variants run on a local network, services and support live-reloading for serverless functions written in Rust or TypeScript.
+The `junobuild/skylab` image is the default and recommended environment. It mirrors the production stack and includes everything needed for end-to-end development.
 
-- Use **Skylab** for the full experience, including the Console UI and supporting infrastructure.
-- Use **Satellite** when you want a faster, minimal setup for a specific app or automated tests.
+Use it for the full experience, including the Console UI and supporting infrastructure.
+
+### ⚙️ Satellite: Minimal Setup
+
+The `junobuild/satellite` image is a lightweight alternative that runs a single Satellite. It skips the Console UI and supporting infrastructure.
+
+Use it when you need a faster, minimal setup focused on CI pipelines or automated testing.
+
+:::note
+
+The default (auto-deployed) Satellite is available with a predefined canister ID `jx5yt-yyaaa-aaaal-abzbq-cai`.
+
+:::
+
+### 📊 Feature Comparison
 
 The table below shows which modules are available in each image and helps clarify what’s included when running locally with Skylab or Satellite.
 
@@ -91,11 +127,17 @@ The table below shows which modules are available in each image and helps clarif
 | NNS Governance                              | ✅        | ❌           |
 | Cycles Minting (CMC)                        | ✅        | ❌           |
 
-:::note
+---
 
-The default (auto-deployed) Satellite is available with a predefined canister ID `jx5yt-yyaaa-aaaal-abzbq-cai`.
+## Console UI
 
-:::
+When using the `junobuild/skylab` image, the Console UI becomes available by default at:
+
+```bash
+http://localhost:5866/
+```
+
+Once the emulator is running (`juno dev start`), visit this URL in your browser to explore the Console — where you can create and manage Satellites, and explore features like Datastore, Authentication, Storage, and more.
 
 ---
 
@@ -105,48 +147,16 @@ The local container supports live reloading. When you modify your [configuration
 
 ---
 
-## Options
+## Configuration Options
 
-Modify the following information of the `docker-compose.yml` file to tweak the container behavior to your needs:
+To customize the behavior of the local emulator—such as changing ports, setting a persistent volume name, or overriding the runner image — refer to the [Emulator Configuration](../reference/configuration.mdx#emulator-configuration) section.
 
-### Ports
+There you'll find detailed information about available options including:
 
-The default port `5987` is used for communication with the locally deployed satellites and other modules in the local environment (replica). This is the primary port for interaction with the application.
-
-The container also exposes:
-
-- a small admin server for internal management on port `5999`
-
-- the Console UI on port `5866`
-
-If you want to use a different port, such as 8080, update for example the mapping from `5987:5987` to `8080:5987`, where the first value (8080) is the port you can call, and the second (5987) is the actual container port.
-
-### Volumes
-
-The image requires a volume to preserve its state. This ensures that when you stop and restart your container, it will resume with the previous state - for instance, if you persist data in its Datastore or Storage, those files will be retained.
-
-The Docker Compose feature automatically creates the volume, so all you need to do is specify it once.
-
-Naming the volume is particularly useful when developing multiple dApps locally, as it allows you to maintain separate states for each project.
-
-For example, if you are developing a "Hello World" project, you could change the volume name to "hello_world".
-
-```yml title="docker-compose.yml"
-services:
-  juno-skylab:
-    image: junobuild/skylab:latest
-    ports:
-      - 5987:5987
-      - 5999:5999
-      - 5866:5866
-    volumes:
-      - hello_world:/juno/.juno # <-------- hello_world modified here
-      - ./juno.config.ts:/juno/juno.config.ts
-      - ./target/deploy:/juno/target/deploy/
-
-volumes:
-  hello_world: # <-------- and here
-```
+- ⚙️ Runner settings (e.g. image, platform, volume)
+- 🔌 Custom port mappings
+- 📁 Shared folders and hot reloading
+- 🧪 CI and test environment tips
 
 ---
 

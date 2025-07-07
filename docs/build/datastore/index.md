@@ -1,11 +1,20 @@
 ---
-description: Learn how Juno's Datastore simplifies blockchain data storage with easy-to-use SDK and comprehensive documentation.
-keywords: [blockchain data storage, collection, document, key, data]
+description: Learn how Juno's Datastore simplifies structured data management with an easy-to-use SDK and clear collection-document model.
+keywords:
+  [data persistence, collection, document, key-value store, distributed data]
 ---
 
 # Datastore
 
-The Juno Datastore offers a simple key-value model, organized by collections containing documents, for storing data on the blockchain. It eliminates the need to write backend code, allowing easy management of distributed, cross-user data.
+The Juno Datastore offers a simple key-value model, organized by collections containing documents, for managing structured data.
+
+Use it for structured data like user profiles, tasks, settings, or other data of your app stored as documents inside collections.
+
+:::tip
+
+For binary files like images or files, use the [Storage](../storage/index.md) instead.
+
+:::
 
 ![A screenshot of the Datastore in Juno's Console](../../img/satellite/datastore.webp)
 

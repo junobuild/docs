@@ -73,23 +73,26 @@ This will clear the sign-in information stored in IndexedDB.
 
 ---
 
-## Subscription
+## Listening to Auth Changes
 
-You can subscribe to the user state using the subscriber function. This function provides a technical user and triggers whenever the user's state changes.
-
-In other words, using this callback allows you to monitor whether the user is signed in or signed out.
+You can monitor when a user signs in or out using `authSubscribe`. It gives you the current user and notifies you whenever their authentication state changes.
 
 ```typescript
 import { authSubscribe } from "@junobuild/core";
 
+// Reactively track if the user is signed in or signed out
 authSubscribe((user: User | null) => {
   console.log("User:", user);
 });
 ```
 
-If you register the subscriber at the top of your application, it will propagate the user's state accordingly (e.g. `null` when a new user opens the app, the new user's entry when they sign in, the existing user when they refresh the browser within the valid duration, and `null` again when they sign out).
+If you register the subscriber at the top of your application, it will automatically reflect the user's state:
 
-Subscribing returns a callback that can be executed to unsubscribe:
+- `null` when the app first loads and the user is not signed in
+- A `User` object when they sign in or refresh while authenticated
+- `null` again when they sign out
+
+To stop listening, you can call the unsubscribe function returned:
 
 ```typescript
 import { authSubscribe } from "@junobuild/core";
@@ -98,9 +101,37 @@ const unsubscribe = authSubscribe((user: User | null) => {
   console.log("User:", user);
 });
 
-// Above subscriber ends now
+// Stop listening
 unsubscribe();
 ```
+
+---
+
+## Imperative Access to Identity
+
+For advanced use cases, you may need direct access to the user's identity. You can use `getIdentityOnce` to retrieve the identity if the user is currently authenticated.
+
+:::caution
+
+Use this function **imperatively only**. Do **not** persist the identity in global state or store it for reuse. This function is intended for short-lived, one-time operations only.
+
+:::
+
+```ts
+import { getIdentityOnce } from "@junobuild/core";
+
+// Returns null if the user is not authenticated
+const identity = await getIdentityOnce();
+
+if (identity !== null) {
+  // Use the identity to perform calls on the Internet Computer
+}
+```
+
+Typical use case for this function is to enable developers to implement custom features for the Internet Computer:
+
+- Passing the identity to temporarily create an actor or agent to call a canister
+- Signing a message or making a one-time authenticated call
 
 [Internet Identity]: ../../terminology.md#internet-identity
 [NFID]: ../../terminology.md#nfid

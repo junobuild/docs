@@ -53,43 +53,40 @@ Make sure these two requirements are correctly met before restarting the command
 
 ---
 
-### Canister exceeded its current Wasm memory limit
+### Invalid character: "&lt;"
 
-Every Satellite, and generally any module on Juno, starts with a default heap memory limit of 1 GB. While you can increase this limit in the settings, it's not recommended to go beyond it, as it may cause issues when upgrading your module.
+When you scaffold an app with a template, the `juno.config` file includes placeholder values for the satellite IDs:
 
-The heap includes a bit of metadata, any collections you've created in Datastore and Storage (where using stable memory is advised), and the assets of your frontend application.
+```typescript
+import { defineConfig } from "@junobuild/config";
 
-If you're deploying a really large application (>1 GB) or frequently pushing updates to an application that isn’t reproducible, your heap memory usage can grow unexpectedly and eventually hit the limit.
-
-When that happens, your next deployment or update might fail to prevent exceeding the limit, which could lead to issues with your module.
-
+export default defineConfig({
+  satellite: {
+    ids: {
+      development: "<DEV_SATELLITE_ID>",
+      production: "<PROD_SATELLITE_ID>"
+    },
+    source: "dist"
+  }
+});
 ```
-Request ID: d7be9..bfcb8
-  Reject code: 5
-  Reject text: Error from Canister aaaaa-bbbbb-ccccc-ddddd-cai: Canister exceeded its current Wasm memory limit of 1073741824 bytes. The peak Wasm memory usage was 1073872896 bytes. If the canister reaches 4GiB, then it may stop functioning and may become unrecoverable. Please reach out to the canister owner to investigate the reason for the increased memory usage. It might be necessary to move data from the Wasm memory to the stable memory. If such high Wasm memory usage is expected and safe, then the developer can increase the Wasm memory limit in the canister settings..
-Try checking the canister for a possible memory leak or modifying it to use more stable memory instead of Wasm memory. See documentation: https://internetcomputer.org/docs/current/references/execution-errors#wasm-memory-limit-exceeded
-```
 
-#### Preventing Heap Memory Issues
+If you start your frontend development server without replacing these placeholders, you may encounter an error like: `Invalid character: "&lt;"` while running your app in the browser.
 
-To avoid running into memory limits, it's important to monitor memory usage and follow two key best practices:
+This happens because the app tries to parse the config at runtime and encounters the invalid placeholder character `<` in the ID values.
 
-##### Use Stable Memory for Datastore and Storage
+Continue with your setup or tutorial until you receive your actual satellite ID(s). Once you’ve updated the config with real values, make sure to restart your development server.
 
-Stable memory is designed for long-term storage and helps prevent heap memory from growing uncontrollably. Whenever possible, store large datasets in stable memory instead of the heap.
+:::note
 
-##### Ensure Your Frontend Build is Reproducible
+Note: `vite` may cache the configuration — if the error persists after updating the file, try restarting the dev server with the `--force` flag or make a small code change to trigger a rebuild.
 
-When building your frontend (e.g. with `npm run build`), the output should be identical to the previous build if no changes were made.
+:::
 
-Why does this help? When you deploy your application, Juno does not clear existing files—it only adds new ones. To optimize this process, Juno compares the names and content (hash values) of all files with those already uploaded. If a file hasn't changed, it is skipped, reducing unnecessary memory usage and saving cycles.
+---
 
-If your build output isn’t reproducible, every deployment could introduce slightly different files, even if nothing has changed in your code. Over time, this would lead to unnecessary file accumulation, increasing heap memory usage and eventually causing issues.
+### My Heap Memory Keeps Growing — Is That Expected?
 
-##### Resolving Heap Memory Issues
-
-There are different ways to resolve this issue, and the best approach depends on the features you're using. If you're using Datastore and Storage, we need to find a solution that prevents data loss. If you're only hosting a website, the steps to fix the issue will be much simpler.
-
-In any case, the best course of action is to reach out so we can assess your situation and find a tailored solution together.
+If your heap memory usage keeps increasing and doesn't go down, even after deleting data — [this is expected behavior](./miscellaneous/memory.md#behavior). See the documentation for why this happens and how to manage it effectively.
 
 [CLI]: reference/cli.mdx

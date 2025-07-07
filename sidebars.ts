@@ -9,7 +9,7 @@ const sidebars: SidebarsConfig = {
         type: "doc",
         id: "intro"
       },
-      items: ["create-a-satellite", "setup-the-sdk"]
+      items: ["start-a-new-project", "setup-the-sdk", "create-a-satellite"]
     },
     {
       type: "category",
@@ -54,9 +54,75 @@ const sidebars: SidebarsConfig = {
             type: "generated-index",
             description: "Deploy your app to Juno Satellites"
           },
-          items: ["guides/github-actions", "guides/manual-deployment"]
+          items: [
+            {
+              type: "category",
+              label: "GitHub Actions",
+              link: {
+                type: "doc",
+                id: "guides/github-actions/index"
+              },
+              items: [
+                "guides/github-actions/deploy-frontend",
+                "guides/github-actions/publish-functions",
+                "guides/github-actions/upgrade-functions"
+              ]
+            },
+            "guides/manual-deployment"
+          ]
         },
-        "guides/local-development"
+        "guides/local-development",
+        "guides/ai"
+      ]
+    },
+    {
+      type: "category",
+      label: "Examples",
+      link: {
+        type: "generated-index",
+        description:
+          "Explore projects that show how to build with Juno using different frontend frameworks and serverless function setups. Includes full-stack apps built with React, SvelteKit, Angular, and Next.js, as well as serverless function patterns written in TypeScript and Rust."
+      },
+      items: [
+        {
+          type: "category",
+          label: "Frontend",
+          link: {
+            type: "generated-index",
+            description:
+              "Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more."
+          },
+          items: [
+            "examples/frontend/nextjs",
+            "examples/frontend/react-typescript",
+            "examples/frontend/react-javascript",
+            "examples/frontend/vue",
+            "examples/frontend/sveltekit",
+            "examples/frontend/angular",
+            "examples/frontend/vanilla-javascript"
+          ]
+        },
+        {
+          type: "category",
+          label: "Functions",
+          link: {
+            type: "generated-index",
+            description:
+              "Write serverless backend logic for your app using TypeScript or Rust. These examples show how to use hooks, assertions, and common function patterns on Juno."
+          },
+          items: [
+            {
+              type: "category",
+              label: "Rust",
+              link: {
+                type: "generated-index",
+                description:
+                  "Examples of writing serverless functions in Rust for Juno. Includes patterns like custom assertions, data manipulation and calls."
+              },
+              items: ["examples/functions/rust/assertions"]
+            }
+          ]
+        }
       ]
     },
     {

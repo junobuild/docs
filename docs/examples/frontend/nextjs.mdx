@@ -1,0 +1,129 @@
+---
+title: Next.js Example
+description: A fullstack note-taking app built with Next.js, and Tailwind CSS using Juno for authentication, data, and file storage.
+keywords: [nextjs, typescript, frontend, example, template, juno]
+sidebar_label: Next.js
+---
+
+# Next.js Example
+
+This project is a note-taking app template built with **Next.js**, **TypeScript**, and **Tailwind CSS**, designed to demonstrate integration with Juno for app development. It showcases authentication, data storage, and file storage using Juno's Satellite container.
+
+You can scaffold it using the following command, or browse the source code:
+
+```bash
+npm create juno@latest -- --template nextjs-example
+```
+
+Source: [github.com/junobuild/create-juno/templates/nextjs-example](https://github.com/junobuild/create-juno/tree/main/templates/nextjs-example)
+
+---
+
+## Folder Structure
+
+```
+nextjs-example/
+├── public/                # Static assets
+├── src/
+│   ├── app/               # Next.js app directory (routing, layout, etc.)
+│   ├── components/        # React UI components (auth, table, modal, banner, etc.)
+│   ├── types/             # TypeScript types (e.g., note.ts)
+├── juno.config.mjs        # Juno Satellite configuration
+├── package.json           # Project dependencies and scripts
+├── next.config.mjs        # Next.js configuration
+├── README.md              # User-facing documentation
+└── ...                    # Other config and build files
+```
+
+---
+
+## Key Features
+
+import KeyFeatures from "./components/key-features.md";
+
+<KeyFeatures />
+
+---
+
+## Main Components
+
+- **src/app/**: Next.js app directory, handles routing and layout.
+- **components/**: Contains UI and logic for authentication, notes table, modal, banner, etc.
+- **types/note.ts**: TypeScript interface for notes.
+
+---
+
+## Data Structure
+
+- **NoteData** (`src/types/note.ts`):
+
+```ts
+export interface NoteData {
+  text: string;
+  url?: string;
+}
+export type Note = Doc<NoteData>;
+```
+
+---
+
+## How to Run
+
+import HowToStart from "./components/how-to-start.md";
+
+<HowToStart />
+
+3. **Create a Satellite** for local dev:
+
+- Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
+- Update `juno.config.mjs` with your Satellite ID.
+
+import HowToRun from "./components/how-to-run.md";
+
+<HowToRun />
+
+---
+
+## Juno-Specific Configuration
+
+- `juno.config.mjs`: Defines Satellite IDs for development/production, build source, and predeploy steps. See the [Configuration reference](../../reference/configuration.mdx) for details.
+- `next.config.mjs`: Uses the `withJuno` plugin to load environment variables and inject config automatically at build time. See the [Next.js Plugin reference](../../reference/plugins.mdx#nextjs-plugin) for more information.
+
+---
+
+## Production Deployment
+
+- Create a Satellite on the [Juno Console](https://console.juno.build) for mainnet.
+- Update `juno.config.mjs` with the production Satellite ID.
+- Build and deploy:
+
+```bash
+npm run build
+juno deploy
+```
+
+---
+
+## Notes
+
+- The app is intended as a starting point for Juno-based projects.
+- All logic is in TypeScript and React function components.
+- The app is fully client-side (Server Side Rendering is not supported yet) and interacts with Juno via the Satellite container.
+
+---
+
+## Juno SDK Used
+
+The following functions from `@junobuild/core` are used in this example:
+
+| Function        | Purpose/Description                 | Where Used (File/Component)                                                                                                          | Juno Docs/Source Reference                                                                    |
+| --------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| `initSatellite` | Initialize Juno Satellite container | [`src/app/page.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/app/page.tsx)                   | [Initialization](../../setup-the-sdk#initialization)                                          |
+| `authSubscribe` | Subscribe to auth state changes     | [`src/components/auth.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/auth.tsx)     | [Listening to Auth Changes](../../build/authentication/development#listening-to-auth-changes) |
+| `signIn`        | Sign in user                        | [`src/components/login.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/login.tsx)   | [Sign-in](../../build/authentication/development#sign-in)                                     |
+| `signOut`       | Sign out user                       | [`src/components/logout.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/logout.tsx) | [Sign-out](../../build/authentication/development#sign-out)                                   |
+| `listDocs`      | List documents in a collection      | [`src/components/table.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/table.tsx)   | [List documents](../../build/datastore/development#list-documents)                            |
+| `setDoc`        | Create or update a document         | [`src/components/modal.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/modal.tsx)   | [Add a document](../../build/datastore/development#add-a-document)                            |
+| `deleteDoc`     | Delete a document                   | [`src/components/delete.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/delete.tsx) | [Delete a document](../../build/datastore/development#delete-a-document)                      |
+| `uploadFile`    | Upload a file to storage            | [`src/components/modal.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/modal.tsx)   | [Upload file](../../build/storage/development#upload-file)                                    |
+| `deleteAsset`   | Delete a file from storage          | [`src/components/delete.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/delete.tsx) | [Delete asset](../../build/storage/development#delete-asset)                                  |

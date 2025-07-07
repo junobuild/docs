@@ -5,11 +5,13 @@ Usage: juno upgrade [options]
 
 Options:
   -t, --target          Which module type should be upgraded? Valid targets are satellite, mission-control or orbiter.
-  -s, --src             An optional local gzipped WASM file for the upgrade. By default, the CDN will be used.
+  -s, --src             A path to a specific local gzipped WASM file to publish.
+  --clear-chunks        Clear any previously uploaded WASM chunks (applies if the WASM size is greater than 2MB).
+  --no-snapshot         Skip creating a snapshot before upgrading.
   -r, --reset           Reset to the initial state.
-  -cc, --clear-chunks   Clear any previously uploaded WASM chunks (applies if the WASM size is greater than 2MB).
-  -ns, --no-snapshot    Skip creating a snapshot before upgrading.
   -m, --mode            Set env mode. For example production or a custom string. Default is production.
+  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.
+  --console-url         Specify a custom URL to access the developer Console.
   -h, --help            Output usage information.
 
 Notes:

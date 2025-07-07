@@ -56,11 +56,15 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
     source: "dist"
   },
   orbiter: {
-    id: "aaaa-bbbbb-ccccc-ddddd-cai" // <-- Replace with your ID
+    ids: {
+      production: "aaaa-bbbbb-ccccc-ddddd-cai" // <-- Replace with your ID
+    }
   }
 });
 ```
@@ -233,7 +237,9 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
     source: "dist"
   },
   orbiter: {

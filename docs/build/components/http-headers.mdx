@@ -9,7 +9,9 @@ import { defineConfig } from "@junobuild/config";
 
 export default defineConfig({
   satellite: {
-    id: "qsgjb-riaaa-aaaaa-aaaga-cai",
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
     source: "dist",
     storage: {
       headers: [
@@ -42,6 +44,6 @@ The `headers` is an array of objects, each containing `key` and `value`, and the
 
 - The `Content-Type` header is calculated automatically and cannot be altered.
 - No validation or check for uniqueness is performed. For example, if a header matches a file based on multiple rules, multiple headers will be set.
-- Likewise, if you provide the same header when you [upload](https://juno.build/docs/build/storage#upload-asset) file to your "Storage" and within the configuration, both headers will be set in the response.
+- Likewise, if you provide the same header when you [upload](https://juno.build/docs/build/storage#upload-file) file to your "Storage" and within the configuration, both headers will be set in the response.
 
 :::
