@@ -1,5 +1,5 @@
 import Snippets from "@site/src/components/Snippets";
-import CloudIllustration from "@site/static/img/cloud.svg";
+import { CloudIllustration } from "@site/src/icons/CloudIllustration";
 import styles from "./styles.module.scss";
 
 export default function Features(): JSX.Element {
