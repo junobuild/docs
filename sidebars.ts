@@ -110,7 +110,18 @@ const sidebars: SidebarsConfig = {
             description:
               "Write serverless backend logic for your app using TypeScript or Rust. These examples show how to use hooks, assertions, and common function patterns on Juno."
           },
-          items: []
+          items: [
+            {
+              type: "category",
+              label: "Rust",
+              link: {
+                type: "generated-index",
+                description:
+                  "Examples of writing serverless functions in Rust for Juno. Includes patterns like custom assertions, data manipulation and calls."
+              },
+              items: ["examples/functions/rust/assertions"]
+            }
+          ]
         }
       ]
     },
