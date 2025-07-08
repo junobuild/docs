@@ -31,6 +31,14 @@ If you intend to use Juno solely for **[hosting](./build/hosting/index.md)** pur
 
 ---
 
+## TL;DR
+
+1. Call `initSatellite()` in your app code
+2. Create a `juno.config` file at the root to define your Satellite
+3. Connect code and config — preferably using the `@junobuild/nextjs-plugin` or `@junobuild/vite-plugin`
+
+---
+
 ## Initialization
 
 1. Install the Juno SDK:
@@ -62,6 +70,10 @@ npx @junobuild/cli init --minimal
 ```
 
 This creates a `juno.config` file — in TypeScript, JavaScript, or JSON depending on your preferences — at the root of your project. It contains metadata such as the Satellite ID used during SDK initialization.
+
+---
+
+## Connecting Code and Config
 
 If you're using **Next.js** or **Vite**, we recommend installing the official plugin. It automatically loads values from your config file and injects them into your build as environment variables.
 
