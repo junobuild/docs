@@ -1,0 +1,279 @@
+---
+title: Rust Hooks Example
+description: An example demonstrating how to use serverless function hooks in Rust for Juno serverless functions.
+keywords: [rust, hooks, serverless, functions, juno, satellite, example]
+sidebar_label: Hooks
+---
+
+# Rust Hooks Example
+
+This example shows how to use **hooks in Rust** to customize how your Juno **Satellite** behaves. Hooks let you react to things like documents being created or deleted, or assets being uploaded — so you can run custom logic automatically on the backend.
+
+The project includes a simple frontend to help you trigger and test the backend logic, but the real focus is on how the Rust serverless function works.
+
+You can browse the source code here: [github.com/junobuild/examples/tree/main/rust/hooks](https://github.com/junobuild/examples/tree/main/rust/hooks)
+
+---
+
+## Folder Structure
+
+```
+rust/hooks/
+├── src/
+│   ├── satellite/           # Rust Satellite serverless function
+│   │   ├── src/
+│   │   │   └── lib.rs       # Main Rust logic for Satellite
+│   │   ├── satellite.did    # Candid interface definition
+│   │   └── Cargo.toml       # Rust package config
+│   ├── declarations/        # TypeScript declarations for Satellite
+│   ├── admin.ts             # Frontend admin logic
+│   ├── doc.ts               # Frontend doc logic
+│   ├── main.ts              # Frontend entry point
+│   ├── storage.ts           # Frontend storage logic
+│   └── style.css            # Frontend styles
+├── juno.config.ts           # Juno Satellite configuration
+├── package.json             # Frontend dependencies
+└── ...
+```
+
+---
+
+## Key Features
+
+- **Serverless Hooks in Rust**: Demonstrates how to react to data and asset operations using hooks in Rust serverless functions.
+- **Multiple Hook Types**: Includes hooks for document set, set-many, delete, and asset upload operations.
+- **Serverless Integration**: Runs as a Satellite function and integrates with Juno's datastore and authentication system.
+- **Minimal UI for Testing**: A simple frontend is included to test and demonstrate the hook logic in action.
+
+---
+
+## Main Backend Components
+
+- **src/satellite/src/lib.rs**: The core Rust logic for the Satellite serverless function. Implements hooks for various operations (set, set-many, delete, upload).
+- **src/satellite/Cargo.toml**: Rust package configuration for the Satellite function.
+
+---
+
+## Example: Hooks in Rust
+
+Here’s the actual Rust logic from `lib.rs`:
+
+```rust
+use ic_cdk::print;
+use junobuild_macros::{on_delete_doc, on_set_doc, on_set_many_docs, on_upload_asset};
+use junobuild_satellite::{
+    include_satellite, set_doc_store, OnDeleteDocContext, OnSetDocContext, OnSetManyDocsContext,
+    OnUploadAssetContext, SetDoc,
+};
+use junobuild_utils::{decode_doc_data, encode_doc_data};
+use junobuild_utils::{DocDataBigInt, DocDataPrincipal};
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize)]
+struct Person {
+    yolo: bool,
+    hello: String,
+    principal: DocDataPrincipal,
+    value: DocDataBigInt,
+}
+
+// Hook that runs when a document is set in the "demo" collection
+#[on_set_doc(collections = ["demo"])]
+async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
+    // Decode the document into our Person struct
+    let mut data: Person = decode_doc_data(&context.data.data.after.data)?;
+
+    // Log some values for debugging
+    print(format!("[on_set_doc] Caller: {}", context.caller.to_text()));
+    print(format!("[on_set_doc] Collection: {}", context.data.collection));
+    print(format!("[on_set_doc] Data: {} {}", data.principal.value, data.value.value));
+
+    // Modify the document before storing it again
+    data.hello = format!("{} checked", data.hello);
+    data.yolo = false;
+
+    // Encode and re-store the updated document
+    let encode_data = encode_doc_data(&data)?;
+    let doc: SetDoc = SetDoc {
+        data: encode_data,
+        description: context.data.data.after.description,
+        version: context.data.data.after.version,
+    };
+    set_doc_store(
+        context.caller,
+        context.data.collection,
+        context.data.key,
+        doc,
+    )?;
+
+    Ok(())
+}
+
+// Hook that runs when multiple documents are set in the "demo" collection
+#[on_set_many_docs(collections = ["demo"])]
+async fn on_set_many_docs(context: OnSetManyDocsContext) -> Result<(), String> {
+    print(format!("Many docs called {}", context.data.len()));
+    Ok(())
+}
+
+// Hook that runs when a document is deleted
+#[on_delete_doc]
+async fn on_delete_doc(_context: OnDeleteDocContext) -> Result<(), String> {
+    print("Bye bye");
+    Ok(())
+}
+
+// Hook that runs when an asset is uploaded to Storage
+#[on_upload_asset]
+async fn on_upload_asset(context: OnUploadAssetContext) -> Result<(), String> {
+    print(format!("Asset uploaded {}", context.data.key.full_path));
+    Ok(())
+}
+
+// A sample query function, accessible via `query` calls
+#[ic_cdk::query]
+fn say() {
+    print("Hello");
+}
+
+include_satellite!();
+```
+
+**Explanation:**
+
+- Defines a `Person` struct with fields for demo purposes.
+- Uses the `#[on_set_doc]` macro to run logic whenever a document is set in the `demo` collection. Updates the document and saves it back.
+- Uses the `#[on_set_many_docs]` macro to react to batch document sets in the `demo` collection.
+- Uses the `#[on_delete_doc]` macro to react to document deletions.
+- Uses the `#[on_upload_asset]` macro to react to asset uploads.
+- Includes a simple query endpoint (`say`) for demonstration.
+- `include_satellite!();` brings in the necessary boilerplate for the Juno Satellite runtime.
+
+---
+
+## How to Run
+
+1. **Clone the repo**:
+
+```bash
+git clone https://github.com/junobuild/examples
+cd rust/hooks
+```
+
+2. **Install dependencies**:
+
+```bash
+npm install
+```
+
+3. **Start Juno local emulator**:
+
+:::important
+
+Requires the Juno CLI to be available `npm i -g @junobuild/cli`
+
+:::
+
+```bash
+juno dev start
+```
+
+4. **Create a Satellite** for local dev:
+
+- Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
+- Update `juno.config.ts` with your Satellite ID.
+
+5. **Create required collections**:
+
+- `demo` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
+- `images` in Storage: [http://localhost:5866/storage](http://localhost:5866/storage)
+
+6. **Start the frontend dev server** (in a separate terminal):
+
+```bash
+npm run dev
+```
+
+7. **Build the serverless functions** (in a separate terminal):
+
+```bash
+juno functions build
+```
+
+The emulator will automatically upgrade your Satellite and live reload the changes.
+
+---
+
+## Juno-Specific Configuration
+
+- **juno.config.ts**: Defines Satellite IDs for development/production, build source, and predeploy steps. See the [Configuration reference](../../../reference/configuration.mdx) for details.
+- **vite.config.ts**: Registers the `juno` plugin to inject environment variables automatically. See the [Vite Plugin reference](../../../reference/plugins.mdx#vite-plugin) for more information.
+
+---
+
+## Production Deployment
+
+- Create a Satellite on the [Juno Console](https://console.juno.build) for mainnet.
+- Update `juno.config.ts` with the production Satellite ID.
+- Build and deploy the frontend:
+
+```bash
+npm run build
+juno deploy
+```
+
+- Build and upgrade the serverless functions:
+
+```bash
+juno functions build
+juno functions upgrade
+```
+
+---
+
+## Notes
+
+- This example focuses on the Rust serverless function hooks; the frontend is intentionally minimal and only included for demonstration purposes.
+- Use this project as a starting point for writing custom hooks and backend logic in Rust with Juno.
+
+---
+
+## Real-World Example
+
+Want to see how assertions and serverless logic are used in a live project?
+
+Check out [proposals.network](https://proposals.network), an open-source app built with Juno:
+
+- GitHub: [github.com/peterpeterparker/proposals.network](https://github.com/peterpeterparker/proposals.network)
+- Example logic: [src/satellite/src/lib.rs](https://github.com/peterpeterparker/proposals.network/blob/main/src/satellite/src/lib.rs)
+
+This app uses:
+
+- `#[on_delete_doc]` and `#[assert_delete_doc]` to validate and clean up related documents and assets
+- Shared helper modules like `assert`, `delete`, and `types` to keep logic organized
+- A real-world pattern of chaining asset/document deletions with assertions
+
+It’s a great reference for more advanced setups and multi-collection coordination.
+
+---
+
+## References
+
+- [Serverless Functions Guide](../../../guides/rust.mdx)
+- [Rust Functions Development](../../../build/functions/index.md)
+- [Rust SDK Reference](../../../reference/functions/rust/sdk.mdx)
+- [Rust Utils Reference](../../../reference/functions/rust/utils.mdx)
+- [Run Local Development](../../../guides/local-development.mdx)
+- [CLI Reference](../../../reference/cli)
+- [Configuration Reference](../../../reference/configuration.mdx)
+- [Datastore Collections](../../../build/datastore/collections.md)
+
+---
+
+## Crate Docs
+
+These crates are used to build and extend serverless functions in Rust with Juno:
+
+- [junobuild-satellite](https://docs.rs/junobuild-satellite): Core features and runtime for building a Satellite in Rust, including hooks, assertions, and datastore integration.
+- [junobuild-macros](https://docs.rs/junobuild-macros): Procedural macros for declaratively attaching hooks and assertions (e.g., `#[on_set_doc]`, `#[on_delete_doc]`).
+- [junobuild-utils](https://docs.rs/junobuild-utils): Utility helpers for working with documents, including data encoding, decoding, and assertion context handling.
