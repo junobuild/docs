@@ -3284,7 +3284,7 @@ It’s a great reference for more advanced setups and multi-collection coordinat
 These crates are used to build and extend serverless functions in Rust with Juno:
 
 *   [junobuild-satellite](https://docs.rs/junobuild-satellite): Core features and runtime for building a Satellite in Rust, including hooks, assertions, and datastore integration.
-*   [junobuild-macros](https://docs.rs/junobuild-macros): Procedural macros for declaratively attaching hooks and assertions (e.g., `#[assert_set_doc]`, `#[on_delete_doc]`).
+*   [junobuild-macros](https://docs.rs/junobuild-macros): Procedural macros for declaratively attaching hooks and assertions.
 *   [junobuild-utils](https://docs.rs/junobuild-utils): Utility helpers for working with documents, including data encoding, decoding, and assertion context handling.
 
 # Rust Hooks Example
@@ -3460,7 +3460,7 @@ It’s a great reference for more advanced setups and multi-collection coordinat
 These crates are used to build and extend serverless functions in Rust with Juno:
 
 *   [junobuild-satellite](https://docs.rs/junobuild-satellite): Core features and runtime for building a Satellite in Rust, including hooks, assertions, and datastore integration.
-*   [junobuild-macros](https://docs.rs/junobuild-macros): Procedural macros for declaratively attaching hooks and assertions (e.g., `#[on_set_doc]`, `#[on_delete_doc]`).
+*   [junobuild-macros](https://docs.rs/junobuild-macros): Procedural macros for declaratively attaching hooks and assertions.
 *   [junobuild-utils](https://docs.rs/junobuild-utils): Utility helpers for working with documents, including data encoding, decoding, and assertion context handling.
 
 # Using Juno with AI
