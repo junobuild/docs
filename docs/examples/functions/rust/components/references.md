@@ -5,7 +5,7 @@
 - [Rust SDK Reference](../../../../reference/functions/rust/sdk.mdx)
 - [Rust Utils Reference](../../../../reference/functions/rust/utils.mdx)
 - [Run Local Development](../../../../guides/local-development.mdx)
-- [CLI Reference](../../../../reference/cli)
+- [CLI Reference](pathname:///docs/reference/cli)
 - [Configuration Reference](../../../../reference/configuration.mdx)
 - [Datastore Collections](../../../../build/datastore/collections.md)
 
