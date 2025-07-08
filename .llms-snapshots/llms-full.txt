@@ -2246,13 +2246,13 @@ angular-example/├── public/                # Static assets├── src/�
 
 ## How to Run
 
-1.  **Install dependencies**:
+. **Install dependencies**:
 
 ```
 npm install
 ```
 
-2.  **Start Juno local emulator**:
+NaN. **Start Juno local emulator**:
 
 **Important:**
 
@@ -2293,11 +2293,10 @@ npm run dev
 *   Create a Satellite on the [Juno Console](https://console.juno.build) for mainnet.
 *   Update `src/environments/environment.prod.ts` and `juno.config.mjs` with the production Satellite ID.
 *   Build and deploy:
-    
-    ```
-    npm run buildjuno deploy
-    ```
-    
+
+```
+npm run buildjuno deploy
+```
 
 ---
 
@@ -2378,13 +2377,13 @@ export interface NoteData {  text: string;  url?: string;}export type Note = Doc
 
 ## How to Run
 
-1.  **Install dependencies**:
+. **Install dependencies**:
 
 ```
 npm install
 ```
 
-2.  **Start Juno local emulator**:
+NaN. **Start Juno local emulator**:
 
 **Important:**
 
@@ -2394,7 +2393,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-3.  **Create a Satellite** for local dev:
+3. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.mjs` with your Satellite ID.
@@ -2512,13 +2511,13 @@ react-example/├── public/                # Static assets├── src/│ 
 
 ## How to Run
 
-1.  **Install dependencies**:
+. **Install dependencies**:
 
 ```
 npm install
 ```
 
-2.  **Start Juno local emulator**:
+NaN. **Start Juno local emulator**:
 
 **Important:**
 
@@ -2528,7 +2527,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-3.  **Create a Satellite** for local dev:
+3. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.mjs` with your Satellite ID.
@@ -2646,13 +2645,13 @@ export interface NoteData {  text: string;  url?: string;}export type Note = Doc
 
 ## How to Run
 
-1.  **Install dependencies**:
+. **Install dependencies**:
 
 ```
 npm install
 ```
 
-2.  **Start Juno local emulator**:
+NaN. **Start Juno local emulator**:
 
 **Important:**
 
@@ -2662,7 +2661,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-3.  **Create a Satellite** for local dev:
+3. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.ts` with your Satellite ID.
@@ -2690,12 +2689,14 @@ npm run dev
 ## Production Deployment
 
 *   Create a Satellite on the [Juno Console](https://console.juno.build) for mainnet.
-*   Update `juno.config.ts` with the production Satellite ID.
+*   Update with the production Satellite ID.
 *   Build and deploy:
 
 ```
 npm run buildjuno deploy
 ```
+
+---
 
 ## Notes
 
@@ -2775,13 +2776,13 @@ export interface Note {  text: string;  url?: string;}
 
 ## How to Run
 
-1.  **Install dependencies**:
+. **Install dependencies**:
 
 ```
 npm install
 ```
 
-2.  **Start Juno local emulator**:
+NaN. **Start Juno local emulator**:
 
 **Important:**
 
@@ -2791,7 +2792,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-3.  **Create a Satellite** for local dev:
+3. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.ts` with your Satellite ID.
@@ -2818,8 +2819,8 @@ npm run dev
 
 ## Production Deployment
 
-*   Create a Satellite on the [Juno Console](https://juno.build) for mainnet.
-*   Update `juno.config.ts` with the production Satellite ID.
+*   Create a Satellite on the [Juno Console](https://console.juno.build) for mainnet.
+*   Update with the production Satellite ID.
 *   Build and deploy:
 
 ```
@@ -2904,13 +2905,13 @@ vanilla-js-example/├── public/                # Static assets├── src
 
 ## How to Run
 
-1.  **Install dependencies**:
+. **Install dependencies**:
 
 ```
 npm install
 ```
 
-2.  **Start Juno local emulator**:
+NaN. **Start Juno local emulator**:
 
 **Important:**
 
@@ -2920,7 +2921,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-3.  **Create a Satellite** for local dev:
+3. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.mjs` with your Satellite ID.
@@ -2947,7 +2948,7 @@ npm run dev
 
 ## Production Deployment
 
-*   Create a Satellite on the [Juno Console](https://juno.build) for mainnet.
+*   Create a Satellite on the [Juno Console](https://console.juno.build) for mainnet.
 *   Update `juno.config.mjs` with the production Satellite ID.
 *   Build and deploy:
 
@@ -3035,13 +3036,13 @@ export interface Note {  text: string;  url?: string;}
 
 ## How to Run
 
-1.  **Install dependencies**:
+. **Install dependencies**:
 
 ```
 npm install
 ```
 
-2.  **Start Juno local emulator**:
+NaN. **Start Juno local emulator**:
 
 **Important:**
 
@@ -3051,7 +3052,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-3.  **Create a Satellite** for local dev:
+3. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.ts` with your Satellite ID.
@@ -3078,8 +3079,8 @@ npm run dev
 
 ## Production Deployment
 
-*   Create a Satellite on the [Juno Console](https://juno.build) for mainnet.
-*   Update `juno.config.ts` with the production Satellite ID.
+*   Create a Satellite on the [Juno Console](https://console.juno.build) for mainnet.
+*   Update with the production Satellite ID.
 *   Build and deploy:
 
 ```
@@ -3172,13 +3173,13 @@ Here’s the actual Rust logic from `lib.rs`:
 git clone https://github.com/junobuild/examplescd rust/assertions
 ```
 
-2.  **Install dependencies**:
+2. **Install dependencies**:
 
 ```
 npm install
 ```
 
-3.  **Start Juno local emulator**:
+3. **Start Juno local emulator**:
 
 **Important:**
 
@@ -3188,7 +3189,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-4.  **Create a Satellite** for local dev:
+4. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.ts` with your Satellite ID.
@@ -3283,7 +3284,7 @@ It’s a great reference for more advanced setups and multi-collection coordinat
 These crates are used to build and extend serverless functions in Rust with Juno:
 
 *   [junobuild-satellite](https://docs.rs/junobuild-satellite): Core features and runtime for building a Satellite in Rust, including hooks, assertions, and datastore integration.
-*   [junobuild-macros](https://docs.rs/junobuild-macros): Procedural macros for declaratively attaching hooks and assertions (e.g., `#[assert_set_doc]`, `#[on_delete_doc]`).
+*   [junobuild-macros](https://docs.rs/junobuild-macros): Procedural macros for declaratively attaching hooks and assertions.
 *   [junobuild-utils](https://docs.rs/junobuild-utils): Utility helpers for working with documents, including data encoding, decoding, and assertion context handling.
 
 # Rust Hooks Example
@@ -3348,13 +3349,13 @@ use ic_cdk::print;use junobuild_macros::{on_delete_doc, on_set_doc, on_set_many_
 git clone https://github.com/junobuild/examplescd rust/hooks
 ```
 
-2.  **Install dependencies**:
+2. **Install dependencies**:
 
 ```
 npm install
 ```
 
-3.  **Start Juno local emulator**:
+3. **Start Juno local emulator**:
 
 **Important:**
 
@@ -3364,7 +3365,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-4.  **Create a Satellite** for local dev:
+4. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.ts` with your Satellite ID.
@@ -3459,7 +3460,7 @@ It’s a great reference for more advanced setups and multi-collection coordinat
 These crates are used to build and extend serverless functions in Rust with Juno:
 
 *   [junobuild-satellite](https://docs.rs/junobuild-satellite): Core features and runtime for building a Satellite in Rust, including hooks, assertions, and datastore integration.
-*   [junobuild-macros](https://docs.rs/junobuild-macros): Procedural macros for declaratively attaching hooks and assertions (e.g., `#[on_set_doc]`, `#[on_delete_doc]`).
+*   [junobuild-macros](https://docs.rs/junobuild-macros): Procedural macros for declaratively attaching hooks and assertions.
 *   [junobuild-utils](https://docs.rs/junobuild-utils): Utility helpers for working with documents, including data encoding, decoding, and assertion context handling.
 
 # Using Juno with AI

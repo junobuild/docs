@@ -70,14 +70,13 @@ export interface Note {
 
 ## How to Run
 
-import HowToStart from "./components/how-to-start.md";
+import HowToStart from "../components/how-to-start.mdx";
 
 <HowToStart />
 
-3. **Create a Satellite** for local dev:
+import CreateSatellite from "../components/create-a-satellite.mdx";
 
-- Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
-- Update `juno.config.ts` with your Satellite ID.
+<CreateSatellite />
 
 import HowToRun from "./components/how-to-run.md";
 
@@ -94,14 +93,9 @@ import HowToRun from "./components/how-to-run.md";
 
 ## Production Deployment
 
-- Create a Satellite on the [Juno Console](https://juno.build) for mainnet.
-- Update `juno.config.ts` with the production Satellite ID.
-- Build and deploy:
+import ProdDeploy from "./components/prod-deploy.mdx";
 
-```bash
-npm run build
-juno deploy
-```
+<ProdDeploy />
 
 ---
 
