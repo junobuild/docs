@@ -2246,13 +2246,13 @@ angular-example/├── public/                # Static assets├── src/�
 
 ## How to Run
 
-1.  **Install dependencies**:
+. **Install dependencies**:
 
 ```
 npm install
 ```
 
-2.  **Start Juno local emulator**:
+NaN. **Start Juno local emulator**:
 
 **Important:**
 
@@ -2378,13 +2378,13 @@ export interface NoteData {  text: string;  url?: string;}export type Note = Doc
 
 ## How to Run
 
-1.  **Install dependencies**:
+. **Install dependencies**:
 
 ```
 npm install
 ```
 
-2.  **Start Juno local emulator**:
+NaN. **Start Juno local emulator**:
 
 **Important:**
 
@@ -2512,13 +2512,13 @@ react-example/├── public/                # Static assets├── src/│ 
 
 ## How to Run
 
-1.  **Install dependencies**:
+. **Install dependencies**:
 
 ```
 npm install
 ```
 
-2.  **Start Juno local emulator**:
+NaN. **Start Juno local emulator**:
 
 **Important:**
 
@@ -2646,13 +2646,13 @@ export interface NoteData {  text: string;  url?: string;}export type Note = Doc
 
 ## How to Run
 
-1.  **Install dependencies**:
+. **Install dependencies**:
 
 ```
 npm install
 ```
 
-2.  **Start Juno local emulator**:
+NaN. **Start Juno local emulator**:
 
 **Important:**
 
@@ -2775,13 +2775,13 @@ export interface Note {  text: string;  url?: string;}
 
 ## How to Run
 
-1.  **Install dependencies**:
+. **Install dependencies**:
 
 ```
 npm install
 ```
 
-2.  **Start Juno local emulator**:
+NaN. **Start Juno local emulator**:
 
 **Important:**
 
@@ -2904,13 +2904,13 @@ vanilla-js-example/├── public/                # Static assets├── src
 
 ## How to Run
 
-1.  **Install dependencies**:
+. **Install dependencies**:
 
 ```
 npm install
 ```
 
-2.  **Start Juno local emulator**:
+NaN. **Start Juno local emulator**:
 
 **Important:**
 
@@ -3035,13 +3035,13 @@ export interface Note {  text: string;  url?: string;}
 
 ## How to Run
 
-1.  **Install dependencies**:
+. **Install dependencies**:
 
 ```
 npm install
 ```
 
-2.  **Start Juno local emulator**:
+NaN. **Start Juno local emulator**:
 
 **Important:**
 
@@ -3172,13 +3172,13 @@ Here’s the actual Rust logic from `lib.rs`:
 git clone https://github.com/junobuild/examplescd rust/assertions
 ```
 
-2.  **Install dependencies**:
+2. **Install dependencies**:
 
 ```
 npm install
 ```
 
-3.  **Start Juno local emulator**:
+3. **Start Juno local emulator**:
 
 **Important:**
 
@@ -3348,13 +3348,13 @@ use ic_cdk::print;use junobuild_macros::{on_delete_doc, on_set_doc, on_set_many_
 git clone https://github.com/junobuild/examplescd rust/hooks
 ```
 
-2.  **Install dependencies**:
+2. **Install dependencies**:
 
 ```
 npm install
 ```
 
-3.  **Start Juno local emulator**:
+3. **Start Juno local emulator**:
 
 **Important:**
 
