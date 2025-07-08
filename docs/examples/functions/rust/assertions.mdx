@@ -119,19 +119,9 @@ import CreateSatellite from "../../components/create-a-satellite.mdx";
 - `notes` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
 - `images` in Storage: [http://localhost:5866/storage](http://localhost:5866/storage)
 
-6. **Start the frontend dev server** (in a separate terminal):
+import HowToRun from "../components/how-to-run.md";
 
-```bash
-npm run dev
-```
-
-7. **Build the serverless functions** (in a separate terminal):
-
-```bash
-juno functions build
-```
-
-The emulator will automatically upgrade your Satellite and live reload the changes.
+<HowToRun />
 
 ---
 
@@ -144,21 +134,9 @@ The emulator will automatically upgrade your Satellite and live reload the chang
 
 ## Production Deployment
 
-- Create a Satellite on the [Juno Console](https://console.juno.build) for mainnet.
-- Update `juno.config.ts` with the production Satellite ID.
-- Build and deploy the frontend:
+import ProdDeploy from "../components/prod-deploy.md";
 
-```bash
-npm run build
-juno deploy
-```
-
-- Build and upgrade the serverless functions:
-
-```bash
-juno functions build
-juno functions upgrade
-```
+<ProdDeploy />
 
 ---
 
@@ -171,20 +149,9 @@ juno functions upgrade
 
 ## Real-World Example
 
-Want to see how assertions and serverless logic are used in a live project?
+import ProposalsNetwork from "./components/proposals-network.md";
 
-Check out [proposals.network](https://proposals.network), an open-source app built with Juno:
-
-- GitHub: [github.com/peterpeterparker/proposals.network](https://github.com/peterpeterparker/proposals.network)
-- Example logic: [src/satellite/src/lib.rs](https://github.com/peterpeterparker/proposals.network/blob/main/src/satellite/src/lib.rs)
-
-This app uses:
-
-- `#[on_delete_doc]` and `#[assert_delete_doc]` to validate and clean up related documents and assets
-- Shared helper modules like `assert`, `delete`, and `types` to keep logic organized
-- A real-world pattern of chaining asset/document deletions with assertions
-
-It’s a great reference for more advanced setups and multi-collection coordination.
+<ProposalsNetwork />
 
 ---
 
