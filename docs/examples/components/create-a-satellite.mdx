@@ -1,0 +1,16 @@
+export default function ({ index = 3, config = "juno.config.ts" }) {
+  return (
+    <>
+      <p>{index}. <strong>Create a Satellite</strong> for local dev:</p>
+      <ul>
+        <li>
+          Visit <a href="http://localhost:5866" target="_blank" rel="noreferrer noopener">http://localhost:5866</a> and follow the instructions.
+        </li>
+        <li>
+          Update <code>{config}</code> with your Satellite ID.
+        </li>
+      </ul>
+    </>
+  );
+
+}
