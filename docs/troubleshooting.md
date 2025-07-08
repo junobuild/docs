@@ -53,6 +53,18 @@ Make sure these two requirements are correctly met before restarting the command
 
 ---
 
+### A Satellite ID is not configured. Juno cannot be initialized.
+
+If you encounter the error:
+
+> A Satellite ID is not configured. Juno cannot be initialized.
+
+This means `initSatellite()` from the SDK is being called without a proper configuration. Most likely, the plugin responsible for loading your `juno.config` file values isn't set up correctly or is missing entirely.
+
+To resolve this issue, make sure your SDK is correctly configured by following the steps in the documentation: [Setup SDK > Configuration](./setup-the-sdk.mdx#configuration)
+
+---
+
 ### Invalid character: "&lt;"
 
 When you scaffold an app with a template, the `juno.config` file includes placeholder values for the satellite IDs:
