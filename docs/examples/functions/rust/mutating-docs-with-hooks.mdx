@@ -1,15 +1,15 @@
 ---
-title: Rust Hooks Example
-description: An example demonstrating how to use serverless function hooks in Rust for Juno serverless functions.
+title: Mutating Documents with Rust Hooks
+description: An example demonstrating how to modify and re-save documents in Juno Satellites using Rust hooks.
 keywords: [rust, hooks, serverless, functions, juno, satellite, example]
-sidebar_label: Hooks
+sidebar_label: Mutations
 ---
 
-# Rust Hooks Example
+# Mutating Documents with Rust Hooks
 
-This example shows how to use **hooks in Rust** to customize how your Juno **Satellite** behaves. Hooks let you react to things like documents being created or deleted, or assets being uploaded — so you can run custom logic automatically on the backend.
+This example demonstrates how to use **hooks in Rust** to modify documents automatically when they're created or updated in your Juno **Satellite**.
 
-The project includes a simple frontend to help you trigger and test the backend logic, but the real focus is on how the Rust serverless function works.
+Hooks let you react to events like document creation, deletion, or asset uploads — and run custom backend logic in response.
 
 You can browse the source code here: [github.com/junobuild/examples/tree/main/rust/hooks](https://github.com/junobuild/examples/tree/main/rust/hooks)
 
@@ -54,7 +54,7 @@ rust/hooks/
 
 ---
 
-## Example: Hooks in Rust
+## Example: Mutating Documents
 
 Here’s the actual Rust logic from `lib.rs`:
 
@@ -69,6 +69,7 @@ use junobuild_utils::{decode_doc_data, encode_doc_data};
 use junobuild_utils::{DocDataBigInt, DocDataPrincipal};
 use serde::{Deserialize, Serialize};
 
+/// Example struct used to demonstrate decode/edit/store flow.
 #[derive(Serialize, Deserialize)]
 struct Person {
     yolo: bool,
@@ -109,33 +110,6 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
     Ok(())
 }
 
-// Hook that runs when multiple documents are set in the "demo" collection
-#[on_set_many_docs(collections = ["demo"])]
-async fn on_set_many_docs(context: OnSetManyDocsContext) -> Result<(), String> {
-    print(format!("Many docs called {}", context.data.len()));
-    Ok(())
-}
-
-// Hook that runs when a document is deleted
-#[on_delete_doc]
-async fn on_delete_doc(_context: OnDeleteDocContext) -> Result<(), String> {
-    print("Bye bye");
-    Ok(())
-}
-
-// Hook that runs when an asset is uploaded to Storage
-#[on_upload_asset]
-async fn on_upload_asset(context: OnUploadAssetContext) -> Result<(), String> {
-    print(format!("Asset uploaded {}", context.data.key.full_path));
-    Ok(())
-}
-
-// A sample query function, accessible via `query` calls
-#[ic_cdk::query]
-fn say() {
-    print("Hello");
-}
-
 include_satellite!();
 ```
 
@@ -143,10 +117,6 @@ include_satellite!();
 
 - Defines a `Person` struct with fields for demo purposes.
 - Uses the `#[on_set_doc]` macro to run logic whenever a document is set in the `demo` collection. Updates the document and saves it back.
-- Uses the `#[on_set_many_docs]` macro to react to batch document sets in the `demo` collection.
-- Uses the `#[on_delete_doc]` macro to react to document deletions.
-- Uses the `#[on_upload_asset]` macro to react to asset uploads.
-- Includes a simple query endpoint (`say`) for demonstration.
 - `include_satellite!();` brings in the necessary boilerplate for the Juno Satellite runtime.
 
 ---
@@ -196,8 +166,8 @@ import ProdDeploy from "../components/prod-deploy.md";
 
 ## Notes
 
-- This example focuses on the Rust serverless function hooks; the frontend is intentionally minimal and only included for demonstration purposes.
-- Use this project as a starting point for writing custom hooks and backend logic in Rust with Juno.
+- This example focuses on the Rust serverless function. The frontend is intentionally minimal and included only for demonstration.
+- Use this project as a starting point for writing custom backend logic in Rust using Juno hooks.
 
 ---
 
