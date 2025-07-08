@@ -2293,11 +2293,10 @@ npm run dev
 *   Create a Satellite on the [Juno Console](https://console.juno.build) for mainnet.
 *   Update `src/environments/environment.prod.ts` and `juno.config.mjs` with the production Satellite ID.
 *   Build and deploy:
-    
-    ```
-    npm run buildjuno deploy
-    ```
-    
+
+```
+npm run buildjuno deploy
+```
 
 ---
 
@@ -2690,12 +2689,14 @@ npm run dev
 ## Production Deployment
 
 *   Create a Satellite on the [Juno Console](https://console.juno.build) for mainnet.
-*   Update `juno.config.ts` with the production Satellite ID.
+*   Update with the production Satellite ID.
 *   Build and deploy:
 
 ```
 npm run buildjuno deploy
 ```
+
+---
 
 ## Notes
 
@@ -2818,8 +2819,8 @@ npm run dev
 
 ## Production Deployment
 
-*   Create a Satellite on the [Juno Console](https://juno.build) for mainnet.
-*   Update `juno.config.ts` with the production Satellite ID.
+*   Create a Satellite on the [Juno Console](https://console.juno.build) for mainnet.
+*   Update with the production Satellite ID.
 *   Build and deploy:
 
 ```
@@ -2947,7 +2948,7 @@ npm run dev
 
 ## Production Deployment
 
-*   Create a Satellite on the [Juno Console](https://juno.build) for mainnet.
+*   Create a Satellite on the [Juno Console](https://console.juno.build) for mainnet.
 *   Update `juno.config.mjs` with the production Satellite ID.
 *   Build and deploy:
 
@@ -3078,8 +3079,8 @@ npm run dev
 
 ## Production Deployment
 
-*   Create a Satellite on the [Juno Console](https://juno.build) for mainnet.
-*   Update `juno.config.ts` with the production Satellite ID.
+*   Create a Satellite on the [Juno Console](https://console.juno.build) for mainnet.
+*   Update with the production Satellite ID.
 *   Build and deploy:
 
 ```
