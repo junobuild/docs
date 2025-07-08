@@ -121,7 +121,7 @@ const sidebars: SidebarsConfig = {
               },
               items: [
                 "examples/functions/rust/assertions",
-                "examples/functions/rust/hooks"
+                "examples/functions/rust/mutating-docs-with-hooks"
               ]
             }
           ]
