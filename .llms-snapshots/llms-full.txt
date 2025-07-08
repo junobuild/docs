@@ -2394,7 +2394,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-3.  **Create a Satellite** for local dev:
+3. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.mjs` with your Satellite ID.
@@ -2528,7 +2528,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-3.  **Create a Satellite** for local dev:
+3. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.mjs` with your Satellite ID.
@@ -2662,7 +2662,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-3.  **Create a Satellite** for local dev:
+3. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.ts` with your Satellite ID.
@@ -2791,7 +2791,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-3.  **Create a Satellite** for local dev:
+3. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.ts` with your Satellite ID.
@@ -2920,7 +2920,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-3.  **Create a Satellite** for local dev:
+3. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.mjs` with your Satellite ID.
@@ -3051,7 +3051,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-3.  **Create a Satellite** for local dev:
+3. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.ts` with your Satellite ID.
@@ -3188,7 +3188,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-4.  **Create a Satellite** for local dev:
+4. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.ts` with your Satellite ID.
@@ -3364,7 +3364,7 @@ Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 juno dev start
 ```
 
-4.  **Create a Satellite** for local dev:
+4. **Create a Satellite** for local dev:
 
 *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
 *   Update `juno.config.ts` with your Satellite ID.
