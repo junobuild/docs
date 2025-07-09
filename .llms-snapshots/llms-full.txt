@@ -3113,7 +3113,7 @@ The following functions from `@junobuild/core` are used in this example:
 | `uploadFile` | Upload a file to storage | [`src/components/Modal.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Modal.vue) | [Upload file](/docs/build/storage/development.md#upload-file) |
 | `deleteAsset` | Delete a file from storage | [`src/components/Delete.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Delete.vue) | [Delete asset](/docs/build/storage/development.md#delete-asset) |
 
-# Rust Assertions Example
+# Rust Assertion Example
 
 This example demonstrates how to write a **custom assertion** in **Rust** for a Juno **serverless function**. It shows how to intercept and validate data operations—such as rejecting specific content—before it's written to the datastore.
 
