@@ -59,6 +59,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 ## Examples - Functions - Rust
   
 - [Rust Assertions Example](https://juno.build/docs/examples/functions/rust/assertions.md): An example demonstrating how to write custom assertions in Rust for Juno serverless functions.
+- [Generating Assets with Rust Serverless Functions](https://juno.build/docs/examples/functions/rust/generating-assets-with-hooks.md): An example showing how to dynamically generate and store assets (like JSON) in Storage using Rust in Juno Satellites.
 - [Mutating Documents with Rust Hooks](https://juno.build/docs/examples/functions/rust/mutating-docs-with-hooks.md): An example demonstrating how to modify and re-save documents in Juno Satellites using Rust hooks.
 
 ## Guides
