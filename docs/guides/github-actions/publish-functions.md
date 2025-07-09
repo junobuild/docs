@@ -53,9 +53,9 @@ jobs:
 
 This action will build and publish your serverless function bundle.
 
-If your access key has a **write** role, the changes will be automatically deployed to your Satellite's CDN.
+If your access key is an **editor**, the changes will be automatically deployed to your Satellite's CDN.
 
-If your key only has a **submit** role, the release will be submitted as a pending change for manual approval. To avoid errors in submit-only workflows, you can explicitly use the `--no-apply` flag to skip auto-application.
+If your key is only a **submitter**, the release will be proposed as a pending change for manual approval. To avoid errors in submit-only workflows, you can explicitly use the `--no-apply` flag to skip auto-application.
 
 ```yaml
 - name: Publish

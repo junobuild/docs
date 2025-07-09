@@ -84,7 +84,7 @@ juno functions publish --mode staging --src ./path/to/build.wasm.gz
 ```
 
 - 📤 Uploads to the Satellite’s CDN release.
-- 🔐 Requires access key with **write** role.
+- 🔐 Requires access key with **editor** role.
 
 #### b) Upgrade from CDN
 
