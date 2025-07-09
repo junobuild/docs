@@ -120,7 +120,7 @@ const sidebars: SidebarsConfig = {
                   "Examples of writing serverless functions in Rust for Juno. Includes patterns like custom assertions, data manipulation and calls."
               },
               items: [
-                "examples/functions/rust/assertions",
+                "examples/functions/rust/assertion",
                 "examples/functions/rust/mutating-docs-with-hooks",
                 "examples/functions/rust/generating-assets-with-hooks"
               ]
