@@ -1,3 +1,5 @@
+## Real-World Example
+
 Want to see how assertions and serverless logic are used in a live project?
 
 Check out [proposals.network](https://proposals.network), an open-source app built with Juno:
