@@ -6,6 +6,12 @@ In Juno, we use some terms that may be unfamiliar to some. This page provides a 
 
 An "Account Identifier" is an address, serving as the textual representation of an account on the Internet Computer (ICP) ledger. It can represent an account owned by an individual or a smart contract.
 
+## Canister
+
+A canister is the term for a smart contract on the Internet Computer. It includes both logic and state (memory), bundled together and deployed as a WebAssembly (WASM) container.
+
+All [modules](#modules) in Juno — such as [satellites](#satellite), [mission controls](#mission-control), and [orbiters](#orbiter) — are canisters under the hood.
+
 ## Console
 
 The "console" refers to Juno's administration application, located at [https://console.juno.build](https://console.juno.build).
