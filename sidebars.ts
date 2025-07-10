@@ -89,6 +89,7 @@ const sidebars: SidebarsConfig = {
           label: "Frontend",
           link: {
             type: "generated-index",
+            slug: "/examples/frontend",
             description:
               "Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more."
           },
@@ -107,6 +108,7 @@ const sidebars: SidebarsConfig = {
           label: "Functions",
           link: {
             type: "generated-index",
+            slug: "/examples/functions",
             description:
               "Write serverless backend logic for your app using TypeScript or Rust. These examples show how to use hooks, assertions, and common function patterns on Juno."
           },
@@ -116,6 +118,7 @@ const sidebars: SidebarsConfig = {
               label: "Rust",
               link: {
                 type: "generated-index",
+                slug: "/examples/functions/rust",
                 description:
                   "Examples of writing serverless functions in Rust for Juno. Includes patterns like custom assertions, data manipulation and calls."
               },

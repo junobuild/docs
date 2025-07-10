@@ -46,6 +46,11 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [Collections](https://juno.build/docs/build/storage/collections.md): You can create or update a collection in the "Collections" tab in Juno's console under the storage view.
 - [Development](https://juno.build/docs/build/storage/development.md): This page explains how to manage assets using the Juno SDK, including uploading, listing, counting, and deleting files within your application. It also covers configuration options for optimizing storage and access control.
 
+## Examples
+  
+- [Frontend](https://juno.build/docs/examples/frontend.md): Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more.
+- [Functions](https://juno.build/docs/examples/functions.md): Write serverless backend logic for your app using TypeScript or Rust. These examples show how to use hooks, assertions, and common function patterns on Juno.
+
 ## Examples - Frontend
   
 - [Angular Example](https://juno.build/docs/examples/frontend/angular.md): A fullstack note-taking app built with Angular, and Tailwind CSS using Juno for authentication, data, and file storage.
@@ -55,6 +60,10 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [SvelteKit Example](https://juno.build/docs/examples/frontend/sveltekit.md): A fullstack note-taking app built with SvelteKit, and Tailwind CSS using Juno for authentication, data, and file storage.
 - [Vanilla JavaScript Example](https://juno.build/docs/examples/frontend/vanilla-javascript.md): A fullstack note-taking app built with vanilla JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.
 - [Vue Example](https://juno.build/docs/examples/frontend/vue.md): A fullstack note-taking app built with Vue, and Tailwind CSS using Juno for authentication, data, and file storage.
+
+## Examples - Functions
+  
+- [Rust](https://juno.build/docs/examples/functions/rust.md): Examples of writing serverless functions in Rust for Juno. Includes patterns like custom assertions, data manipulation and calls.
 
 ## Examples - Functions - Rust
   
