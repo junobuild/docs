@@ -80,7 +80,6 @@ const sidebars: SidebarsConfig = {
       label: "Examples",
       link: {
         type: "generated-index",
-        slug: "/examples",
         description:
           "Explore projects that show how to build with Juno using different frontend frameworks and serverless function setups. Includes full-stack apps built with React, SvelteKit, Angular, and Next.js, as well as serverless function patterns written in TypeScript and Rust."
       },
