@@ -3179,7 +3179,7 @@ This example demonstrates how to write a **custom assertion** in **Rust** for a 
 
 The project includes a minimal frontend to help trigger and test the logic, but the primary focus is the backend assertion.
 
-You can browse the source code here: [github.com/junobuild/examples/tree/main/rust/assertions](https://github.com/junobuild/examples/tree/main/rust/assertions)
+You can browse the source code here: [github.com/junobuild/examples/tree/main/functions/rust/assertions](https://github.com/junobuild/examples/tree/main/functions/rust/assertions)
 
 ---
 
@@ -3361,7 +3361,7 @@ When a document is added to the `request` collection, a serverless function is t
 
 This pattern is useful for building workflows that require on-chain asset transfers or other canister calls in response to user actions.
 
-You can browse the source code here: [github.com/junobuild/examples/tree/main/rust/calls](https://github.com/junobuild/examples/tree/main/rust/calls)
+You can browse the source code here: [github.com/junobuild/examples/tree/main/functions/rust/calls](https://github.com/junobuild/examples/tree/main/functions/rust/calls)
 
 ---
 
@@ -3541,7 +3541,7 @@ This example demonstrates how to use **Rust serverless functions** to dynamicall
 
 Each time a note is added through the frontend, the Satellite saves the note as an individual JSON file and updates a list of all notes as another JSON file. This pattern is useful for exposing structured, queryable data as static assets — consumable by your frontend or external services.
 
-You can browse the source code here: [github.com/junobuild/examples/tree/main/rust/json](https://github.com/junobuild/examples/tree/main/rust/json)
+You can browse the source code here: [github.com/junobuild/examples/tree/main/functions/rust/json](https://github.com/junobuild/examples/tree/main/functions/rust/json)
 
 ---
 
@@ -3702,7 +3702,7 @@ This example demonstrates how to use **hooks in Rust** to modify documents autom
 
 Hooks let you react to events like document creation, deletion, or asset uploads — and run custom backend logic in response.
 
-You can browse the source code here: [github.com/junobuild/examples/tree/main/rust/hooks](https://github.com/junobuild/examples/tree/main/rust/hooks)
+You can browse the source code here: [github.com/junobuild/examples/tree/main/functions/rust/hooks](https://github.com/junobuild/examples/tree/main/functions/rust/hooks)
 
 ---
 
@@ -5049,7 +5049,7 @@ To encode and decode the call, you need Rust structures that match the Candid ty
 
 **Tip:**
 
-This example is also available on [GitHub](https://github.com/junobuild/examples/tree/main/rust/https-outcalls).
+This example is also available on [GitHub](https://github.com/junobuild/examples/tree/main/functions/rust/https-outcalls).
 
 For this example, we'll skip a few steps as the logic remains consistent:
 
@@ -5091,28 +5091,7 @@ If replication or IPv6 support is not available, a common workaround is to use a
 
 ## More Examples
 
-Here are additional examples showcasing different use cases for blockchainless in Juno. Each example is hosted on GitHub and provides a working implementation you can explore and modify.
-
-### Essential Hooks
-
-A minimal app demonstrating how serverless function hooks work in Juno. This example provides a frontend interface for setting a document in the datastore or uploading a file to storage.
-
-The associated hooks perform basic operations:
-
-*   Printing a message when triggered.
-*   Demonstrating how to deserialize and serialize a document before updating and persisting it.
-
-This example serves as a great starting point for understanding how to interact with Juno's event-driven hooks in both datastore and storage contexts.
-
-[🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/rust/hooks)
-
-### Generating JSON Files
-
-An example that demonstrates how to generate a JSON file within a serverless function on Juno.
-
-When a document is set, the corresponding hook creates a JSON file based on the document's data and automatically uploads it to storage. This makes the file accessible via an HTTPS URL, allowing it to be retrieved and used directly on the web.
-
-[🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/rust/json)
+Looking for more examples? Check out [Rust](/docs/examples/functions/rust.md) for patterns like custom assertions, data manipulation, and canister calls.
 
 # Use Juno with SvelteKit
 
