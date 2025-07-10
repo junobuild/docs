@@ -8787,18 +8787,6 @@ function encodeDocData<T>(data: T): Uint8Array;
 
 *   A `Uint8Array` containing the encoded binary data.
 
-# Examples
-
-Explore projects that show how to build with Juno using different frontend frameworks and serverless function setups. Includes full-stack apps built with React, SvelteKit, Angular, and Next.js, as well as serverless function patterns written in TypeScript and Rust.
-
-[## 🗃️ Frontend
-
-7 items](/docs/examples/frontend.md)
-
-[## 🗃️ Functions
-
-1 item](/docs/examples/functions.md)
-
 # FAQ
 
 ### Where do I find support?
