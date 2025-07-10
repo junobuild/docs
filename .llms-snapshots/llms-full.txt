@@ -5091,28 +5091,7 @@ If replication or IPv6 support is not available, a common workaround is to use a
 
 ## More Examples
 
-Here are additional examples showcasing different use cases for blockchainless in Juno. Each example is hosted on GitHub and provides a working implementation you can explore and modify.
-
-### Essential Hooks
-
-A minimal app demonstrating how serverless function hooks work in Juno. This example provides a frontend interface for setting a document in the datastore or uploading a file to storage.
-
-The associated hooks perform basic operations:
-
-*   Printing a message when triggered.
-*   Demonstrating how to deserialize and serialize a document before updating and persisting it.
-
-This example serves as a great starting point for understanding how to interact with Juno's event-driven hooks in both datastore and storage contexts.
-
-[🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/functions/rust/hooks)
-
-### Generating JSON Files
-
-An example that demonstrates how to generate a JSON file within a serverless function on Juno.
-
-When a document is set, the corresponding hook creates a JSON file based on the document's data and automatically uploads it to storage. This makes the file accessible via an HTTPS URL, allowing it to be retrieved and used directly on the web.
-
-[🔗 GitHub Repository](https://github.com/junobuild/examples/tree/main/functions/rust/json)
+Looking for more examples? Check out [Rust](/docs/examples/functions/rust.md) for patterns like custom assertions, data manipulation, and canister calls.
 
 # Use Juno with SvelteKit
 
