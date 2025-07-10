@@ -1,0 +1,260 @@
+---
+title: Making Canister Calls in Rust Serverless Functions
+description: An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in Rust using Juno Satellites.
+keywords:
+  [
+    rust,
+    canister call,
+    transfer_from,
+    icrc,
+    icp,
+    serverless,
+    juno,
+    satellite,
+    example
+  ]
+sidebar_label: Canister Calls
+---
+
+# Making Canister Calls in Rust Serverless Functions
+
+This example demonstrates how to use **Rust serverless functions** to perform canister calls (such as `transfer_from` on the ICP ledger) in response to Datastore events in your Juno **Satellite**.
+
+When a document is added to the `request` collection, a serverless function is triggered to:
+
+- Check if the user has enough ICP in their wallet
+- Transfer ICP from the user's wallet to the Satellite using the ICRC ledger's `transfer_from` method
+- Mark the request as `processed` if the transfer succeeds
+
+This pattern is useful for building workflows that require on-chain asset transfers or other canister calls in response to user actions.
+
+You can browse the source code here: [github.com/junobuild/examples/tree/main/rust/calls](https://github.com/junobuild/examples/tree/main/rust/calls)
+
+---
+
+## Folder Structure
+
+```
+rust/calls/
+├── src/
+│   ├── satellite/           # Rust Satellite serverless function
+│   │   ├── src/
+│   │   │   ├── lib.rs       # Main Rust logic for Satellite
+│   │   │   ├── services.rs  # Helper logic for balance, transfer, status
+│   │   │   ├── types.rs     # Data model for requests
+│   │   │   ├── ledger_icrc.rs # Ledger helper functions
+│   │   │   └── ...
+│   │   ├── satellite.did    # Candid interface definition
+│   │   └── Cargo.toml       # Rust package config
+│   ├── declarations/        # TypeScript declarations for Satellite
+│   ├── components/          # React frontend components
+│   ├── services/            # Frontend service logic
+│   ├── types/               # Frontend type definitions
+│   ├── main.tsx             # Frontend entry
+│   └── ...
+├── juno.config.ts           # Juno Satellite configuration
+├── package.json             # Frontend dependencies
+└──
+```
+
+---
+
+## Key Features
+
+- **Serverless Canister Calls**: Demonstrates how to perform ICRC ledger calls (e.g., `transfer_from`) from Rust serverless functions.
+- **Atomic Request Processing**: Ensures that request status is only updated if the transfer succeeds.
+- **Wallet Balance Checks**: Fails early if the user does not have enough ICP.
+- **Minimal React UI**: A simple React frontend is included to test and demonstrate the logic.
+
+---
+
+## Main Backend Components
+
+- **src/satellite/src/lib.rs**: The entry point for the Satellite serverless function. Triggers the canister call and updates request status on document set.
+- **src/satellite/src/services.rs**: Helper logic for checking wallet balance, performing the transfer, and updating request status.
+- **src/satellite/src/types.rs**: Data model for requests and status.
+- **src/satellite/Cargo.toml**: Rust package configuration for the Satellite function.
+
+---
+
+## Example: Canister Call on Document Set
+
+Here’s the actual Rust logic from `lib.rs` and `services.rs`:
+
+```rust
+// src/satellite/src/lib.rs
+mod env;
+mod ledger_icrc;
+mod services;
+mod types;
+mod utils;
+
+use crate::services::{assert_wallet_balance, set_request_processed, transfer_icp_from_wallet};
+use crate::types::RequestData;
+use crate::utils::icp_ledger_id;
+use ic_cdk::id;
+use icrc_ledger_types::icrc1::account::Account;
+use junobuild_macros::on_set_doc;
+use junobuild_satellite::{include_satellite, OnSetDocContext};
+use junobuild_utils::decode_doc_data;
+
+// Triggered when a new document is set in the "request" collection
+#[on_set_doc(collections = ["request"])]
+async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
+    // Init data
+    let data: RequestData = decode_doc_data(&context.data.data.after.data)?;
+    let request_amount = data.amount.value;
+    let fee = data.fee.as_ref().map(|fee| fee.value);
+    let ledger_id = icp_ledger_id()?;
+    let from_account: Account = Account::from(context.caller);
+
+    // Check current account balance
+    assert_wallet_balance(&ledger_id, &from_account, &request_amount, &fee).await?;
+
+    // Update request status to processed (atomic with transfer)
+    set_request_processed(context.data.key, &data, &context.data.data.after.version)?;
+
+    // Transfer from wallet to satellite
+    let to_account: Account = Account::from(id());
+    transfer_icp_from_wallet(
+        &ledger_id,
+        &from_account,
+        &to_account,
+        &request_amount,
+        &fee,
+    )
+    .await?;
+
+    Ok(())
+}
+
+include_satellite!();
+```
+
+```rust
+// src/satellite/src/services.rs
+/// Asserts that the given account has enough balance to cover the amount and fee.
+pub async fn assert_wallet_balance(
+    ledger_id: &Principal,
+    from_account: &Account,
+    amount: &u64,
+    fee: &Option<u64>,
+) -> Result<(), String> {
+    let balance = icrc_balance_of(&ledger_id, &from_account).await?;
+    let total = amount.saturating_add(fee.unwrap_or(10_000u64));
+    if balance < total {
+        return Err(format!("Balance {} is smaller than {}", balance, total));
+    }
+    Ok(())
+}
+
+/// Transfers ICP from one account to another using `icrc2_transfer_from`.
+pub async fn transfer_icp_from_wallet(
+    ledger_id: &Principal,
+    from_account: &Account,
+    to_account: &Account,
+    amount: &u64,
+    fee: &Option<u64>,
+) -> Result<(), String> {
+    let result = icrc_transfer_from(
+        &ledger_id,
+        &from_account,
+        &to_account,
+        &Nat::from(amount.clone()),
+        &fee.map(|fee| Nat::from(fee)),
+    )
+    .await
+    .map_err(|e| format!("Failed to call ICRC ledger icrc_transfer_from: {:?}", e))
+    .and_then(|result| {
+        result.map_err(|e| format!("Failed to execute the transfer from: {:?}", e))
+    })?;
+    print(format!("Result of the transfer from is {:?}", result));
+    Ok(())
+}
+
+/// Updates the request document status to `Processed`.
+pub fn set_request_processed(
+    key: String,
+    original_data: &RequestData,
+    original_version: &Option<u64>,
+) -> Result<(), String> {
+    let update_data: RequestData = RequestData {
+        status: RequestStatus::Processed,
+        ..original_data.clone()
+    };
+    let data = encode_doc_data(&update_data)?;
+    let doc: SetDoc = SetDoc {
+        data,
+        description: None,
+        version: original_version.clone(),
+    };
+    let _ = set_doc_store(id(), "request".to_string(), key, doc)?;
+    Ok(())
+}
+```
+
+**Explanation:**
+
+- When a request is submitted, the `on_set_doc` hook is triggered for the `request` collection.
+- The function checks the user's wallet balance, updates the request status, and performs the ICP transfer atomically.
+- If any step fails, the entire operation is reverted.
+- The frontend can monitor request status and balances via the exposed APIs.
+
+---
+
+## How to Run
+
+1.  **Clone the repo**:
+
+```bash
+git clone https://github.com/junobuild/examples
+cd rust/calls
+```
+
+import HowToStart from "../../components/how-to-start.mdx";
+
+<HowToStart index={2} />
+
+import CreateSatellite from "../../components/create-a-satellite.mdx";
+
+<CreateSatellite index={4} />
+
+5. **Create required collections**:
+
+- `request` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
+
+import HowToRun from "../components/how-to-run.md";
+
+<HowToRun />
+
+---
+
+import Config from "../components/config.md";
+
+<Config />
+
+---
+
+import ProdDeploy from "../components/prod-deploy.md";
+
+<ProdDeploy />
+
+---
+
+## Notes
+
+- This example focuses on the Rust serverless function and canister call integration. The frontend is intentionally minimal and included only for demonstration.
+- Use this project as a starting point for workflows that require on-chain asset transfers or canister calls in response to user actions.
+
+import ProposalsNetwork from "./components/proposals-network.md";
+
+<ProposalsNetwork />
+
+---
+
+import References from "./components/references.md";
+
+<References />* [icrc-ledger-types](https://docs.rs/icrc-ledger-types): Types
+for interacting with the ICRC ledger standard. *
+[ic-cdk](https://docs.rs/ic-cdk): Internet Computer canister development kit for
+Rust.
