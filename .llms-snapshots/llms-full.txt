@@ -2191,6 +2191,46 @@ The `deleteFilteredAssets` function allows you to delete multiple assets from a 
 import { deleteFilteredAssets } from "@junobuild/core";await deleteFilteredAssets({  collection: "my_collection_key",  filter: {    // Uses the same filter options as listAssets  }});
 ```
 
+# Frontend
+
+Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more.
+
+[## 📄️ Next.js
+
+A fullstack note-taking app built with Next.js, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/nextjs.md)
+
+[## 📄️ React TypeScript
+
+A fullstack note-taking app built with React, TypeScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/react-typescript.md)
+
+[## 📄️ React JavaScript
+
+A fullstack note-taking app built with React, JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/react-javascript.md)
+
+[## 📄️ Vue
+
+A fullstack note-taking app built with Vue, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/vue.md)
+
+[## 📄️ SvelteKit
+
+A fullstack note-taking app built with SvelteKit, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/sveltekit.md)
+
+[## 📄️ Angular
+
+A fullstack note-taking app built with Angular, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/angular.md)
+
+[## 📄️ Vanilla JavaScript
+
+A fullstack note-taking app built with vanilla JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/vanilla-javascript.md)
+
+# Functions
+
+Write serverless backend logic for your app using TypeScript or Rust. These examples show how to use hooks, assertions, and common function patterns on Juno.
+
+[## 🗃️ Rust
+
+4 items](/docs/examples/functions/rust.md)
+
 # Angular Example
 
 This project is a note-taking app template built with **Angular**, **TypeScript**, and **Tailwind CSS**, designed to demonstrate integration with Juno for app development. It showcases authentication, data storage, and file storage using Juno's Satellite container.
@@ -3112,6 +3152,26 @@ The following functions from `@junobuild/core` are used in this example:
 | `deleteDoc` | Delete a document | [`src/components/Delete.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Delete.vue) | [Delete a document](/docs/build/datastore/development.md#delete-a-document) |
 | `uploadFile` | Upload a file to storage | [`src/components/Modal.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Modal.vue) | [Upload file](/docs/build/storage/development.md#upload-file) |
 | `deleteAsset` | Delete a file from storage | [`src/components/Delete.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Delete.vue) | [Delete asset](/docs/build/storage/development.md#delete-asset) |
+
+# Rust
+
+Examples of writing serverless functions in Rust for Juno. Includes patterns like custom assertions, data manipulation and calls.
+
+[## 📄️ Assertion
+
+An example demonstrating how to write custom assertions in Rust for Juno serverless functions.](/docs/examples/functions/rust/assertion.md)
+
+[## 📄️ Mutation
+
+An example demonstrating how to modify and re-save documents in Juno Satellites using Rust hooks.](/docs/examples/functions/rust/mutating-docs.md)
+
+[## 📄️ Asset Generation
+
+An example showing how to dynamically generate and store assets (like JSON) in Storage using Rust in Juno Satellites.](/docs/examples/functions/rust/generating-assets.md)
+
+[## 📄️ Canister Calls
+
+An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in Rust using Juno Satellites.](/docs/examples/functions/rust/canister-calls.md)
 
 # Rust Assertion Example
 
@@ -8726,6 +8786,18 @@ function encodeDocData<T>(data: T): Uint8Array;
 #### Returns:
 
 *   A `Uint8Array` containing the encoded binary data.
+
+# Examples
+
+Explore projects that show how to build with Juno using different frontend frameworks and serverless function setups. Includes full-stack apps built with React, SvelteKit, Angular, and Next.js, as well as serverless function patterns written in TypeScript and Rust.
+
+[## 🗃️ Frontend
+
+7 items](/docs/examples/frontend.md)
+
+[## 🗃️ Functions
+
+1 item](/docs/examples/functions.md)
 
 # FAQ
 
