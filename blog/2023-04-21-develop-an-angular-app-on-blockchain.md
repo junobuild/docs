@@ -471,7 +471,6 @@ Congratulations! Your Angular app is now decentralized 🎉.
 ## Resources
 
 - Juno documentation and getting started: [https://juno.build/docs/intro](https://juno.build/docs/intro)
-- The source code of this tutorial is available in our [GitHub Repository](https://github.com/junobuild/examples/tree/main/angular/diary).
 
 ---
 
