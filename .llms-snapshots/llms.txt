@@ -64,6 +64,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 ## Examples - Functions
   
 - [Rust](https://juno.build/docs/examples/functions/rust.md): Examples of writing serverless functions in Rust for Juno. Includes patterns like custom assertions, data manipulation and calls.
+- [TypeScript](https://juno.build/docs/examples/functions/typescript.md): Examples of writing serverless functions in TypeScript for Juno. Includes patterns like custom assertions, data manipulation and calls.
 
 ## Examples - Functions - Rust
   
@@ -71,6 +72,10 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [Making Canister Calls in Rust Serverless Functions](https://juno.build/docs/examples/functions/rust/canister-calls.md): An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in Rust using Juno Satellites.
 - [Generating Assets with Rust Serverless Functions](https://juno.build/docs/examples/functions/rust/generating-assets.md): An example showing how to dynamically generate and store assets (like JSON) in Storage using Rust in Juno Satellites.
 - [Mutating Documents with Rust Hooks](https://juno.build/docs/examples/functions/rust/mutating-docs.md): An example demonstrating how to modify and re-save documents in Juno Satellites using Rust hooks.
+
+## Examples - Functions - Typescript
+  
+- [TypeScript Assertions Example](https://juno.build/docs/examples/functions/typescript/assertion.md): An example demonstrating how to write custom assertions in TypeScript for Juno serverless functions.
 
 ## Guides
   
