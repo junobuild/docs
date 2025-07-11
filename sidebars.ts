@@ -128,6 +128,17 @@ const sidebars: SidebarsConfig = {
                 "examples/functions/rust/generating-assets",
                 "examples/functions/rust/canister-calls"
               ]
+            },
+            {
+              type: "category",
+              label: "TypeScript",
+              link: {
+                type: "generated-index",
+                slug: "/examples/functions/typescript",
+                description:
+                  "Examples of writing serverless functions in TypeScript for Juno. Includes patterns like custom assertions, data manipulation and calls."
+              },
+              items: ["examples/functions/typescript/assertion"]
             }
           ]
         }

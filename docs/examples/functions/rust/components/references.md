@@ -1,7 +1,7 @@
 ## References
 
 - [Serverless Functions Guide](../../../../guides/rust.mdx)
-- [Rust Functions Development](../../../../build/functions/index.md)
+- [Functions Development](../../../../build/functions/index.md)
 - [Rust SDK Reference](../../../../reference/functions/rust/sdk.mdx)
 - [Rust Utils Reference](../../../../reference/functions/rust/utils.mdx)
 - [Run Local Development](../../../../guides/local-development.mdx)
