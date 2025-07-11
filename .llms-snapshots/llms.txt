@@ -76,6 +76,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 ## Examples - Functions - Typescript
   
 - [TypeScript Assertions Example](https://juno.build/docs/examples/functions/typescript/assertion.md): An example demonstrating how to write custom assertions in TypeScript for Juno serverless functions.
+- [Mutating Documents with TypeScript Hooks](https://juno.build/docs/examples/functions/typescript/mutating-docs.md): An example demonstrating how to modify and re-save documents in Juno Satellites using TypeScript hooks.
 
 ## Guides
   

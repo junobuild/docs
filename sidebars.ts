@@ -138,7 +138,10 @@ const sidebars: SidebarsConfig = {
                 description:
                   "Examples of writing serverless functions in TypeScript for Juno. Includes patterns like custom assertions, data manipulation and calls."
               },
-              items: ["examples/functions/typescript/assertion"]
+              items: [
+                "examples/functions/typescript/assertion",
+                "examples/functions/typescript/mutating-docs"
+              ]
             }
           ]
         }
