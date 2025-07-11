@@ -1,0 +1,289 @@
+---
+title: Making Canister Calls in TypeScript Serverless Functions
+description: An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in TypeScript using Juno Satellites.
+keywords:
+  [
+    typescript,
+    canister call,
+    transfer_from,
+    icrc,
+    icp,
+    serverless,
+    juno,
+    satellite,
+    example
+  ]
+sidebar_label: Canister Calls
+---
+
+# Making Canister Calls in TypeScript Serverless Functions
+
+This example demonstrates how to use **TypeScript serverless functions** to perform canister calls (such as `transfer_from` on the ICP ledger) in response to Datastore events in your Juno **Satellite**.
+
+When a document is added to the `request` collection, a serverless function is triggered to:
+
+- Check if the user has enough ICP in their wallet
+- Transfer ICP from the user's wallet to the Satellite using the ICRC ledger's `transfer_from` method
+- Mark the request as `processed` if the transfer succeeds
+
+This pattern is useful for building workflows that require on-chain asset transfers or other canister calls in response to user actions.
+
+You can browse the source code here: [github.com/junobuild/examples/tree/main/functions/typescript/calls](https://github.com/junobuild/examples/tree/main/functions/typescript/calls)
+
+---
+
+## Folder Structure
+
+```
+typescript/calls/
+├── src/
+│   ├── satellite/           # TypeScript Satellite serverless function
+│   │   ├── index.ts         # Main TypeScript logic for Satellite
+│   │   ├── services.ts      # Helper logic for balance, transfer, status
+│   │   ├── ledger-icrc.ts   # Ledger helper functions
+│   │   └── tsconfig.json    # TypeScript config for Satellite
+│   ├── declarations/
+│   │   └── satellite/       # TypeScript declarations for Satellite
+│   ├── components/          # React frontend components
+│   ├── services/            # Frontend service logic
+│   ├── types/               # Frontend type definitions
+│   ├── main.tsx             # Frontend entry
+│   └── ...
+├── juno.config.ts           # Juno Satellite configuration
+├── package.json             # Frontend dependencies
+└── ...
+```
+
+---
+
+## Key Features
+
+- **Serverless Canister Calls**: Demonstrates how to perform ICRC ledger calls (e.g., `transfer_from`) from TypeScript serverless functions.
+- **Atomic Request Processing**: Ensures that request status is only updated if the transfer succeeds.
+- **Wallet Balance Checks**: Fails early if the user does not have enough ICP.
+- **Minimal React UI**: A simple React frontend is included to test and demonstrate the logic.
+
+---
+
+## Main Backend Components
+
+- **src/satellite/index.ts**: The entry point for the Satellite serverless function. Triggers the canister call and updates request status on document set.
+- **src/satellite/services.ts**: Helper logic for checking wallet balance, performing the transfer, and updating request status.
+- **src/satellite/ledger-icrc.ts**: Helper functions for interacting with the ICRC ledger.
+- **src/types/request.ts**: Data model for requests and status.
+
+---
+
+## Example: Canister Call on Document Set
+
+Here’s the actual TypeScript logic from `index.ts` and `services.ts`:
+
+```ts
+// src/satellite/index.ts
+import { Account } from "@dfinity/ledger-icrc/dist/candid/icrc_ledger";
+import { Principal } from "@dfinity/principal";
+import {
+  type AssertSetDoc,
+  defineAssert,
+  defineHook,
+  type OnSetDoc
+} from "@junobuild/functions";
+import { id } from "@junobuild/functions/ic-cdk";
+import { decodeDocData } from "@junobuild/functions/sdk";
+import { COLLECTION_REQUEST, ICP_LEDGER_ID } from "../constants/app.constants";
+import { RequestData, RequestDataSchema } from "../types/request";
+import {
+  assertWalletBalance,
+  setRequestProcessed,
+  transferIcpFromWallet
+} from "./services";
+
+export const assertSetDoc = defineAssert<AssertSetDoc>({
+  collections: [COLLECTION_REQUEST],
+  assert: (context) => {
+    // We validate that the data submitted for create or update matches the expected schema.
+    const person = decodeDocData<RequestData>(context.data.data.proposed.data);
+    RequestDataSchema.parse(person);
+  }
+});
+
+export const onSetDoc = defineHook<OnSetDoc>({
+  collections: [COLLECTION_REQUEST],
+  run: async (context) => {
+    // Init data
+    const {
+      data: {
+        key,
+        data: {
+          after: { version }
+        }
+      }
+    } = context;
+    const data = decodeDocData<RequestData>(context.data.data.after.data);
+    const { amount: requestAmount, fee } = data;
+    const ledgerId = ICP_LEDGER_ID;
+    const fromAccount: Account = {
+      owner: Principal.fromUint8Array(context.caller),
+      subaccount: []
+    };
+    // Check current account balance
+    await assertWalletBalance({
+      ledgerId,
+      fromAccount,
+      amount: requestAmount,
+      fee
+    });
+    // Update request status to processed (atomic with transfer)
+    setRequestProcessed({
+      key,
+      version,
+      data
+    });
+    // Transfer from wallet to satellite
+    const toAccount: Account = {
+      owner: id(),
+      subaccount: []
+    };
+    await transferIcpFromWallet({
+      ledgerId,
+      fromAccount,
+      toAccount,
+      amount: requestAmount,
+      fee
+    });
+  }
+});
+```
+
+```ts
+// src/satellite/services.ts
+export const assertWalletBalance = async ({
+  ledgerId,
+  fromAccount,
+  amount,
+  fee
+}: {
+  ledgerId: Principal;
+  fromAccount: Account;
+  amount: bigint;
+  fee: bigint | undefined;
+}) => {
+  const balance = await icrcBalanceOf({
+    ledgerId,
+    account: fromAccount
+  });
+  const total = amount + (fee ?? IC_TRANSACTION_FEE_ICP);
+  if (balance < total) {
+    throw new Error(
+      `Balance ${balance} is smaller than ${total} for account ${fromAccount.owner.toText()}.`
+    );
+  }
+};
+
+export const transferIcpFromWallet = async (params: {
+  ledgerId: Principal;
+  fromAccount: Account;
+  toAccount: Account;
+  amount: bigint;
+  fee: bigint | undefined;
+}): Promise<bigint> => {
+  const result = await icrcTransferFrom(params);
+  if ("Err" in result) {
+    throw new Error(
+      `Failed to transfer ICP from wallet: ${JSON.stringify(result)}`
+    );
+  }
+  return result.Ok;
+};
+
+export const setRequestProcessed = ({
+  key,
+  data: currentData,
+  version: originalVersion
+}: {
+  key: string;
+  data: RequestData;
+  version: bigint | undefined;
+}) => {
+  const updateData: RequestData = {
+    ...currentData,
+    status: "processed"
+  };
+  const data = encodeDocData(updateData);
+  const doc: SetDoc = {
+    data,
+    version: originalVersion
+  };
+  setDocStore({
+    caller: id(),
+    collection: COLLECTION_REQUEST,
+    doc,
+    key
+  });
+};
+```
+
+**Explanation:**
+
+- When a request is submitted, the `onSetDoc` hook is triggered for the `request` collection.
+- The function checks the user's wallet balance, updates the request status, and performs the ICP transfer atomically.
+- If any step fails, the entire operation is reverted.
+- The frontend can monitor request status and balances via the exposed APIs.
+
+---
+
+## How to Run
+
+1.  **Clone the repo**:
+
+```bash
+git clone https://github.com/junobuild/examples
+cd typescript/calls
+```
+
+import HowToStart from "../../components/how-to-start.mdx";
+
+<HowToStart index={2} />
+
+import CreateSatellite from "../../components/create-a-satellite.mdx";
+
+<CreateSatellite index={4} />
+
+5. **Create required collections**:
+
+- `request` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
+
+import HowToRun from "../components/how-to-run.md";
+
+<HowToRun />
+
+---
+
+import Config from "../components/config.md";
+
+<Config />
+
+---
+
+import ProdDeploy from "../components/prod-deploy.md";
+
+<ProdDeploy />
+
+---
+
+## Notes
+
+- This example focuses on the TypeScript serverless function. The frontend is intentionally minimal and included only for demonstration.
+- Use this project as a starting point for writing custom backend logic in TypeScript using Juno serverless functions and canister calls.
+
+---
+
+import CyclesWatch from "./components/cycles-watch.md";
+
+<CyclesWatch />
+
+---
+
+import References from "./components/references.md";
+
+<References />
