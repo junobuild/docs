@@ -1,0 +1,197 @@
+---
+title: Mutating Documents with TypeScript Hooks
+description: An example demonstrating how to modify and re-save documents in Juno Satellites using TypeScript hooks.
+keywords: [typescript, hooks, serverless, functions, juno, satellite, example]
+sidebar_label: Mutation
+---
+
+# Mutating Documents with TypeScript Hooks
+
+This example demonstrates how to use **hooks in TypeScript** to modify documents automatically when they're created or updated in your Juno **Satellite**.
+
+Hooks let you react to events like document creation, deletion, or asset uploads — and run custom backend logic in response.
+
+You can browse the source code here: [github.com/junobuild/examples/tree/main/functions/typescript/hooks](https://github.com/junobuild/examples/tree/main/functions/typescript/hooks)
+
+---
+
+## Folder Structure
+
+```
+typescript/hooks/
+├── src/
+│   ├── satellite/           # TypeScript Satellite serverless function
+│   │   ├── index.ts         # Main TypeScript logic for Satellite
+│   │   └── tsconfig.json    # TypeScript config for Satellite
+│   ├── declarations/
+│   │   └── satellite/       # TypeScript declarations for Satellite
+│   ├── admin.ts             # Frontend admin logic
+│   ├── doc.ts               # Frontend doc logic
+│   ├── main.ts              # Frontend entry point
+│   ├── storage.ts           # Frontend storage logic
+│   ├── style.css            # Frontend styles
+│   └── types.ts             # Shared types and schemas
+├── juno.config.ts           # Juno Satellite configuration
+├── package.json             # Frontend dependencies
+└── ...
+```
+
+---
+
+## Key Features
+
+- **Serverless Hooks in TypeScript**: Demonstrates how to react to data and asset operations using hooks in TypeScript serverless functions.
+- **Multiple Hook Types**: Includes hooks for document set operations (extendable for set-many, delete, upload, etc.).
+- **Serverless Integration**: Runs as a Satellite function and integrates with Juno's datastore and authentication system.
+- **Minimal UI for Testing**: A simple frontend is included to test and demonstrate the hook logic in action.
+
+---
+
+## Main Backend Components
+
+- **src/satellite/index.ts**: The core TypeScript logic for the Satellite serverless function. Implements hooks for various operations (set, assert, etc.).
+- **src/types.ts**: Shared Zod schema and types for document validation and decoding.
+
+---
+
+## Example: Mutating Documents
+
+Here’s the actual TypeScript logic from `index.ts`:
+
+```ts
+import {
+  type AssertSetDoc,
+  defineAssert,
+  defineHook,
+  type OnSetDoc
+} from "@junobuild/functions";
+import { PersonData, PersonDataSchema } from "../types";
+import {
+  decodeDocData,
+  encodeDocData,
+  setDocStore
+} from "@junobuild/functions/sdk";
+import { Principal } from "@dfinity/principal";
+
+export const assertSetDoc = defineAssert<AssertSetDoc>({
+  collections: ["demo"],
+  assert: (context) => {
+    // We validate that the data submitted for create or update matches the expected schema.
+    const person = decodeDocData<PersonData>(context.data.data.proposed.data);
+    PersonDataSchema.parse(person);
+  }
+});
+
+export const onSetDoc = defineHook<OnSetDoc>({
+  collections: ["demo"],
+  run: async (context) => {
+    const {
+      caller,
+      data: {
+        key,
+        collection,
+        data: { after: currentDoc }
+      }
+    } = context;
+
+    // We decode the new data saved in the Datastore because it holds those as blob.
+    const person = decodeDocData<PersonData>(currentDoc.data);
+
+    // Some console.log for demo purpose
+    console.log(
+      "[on_set_doc] Caller:",
+      Principal.fromUint8Array(caller).toText()
+    );
+    console.log("[on_set_doc] Collection:", collection);
+    console.log("[on_set_doc] Data:", person.principal, person.value);
+
+    // We update the document's data that was saved in the Datastore with the call from the frontend dapp.
+    const { hello, ...rest } = person;
+    const updatePerson = {
+      ...rest,
+      hello: `${hello} checked`,
+      yolo: false
+    };
+
+    // We encode the data back to blob.
+    const updateData = encodeDocData(updatePerson);
+
+    // We save the document for the same caller as the one who triggered the original on_set_doc, in the same collection with the same key as well.
+    setDocStore({
+      caller: caller,
+      collection,
+      key,
+      doc: {
+        version: currentDoc.version,
+        data: updateData
+      }
+    });
+  }
+});
+```
+
+**Explanation:**
+
+- Defines a `PersonData` type and Zod schema for validation.
+- Uses `defineAssert` to validate document data before creation or update.
+- Uses `defineHook` to run logic whenever a document is set in the `demo` collection. Updates the document and saves it back.
+- Uses the Juno SDK for encoding/decoding and storing documents.
+
+---
+
+## How to Run
+
+1. **Clone the repo**:
+
+```bash
+git clone https://github.com/junobuild/examples
+cd typescript/hooks
+```
+
+import HowToStart from "../../components/how-to-start.mdx";
+
+<HowToStart index={2} />
+
+import CreateSatellite from "../../components/create-a-satellite.mdx";
+
+<CreateSatellite index={4} />
+
+5. **Create required collections**:
+
+- `demo` in Datastore: [http://localhost:5866/datastore](http://localhost:5866/datastore)
+- `images` in Storage: [http://localhost:5866/storage](http://localhost:5866/storage)
+
+import HowToRun from "../components/how-to-run.md";
+
+<HowToRun />
+
+---
+
+import Config from "../components/config.md";
+
+<Config />
+
+---
+
+import ProdDeploy from "../components/prod-deploy.md";
+
+<ProdDeploy />
+
+---
+
+## Notes
+
+- This example focuses on the TypeScript serverless function. The frontend is intentionally minimal and included only for demonstration.
+- Use this project as a starting point for writing custom backend logic in TypeScript using Juno hooks.
+
+---
+
+import CyclesWatch from "./components/cycles-watch.md";
+
+<CyclesWatch />
+
+---
+
+import References from "./components/references.md";
+
+<References />
