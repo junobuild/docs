@@ -140,7 +140,8 @@ const sidebars: SidebarsConfig = {
               },
               items: [
                 "examples/functions/typescript/assertion",
-                "examples/functions/typescript/mutating-docs"
+                "examples/functions/typescript/mutating-docs",
+                "examples/functions/typescript/canister-calls"
               ]
             }
           ]
