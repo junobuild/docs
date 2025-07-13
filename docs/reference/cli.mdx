@@ -53,21 +53,27 @@ Authenticating your terminal saves sensitive information on your device. We reco
 
 <Login />
 
-:::note
-
 The authentication process requires a browser.
 
-If you've previously authenticated your terminal and decide to log in again, the CLI will prompt you about reusing your existing identity.
+#### Reusing Access Key
+
+If you've previously authenticated your terminal and decide to log in again, the CLI will prompt you about reusing your existing access key.
 
 This allows you to reuse your authorization, especially when creating new modules like satellites or orbiters.
 
-:::
+#### Modes
+
+The CLI supports multiple environment modes (`production`, `staging`, `development`, etc.).
+
+Each mode requires its own login and identity for security reasons.
+For example: `juno login --mode staging` or `juno login --mode development`.
+If no mode is specified, it defaults to `production`.
 
 #### How does it work?
 
-A new [principal] is generated on your local machine and added as a [controller] of the selected modules. This principal is then used to authenticate any CLI calls made from your terminal to your satellites, mission controls or other modules.
+A new [principal] is generated on your local machine and added as a administrator [access key](../miscellaneous/access-keys.md) of the selected modules. This principal is then used to authenticate any CLI calls made from your terminal to your satellites, mission controls or other modules.
 
-The key is saved in the OS-specific user's variables path.
+The key is saved in the OS-specific user's variables path, for example:
 
 | OS      | Path                                                                                                 |
 | ------- | ---------------------------------------------------------------------------------------------------- |
