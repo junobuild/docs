@@ -7072,22 +7072,28 @@ Authenticating your terminal saves sensitive information on your device. We reco
 Generate an authentication for use in non-interactive environments.
 
 ```
-Usage: juno login [options]Options:  -b, --browser         A particular browser to open. supported: chrome|firefox|edge.  -h, --help            Output usage information.
+Usage: juno login [options]Options:  -b, --browser         A particular browser to open. supported: chrome|firefox|edge.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -h, --help            Output usage information.
 ```
-
-**Note:**
 
 The authentication process requires a browser.
 
-If you've previously authenticated your terminal and decide to log in again, the CLI will prompt you about reusing your existing identity.
+#### Reusing Access Key
+
+If you've previously authenticated your terminal and decide to log in again, the CLI will prompt you about reusing your existing access key.
 
 This allows you to reuse your authorization, especially when creating new modules like satellites or orbiters.
 
+#### Modes
+
+The CLI supports multiple environment modes (`production`, `staging`, `development`, etc.).
+
+Each mode requires its own login and identity for security reasons. For example: `juno login --mode staging` or `juno login --mode development`. If no mode is specified, it defaults to `production`.
+
 #### How does it work?
 
-A new [principal](/docs/terminology.md#principal) is generated on your local machine and added as a [controller](/docs/terminology.md#controller) of the selected modules. This principal is then used to authenticate any CLI calls made from your terminal to your satellites, mission controls or other modules.
+A new [principal](/docs/terminology.md#principal) is generated on your local machine and added as a administrator [access key](/docs/miscellaneous/access-keys.md) of the selected modules. This principal is then used to authenticate any CLI calls made from your terminal to your satellites, mission controls or other modules.
 
-The key is saved in the OS-specific user's variables path.
+The key is saved in the OS-specific user's variables path, for example:
 
 | OS  | Path |
 | --- | --- |
@@ -7116,7 +7122,7 @@ Usage: juno logout [options]Options:  -h, --help            Output usage informa
 Set up your project.
 
 ```
-Usage: juno init [options]Options:  --minimal         Skip few prompts and generate a config file with a placeholder satellite ID.  -m, --mode            Set env mode. For example production or a custom string. Default is production.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
+Usage: juno init [options]Options:  --minimal         Skip few prompts and generate a config file with a placeholder satellite ID.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
 ```
 
 The `juno init` command creates a `juno.config` file in the root directory of your project.
@@ -7138,7 +7144,7 @@ Read more about the [configuration](/docs/reference/configuration.md).
 Deploy your app to your satellite.
 
 ```
-Usage: juno deploy [options]Options:  -c, --clear           Clear existing app files before proceeding with deployment.  --no-apply            Submit the deployment as a change but do not apply it yet.  -k, --keep-staged     Keep staged assets in memory after applying the change.  -i, --immediate       Deploy files instantly (bypasses the change workflow).  -m, --mode            Set env mode. For example production or a custom string. Default is production.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- The option --keep-staged only applies when --no-apply is NOT used (i.e. the change is applied immediately).
+Usage: juno deploy [options]Options:  -c, --clear           Clear existing app files before proceeding with deployment.  --no-apply            Submit the deployment as a change but do not apply it yet.  -k, --keep-staged     Keep staged assets in memory after applying the change.  -i, --immediate       Deploy files instantly (bypasses the change workflow).  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- The option --keep-staged only applies when --no-apply is NOT used (i.e. the change is applied immediately).
 ```
 
 ---
@@ -7148,7 +7154,7 @@ Usage: juno deploy [options]Options:  -c, --clear           Clear existing app f
 Apply configuration to satellite.
 
 ```
-Usage: juno config [options]Options:  -m, --mode            Set env mode. For example production or a custom string. Default is production.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
+Usage: juno config [options]Options:  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
 ```
 
 ---
@@ -7158,7 +7164,7 @@ Usage: juno config [options]Options:  -m, --mode            Set env mode. For ex
 Handle snapshot-related tasks.
 
 ```
-Usage: juno snapshot <subcommand> [options]Subcommands:  create               Create a snapshot of your current state.  restore              Restore a previously created snapshot.  delete               Delete an existing snapshot.Options:  -t, --target          Which module type should be snapshotted? Valid targets are satellite, mission-control or orbiter.  -m, --mode            Set env mode. For example production or a custom string. Default is production.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- Targets can be shortened to s for satellite, m for mission-control and o for orbiter.
+Usage: juno snapshot <subcommand> [options]Subcommands:  create               Create a snapshot of your current state.  restore              Restore a previously created snapshot.  delete               Delete an existing snapshot.Options:  -t, --target          Which module type should be snapshotted? Valid targets are satellite, mission-control or orbiter.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- Targets can be shortened to s for satellite, m for mission-control and o for orbiter.
 ```
 
 ---
@@ -7168,7 +7174,7 @@ Usage: juno snapshot <subcommand> [options]Subcommands:  create               Cr
 Stop a module.
 
 ```
-Usage: juno stop [options]Options:  -t, --target          Which module type should be stopped? Valid targets are satellite, mission-control or orbiter.  -m, --mode            Set env mode. For example production or a custom string. Default is production.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- Targets can be shortened to s for satellite, m for mission-control and o for orbiter.
+Usage: juno stop [options]Options:  -t, --target          Which module type should be stopped? Valid targets are satellite, mission-control or orbiter.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- Targets can be shortened to s for satellite, m for mission-control and o for orbiter.
 ```
 
 ---
@@ -7178,7 +7184,7 @@ Usage: juno stop [options]Options:  -t, --target          Which module type shou
 Start a module.
 
 ```
-Usage: juno start [options]Options:  -t, --target          Which module type should be started? Valid targets are satellite, mission-control or orbiter.  -m, --mode            Set env mode. For example production or a custom string. Default is production.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- Targets can be shortened to s for satellite, m for mission-control and o for orbiter.
+Usage: juno start [options]Options:  -t, --target          Which module type should be started? Valid targets are satellite, mission-control or orbiter.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- Targets can be shortened to s for satellite, m for mission-control and o for orbiter.
 ```
 
 ---
@@ -7188,7 +7194,7 @@ Usage: juno start [options]Options:  -t, --target          Which module type sho
 Clear existing app code by removing JavaScript, HTML, CSS, and other files from your satellite.
 
 ```
-Usage: juno clear [options]Options:  -f, --fullPath        Clear a particular file of your app.  -m, --mode            Set env mode. For example production or a custom string. Default is production.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
+Usage: juno clear [options]Options:  -f, --fullPath        Clear a particular file of your app.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
 ```
 
 **Note:**
@@ -7202,7 +7208,7 @@ This command removes existing files from the satellite and only affects the app 
 Upgrade a module to a new version.
 
 ```
-Usage: juno upgrade [options]Options:  -t, --target          Which module type should be upgraded? Valid targets are satellite, mission-control or orbiter.  -s, --src             A path to a specific local gzipped WASM file to publish.  --clear-chunks        Clear any previously uploaded WASM chunks (applies if the WASM size is greater than 2MB).  --no-snapshot         Skip creating a snapshot before upgrading.  -r, --reset           Reset to the initial state.  -m, --mode            Set env mode. For example production or a custom string. Default is production.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- Resetting a mission control is not possible.- Targets can be shortened to s for satellite, m for mission-control and o for orbiter.
+Usage: juno upgrade [options]Options:  -t, --target          Which module type should be upgraded? Valid targets are satellite, mission-control or orbiter.  -s, --src             A path to a specific local gzipped WASM file to publish.  --clear-chunks        Clear any previously uploaded WASM chunks (applies if the WASM size is greater than 2MB).  --no-snapshot         Skip creating a snapshot before upgrading.  -r, --reset           Reset to the initial state.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- Resetting a mission control is not possible.- Targets can be shortened to s for satellite, m for mission-control and o for orbiter.
 ```
 
 **Important:**
@@ -7279,7 +7285,7 @@ Usage: juno dev start [options]Options:  -l, --lang            Specify the langu
 Build and upgrade your satellite's serverless functions.
 
 ```
-Usage: juno functions <subcommand> [options]Subcommands:  build                Build your functions.  eject                Scaffold the necessary files for developing your serverless functions.  publish              Publish a new version of your functions.  upgrade              Upgrade your satellite's serverless functions.Notes:- The local server supports live reloading.- You can use fn as a shortcut for functions.
+Usage: juno functions <subcommand> [options]Subcommands:  build                Build your functions.  eject                Scaffold the necessary files for developing your serverless functions.  init                 Alias for eject.  publish              Publish a new version of your functions.  upgrade              Upgrade your satellite's serverless functions.Notes:- The local server supports live reloading.- You can use fn as a shortcut for functions.
 ```
 
 ---
@@ -7309,7 +7315,7 @@ Usage: juno functions eject [options]Options:  -l, --lang            Specify the
 Publish a new version of your serverless functions.
 
 ```
-Usage: juno functions publish [options]Options:  --no-apply            Submit the release as a change but do not apply it yet.  -k, --keep-staged     Keep staged assets in memory after applying the change.  -s, --src             A path to a specific local gzipped WASM file to publish.  -m, --mode            Set env mode. For example production or a custom string. Default is production.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- The option --keep-staged only applies when --no-apply is NOT used (i.e. the change is applied immediately).
+Usage: juno functions publish [options]Options:  --no-apply            Submit the release as a change but do not apply it yet.  -k, --keep-staged     Keep staged assets in memory after applying the change.  -s, --src             A path to a specific local gzipped WASM file to publish.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- The option --keep-staged only applies when --no-apply is NOT used (i.e. the change is applied immediately).
 ```
 
 ---
@@ -7335,7 +7341,7 @@ Additional commands for managing and interacting with the CLI environment.
 Open your satellite in your browser.
 
 ```
-Usage: juno open [options]Options:  -b, --browser         A particular browser to open. supported: chrome|firefox|edge.  -c, --console         Open satellite in the console.  -m, --mode            Set env mode. For example production or a custom string. Default is production.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
+Usage: juno open [options]Options:  -b, --browser         A particular browser to open. supported: chrome|firefox|edge.  -c, --console         Open satellite in the console.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
 ```
 
 ---
@@ -7355,7 +7361,7 @@ Usage: juno use [options]Options:  -p, --profile         The profile that should
 Check the version of the modules and CLI.
 
 ```
-Usage: juno init [options]Options:  -c, --cli             Check only the version of the CLI.  -m, --mode            Set env mode. For example production or a custom string. Default is production.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
+Usage: juno init [options]Options:  -c, --cli             Check only the version of the CLI.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
 ```
 
 ---
@@ -7365,7 +7371,7 @@ Usage: juno init [options]Options:  -c, --cli             Check only the version
 Display your current profile, access key, and links to your satellite.
 
 ```
-Usage: juno whoami [options]Options:  -h, --help            Output usage information.  -m, --mode            Set env mode. For example production or a custom string. Default is production.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.
+Usage: juno whoami [options]Options:  -h, --help            Output usage information.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.
 ```
 
 # Configuration
