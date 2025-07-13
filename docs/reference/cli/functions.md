@@ -6,6 +6,7 @@ Usage: juno functions <subcommand> [options]
 Subcommands:
   build                Build your functions.
   eject                Scaffold the necessary files for developing your serverless functions.
+  init                 Alias for eject.
   publish              Publish a new version of your functions.
   upgrade              Upgrade your satellite's serverless functions.
 
