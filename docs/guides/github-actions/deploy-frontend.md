@@ -61,6 +61,35 @@ If your `juno.config` file does not build your application using a `predeploy` f
 
 ---
 
+## Modes
+
+The GitHub Action is basically just an environment that proxies commands to the CLI. That’s why you can also pass the `--mode` option flag. Useful, for example, if you want to deploy your app for a `staging` instead of the default `production`.
+
+You can either hardcode the mode in the arguments:
+
+```yaml
+- name: Deploy to Juno
+  uses: junobuild/juno-action@main
+  with:
+    args: deploy --mode staging
+  env:
+    JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+Or, if you're using an environment variable, pass it like this:
+
+```yaml
+- name: Deploy to Juno
+  uses: junobuild/juno-action@main
+  with:
+    args: deploy --mode ${{ env.JUNO_MODE }}
+  env:
+    JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+    JUNO_MODE: staging
+```
+
+---
+
 ## Optimization & Best Practices
 
 Below are key considerations to ensure efficient and cost-effective deployment of your project.
