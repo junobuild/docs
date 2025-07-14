@@ -1216,6 +1216,48 @@ The `deleteFilteredDocs` function allows you to delete multiple documents from a
 import { deleteFilteredDocs } from "@junobuild/core";await deleteFilteredDocs({  collection: "my_collection_key",  filter: {    // Same options as filter of listDocs  }});
 ```
 
+---
+
+## Options
+
+This section covers additional options that can be used with most of the functions listed above.
+
+### Certified Reads
+
+All read functions support a `certified` option that can be enabled to guarantee cryptographic verification of the returned data.
+
+By default, uncertified reads are used for better performance and UX. Those are faster but do not provide cryptographic guarantees.
+
+When `options.certified` is enabled, the function performs an update call under the hood. This ensures the response is verified by the Internet Computer but may increase latency.
+
+#### When to Use Certified Reads
+
+Certified reads matter when trust in displayed information is more important than speed, or when your app exposes publicly verifiable data — such as user balances, or voting results.
+
+For those use cases, a common pattern is deduplicating the call: making an uncertified call for UX purposes — fetching and displaying data quickly — and an update call in parallel, which might take longer but ensures verification. If the latter fails, revert the information and warn users about the issue.
+
+#### Example
+
+```
+import { listDocs } from "@junobuild/core";await listDocs({  collection: "my_collection_key",  options: { certified: true }});
+```
+
+### Node.js Usage
+
+In Node.js or outside the browser, you must explicitly pass a `satellite` parameter specifying the satellite configuration, so the function knows which satellite to target and how to connect to it.
+
+This is required because `initSatellite()` is only available in browser environments.
+
+**Important:**
+
+You never need to set this parameter in a browser context.
+
+#### Example
+
+```
+import { getDoc } from "@junobuild/core";await getDoc({  collection: "my_collection_key",  key: "my_document_key",  satellite: {    identity: myIdentity,    satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",    container: true  }});
+```
+
 # Lifecycle
 
 Understand the full journey of Serverless Functions in Juno, from setup and development to deployment and maintenance.
@@ -2189,6 +2231,48 @@ The `deleteFilteredAssets` function allows you to delete multiple assets from a 
 
 ```
 import { deleteFilteredAssets } from "@junobuild/core";await deleteFilteredAssets({  collection: "my_collection_key",  filter: {    // Uses the same filter options as listAssets  }});
+```
+
+---
+
+## Options
+
+This section covers additional options that can be used with most of the functions listed above.
+
+### Certified Reads
+
+All read functions support a `certified` option that can be enabled to guarantee cryptographic verification of the returned data.
+
+By default, uncertified reads are used for better performance and UX. Those are faster but do not provide cryptographic guarantees.
+
+When `options.certified` is enabled, the function performs an update call under the hood. This ensures the response is verified by the Internet Computer but may increase latency.
+
+#### When to Use Certified Reads
+
+Certified reads matter when trust in displayed information is more important than speed, or when your app exposes publicly verifiable data — such as user balances, or voting results.
+
+For those use cases, a common pattern is deduplicating the call: making an uncertified call for UX purposes — fetching and displaying data quickly — and an update call in parallel, which might take longer but ensures verification. If the latter fails, revert the information and warn users about the issue.
+
+#### Example
+
+```
+import { listAssets } from "@junobuild/core";await listAssets({  collection: "my_collection_key",  options: { certified: true }});
+```
+
+### Node.js Usage
+
+In Node.js or outside the browser, you must explicitly pass a `satellite` parameter specifying the satellite configuration, so the function knows which satellite to target and how to connect to it.
+
+This is required because `initSatellite()` is only available in browser environments.
+
+**Important:**
+
+You never need to set this parameter in a browser context.
+
+#### Example
+
+```
+import { getAsset } from "@junobuild/core";await getAsset({  collection: "my_collection_key",  fullPath: "/images/logo.png",  satellite: {    identity: myIdentity,    satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",    container: true  }});
 ```
 
 # Frontend
