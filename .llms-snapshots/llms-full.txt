@@ -2391,7 +2391,6 @@ juno dev start
 ```
 
 3.  **Create a Satellite** for local dev:
-    
     *   Visit [http://localhost:5866](http://localhost:5866) and follow the instructions.
     *   Update `src/environments/environment.ts` with your Satellite ID.
 
