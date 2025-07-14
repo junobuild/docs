@@ -421,4 +421,45 @@ await deleteFilteredDocs({
 });
 ```
 
+---
+
+## Options
+
+This section covers additional options that can be used with most of the functions listed above.
+
+import CertifiedReads from "../components/certified-reads.md";
+
+<CertifiedReads />
+
+#### Example
+
+```typescript
+import { listDocs } from "@junobuild/core";
+
+await listDocs({
+  collection: "my_collection_key",
+  options: { certified: true }
+});
+```
+
+import NodeJSUsage from "../components/nodejs-usage.md";
+
+<NodeJSUsage />
+
+#### Example
+
+```typescript
+import { getDoc } from "@junobuild/core";
+
+await getDoc({
+  collection: "my_collection_key",
+  key: "my_document_key",
+  satellite: {
+    identity: myIdentity,
+    satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+    container: true
+  }
+});
+```
+
 [JSON]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#description

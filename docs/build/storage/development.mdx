@@ -417,3 +417,44 @@ await deleteFilteredAssets({
   }
 });
 ```
+
+---
+
+## Options
+
+This section covers additional options that can be used with most of the functions listed above.
+
+import CertifiedReads from "../components/certified-reads.md";
+
+<CertifiedReads />
+
+#### Example
+
+```typescript
+import { listAssets } from "@junobuild/core";
+
+await listAssets({
+  collection: "my_collection_key",
+  options: { certified: true }
+});
+```
+
+import NodeJSUsage from "../components/nodejs-usage.md";
+
+<NodeJSUsage />
+
+#### Example
+
+```typescript
+import { getAsset } from "@junobuild/core";
+
+await getAsset({
+  collection: "my_collection_key",
+  fullPath: "/images/logo.png",
+  satellite: {
+    identity: myIdentity,
+    satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",
+    container: true
+  }
+});
+```
