@@ -202,16 +202,13 @@ const myList = await listDocs({
 The function requires a collection and accepts various optional parameters, including a matcher (a regex applied to the document keys and descriptions), pagination options, and sorting order.
 
 1. **`collection`** (required)
-
    - **Description**: The key of the collection from which documents are to be listed.
    - **Type**: `string`
 
 2. **`filter`** (optional)
-
    - **Description**: An optional object that can be used to provide various parameters to filter documents.
 
    a. **`matcher`** (optional)
-
    - **Description**: An object used to filter documents based on their keys or descriptions using regular expressions.
    - **Type**: `ListMatcher`
 
@@ -255,7 +252,6 @@ The function requires a collection and accepts various optional parameters, incl
      ```
 
      - **matcher**: Specifies the type of timestamp comparison. Can be one of the following:
-
        - **equal**: Matches documents where the timestamp is exactly equal to the specified value.
        - **greaterThan**: Matches documents where the timestamp is greater than the specified value.
        - **lessThan**: Matches documents where the timestamp is less than the specified value.
@@ -265,7 +261,6 @@ The function requires a collection and accepts various optional parameters, incl
      - **timestamps**: Used with the `between` matcher to specify a range of timestamps. The range is inclusive of both the start and end values.
 
    b. **`paginate`** (optional)
-
    - **Description**: An object to control pagination of the results
    - **Type**: `ListPaginate`
 
@@ -280,7 +275,6 @@ The function requires a collection and accepts various optional parameters, incl
      - **limit**: The maximum number of documents to return.
 
    c. **`order`** (optional)
-
    - **Description**: Control the sorting order of the results.
    - **Type**: `ListOrder`
 
@@ -294,7 +288,6 @@ The function requires a collection and accepts various optional parameters, incl
      ```
 
    d. **`owner`** (optional)
-
    - **Description**: The owner of the documents.
    - **Type**: `ListOwner`
 
