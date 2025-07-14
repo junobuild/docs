@@ -51,7 +51,6 @@ The Console, Observatory, and CDN are the smart contracts which aim to be contro
 In addition to the smart contracts themselves, Juno also provides a variety of libraries, tools and templates. These are meant to be used within the developer workflow when developers start, maintain, and develop their projects. They are designed to provide the best state-of-the-art developer experience.
 
 - **Javascript Libraries**:
-
   - **Core**: The core client library for interacting with satellites.
 
 - **Analytics**: A tracker for integrating analytics.

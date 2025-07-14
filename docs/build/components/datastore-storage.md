@@ -13,7 +13,6 @@ Juno gives you two ways to persist data. Both follow a collections-based archite
 Both Datastore and Storage use a unique identifier per item — but they refer to different things and are used differently.
 
 - **Datastore → `key`**:
-
   - A unique string you assign to each document within a collection.
   - Used to retrieve, update, or delete a specific document.
   - Commonly a UUID (e.g. `crypto.randomUUID()`), a nanoid, or any meaningful string like a slug or user ID.
