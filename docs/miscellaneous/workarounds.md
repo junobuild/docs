@@ -1,6 +1,6 @@
 # Workarounds
 
-This page is dedicated to helping you make the most of Juno features, even when some functionalities are not yet fully supported out of the box. Below, you'll find practical workarounds and guidance for processes which in the future will be resolved by features planned in the [roadmap](../white-paper/roadmap.mdx).
+This page is dedicated to helping you make the most of Juno features, even when some functionalities are not yet fully supported out of the box. Below, you'll find practical workarounds and guidance for processes which in the future will be resolved by new features.
 
 ---
 
