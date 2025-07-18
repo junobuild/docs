@@ -107,7 +107,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 ## Miscellaneous
   
 - [Access Keys](https://juno.build/docs/miscellaneous/access-keys.md): Learn how to manage access keys in Juno, their roles, and how to generate them using the CLI or Console.
-- [Architecture](https://juno.build/docs/miscellaneous/architecture.md): Explore the technical architecture of Juno, a decentralized development platform providing developers with full control over their data and applications.
+- [Architecture](https://juno.build/docs/miscellaneous/architecture.md): Explore the architecture behind Juno — a self-contained execution space where your entire application lives in a single deployable unit under your full control.
 - [Best Practices](https://juno.build/docs/miscellaneous/best-practices.md): This page provides recommendations to improve your application when developing and deploying with Juno.
 - [Infrastructure](https://juno.build/docs/miscellaneous/infrastructure.md): Discover how Juno's infrastructure leverages Web3 technologies to create a secure, scalable environment for decentralized applications.
 - [Memory](https://juno.build/docs/miscellaneous/memory.md): This page explains how memory works conceptually and how you can monitor its usage through the Console.
