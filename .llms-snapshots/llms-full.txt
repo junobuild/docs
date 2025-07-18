@@ -6702,6 +6702,72 @@ This method is useful if you want to generate a completely new key and apply it 
 
 This action will overwrite the previously saved key used to configure your local CLI environment.
 
+# Technical Architecture
+
+The architecture of Juno is designed to give developers complete control over their data and applications, ensuring a decentralized and secure development environment. It continuously evolves to meet the needs of developers and to incorporate the latest advancements.
+
+![Juno architecture schema showing developer control flow](/assets/images/architecture-ea813c74e7ec12ec0989052392308143.png)
+
+---
+
+## Core Components
+
+**Console**: The console is an admin interface for developers, providing a comprehensive suite of tools to manage and customize their projects. It maintains a list of Mission Control smart contracts and their associated anonymous user IDs. When a developer signs in, the console retrieves the developer's Mission Control and sends this information back to the developer's browser, allowing them to manage their Mission Control, satellites, and orbiters independently, with no control or intervention from Juno.
+
+The console offers a full range of administrative features for managing smart contracts, including the ability to top up, start, stop, and delete projects, as well as create new projects. Developers can manage anonymous users associated with their projects and handle data management tasks such as creating collections and entries in the datastore or storage. Additionally, the console allows for customization by setting new custom domains for projects. Developers can also consult logs from serverless functions and set up monitoring to keep track of application performance and health.
+
+This user-friendly interface ensures that developers have full control and flexibility over their projects, enhancing their ability to build and maintain decentralized applications efficiently.
+
+**Observatory**: The observatory is a specialized smart contract that developers authorize to call specific information through their Mission Control, particularly regarding the current status of their smart contracts. In essence, the observatory acts as a watchdog, performing periodic checks to monitor and ensure the proper lifecycle management of the developers' smart contracts. While it currently only reads information, it might be extended in the future to perform additional tasks such as automatic top-up.
+
+**CDN**: The CDN is a satellite that holds various libraries and assets used by Juno. It contains the metadata of WebAssembly (WASM) source files that developers use when upgrading their smart contracts. When a new version of any developer's smart contract is released, the updated version is published to the CDN. This ensures that releases are shipped end-to-end securely, providing a seamless and secure upgrade process for developers.
+
+The Console, Observatory, and CDN are the smart contracts which aim to be controlled by a Juno DAO.
+
+---
+
+## Developers Components
+
+**Mission Control**: Each developer is assigned a unique smart contract known as Mission Control. This smart contract acts as a hub for managing all of a developer's smart contracts (projects and tools), as well as serving as a wallet. This ensures that developers maintain full control over their applications and funds, with Juno having no control, rights, or access to any of the developer's creations.
+
+**Satellites**: Satellites serve as comprehensive entities that include memory, permission checks, and other Juno abstractions. Essentially, a satellite is a container for a developer's project or dApp, encompassing all necessary data, storage, application bundles, and assets. Each satellite operates independently and is dedicated to a single application, ensuring clear organization and management.
+
+**Orbiters**: Orbiters are specialized smart contracts used for analytics, functioning as a decentralized alternative to services like Google Analytics. They collect and process data, providing developers with valuable insights into their applications' performance and usage patterns. Like satellites, orbiters are fully controlled by the developer.
+
+---
+
+## Libraries, Tools and Templates
+
+In addition to the smart contracts themselves, Juno also provides a variety of libraries, tools and templates. These are meant to be used within the developer workflow when developers start, maintain, and develop their projects. They are designed to provide the best state-of-the-art developer experience.
+
+*   **Javascript Libraries**:
+    
+    *   **Core**: The core client library for interacting with satellites.
+*   **Analytics**: A tracker for integrating analytics.
+    
+*   **Admin**: Tools for interfacing with admin features, enabling project management.
+    
+*   **CLI**: A command-line interface for administrative purposes, allowing developers to manage their smart contracts and projects from the terminal.
+    
+*   **Plugins**: Various plugins meant to ease the integration of Juno in frontend applications, specifically for ViteJS and NextJs.
+    
+*   **GitHub Action**: Automation tools for interacting with and deploying via GitHub.
+    
+*   **Docker Images**: Pre-configured Docker images for local dApp development and end-to-end (E2E) testing, providing a consistent development environment.
+    
+*   **Plugins**: Various JS libraries
+    
+*   **Templates**: To help new developers discover Juno or seasoned developers start new projects, Juno provides a set of templates for the most well-known frontend frameworks, namely NextJS, React, Vue, Svelte, Astro, and Angular.
+    
+
+---
+
+## Documentation and Communication
+
+Juno maintains a website that serves as the landing page and documentation hub for developers. It offers comprehensive guides, tutorials, and resources to help developers get started with Juno, understand its features, and make the most of the platform. Additionally, the website plays a crucial role in communication and SEO, helping to attract new users, engage the community, and provide updates about the platform. This site is a key component for onboarding new users, supporting the developer community, and increasing Juno’s visibility and reach.
+
+The website will not be part of the DAO, as it requires frequent updates to reflect changes such as those in tooling and libraries, and because it is also used for communication, such as when new tutorials are published.
+
 # Best Practices
 
 This page provides recommendations to improve your application when developing and deploying with Juno.
@@ -6733,6 +6799,34 @@ Configure your Satellite to send a CSP header as part of the HTTP response. Head
 ```
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    storage: {      headers: [        {          source: "**/*",          headers: [["Content-Security-Policy", "REPLACE_THIS_WITH_YOUR_RULES"]]        }      ]    }  }});
 ```
+
+# Infrastructure
+
+Juno's infrastructure is designed to harness the full potential of Web3 technologies, creating a robust, secure, and scalable environment for developers to build decentralized applications.
+
+---
+
+## Internet Computer
+
+![An illustration representing Juno smart contracts living at the top of the Internet Computer](/assets/images/juno-internet-computer-905a4ce5071e12858c93525e424b9d30.webp)
+
+Juno operates on the Internet Computer (ICP or IC), a blockchain unlike any other. The Internet Computer is akin to adding a super-powered, self-running cloud to the regular internet. It enables the creation of various systems and services on a decentralized network using "canister software", which represents a more advanced version of smart contracts.
+
+The IC comprises a set of protocols that facilitate independent data centers worldwide in coming together to offer a decentralized alternative to the current centralized internet cloud providers, often referred to as Big Tech. These independent entities operate specialized "node machines" to generate the same number of blocks as other machines within their network, ensuring uniformity through a Proof-of-Useful-Work mechanism. Their tasks involve replicating smart contract computations for optimal efficiency.
+
+Thanks to its architecture, protocols, and cutting-edge cryptography, the Internet Computer stands out as the fastest blockchain, capable of directly delivering web content from smart contracts. This breakthrough enables 100% of online services to function on the blockchain, delivering complete decentralization and cost-effectiveness.
+
+---
+
+## Multi-Blockchain
+
+While the Internet Computer is our current backbone, Juno is not limited to using only the IC. Our infrastructure keeps doors open for future integration with other blockchains. This approach ensures that Juno can adapt and incorporate new technologies as they emerge, maintaining our commitment to decentralization and leveraging the best available blockchain solutions. Furthermore, Juno aims to enable communication across different chains, enhancing interoperability and expanding the possibilities for decentralized applications.
+
+---
+
+## Web2 Services
+
+While Juno aims to strictly use only Web3 providers and services, there are edge cases where technical or financial limitations necessitate the use of Web2 services. One example is the monitoring tool that sends emails to developers using Google Firebase Functions if their smart contracts are running out of resources. Another example is the usage of the services of the Boundary Nodes, which allow developers to register custom domains for their projects. These types of services are never enforced and are always subject to developers opting-in.
 
 # Memory
 
@@ -6951,7 +7045,7 @@ One key usage is converting ICP tokens to cycles, which are used to cover the co
 
 ## Why do I need ICP?
 
-Given that Juno is built on top of the Internet Computer (see [architecture](/docs/white-paper/architecture.md)), your smart contracts require cycles to remain active.
+Given that Juno is built on top of the Internet Computer (see [architecture](/docs/miscellaneous/architecture.md)), your smart contracts require cycles to remain active.
 
 While you don’t necessarily need ICP in the Juno ecosystem since you can acquire cycles with Stripe through [cycle.express](https://cycle.express), having some ICP can still be interesting.
 
@@ -7019,7 +7113,7 @@ Review the transaction details and confirm to execute it.
 
 # Workarounds
 
-This page is dedicated to helping you make the most of Juno features, even when some functionalities are not yet fully supported out of the box. Below, you'll find practical workarounds and guidance for processes which in the future will be resolved by features planned in the [roadmap](/docs/white-paper/roadmap.md).
+This page is dedicated to helping you make the most of Juno features, even when some functionalities are not yet fully supported out of the box. Below, you'll find practical workarounds and guidance for processes which in the future will be resolved by new features.
 
 ---
 
@@ -9574,7 +9668,7 @@ For current usage and setup, refer to the [Access Keys documentation](/docs/misc
 
 ## Cycles
 
-Cycles are used to pay for [infrastructure](/docs/white-paper/infrastructure.md) usage. Your [mission control](/docs/terminology.md#mission-control) or [satellite](/docs/terminology.md#satellite) consumes cycles while it's active.
+Cycles are used to pay for [infrastructure](/docs/miscellaneous/infrastructure.md) usage. Your [mission control](/docs/terminology.md#mission-control) or [satellite](/docs/terminology.md#satellite) consumes cycles while it's active.
 
 The amount of cycles available determines whether a smart contract will be active, inactive, or eventually decommissioned (deleted).
 
@@ -9595,7 +9689,7 @@ Learn more about [computation and storage costs](https://internetcomputer.org/do
 
 ## ICP
 
-The ICP token is the cryptocurrency used to pay for transactions on Juno's [infrastructure](/docs/white-paper/infrastructure.md).
+The ICP token is the cryptocurrency used to pay for transactions on Juno's [infrastructure](/docs/miscellaneous/infrastructure.md).
 
 It can also be converted into cycles, which are used to pay for computation and storage. Unlike the market price of ICP, the price of cycles remains constant, ensuring predictable costs for infrastructure usage.
 
@@ -9613,7 +9707,7 @@ Think of it like the command center for a space mission. Just as NASA's mission 
 
 Because it can hold ICP and is only controlled by you, your mission control also functions as your ([wallet](#wallet)).
 
-For a schematic representation, refer to the [Architecture](/docs/white-paper/architecture.md) documentation page.
+For a schematic representation, refer to the [Architecture](/docs/miscellaneous/architecture.md) documentation page.
 
 ## Modules
 
@@ -9689,7 +9783,7 @@ Please ensure that npm is added to your system's PATH (e.g. `C:\Users\{PC_NAME}\
 
 ### Windows Not Defined
 
-Juno does not support yet Server Side Rendering (see [Roadmap](/docs/white-paper/roadmap.md)). Therefore if you are facing such an issue as `ReferenceError: window is not defined` please make sure that your application is not build using SSR.
+Juno does not support yet Server Side Rendering at the moment. Therefore, if you are facing such an issue as `ReferenceError: window is not defined` please make sure that your application is not build using SSR.
 
 We generally recommend using Static Site Generation (SSG) / prerendering.
 
