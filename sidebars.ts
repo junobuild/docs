@@ -264,24 +264,6 @@ const sidebars: SidebarsConfig = {
     "troubleshooting",
     "pricing"
   ],
-  ["white-paper"]: [
-    "white-paper/intro",
-    "white-paper/what-is-juno",
-    "white-paper/problems-statement",
-    "white-paper/solution",
-    "white-paper/use-cases",
-    "white-paper/roadmap",
-    "white-paper/architecture",
-    "white-paper/infrastructure",
-    "white-paper/open-source",
-    "white-paper/business-model",
-    "white-paper/competitors",
-    "white-paper/costs-challenges",
-    "white-paper/validation",
-    "white-paper/target-audience",
-    "white-paper/market-size",
-    "white-paper/conclusion"
-  ],
   references: [
     "reference/cli",
     "reference/configuration",

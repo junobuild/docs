@@ -65,7 +65,7 @@ Think of it like the command center for a space mission. Just as NASA's mission 
 
 Because it can hold ICP and is only controlled by you, your mission control also functions as your [wallet](#wallet).
 
-For a schematic representation, refer to the [Architecture](./white-paper/architecture.md) documentation page.
+For a schematic representation, refer to the [Architecture](miscellaneous/architecture.md) documentation page.
 
 ## Modules
 
@@ -131,4 +131,4 @@ Because your wallet is also your [mission-control](#mission-control) and therefo
 [orbiters]: terminology.md#orbiter
 [mission control]: terminology.md#mission-control
 [mission controls]: terminology.md#mission-control
-[infrastructure]: ./white-paper/infrastructure.md
+[infrastructure]: miscellaneous/infrastructure.md
