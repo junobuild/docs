@@ -1,10 +1,20 @@
 ---
-description: Discover how Juno's infrastructure leverages Web3 technologies to create a secure, scalable environment for decentralized applications.
+title: Infrastructure
+description: Discover how Juno's infrastructure blends self-hosted deployment with WebAssembly containers, focusing on simplicity, control, and modern Web2-compatible tooling.
+keywords:
+  [
+    Juno,
+    serverless infrastructure,
+    self-hosted apps,
+    developer tools,
+    WebAssembly,
+    WASM containers
+  ]
 ---
 
 # Infrastructure
 
-Juno's infrastructure is designed to harness the full potential of Web3 technologies, creating a robust, secure, and scalable environment for developers to build decentralized applications.
+Juno's infrastructure is designed to provide developers with a simple, secure, and self-contained execution environment. It blends WebAssembly container deployment with supporting services that prioritize ownership, transparency, and practical workflows.
 
 ---
 
@@ -12,20 +22,20 @@ Juno's infrastructure is designed to harness the full potential of Web3 technolo
 
 ![An illustration representing Juno smart contracts living at the top of the Internet Computer](../img/juno-internet-computer.webp)
 
-Juno operates on the Internet Computer (ICP or IC), a blockchain unlike any other. The Internet Computer is akin to adding a super-powered, self-running cloud to the regular internet. It enables the creation of various systems and services on a decentralized network using "canister software", which represents a more advanced version of smart contracts.
+Juno operates on the [Internet Computer](https://internetcomputer.org/) (ICP or IC), a blockchain-based open cloud platform designed to run WebAssembly containers in a decentralized setup. Every part of the Juno platform — including your Satellites, Mission Control, Orbiters (analytics), and the platform's own services like the Console — runs as self-contained units on the IC.
 
-The IC comprises a set of protocols that facilitate independent data centers worldwide in coming together to offer a decentralized alternative to the current centralized internet cloud providers, often referred to as Big Tech. These independent entities operate specialized "node machines" to generate the same number of blocks as other machines within their network, ensuring uniformity through a Proof-of-Useful-Work mechanism. Their tasks involve replicating smart contract computations for optimal efficiency.
+The Internet Computer connects independent data centers worldwide. Specialized node machines and cryptography ensure that applications run efficiently and consistently, without relying on Big Tech intermediaries. It even enables direct web content delivery from these self-contained units.
 
-Thanks to its architecture, protocols, and cutting-edge cryptography, the Internet Computer stands out as the fastest blockchain, capable of directly delivering web content from smart contracts. This breakthrough enables 100% of online services to function on the blockchain, delivering complete decentralization and cost-effectiveness.
-
----
-
-## Multi-Blockchain
-
-While the Internet Computer is our current backbone, Juno is not limited to using only the IC. Our infrastructure keeps doors open for future integration with other blockchains. This approach ensures that Juno can adapt and incorporate new technologies as they emerge, maintaining our commitment to decentralization and leveraging the best available blockchain solutions. Furthermore, Juno aims to enable communication across different chains, enhancing interoperability and expanding the possibilities for decentralized applications.
+While Juno relies on the Internet Computer as its primary execution layer, it avoids unnecessary blockchain complexity. Developers interact with Juno using familiar frontend and backend development workflows, without needing to manage or understand blockchain infrastructure.
 
 ---
 
-## Web2 Services
+## Supporting Infrastructure
 
-While Juno aims to strictly use only Web3 providers and services, there are edge cases where technical or financial limitations necessitate the use of Web2 services. One example is the monitoring tool that sends emails to developers using Google Firebase Functions if their smart contracts are running out of resources. Another example is the usage of the services of the Boundary Nodes, which allow developers to register custom domains for their projects. These types of services are never enforced and are always subject to developers opting-in.
+While Juno runs fully on the Internet Computer, two supporting services are maintained to handle a feature that cannot yet be decentralized — sending email notifications.
+
+- Observatory Proxy: To handle IPv6 and deduplication constraints in Internet Computer HTTPS outcalls, Juno uses an additional [proxy](https://github.com/junobuild/proxy) deployed on Google Firebase. This service may be removed in the future as the Internet Computer layer improves.
+
+- Email Notifications: Developer notifications triggered by Mission Control monitoring (such as top-up successes or failures) are sent via [Resend](https://resend.com).
+
+These services are strictly optional and exist only for this specific use case.
