@@ -51,7 +51,7 @@ Juno provides supporting services to manage your projects, while keeping everyth
 
 The Console is a platform for managing your projects. It runs as its own container, combining a user interface with orchestration logic.
 
-It only holds one piece of data: a keypair linking each developer’s anonymous ID to their Mission Control ID.
+It only holds one piece of data: a keypair linking each developer's anonymous ID to their Mission Control ID.
 
 When you sign in, the Console returns your Mission Control ID. From there, all project management happens under your control. The Console does not have access to your apps, your data, or your infrastructure.
 
@@ -77,7 +77,7 @@ It is worth noting that Juno is fully open source. Anyone can review its source 
 
 ### Observatory
 
-The Observatory is a proxy service used solely for developer notifications. When monitoring is enabled in a developer’s Mission Control, events such as automatic top-up successes or failures trigger a message sent through the Observatory to notify the developer via email.
+The Observatory is a proxy service used solely for developer notifications. When monitoring is enabled in a developer's Mission Control, events such as automatic top-up successes or failures trigger a message sent through the Observatory to notify the developer via email.
 
 This setup ensures that each Mission Control does not need to maintain its own notification infrastructure. The Observatory only forwards messages — it does not monitor, modify, or access any application logic or data.
 
@@ -85,7 +85,7 @@ This setup ensures that each Mission Control does not need to maintain its own n
 
 Juno maintains a CDN that stores libraries, templates, and pre-built WASM code. These pre-built WASM containers are official module versions shipped by Juno. When a new release is available, it is uploaded to the CDN, allowing developers to upgrade e.g. their Satellites using the latest version.
 
-While it functions as a CDN, technically it’s not a traditional content delivery network. It is itself a Satellite.
+While it functions as a CDN, technically it's not a traditional content delivery network. It is itself a Satellite.
 
 ---
 
