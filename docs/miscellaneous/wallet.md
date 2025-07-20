@@ -26,7 +26,7 @@ One key usage is converting ICP tokens to cycles, which are used to cover the co
 
 ## Why do I need ICP?
 
-Given that Juno is built on top of the Internet Computer (see [architecture](../white-paper/architecture.md)), your smart contracts require cycles to remain active.
+Given that Juno is built on top of the Internet Computer (see [architecture](architecture.md)), your smart contracts require cycles to remain active.
 
 While you don’t necessarily need ICP in the Juno ecosystem since you can acquire cycles with Stripe through [cycle.express](https://cycle.express), having some ICP can still be interesting.
 

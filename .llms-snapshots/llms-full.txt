@@ -6702,6 +6702,123 @@ This method is useful if you want to generate a completely new key and apply it 
 
 This action will overwrite the previously saved key used to configure your local CLI environment.
 
+# Architecture
+
+Juno is your own self-contained execution space. Everything your app needs — frontend, backend logic, storage — gets bundled into a single deployable WebAssembly (WASM) container called a Satellite.
+
+One artifact. One push. That's your app.
+
+No DevOps. No backend boilerplate. No surprise complexity.
+
+Juno's architecture is designed to give developers complete control and ownership. It combines familiar developer workflows with an environment that runs independently once deployed — without Juno's intervention.
+
+  
+
+![Juno architecture schema showing developer control flow](/assets/images/architecture-ea813c74e7ec12ec0989052392308143.png)
+
+---
+
+## How It Works
+
+A typical Juno development flow looks like this:
+
+1.  **Build your frontend** using Next.js, React, SvelteKit, Vue or any other framework you love (or none).
+2.  **Add backend logic** (if needed) via serverless functions written in Rust or TypeScript.
+3.  **Bundle everything into a Satellite** — a single WebAssembly container that holds your entire application, including its logic, state, and storage.
+4.  **Deploy using the CLI or GitHub Actions.** No servers to configure. No infrastructure to manage.
+
+Once deployed, your Satellite runs independently in an unstoppable environment, entirely under your control.
+
+---
+
+## Platform Services
+
+Juno provides supporting services to manage your projects, while keeping everything under your ownership:
+
+### Console
+
+The Console is a platform for managing your projects. It runs as its own container, combining a user interface with orchestration logic.
+
+It only holds one piece of data: a keypair linking each developer's anonymous ID to their Mission Control ID.
+
+When you sign in, the Console returns your Mission Control ID. From there, all project management happens under your control. The Console does not have access to your apps, your data, or your infrastructure.
+
+It provides services such as:
+
+*   Creating, upgrading, and deleting Satellites.
+*   Managing authentication, storage, data, and application state.
+*   Monitoring logs from serverless functions.
+*   Setting custom domains.
+*   Spinning up and reviewing analytics.
+
+You can access the Console at [console.juno.build](https://console.juno.build).
+
+**Note:**
+
+The Console is not decentralized. It is maintained by Juno to provide a stable management platform and up-to-date developer experience. However, all applications, data, and infrastructure you deploy through it remain under your control.
+
+In the future, there is a strong will to resolve this dependency by making the Console self-hostable or governed by a DAO, aligning it with the same principles of ownership and autonomy as the rest of the platform.
+
+It is worth noting that Juno is fully open source. Anyone can review its source code at any time. And while not formally documented, the Console is already self-hostable today — offering anyone who wants full control over the entire stack the option to do so.
+
+### Observatory
+
+The Observatory is a proxy service used solely for developer notifications. When monitoring is enabled in a developer's Mission Control, events such as automatic top-up successes or failures trigger a message sent through the Observatory to notify the developer via email.
+
+This setup ensures that each Mission Control does not need to maintain its own notification infrastructure. The Observatory only forwards messages — it does not monitor, modify, or access any application logic or data.
+
+### CDN
+
+Juno maintains a CDN that stores libraries, templates, and pre-built WASM code. These pre-built WASM containers are official module versions shipped by Juno. When a new release is available, it is uploaded to the CDN, allowing developers to upgrade e.g. their Satellites using the latest version.
+
+While it functions as a CDN, technically it's not a traditional content delivery network. It is itself a Satellite.
+
+---
+
+## Developer-Owned Spaces
+
+### Mission Control
+
+Mission Control is your personal management container. It tracks your Satellites and Orbiters, and it acts as your wallet.
+
+You use it for example to spin up new containers or provide [cycles](/docs/terminology.md#cycles) to keep your modules running. It serves as your central hub for managing projects and resources.
+
+Mission Control belongs to you. No one else can access it — not Juno, not the Console, not any other service.
+
+### Satellites
+
+Satellites are your applications. Each one is a self-contained unit that bundles:
+
+*   Frontend assets
+*   Default backend features
+*   Custom serverless functions
+*   Data and storage
+*   Permissions and access control
+
+### Orbiters
+
+Orbiters provide analytics — a decentralized alternative to services like Google Analytics. Orbiters collect traffic, page views, and device information, under your ownership and without exposing user data to third parties.
+
+---
+
+## CI/CD and Deployment
+
+You can deploy and upgrade your Satellites using GitHub Actions or the Juno CLI.
+
+*   Deployment automation is opt-in.
+*   Juno does not control or interfere with your deployed app.
+*   Once live, your apps remain running independently.
+
+Each Satellite uses a role-based permission system managed via [access keys](/docs/miscellaneous/access-keys.md), letting you decide whether to retain full access, delegate writable access, or allow third parties to solely propose changes.
+
+---
+
+## Libraries, Tools, and Emulator
+
+Juno provides many JavaScript libraries, Rust crates, templates and tooling to get started and integrate with your workflow. You can find all the code in the [Juno GitHub organization](https://github.com/junobuild).
+
+It also provides an emulator for [local development](/docs/guides/local-development.md) that mimics as closely as possible the experience you get in production.
+
 # Best Practices
 
 This page provides recommendations to improve your application when developing and deploying with Juno.
@@ -6733,6 +6850,35 @@ Configure your Satellite to send a CSP header as part of the HTTP response. Head
 ```
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    storage: {      headers: [        {          source: "**/*",          headers: [["Content-Security-Policy", "REPLACE_THIS_WITH_YOUR_RULES"]]        }      ]    }  }});
 ```
+
+# Infrastructure
+
+Juno's infrastructure is designed to provide developers with a simple, secure, and self-contained execution environment. It blends WebAssembly container deployment with supporting services that prioritize ownership, transparency, and practical workflows.
+
+---
+
+## Internet Computer
+
+![An illustration representing Juno smart contracts living at the top of the Internet Computer](/assets/images/juno-internet-computer-905a4ce5071e12858c93525e424b9d30.webp)
+
+Juno operates on the [Internet Computer](https://internetcomputer.org/) (ICP or IC), a blockchain-based open cloud platform designed to run WebAssembly containers in a decentralized setup. Every part of the Juno platform — including your Satellites, Mission Control, Orbiters (analytics), and the platform's own services like the Console — runs as self-contained units on the IC.
+
+The Internet Computer connects independent data centers worldwide. Specialized node machines and cryptography ensure that applications run efficiently and consistently, without relying on Big Tech intermediaries. It even enables direct web content delivery from these self-contained units.
+
+While Juno relies on the Internet Computer as its primary execution layer, it avoids unnecessary blockchain complexity. Developers interact with Juno using familiar frontend and backend development workflows, without needing to manage or understand blockchain infrastructure.
+
+---
+
+## Supporting Infrastructure
+
+While Juno runs fully on the Internet Computer, two supporting services are maintained to handle a feature that cannot yet be decentralized — sending email notifications.
+
+*   Observatory Proxy: To handle IPv6 and deduplication constraints in Internet Computer HTTPS outcalls, Juno uses an additional [proxy](https://github.com/junobuild/proxy) deployed on Google Firebase. This service may be removed in the future as the Internet Computer layer improves.
+    
+*   Email Notifications: Developer notifications triggered by Mission Control monitoring (such as top-up successes or failures) are sent via [Resend](https://resend.com).
+    
+
+These services are strictly optional and exist only for this specific use case.
 
 # Memory
 
@@ -6951,7 +7097,7 @@ One key usage is converting ICP tokens to cycles, which are used to cover the co
 
 ## Why do I need ICP?
 
-Given that Juno is built on top of the Internet Computer (see [architecture](/docs/white-paper/architecture.md)), your smart contracts require cycles to remain active.
+Given that Juno is built on top of the Internet Computer (see [architecture](/docs/miscellaneous/architecture.md)), your smart contracts require cycles to remain active.
 
 While you don’t necessarily need ICP in the Juno ecosystem since you can acquire cycles with Stripe through [cycle.express](https://cycle.express), having some ICP can still be interesting.
 
@@ -7019,7 +7165,7 @@ Review the transaction details and confirm to execute it.
 
 # Workarounds
 
-This page is dedicated to helping you make the most of Juno features, even when some functionalities are not yet fully supported out of the box. Below, you'll find practical workarounds and guidance for processes which in the future will be resolved by features planned in the [roadmap](/docs/white-paper/roadmap.md).
+This page is dedicated to helping you make the most of Juno features, even when some functionalities are not yet fully supported out of the box. Below, you'll find practical workarounds and guidance for processes which in the future will be resolved by new features.
 
 ---
 
@@ -9574,7 +9720,7 @@ For current usage and setup, refer to the [Access Keys documentation](/docs/misc
 
 ## Cycles
 
-Cycles are used to pay for [infrastructure](/docs/white-paper/infrastructure.md) usage. Your [mission control](/docs/terminology.md#mission-control) or [satellite](/docs/terminology.md#satellite) consumes cycles while it's active.
+Cycles are used to pay for [infrastructure](/docs/miscellaneous/infrastructure.md) usage. Your [mission control](/docs/terminology.md#mission-control) or [satellite](/docs/terminology.md#satellite) consumes cycles while it's active.
 
 The amount of cycles available determines whether a smart contract will be active, inactive, or eventually decommissioned (deleted).
 
@@ -9595,7 +9741,7 @@ Learn more about [computation and storage costs](https://internetcomputer.org/do
 
 ## ICP
 
-The ICP token is the cryptocurrency used to pay for transactions on Juno's [infrastructure](/docs/white-paper/infrastructure.md).
+The ICP token is the cryptocurrency used to pay for transactions on Juno's [infrastructure](/docs/miscellaneous/infrastructure.md).
 
 It can also be converted into cycles, which are used to pay for computation and storage. Unlike the market price of ICP, the price of cycles remains constant, ensuring predictable costs for infrastructure usage.
 
@@ -9613,7 +9759,7 @@ Think of it like the command center for a space mission. Just as NASA's mission 
 
 Because it can hold ICP and is only controlled by you, your mission control also functions as your ([wallet](#wallet)).
 
-For a schematic representation, refer to the [Architecture](/docs/white-paper/architecture.md) documentation page.
+For a schematic representation, refer to the [Architecture](/docs/miscellaneous/architecture.md) documentation page.
 
 ## Modules
 
@@ -9689,7 +9835,7 @@ Please ensure that npm is added to your system's PATH (e.g. `C:\Users\{PC_NAME}\
 
 ### Windows Not Defined
 
-Juno does not support yet Server Side Rendering (see [Roadmap](/docs/white-paper/roadmap.md)). Therefore if you are facing such an issue as `ReferenceError: window is not defined` please make sure that your application is not build using SSR.
+Juno does not support yet Server Side Rendering at the moment. Therefore, if you are facing such an issue as `ReferenceError: window is not defined` please make sure that your application is not build using SSR.
 
 We generally recommend using Static Site Generation (SSG) / prerendering.
 

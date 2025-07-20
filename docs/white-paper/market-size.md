@@ -1,5 +1,0 @@
-# Market Size
-
-It does not make sense to list arbitrary billion-dollar market size figures in this white paper for the sake of selling a huge market. By targeting any developers interested in Web3, the market is de facto broad. Moreover, the rise of Web2 cloud providers in recent years validates the fact that the majority of developers and companies are not interested in running their own servers in their basements.
-
-However, it would be naive to consider all developers as potentially interested in Web3. There are web developers who are against anything Web3, considering it a crypto scam. Additionally, industry trends change over time; while Web3 was predominant in previous years, AI has definitely picked up the wave nowadays. Similarly, not all Web3/crypto-native developers are easy targets. Some do not value Juno's principles of decentralization and ownership as much as the opportunity to make money, which is a valid perspective but worth noting. This does not mean these developers are not potential users of Juno, but they may be more difficult to attract. Nevertheless, the market remains vast and full of opportunities.
