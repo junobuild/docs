@@ -104,7 +104,82 @@ const redirects: StorageConfigRedirect[] = [
     code: 301
   },
   {
-    source: "/docs/white-paper/**/*",
+    source: "/docs/white-paper/intro",
+    location: "/",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/what-is-juno",
+    location: "/",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/problems-statement",
+    location: "/",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/solution",
+    location: "/",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/use-cases",
+    location: "/",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/roadmap",
+    location: "/",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/architecture",
+    location: "/docs/miscellaneous/architecture",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/infrastructure",
+    location: "/docs/miscellaneous/infrastructure",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/open-source",
+    location: "/",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/business-model",
+    location: "/",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/competitors",
+    location: "/",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/costs-challenges",
+    location: "/",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/validation",
+    location: "/",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/target-audience",
+    location: "/",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/market-size",
+    location: "/",
+    code: 301
+  },
+  {
+    source: "/docs/white-paper/conclusion",
     location: "/",
     code: 301
   },
