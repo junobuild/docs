@@ -10,11 +10,15 @@ This document will help you understand the different settings you can configure 
 
 ## Freezing Threshold
 
-The Freezing Threshold defines the duration (in seconds) after which a module will be frozen. It is an important feature because if a module runs out of cycles, it will be uninstalled, meaning its code and state are deleted. The Freezing Threshold protects from deletion. If the cycles balance dips below the threshold, the smart contract will stop processing any new requests but will continue to reply to existing requests.
+The Freezing Threshold defines the duration (in seconds) after which a module will be frozen. It acts as a **grace period** before permanent deletion.
 
-For sensitive applications that requires several resources, developers can set a freezing threshold to 90 days or more. This ensures that they and their users have enough time to react and top up the modules before they finally run out of cycles.
+When a module runs out of cycles, it will be uninstalled, meaning its code and state are deleted. The freezing threshold protects against this by halting the processing of new requests once the cycle balance drops below the threshold, while still allowing read-only replies to existing requests.
 
-The default value is `2_592_000n` (30 days).
+This grace period gives developers and users time to react. For sensitive applications, it's common to set a relatively long freezing threshold to ensure there’s enough time to notice a low balance and top up the module before removal
+
+That’s why [Mission Control](../terminology.md#mission-control) (your wallet) and [Satellites](../terminology.md#satellite) (your projects) are spun up with a default freezing threshold of **one year** (360 days), reflecting their high importance.
+
+In contrast, [Analytics](../build/analytics/index.md) modules are considered less critical and are provisioned with a default threshold of **three months** (90 days).
 
 ### In Other Words
 
