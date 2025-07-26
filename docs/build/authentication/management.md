@@ -14,7 +14,6 @@ A ban is not a deletion. The user's authentication entry remains in the system, 
 
 :::
 
-
 ### How to Ban a User
 
 To ban a user, follow these steps:
