@@ -61,26 +61,6 @@ If you've previously authenticated your terminal and decide to log in again, the
 
 This allows you to reuse your authorization, especially when creating new modules like satellites or orbiters.
 
-#### Modes
-
-The CLI supports multiple environment modes (`production`, `staging`, `development`, etc.).
-
-Each mode requires its own login and identity for security reasons.
-For example: `juno login --mode staging` or `juno login --mode development`.
-If no mode is specified, it defaults to `production`.
-
-#### How does it work?
-
-A new [principal] is generated on your local machine and added as a administrator [access key](../miscellaneous/access-keys.md) of the selected modules. This principal is then used to authenticate any CLI calls made from your terminal to your satellites, mission controls or other modules.
-
-The key is saved in the OS-specific user's variables path, for example:
-
-| OS      | Path                                                                                                 |
-| ------- | ---------------------------------------------------------------------------------------------------- |
-| Mac     | `~/Library/Preferences/juno-nodejs`                                                                  |
-| Windows | `%APPDATA%\juno-nodejs\Config` (for example, `C:\Users\USERNAME\AppData\Roaming\juno-nodejs\Config`) |
-| Linux   | `~/.config/juno-nodejs` (or `$XDG_CONFIG_HOME/juno-nodejs`)                                          |
-
 ---
 
 ### Logout
@@ -292,14 +272,6 @@ import Open from "./cli/open.md";
 
 ---
 
-### Use
-
-import Use from "./cli/use.md";
-
-<Use />
-
----
-
 ### Version
 
 import Version from "./cli/version.md";
@@ -313,6 +285,58 @@ import Version from "./cli/version.md";
 import WhoAmI from "./cli/whoami.md";
 
 <WhoAmI />
+
+---
+
+## Environment
+
+Some CLI flags affect the context of your commands, such as which environment you're working in or which identity you're using. These flags are global and apply to most commands.
+
+---
+
+### Mode
+
+The `--mode` flag lets you target a specific environment when executing CLI commands. This is useful for working across development, staging, and production setups.
+
+```bash
+juno login --mode development
+juno deploy --mode staging
+```
+
+The value for `--mode` can be any string. If omitted, it defaults to production.
+
+---
+
+### Profile
+
+The optional `--profile` flag lets you switch between different identities. Useful when working with multiple Mission Controls.
+
+```bash
+juno login --profile team
+juno deploy --profile team --mode staging
+```
+
+It accepts any string. If omitted, no profile is used.
+
+---
+
+### Local Persistence
+
+Unless you run it in headless mode with a token, the Juno CLI stores data locally in the following OS-specific user's variables path to work properly.
+
+| OS      | Path                                                                                                 |
+| ------- | ---------------------------------------------------------------------------------------------------- |
+| Mac     | `~/Library/Preferences/juno-nodejs`                                                                  |
+| Windows | `%APPDATA%\juno-nodejs\Config` (for example, `C:\Users\USERNAME\AppData\Roaming\juno-nodejs\Config`) |
+| Linux   | `~/.config/juno-nodejs` (or `$XDG_CONFIG_HOME/juno-nodejs`)                                          |
+
+These config files are created based on the selected `--profile` and `--mode`:
+
+| File                                 | Encrypted | Purpose                                                                                               |
+| ------------------------------------ | --------- | ----------------------------------------------------------------------------------------------------- |
+| `juno[-profile][-mode]`              | ✅        | Stores the [access key](../miscellaneous/access-keys.md) ([principal]) and list of modules.           |
+| `juno[-profile][-mode]-cli-settings` |           | Stores CLI preferences, e.g. whether the access key file is encrypted (to avoid unnecessary prompts). |
+| `juno[-profile][-mode]-cli-state`    |           | Stores ephemeral state like applied config hashes.                                                    |
 
 [satellite]: ../terminology.md#satellite
 [mission control]: ../terminology.md#mission-control
