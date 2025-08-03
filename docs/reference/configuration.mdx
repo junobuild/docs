@@ -456,20 +456,6 @@ export default defineConfig(({ mode }) => ({
 
 ---
 
-## Modes
-
-By default, the CLI runs command for the `production` mode.
-
-This means when running a `juno` command in your terminal, it will pass the mode `production` to read your configuration.
-
-You can overwrite the default mode used for a command by passing the `--mode` option flag. For example, if you want to deploy your app for a `staging` mode:
-
-```bash
-juno deploy --mode staging
-```
-
----
-
 ## Multiple Environments
 
 You might want to deploy or manage a project across different environments, such as staging and production. Juno supports this through the `ids` field, allowing you to define separate Satellite IDs for each [mode](#modes).
