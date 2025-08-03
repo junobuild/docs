@@ -962,7 +962,7 @@ Default is `100`.
 
 ---
 
-### Authorized Users
+### Allowed Callers
 
 This option gives you full control over who's allowed to use your app.
 
@@ -7932,6 +7932,16 @@ For example, if you set `derivationOrigin` to "hello.com", a user signing in at 
 ```
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    authentication: {      internetIdentity: {        derivationOrigin: "hello.com"      }    }  }});
 ```
+
+#### Allowed Callers
+
+This option gives you control over who is allowed to use your app, whether they are already registered or not.
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    authentication: {      rules: {        allowedCallers: [          "eunqq-ctbep-mwing-6cwte-f5frt-qe7tu-ilmgk-wmy3m-mdi3j-mcsvx-zae"        ]      }    }  }});
+```
+
+For more explanation, see the related [section](/docs/build/authentication/management.md#allowed-callers) in Authentication.
 
 ### Assertions
 
