@@ -7070,7 +7070,7 @@ For most applications, we recommend using the default subnets and staying on the
 
 | Subnet ID | Type | Canisters (Running/Stopped) | Nodes (Up/Total) |
 | --- | --- | --- | --- |
-| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 35216/689 | 13/13 |
+| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 35340/692 | 13/13 |
 | pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae | Fiduciary | 3030/8 | 34/34 |
 | bkfrj-6k62g-dycql-7h53p-atvkj-zg4to-gaogh-netha-ptybj-ntsgw-rqe | European | 24912/593 | 13/13 |
 | brlsh-zidhj-3yy3e-6vqbz-7xnih-xeq2l-as5oc-g32c4-i5pdn-2wwof-oae |     | 35034/728 | 13/13 |
@@ -8107,7 +8107,7 @@ The junobuild/skylab image is an all-in-one emulator for local development. It b
 
 [## 📄️ Satellite
 
-Unlike Skylab, the image junobuild/satellite runs a single Satellite in a sandboxed local environment.](/docs/reference/emulator/satellite.md)
+Unlike Skylab, the image junobuild/satellite runs a single Satellite in a headless environment, without the Console UI. It always mounts the same Satellite, using the fixed ID jx5yt-yyaaa-aaaal-abzbq-cai.](/docs/reference/emulator/satellite.md)
 
 [## 📄️ Infrastructure
 
@@ -8399,37 +8399,21 @@ However, in some cases, it may be useful to explicitly reference module IDs. Bel
 
 # Satellite
 
-Unlike Skylab, the image [junobuild/satellite](https://hub.docker.com/r/junobuild/satellite) runs a single Satellite in a sandboxed local environment.
-
-You can configure the behavior of Satellite with a specific configuration file to define Datastore and Storage collections, additional administrative access keys, and optional serverless extensions. Like Skylab, it also supports live reloading for these serverless functions through a shared folder.
-
-The CLI watches configuration files and a dedicated `deploy` folder, automatically applying changes and upgrading modules as needed.
+Unlike Skylab, the image [junobuild/satellite](https://hub.docker.com/r/junobuild/satellite) runs a single Satellite in a headless environment, without the Console UI. It always mounts the same Satellite, using the fixed ID `jx5yt-yyaaa-aaaal-abzbq-cai`.
 
 ---
 
 ## Configuration
 
-The behavior of the Satellite running in a container can be configured with the help of a local configuration file commonly named `juno.dev.config.ts` (or JavaScript or JSON).
+To use this image, your configuration must include the `satellite` field in the `emulator` section.
 
-This configuration file enables you to define the collections of the Datastore and Storage that run locally, but it also allows for defining additional controllers - i.e. administrative access keys - for your satellite.
+Make also sure to set the `runner` type to match your container runtime, and define the static Satellite ID expected by the image.
 
-The definition is as follows:
-
-```
-export type PermissionText = "public" | "private" | "managed" | "controllers";export type MemoryText = "heap" | "stable";export type RulesType = "db" | "storage";export interface Rule {  collection: string;  read: PermissionText;  write: PermissionText;  memory: MemoryText;  createdAt?: bigint;  updatedAt?: bigint;  maxSize?: number;  maxCapacity?: number;  mutablePermissions: boolean;  maxTokens?: number;}export type SatelliteDevDbCollection = Omit<  Rule,  "createdAt" | "updatedAt" | "maxSize">;export type SatelliteDevStorageCollection = Omit<  Rule,  "createdAt" | "updatedAt" | "maxCapacity">;export interface SatelliteDevCollections {  db?: SatelliteDevDbCollection[];  storage?: SatelliteDevStorageCollection[];}export interface SatelliteDevController {  id: string;  scope: "write" | "admin";}export interface SatelliteDevConfig {  collections: SatelliteDevCollections;  controllers?: SatelliteDevController[];}export interface JunoDevConfig {  satellite: SatelliteDevConfig;}
-```
-
-### Example
-
-If, for example, we want to configure a "metadata" collection in the Datastore, a "content" collection in the Storage, and provide an additional controller, we could use the following configuration:
-
-juno.dev.config.json
+juno.config.ts
 
 ```
-{  "satellite": {    "collections": {      "db": [        {          "collection": "metadata",          "read": "managed",          "write": "managed",          "memory": "stable",          "mutablePermissions": true        }      ],      "storage": [        {          "collection": "content",          "read": "public",          "write": "public",          "memory": "stable",          "mutablePermissions": true        }      ]    },    "controllers": [      {        "id": "535yc-uxytb-gfk7h-tny7p-vjkoe-i4krp-3qmcl-uqfgr-cpgej-yqtjq-rqe",        "scope": "admin"      }    ]  }}
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "jx5yt-yyaaa-aaaal-abzbq-cai",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  },  emulator: {    runner: {      type: "docker"    },    satellite: {}  }});
 ```
-
-### More Options
 
 For more advanced options like customizing ports, image name, or CI setup, see the [Emulator Configuration](/docs/reference/configuration.md#emulator-configuration) section.
 
@@ -8437,7 +8421,7 @@ For more advanced options like customizing ports, image name, or CI setup, see t
 
 The [junobuild/skylab](https://hub.docker.com/r/junobuild/skylab) image is an all-in-one emulator for local development. It bundles everything you need to build, test, and explore the Juno ecosystem:
 
-*   ✅ Juno Console (smart contract + UI)
+*   ✅ Juno Console (backend + UI)
 *   🛰️ Satellites (support for multiple application containers)
 *   📊 Orbiter (analytics and tracking module)
 *   ⚙️ Supporting infrastructure (see table below)
