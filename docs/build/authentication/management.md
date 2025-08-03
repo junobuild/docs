@@ -57,7 +57,7 @@ Default is `100`.
 
 ---
 
-### Authorized Users
+### Allowed Callers
 
 This option gives you full control over who's allowed to use your app.
 
