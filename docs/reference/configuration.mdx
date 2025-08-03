@@ -453,7 +453,7 @@ export default defineConfig({
 | `write`              | `"public"` \| `"private"` \| `"managed"` \| `"controllers"` | ✅       | Who can write documents.                                               |
 | `version`            | `bigint`                                                    | ❌       | Optional. If omitted, the CLI will resolve it and prompt on conflicts. |
 | `maxChangesPerUser`  | `number`                                                    | ❌       | Max number of changes (create/update/delete) per user.                 |
-| `maxTokens`          | `number`                                                    | ❌       | Max number of writes and deletes per minute.                           |
+| `maxTokens`          | `bigint`                                                    | ❌       | Max number of writes and deletes per minute.                           |
 | `maxCapacity`        | `number`                                                    | ❌       | Max number of documents in the collection.                             |
 | `mutablePermissions` | `boolean` (default: `true`)                                 | ❌       | Whether permissions can be updated after creation.                     |
 
@@ -501,9 +501,9 @@ export default defineConfig({
 | `read`               | `"public"` \| `"private"` \| `"managed"` \| `"controllers"` | ✅       | Who can read assets.                                                   |
 | `write`              | `"public"` \| `"private"` \| `"managed"` \| `"controllers"` | ✅       | Who can write assets.                                                  |
 | `version`            | `bigint`                                                    | ❌       | Optional. If omitted, the CLI will resolve it and prompt on conflicts. |
-| `maxSize`            | `number`                                                    | ❌       | Maximum size of the collection in bytes.                               |
+| `maxSize`            | `bigint`                                                    | ❌       | Maximum size of the collection in bytes.                               |
 | `maxChangesPerUser`  | `number`                                                    | ❌       | Max number of changes (create/update/delete) per user.                 |
-| `maxTokens`          | `number`                                                    | ❌       | Max number of writes and deletes per minute.                           |
+| `maxTokens`          | `bigint`                                                    | ❌       | Max number of writes and deletes per minute.                           |
 | `mutablePermissions` | `boolean` (default: `true`)                                 | ❌       | Whether permissions can be updated after creation.                     |
 
 ---
