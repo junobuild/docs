@@ -396,6 +396,118 @@ You can customize the ports exposed by the emulator:
 
 ---
 
+## Collections Configuration
+
+The `collections` field allows you to define collections for both the Datastore and Storage modules directly in your configuration file.
+
+This is useful if you prefer defining access rules in code rather than through the Console UI. It’s especially important when using the [junobuild/satellite](./emulator/satellite.md) image, which runs headlessly and doesn't include the Console UI.
+
+Defining collections in code ensures:
+
+- Your configuration lives alongside your source code.
+- Teams working together share the same environment setup.
+- Developers forking or cloning your project can easily get started with a consistent configuration.
+
+### Datastore
+
+Use `datastore` field to define the collection of your Datastore.
+
+#### Example
+
+```ts title="juno.config.ts"
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
+    source: "dist",
+    collections: {
+      datastore: [
+        {
+          collection: "tasks",
+          memory: "stable",
+          read: "managed",
+          write: "managed"
+        },
+        {
+          collection: "announcements",
+          memory: "stable",
+          read: "public",
+          write: "controllers"
+        }
+      ]
+    }
+  }
+});
+```
+
+#### Fields
+
+| Field                | Type                                                        | Required | Description                                                            |
+| -------------------- | ----------------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
+| `collection`         | `string`                                                    | ✅       | Name of the collection. Must be unique.                                |
+| `memory`             | `"stable"` or `"heap"`                                      | ✅       | Memory type used for storing data.                                     |
+| `read`               | `"public"` \| `"private"` \| `"managed"` \| `"controllers"` | ✅       | Who can read documents.                                                |
+| `write`              | `"public"` \| `"private"` \| `"managed"` \| `"controllers"` | ✅       | Who can write documents.                                               |
+| `version`            | `bigint`                                                    | ❌       | Optional. If omitted, the CLI will resolve it and prompt on conflicts. |
+| `maxChangesPerUser`  | `number`                                                    | ❌       | Max number of changes (create/update/delete) per user.                 |
+| `maxTokens`          | `number`                                                    | ❌       | Max number of writes and deletes per minute.                           |
+| `maxCapacity`        | `number`                                                    | ❌       | Max number of documents in the collection.                             |
+| `mutablePermissions` | `boolean` (default: `true`)                                 | ❌       | Whether permissions can be updated after creation.                     |
+
+### Storage
+
+Use the `storage` field to define the collection of your Storage.
+
+#### Example
+
+```ts title="juno.config.ts"
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
+    source: "dist",
+    collections: {
+      storage: [
+        {
+          collection: "images",
+          memory: "stable",
+          read: "managed",
+          write: "managed"
+        },
+        {
+          collection: "files",
+          memory: "stable",
+          read: "public",
+          write: "managed"
+        }
+      ]
+    }
+  }
+});
+```
+
+#### Fields
+
+| Field                | Type                                                        | Required | Description                                                            |
+| -------------------- | ----------------------------------------------------------- | -------- | ---------------------------------------------------------------------- |
+| `collection`         | `string`                                                    | ✅       | Name of the collection. Must be unique.                                |
+| `memory`             | `"stable"` or `"heap"`                                      | ✅       | Memory type used for storing assets.                                   |
+| `read`               | `"public"` \| `"private"` \| `"managed"` \| `"controllers"` | ✅       | Who can read assets.                                                   |
+| `write`              | `"public"` \| `"private"` \| `"managed"` \| `"controllers"` | ✅       | Who can write assets.                                                  |
+| `version`            | `bigint`                                                    | ❌       | Optional. If omitted, the CLI will resolve it and prompt on conflicts. |
+| `maxSize`            | `number`                                                    | ❌       | Maximum size of the collection in bytes.                               |
+| `maxChangesPerUser`  | `number`                                                    | ❌       | Max number of changes (create/update/delete) per user.                 |
+| `maxTokens`          | `number`                                                    | ❌       | Max number of writes and deletes per minute.                           |
+| `mutablePermissions` | `boolean` (default: `true`)                                 | ❌       | Whether permissions can be updated after creation.                     |
+
+---
+
 ## Apply Changes
 
 Configurations such as above [storage](#storage), [datastore](#datastore), [authentication](#authentication), and [settings](#settings) require explicit application to your smart contract as they directly impact its behavior.
