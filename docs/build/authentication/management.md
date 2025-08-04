@@ -54,3 +54,34 @@ This lets you limit how many new users can sign up per minute. It's helpful to p
 For example, setting this to `10` means only `10` new users can be created per minute.
 
 Default is `100`.
+
+---
+
+### Allowed Callers
+
+This option gives you full control over who's allowed to use your app.
+
+If you enable this, only the identities you list (in user key, format, like `bj4r4-5cdop-...`) will be allowed to sign in or use any features like Datastore or Storage.
+
+- If someone's not on the list, they can't even register.
+- If they are, they can use the app just like any other user (unless they're banned).
+
+Use this if you want to limit access to a private group — for example, for internal testing or early access users.
+
+#### How to Get the User Identities
+
+There are two common ways to manage the list of authorized users:
+
+1. After sign-in
+
+You can share your app link with a few users, let them sign in, and then add their keys to the authorized list. The user table will show their identity once they've signed in at least once.
+
+2. Before sign-in
+
+If you want to block all sign-ins except for those explicitly allowed before hand, start by adding your own developer ID (shown in the Console) to the list.
+
+This activates the restriction: once at least one identity is listed, only those identities can sign in. If the list is empty, then everyone can sign in.
+
+You can then share the app link with others. When they attempt to sign in and are blocked, you can show a message that displays their user key (e.g. using the `unsafeIdentity` function from `@junobuild/core`).
+
+They can send you their key, and you can add them to the list manually to grant access.

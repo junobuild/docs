@@ -960,6 +960,37 @@ For example, setting this to `10` means only `10` new users can be created per m
 
 Default is `100`.
 
+---
+
+### Allowed Callers
+
+This option gives you full control over who's allowed to use your app.
+
+If you enable this, only the identities you list (in user key, format, like `bj4r4-5cdop-...`) will be allowed to sign in or use any features like Datastore or Storage.
+
+*   If someone's not on the list, they can't even register.
+*   If they are, they can use the app just like any other user (unless they're banned).
+
+Use this if you want to limit access to a private group — for example, for internal testing or early access users.
+
+#### How to Get the User Identities
+
+There are two common ways to manage the list of authorized users:
+
+1.  After sign-in
+
+You can share your app link with a few users, let them sign in, and then add their keys to the authorized list. The user table will show their identity once they've signed in at least once.
+
+2.  Before sign-in
+
+If you want to block all sign-ins except for those explicitly allowed before hand, start by adding your own developer ID (shown in the Console) to the list.
+
+This activates the restriction: once at least one identity is listed, only those identities can sign in. If the list is empty, then everyone can sign in.
+
+You can then share the app link with others. When they attempt to sign in and are blocked, you can show a message that displays their user key (e.g. using the `unsafeIdentity` function from `@junobuild/core`).
+
+They can send you their key, and you can add them to the list manually to grant access.
+
 # Collections
 
 You can create or update a collection in the "Collections" tab in Juno's console under the [datastore](https://console.juno.build/datastore) view.
@@ -7070,7 +7101,7 @@ For most applications, we recommend using the default subnets and staying on the
 
 | Subnet ID | Type | Canisters (Running/Stopped) | Nodes (Up/Total) |
 | --- | --- | --- | --- |
-| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 35216/689 | 13/13 |
+| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 35340/692 | 13/13 |
 | pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae | Fiduciary | 3030/8 | 34/34 |
 | bkfrj-6k62g-dycql-7h53p-atvkj-zg4to-gaogh-netha-ptybj-ntsgw-rqe | European | 24912/593 | 13/13 |
 | brlsh-zidhj-3yy3e-6vqbz-7xnih-xeq2l-as5oc-g32c4-i5pdn-2wwof-oae |     | 35034/728 | 13/13 |
@@ -7901,6 +7932,16 @@ For example, if you set `derivationOrigin` to "hello.com", a user signing in at 
 ```
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    authentication: {      internetIdentity: {        derivationOrigin: "hello.com"      }    }  }});
 ```
+
+#### Allowed Callers
+
+This option gives you control over who is allowed to use your app, whether they are already registered or not.
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    authentication: {      rules: {        allowedCallers: [          "eunqq-ctbep-mwing-6cwte-f5frt-qe7tu-ilmgk-wmy3m-mdi3j-mcsvx-zae"        ]      }    }  }});
+```
+
+For more explanation, see the related [section](/docs/build/authentication/management.md#allowed-callers) in Authentication.
 
 ### Assertions
 
