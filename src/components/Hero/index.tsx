@@ -46,8 +46,8 @@ export default function Hero(): JSX.Element {
           your container
         </h1>
         <p className={`${styles.item}`}>
-          Juno is an open-source, next-gen serverless platform that helps
-          developers build and ship secure projects at scale.
+          Juno is an open-source, next-gen serverless platform to build, deploy,
+          and run modern apps with the privacy and control of self-hosting.
         </p>
         <p className={`${styles.item}`}></p>
         <div className={`${styles.item} ${styles.actions}`}>
