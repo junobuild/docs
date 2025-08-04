@@ -960,6 +960,37 @@ For example, setting this to `10` means only `10` new users can be created per m
 
 Default is `100`.
 
+---
+
+### Allowed Callers
+
+This option gives you full control over who's allowed to use your app.
+
+If you enable this, only the identities you list (in user key, format, like `bj4r4-5cdop-...`) will be allowed to sign in or use any features like Datastore or Storage.
+
+*   If someone's not on the list, they can't even register.
+*   If they are, they can use the app just like any other user (unless they're banned).
+
+Use this if you want to limit access to a private group — for example, for internal testing or early access users.
+
+#### How to Get the User Identities
+
+There are two common ways to manage the list of authorized users:
+
+1.  After sign-in
+
+You can share your app link with a few users, let them sign in, and then add their keys to the authorized list. The user table will show their identity once they've signed in at least once.
+
+2.  Before sign-in
+
+If you want to block all sign-ins except for those explicitly allowed before hand, start by adding your own developer ID (shown in the Console) to the list.
+
+This activates the restriction: once at least one identity is listed, only those identities can sign in. If the list is empty, then everyone can sign in.
+
+You can then share the app link with others. When they attempt to sign in and are blocked, you can show a message that displays their user key (e.g. using the `unsafeIdentity` function from `@junobuild/core`).
+
+They can send you their key, and you can add them to the list manually to grant access.
+
 # Collections
 
 You can create or update a collection in the "Collections" tab in Juno's console under the [datastore](https://console.juno.build/datastore) view.
@@ -7340,24 +7371,6 @@ If you've previously authenticated your terminal and decide to log in again, the
 
 This allows you to reuse your authorization, especially when creating new modules like satellites or orbiters.
 
-#### Modes
-
-The CLI supports multiple environment modes (`production`, `staging`, `development`, etc.).
-
-Each mode requires its own login and identity for security reasons. For example: `juno login --mode staging` or `juno login --mode development`. If no mode is specified, it defaults to `production`.
-
-#### How does it work?
-
-A new [principal](/docs/terminology.md#principal) is generated on your local machine and added as a administrator [access key](/docs/miscellaneous/access-keys.md) of the selected modules. This principal is then used to authenticate any CLI calls made from your terminal to your satellites, mission controls or other modules.
-
-The key is saved in the OS-specific user's variables path, for example:
-
-| OS  | Path |
-| --- | --- |
-| Mac | `~/Library/Preferences/juno-nodejs` |
-| Windows | `%APPDATA%\juno-nodejs\Config` (for example, `C:\Users\USERNAME\AppData\Roaming\juno-nodejs\Config`) |
-| Linux | `~/.config/juno-nodejs` (or `$XDG_CONFIG_HOME/juno-nodejs`) |
-
 ---
 
 ### Logout
@@ -7603,16 +7616,6 @@ Usage: juno open [options]Options:  -b, --browser         A particular browser t
 
 ---
 
-### Use
-
-Switch between multiple profiles.
-
-```
-Usage: juno use [options]Options:  -p, --profile         The profile that should be use.  -l, --list            What are the available profiles.  -h, --help            Output usage information.
-```
-
----
-
 ### Version
 
 Check the version of the modules and CLI.
@@ -7630,6 +7633,56 @@ Display your current profile, access key, and links to your satellite.
 ```
 Usage: juno whoami [options]Options:  -h, --help            Output usage information.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.
 ```
+
+---
+
+## Environment
+
+Some CLI flags affect the context of your commands, such as which environment you're working in or which identity you're using. These flags are global and apply to most commands.
+
+---
+
+### Mode
+
+The `--mode` flag lets you target a specific environment when executing CLI commands. This is useful for working across development, staging, and production setups.
+
+```
+juno login --mode developmentjuno deploy --mode staging
+```
+
+The value for `--mode` can be any string. If omitted, it defaults to production.
+
+---
+
+### Profile
+
+The optional `--profile` flag lets you switch between different identities. Useful when working with multiple Mission Controls.
+
+```
+juno login --profile teamjuno deploy --profile team --mode staging
+```
+
+It accepts any string. If omitted, no profile is used.
+
+---
+
+### Local Persistence
+
+Unless you run it in headless mode with a token, the Juno CLI stores data locally in the following OS-specific user's variables path to work properly.
+
+| OS  | Path |
+| --- | --- |
+| Mac | `~/Library/Preferences/juno-nodejs` |
+| Windows | `%APPDATA%\juno-nodejs\Config` (for example, `C:\Users\USERNAME\AppData\Roaming\juno-nodejs\Config`) |
+| Linux | `~/.config/juno-nodejs` (or `$XDG_CONFIG_HOME/juno-nodejs`) |
+
+These config files are created based on the selected `--profile` and `--mode`:
+
+| File | Encrypted | Purpose |
+| --- | --- | --- |
+| `juno[-profile][-mode]` | ✅   | Stores the [access key](/docs/miscellaneous/access-keys.md) ([principal](/docs/terminology.md#principal)) and list of modules. |
+| `juno[-profile][-mode]-cli-settings` |     | Stores CLI preferences, e.g. whether the access key file is encrypted (to avoid unnecessary prompts). |
+| `juno[-profile][-mode]-cli-state` |     | Stores ephemeral state like applied config hashes. |
 
 # Configuration
 
@@ -7902,6 +7955,16 @@ For example, if you set `derivationOrigin` to "hello.com", a user signing in at 
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    authentication: {      internetIdentity: {        derivationOrigin: "hello.com"      }    }  }});
 ```
 
+#### Allowed Callers
+
+This option gives you control over who is allowed to use your app, whether they are already registered or not.
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    authentication: {      rules: {        allowedCallers: [          "eunqq-ctbep-mwing-6cwte-f5frt-qe7tu-ilmgk-wmy3m-mdi3j-mcsvx-zae"        ]      }    }  }});
+```
+
+For more explanation, see the related [section](/docs/build/authentication/management.md#allowed-callers) in Authentication.
+
 ### Assertions
 
 The CLI conducts several assertions when interacting with your Satellite, one of which involves monitoring the heap memory size. Typically, the CLI checks to ensure that the heap memory does not exceed the 1 GB limit before deployment. For instance, if your heap memory usage is close to 900 MB, the CLI will prompt you to confirm the deployment.
@@ -8135,20 +8198,6 @@ import { defineConfig } from "@junobuild/config";export default defineConfig(({ 
 
 ---
 
-## Modes
-
-By default, the CLI runs command for the `production` mode.
-
-This means when running a `juno` command in your terminal, it will pass the mode `production` to read your configuration.
-
-You can overwrite the default mode used for a command by passing the `--mode` option flag. For example, if you want to deploy your app for a `staging` mode:
-
-```
-juno deploy --mode staging
-```
-
----
-
 ## Multiple Environments
 
 You might want to deploy or manage a project across different environments, such as staging and production. Juno supports this through the `ids` field, allowing you to define separate Satellite IDs for each ([mode](#modes)).
@@ -8343,11 +8392,15 @@ This document will help you understand the different settings you can configure 
 
 ## Freezing Threshold
 
-The Freezing Threshold defines the duration (in seconds) after which a module will be frozen. It is an important feature because if a module runs out of cycles, it will be uninstalled, meaning its code and state are deleted. The Freezing Threshold protects from deletion. If the cycles balance dips below the threshold, the smart contract will stop processing any new requests but will continue to reply to existing requests.
+The Freezing Threshold defines the duration (in seconds) after which a module will be frozen. It acts as a **grace period** before permanent deletion.
 
-For sensitive applications that requires several resources, developers can set a freezing threshold to 90 days or more. This ensures that they and their users have enough time to react and top up the modules before they finally run out of cycles.
+When a module runs out of cycles, it will be uninstalled, meaning its code and state are deleted. The freezing threshold protects against this by halting the processing of new requests once the cycle balance drops below the threshold, while still allowing read-only replies to existing requests.
 
-The default value is `2_592_000n` (30 days).
+This grace period gives developers and users time to react. For sensitive applications, it's common to set a relatively long freezing threshold to ensure there’s enough time to notice a low balance and top up the module before removal
+
+That’s why [Mission Control](/docs/terminology.md#mission-control) (your wallet) and [Satellites](/docs/terminology.md#satellite) (your projects) are spun up with a default freezing threshold of **one year** (360 days), reflecting their high importance.
+
+In contrast, [Analytics](/docs/build/analytics.md) modules are considered less critical and are provisioned with a default threshold of **three months** (90 days).
 
 ### In Other Words
 

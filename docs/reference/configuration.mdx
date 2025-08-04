@@ -240,6 +240,31 @@ export default defineConfig({
 });
 ```
 
+#### Allowed Callers
+
+This option gives you control over who is allowed to use your app, whether they are already registered or not.
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
+    authentication: {
+      rules: {
+        allowedCallers: [
+          "eunqq-ctbep-mwing-6cwte-f5frt-qe7tu-ilmgk-wmy3m-mdi3j-mcsvx-zae"
+        ]
+      }
+    }
+  }
+});
+```
+
+For more explanation, see the related [section](../build/authentication/management.md#allowed-callers) in Authentication.
+
 ### Assertions
 
 import Assertions from "../build/components/assertions.mdx";
@@ -564,20 +589,6 @@ export default defineConfig(({ mode }) => ({
     predeploy: [`npm run build -- --mode ${mode}`]
   }
 }));
-```
-
----
-
-## Modes
-
-By default, the CLI runs command for the `production` mode.
-
-This means when running a `juno` command in your terminal, it will pass the mode `production` to read your configuration.
-
-You can overwrite the default mode used for a command by passing the `--mode` option flag. For example, if you want to deploy your app for a `staging` mode:
-
-```bash
-juno deploy --mode staging
 ```
 
 ---
