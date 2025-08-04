@@ -960,6 +960,37 @@ For example, setting this to `10` means only `10` new users can be created per m
 
 Default is `100`.
 
+---
+
+### Allowed Callers
+
+This option gives you full control over who's allowed to use your app.
+
+If you enable this, only the identities you list (in user key, format, like `bj4r4-5cdop-...`) will be allowed to sign in or use any features like Datastore or Storage.
+
+*   If someone's not on the list, they can't even register.
+*   If they are, they can use the app just like any other user (unless they're banned).
+
+Use this if you want to limit access to a private group — for example, for internal testing or early access users.
+
+#### How to Get the User Identities
+
+There are two common ways to manage the list of authorized users:
+
+1.  After sign-in
+
+You can share your app link with a few users, let them sign in, and then add their keys to the authorized list. The user table will show their identity once they've signed in at least once.
+
+2.  Before sign-in
+
+If you want to block all sign-ins except for those explicitly allowed before hand, start by adding your own developer ID (shown in the Console) to the list.
+
+This activates the restriction: once at least one identity is listed, only those identities can sign in. If the list is empty, then everyone can sign in.
+
+You can then share the app link with others. When they attempt to sign in and are blocked, you can show a message that displays their user key (e.g. using the `unsafeIdentity` function from `@junobuild/core`).
+
+They can send you their key, and you can add them to the list manually to grant access.
+
 # Collections
 
 You can create or update a collection in the "Collections" tab in Juno's console under the [datastore](https://console.juno.build/datastore) view.
@@ -7070,7 +7101,7 @@ For most applications, we recommend using the default subnets and staying on the
 
 | Subnet ID | Type | Canisters (Running/Stopped) | Nodes (Up/Total) |
 | --- | --- | --- | --- |
-| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 35216/689 | 13/13 |
+| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 35340/692 | 13/13 |
 | pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae | Fiduciary | 3030/8 | 34/34 |
 | bkfrj-6k62g-dycql-7h53p-atvkj-zg4to-gaogh-netha-ptybj-ntsgw-rqe | European | 24912/593 | 13/13 |
 | brlsh-zidhj-3yy3e-6vqbz-7xnih-xeq2l-as5oc-g32c4-i5pdn-2wwof-oae |     | 35034/728 | 13/13 |
@@ -7924,6 +7955,16 @@ For example, if you set `derivationOrigin` to "hello.com", a user signing in at 
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    authentication: {      internetIdentity: {        derivationOrigin: "hello.com"      }    }  }});
 ```
 
+#### Allowed Callers
+
+This option gives you control over who is allowed to use your app, whether they are already registered or not.
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    authentication: {      rules: {        allowedCallers: [          "eunqq-ctbep-mwing-6cwte-f5frt-qe7tu-ilmgk-wmy3m-mdi3j-mcsvx-zae"        ]      }    }  }});
+```
+
+For more explanation, see the related [section](/docs/build/authentication/management.md#allowed-callers) in Authentication.
+
 ### Assertions
 
 The CLI conducts several assertions when interacting with your Satellite, one of which involves monitoring the heap memory size. Typically, the CLI checks to ensure that the heap memory does not exceed the 1 GB limit before deployment. For instance, if your heap memory usage is close to 900 MB, the CLI will prompt you to confirm the deployment.
@@ -8285,11 +8326,15 @@ This document will help you understand the different settings you can configure 
 
 ## Freezing Threshold
 
-The Freezing Threshold defines the duration (in seconds) after which a module will be frozen. It is an important feature because if a module runs out of cycles, it will be uninstalled, meaning its code and state are deleted. The Freezing Threshold protects from deletion. If the cycles balance dips below the threshold, the smart contract will stop processing any new requests but will continue to reply to existing requests.
+The Freezing Threshold defines the duration (in seconds) after which a module will be frozen. It acts as a **grace period** before permanent deletion.
 
-For sensitive applications that requires several resources, developers can set a freezing threshold to 90 days or more. This ensures that they and their users have enough time to react and top up the modules before they finally run out of cycles.
+When a module runs out of cycles, it will be uninstalled, meaning its code and state are deleted. The freezing threshold protects against this by halting the processing of new requests once the cycle balance drops below the threshold, while still allowing read-only replies to existing requests.
 
-The default value is `2_592_000n` (30 days).
+This grace period gives developers and users time to react. For sensitive applications, it's common to set a relatively long freezing threshold to ensure there’s enough time to notice a low balance and top up the module before removal
+
+That’s why [Mission Control](/docs/terminology.md#mission-control) (your wallet) and [Satellites](/docs/terminology.md#satellite) (your projects) are spun up with a default freezing threshold of **one year** (360 days), reflecting their high importance.
+
+In contrast, [Analytics](/docs/build/analytics.md) modules are considered less critical and are provisioned with a default threshold of **three months** (90 days).
 
 ### In Other Words
 
