@@ -2,7 +2,7 @@
 
 The [junobuild/skylab](https://hub.docker.com/r/junobuild/skylab) image is an all-in-one emulator for local development. It bundles everything you need to build, test, and explore the Juno ecosystem:
 
-- ✅ Juno Console (smart contract + UI)
+- ✅ Juno Console (backend + UI)
 - 🛰️ Satellites (support for multiple application containers)
 - 📊 Orbiter (analytics and tracking module)
 - ⚙️ Supporting infrastructure (see table below)
