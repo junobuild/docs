@@ -7535,7 +7535,7 @@ Usage: juno changes reject [options]Options:  -i, --id              The ID of th
 Handle developer tasks like starting/stopping a local network.
 
 ```
-Usage: juno dev <subcommand> [options]Subcommands:  start               Start a local Internet Computer network in a container.  stop                Stop the local network.  build               Alias for juno functions build.  eject               Alias for juno functions eject.
+Usage: juno dev <subcommand> [options]Subcommands:  start               Start a local Internet Computer network in a container.  stop                Stop the local network.  wait                Wait until the emulator is ready.  build               Alias for juno functions build.  eject               Alias for juno functions eject.
 ```
 
 ---
@@ -7546,6 +7546,16 @@ Start a local Internet Computer network in a container.
 
 ```
 Usage: juno dev start [options]Options:  -l, --lang            Specify the language for building the serverless functions: rust, typescript or javascript.  --cargo-path          Path to the Rust manifest.  --source-path         Optional path to the TypeScript or JavaScript entry file.  -w, --watch           Rebuild your functions automatically when source files change.  -h, --help            Output usage information.Notes:- The language and path options are only used in combination with watch.- If no language is provided, the CLI attempts to determine the appropriate build.- Language can be shortened to rs for Rust, ts for TypeScript and mjs for JavaScript.- Use --cargo-path to specify a specific crate path. For Rust builds, this maps to --manifest-path for cargo build. For TypeScript and JavaScript, it points to the Rust crate (commonly "Sputnik") that imports the functions.- An optional --source-path to specify the source file for TypeScript and JavaScript (e.g. index.ts or index.mjs).- The watch option rebuilds when source files change, with a default debounce delay of 10 seconds; optionally, pass a delay in milliseconds.
+```
+
+---
+
+### Wait
+
+Wait until the emulator is ready.
+
+```
+Usage: juno dev wait [options]Options:  -t, --timeout         Timeout for the emulator to be ready (in ms, default 2min).  -h, --help            Output usage information.
 ```
 
 ---
