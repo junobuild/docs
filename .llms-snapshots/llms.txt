@@ -84,6 +84,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [AI](https://juno.build/docs/guides/ai.md): Learn how to use Juno's llms.txt files to provide AI tools with better context for building serverless functions, deploying satellites, and integrating the SDK.
 - [Angular](https://juno.build/docs/guides/angular.md): Use Juno with Angular
 - [Astro](https://juno.build/docs/guides/astro.md): Learn how to integrate Juno with Astro for seamless development. Follow our quickstart guide and hosting instructions.
+- [End-to-End Testing](https://juno.build/docs/guides/e2e.md): Learn how to write and run end-to-end (E2E) tests for your Juno project using tools like Playwright and GitHub Actions. Includes emulator setup, authentication handling, and CI integration.
 - [Manual](https://juno.build/docs/guides/manual-deployment.md): Learn how to deploy an application to a Juno Satellite from your device using the CLI.
 - [Next.js](https://juno.build/docs/guides/nextjs.md): Learn how to integrate Juno with Next.js. Follow our quickstart guide and examples to get started.
 - [NodeJS](https://juno.build/docs/guides/nodejs.md): SDK usage in a NodeJS context

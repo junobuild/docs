@@ -72,6 +72,7 @@ const sidebars: SidebarsConfig = {
           ]
         },
         "guides/local-development",
+        "guides/e2e",
         "guides/ai"
       ]
     },
