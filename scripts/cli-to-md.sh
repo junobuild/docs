@@ -13,7 +13,7 @@ for cmd in $(echo $COMMANDS | sed "s/,/ /g"); do
   generate_command_markdown "$cmd"
 done
 
-DEV_COMMANDS=start
+DEV_COMMANDS=start,wait
 
 for cmd in $(echo $DEV_COMMANDS | sed "s/,/ /g"); do
   generate_command_markdown "dev $cmd"
