@@ -64,6 +64,15 @@ export default function Hero(): JSX.Element {
           >
             Documentation
           </Link>
+
+          <a
+            href="/llms-full.txt"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.llms}
+          >
+            llms-full.txt
+          </a>
         </div>
       </div>
     </article>
