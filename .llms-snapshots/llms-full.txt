@@ -1816,7 +1816,7 @@ juno.config.js
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    gzip: false  }});
 ```
 
-If you want to customize the default pattern `**/*.+(css|js|mjs)` to better suit your needs, you can specify your own pattern. For example:
+If you want to customize the default pattern `**/*.+(css|js|mjs|html)` to better suit your needs, you can specify your own pattern. For example:
 
 juno.config.js
 
@@ -7872,7 +7872,7 @@ juno.config.js
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    gzip: false  }});
 ```
 
-If you want to customize the default pattern `**/*.+(css|js|mjs)` to better suit your needs, you can specify your own pattern. For example:
+If you want to customize the default pattern `**/*.+(css|js|mjs|html)` to better suit your needs, you can specify your own pattern. For example:
 
 juno.config.js
 
