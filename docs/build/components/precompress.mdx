@@ -1,0 +1,66 @@
+When deploying your application, the CLI automatically searches for JavaScript (js), ES Module (mjs), CSS (css) and HTML (html) files in the `source` folder to optimize them using Gzip compression. This improves the performance of your app when it is served on the web.
+
+By default, precompression stores **both** the original and compressed versions in Storage.
+
+You can disable it entirely or customize which files are precompressed, whether to keep originals, and which compression algorithm to use.
+
+## Disable precompression
+
+Set the `precompress` option to `false` in your configuration:
+
+```javascript title="juno.config.js"
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
+    source: "dist",
+    precompress: false
+  }
+});
+```
+
+## Customize the file matching pattern
+
+If you want to customize the default pattern `**/*.+(css|js|mjs|html)` to better suit your needs, you can specify your own pattern. For example:
+
+```javascript title="juno.config.js"
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
+    source: "dist",
+    precompress: {
+      pattern: "**/*.jpg" // precompress JPEG files only
+    }
+  }
+});
+```
+
+## Decide what happens to original files
+
+The `mode` option controls what happens to the original files after compression:
+
+- `"both"` — upload both the original and the compressed version. _(default)_
+- `"replace"` — upload only the compressed version and serve it with the appropriate `Content-Encoding` header.
+
+```javascript title="juno.config.js"
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
+    source: "dist",
+    precompress: {
+      mode: "replace"
+    }
+  }
+});
+```
