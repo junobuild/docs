@@ -4,6 +4,7 @@ Apply configuration to satellite.
 Usage: juno config [options]
 
 Options:
+  --force               Overwrite configuration without checks.
   -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.
   -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.
   --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.
