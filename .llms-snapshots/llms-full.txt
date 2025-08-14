@@ -1843,6 +1843,18 @@ juno.config.js
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    precompress: {      mode: "replace"    }  }});
 ```
 
+## Choose the compression algorithm
+
+By default, precompression uses **Gzip** (`algorithm: "gzip"`) because it offers a good balance between compression speed, compatibility, and size.
+
+You can switch to **Brotli** (`algorithm: "brotli"`) for potentially smaller files, especially for text-based assets such as those compressed by default like HTML, CSS, and JavaScript.
+
+juno.config.js
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    precompress: {      algorithm: "brotli"    }  }});
+```
+
 ### Encoding types
 
 When deploying, the CLI automatically maps the encoding type based on the file extension. The encoding information is then used in the satellite to provide the appropriate HTTP response header `Content-Encoding`.
@@ -7916,6 +7928,18 @@ juno.config.js
 
 ```
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    precompress: {      mode: "replace"    }  }});
+```
+
+## Choose the compression algorithm
+
+By default, precompression uses **Gzip** (`algorithm: "gzip"`) because it offers a good balance between compression speed, compatibility, and size.
+
+You can switch to **Brotli** (`algorithm: "brotli"`) for potentially smaller files, especially for text-based assets such as those compressed by default like HTML, CSS, and JavaScript.
+
+juno.config.js
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    precompress: {      algorithm: "brotli"    }  }});
 ```
 
 ### Encoding
