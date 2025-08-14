@@ -1810,6 +1810,10 @@ By default, precompression stores **both** the original and compressed versions 
 
 You can disable it entirely or customize which files are precompressed, whether to keep originals, and which compression algorithm to use.
 
+**Note:**
+
+If you change the precompress configuration and your project has already been deployed, run `juno clear` before redeploying to ensure you change is applied.
+
 ## Disable precompression
 
 Set the `precompress` option to `false` in your configuration:
@@ -7896,6 +7900,10 @@ When deploying your application, the CLI automatically searches for JavaScript (
 By default, precompression stores **both** the original and compressed versions in Storage.
 
 You can disable it entirely or customize which files are precompressed, whether to keep originals, and which compression algorithm to use.
+
+**Note:**
+
+If you change the precompress configuration and your project has already been deployed, run `juno clear` before redeploying to ensure you change is applied.
 
 ## Disable precompression
 
