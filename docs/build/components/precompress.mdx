@@ -1,4 +1,4 @@
-When deploying your application, the CLI automatically searches for JavaScript (js), ES Module (mjs), CSS (css) and HTML (html) files in the `source` folder to optimize them using Gzip compression. This improves the performance of your app when it is served on the web.
+When deploying your application, the CLI automatically searches for files matching the pattern `**/*.+(css|js|mjs|html)` in the `source` folder to optimize them using Gzip compression. This improves the performance of your app when it is served on the web.
 
 By default, precompression stores **both** the original and compressed versions in Storage.
 
@@ -10,7 +10,7 @@ If you change the precompress configuration and your project has already been de
 
 :::
 
-## Disable precompression
+#### Disable precompression
 
 Set the `precompress` option to `false` in your configuration:
 
@@ -28,7 +28,7 @@ export default defineConfig({
 });
 ```
 
-## Customize the file matching pattern
+#### Customize the file matching pattern
 
 If you want to customize the default pattern `**/*.+(css|js|mjs|html)` to better suit your needs, you can specify your own pattern. For example:
 
@@ -48,12 +48,20 @@ export default defineConfig({
 });
 ```
 
-## Decide what happens to original files
+#### Decide what happens to original files
 
 The `mode` option controls what happens to the original files after compression:
 
 - `"both"` — upload both the original and the compressed version. _(default)_
 - `"replace"` — upload only the compressed version and serve it with the appropriate `Content-Encoding` header.
+
+:::warning
+
+If you use `replace` for HTML, some social media crawlers (e.g. Twitter, LinkedIn) may not be able to fetch your pages correctly, resulting in missing or broken social previews.
+
+To avoid this, instead of providing a single precompression rule, it's recommended to fine-tune the behavior using an **array of rules** ([see below](#use-multiple-rules)).
+
+:::
 
 ```javascript title="juno.config.js"
 import { defineConfig } from "@junobuild/config";
@@ -71,7 +79,7 @@ export default defineConfig({
 });
 ```
 
-## Choose the compression algorithm
+#### Choose the compression algorithm
 
 By default, precompression uses **Gzip** (`algorithm: "gzip"`) because it offers a good balance between compression speed, compatibility, and size.
 
@@ -89,6 +97,37 @@ export default defineConfig({
     precompress: {
       algorithm: "brotli"
     }
+  }
+});
+```
+
+#### Use multiple rules
+
+In some cases, particularly when using `mode: replace`, you may want to apply different precompression strategies depending on the file type. For example, using replace for JavaScript and CSS files, but doing so for HTML can break social media previews.
+
+To handle this, the precompress option also accepts an array of rules:
+
+```javascript title="juno.config.js"
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
+    source: "dist",
+    precompress: [
+      {
+        pattern: "**/*.+(js|mjs|css)",
+        algorithm: "brotli",
+        mode: "replace"
+      },
+      {
+        pattern: "**/*.html",
+        algorithm: "brotli",
+        mode: "both"
+      }
+    ]
   }
 });
 ```
