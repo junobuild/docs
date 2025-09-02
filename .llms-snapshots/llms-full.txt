@@ -1484,7 +1484,7 @@ Writing and viewing logs is a crucial tool for debugging and monitoring your cod
 
 ## Native Logging
 
-The Internet Computer provides a native, simple logging system where logs are persisted within the blockchain up to a maximum size of 4 KiB.
+The Internet Computer provides a native, simple logging system where logs are persisted within the state up to a maximum size of 4 KiB.
 
 **Note:**
 
@@ -4785,7 +4785,7 @@ import { Component } from "@angular/core";import { type Doc, initSatellite, setD
 
 #### 5\. Start the app
 
-Start the app, go to [http://localhost:4200](http://localhost:4200) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite on the blockchain.
+Start the app, go to [http://localhost:4200](http://localhost:4200) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite.
 
 **What's Next: Going Live:**
 
@@ -5004,7 +5004,7 @@ index.astro
 
 ### 6\. Start the app
 
-Start the app, go to [http://localhost:4321/](http://localhost:4321/) in a browser, click "Insert a document", and you should see the data successfully persisted in your satellite on the blockchain.
+Start the app, go to [http://localhost:4321/](http://localhost:4321/) in a browser, click "Insert a document", and you should see the data successfully persisted in your satellite.
 
 **What's Next: Going Live:**
 
@@ -5374,7 +5374,7 @@ Page.tsx
 
 #### 6\. Start the app
 
-Start the app and go to [http://localhost:3000](http://localhost:3000) in a browser. Click "Insert a document" to see the data successfully persisted in your satellite on the blockchain.
+Start the app and go to [http://localhost:3000](http://localhost:3000) in a browser. Click "Insert a document" to see the data successfully persisted in your satellite.
 
 **What's Next: Going Live:**
 
@@ -5648,7 +5648,7 @@ import { useEffect, useState } from "react";import { initSatellite, setDoc } fro
 
 #### 6\. Start the app
 
-Start the app and go to [http://localhost:5173](http://localhost:5173) in a browser. Click "Insert a document" to see the data successfully persisted in your satellite on the blockchain.
+Start the app and go to [http://localhost:5173](http://localhost:5173) in a browser. Click "Insert a document" to see the data successfully persisted in your satellite.
 
 **What's Next: Going Live:**
 
@@ -6038,7 +6038,7 @@ Replace the existing content in your `+page.svelte` file in the same `routes` di
 
 #### 6\. Start the app
 
-Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite on the blockchain.
+Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite.
 
 **What's Next: Going Live:**
 
@@ -6424,7 +6424,7 @@ App.vue
 
 #### 6\. Start the app
 
-Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite on the blockchain.
+Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite.
 
 **What's Next: Going Live:**
 
@@ -7061,7 +7061,7 @@ Juno operates on the [Internet Computer](https://internetcomputer.org/) (ICP or 
 
 The Internet Computer connects independent data centers worldwide. Specialized node machines and cryptography ensure that applications run efficiently and consistently, without relying on Big Tech intermediaries. It even enables direct web content delivery from these self-contained units.
 
-While Juno relies on the Internet Computer as its primary execution layer, it avoids unnecessary blockchain complexity. Developers interact with Juno using familiar frontend and backend development workflows, without needing to manage or understand blockchain infrastructure.
+While Juno relies on the Internet Computer as its primary execution layer, it avoids unnecessary complexity. Developers interact with Juno using familiar frontend and backend development workflows, without needing to manage or understand blockchain infrastructure.
 
 ---
 
@@ -7285,7 +7285,7 @@ We also recommend enabling [monitoring](/docs/management/monitoring.md) to ensur
 
 ## What are ICP?
 
-ICP are the native cryptocurrency of the [Internet Computer](https://internetcomputer.org). They are used to power this blockchain, providing utility and governance.
+ICP are the native cryptocurrency of the [Internet Computer](https://internetcomputer.org). They provide utility for powering the network and are also used for governance.
 
 One key usage is converting ICP tokens to cycles, which are used to cover the computational and storage costs of running smart contracts and modules.
 

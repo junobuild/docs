@@ -8,7 +8,7 @@ Writing and viewing logs is a crucial tool for debugging and monitoring your cod
 
 ## Native Logging
 
-The Internet Computer provides a native, simple logging system where logs are persisted within the blockchain up to a maximum size of 4 KiB.
+The Internet Computer provides a native, simple logging system where logs are persisted within the state up to a maximum size of 4 KiB.
 
 :::note
 

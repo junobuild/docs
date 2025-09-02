@@ -26,7 +26,7 @@ Juno operates on the [Internet Computer](https://internetcomputer.org/) (ICP or 
 
 The Internet Computer connects independent data centers worldwide. Specialized node machines and cryptography ensure that applications run efficiently and consistently, without relying on Big Tech intermediaries. It even enables direct web content delivery from these self-contained units.
 
-While Juno relies on the Internet Computer as its primary execution layer, it avoids unnecessary blockchain complexity. Developers interact with Juno using familiar frontend and backend development workflows, without needing to manage or understand blockchain infrastructure.
+While Juno relies on the Internet Computer as its primary execution layer, it avoids unnecessary complexity. Developers interact with Juno using familiar frontend and backend development workflows, without needing to manage or understand blockchain infrastructure.
 
 ---
 
