@@ -73,9 +73,9 @@ Juno Analytics does not follow users across websites and applications they visit
 
 ### You 100% own your data
 
-As with all services provided by Juno, you are the sole controller of your smart contracts, and your data belongs exclusively to you.
+As with all services provided by Juno, you are the sole controller of your containers, and your data belongs exclusively to you.
 
-You have the capability to delete all collected data within your Analytics at any time by utilizing the [CLI] to reset your smart contract.
+You have the capability to delete all collected data within your Analytics at any time by utilizing the [CLI].
 
 ---
 
@@ -103,7 +103,7 @@ Similar to other analytics services, an Orbiter accepts data submitted from any 
 
 Consequently, this leaves the canister open to potential attacks that can pollute the data and consume cycles. For this reason, we recommend the following:
 
-1. Avoid topping up the smart contract with excessive cycles; instead, adopt a lean approach.
+1. Avoid topping up with excessive cycles; instead, adopt a lean approach.
 2. Enable [monitoring](../../management/monitoring.md) to ensure your modules are automatically refueled and stay online.
 3. Interpret the statistics provided by this feature with some reservation, similar to any other analytics data, considering potential inaccuracies.
 

@@ -7,7 +7,7 @@ keywords:
     transaction fees,
     ICP,
     cycles,
-    smart contract costs,
+    infrastructure costs,
     storage costs,
     deployment costs,
     data costs
@@ -43,9 +43,9 @@ You can top up your cycle balance in the Juno [console](https://console.juno.bui
 
 New developers who join Juno are granted credits to create a mission control and their initial [satellite].
 
-To create additional satellites, a fee of 0.4 ICP is necessary, along with the infrastructure costs for setting up the smart contract.
+To create additional satellites, a fee of 0.4 ICP is necessary, along with the infrastructure costs for setting up the container.
 
-Similarly, enabling analytics by creating an [orbiter] entails a fee of 0.4 ICP, plus the infrastructure costs for creating the smart contract.
+Similarly, enabling analytics by creating an [orbiter] entails a fee of 0.4 ICP.
 
 Please note that additional transaction fees may be introduced in the future, and pricing and models are subject to change.
 
@@ -61,7 +61,7 @@ You can use the [Pricing Calculator](https://internetcomputer.org/docs/current/d
 
 ### Storage
 
-The estimated annual cost of storing 1 gigabyte of data in a smart contract is $5.
+The estimated annual cost of storing 1 gigabyte of data on the Internet Computer is $5.
 
 To calculate the estimated monthly cost for 1 gigabyte of storage, you can refer to the table provided on the Internet Computer [website](https://internetcomputer.org/docs/current/developer-docs/gas-cost).
 

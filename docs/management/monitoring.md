@@ -1,9 +1,9 @@
 ---
 sidebar_position: 7
-description: Juno Monitoring ensures your smart contracts remain operational by automatically managing cycle balances. Monitor your modules, configure thresholds, and enable auto-refill to prevent downtime effortlessly.
+description: Juno Monitoring ensures your containers remain operational by automatically managing cycle balances. Monitor your modules, configure thresholds, and enable auto-refill to prevent downtime effortlessly.
 keywords:
   [
-    Smart Contract Monitoring,
+    Infrastructure Monitoring,
     Cycle Management,
     Auto-Refill,
     Internet Computer Monitoring,
@@ -24,7 +24,7 @@ Keeping your modules running smoothly is essential for any application. The moni
 
 - **Cycle refilling**: Monitored modules are automatically topped up when their balance falls below what's needed to stay active.
 - **Self-Monitoring**: Your Mission Control ensures that both your wallet and modules maintain sufficient cycles, with full control remaining in your hands at all times.
-- **Automatic ICP Conversion**: Can mint new cycles from the ICP in your wallet, ensuring your canisters stay adequately funded.
+- **Automatic ICP Conversion**: Can mint new cycles from the ICP in your wallet, ensuring your modules stay adequately funded.
 - **Hourly Checks**: The system evaluates balances once an hour.
 
 ---
@@ -33,7 +33,7 @@ Keeping your modules running smoothly is essential for any application. The moni
 
 When a smart contract runs out of [cycles] on the [Internet Computer](https://internetcomputer.org), it stops functioning, which can disrupt your application or service. Enabling monitoring provides peace of mind by automating the management of cycles, ensuring your modules are always ready to perform. It also saves a little time by eliminating the need for manual top-ups.
 
-It's important to note that if your smart contracts — whether it's your wallet or a module — run out of cycles, they will enter a grace period. During this time, the module stops working but can still be restored. If no action is taken, the module eventually gets deleted, resulting in the permanent loss of its data and functionality.
+It's important to note that if your wallet or a module run out of cycles, they will enter a grace period. During this time, the module stops working but can still be restored. If no action is taken, the module eventually gets deleted, resulting in the permanent loss of its data and functionality.
 
 ---
 

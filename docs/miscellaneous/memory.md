@@ -26,7 +26,7 @@ To help you understand and optimize memory usage, the Console displays a detaile
 
 ## Satellite
 
-A [satellite] can store data using two types of memory: `heap` and `stable`. While both types are forms of random-access memory that only exist as long as the smart contract lives, they can be compared to a familiar analogy. Think of `heap` as similar to the RAM in a computer, and `stable` as more akin to ROM.
+A [satellite] can store data using two types of memory: `heap` and `stable`. Both are forms of random-access memory that exist only while the satellite is active. As an analogy, `heap` is like RAM in a computer, while `stable` is more like ROM.
 
 ### In a nutshell
 
@@ -34,7 +34,7 @@ A [satellite] can store data using two types of memory: `heap` and `stable`. Whi
 
 On the other hand, `stable` memory has a higher memory threshold with a maximum limit of 500 GB minus the heap size, allowing it to store more data in terms of size. However, it is slightly slower.
 
-Additionally, `heap` memory needs to be deserialized and serialized each time you upgrade the smart contract's code. This process becomes heavier as the heap memory size grows.
+Additionally, `heap` memory needs to be deserialized and serialized each time you upgrade the module's code. This process becomes heavier as the heap memory size grows.
 
 On the contrary, `stable` memory doesn't require processing during an upgrade. However, the data it contains needs to be deserialized and serialized each time it is accessed, which can make its usage more costly.
 

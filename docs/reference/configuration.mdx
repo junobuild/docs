@@ -163,9 +163,9 @@ import IFrame from "../build/components/iframe.mdx";
 
 #### Maximum Memory Size
 
-You can configure optional limits on heap and stable memory for your smart contract to control the creation and update of assets in your storage.
+You can set optional limits on heap and stable memory to control how assets are created and updated in storage.
 
-When the limit is reached, the Storage and smart contract will continue to operate normally but will reject the upload of new assets.
+When the limit is reached, the Storage will continue to operate normally but will reject the upload of new assets.
 
 ```javascript
 import { defineConfig } from "@junobuild/config";
@@ -191,9 +191,9 @@ The `datastore` configuration accepts the following options and parameters:
 
 #### Maximum Memory Size
 
-You can configure optional limits on heap and stable memory for your smart contract to control the creation and update of documentations in your Datastore.
+You can set optional limits on heap and stable memory to control how documents are created and updated.
 
-When the limit is reached, the Datastore and smart contract will continue to operate normally but will reject changes to documents.
+When the limit is reached, the Datastore will continue to operate normally but will reject changes to documents.
 
 ```javascript
 import { defineConfig } from "@junobuild/config";
@@ -535,7 +535,7 @@ export default defineConfig({
 
 ## Apply Changes
 
-Configurations such as above [storage](#storage), [datastore](#datastore), [authentication](#authentication), and [settings](#settings) require explicit application to your smart contract as they directly impact its behavior.
+Configurations such as above [storage](#storage), [datastore](#datastore), [authentication](#authentication), and [settings](#settings) require explicit application to your module as they directly impact its behavior.
 
 To apply your changes, run the [juno config](./cli#config) command in the CLI after modifying your configuration file.
 
