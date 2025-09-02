@@ -1,6 +1,6 @@
 This is useful if you want to:
 
-- Fetch or modify data in other smart contracts
+- Fetch or modify data in other modules
 - Interact with standard canisters like ledger or governance
 - Trigger behavior on other dapps
 

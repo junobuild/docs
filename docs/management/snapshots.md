@@ -6,7 +6,7 @@ sidebar_position: 11
 
 Snapshots are an essential component of any disaster recovery strategy. In the fast-paced world of development, unexpected issues can arise—such as accidental overwrites of critical data or bugs in updates. While these scenarios can't always be avoided, their impact can be minimized or mitigated.
 
-The Snapshot feature acts as your safety net, ensuring that your project can recover quickly and efficiently from potential disasters. Each snapshot is a snapshot of your module (Satellite, Mission Control, or Orbiter) at a specific point in time. Snapshots enable you to restore your canister to its previous state, protecting your work and averting potential crises.
+The Snapshot feature acts as your safety net, ensuring that your project can recover quickly and efficiently from potential disasters. Each snapshot is a snapshot of your module (Satellite, Mission Control, or Orbiter) at a specific point in time. Snapshots enable you to restore your module to its previous state, protecting your work and averting potential crises.
 
 ---
 
@@ -22,7 +22,7 @@ Snapshots are also automatically created during the upgrade process, capturing a
 
 As determined by the Internet Computer (see the [specification](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-take_canister_snapshot)), only one snapshot per module is currently allowed. If this evolves in the future, Juno will be updated accordingly.
 
-Snapshots are stored on-chain, and the cost of a snapshot’s memory consumption is charged to the module itself. This means they follow the lifecycle of your smart contracts — if the module is deleted or runs out of cycles, its snapshot is also removed.
+Snapshots are stored on-chain, and the cost of a snapshot’s memory consumption is charged to the module itself. This means they follow the lifecycle of your modules — if the module is deleted or runs out of cycles, its snapshot is also removed.
 
 This is why snapshots should not be mistaken for backups. Unlike true backups, they do not provide historical retention, off-chain storage, or protection against accidental loss of control. For long-term data protection, external backups — such as secure cold storage for sensitive data — are recommended.
 

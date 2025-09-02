@@ -20,7 +20,7 @@ Juno's infrastructure is designed to provide developers with a simple, secure, a
 
 ## Internet Computer
 
-![An illustration representing Juno smart contracts living at the top of the Internet Computer](../img/juno-internet-computer.webp)
+![An illustration representing Juno modules living at the top of the Internet Computer](../img/juno-internet-computer.webp)
 
 Juno operates on the [Internet Computer](https://internetcomputer.org/) (ICP or IC), a blockchain-based open cloud platform designed to run WebAssembly containers in a decentralized setup. Every part of the Juno platform — including your Satellites, Mission Control, Orbiters (analytics), and the platform's own services like the Console — runs as self-contained units on the IC.
 

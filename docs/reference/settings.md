@@ -67,13 +67,13 @@ The default value is `5_000_000_000_000n` (5 trillion cycles)
 
 ### Example
 
-A practical use case could be a scenario where a module is expected to handle a large amount of data storage or perform intensive computations. By setting the Reserved Cycles Limit, developers can control the maximum amount of cycles that can be reserved for the future resource payments. This helps in preventing the smart contract from exceeding its allocated budget and also ensures that it has enough cycles for its operations.
+A practical use case could be a scenario where a module is expected to handle a large amount of data storage or perform intensive computations. By setting the Reserved Cycles Limit, developers can control the maximum amount of cycles that can be reserved for the future resource payments. This helps in preventing the module from exceeding its allocated budget and also ensures that it has enough cycles for its operations.
 
 ---
 
 ## Log Visibility
 
-This setting controls who can see the logs of the smart contract. It can be set to different levels of visibility, such as `public` or restricted to `controllers`.
+This setting controls who can see the default logs provided by the Internet Computer. It can be set to different levels of visibility, such as `public` or restricted to `controllers`.
 
 You can find the logs in the "Functions" section of Juno's administration Console.
 
@@ -105,7 +105,7 @@ If you set the heap memory limit to `2048n`, the module can use up to 2 GiB. Not
 
 ## Memory Allocation
 
-This setting specifies the amount of memory that is pre-allocated to the module. Pre-allocating memory can help in optimizing the smart contract's performance by ensuring it has a guaranteed amount of memory available from the start.
+This setting specifies the amount of memory that is pre-allocated to the module. Pre-allocating memory can help in optimizing the module's performance by ensuring it has a guaranteed amount of memory available from the start.
 
 The default value is `0n` - i.e. no particular pre-allocation.
 

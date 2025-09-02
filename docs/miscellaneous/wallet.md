@@ -20,13 +20,13 @@ We also recommend enabling [monitoring](../management/monitoring.md) to ensure y
 
 ICP are the native cryptocurrency of the [Internet Computer](https://internetcomputer.org). They provide utility for powering the network and are also used for governance.
 
-One key usage is converting ICP tokens to cycles, which are used to cover the computational and storage costs of running smart contracts and modules.
+One key usage is converting ICP tokens to cycles, which are used to cover the computational and storage costs of running modules.
 
 ---
 
 ## Why do I need ICP?
 
-Given that Juno is built on top of the Internet Computer (see [architecture](architecture.md)), your smart contracts require cycles to remain active.
+Given that Juno is built on top of the Internet Computer (see [architecture](architecture.md)), your modules require cycles to stay alive.
 
 While you don’t necessarily need ICP in the Juno ecosystem since you can acquire cycles with Stripe through [cycle.express](https://cycle.express), having some ICP can still be interesting.
 
