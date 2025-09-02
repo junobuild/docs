@@ -102,7 +102,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Management
   
-- [Monitoring](https://juno.build/docs/management/monitoring.md): Juno Monitoring ensures your smart contracts remain operational by automatically managing cycle balances. Monitor your modules, configure thresholds, and enable auto-refill to prevent downtime effortlessly.
+- [Monitoring](https://juno.build/docs/management/monitoring.md): Juno Monitoring ensures your containers remain operational by automatically managing cycle balances. Monitor your modules, configure thresholds, and enable auto-refill to prevent downtime effortlessly.
 - [Snapshots](https://juno.build/docs/management/snapshots.md): Snapshots are an essential component of any disaster recovery strategy. In the fast-paced world of development, unexpected issues can arise—such as accidental overwrites of critical data or bugs in updates. While these scenarios can't always be avoided, their impact can be minimized or mitigated.
 
 ## Miscellaneous

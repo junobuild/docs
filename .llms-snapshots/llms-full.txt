@@ -534,7 +534,7 @@ This section covers how to integrate and configure Juno Analytics in your app or
 
 ## Getting Started
 
-Before integrating Juno Analytics into your app or website, you need to create an Orbiter - the smart contract that implements analytics features and gathers data. Here's a step-by-step guide to help you get started:
+Before integrating Juno Analytics into your app or website, you need to create an Orbiter - the analytics container that collects anonymous usage data. Here's a step-by-step guide to get started:
 
 1.  Sign in to the Juno [Console](https://console.juno.build)
 2.  Navigate to [Analytics](https://console.juno.build/analytics/)
@@ -4853,7 +4853,7 @@ Once you’re set up, continue to the ([Deployment](#deployment)) section below.
 
 ## Deployment
 
-Use this guide to deploy your project to production — directly to a smart contract on mainnet.
+Use this guide to deploy your project to production — directly to a satellite on mainnet.
 
 **Note:**
 
@@ -4870,7 +4870,7 @@ If you haven't created a satellite yet, go ahead and [create](/docs/create-a-sat
 
 ### 2. Deploy
 
-Once your satellite is up and running, you can proceed with uploading your app to your smart contract.
+Once your satellite is up and running, you can proceed with uploading your app.
 
 You can either automate your deployment with GitHub Actions (recommended) or deploy manually from your device. Choose your method:
 
@@ -5040,7 +5040,7 @@ Once you’re set up, continue to the ([Deployment](#deployment)) section below.
 
 ## Deployment
 
-Use this guide to deploy your project to production — directly to a smart contract on mainnet.
+Use this guide to deploy your project to production — directly to a satellite on mainnet.
 
 ### 1. Set up a satellite
 
@@ -5048,7 +5048,7 @@ If you haven't created a satellite yet, go ahead and [create](/docs/create-a-sat
 
 ### 2. Deploy
 
-Once your satellite is up and running, you can proceed with uploading your app to your smart contract.
+Once your satellite is up and running, you can proceed with uploading your app.
 
 You can either automate your deployment with GitHub Actions (recommended) or deploy manually from your device. Choose your method:
 
@@ -5442,7 +5442,7 @@ Once you’re set up, continue to the ([Deployment](#deployment)) section below.
 
 ## Deployment
 
-Use this guide to deploy your project to production — directly to a smart contract on mainnet.
+Use this guide to deploy your project to production — directly to a satellite on mainnet.
 
 ### 1\. Static exports
 
@@ -5464,7 +5464,7 @@ If you haven't created a satellite yet, go ahead and [create](/docs/create-a-sat
 
 ### 3. Deploy
 
-Once your satellite is up and running, you can proceed with uploading your app to your smart contract.
+Once your satellite is up and running, you can proceed with uploading your app.
 
 You can either automate your deployment with GitHub Actions (recommended) or deploy manually from your device. Choose your method:
 
@@ -5716,7 +5716,7 @@ Once you’re set up, continue to the ([Deployment](#deployment)) section below.
 
 ## Deployment
 
-Use this guide to deploy your project to production — directly to a smart contract on mainnet.
+Use this guide to deploy your project to production — directly to a satellite on mainnet.
 
 ### 1. Set up a satellite
 
@@ -5724,7 +5724,7 @@ If you haven't created a satellite yet, go ahead and [create](/docs/create-a-sat
 
 ### 2. Deploy
 
-Once your satellite is up and running, you can proceed with uploading your app to your smart contract.
+Once your satellite is up and running, you can proceed with uploading your app.
 
 You can either automate your deployment with GitHub Actions (recommended) or deploy manually from your device. Choose your method:
 
@@ -5832,7 +5832,7 @@ You can make calls to other canisters on the Internet Computer directly from you
 
 This is useful if you want to:
 
-*   Fetch or modify data in other smart contracts
+*   Fetch or modify data in other modules
 *   Interact with standard canisters like ledger or governance
 *   Trigger behavior on other dapps
 
@@ -6106,7 +6106,7 @@ Once you’re set up, continue to the ([Deployment](#deployment)) section below.
 
 ## Deployment
 
-Use this guide to deploy your project to production — directly to a smart contract on mainnet.
+Use this guide to deploy your project to production — directly to a satellite on mainnet.
 
 ### 1\. Static site generation
 
@@ -6142,7 +6142,7 @@ If you haven't created a satellite yet, go ahead and [create](/docs/create-a-sat
 
 ### 3. Deploy
 
-Once your satellite is up and running, you can proceed with uploading your app to your smart contract.
+Once your satellite is up and running, you can proceed with uploading your app.
 
 You can either automate your deployment with GitHub Actions (recommended) or deploy manually from your device. Choose your method:
 
@@ -6256,7 +6256,7 @@ This approach is more expressive, easier to extend, and automatically gives you 
 
 This is useful if you want to:
 
-*   Fetch or modify data in other smart contracts
+*   Fetch or modify data in other modules
 *   Interact with standard canisters like ledger or governance
 *   Trigger behavior on other dapps
 
@@ -6492,7 +6492,7 @@ Once you're set up, continue to the ([Deployment](#deployment)) section below.
 
 ## Deployment
 
-Use this guide to deploy your project to production — directly to a smart contract on mainnet.
+Use this guide to deploy your project to production — directly to a satellite on mainnet.
 
 ### 1. Set up a satellite
 
@@ -6500,7 +6500,7 @@ If you haven't created a satellite yet, go ahead and [create](/docs/create-a-sat
 
 ### 2. Deploy
 
-Once your satellite is up and running, you can proceed with uploading your app to your smart contract.
+Once your satellite is up and running, you can proceed with uploading your app.
 
 You can either automate your deployment with GitHub Actions (recommended) or deploy manually from your device. Choose your method:
 
@@ -6653,7 +6653,7 @@ Keeping your modules running smoothly is essential for any application. The moni
 
 *   **Cycle refilling**: Monitored modules are automatically topped up when their balance falls below what's needed to stay active.
 *   **Self-Monitoring**: Your Mission Control ensures that both your wallet and modules maintain sufficient cycles, with full control remaining in your hands at all times.
-*   **Automatic ICP Conversion**: Can mint new cycles from the ICP in your wallet, ensuring your canisters stay adequately funded.
+*   **Automatic ICP Conversion**: Can mint new cycles from the ICP in your wallet, ensuring your modules stay adequately funded.
 *   **Hourly Checks**: The system evaluates balances once an hour.
 
 ---
@@ -6662,7 +6662,7 @@ Keeping your modules running smoothly is essential for any application. The moni
 
 When a smart contract runs out of [cycles](/docs/terminology.md#cycles) on the [Internet Computer](https://internetcomputer.org), it stops functioning, which can disrupt your application or service. Enabling monitoring provides peace of mind by automating the management of cycles, ensuring your modules are always ready to perform. It also saves a little time by eliminating the need for manual top-ups.
 
-It's important to note that if your smart contracts — whether it's your wallet or a module — run out of cycles, they will enter a grace period. During this time, the module stops working but can still be restored. If no action is taken, the module eventually gets deleted, resulting in the permanent loss of its data and functionality.
+It's important to note that if your wallet or a module run out of cycles, they will enter a grace period. During this time, the module stops working but can still be restored. If no action is taken, the module eventually gets deleted, resulting in the permanent loss of its data and functionality.
 
 ---
 
@@ -6765,7 +6765,7 @@ The wizard simplifies the setup process, making it easy to configure monitoring 
 
 Snapshots are an essential component of any disaster recovery strategy. In the fast-paced world of development, unexpected issues can arise—such as accidental overwrites of critical data or bugs in updates. While these scenarios can't always be avoided, their impact can be minimized or mitigated.
 
-The Snapshot feature acts as your safety net, ensuring that your project can recover quickly and efficiently from potential disasters. Each snapshot is a snapshot of your module (Satellite, Mission Control, or Orbiter) at a specific point in time. Snapshots enable you to restore your canister to its previous state, protecting your work and averting potential crises.
+The Snapshot feature acts as your safety net, ensuring that your project can recover quickly and efficiently from potential disasters. Each snapshot is a snapshot of your module (Satellite, Mission Control, or Orbiter) at a specific point in time. Snapshots enable you to restore your module to its previous state, protecting your work and averting potential crises.
 
 ---
 
@@ -6781,7 +6781,7 @@ Snapshots are also automatically created during the upgrade process, capturing a
 
 As determined by the Internet Computer (see the [specification](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-take_canister_snapshot)), only one snapshot per module is currently allowed. If this evolves in the future, Juno will be updated accordingly.
 
-Snapshots are stored on-chain, and the cost of a snapshot’s memory consumption is charged to the module itself. This means they follow the lifecycle of your smart contracts — if the module is deleted or runs out of cycles, its snapshot is also removed.
+Snapshots are stored on-chain, and the cost of a snapshot’s memory consumption is charged to the module itself. This means they follow the lifecycle of your modules — if the module is deleted or runs out of cycles, its snapshot is also removed.
 
 This is why snapshots should not be mistaken for backups. Unlike true backups, they do not provide historical retention, off-chain storage, or protection against accidental loss of control. For long-term data protection, external backups — such as secure cold storage for sensitive data — are recommended.
 
@@ -7055,7 +7055,7 @@ Juno's infrastructure is designed to provide developers with a simple, secure, a
 
 ## Internet Computer
 
-![An illustration representing Juno smart contracts living at the top of the Internet Computer](/assets/images/juno-internet-computer-905a4ce5071e12858c93525e424b9d30.webp)
+![An illustration representing Juno modules living at the top of the Internet Computer](/assets/images/juno-internet-computer-905a4ce5071e12858c93525e424b9d30.webp)
 
 Juno operates on the [Internet Computer](https://internetcomputer.org/) (ICP or IC), a blockchain-based open cloud platform designed to run WebAssembly containers in a decentralized setup. Every part of the Juno platform — including your Satellites, Mission Control, Orbiters (analytics), and the platform's own services like the Console — runs as self-contained units on the IC.
 
@@ -7104,7 +7104,7 @@ To help you understand and optimize memory usage, the Console displays a detaile
 
 ## Satellite
 
-A [satellite](/docs/terminology.md#satellite) can store data using two types of memory: `heap` and `stable`. While both types are forms of random-access memory that only exist as long as the smart contract lives, they can be compared to a familiar analogy. Think of `heap` as similar to the RAM in a computer, and `stable` as more akin to ROM.
+A [satellite](/docs/terminology.md#satellite) can store data using two types of memory: `heap` and `stable`. Both are forms of random-access memory that exist only while the satellite is active. As an analogy, `heap` is like RAM in a computer, while `stable` is more like ROM.
 
 ### In a nutshell
 
@@ -7112,7 +7112,7 @@ A [satellite](/docs/terminology.md#satellite) can store data using two types of 
 
 On the other hand, `stable` memory has a higher memory threshold with a maximum limit of 500 GB minus the heap size, allowing it to store more data in terms of size. However, it is slightly slower.
 
-Additionally, `heap` memory needs to be deserialized and serialized each time you upgrade the smart contract's code. This process becomes heavier as the heap memory size grows.
+Additionally, `heap` memory needs to be deserialized and serialized each time you upgrade the module's code. This process becomes heavier as the heap memory size grows.
 
 On the contrary, `stable` memory doesn't require processing during an upgrade. However, the data it contains needs to be deserialized and serialized each time it is accessed, which can make its usage more costly.
 
@@ -7238,34 +7238,36 @@ For most applications, we recommend using the default subnets and staying on the
 
 | Subnet ID | Type | Canisters (Running/Stopped) | Nodes (Up/Total) |
 | --- | --- | --- | --- |
-| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 35340/692 | 13/13 |
-| pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae | Fiduciary | 3030/8 | 34/34 |
-| bkfrj-6k62g-dycql-7h53p-atvkj-zg4to-gaogh-netha-ptybj-ntsgw-rqe | European | 24912/593 | 13/13 |
-| brlsh-zidhj-3yy3e-6vqbz-7xnih-xeq2l-as5oc-g32c4-i5pdn-2wwof-oae |     | 35034/728 | 13/13 |
-| o3ow2-2ipam-6fcjo-3j5vt-fzbge-2g7my-5fz2m-p4o2t-dwlc4-gt2q7-5ae |     | 57088/62 | 12/13 |
-| 4ecnw-byqwz-dtgss-ua2mh-pfvs7-c3lct-gtf4e-hnu75-j7eek-iifqm-sqe |     | 8063/120 | 13/13 |
-| opn46-zyspe-hhmyp-4zu6u-7sbrh-dok77-m7dch-im62f-vyimr-a3n2c-4ae |     | 40021/721 | 13/13 |
-| nl6hn-ja4yw-wvmpy-3z2jx-ymc34-pisx3-3cp5z-3oj4a-qzzny-jbsv3-4qe |     | 31491/713 | 13/13 |
-| io67a-2jmkw-zup3h-snbwi-g6a5n-rm5dn-b6png-lvdpl-nqnto-yih6l-gqe |     | 942/372 | 13/13 |
-| ejbmu-grnam-gk6ol-6irwa-htwoj-7ihfl-goimw-hlnvh-abms4-47v2e-zqe |     | 10454/9 | 13/13 |
-| gmq5v-hbozq-uui6y-o55wc-ihop3-562wb-3qspg-nnijg-npqp5-he3cj-3ae |     | 34008/166 | 13/13 |
-| pjljw-kztyl-46ud4-ofrj6-nzkhm-3n4nt-wi3jt-ypmav-ijqkt-gjf66-uae |     | 32360/158 | 13/13 |
-| 4zbus-z2bmt-ilreg-xakz4-6tyre-hsqj4-slb4g-zjwqo-snjcc-iqphi-3qe |     | 55218/4 | 13/13 |
-| 5kdm2-62fc6-fwnja-hutkz-ycsnm-4z33i-woh43-4cenu-ev7mi-gii6t-4ae |     | 12830/50 | 13/13 |
-| e66qm-3cydn-nkf4i-ml4rb-4ro6o-srm5s-x5hwq-hnprz-3meqp-s7vks-5qe |     | 35390/677 | 13/13 |
-| qdvhd-os4o2-zzrdw-xrcv4-gljou-eztdp-bj326-e6jgr-tkhuc-ql6v2-yqe |     | 53203/19 | 13/13 |
-| snjp4-xlbw4-mnbog-ddwy6-6ckfd-2w5a2-eipqo-7l436-pxqkh-l6fuv-vae |     | 1326/815 | 13/13 |
-| shefu-t3kr5-t5q3w-mqmdq-jabyv-vyvtf-cyyey-3kmo4-toyln-emubw-4qe |     | 664/598 | 13/13 |
-| csyj4-zmann-ys6ge-3kzi6-onexi-obayx-2fvak-zersm-euci4-6pslt-lae |     | 1092/248 | 13/13 |
-| yinp6-35cfo-wgcd2-oc4ty-2kqpf-t4dul-rfk33-fsq3r-mfmua-m2ngh-jqe |     | 7346/41 | 13/13 |
-| w4asl-4nmyj-qnr7c-6cqq4-tkwmt-o26di-iupkq-vx4kt-asbrx-jzuxh-4ae |     | 504/1426 | 13/13 |
-| mpubz-g52jc-grhjo-5oze5-qcj74-sex34-omprz-ivnsm-qvvhr-rfzpv-vae |     | 55420/244 | 13/13 |
-| fuqsr-in2lc-zbcjj-ydmcw-pzq7h-4xm2z-pto4i-dcyee-5z4rz-x63ji-nae |     | 20669/20 | 13/13 |
-| cv73p-6v7zi-u67oy-7jc3h-qspsz-g5lrj-4fn7k-xrax3-thek2-sl46v-jae |     | 51531/272 | 12/13 |
-| pae4o-o6dxf-xki7q-ezclx-znyd6-fnk6w-vkv5z-5lfwh-xym2i-otrrw-fqe |     | 3729/23 | 13/13 |
-| qxesv-zoxpm-vc64m-zxguk-5sj74-35vrb-tbgwg-pcird-5gr26-62oxl-cae |     | 401/952 | 13/13 |
-| lspz2-jx4pu-k3e7p-znm7j-q4yum-ork6e-6w4q6-pijwq-znehu-4jabe-kqe |     | 39574/875 | 13/13 |
-| jtdsg-3h6gi-hs7o5-z2soi-43w3z-soyl3-ajnp3-ekni5-sw553-5kw67-nqe |     | 27310/140 | 13/13 |
+| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 35465/693 | 12/13 |
+| pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae | Fiduciary | 3327/11 | 32/34 |
+| bkfrj-6k62g-dycql-7h53p-atvkj-zg4to-gaogh-netha-ptybj-ntsgw-rqe | European | 25009/620 | 13/13 |
+| brlsh-zidhj-3yy3e-6vqbz-7xnih-xeq2l-as5oc-g32c4-i5pdn-2wwof-oae |     | 35101/728 | 13/13 |
+| o3ow2-2ipam-6fcjo-3j5vt-fzbge-2g7my-5fz2m-p4o2t-dwlc4-gt2q7-5ae |     | 57232/62 | 13/13 |
+| 4ecnw-byqwz-dtgss-ua2mh-pfvs7-c3lct-gtf4e-hnu75-j7eek-iifqm-sqe |     | 8151/120 | 12/13 |
+| opn46-zyspe-hhmyp-4zu6u-7sbrh-dok77-m7dch-im62f-vyimr-a3n2c-4ae |     | 40104/721 | 12/13 |
+| nl6hn-ja4yw-wvmpy-3z2jx-ymc34-pisx3-3cp5z-3oj4a-qzzny-jbsv3-4qe |     | 31825/713 | 12/13 |
+| io67a-2jmkw-zup3h-snbwi-g6a5n-rm5dn-b6png-lvdpl-nqnto-yih6l-gqe |     | 1404/1887 | 12/13 |
+| ejbmu-grnam-gk6ol-6irwa-htwoj-7ihfl-goimw-hlnvh-abms4-47v2e-zqe |     | 11587/9 | 12/13 |
+| gmq5v-hbozq-uui6y-o55wc-ihop3-562wb-3qspg-nnijg-npqp5-he3cj-3ae |     | 34119/166 | 12/13 |
+| pjljw-kztyl-46ud4-ofrj6-nzkhm-3n4nt-wi3jt-ypmav-ijqkt-gjf66-uae |     | 32429/158 | 12/13 |
+| 4zbus-z2bmt-ilreg-xakz4-6tyre-hsqj4-slb4g-zjwqo-snjcc-iqphi-3qe |     | 57102/4 | 12/13 |
+| 5kdm2-62fc6-fwnja-hutkz-ycsnm-4z33i-woh43-4cenu-ev7mi-gii6t-4ae |     | 12893/50 | 12/13 |
+| e66qm-3cydn-nkf4i-ml4rb-4ro6o-srm5s-x5hwq-hnprz-3meqp-s7vks-5qe |     | 35492/678 | 12/13 |
+| qdvhd-os4o2-zzrdw-xrcv4-gljou-eztdp-bj326-e6jgr-tkhuc-ql6v2-yqe |     | 53301/19 | 12/13 |
+| snjp4-xlbw4-mnbog-ddwy6-6ckfd-2w5a2-eipqo-7l436-pxqkh-l6fuv-vae |     | 2393/899 | 11/13 |
+| shefu-t3kr5-t5q3w-mqmdq-jabyv-vyvtf-cyyey-3kmo4-toyln-emubw-4qe |     | 1220/2073 | 13/13 |
+| csyj4-zmann-ys6ge-3kzi6-onexi-obayx-2fvak-zersm-euci4-6pslt-lae |     | 2071/1221 | 12/13 |
+| yinp6-35cfo-wgcd2-oc4ty-2kqpf-t4dul-rfk33-fsq3r-mfmua-m2ngh-jqe |     | 7466/49 | 11/13 |
+| w4asl-4nmyj-qnr7c-6cqq4-tkwmt-o26di-iupkq-vx4kt-asbrx-jzuxh-4ae |     | 1464/1829 | 12/13 |
+| c4isl-65rwf-emhk5-5ta5m-ngl73-rgrl3-tcc56-2hkja-4erqd-iivmy-7ae |     | 112/3495 | 13/13 |
+| mpubz-g52jc-grhjo-5oze5-qcj74-sex34-omprz-ivnsm-qvvhr-rfzpv-vae |     | 55506/245 | 12/13 |
+| fuqsr-in2lc-zbcjj-ydmcw-pzq7h-4xm2z-pto4i-dcyee-5z4rz-x63ji-nae |     | 20772/22 | 12/13 |
+| cv73p-6v7zi-u67oy-7jc3h-qspsz-g5lrj-4fn7k-xrax3-thek2-sl46v-jae |     | 51502/273 | 12/13 |
+| pae4o-o6dxf-xki7q-ezclx-znyd6-fnk6w-vkv5z-5lfwh-xym2i-otrrw-fqe |     | 3803/26 | 12/13 |
+| qxesv-zoxpm-vc64m-zxguk-5sj74-35vrb-tbgwg-pcird-5gr26-62oxl-cae |     | 809/2485 | 13/13 |
+| 4utr6-xo2fz-v7fsb-t3wsg-k7sfl-cj2ba-ghdnd-kcrfo-xavdb-ebean-mqe |     | 951/2344 | 13/13 |
+| lspz2-jx4pu-k3e7p-znm7j-q4yum-ork6e-6w4q6-pijwq-znehu-4jabe-kqe |     | 39618/877 | 12/13 |
+| jtdsg-3h6gi-hs7o5-z2soi-43w3z-soyl3-ajnp3-ekni5-sw553-5kw67-nqe |     | 27409/140 | 12/13 |
 
 # Wallet
 
@@ -7287,13 +7289,13 @@ We also recommend enabling [monitoring](/docs/management/monitoring.md) to ensur
 
 ICP are the native cryptocurrency of the [Internet Computer](https://internetcomputer.org). They provide utility for powering the network and are also used for governance.
 
-One key usage is converting ICP tokens to cycles, which are used to cover the computational and storage costs of running smart contracts and modules.
+One key usage is converting ICP tokens to cycles, which are used to cover the computational and storage costs of running modules.
 
 ---
 
 ## Why do I need ICP?
 
-Given that Juno is built on top of the Internet Computer (see [architecture](/docs/miscellaneous/architecture.md)), your smart contracts require cycles to remain active.
+Given that Juno is built on top of the Internet Computer (see [architecture](/docs/miscellaneous/architecture.md)), your modules require cycles to stay alive.
 
 While you don’t necessarily need ICP in the Juno ecosystem since you can acquire cycles with Stripe through [cycle.express](https://cycle.express), having some ICP can still be interesting.
 
@@ -7620,7 +7622,7 @@ Usage: juno upgrade [options]Options:  -t, --target          Which module type s
 
 **Important:**
 
-*   We recommend that you stay current with the Juno releases, as some features may not perform correctly in the [console](/docs/terminology.md#console) if your smart contracts are outdated.
+*   We recommend that you stay current with the Juno releases, as some features may not perform correctly in the [console](/docs/terminology.md#console) if your modules are outdated.
 *   Upgrading requires a stable internet connection for a successful process.
 
 The CLI automatically runs in non-interactive mode if either a JUNO\_TOKEN is set or the --headless argument is used.
@@ -8129,9 +8131,9 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 #### Maximum Memory Size
 
-You can configure optional limits on heap and stable memory for your smart contract to control the creation and update of assets in your storage.
+You can set optional limits on heap and stable memory to control how assets are created and updated in storage.
 
-When the limit is reached, the Storage and smart contract will continue to operate normally but will reject the upload of new assets.
+When the limit is reached, the Storage will continue to operate normally but will reject the upload of new assets.
 
 ```
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    storage: {      maxMemorySize: {        stable: 1_073_741_824n // For example max. 1 GiB in bytes of Stable memory      }    }  }});
@@ -8143,9 +8145,9 @@ The `datastore` configuration accepts the following options and parameters:
 
 #### Maximum Memory Size
 
-You can configure optional limits on heap and stable memory for your smart contract to control the creation and update of documentations in your Datastore.
+You can set optional limits on heap and stable memory to control how documents are created and updated.
 
-When the limit is reached, the Datastore and smart contract will continue to operate normally but will reject changes to documents.
+When the limit is reached, the Datastore will continue to operate normally but will reject changes to documents.
 
 ```
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    datastore: {      maxMemorySize: {        stable: 1_073_741_824n // For example max. 1 GiB in bytes of Stable memory      }    }  }});
@@ -8364,7 +8366,7 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 ## Apply Changes
 
-Configurations such as above ([storage](#storage)), ([datastore](#datastore)), ([authentication](#authentication)), and ([settings](#settings)) require explicit application to your smart contract as they directly impact its behavior.
+Configurations such as above ([storage](#storage)), ([datastore](#datastore)), ([authentication](#authentication)), and ([settings](#settings)) require explicit application to your module as they directly impact its behavior.
 
 To apply your changes, run the [juno config](/docs/reference/cli.md#config) command in the CLI after modifying your configuration file.
 
@@ -8656,13 +8658,13 @@ The default value is `5_000_000_000_000n` (5 trillion cycles)
 
 ### Example
 
-A practical use case could be a scenario where a module is expected to handle a large amount of data storage or perform intensive computations. By setting the Reserved Cycles Limit, developers can control the maximum amount of cycles that can be reserved for the future resource payments. This helps in preventing the smart contract from exceeding its allocated budget and also ensures that it has enough cycles for its operations.
+A practical use case could be a scenario where a module is expected to handle a large amount of data storage or perform intensive computations. By setting the Reserved Cycles Limit, developers can control the maximum amount of cycles that can be reserved for the future resource payments. This helps in preventing the module from exceeding its allocated budget and also ensures that it has enough cycles for its operations.
 
 ---
 
 ## Log Visibility
 
-This setting controls who can see the logs of the smart contract. It can be set to different levels of visibility, such as `public` or restricted to `controllers`.
+This setting controls who can see the default logs provided by the Internet Computer. It can be set to different levels of visibility, such as `public` or restricted to `controllers`.
 
 You can find the logs in the "Functions" section of Juno's administration Console.
 
@@ -8692,7 +8694,7 @@ If you set the heap memory limit to `2048n`, the module can use up to 2 GiB. Not
 
 ## Memory Allocation
 
-This setting specifies the amount of memory that is pre-allocated to the module. Pre-allocating memory can help in optimizing the smart contract's performance by ensuring it has a guaranteed amount of memory available from the start.
+This setting specifies the amount of memory that is pre-allocated to the module. Pre-allocating memory can help in optimizing the module's performance by ensuring it has a guaranteed amount of memory available from the start.
 
 The default value is `0n` - i.e. no particular pre-allocation.
 
@@ -9946,13 +9948,13 @@ In contrast, Juno is fully [open-source](https://github.com/junobuild/), providi
 
 Firebase follows a usage-based pricing model, where costs are calculated based on factors like request volume and data storage. The absence of a cap-setting option is a cause for concern, as unexpected spikes in usage can result in substantial expenses.
 
-In contrast, Juno takes a different approach. Developers pre-charge their smart contracts with [cycles](/docs/terminology.md#cycles), which are then utilized to cover computation and memory usage of the [satellites](/docs/terminology.md#satellite) and [mission control](/docs/terminology.md#mission-control). This mechanism eliminates the risk of encountering unexpected financial burdens due to unforeseen usage surges.
+In contrast, Juno takes a different approach. Developers pre-charge their modules with [cycles](/docs/terminology.md#cycles), which are then utilized to cover computation and memory usage. This mechanism eliminates the risk of encountering unexpected financial burdens due to unforeseen usage surges.
 
 ### Do you have a library for \[some other language\]?
 
 We officially support [JavaScript](/docs/setup-the-sdk.md) for anything frontend.
 
-Extending smart contract capabilities is done in [Rust](/docs/build/functions.md).
+Extending serverless functions is done in [Rust](/docs/build/functions/development/rust.md) or [TypeScript](/docs/build/functions/development/typescript.md).
 
 Community-supported libraries and contributions are warmly welcomed.
 
@@ -9995,9 +9997,9 @@ You can top up your cycle balance in the Juno [console](https://console.juno.bui
 
 New developers who join Juno are granted credits to create a mission control and their initial [satellite](/docs/terminology.md#satellite).
 
-To create additional satellites, a fee of 0.4 ICP is necessary, along with the infrastructure costs for setting up the smart contract.
+To create additional satellites, a fee of 0.4 ICP is necessary, along with the infrastructure costs for setting up the container.
 
-Similarly, enabling analytics by creating an [orbiter](/docs/terminology.md#orbiter) entails a fee of 0.4 ICP, plus the infrastructure costs for creating the smart contract.
+Similarly, enabling analytics by creating an [orbiter](/docs/terminology.md#orbiter) entails a fee of 0.4 ICP.
 
 Please note that additional transaction fees may be introduced in the future, and pricing and models are subject to change.
 
@@ -10011,7 +10013,7 @@ You can use the [Pricing Calculator](https://internetcomputer.org/docs/current/d
 
 ### Storage
 
-The estimated annual cost of storing 1 gigabyte of data in a smart contract is $5.
+The estimated annual cost of storing 1 gigabyte of data on the Internet Computer is $5.
 
 To calculate the estimated monthly cost for 1 gigabyte of storage, you can refer to the table provided on the Internet Computer [website](https://internetcomputer.org/docs/current/developer-docs/gas-cost).
 
@@ -10063,15 +10065,15 @@ For current usage and setup, refer to the [Access Keys documentation](/docs/misc
 
 Cycles are used to pay for [infrastructure](/docs/miscellaneous/infrastructure.md) usage. Your [mission control](/docs/terminology.md#mission-control) or [satellite](/docs/terminology.md#satellite) consumes cycles while it's active.
 
-The amount of cycles available determines whether a smart contract will be active, inactive, or eventually decommissioned (deleted).
+The amount of cycles available determines whether a module will be active, inactive, or eventually decommissioned (deleted).
 
 This ensures that related costs cannot surpass the amount of cycles available.
 
 Think of cycles like prepaid mobile data:
 
-*   Just like your mobile plan allows you to make calls and browse the internet, cycles enable your smart contracts to process computations and store data.
-*   When your data (cycles) runs out, your service (smart contract) becomes inactive.
-*   To keep your smart contract running smoothly, you need to top up your cycles regularly.
+*   Just like your mobile plan allows you to make calls and browse the internet, cycles enable your containers to process computations and store data.
+*   When your data (cycles) runs out, your service becomes inactive.
+*   To keep your modules running smoothly, you need to top up your cycles regularly (manually or automatically).
 *   If you don’t top it up, after some time, it will be decommissioned, similar to losing your prepaid number due to prolonged inactivity.
 
 Learn more about [computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/gas-cost).
@@ -10094,7 +10096,7 @@ It is free and passwordless. It integrates WebAuthn for maximum compatibility an
 
 ## Mission control
 
-A mission control is a dedicated smart contract designed for managing your modules. It is under your exclusive control, allowing it, for example, to hold ICP and perform various operations such as topping up your modules.
+Mission control is the command center for your project. It is under your exclusive control, allowing it, for example, to hold ICP and perform various operations such as topping up your modules.
 
 Think of it like the command center for a space mission. Just as NASA's mission control coordinates spacecraft and satellites, your mission control manages all your [satellites](/docs/terminology.md#satellite) or ([orbiters](#orbiter)).
 
@@ -10104,7 +10106,7 @@ For a schematic representation, refer to the [Architecture](/docs/miscellaneous/
 
 ## Modules
 
-A module or segment — i.e. Satellite, Mission Control, and Orbiter — refers to a smart contract compiled into WebAssembly (WASM) code and deployed on the Internet Computer with Juno.
+A module — such as a Satellite, Mission Control, or Orbiter — is a container compiled into WebAssembly (WASM) and deployed on the Internet Computer with Juno.
 
 It acts as a comprehensive entity, encompassing memory, permission checks, and other Juno abstractions. These serve as endpoints that developers and users can query for various functionalities.
 
@@ -10116,7 +10118,7 @@ It acts as a comprehensive entity, encompassing memory, permission checks, and o
 
 ## Orbiter
 
-An orbiter is the term we use to refer to the smart contract that can optionally be employed for analytics to gather valuable, anonymous insights about your users.
+An orbiter is an optional module you can enable for analytics. It helps you gather valuable, anonymous insights about your users.
 
 ## Principal
 
@@ -10128,19 +10130,17 @@ Learn more about [principals](https://internetcomputer.org/docs/current/referenc
 
 ## Satellite
 
-A satellite is a container for your application that runs entirely on-chain. It contains your project's data, storage, application bundle, and assets.
+A satellite is a container for your application. It holds your project’s data, storage, application bundle, and assets.
 
-A satellite is essentially a smart contract with added capabilities.
-
-Currently, each satellite is dedicated to a single application.
+Each satellite is commonly dedicated to a single application.
 
 ## Subnet
 
-A subnet is like a group of smart contracts (programs) working together on the Internet Computer. These groups, or subnets, are designed to distribute the workload across the network. By having multiple subnets, the Internet Computer can handle more activity, process data faster, and ensure the system remains efficient and secure.
+A subnet is like a group of programs working together on the Internet Computer. These groups, or subnets, are designed to distribute the workload across the network. By having multiple subnets, the Internet Computer can handle more activity, process data faster, and ensure the system remains efficient and secure.
 
 When you create a module, like a Satellite, it's deployed on the same subnet as the Juno Console by default: [6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae](https://dashboard.internetcomputer.org/subnet/6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae).
 
-Communicating between modules on different subnets takes longer due to the extra steps required for coordination (about 4 additional consensus rounds in the best case). This is why placing all your interacting smart contracts on the same subnet can lead to significant performance improvements.
+Communicating between modules on different subnets takes longer due to the extra steps required for coordination (about 4 additional consensus rounds in the best case). This is why placing all your interacting modules on the same subnet can lead to significant performance improvements.
 
 Think of it like a huge playground with lots of groups of kids playing different games. Each group has its own area to play, and that area is called a subnet.
 
@@ -10158,7 +10158,7 @@ Think of it like a digital vault:
 *   It acts as your gateway for transactions within the Juno ecosystem.
 *   It allows you to top up your modules with cycles.
 
-Because your wallet is also your ([mission-control](#mission-control)) and therefore a smart contract, which requires resources to stay alive, we recommend holding a reasonable amount of tokens. Think of it like a day-to-day wallet for frequent operations rather than one for savings.
+Because your wallet is also your ([mission-control](#mission-control)), which requires resources to stay alive, we recommend holding a reasonable amount of tokens. Think of it like a day-to-day wallet for frequent operations rather than one for savings.
 
 # Troubleshooting
 
