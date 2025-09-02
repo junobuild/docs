@@ -1,10 +1,10 @@
 ---
-description: Learn how to securely identify users anonymously and save their data on the blockchain using Juno's authentication services.
+description: Learn how to securely identify users anonymously and save their data in containers you own and control using Juno's authentication services.
 keywords:
   [
     authentication,
     secure user identification,
-    blockchain authentication,
+    user identity,
     Internet Identity,
     NFID
   ]
@@ -12,7 +12,7 @@ keywords:
 
 # Authentication
 
-Juno allows you to securely identify users **anonymously** and save their data on the blockchain.
+Juno allows you to securely identify users **anonymously**.
 
 Our easy-to-use SDKs support authentication through [Internet Identity] and [NFID].
 

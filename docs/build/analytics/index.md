@@ -35,7 +35,7 @@ Juno’s analytics library is built for speed and simplicity. It’s a tiny Java
 
 Beyond standard page views, you can gain valuable insights into your visitors by creating custom events to track conversions and attribution.
 
-## 📣 Understand Campaign Performance
+### 📣 Understand Campaign Performance
 
 Measure the impact of your campaigns using `utm` parameters. See how people find your app — whether through ads, newsletters, or social posts — and track which sources drive the most traffic, all from your dashboard.
 
@@ -65,7 +65,7 @@ While we are not legal experts and the responsibility for adding analytics to yo
 
 ### Hosted on the blockchain
 
-All tracked data is securely stored on the blockchain, without any specific geolocation by default. However, if you select a European subnet when creating the Orbiter for Analytics, your data will be stored in Europe. This gives you flexibility based on your data residency needs.
+All tracked data is securely stored on the [Internet Computer](https://internetcomputer.org/) blockchain, without any specific geolocation by default. However, if you select a European subnet when creating the Orbiter for Analytics, your data will be stored in Europe. This gives you flexibility based on your data residency needs.
 
 ### No cross-dapp tracking
 

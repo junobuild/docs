@@ -18,7 +18,7 @@ We also recommend enabling [monitoring](../management/monitoring.md) to ensure y
 
 ## What are ICP?
 
-ICP are the native cryptocurrency of the [Internet Computer](https://internetcomputer.org). They are used to power this blockchain, providing utility and governance.
+ICP are the native cryptocurrency of the [Internet Computer](https://internetcomputer.org). They provide utility for powering the network and are also used for governance.
 
 One key usage is converting ICP tokens to cycles, which are used to cover the computational and storage costs of running smart contracts and modules.
 

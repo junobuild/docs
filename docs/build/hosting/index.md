@@ -1,11 +1,18 @@
 ---
-description: "Discover Juno Hosting: Fast, Secure, Blockchain-Powered Web Hosting. Deploy with ease and custom domains."
-keywords: [Fast hosting, Secure hosting, Blockchain hosting, Custom domains]
+description: "Discover Juno Hosting: Fast and Secure Web Hosting. Deploy with ease and custom domains."
+keywords:
+  [
+    Fast hosting,
+    Secure hosting,
+    Container hosting,
+    Developer hosting,
+    Custom domains
+  ]
 ---
 
 # Hosting
 
-Juno Hosting offers fast and secure hosting powered by 100% blockchain technology.
+Juno Hosting offers fast and secure hosting.
 
 With just one [CLI] command, you can effortlessly deploy your web applications, static, and dynamic content to your [satellite].
 
