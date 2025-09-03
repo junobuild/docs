@@ -6,21 +6,38 @@ keywords:
     secure user identification,
     user identity,
     Internet Identity,
-    NFID
+    NFID,
+    Passkey,
+    WebAuthn
   ]
 ---
 
 # Authentication
 
-Juno allows you to securely identify users **anonymously**.
+Juno allows you to securely identify users anonymously, without passwords and without tracking.
 
-Our easy-to-use SDKs support authentication through [Internet Identity] and [NFID].
+You can choose between [Passkeys] for built-in authentication, or integrate third-party providers like [Internet Identity] or [NFID].
 
-Juno Authentication integrates tightly with other Juno services like [datastore](../datastore/index.mdx) and [storage](../storage/index.mdx).
+Authentication works hand-in-hand with other Juno services like [Datastore](../datastore/index.mdx) and [Storage](../storage/index.mdx).
 
-You can manage your users in the [authentication](https://console.juno.build/authentication) view in Juno's console. A new entry is created when a user successfully signs in.
+You can see and manage your users anytime in the [authentication](https://console.juno.build/authentication) view of the Console.
 
 ![An overview of the anonymous display of the users in Juno Console](../../img/satellite/authentication.webp)
+
+---
+
+## User Identity
+
+When someone signs in to your app, they get an identity.
+
+That identity is what ties them to the data they create and the actions they take.
+
+Identities are:
+
+- **Anonymous**: they don't expose personal info.
+- **Scoped**: they are unique to the domain (or subdomain) where the user signs in.
+
+Together, this makes authentication privacy-friendly by default and predictable for developers.
 
 ---
 
