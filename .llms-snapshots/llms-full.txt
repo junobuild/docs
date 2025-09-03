@@ -893,7 +893,6 @@ Internet Identity sign-in can be customized with options that let you control se
 | `maxTimeToLiveInNanoseconds` | `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)` | **4 hours** | Maximum lifetime of the user's session in **nanoseconds**. Once expired, the session cannot be extended. |
 | `windowed` | `boolean` | `true` | By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead. |
 | `derivationOrigin` | `string` or `URL` |     | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your satellite's URLs they use to access your application. |
-| `allowPin` | `boolean` | `false` | We consider the specific PIN authentication method of [Internet Identity](https://internetcomputer.org/docs/current/references/ii-spec#client-authentication-protocol) as "insecure" because users can easily lose their login information if they do not register a passphrase, particularly as Safari clears the browser cache every two weeks in cases of inactivity. This is why we **disable** it by default. |
 | `onProgress` | `(progress) => void` |     | Callback for provider sign-in and user creation/loading. |
 | `domain` | `internetcomputer.org` or `ic0.app` | `internetcomputer.org` | The domain on which to open Internet Identity. |
 
@@ -929,6 +928,7 @@ NFID sign-in can be customized with following options:
 | --- | --- | --- | --- |
 | `maxTimeToLiveInNanoseconds` | `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)` | **4 hours** | Maximum lifetime of the user's session in **nanoseconds**. Once expired, the session cannot be extended. |
 | `windowed` | `boolean` | `true` | By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead. |
+| `derivationOrigin` | `string` or `URL` |     | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your satellite's URLs they use to access your application. |
 | `onProgress` | `(progress) => void` |     | Callback for provider sign-in and user creation/loading. |
 | `appName` | `string` |     | The name of your application, shown to the user during sign-in. |
 | `logoUrl` | `string` |     | URL of your application's logo, shown to the user during sign-in. |
