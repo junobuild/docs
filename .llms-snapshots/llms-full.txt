@@ -733,47 +733,13 @@ Here are some customization options to tailor your sign-in flow and handle sessi
 
 ---
 
-## Sign-In Providers
+## Sign Context
 
-Juno supports Internet Identity and NFID, which also offers additional authentication methods like Google and email.
+Some options apply to both sign-up and sign-in flows.
 
-**Note:**
-
-You can implement the `signIn` function in your application as many times as you wish, with various configurations. It is also perfectly acceptable to use both Internet Identity and NFID within the same project.
-
----
-
-### Internet Identity
-
-Internet Identity is available at two different URLs: `internetcomputer.org` and `ic0.app`.
-
-By default, the SDK uses `internetcomputer.org`.
-
-```
-import { signIn, InternetIdentityProvider } from "@junobuild/core";// Default domain is 'internetcomputer.org'await signIn({  provider: new InternetIdentityProvider({})});
-```
-
-You can switch to `ic0.app` by setting the domain option accordingly.
-
-```
-import { signIn, InternetIdentityProvider } from "@junobuild/core";await signIn({  provider: new InternetIdentityProvider({    domain: "ic0.app"  })});
-```
-
-We use the former by default because we believe it offers a better user experience and branding.
-
-**Note:**
-
-It is worth mentioning that your users will be able to sign in to your app with Internet Identity, regardless of which of those two domains they originally created their identity on.
-
----
-
-### NFID
-
-To set up NFID, you need to configure the corresponding provider and provide your application name and a link to your logo.
-
-```
-import { signIn, NFIDProvider } from "@junobuild/core";await signIn({  provider: new NFIDProvider({    appName: "Your app name",    logoUrl: "https://somewhere.com/your_logo.png"  })});
-```
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `windowGuard` | `boolean` | `true` | Prevents the user from closing the current window/tab while the flow is in progress. Disabling it is discouraged. |
 
 ---
 
@@ -914,7 +880,7 @@ import { signIn } from "@junobuild/core";await signIn({  ii: {}});
 
 Internet Identity sign-in can be customized with options that let you control session lifetime, provider configuration, or track progress during the flow.
 
-| Option | Default Value | Default | Description |
+| Option | Type | Default | Description |
 | --- | --- | --- | --- |
 | `maxTimeToLiveInMillis` | `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)` | —   | Specifies the duration for the session (defaults to **4 hours**). It's **important** to note that this duration remains constant, whether the users are active or inactive. |
 | `windowed` | `true` | —   | By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead. |
