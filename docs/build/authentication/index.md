@@ -41,23 +41,27 @@ Together, this makes authentication privacy-friendly by default and predictable 
 
 ---
 
-## Domain-Based User Identity
+## Domain-Based Identity
 
-For privacy reasons and to prevent tracking across sites, Juno's authentication is tied to the domain your app uses.
+For privacy reasons and to prevent tracking across sites, a user's identity is tied to the domain where they sign in.
 
-This means that if a user signs in on both the default domain (`icp0.io`) and a custom domain, they will be treated as two separate users by default.
+### Passkeys
 
-The same applies to subdomains: signing in on `hello.com` and `www.hello.com` will result in two separate user identities.
+With Passkeys, the identity is linked to the hostname the user signs in on. It works for that domain and its subdomains.
 
-That's why, when setting up a domain in the Console, you're prompted to choose a **primary domain**. This domain is used to consistently identify users, regardless of whether they sign in via the default or a custom domain.
+For example, a passkey created on `hello.com` will also work on `www.hello.com`, but not on a different domain like `world.com`.
 
-:::important
+You can change this in the sign-up options if you want it to cover a different domain than the one read from the browser's URL. For example, you may want to use the top-level domain when signing in on a subdomain. You cannot specify a totally different domain.
 
-- It is strongly recommended to set up such a primary domain only once per project and preferably before going live.
+### Internet Identity
 
-- In addition to configuring settings, you must also instruct your application to use the main domain you have selected by setting the `derivationOrigin` parameter to the sign-in options.
+With Internet Identity, a user's identity is created separately for each domain.
 
-:::
+If a user signs in on two different domains, they will be treated as two separate users by default. The same applies to subdomains: signing in on `hello.com` and `www.hello.com` creates two different identities unless you configure a primary domain.
+
+The first custom domain you add in the Console is automatically set as the primary domain. You can change this setting later in Authentication, but we don't recommend it once users have already registered, since their identities are not migrated when the configuration changes.
+
+To let users keep the same identity across domains, you must also configure your frontend app to specify the main domain at sign-in. This is known as the "derivation origin" (or "alternative origins").
 
 ### Recommendation
 
@@ -71,10 +75,6 @@ If you're unsure which domain to use as the primary domain, here are two common 
   - You plan to host multiple satellites under different domains and don't want to tie user identity to just one.
 
 Choosing the right derivation origin early helps avoid identity issues later, but both approaches are valid depending on your goals.
-
-### More Information
-
-This mechanism is called the "derivation origin" (or "alternative origins"). See the [documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/internet-identity/alternative-origins/) for more details about the specification.
 
 [Internet Identity]: ../../terminology.md#internet-identity
 [NFID]: ../../terminology.md#nfid
