@@ -807,9 +807,17 @@ Passkey sign-up can be customized with a handful of options. These let you contr
 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxTimeToLiveInMilliseconds` | `number` | —   | Maximum lifetime of the user's session in **milliseconds**. Once expired, the session cannot be extended. |
-| `onProgress` | `(progress) => void` | —   | Callback fired at each step of the sign-up flow (e.g., creating credential, validating, signing). Useful if you want to show progress indicators in your UI. |
-| `passkey` | `CreatePasskeyOptions` | —   | Options for how the passkey should be created. For example, you can set a `displayName` to make the passkey recognizable in iCloud Keychain or Google Password Manager. |
+| `maxTimeToLiveInMilliseconds` | `number` | **4 hours** | Maximum lifetime of the user's session in **milliseconds**. Once expired, the session cannot be extended. |
+| `onProgress` | `(progress) => void` |     | Callback fired at each step of the sign-up flow (e.g., creating credential, validating, signing). Useful if you want to show progress indicators in your UI. |
+| `passkey` | `CreatePasskeyOptions` |     | Options for how the passkey should be created. |
+
+The `passkey` option accepts the following fields:
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `appId.id` | `string` | Current URL `hostname` | Domain your passkeys are tied to (e.g., `example.com` or `login.example.com`). Subdomains are supported. |
+| `user.displayName` | `string` | `document.title` | Friendly name for the account (e.g., `"Maria Sanchez"`). Helps the user recognize which passkey belongs to them. |
+| `user.name` | `string` | `displayName` | User-recognizable account identifier (e.g., email, username, or phone number). Distinguishes between accounts. |
 
 Example with options:
 
@@ -859,8 +867,8 @@ Passkey sign-in can also be customized with options similar to sign-up. These le
 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxTimeToLiveInMilliseconds` | `number` | —   | Maximum lifetime of the user's session in **milliseconds**. Once expired, the session cannot be extended. |
-| `onProgress` | `(progress) => void` | —   | Callback fired at each step of the sign-up flow (e.g., fetching credential, validating, signing). Useful to customize your UI. |
+| `maxTimeToLiveInMilliseconds` | `number` | **4 hours** | Maximum lifetime of the user's session in **milliseconds**. Once expired, the session cannot be extended. |
+| `onProgress` | `(progress) => void` |     | Callback fired at each step of the sign-up flow (e.g., fetching credential, validating, signing). Useful to customize your UI. |
 
 Example with options:
 
@@ -882,17 +890,17 @@ Internet Identity sign-in can be customized with options that let you control se
 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxTimeToLiveInMillis` | `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)` | —   | Specifies the duration for the session (defaults to **4 hours**). It's **important** to note that this duration remains constant, whether the users are active or inactive. |
-| `windowed` | `true` | —   | By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead. |
-| `derivationOrigin` | —   | —   | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your satellite's URLs they use to access your application. |
-| `allowPin` | `false` | —   | We consider the specific PIN authentication method of [Internet Identity](https://internetcomputer.org/docs/current/references/ii-spec#client-authentication-protocol) as "insecure" because users can easily lose their login information if they do not register a passphrase, particularly as Safari clears the browser cache every two weeks in cases of inactivity. This is why we **disable** it by default. |
-| `onProgress` | `(progress) => void` | —   | Callback for provider sign-in and user creation/loading. |
+| `maxTimeToLiveInNanoseconds` | `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)` | **4 hours** | Maximum lifetime of the user's session in **nanoseconds**. Once expired, the session cannot be extended. |
+| `windowed` | `boolean` | `true` | By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead. |
+| `derivationOrigin` | `string` or `URL` |     | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your satellite's URLs they use to access your application. |
+| `allowPin` | `boolean` | `false` | We consider the specific PIN authentication method of [Internet Identity](https://internetcomputer.org/docs/current/references/ii-spec#client-authentication-protocol) as "insecure" because users can easily lose their login information if they do not register a passphrase, particularly as Safari clears the browser cache every two weeks in cases of inactivity. This is why we **disable** it by default. |
+| `onProgress` | `(progress) => void` |     | Callback for provider sign-in and user creation/loading. |
 | `domain` | `internetcomputer.org` or `ic0.app` | `internetcomputer.org` | The domain on which to open Internet Identity. |
 
 Example with options:
 
 ```
-await signIn({  ii: {    options: {      maxTimeToLiveInMilliseconds: 1000 * 60 * 30, // 30 minutes      onProgress: ({ step, state }) => {        console.log("Step:", step, "State:", state);      },      derivationOrigin: "https://myapp.com"    }  }});
+await signIn({  ii: {    options: {      maxTimeToLiveInNanoseconds: BigInt(24 * 60 * 60 * 1000 * 1000 * 1000), // 1 day      onProgress: ({ step, state }) => {        console.log("Step:", step, "State:", state);      },      derivationOrigin: "https://myapp.com"    }  }});
 ```
 
 #### Handling Errors
@@ -919,18 +927,16 @@ NFID sign-in can be customized with following options:
 
 | Option | Default Value | Default | Description |
 | --- | --- | --- | --- |
-| `maxTimeToLiveInMillis` | `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)` | —   | Specifies the duration for the session (defaults to **4 hours**). It's **important** to note that this duration remains constant, whether the users are active or inactive. |
-| `windowed` | `true` | —   | By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead. |
-| `derivationOrigin` | —   | —   | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your satellite's URLs they use to access your application. |
-| `allowPin` | `false` | —   | We consider the specific PIN authentication method of [Internet Identity](https://internetcomputer.org/docs/current/references/ii-spec#client-authentication-protocol) as "insecure" because users can easily lose their login information if they do not register a passphrase, particularly as Safari clears the browser cache every two weeks in cases of inactivity. This is why we **disable** it by default. |
-| `onProgress` | `(progress) => void` | —   | Callback for provider sign-in and user creation/loading. |
-| `appName` | `string` | —   | The name of your application, shown to the user during sign-in. |
-| `logoUrl` | `string` | —   | URL of your application's logo, shown to the user during sign-in. |
+| `maxTimeToLiveInNanoseconds` | `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)` | **4 hours** | Maximum lifetime of the user's session in **nanoseconds**. Once expired, the session cannot be extended. |
+| `windowed` | `boolean` | `true` | By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead. |
+| `onProgress` | `(progress) => void` |     | Callback for provider sign-in and user creation/loading. |
+| `appName` | `string` |     | The name of your application, shown to the user during sign-in. |
+| `logoUrl` | `string` |     | URL of your application's logo, shown to the user during sign-in. |
 
 Example with options:
 
 ```
-import { signIn } from "@junobuild/core";await signIn({  nfid: {    options: {      maxTimeToLiveInMilliseconds: 1000 * 60 * 30, // 30 minutes      onProgress: ({ step, state }) => {        console.log("Step:", step, "State:", state);      },      appName: "My Cool App",      logoUrl: "https://myapp.com/logo.png"    }  }});
+import { signIn } from "@junobuild/core";await signIn({  nfid: {    options: {      maxTimeToLiveInNanoseconds: BigInt(24 * 60 * 60 * 1000 * 1000 * 1000), // 1 day      onProgress: ({ step, state }) => {        console.log("Step:", step, "State:", state);      },      appName: "My Cool App",      logoUrl: "https://myapp.com/logo.png"    }  }});
 ```
 
 ---
