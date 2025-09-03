@@ -821,6 +821,56 @@ The Juno SDK must be [installed](/docs/setup-the-sdk.md) and initialized in your
 
 ---
 
+## Sign-up
+
+If your app provides features that require authentication, your users need to sign up to create an identity that grants them access to your application.
+
+### Passkeys
+
+With Passkeys, sign-up creates a digital key that lives on the user’s device — for example in the browser, iCloud Keychain, Google Password Manager, etc. During sign-up, the user will be asked to use their authenticator twice: once to generate the passkey, and once more to sign their new identity which is then used to interact securely with your satellite.
+
+```
+import { signUp } from "@junobuild/core";await signUp({  webauthn: {    options: {      passkey: {}    }  }});
+```
+
+#### Options
+
+Passkey sign-up can be customized with a handful of options. These let you control how long a session lasts, how the passkey is displayed to the user, and whether you want to track progress in your own UI.
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `maxTimeToLiveInMilliseconds` | `number` | —   | Maximum lifetime of the user’s session in **milliseconds**. Once expired, the session cannot be extended. |
+| `onProgress` | `(progress) => void` | —   | Callback fired at each step of the sign-up flow (e.g., creating credential, validating, signing). Useful if you want to show progress indicators in your UI. |
+| `passkey` | `CreatePasskeyOptions` | —   | Options for how the passkey should be created. For example, you can set a `displayName` to make the passkey recognizable in iCloud Keychain or Google Password Manager. |
+
+Example with options:
+
+```
+import { signUp } from "@junobuild/core";await signUp({  webauthn: {    options: {      maxTimeToLiveInMilliseconds: 1000 * 60 * 60, // 1 hour      onProgress: ({ step, state }) => {        console.log("Step:", step, "State:", state);      },      passkey: {        displayName: "My Cool App" // or user input      }    }  }});
+```
+
+**Tip:**
+
+It’s common to let the user choose a nickname during sign-up.
+
+This nickname can be passed as the `displayName` in the `passkey` option so the passkey is easy to recognize the next time they sign in (e.g. in iCloud Keychain or Google Password Manager).
+
+### Checking Availability
+
+Not every browser or device supports Passkeys. You can check availability before showing a sign-up button with:
+
+```
+import { isWebAuthnAvailable } from "@junobuild/core";if (await isWebAuthnAvailable()) {  // Show Passkey sign-up option}
+```
+
+### Internet Identity / NFID
+
+With Internet Identity and NFID there is no separate sign-up step. Users always go through **sign-in**, and if it’s their first time, that flow will automatically create their identity.
+
+In practice, your UI could simply show a button like **Continue with Internet Identity** or **Continue with NFID**.
+
+---
+
 ## Sign-in
 
 You can authorize an existing or new user with the identity provider using `signIn`.
