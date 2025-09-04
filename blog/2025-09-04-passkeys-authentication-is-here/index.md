@@ -166,6 +166,14 @@ Check out the updated documentation for details on:
 - [signOut](/docs/build/authentication/development#sign-out)
 - [onAuthStateChange](/docs/build/authentication/development#onAuthStateChange)
 
+---
+
+## 👀 What's Next
+
+Passkeys are available today for developers building with Satellite containers and the JavaScript SDK.
+
+Next, we'll bring Passkey support directly into the Console UI, so new developers can register easily and you can too.
+
 To infinity and beyond,  
 David
 
