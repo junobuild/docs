@@ -182,7 +182,7 @@ Check out the updated documentation for details on:
 - [signUp](/docs/build/authentication/development#sign-up)
 - [signIn](/docs/build/authentication/development#sign-in)
 - [signOut](/docs/build/authentication/development#sign-out)
-- [onAuthStateChange](/docs/build/authentication/development#onAuthStateChange)
+- [onAuthStateChange](/docs/build/authentication/development#listening-to-auth-changes)
 
 ---
 
