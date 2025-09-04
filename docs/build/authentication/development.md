@@ -280,13 +280,13 @@ This will clear the sign-in information stored in IndexedDB.
 
 ## Listening to Auth Changes
 
-You can monitor when a user signs in or out using `authSubscribe`. It gives you the current user and notifies you whenever their authentication state changes.
+You can monitor when a user signs in or out using `onAuthStateChange`. It gives you the current user and notifies you whenever their authentication state changes.
 
 ```typescript
-import { authSubscribe } from "@junobuild/core";
+import { onAuthStateChange } from "@junobuild/core";
 
 // Reactively track if the user is signed in or signed out
-authSubscribe((user: User | null) => {
+onAuthStateChange((user: User | null) => {
   console.log("User:", user);
 });
 ```
@@ -300,9 +300,9 @@ If you register the subscriber at the top of your application, it will automatic
 To stop listening, you can call the unsubscribe function returned:
 
 ```typescript
-import { authSubscribe } from "@junobuild/core";
+import { onAuthStateChange } from "@junobuild/core";
 
-const unsubscribe = authSubscribe((user: User | null) => {
+const unsubscribe = onAuthStateChange((user: User | null) => {
   console.log("User:", user);
 });
 

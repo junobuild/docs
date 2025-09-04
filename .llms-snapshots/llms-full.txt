@@ -965,10 +965,10 @@ This will clear the sign-in information stored in IndexedDB.
 
 ## Listening to Auth Changes
 
-You can monitor when a user signs in or out using `authSubscribe`. It gives you the current user and notifies you whenever their authentication state changes.
+You can monitor when a user signs in or out using `onAuthStateChange`. It gives you the current user and notifies you whenever their authentication state changes.
 
 ```
-import { authSubscribe } from "@junobuild/core";// Reactively track if the user is signed in or signed outauthSubscribe((user: User | null) => {  console.log("User:", user);});
+import { onAuthStateChange } from "@junobuild/core";// Reactively track if the user is signed in or signed outonAuthStateChange((user: User | null) => {  console.log("User:", user);});
 ```
 
 If you register the subscriber at the top of your application, it will automatically reflect the user's state:
@@ -980,7 +980,7 @@ If you register the subscriber at the top of your application, it will automatic
 To stop listening, you can call the unsubscribe function returned:
 
 ```
-import { authSubscribe } from "@junobuild/core";const unsubscribe = authSubscribe((user: User | null) => {  console.log("User:", user);});// Stop listeningunsubscribe();
+import { onAuthStateChange } from "@junobuild/core";const unsubscribe = onAuthStateChange((user: User | null) => {  console.log("User:", user);});// Stop listeningunsubscribe();
 ```
 
 ---
@@ -2651,7 +2651,7 @@ The following functions from `@junobuild/core` are used in this example:
 | Function | Purpose/Description | Where Used (File/Component) | Juno Docs/Source Reference |
 | --- | --- | --- | --- |
 | `initSatellite` | Initialize Juno Satellite container | [`src/app/app.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/app.component.ts) | [Initialization](/docs/setup-the-sdk.md#initialization) |
-| `authSubscribe` | Subscribe to auth state changes | [`src/app/services/auth.service.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/services/auth.service.ts) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
+| `onAuthStateChange` | Subscribe to auth state changes | [`src/app/services/auth.service.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/services/auth.service.ts) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
 | `signIn` | Sign in user | [`src/app/components/login/login.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/login/login.component.ts) | [Sign-in](/docs/build/authentication/development.md#sign-in) |
 | `signOut` | Sign out user | [`src/app/components/logout/logout.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/logout/logout.component.ts) | [Sign-out](/docs/build/authentication/development.md#sign-out) |
 | `listDocs` | List documents in a collection | [`src/app/services/docs.service.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/services/docs.service.ts) | [List documents](/docs/build/datastore/development.md#list-documents) |
@@ -2781,7 +2781,7 @@ The following functions from `@junobuild/core` are used in this example:
 | Function | Purpose/Description | Where Used (File/Component) | Juno Docs/Source Reference |
 | --- | --- | --- | --- |
 | `initSatellite` | Initialize Juno Satellite container | [`src/app/page.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/app/page.tsx) | [Initialization](/docs/setup-the-sdk.md#initialization) |
-| `authSubscribe` | Subscribe to auth state changes | [`src/components/auth.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/auth.tsx) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
+| `onAuthStateChange` | Subscribe to auth state changes | [`src/components/auth.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/auth.tsx) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
 | `signIn` | Sign in user | [`src/components/login.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/login.tsx) | [Sign-in](/docs/build/authentication/development.md#sign-in) |
 | `signOut` | Sign out user | [`src/components/logout.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/logout.tsx) | [Sign-out](/docs/build/authentication/development.md#sign-out) |
 | `listDocs` | List documents in a collection | [`src/components/table.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/table.tsx) | [List documents](/docs/build/datastore/development.md#list-documents) |
@@ -2915,7 +2915,7 @@ The following functions from `@junobuild/core` are used in this example:
 | Function | Purpose/Description | Where Used (File/Component) | Juno Docs/Source Reference |
 | --- | --- | --- | --- |
 | `initSatellite` | Initialize Juno Satellite container | [`src/App.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/App.jsx) | [Initialization](/docs/setup-the-sdk.md#initialization) |
-| `authSubscribe` | Subscribe to auth state changes | [`src/components/Auth.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Auth.jsx) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
+| `onAuthStateChange` | Subscribe to auth state changes | [`src/components/Auth.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Auth.jsx) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
 | `signIn` | Sign in user | [`src/components/Login.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Login.jsx) | [Sign-in](/docs/build/authentication/development.md#sign-in) |
 | `signOut` | Sign out user | [`src/components/Logout.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Logout.jsx) | [Sign-out](/docs/build/authentication/development.md#sign-out) |
 | `listDocs` | List documents in a collection | [`src/components/Table.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Table.jsx) | [List documents](/docs/build/datastore/development.md#list-documents) |
@@ -3049,7 +3049,7 @@ The following functions from `@junobuild/core` are used in this example:
 | Function | Purpose/Description | Where Used (File/Component) | Juno Docs/Source Reference |
 | --- | --- | --- | --- |
 | `initSatellite` | Initialize Juno Satellite container | [`src/App.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/App.tsx) | [Initialization](/docs/setup-the-sdk.md#initialization) |
-| `authSubscribe` | Subscribe to auth state changes | [`src/components/Auth.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Auth.tsx) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
+| `onAuthStateChange` | Subscribe to auth state changes | [`src/components/Auth.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Auth.tsx) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
 | `signIn` | Sign in user | [`src/components/Login.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Login.tsx) | [Sign-in](/docs/build/authentication/development.md#sign-in) |
 | `signOut` | Sign out user | [`src/components/Logout.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Logout.tsx) | [Sign-out](/docs/build/authentication/development.md#sign-out) |
 | `listDocs` | List documents in a collection | [`src/components/Table.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Table.tsx) | [List documents](/docs/build/datastore/development.md#list-documents) |
@@ -3180,7 +3180,7 @@ The following functions from `@junobuild/core` are used in this example:
 | Function | Purpose/Description | Where Used (File/Component) | Juno Docs/Source Reference |
 | --- | --- | --- | --- |
 | `initSatellite` | Initialize Juno Satellite container | [`src/routes/+layout.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/routes/+layout.svelte) | [Initialization](/docs/setup-the-sdk.md#initialization) |
-| `authSubscribe` | Subscribe to auth state changes | [`src/lib/components/Auth.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Auth.svelte) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
+| `onAuthStateChange` | Subscribe to auth state changes | [`src/lib/components/Auth.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Auth.svelte) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
 | `signIn` | Sign in user | [`src/lib/components/Login.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Login.svelte) | [Sign-in](/docs/build/authentication/development.md#sign-in) |
 | `signOut` | Sign out user | [`src/lib/components/Logout.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Logout.svelte) | [Sign-out](/docs/build/authentication/development.md#sign-out) |
 | `listDocs` | List documents in a collection | [`src/lib/components/Table.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Table.svelte) | [List documents](/docs/build/datastore/development.md#list-documents) |
@@ -3309,7 +3309,7 @@ The following functions from `@junobuild/core` are used in this example:
 | Function | Purpose/Description | Where Used (File/Component) | Juno Docs/Source Reference |
 | --- | --- | --- | --- |
 | `initSatellite` | Initialize Juno Satellite container | [`src/main.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/main.js) | [Initialization](/docs/setup-the-sdk.md#initialization) |
-| `authSubscribe` | Subscribe to auth state changes | [`src/main.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/main.js), [`src/components/modal.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/modal.js) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
+| `onAuthStateChange` | Subscribe to auth state changes | [`src/main.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/main.js), [`src/components/modal.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/modal.js) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
 | `signIn` | Sign in user | [`src/components/login.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/login.js) | [Sign-in](/docs/build/authentication/development.md#sign-in) |
 | `signOut` | Sign out user | [`src/components/logout.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/logout.js) | [Sign-out](/docs/build/authentication/development.md#sign-out) |
 | `listDocs` | List documents in a collection | [`src/components/table.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/table.js) | [List documents](/docs/build/datastore/development.md#list-documents) |
@@ -3440,7 +3440,7 @@ The following functions from `@junobuild/core` are used in this example:
 | Function | Purpose/Description | Where Used (File/Component) | Juno Docs/Source Reference |
 | --- | --- | --- | --- |
 | `initSatellite` | Initialize Juno Satellite container | [`src/App.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/App.vue) | [Initialization](/docs/setup-the-sdk.md#initialization) |
-| `authSubscribe` | Subscribe to auth state changes | [`src/stores/auth.store.ts`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/stores/auth.store.ts) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
+| `onAuthStateChange` | Subscribe to auth state changes | [`src/stores/auth.store.ts`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/stores/auth.store.ts) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
 | `signIn` | Sign in user | [`src/components/Login.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Login.vue) | [Sign-in](/docs/build/authentication/development.md#sign-in) |
 | `signOut` | Sign out user | [`src/components/Logout.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Logout.vue) | [Sign-out](/docs/build/authentication/development.md#sign-out) |
 | `listDocs` | List documents in a collection | [`src/components/Table.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Table.vue) | [List documents](/docs/build/datastore/development.md#list-documents) |
