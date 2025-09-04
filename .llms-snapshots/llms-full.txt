@@ -943,11 +943,15 @@ import { signIn } from "@junobuild/core";await signIn({  nfid: {    options: {  
 
 ## Sign-out
 
-You can end a user's session, no matter which provider they used to sign in, by logging them out.
+You can end a user's session by logging them out.
 
 ```
 import { signOut } from "@junobuild/core";await signOut();
 ```
+
+**Note:**
+
+This will clear the sign-in information stored in IndexedDB.
 
 ---
 
