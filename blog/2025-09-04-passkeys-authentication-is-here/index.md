@@ -31,6 +31,20 @@ Passkeys are a passwordless authentication method built into modern devices and 
 
 Under the hood, Passkeys rely on the [WebAuthn standard](https://www.w3.org/TR/webauthn-2/) and the [web API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API) that enables browsers and devices to create and use cryptographic credentials. Passkeys are essentially a user-friendly layer on top of WebAuthn.
 
+When stored in a password manager like iCloud Keychain or Google Password Manager, passkeys sync across a user’s devices, making them more resilient, though this does require trusting the companies that provide those services. If stored only in the browser, however, they can be lost if the browser is reset or uninstalled.
+
+---
+
+## 🤔 Choosing Between Providers
+
+[Why not both meme]
+
+Each authentication method has its strengths and weaknesses. Passkeys provide a familiar, device-native login experience with Face ID, Touch ID, or device unlock, relying on either the browser or a password manager for persistence. Internet Identity and NFID, on the other hand, offer privacy-preserving flows aligned with the Internet Computer, but they are less familiar to mainstream users and involve switching context into a separate window.
+
+In practice, many developers will probably combine Passkeys and Internet Identity side by side, as we do in the starter templates we provide.
+
+Ultimately, the right choice depends on your audience and product goals, balancing usability, privacy, and ecosystem integration.
+
 ---
 
 ## 🚀 How to Use Passkeys
