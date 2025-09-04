@@ -75,3 +75,34 @@ If you're unsure which domain to use as the primary domain, here are two common 
   - You plan to host multiple satellites under different domains and don't want to tie user identity to just one.
 
 Choosing the right derivation origin early helps avoid identity issues later, but both approaches are valid depending on your goals.
+
+---
+
+## Choosing a Provider
+
+Each authentication method has its strengths. The right choice depends not only on your app's technical needs, but also on what your users expect and feel comfortable with.
+
+- **Passkeys**:
+  - ✅ Best for mainstream users who expect a familiar, frictionless login with Face ID, Touch ID, or device unlock.
+  - ✅ Great when you want a Web2-like UX but with stronger security.
+  - 🤔 Users must explicitly choose between sign-up and sign-in, which can add friction if not guided.
+  - ❌ Without syncing to iCloud or Google Password Manager, a passkey stored only in the browser can be lost if the browser is reset or uninstalled.
+  - ❌ When using a manager, users must trust Apple/Google and other big tech for privacy preservation and safekeeping of their passkey.
+
+- **Internet Identity**:
+  - ✅ Best if you want users to authenticate with a fully decentralized and privacy-preserving identity.
+  - ✅ Provides strong guarantees against tracking between domains.
+  - 🤔 Requires context switching to an external window.
+  - ❌ Limited awareness among mainstream users beyond the Internet Computer community.
+  - ❌ Domain scoping can be confusing if misconfigured.
+
+- **NFID**:
+  - ✅ Good for users already onboarded with a NFID Wallet.
+  - ✅ Offers an alternative on the Internet Computer.
+  - 🤔 Requires context switching to an external window.
+  - ❌ Limited awareness among mainstream users beyond the Internet Computer community.
+  - ❌ Smaller user base compared to Passkeys or Internet Identity.
+
+In practice, many developers implement both Passkeys and Internet Identity side by side. This gives users the choice between a device-native login flow and an Internet Computer–native identity, covering a wider range of expectations.
+
+Ultimately, the choice should be guided by the audience you're targeting and how strongly you weigh the considerations outlined above.
