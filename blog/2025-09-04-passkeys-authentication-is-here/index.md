@@ -37,7 +37,7 @@ Under the hood, Passkeys rely on the [WebAuthn standard](https://www.w3.org/TR/w
 
 Using the new Passkeys in your app should be straightforward with the latest JavaScript SDK.
 
-To register a new user with a passkey, you call `signUp` with the webauthn option:
+To register a new user with a passkey, you call `signUp` with the `webauthn` option:
 
 ```typescript
 import { signUp } from "@junobuild/core";
