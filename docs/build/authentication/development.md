@@ -262,7 +262,7 @@ await signIn({
 
 ## Sign-out
 
-You can end a user's session by logging them out.
+You can end a user's session, no matter which provider they used to sign in, by logging them out.
 
 ```typescript
 import { signOut } from "@junobuild/core";
@@ -270,11 +270,15 @@ import { signOut } from "@junobuild/core";
 await signOut();
 ```
 
-:::note
+By default, the page will automatically reload after a successful sign-out. This is a common pattern in logout flows that ensures the application restarts from a clean state.
 
-This will clear the sign-in information stored in IndexedDB.
+If you wish to opt out, the library does clear its internal state and authentication before the reload, and you can use the `windowReload` option set to `false`.
 
-:::
+```typescript
+import { signOut } from "@junobuild/core";
+
+await signOut({ windowReload: false });
+```
 
 ---
 
