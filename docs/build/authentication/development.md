@@ -28,6 +28,12 @@ await signUp({
 });
 ```
 
+:::note
+
+Returning users don't need to go through sign-up again. They can simply use [sign-in](#passkeys-1) with their existing passkey to authenticate.
+
+:::
+
 #### Options
 
 Passkey sign-up can be customized with a handful of options. These let you control how long a session lasts, how the passkey is displayed to the user, and whether you want to track progress in your own UI.
@@ -100,9 +106,9 @@ If your app provides features that require authentication, your users need to si
 
 ### Passkeys
 
-With Passkeys, sign-in uses the digital key previously created on the user's device — for example in the browser, iCloud Keychain, Google Password Manager, etc.
+With Passkeys, returning users sign in using the digital key previously created on their device — for example in the browser, iCloud Keychain, Google Password Manager, etc.
 
-During sign-in, the user will be asked to use their authenticator to prove possession of the passkey and re-establish a valid session with your satellite.
+The user will be asked to use their authenticator to prove possession of the passkey and re-establish a valid session with your satellite.
 
 ```typescript
 import { signIn } from "@junobuild/core";
@@ -111,6 +117,12 @@ await signIn({
   webauthn: {}
 });
 ```
+
+:::note
+
+New users must first go through [sign-up](#passkeys) to create a passkey before they can sign in.
+
+:::
 
 #### Options
 

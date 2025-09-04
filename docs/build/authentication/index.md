@@ -16,7 +16,7 @@ keywords:
 
 Juno allows you to securely identify users anonymously, without passwords and without tracking.
 
-You can choose between [Passkeys] for built-in authentication, or integrate third-party providers like [Internet Identity] or [NFID].
+You can choose between [Passkeys](development.md#passkeys) for built-in authentication method, or integrate third-party providers like [Internet Identity](development.md#internet-identity) or [NFID](development.md#nfid).
 
 Authentication works hand-in-hand with other Juno services like [Datastore](../datastore/index.mdx) and [Storage](../storage/index.mdx).
 
@@ -75,6 +75,3 @@ If you're unsure which domain to use as the primary domain, here are two common 
   - You plan to host multiple satellites under different domains and don't want to tie user identity to just one.
 
 Choosing the right derivation origin early helps avoid identity issues later, but both approaches are valid depending on your goals.
-
-[Internet Identity]: ../../terminology.md#internet-identity
-[NFID]: ../../terminology.md#nfid
