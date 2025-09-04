@@ -19,7 +19,7 @@ image: https://juno.build/assets/images/serverless-functions-github-actions-b19d
 
 ---
 
-Authentication is a core part of building any app. Until now, developers on Juno have relied on third-party providers like Internet Identity and NFID. Today we’re providing a new option: **Passkeys**.
+Authentication is a core part of building any app. Until now, developers on Juno have relied on third-party providers like Internet Identity and NFID. Today we're providing a new option: **Passkeys**.
 
 This new authentication option is available to all developers using the latest Juno SDK and requires the most recent version of your Satellite containers. You can now enable Passkeys alongside existing providers, and the JavaScript SDK has been updated to make authentication APIs more consistent across sign-in, sign-out, and session management.
 
