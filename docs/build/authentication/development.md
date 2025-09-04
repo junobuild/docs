@@ -250,13 +250,19 @@ await signIn({
 
 ## Sign-out
 
-You can end a user's session, no matter which provider they used to sign in, by logging them out.
+You can end a user's session by logging them out.
 
 ```typescript
 import { signOut } from "@junobuild/core";
 
 await signOut();
 ```
+
+:::note
+
+This will clear the sign-in information stored in IndexedDB.
+
+:::
 
 ---
 
