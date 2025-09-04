@@ -4,69 +4,13 @@ Here are some customization options to tailor your sign-in flow and handle sessi
 
 ---
 
-## Sign-In Providers
+## Sign Context
 
-Juno supports Internet Identity and NFID, which also offers additional authentication methods like Google and email.
+Some options apply to both sign-up and sign-in flows.
 
-:::note
-
-You can implement the `signIn` function in your application as many times as you wish, with various configurations. It is also perfectly acceptable to use both Internet Identity and NFID within the same project.
-
-:::
-
----
-
-### Internet Identity
-
-Internet Identity is available at two different URLs: `internetcomputer.org` and `ic0.app`.
-
-By default, the SDK uses `internetcomputer.org`.
-
-```typescript
-import { signIn, InternetIdentityProvider } from "@junobuild/core";
-
-// Default domain is 'internetcomputer.org'
-await signIn({
-  provider: new InternetIdentityProvider({})
-});
-```
-
-You can switch to `ic0.app` by setting the domain option accordingly.
-
-```typescript
-import { signIn, InternetIdentityProvider } from "@junobuild/core";
-
-await signIn({
-  provider: new InternetIdentityProvider({
-    domain: "ic0.app"
-  })
-});
-```
-
-We use the former by default because we believe it offers a better user experience and branding.
-
-:::note
-
-It is worth mentioning that your users will be able to sign in to your app with Internet Identity, regardless of which of those two domains they originally created their identity on.
-
-:::
-
----
-
-### NFID
-
-To set up NFID, you need to configure the corresponding provider and provide your application name and a link to your logo.
-
-```typescript
-import { signIn, NFIDProvider } from "@junobuild/core";
-
-await signIn({
-  provider: new NFIDProvider({
-    appName: "Your app name",
-    logoUrl: "https://somewhere.com/your_logo.png"
-  })
-});
-```
+| Option        | Type      | Default | Description                                                                                                       |
+| ------------- | --------- | ------- | ----------------------------------------------------------------------------------------------------------------- |
+| `windowGuard` | `boolean` | `true`  | Prevents the user from closing the current window/tab while the flow is in progress. Disabling it is discouraged. |
 
 ---
 
