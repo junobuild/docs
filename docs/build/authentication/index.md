@@ -103,6 +103,6 @@ Each authentication method has its strengths. The right choice depends not only 
   - ❌ Limited awareness among mainstream users beyond the Internet Computer community.
   - ❌ Smaller user base compared to Passkeys or Internet Identity.
 
-In practice, many developers implement both Passkeys and Internet Identity side by side. This gives users the choice between a device-native login flow and an Internet Computer–native identity, covering a wider range of expectations.
+In practice, we expect many developers will implement both Passkeys and Internet Identity side by side. This approach gives users the choice between a device-native login flow and an Internet Computer–native identity, covering a wider range of expectations.
 
 Ultimately, the choice should be guided by the audience you're targeting and how strongly you weigh the considerations outlined above.
