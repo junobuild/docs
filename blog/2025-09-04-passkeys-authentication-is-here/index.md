@@ -14,8 +14,10 @@ tags:
     javascript,
     sdk
   ]
-image: https://juno.build/assets/images/serverless-functions-github-actions-b19d1f12963712cd2e85a9ef25355758.png
+image: https://juno.build/assets/images/passkeys-authentication-is-here-43c5075d7199d322001387e171adbe87.webp
 ---
+
+![](passkeys-authentication-is-here.webp)
 
 ---
 
