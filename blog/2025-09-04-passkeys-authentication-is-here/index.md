@@ -35,6 +35,8 @@ Under the hood, Passkeys rely on the [WebAuthn standard](https://www.w3.org/TR/w
 
 When stored in a password manager like iCloud Keychain or Google Password Manager, passkeys sync across a user’s devices, making them more resilient, though this does require trusting the companies that provide those services. If stored only in the browser, however, they can be lost if the browser is reset or uninstalled.
 
+The good news is that most modern platforms already encourage syncing passkeys across devices, which makes them convenient for everyday use, giving users a smooth and safe way to log into applications.
+
 ---
 
 ## 🤔 Choosing Between Providers
