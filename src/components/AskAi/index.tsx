@@ -1,7 +1,7 @@
 import { useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import IconMarkdown from "@site/static/icons/markdown.svg";
 import IconClaude from "@site/static/icons/claude.svg";
+import IconMarkdown from "@site/static/icons/markdown.svg";
 import IconOpenAI from "@site/static/icons/openai.svg";
 import styles from "./styles.module.scss";
 
