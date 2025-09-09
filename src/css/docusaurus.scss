@@ -3,6 +3,10 @@
   --ifm-global-shadow-lw: none;
   --ifm-tabs-padding-vertical: 0.25rem;
   --ifm-tabs-color-active: #ff5df9;
+
+  &[data-theme="dark"] {
+    --ifm-hover-overlay: rgba(255, 255, 255, 0.1);
+  }
 }
 
 .container {
