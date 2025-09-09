@@ -1,0 +1,7 @@
+.btn {
+  border: 1px solid var(--ifm-toc-border-color);
+
+  &:hover, &:active {
+    border: 1px solid var(--ifm-navbar-link-hover-color);
+  }
+}
