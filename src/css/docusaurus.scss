@@ -138,3 +138,7 @@ a.card {
 table {
   --ifm-spacing-vertical: 2.5rem;
 }
+
+.dropdown__menu {
+  border: 1px solid var(--ifm-toc-border-color);
+}
