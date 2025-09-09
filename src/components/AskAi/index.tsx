@@ -51,6 +51,7 @@ export const AskAi = () => {
         aria-expanded="false"
         role="button"
         className={`navbar__link breadcrumbs__link ${styles.btn}`}
+        onClick={($event) => $event.preventDefault()}
       >
         Ask AI
       </a>
