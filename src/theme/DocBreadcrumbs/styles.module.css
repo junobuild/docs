@@ -1,0 +1,11 @@
+.breadcrumbsContainer {
+  --ifm-breadcrumb-size-multiplier: 0.8;
+  margin-bottom: 0.8rem;
+}
+
+.customBreadcrumbs {
+  @media screen and (min-width: 997px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}

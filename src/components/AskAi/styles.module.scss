@@ -1,0 +1,27 @@
+.btn {
+  margin: 0.45rem 0;
+  border: 1px solid var(--ifm-toc-border-color);
+
+  &:hover,
+  &:active {
+    border: 1px solid var(--ifm-navbar-link-hover-color);
+  }
+
+  @media screen and (min-width: 997px) {
+    margin: 0;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: calc(1rem * var(--ifm-breadcrumb-size-multiplier));
+}
+
+.linkDescription {
+  display: block;
+  font-size: calc(1rem * var(--ifm-breadcrumb-size-multiplier));
+  color: var(--ifm-color-emphasis-600);
+  line-height: 1.6;
+}
