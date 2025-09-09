@@ -71,7 +71,7 @@ export const AskAi = () => {
           link={markdownLink}
           text="View as Markdown"
           description="Open this page in Markdown"
-          eventName="ask_ai_open_markdown"
+          eventName="ask_ai_view_markdown"
         />
 
         <AskAiLink
