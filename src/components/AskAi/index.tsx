@@ -1,5 +1,7 @@
 import { useLocation } from "@docusaurus/router";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import IconMarkdown from "@site/static/icons/markdown.svg";
+import IconClaude from "@site/static/icons/claude.svg";
 import styles from "./styles.module.scss";
 
 const AskAiLink = ({ icon, text, link, description }) => {
@@ -24,9 +26,18 @@ const AskAiLink = ({ icon, text, link, description }) => {
 export const AskAi = () => {
   const { pathname } = useLocation();
 
-  const markdownLink = pathname.includes("/category/")
-    ? undefined
-    : `${pathname}.md`;
+  const isCategory = pathname.includes("/category/");
+
+  if (isCategory) {
+    return <></>;
+  }
+
+  const {
+    siteConfig: { url }
+  } = useDocusaurusContext();
+
+  const markdownLink = `${pathname}.md`;
+  const claudeLink = `https://claude.ai/new?q=${encodeURIComponent(`Read from this URL: ${url}${pathname}`)}`;
 
   return (
     <div className="dropdown dropdown--hoverable">
@@ -41,14 +52,19 @@ export const AskAi = () => {
       </a>
 
       <ul className="dropdown__menu">
-        {markdownLink !== undefined && (
-          <AskAiLink
-            icon={<IconMarkdown />}
-            link={markdownLink}
-            text="View as Markdown"
-            description="Open this page in Markdown"
-          />
-        )}
+        <AskAiLink
+          icon={<IconMarkdown />}
+          link={markdownLink}
+          text="View as Markdown"
+          description="Open this page in Markdown"
+        />
+
+        <AskAiLink
+          icon={<IconClaude />}
+          link={claudeLink}
+          text="Open in Claude"
+          description="Ask questions about this page"
+        />
       </ul>
     </div>
   );
