@@ -8,6 +8,15 @@ For help and questions about best practices, join our [Discord](https://discord.
 
 Getting started is free. Developers are responsible for operating costs. Transaction costs may apply for some features. [Detailed information and estimations](./pricing.md) are available.
 
+### What are credits?
+
+Credits are not money or tokens, they're simply Juno's way of helping you get started, like saying "drinks on us".
+
+- 1 credit lets you spin up one module without requiring payment (see [Pricing](./pricing.md)).
+- Every new developer starts with 2 credits, enough to create a Mission Control and a Satellite to get going.
+
+Sometimes, additional credits can be granted - for example, during onboarding or when launching exciting projects. Reach out if you need more.
+
 ### How do I verify an upgrade?
 
 Before approving an upgrade, developers can verify the proposed changes by checking the release details on [GitHub](https://github.com/junobuild/juno/releases). Each release includes a list of modules proposed for update, along with a checksums.txt file that contains the SHA-256 hashes of the module binaries. For example:
