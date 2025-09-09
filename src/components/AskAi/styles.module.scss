@@ -1,7 +1,23 @@
 .btn {
   border: 1px solid var(--ifm-toc-border-color);
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     border: 1px solid var(--ifm-navbar-link-hover-color);
   }
 }
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: calc(1rem * var(--ifm-breadcrumb-size-multiplier));
+}
+
+.linkDescription {
+  display: block;
+  font-size: calc(1rem * var(--ifm-breadcrumb-size-multiplier));
+  color: var(--ifm-color-emphasis-600);
+}
+
+
