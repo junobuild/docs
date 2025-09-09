@@ -1,11 +1,14 @@
 import { useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { trackEvent } from "@site/src/providers/analytics.providers";
 import IconClaude from "@site/static/icons/claude.svg";
 import IconMarkdown from "@site/static/icons/markdown.svg";
 import IconOpenAI from "@site/static/icons/openai.svg";
 import styles from "./styles.module.scss";
 
-const AskAiLink = ({ icon, text, link, description }) => {
+const AskAiLink = ({ icon, text, link, description, eventName }) => {
+  const { siteConfig } = useDocusaurusContext();
+
   return (
     <li>
       <a
@@ -13,6 +16,12 @@ const AskAiLink = ({ icon, text, link, description }) => {
         className="dropdown__link"
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() =>
+          trackEvent({
+            name: eventName,
+            siteConfig
+          })
+        }
       >
         <span className={styles.link}>
           {icon}
@@ -62,6 +71,7 @@ export const AskAi = () => {
           link={markdownLink}
           text="View as Markdown"
           description="Open this page in Markdown"
+          eventName="ask_ai_open_markdown"
         />
 
         <AskAiLink
@@ -69,6 +79,7 @@ export const AskAi = () => {
           link={claudeLink}
           text="Open in Claude"
           description="Ask questions about this page"
+          eventName="ask_ai_claude"
         />
 
         <AskAiLink
@@ -76,6 +87,7 @@ export const AskAi = () => {
           link={chatGPTLink}
           text="Open in ChatGPT"
           description="Ask questions about this page"
+          eventName="ask_ai_chatgpt"
         />
       </ul>
     </div>
