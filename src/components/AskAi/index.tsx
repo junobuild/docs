@@ -6,7 +6,7 @@ import IconMarkdown from "@site/static/icons/markdown.svg";
 import IconOpenAI from "@site/static/icons/openai.svg";
 import styles from "./styles.module.scss";
 
-const AskAiLink = ({ icon, text, link, description, eventName }) => {
+const AskAiLink = ({ icon, text, link, description, pathname, eventName }) => {
   const { siteConfig } = useDocusaurusContext();
 
   return (
@@ -19,6 +19,9 @@ const AskAiLink = ({ icon, text, link, description, eventName }) => {
         onClick={() =>
           trackEvent({
             name: eventName,
+            metadata: {
+              pathname
+            },
             siteConfig
           })
         }
@@ -69,6 +72,7 @@ export const AskAi = () => {
         <AskAiLink
           icon={<IconMarkdown />}
           link={markdownLink}
+          pathname={pathname}
           text="View as Markdown"
           description="Open this page in Markdown"
           eventName="ask_ai_view_markdown"
@@ -77,6 +81,7 @@ export const AskAi = () => {
         <AskAiLink
           icon={<IconClaude />}
           link={claudeLink}
+          pathname={pathname}
           text="Open in Claude"
           description="Ask questions about this page"
           eventName="ask_ai_claude"
@@ -85,6 +90,7 @@ export const AskAi = () => {
         <AskAiLink
           icon={<IconOpenAI />}
           link={chatGPTLink}
+          pathname={pathname}
           text="Open in ChatGPT"
           description="Ask questions about this page"
           eventName="ask_ai_chatgpt"
