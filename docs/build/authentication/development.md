@@ -166,21 +166,39 @@ await signIn({
 
 Internet Identity sign-in can be customized with options that let you control session lifetime, provider configuration, or track progress during the flow.
 
-| Option                       | Type                                       | Default                | Description                                                                                                                                                                                                                                                         |
-| ---------------------------- | ------------------------------------------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `maxTimeToLiveInNanoseconds` | `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)` | **4 hours**            | Maximum lifetime of the user's session in **nanoseconds**. Once expired, the session cannot be extended.                                                                                                                                                            |
-| `windowed`                   | `boolean`                                  | `true`                 | By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead. |
-| `derivationOrigin`           | `string` or `URL`                          |                        | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your satellite's URLs they use to access your application.                                                                                           |
-| `onProgress`                 | `(progress) => void`                       |                        | Callback for provider sign-in and user creation/loading.                                                                                                                                                                                                            |
-| `domain`                     | `internetcomputer.org` or `ic0.app`        | `internetcomputer.org` | The domain on which to open Internet Identity.                                                                                                                                                                                                                      |
+| Option                       | Type                                           | Default                | Description                                                                                                                                                                                                                                                         |
+| ---------------------------- | ---------------------------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `maxTimeToLiveInNanoseconds` | `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)`     | **4 hours**            | Maximum lifetime of the user's session in **nanoseconds**. Once expired, the session cannot be extended.                                                                                                                                                            |
+| `windowed`                   | `boolean`                                      | `true`                 | By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead. |
+| `derivationOrigin`           | `string` or `URL`                              |                        | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your satellite's URLs they use to access your application.                                                                                           |
+| `onProgress`                 | `(progress) => void`                           |                        | Callback for provider sign-in and user creation/loading.                                                                                                                                                                                                            |
+| `domain`                     | `internetcomputer.org` or `ic0.app` or `id.ai` | `internetcomputer.org` | The domain on which to open Internet Identity.                                                                                                                                                                                                                      |
 
 Example with options:
 
 ```typescript
+// Sign-in with id.ai
 await signIn({
   ii: {
     options: {
-      maxTimeToLiveInNanoseconds: BigInt(24 * 60 * 60 * 1000 * 1000 * 1000), // 1 day
+      domain: "id.ai"
+    }
+  }
+});
+
+// Sign-in with a specific session duration
+await signIn({
+  ii: {
+    options: {
+      maxTimeToLiveInNanoseconds: BigInt(24 * 60 * 60 * 1000 * 1000 * 1000) // 1 day
+    }
+  }
+});
+
+// Sign-in with a derivation origin and progression callback
+await signIn({
+  ii: {
+    options: {
       onProgress: ({ step, state }) => {
         console.log("Step:", step, "State:", state);
       },
