@@ -12,9 +12,11 @@ keywords:
 
 # Hosting
 
-Juno Hosting offers fast and secure hosting.
+Juno Hosting makes it easy to put your project online: fast, secure, and reliable by default.
 
-With just one [CLI] command, you can effortlessly deploy your web applications, static, and dynamic content to your [satellite].
+Deploy your web applications or static sites directly to a satellite using [GitHub Actions](../../guides/github-actions/index.mdx). Your builds run automatically, so shipping updates feels as simple as pushing code.
+
+Prefer running things locally? You can also use the [CLI](../../guides/manual-deployment.mdx).
 
 ![An overview of the custom domains once configured](../../img/satellite/hosting.webp)
 
@@ -22,10 +24,6 @@ With just one [CLI] command, you can effortlessly deploy your web applications, 
 
 ## Using your Custom Domain
 
-You can maintain your unique brand identity with Juno Hosting. Use your custom domain, such as "yolo.com" or "hello.world.com", instead of the default domain name provided by Juno.
+Want to maintain your unique brand identity? You can use your own domain - like `yolo.com` or `hello.world.com` - instead of the default provisioned address.
 
-Our infrastructure automatically provisions an SSL certificate for each of your domains, ensuring secure connections for your users.
-
-[CLI]: ../../reference/cli.mdx
-[satellite]: ../../terminology.md#satellite
-[console]: ../../terminology.md#console
+This comes with an automatically generated SSL certificate for each domain, ensuring secure connections for your users.
