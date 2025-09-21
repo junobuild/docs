@@ -140,8 +140,8 @@ jobs:
       - name: Run emulator
         run: |
           set -e
-          juno dev start --headless &
-          juno dev wait
+          juno emulator start --headless &
+          juno emulator wait
           juno login --emulator --mode development --headless
           juno config --mode development --headless
 
@@ -176,8 +176,8 @@ So, how it works:
 
 - We start by checking out the code, installing Node.js, and running `npm ci` to install your project dependencies.
 - As mentioned, instead of the Juno GitHub Actions, we install the Juno CLI globally so we can use it in the next steps.
-- We then run the emulator using `juno dev start --headless`, which launches the `junobuild/satellite` Docker image (defined in the `juno.config`) in the background, and follow up with:
-  - `juno dev wait` to ensure the emulator is ready before continuing.
+- We then run the emulator using `juno emulator start --headless`, which launches the `junobuild/satellite` Docker image (defined in the `juno.config`) in the background, and follow up with:
+  - `juno emulator wait` to ensure the emulator is ready before continuing.
   - `juno login` sets up authentication against the emulator in headless mode. This way the CLI can operate the Satellite — required for the next step.
   - `juno config` applies the configuration and sets the collections required by the project.
 - Once everything is ready, we run the end-to-end tests via `npm run e2e:ci`. Replace with the command that runs your tests in headless mode.

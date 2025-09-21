@@ -13,8 +13,8 @@ Juno offers something most platforms don’t: a full local development environme
 | What              | How                                            |
 | ----------------- | ---------------------------------------------- |
 | Runtime supported | Docker or Podman                               |
-| Start emulator    | `juno dev start`                               |
-| Stop emulator     | `juno dev stop`                                |
+| Start emulator    | `juno emulator start`                               |
+| Stop emulator     | `juno emulator stop`                                |
 | Console UI URL    | [http://localhost:5866](http://localhost:5866) |
 
 ---
@@ -67,7 +67,7 @@ import Cli from "./components/cli.mdx";
 Then, in your project folder, start the local emulator with:
 
 ```bash
-juno dev start
+juno emulator start
 ```
 
 This will launch the emulator along with all the services needed to develop your project.
@@ -77,7 +77,7 @@ We recommend running this in a dedicated terminal window or tab, while your fron
 To stop the emulator, run:
 
 ```bash
-juno dev stop
+juno emulator stop
 ```
 
 :::note
@@ -137,7 +137,7 @@ When using the `junobuild/skylab` image, the Console UI becomes available by def
 http://localhost:5866/
 ```
 
-Once the emulator is running (`juno dev start`), visit this URL in your browser to explore the Console — where you can create and manage Satellites, and explore features like Datastore, Authentication, Storage, and more.
+Once the emulator is running (`juno emulator start`), visit this URL in your browser to explore the Console — where you can create and manage Satellites, and explore features like Datastore, Authentication, Storage, and more.
 
 ---
 
