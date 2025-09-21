@@ -144,7 +144,7 @@ A quick reference for the most common CLI commands and deployment workflows when
 | Command(s)             | Scenario                                                                             |
 | ---------------------- | ------------------------------------------------------------------------------------ |
 | `juno functions eject` | Initializes your project for writing serverless functions.                           |
-| `juno emulator start`       | Starts the emulator.                                                                 |
+| `juno emulator start`  | Starts the emulator.                                                                 |
 | `juno functions build` | Compiles your custom Satellite's code. Changes are automatically redeployed locally. |
 
 ### 🚀 Deployment Scenarios
