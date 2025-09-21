@@ -240,8 +240,8 @@ Juno offers something most platforms don’t: a full local development environme
 | What | How |
 | --- | --- |
 | Runtime supported | Docker or Podman |
-| Start emulator | `juno dev start` |
-| Stop emulator | `juno dev stop` |
+| Start emulator | `juno emulator start` |
+| Stop emulator | `juno emulator stop` |
 | Console UI URL | [http://localhost:5866](http://localhost:5866) |
 
 ---
@@ -304,7 +304,7 @@ pnpm add -g @junobuild/cli
 Then, in your project folder, start the local emulator with:
 
 ```
-juno dev start
+juno emulator start
 ```
 
 This will launch the emulator along with all the services needed to develop your project.
@@ -314,7 +314,7 @@ We recommend running this in a dedicated terminal window or tab, while your fron
 To stop the emulator, run:
 
 ```
-juno dev stop
+juno emulator stop
 ```
 
 **Note:**
@@ -370,7 +370,7 @@ When using the `junobuild/skylab` image, the Console UI becomes available by def
 http://localhost:5866/
 ```
 
-Once the emulator is running (`juno dev start`), visit this URL in your browser to explore the Console — where you can create and manage Satellites, and explore features like Datastore, Authentication, Storage, and more.
+Once the emulator is running (`juno emulator start`), visit this URL in your browser to explore the Console — where you can create and manage Satellites, and explore features like Datastore, Authentication, Storage, and more.
 
 ---
 
@@ -1444,13 +1444,13 @@ If you start the emulator (see chapter below) in watch mode, your functions will
 
 ## Local Development
 
-For local development and testing, a sandbox environment is essential. You can establish this environment by running the CLI command `juno dev start`.
+For local development and testing, a sandbox environment is essential. You can establish this environment by running the CLI command `juno emulator start`.
 
 **Info:**
 
 Find more information about local development in the [documentation](/docs/guides/local-development.md).
 
-The local sandbox environment supports hot reloading. This means that the container will automatically redeploy your local Satellite each time `juno dev build` is executed and a new version is produced.
+The local sandbox environment supports hot reloading. This means that the container will automatically redeploy your local Satellite each time `juno functions build` is executed and a new version is produced.
 
 If you start the emulator with the `--watch` flag, it will also rebuild your functions automatically when changes are detected.
 
@@ -1562,7 +1562,7 @@ A quick reference for the most common CLI commands and deployment workflows when
 | Command(s) | Scenario |
 | --- | --- |
 | `juno functions eject` | Initializes your project for writing serverless functions. |
-| `juno dev start` | Starts the emulator. |
+| `juno emulator start` | Starts the emulator. |
 | `juno functions build` | Compiles your custom Satellite's code. Changes are automatically redeployed locally. |
 
 ### 🚀 Deployment Scenarios
@@ -1650,7 +1650,7 @@ include_satellite!();
 
 ## Feature Selection
 
-When you run `juno dev eject`, all the available hooks and assertions are scaffolded in your `lib.rs` module. However, if you don’t have to implement all of them for example to improve readability or reduce unnecessary logic, you can selectively enable only the features you need.
+When you run `juno functions eject`, all the available hooks and assertions are scaffolded in your `lib.rs` module. However, if you don’t have to implement all of them for example to improve readability or reduce unnecessary logic, you can selectively enable only the features you need.
 
 To do this, disable the default features in your `Cargo.toml` and explicitly specify only the ones you want to use.
 
@@ -2600,7 +2600,7 @@ NaN. **Start Juno local emulator**:
 Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```
-juno dev start
+juno emulator start
 ```
 
 3.  **Create a Satellite** for local dev:
@@ -2730,7 +2730,7 @@ NaN. **Start Juno local emulator**:
 Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```
-juno dev start
+juno emulator start
 ```
 
 3. **Create a Satellite** for local dev:
@@ -2864,7 +2864,7 @@ NaN. **Start Juno local emulator**:
 Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```
-juno dev start
+juno emulator start
 ```
 
 3. **Create a Satellite** for local dev:
@@ -2998,7 +2998,7 @@ NaN. **Start Juno local emulator**:
 Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```
-juno dev start
+juno emulator start
 ```
 
 3. **Create a Satellite** for local dev:
@@ -3129,7 +3129,7 @@ NaN. **Start Juno local emulator**:
 Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```
-juno dev start
+juno emulator start
 ```
 
 3. **Create a Satellite** for local dev:
@@ -3258,7 +3258,7 @@ NaN. **Start Juno local emulator**:
 Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```
-juno dev start
+juno emulator start
 ```
 
 3. **Create a Satellite** for local dev:
@@ -3389,7 +3389,7 @@ NaN. **Start Juno local emulator**:
 Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```
-juno dev start
+juno emulator start
 ```
 
 3. **Create a Satellite** for local dev:
@@ -3562,7 +3562,7 @@ npm install
 Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```
-juno dev start
+juno emulator start
 ```
 
 4. **Create a Satellite** for local dev:
@@ -3749,7 +3749,7 @@ npm install
 Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```
-juno dev start
+juno emulator start
 ```
 
 4. **Create a Satellite** for local dev:
@@ -3930,7 +3930,7 @@ npm install
 Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```
-juno dev start
+juno emulator start
 ```
 
 4. **Create a Satellite** for local dev:
@@ -4085,7 +4085,7 @@ npm install
 Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```
-juno dev start
+juno emulator start
 ```
 
 4. **Create a Satellite** for local dev:
@@ -4260,7 +4260,7 @@ npm install
 Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```
-juno dev start
+juno emulator start
 ```
 
 4. **Create a Satellite** for local dev:
@@ -4437,7 +4437,7 @@ npm install
 Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```
-juno dev start
+juno emulator start
 ```
 
 4. **Create a Satellite** for local dev:
@@ -4601,7 +4601,7 @@ npm install
 Requires the Juno CLI to be available `npm i -g @junobuild/cli`
 
 ```
-juno dev start
+juno emulator start
 ```
 
 4. **Create a Satellite** for local dev:
@@ -4845,7 +4845,7 @@ npm i -g @junobuild/cli
 Once installed, start the local emulator:
 
 ```
-juno dev start
+juno emulator start
 ```
 
 Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
@@ -5058,7 +5058,7 @@ npm i -g @junobuild/cli
 Once installed, start the local emulator:
 
 ```
-juno dev start
+juno emulator start
 ```
 
 Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
@@ -5222,15 +5222,15 @@ In the next chapter, we'll apply this config before running the tests.
 To run the tests in your CI, you can either use the [GitHub Actions](/docs/guides/github-actions.md) or install the CLI manually. In the example below, we install the CLI because we chain multiple commands.
 
 ```
-name: E2E Testson:  pull_request:  workflow_dispatch:jobs:  e2e:    runs-on: ubuntu-latest    steps:      - name: Checkout        uses: actions/checkout@v4      - name: Set up Node        uses: actions/setup-node@v4        with:          node-version: 22          registry-url: "https://registry.npmjs.org"      - name: Install dependencies        run: npm ci      - name: Install Juno CLI        run: npm i -g @junobuild/cli      - name: Run emulator        run: |          set -e          juno dev start --headless &          juno dev wait          juno login --emulator --mode development --headless          juno config --mode development --headless      - name: Run tests        run: npm run e2e:ci      - name: Upload Playwright report on failure        uses: actions/upload-artifact@v4        if: ${{ failure() }}        with:          name: playwright-report          path: playwright-report/          retention-days: 3      - name: Upload Playwright results on failure        uses: actions/upload-artifact@v4        if: ${{ failure() }}        with:          name: test-results          path: test-results/          retention-days: 3  may-merge:    needs: ["e2e"]    runs-on: ubuntu-latest    steps:      - name: Cleared for merging        run: echo OK
+name: E2E Testson:  pull_request:  workflow_dispatch:jobs:  e2e:    runs-on: ubuntu-latest    steps:      - name: Checkout        uses: actions/checkout@v4      - name: Set up Node        uses: actions/setup-node@v4        with:          node-version: 22          registry-url: "https://registry.npmjs.org"      - name: Install dependencies        run: npm ci      - name: Install Juno CLI        run: npm i -g @junobuild/cli      - name: Run emulator        run: |          set -e          juno emulator start --headless &          juno emulator wait          juno login --emulator --mode development --headless          juno config --mode development --headless      - name: Run tests        run: npm run e2e:ci      - name: Upload Playwright report on failure        uses: actions/upload-artifact@v4        if: ${{ failure() }}        with:          name: playwright-report          path: playwright-report/          retention-days: 3      - name: Upload Playwright results on failure        uses: actions/upload-artifact@v4        if: ${{ failure() }}        with:          name: test-results          path: test-results/          retention-days: 3  may-merge:    needs: ["e2e"]    runs-on: ubuntu-latest    steps:      - name: Cleared for merging        run: echo OK
 ```
 
 So, how it works:
 
 *   We start by checking out the code, installing Node.js, and running `npm ci` to install your project dependencies.
 *   As mentioned, instead of the Juno GitHub Actions, we install the Juno CLI globally so we can use it in the next steps.
-*   We then run the emulator using `juno dev start --headless`, which launches the `junobuild/satellite` Docker image (defined in the `juno.config`) in the background, and follow up with:
-    *   `juno dev wait` to ensure the emulator is ready before continuing.
+*   We then run the emulator using `juno emulator start --headless`, which launches the `junobuild/satellite` Docker image (defined in the `juno.config`) in the background, and follow up with:
+    *   `juno emulator wait` to ensure the emulator is ready before continuing.
     *   `juno login` sets up authentication against the emulator in headless mode. This way the CLI can operate the Satellite — required for the next step.
     *   `juno config` applies the configuration and sets the collections required by the project.
 *   Once everything is ready, we run the end-to-end tests via `npm run e2e:ci`. Replace with the command that runs your tests in headless mode.
@@ -5434,7 +5434,7 @@ npm i -g @junobuild/cli
 Once installed, start the local emulator:
 
 ```
-juno dev start
+juno emulator start
 ```
 
 Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
@@ -5708,7 +5708,7 @@ npm i -g @junobuild/cli
 Once installed, start the local emulator:
 
 ```
-juno dev start
+juno emulator start
 ```
 
 Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
@@ -5862,13 +5862,13 @@ pnpm add -g @junobuild/cli
 At the root of your application, eject the Satellite if you haven't already used a template.
 
 ```
-juno dev eject
+juno functions eject
 ```
 
 In a new terminal window, kick off the emulator:
 
 ```
-juno dev start
+juno emulator start
 ```
 
 Now, your local development environment is up and running, ready for you to start coding.
@@ -5876,7 +5876,7 @@ Now, your local development environment is up and running, ready for you to star
 Once you're ready to see your changes in action, compile your code:
 
 ```
-juno dev build
+juno emulator build
 ```
 
 Changes are detected and automatically deployed, allowing you to test your custom code locally almost immediately.
@@ -5909,7 +5909,7 @@ Now, let's create a hook within `src/satellite/src/lib.rs` with the following im
 use ic_cdk::print;use junobuild_macros::{    on_delete_asset, on_delete_doc, on_delete_many_assets, on_delete_many_docs, on_set_doc,    on_set_many_docs, on_upload_asset,};use junobuild_satellite::{    include_satellite, set_doc_store, OnDeleteAssetContext, OnDeleteDocContext,    OnDeleteManyAssetsContext, OnDeleteManyDocsContext, OnSetDocContext, OnSetManyDocsContext,    OnUploadAssetContext, SetDoc,};use junobuild_utils::{decode_doc_data, encode_doc_data};use serde::{Deserialize, Serialize};// The data of the document we are looking to update in the Satellite's Datastore.#[derive(Serialize, Deserialize)]struct Person {    hello: String,}// We tells the hooks that we only want to listen to changes in collection "demo".#[on_set_doc(collections = ["demo"])]async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {    // We decode the new data saved in the Datastore because it holds those as blob.    let mut data: Person = decode_doc_data(&context.data.data.after.data)?;    // We update the document's data that was saved in the Datastore with the call from the frontend dapp.    // i.e. the frontend saved "hello: world" and we enhance it to "hello: world checked"    data.hello = format!("{} checked", data.hello);    // We encode the data back to blob.    let encode_data = encode_doc_data(&data)?;    // We construct the parameters required to call the function that save the data in the Datastore.    let doc: SetDoc = SetDoc {        data: encode_data,        description: context.data.data.after.description,        version: context.data.data.after.version,    };    // We save the document for the same caller as the one who triggered the original on_set_doc, in the same collection with the same key as well.    set_doc_store(        context.caller,        context.data.collection,        context.data.key,        doc,    )?;    Ok(())}// Other hooksinclude_satellite!();
 ```
 
-As outlined in the ([Quickstart](#quickstart)) chapter, run `juno dev build` to compile and deploy the code locally.
+As outlined in the ([Quickstart](#quickstart)) chapter, run `juno emulator build` to compile and deploy the code locally.
 
 When testing this feature, if you wait a bit before calling the getter, unlike in the previous step, you should now receive the modified "hello: world checked" text set by the hook. This delay occurs because serverless Functions run fully asynchronously from the request-response between your frontend and the Satellite.
 
@@ -6092,7 +6092,7 @@ npm i -g @junobuild/cli
 Once installed, start the local emulator:
 
 ```
-juno dev start
+juno emulator start
 ```
 
 Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
@@ -6280,13 +6280,13 @@ pnpm add -g @junobuild/cli
 At the root of your application, eject the Satellite if you haven't already used a template.
 
 ```
-juno dev eject
+juno functions eject
 ```
 
 In a new terminal window, kick off the emulator:
 
 ```
-juno dev start --watch
+juno emulator start --watch
 ```
 
 Now, your local development environment is up and running, ready for you to start coding.
@@ -6484,7 +6484,7 @@ npm i -g @junobuild/cli
 Once installed, start the local emulator:
 
 ```
-juno dev start
+juno emulator start
 ```
 
 Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
@@ -8342,7 +8342,7 @@ If you are using a framework like Next.js or Vite, Juno provides plugins to simp
 
 ## Emulator Configuration
 
-For local development or when running an E2E test environment in a CI, you'll use the emulator. When running `juno dev start`, it defaults to booting Skylab with the default options. If you wish to tweak options or use another image, you can set the `emulator` field in your configuration file.
+For local development or when running an E2E test environment in a CI, you'll use the emulator. When running `juno emulator start`, it defaults to booting Skylab with the default options. If you wish to tweak options or use another image, you can set the `emulator` field in your configuration file.
 
 A basic example of a custom emulator configuration:
 
