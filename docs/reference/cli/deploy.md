@@ -4,7 +4,7 @@ Deploy your app to your satellite.
 Usage: juno deploy [options]
 
 Options:
-  --batch               Number of files to upload in parallel per batch (default: 20).
+  --batch               Number of files to upload in parallel per batch (default: 50).
   --clear               Clear existing app files before proceeding with deployment.
   --config              Apply configuration after deployment succeeds.
   --no-apply            Submit the deployment as a change but do not apply it yet.
