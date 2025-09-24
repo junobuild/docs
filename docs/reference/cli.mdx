@@ -77,13 +77,59 @@ import Logout from "./cli/logout.md";
 
 ---
 
-### Init
+### Hosting
 
-import Init from "./cli/init.md";
+import Hosting from "./cli/hosting.md";
 
-<Init />
+<Hosting />
 
-The `juno init` command creates a `juno.config` file in the root directory of your project.
+---
+
+#### Clear
+
+import HostingClear from "./cli/hosting-clear.md";
+
+<HostingClear />
+
+:::note
+
+This command removes existing files from the satellite and only affects the app assets, your frontend. Your user's uploaded files will not be cleared from your custom collections in the storage.
+
+:::
+
+---
+
+#### Deploy
+
+import HostingDeploy from "./cli/hosting-deploy.md";
+
+<HostingDeploy />
+
+---
+
+### Config
+
+import Config from "./cli/config.md";
+
+<Config />
+
+---
+
+#### Apply
+
+import ConfigApply from "./cli/config-apply.md";
+
+<ConfigApply />
+
+---
+
+#### Init
+
+import ConfigInit from "./cli/config-init.md";
+
+<ConfigInit />
+
+The `juno config init` command creates a `juno.config` file in the root directory of your project.
 
 Depending on your project, it will either create a TypeScript, JavaScript, or JSON file.
 
@@ -96,36 +142,6 @@ We recommend using the first two options because they can leverage your IDE's In
 This file is necessary for deploying, configuring, or running any other CLI commands for your app.
 
 Read more about the [configuration](./configuration.mdx).
-
----
-
-### Deploy
-
-import Deploy from "./cli/deploy.md";
-
-<Deploy />
-
----
-
-### Clear
-
-import Clear from "./cli/clear.md";
-
-<Clear />
-
-:::note
-
-This command removes existing files from the satellite and only affects the app assets. The user's uploaded files will not be cleared as the app is deployed to a reserved collection, `#dapp`.
-
-:::
-
----
-
-### Config
-
-import Config from "./cli/config.md";
-
-<Config />
 
 ---
 
