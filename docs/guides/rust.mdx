@@ -20,7 +20,7 @@ import Setup from "./components/functions/setup.mdx";
 In a new terminal window, kick off the emulator:
 
 ```bash
-juno dev start
+juno emulator start
 ```
 
 Now, your local development environment is up and running, ready for you to start coding.
@@ -28,7 +28,7 @@ Now, your local development environment is up and running, ready for you to star
 Once you're ready to see your changes in action, compile your code:
 
 ```bash
-juno dev build
+juno emulator build
 ```
 
 Changes are detected and automatically deployed, allowing you to test your custom code locally almost immediately.
@@ -99,7 +99,7 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
 include_satellite!();
 ```
 
-As outlined in the [Quickstart](#quickstart) chapter, run `juno dev build` to compile and deploy the code locally.
+As outlined in the [Quickstart](#quickstart) chapter, run `juno emulator build` to compile and deploy the code locally.
 
 When testing this feature, if you wait a bit before calling the getter, unlike in the previous step, you should now receive the modified "hello: world checked" text set by the hook. This delay occurs because serverless Functions run fully asynchronously from the request-response between your frontend and the Satellite.
 

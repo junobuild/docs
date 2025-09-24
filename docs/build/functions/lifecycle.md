@@ -24,7 +24,7 @@ If you start the emulator (see chapter below) in watch mode, your functions will
 
 ## Local Development
 
-For local development and testing, a sandbox environment is essential. You can establish this environment by running the CLI command `juno dev start`.
+For local development and testing, a sandbox environment is essential. You can establish this environment by running the CLI command `juno emulator start`.
 
 :::info
 
@@ -32,7 +32,7 @@ Find more information about local development in the [documentation](../../guide
 
 :::
 
-The local sandbox environment supports hot reloading. This means that the container will automatically redeploy your local Satellite each time `juno dev build` is executed and a new version is produced.
+The local sandbox environment supports hot reloading. This means that the container will automatically redeploy your local Satellite each time `juno functions build` is executed and a new version is produced.
 
 If you start the emulator with the `--watch` flag, it will also rebuild your functions automatically when changes are detected.
 
@@ -144,7 +144,7 @@ A quick reference for the most common CLI commands and deployment workflows when
 | Command(s)             | Scenario                                                                             |
 | ---------------------- | ------------------------------------------------------------------------------------ |
 | `juno functions eject` | Initializes your project for writing serverless functions.                           |
-| `juno dev start`       | Starts the emulator.                                                                 |
+| `juno emulator start`  | Starts the emulator.                                                                 |
 | `juno functions build` | Compiles your custom Satellite's code. Changes are automatically redeployed locally. |
 
 ### 🚀 Deployment Scenarios
