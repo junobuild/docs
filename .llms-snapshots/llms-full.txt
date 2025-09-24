@@ -7651,15 +7651,69 @@ Usage: juno logout [options]Options:  -h, --help            Output usage informa
 
 ---
 
-### Init
+### Hosting
 
-Set up your project.
+Deploy or clear the frontend code of your app on your satellite.
 
 ```
-Usage: juno init [options]Options:  --minimal         Skip few prompts and generate a config file with a placeholder satellite ID.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
+Usage: juno hosting <subcommand> [options]Subcommands:  clear               Remove frontend files (JS, HTML, CSS, etc.) from your satellite.  deploy              Deploy your app to your satellite.
 ```
 
-The `juno init` command creates a `juno.config` file in the root directory of your project.
+---
+
+#### Clear
+
+Remove frontend files (JS, HTML, CSS, etc.) from your satellite.
+
+```
+Usage: juno hosting clear [options]Options:  -f, --fullPath        Clear a particular file of your app.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
+```
+
+**Note:**
+
+This command removes existing files from the satellite and only affects the app assets, your frontend. Your user's uploaded files will not be cleared from your custom collections in the storage.
+
+---
+
+#### Deploy
+
+Deploy your app to your satellite.
+
+```
+Usage: juno hosting deploy [options]Options:  --batch               Number of files to upload in parallel per batch (default: 50).  --clear               Clear existing app files before proceeding with deployment.  --config              Apply configuration after deployment succeeds.  --no-apply            Submit the deployment as a change but do not apply it yet.  -k, --keep-staged     Keep staged assets in memory after applying the change.  -i, --immediate       Deploy files instantly (bypasses the change workflow).  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- The option --keep-staged only applies when --no-apply is NOT used (i.e. the change is applied immediately).
+```
+
+---
+
+### Config
+
+Manage your project configuration
+
+```
+Usage: juno config <subcommand> [options]Subcommands:  apply               Apply configuration to satellite.  init                Set up your project by creating a config file.
+```
+
+---
+
+#### Apply
+
+Apply configuration to satellite.
+
+```
+Usage: juno config apply [options]Options:  --force               Overwrite configuration without checks.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
+```
+
+---
+
+#### Init
+
+Set up your project by creating a config file.
+
+```
+Usage: juno config init [options]Options:  --minimal             Skip few prompts and generate a config file with a placeholder satellite ID.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
+```
+
+The `juno config init` command creates a `juno.config` file in the root directory of your project.
 
 Depending on your project, it will either create a TypeScript, JavaScript, or JSON file.
 
@@ -7670,40 +7724,6 @@ We recommend using the first two options because they can leverage your IDE's In
 This file is necessary for deploying, configuring, or running any other CLI commands for your app.
 
 Read more about the [configuration](/docs/reference/configuration.md).
-
----
-
-### Deploy
-
-Deploy your app to your satellite.
-
-```
-Usage: juno deploy [options]Options:  --batch               Number of files to upload in parallel per batch (default: 50).  --clear               Clear existing app files before proceeding with deployment.  --config              Apply configuration after deployment succeeds.  --no-apply            Submit the deployment as a change but do not apply it yet.  -k, --keep-staged     Keep staged assets in memory after applying the change.  -i, --immediate       Deploy files instantly (bypasses the change workflow).  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- The option --keep-staged only applies when --no-apply is NOT used (i.e. the change is applied immediately).
-```
-
----
-
-### Clear
-
-Clear existing app code by removing JavaScript, HTML, CSS, and other files from your satellite.
-
-```
-Usage: juno clear [options]Options:  -f, --fullPath        Clear a particular file of your app.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
-```
-
-**Note:**
-
-This command removes existing files from the satellite and only affects the app assets. The user's uploaded files will not be cleared as the app is deployed to a reserved collection, `#dapp`.
-
----
-
-### Config
-
-Apply configuration to satellite.
-
-```
-Usage: juno config [options]Options:  --force               Overwrite configuration without checks.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
-```
 
 ---
 
@@ -7796,20 +7816,20 @@ Usage: juno changes reject [options]Options:  -i, --id              The ID of th
 
 ### Emulator
 
-Handle developer tasks like starting/stopping a local network.
+Handle tasks related to the emulator like starting/stopping a local network.
 
 ```
-Usage: juno dev <subcommand> [options]Subcommands:  start               Start a local Internet Computer network in a container.  stop                Stop the local network.  wait                Wait until the emulator is ready.  build               Alias for juno functions build.  eject               Alias for juno functions eject.
+Usage: juno emulator <subcommand> [options]Subcommands:  start               Start the emulator for local development.  stop                Stop the local network.  wait                Wait until the emulator is ready.
 ```
 
 ---
 
 #### Start
 
-Start a local Internet Computer network in a container.
+Start the emulator for local development.
 
 ```
-Usage: juno dev start [options]Options:  -l, --lang            Specify the language for building the serverless functions: rust, typescript or javascript.  --cargo-path          Path to the Rust manifest.  --source-path         Optional path to the TypeScript or JavaScript entry file.  -w, --watch           Rebuild your functions automatically when source files change.  -h, --help            Output usage information.Notes:- The language and path options are only used in combination with watch.- If no language is provided, the CLI attempts to determine the appropriate build.- Language can be shortened to rs for Rust, ts for TypeScript and mjs for JavaScript.- Use --cargo-path to specify a specific crate path. For Rust builds, this maps to --manifest-path for cargo build. For TypeScript and JavaScript, it points to the Rust crate (commonly "Sputnik") that imports the functions.- An optional --source-path to specify the source file for TypeScript and JavaScript (e.g. index.ts or index.mjs).- The watch option rebuilds when source files change, with a default debounce delay of 10 seconds; optionally, pass a delay in milliseconds.
+Usage: juno emulator start [options]Options:  -l, --lang            Specify the language for building the serverless functions: rust, typescript or javascript.  --cargo-path          Path to the Rust manifest.  --source-path         Optional path to the TypeScript or JavaScript entry file.  -w, --watch           Rebuild your functions automatically when source files change.  -h, --help            Output usage information.Notes:- The language and path options are only used in combination with watch.- If no language is provided, the CLI attempts to determine the appropriate build.- Language can be shortened to rs for Rust, ts for TypeScript and mjs for JavaScript.- Use --cargo-path to specify a specific crate path. For Rust builds, this maps to --manifest-path for cargo build. For TypeScript and JavaScript, it points to the Rust crate (commonly "Sputnik") that imports the functions.- An optional --source-path to specify the source file for TypeScript and JavaScript (e.g. index.ts or index.mjs).- The watch option rebuilds when source files change, with a default debounce delay of 10 seconds; optionally, pass a delay in milliseconds.
 ```
 
 ---
@@ -7879,7 +7899,7 @@ Usage: juno functions upgrade [options]Options:  --cdn                 Select a 
 Run a custom script in the CLI context.
 
 ```
-Usage: juno run [options]Options:  -s, --src        The path to your JavaScript or TypeScript script.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  -h, --help            Output usage information.
+Usage: juno run [options]Options:  -s, --src             The path to your JavaScript or TypeScript script.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  -h, --help            Output usage information.
 ```
 
 ---
