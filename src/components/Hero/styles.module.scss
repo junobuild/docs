@@ -87,7 +87,20 @@
 }
 
 .typing {
-  color: var(--ifm-color-primary);
+  color: var(--typing-color);
+  text-shadow:
+    0 0 0 var(--typing-shadown-color),
+    0 0 0 var(--typing-shadown-color),
+    4px 4px 0 var(--typing-shadown-color),
+    4px 4px 0 var(--typing-shadown-color);
+
+  --typing-color: var(--ifm-color-primary);
+  --typing-shadown-color: var(--ifm-font-color-base);
+
+  html[data-theme="dark"] & {
+    --typing-color: var(--ifm-font-color-base);
+    --typing-shadown-color: var(--ifm-color-primary);
+  }
 }
 
 .llms {
