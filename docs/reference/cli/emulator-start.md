@@ -1,7 +1,7 @@
-Start a local Internet Computer network in a container.
+Start the emulator for local development.
 
 ```
-Usage: juno dev start [options]
+Usage: juno emulator start [options]
 
 Options:
   -l, --lang            Specify the language for building the serverless functions: rust, typescript or javascript.
