@@ -143,7 +143,7 @@ jobs:
           juno emulator start --headless &
           juno emulator wait
           juno login --emulator --mode development --headless
-          juno config --mode development --headless
+          juno config apply --mode development --headless
 
       - name: Run tests
         run: npm run e2e:ci
@@ -179,7 +179,7 @@ So, how it works:
 - We then run the emulator using `juno emulator start --headless`, which launches the `junobuild/satellite` Docker image (defined in the `juno.config`) in the background, and follow up with:
   - `juno emulator wait` to ensure the emulator is ready before continuing.
   - `juno login` sets up authentication against the emulator in headless mode. This way the CLI can operate the Satellite — required for the next step.
-  - `juno config` applies the configuration and sets the collections required by the project.
+  - `juno config apply` applies the configuration and sets the collections required by the project.
 - Once everything is ready, we run the end-to-end tests via `npm run e2e:ci`. Replace with the command that runs your tests in headless mode.
 - If the tests fail, Playwright reports and raw test results are uploaded as artifacts to help debugging.
 - Finally, if everything passes, the `may-merge` job marks the PR as cleared.

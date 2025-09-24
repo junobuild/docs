@@ -6,7 +6,7 @@
 
 ```bash
 npm run build
-juno deploy
+juno hosting deploy
 ```
 
 - Build and upgrade the serverless functions:
