@@ -1,12 +1,10 @@
-Handle developer tasks like starting/stopping a local network.
+Handle tasks related to the emulator like starting/stopping a local network.
 
 ```
-Usage: juno dev <subcommand> [options]
+Usage: juno emulator <subcommand> [options]
 
 Subcommands:
-  start               Start a local Internet Computer network in a container.
+  start               Start the emulator for local development.
   stop                Stop the local network.
   wait                Wait until the emulator is ready.
-  build               Alias for juno functions build.
-  eject               Alias for juno functions eject.
 ```
