@@ -45,7 +45,7 @@ To resolve this issue, you can configure your bundler to polyfill the required l
 
 ### ENOENT: no such file or directory
 
-When encountering the following error after running `juno deploy`, it is likely caused by either not starting the command from the root directory of your project or having an incorrect configuration for the [source](build/hosting/configuration.mdx#source) option, which Juno uses to locate the files for deployment.
+When encountering the following error after running `juno hosting deploy`, it is likely caused by either not starting the command from the root directory of your project or having an incorrect configuration for the [source](build/hosting/configuration.mdx#source) option, which Juno uses to locate the files for deployment.
 
 > An unexpected error happened 😫. Error: ENOENT: no such file or directory, scandir ...
 

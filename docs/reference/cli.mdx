@@ -334,7 +334,7 @@ The `--mode` flag lets you target a specific environment when executing CLI comm
 
 ```bash
 juno login --mode development
-juno deploy --mode staging
+juno hosting deploy --mode staging
 ```
 
 The value for `--mode` can be any string. If omitted, it defaults to production.
@@ -353,7 +353,7 @@ The optional `--profile` flag lets you switch between different identities. Usef
 
 ```bash
 juno login --profile team
-juno deploy --profile team --mode staging
+juno hosting deploy --profile team --mode staging
 ```
 
 It accepts any string. If omitted, no profile is used.

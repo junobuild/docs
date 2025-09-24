@@ -59,7 +59,7 @@ This is why both the [datastore](../build/datastore/index.mdx) and [storage](../
 
 By default, the memory model aligns with these best practices:
 
-- Your dapp's frontend assets — everything deployed using `juno deploy` — are stored in `heap` memory.
+- Your dapp's frontend assets — everything deployed using `juno hosting deploy` — are stored in `heap` memory.
 - In contrast, your users (as of Satellite version 0.0.16) and the [analytics](../build/analytics/index.md) data are saved within `stable` memory.
 
 ### Summary
