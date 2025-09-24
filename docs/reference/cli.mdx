@@ -27,9 +27,9 @@ npm i -g @junobuild/cli
 
 ---
 
-## Administration
+## Commands
 
-Commands dedicated to configuring and managing deployed Satellites, Mission Control, and other modules.
+The following is a complete list of commands available in the Juno CLI.
 
 :::tip
 
@@ -107,6 +107,20 @@ import Deploy from "./cli/deploy.md";
 
 ---
 
+### Clear
+
+import Clear from "./cli/clear.md";
+
+<Clear />
+
+:::note
+
+This command removes existing files from the satellite and only affects the app assets. The user's uploaded files will not be cleared as the app is deployed to a reserved collection, `#dapp`.
+
+:::
+
+---
+
 ### Config
 
 import Config from "./cli/config.md";
@@ -139,20 +153,6 @@ import Start from "./cli/start.md";
 
 ---
 
-### Clear
-
-import Clear from "./cli/clear.md";
-
-<Clear />
-
-:::note
-
-This command removes existing files from the satellite and only affects the app assets. The user's uploaded files will not be cleared as the app is deployed to a reserved collection, `#dapp`.
-
-:::
-
----
-
 ### Upgrade
 
 import Upgrade from "./cli/upgrade.md";
@@ -170,7 +170,7 @@ The CLI automatically runs in non-interactive mode if either a JUNO_TOKEN is set
 
 ---
 
-## Changes
+### Changes
 
 import Changes from "./cli/changes.md";
 
@@ -178,7 +178,7 @@ import Changes from "./cli/changes.md";
 
 ---
 
-### Apply
+#### Apply
 
 import ChangesApply from "./cli/changes-apply.md";
 
@@ -186,7 +186,7 @@ import ChangesApply from "./cli/changes-apply.md";
 
 ---
 
-### List
+#### List
 
 import ChangesList from "./cli/changes-list.md";
 
@@ -194,7 +194,7 @@ import ChangesList from "./cli/changes-list.md";
 
 ---
 
-### Reject
+#### Reject
 
 import ChangesReject from "./cli/changes-reject.md";
 
@@ -202,7 +202,7 @@ import ChangesReject from "./cli/changes-reject.md";
 
 ---
 
-## Emulator
+### Emulator
 
 import Emulator from "./cli/emulator.md";
 
@@ -210,7 +210,7 @@ import Emulator from "./cli/emulator.md";
 
 ---
 
-### Start
+#### Start
 
 import EmulatorStart from "./cli/emulator-start.md";
 
@@ -218,7 +218,7 @@ import EmulatorStart from "./cli/emulator-start.md";
 
 ---
 
-### Wait
+#### Wait
 
 import EmulatorWait from "./cli/emulator-wait.md";
 
@@ -226,7 +226,7 @@ import EmulatorWait from "./cli/emulator-wait.md";
 
 ---
 
-## Functions
+### Functions
 
 import Functions from "./cli/functions.md";
 
@@ -234,15 +234,7 @@ import Functions from "./cli/functions.md";
 
 ---
 
-## Run
-
-import Run from "./cli/run.md";
-
-<Run />
-
----
-
-### Build
+#### Build
 
 import FunctionsBuild from "./cli/functions-build.md";
 
@@ -250,7 +242,7 @@ import FunctionsBuild from "./cli/functions-build.md";
 
 ---
 
-### Eject
+#### Eject
 
 import FunctionsEject from "./cli/functions-eject.md";
 
@@ -258,7 +250,7 @@ import FunctionsEject from "./cli/functions-eject.md";
 
 ---
 
-### Publish
+#### Publish
 
 import FunctionsPublish from "./cli/functions-publish.md";
 
@@ -266,7 +258,7 @@ import FunctionsPublish from "./cli/functions-publish.md";
 
 ---
 
-### Upgrade
+#### Upgrade
 
 import FunctionsUpgrade from "./cli/functions-upgrade.md";
 
@@ -274,9 +266,11 @@ import FunctionsUpgrade from "./cli/functions-upgrade.md";
 
 ---
 
-## Others
+### Run
 
-Additional commands for managing and interacting with the CLI environment.
+import Run from "./cli/run.md";
+
+<Run />
 
 ---
 
