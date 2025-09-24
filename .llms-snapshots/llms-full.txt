@@ -7794,7 +7794,7 @@ Usage: juno changes reject [options]Options:  -i, --id              The ID of th
 
 ---
 
-## Development
+## Emulator
 
 Handle developer tasks like starting/stopping a local network.
 

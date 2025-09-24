@@ -7,16 +7,16 @@ function generate_command_markdown() {
   eval "juno "$cmd" --headless --help --doc" | sed 's/\x1b\[[0-9;]*m//g' > docs/reference/cli/"$output".md
 }
 
-COMMANDS=clear,config,deploy,dev,functions,changes,init,login,logout,open,snapshot,start,stop,upgrade,version,status,whoami
+COMMANDS=clear,config,deploy,emulator,functions,changes,init,login,logout,open,snapshot,start,stop,upgrade,version,status,whoami
 
 for cmd in $(echo $COMMANDS | sed "s/,/ /g"); do
   generate_command_markdown "$cmd"
 done
 
-DEV_COMMANDS=start,wait
+EMULATOR_COMMANDS=start,wait
 
-for cmd in $(echo $DEV_COMMANDS | sed "s/,/ /g"); do
-  generate_command_markdown "dev $cmd"
+for cmd in $(echo $EMULATOR_COMMANDS | sed "s/,/ /g"); do
+  generate_command_markdown "emulator $cmd"
 done
 
 FUNCTIONS_COMMANDS=build,eject,publish,upgrade
