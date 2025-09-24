@@ -1,7 +1,7 @@
-Clear existing app code by removing JavaScript, HTML, CSS, and other files from your satellite.
+Remove frontend files (JS, HTML, CSS, etc.) from your satellite.
 
 ```
-Usage: juno clear [options]
+Usage: juno hosting clear [options]
 
 Options:
   -f, --fullPath        Clear a particular file of your app.
