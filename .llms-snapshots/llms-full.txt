@@ -1785,13 +1785,13 @@ You can customize your hosting environment to fit your needs, including:
 
 ## Where do you define your Hosting configuration?
 
-Your hosting configuration is defined in the Juno [configuration](/docs/reference/configuration.md) file, which is automatically created when you run [juno init](/docs/reference/cli.md#init) or [juno deploy](/docs/reference/cli.md#deploy) for the first time.
+Your hosting configuration is defined in the Juno [configuration](/docs/reference/configuration.md) file, which is automatically created when you run [juno config init](/docs/reference/cli.md#init) or [juno hosting deploy](/docs/reference/cli.md#deploy) for the first time.
 
 ---
 
 ## How do you apply your changes?
 
-To apply any changes, execute the [juno config](/docs/reference/cli.md#config) command with the CLI.
+To apply any changes, execute the [juno config apply](/docs/reference/cli.md#apply) command with the CLI.
 
 ---
 
@@ -1913,7 +1913,7 @@ You can disable it entirely or customize which files are precompressed, whether 
 
 **Note:**
 
-If you change the precompress configuration and your project has already been deployed, run `juno clear` before redeploying to ensure you change is applied.
+If you change the precompress configuration and your project has already been deployed, run `juno hosting clear` before redeploying to ensure you change is applied.
 
 #### Disable precompression
 
@@ -2635,7 +2635,7 @@ npm run dev
 *   Build and deploy:
 
 ```
-npm run buildjuno deploy
+npm run buildjuno hosting deploy
 ```
 
 ---
@@ -2765,7 +2765,7 @@ npm run dev
 *   Build and deploy:
 
 ```
-npm run buildjuno deploy
+npm run buildjuno hosting deploy
 ```
 
 ---
@@ -2899,7 +2899,7 @@ npm run dev
 *   Build and deploy:
 
 ```
-npm run buildjuno deploy
+npm run buildjuno hosting deploy
 ```
 
 ---
@@ -3033,7 +3033,7 @@ npm run dev
 *   Build and deploy:
 
 ```
-npm run buildjuno deploy
+npm run buildjuno hosting deploy
 ```
 
 ---
@@ -3164,7 +3164,7 @@ npm run dev
 *   Build and deploy:
 
 ```
-npm run buildjuno deploy
+npm run buildjuno hosting deploy
 ```
 
 ---
@@ -3293,7 +3293,7 @@ npm run dev
 *   Build and deploy:
 
 ```
-npm run buildjuno deploy
+npm run buildjuno hosting deploy
 ```
 
 ---
@@ -3424,7 +3424,7 @@ npm run dev
 *   Build and deploy:
 
 ```
-npm run buildjuno deploy
+npm run buildjuno hosting deploy
 ```
 
 ---
@@ -3605,7 +3605,7 @@ The emulator will automatically upgrade your Satellite and live reload the chang
 *   Build and deploy the frontend:
 
 ```
-npm run buildjuno deploy
+npm run buildjuno hosting deploy
 ```
 
 *   Build and upgrade the serverless functions:
@@ -3791,7 +3791,7 @@ The emulator will automatically upgrade your Satellite and live reload the chang
 *   Build and deploy the frontend:
 
 ```
-npm run buildjuno deploy
+npm run buildjuno hosting deploy
 ```
 
 *   Build and upgrade the serverless functions:
@@ -3973,7 +3973,7 @@ The emulator will automatically upgrade your Satellite and live reload the chang
 *   Build and deploy the frontend:
 
 ```
-npm run buildjuno deploy
+npm run buildjuno hosting deploy
 ```
 
 *   Build and upgrade the serverless functions:
@@ -4128,7 +4128,7 @@ The emulator will automatically upgrade your Satellite and live reload the chang
 *   Build and deploy the frontend:
 
 ```
-npm run buildjuno deploy
+npm run buildjuno hosting deploy
 ```
 
 *   Build and upgrade the serverless functions:
@@ -4303,7 +4303,7 @@ The emulator will automatically upgrade your Satellite and live reload the chang
 *   Build and deploy the frontend:
 
 ```
-npm run buildjuno deploy
+npm run buildjuno hosting deploy
 ```
 
 *   Build and upgrade the serverless functions:
@@ -4479,7 +4479,7 @@ The emulator will automatically upgrade your Satellite and live reload the chang
 *   Build and deploy the frontend:
 
 ```
-npm run buildjuno deploy
+npm run buildjuno hosting deploy
 ```
 
 *   Build and upgrade the serverless functions:
@@ -4644,7 +4644,7 @@ The emulator will automatically upgrade your Satellite and live reload the chang
 *   Build and deploy the frontend:
 
 ```
-npm run buildjuno deploy
+npm run buildjuno hosting deploy
 ```
 
 *   Build and upgrade the serverless functions:
@@ -4962,7 +4962,7 @@ When following the steps below, make sure to:
 
 1.  Register the `satelliteId` in the environment: When you create the satellite using juno build, a `satelliteId` is generated. This `satelliteId` must be copied into the `src/environments/environment.prod.ts` file.
     
-2.  Configure the dist folder correctly: In Angular, the build artifacts are not always placed directly under the `dist` folder. Instead, they may be located at `dist/<application-name>` or `dist/<application-name>/browser`. When running `juno init`, you need to provide the full path to ensure that `juno deploy` works as expected.
+2.  Configure the dist folder correctly: In Angular, the build artifacts are not always placed directly under the `dist` folder. Instead, they may be located at `dist/<application-name>` or `dist/<application-name>/browser`. When running `juno config init`, you need to provide the full path to ensure that `juno hosting deploy` works as expected.
     
 
 ### 1. Set up a satellite
@@ -5222,7 +5222,7 @@ In the next chapter, we'll apply this config before running the tests.
 To run the tests in your CI, you can either use the [GitHub Actions](/docs/guides/github-actions.md) or install the CLI manually. In the example below, we install the CLI because we chain multiple commands.
 
 ```
-name: E2E Testson:  pull_request:  workflow_dispatch:jobs:  e2e:    runs-on: ubuntu-latest    steps:      - name: Checkout        uses: actions/checkout@v4      - name: Set up Node        uses: actions/setup-node@v4        with:          node-version: 22          registry-url: "https://registry.npmjs.org"      - name: Install dependencies        run: npm ci      - name: Install Juno CLI        run: npm i -g @junobuild/cli      - name: Run emulator        run: |          set -e          juno emulator start --headless &          juno emulator wait          juno login --emulator --mode development --headless          juno config --mode development --headless      - name: Run tests        run: npm run e2e:ci      - name: Upload Playwright report on failure        uses: actions/upload-artifact@v4        if: ${{ failure() }}        with:          name: playwright-report          path: playwright-report/          retention-days: 3      - name: Upload Playwright results on failure        uses: actions/upload-artifact@v4        if: ${{ failure() }}        with:          name: test-results          path: test-results/          retention-days: 3  may-merge:    needs: ["e2e"]    runs-on: ubuntu-latest    steps:      - name: Cleared for merging        run: echo OK
+name: E2E Testson:  pull_request:  workflow_dispatch:jobs:  e2e:    runs-on: ubuntu-latest    steps:      - name: Checkout        uses: actions/checkout@v4      - name: Set up Node        uses: actions/setup-node@v4        with:          node-version: 22          registry-url: "https://registry.npmjs.org"      - name: Install dependencies        run: npm ci      - name: Install Juno CLI        run: npm i -g @junobuild/cli      - name: Run emulator        run: |          set -e          juno emulator start --headless &          juno emulator wait          juno login --emulator --mode development --headless          juno config apply --mode development --headless      - name: Run tests        run: npm run e2e:ci      - name: Upload Playwright report on failure        uses: actions/upload-artifact@v4        if: ${{ failure() }}        with:          name: playwright-report          path: playwright-report/          retention-days: 3      - name: Upload Playwright results on failure        uses: actions/upload-artifact@v4        if: ${{ failure() }}        with:          name: test-results          path: test-results/          retention-days: 3  may-merge:    needs: ["e2e"]    runs-on: ubuntu-latest    steps:      - name: Cleared for merging        run: echo OK
 ```
 
 So, how it works:
@@ -5232,7 +5232,7 @@ So, how it works:
 *   We then run the emulator using `juno emulator start --headless`, which launches the `junobuild/satellite` Docker image (defined in the `juno.config`) in the background, and follow up with:
     *   `juno emulator wait` to ensure the emulator is ready before continuing.
     *   `juno login` sets up authentication against the emulator in headless mode. This way the CLI can operate the Satellite — required for the next step.
-    *   `juno config` applies the configuration and sets the collections required by the project.
+    *   `juno config apply` applies the configuration and sets the collections required by the project.
 *   Once everything is ready, we run the end-to-end tests via `npm run e2e:ci`. Replace with the command that runs your tests in headless mode.
 *   If the tests fail, Playwright reports and raw test results are uploaded as artifacts to help debugging.
 *   Finally, if everything passes, the `may-merge` job marks the PR as cleared.
@@ -5272,7 +5272,7 @@ pnpm add -g @junobuild/cli
 Once the CLI is set up, initialize your project by running:
 
 ```
-juno init
+juno config init
 ```
 
 This command generates a configuration file and prompts you to log in to your Satellite from the terminal to authenticate your device.
@@ -5319,7 +5319,7 @@ pnpm build
 Deploy your application or website by running the following command from your project’s root folder:
 
 ```
-juno deploy
+juno hosting deploy
 ```
 
 **Tip:**
@@ -7238,7 +7238,7 @@ This is why both the [datastore](/docs/build/datastore.md) and [storage](/docs/b
 
 By default, the memory model aligns with these best practices:
 
-*   Your dapp's frontend assets — everything deployed using `juno deploy` — are stored in `heap` memory.
+*   Your dapp's frontend assets — everything deployed using `juno hosting deploy` — are stored in `heap` memory.
 *   In contrast, your users (as of Satellite version 0.0.16) and the [analytics](/docs/build/analytics.md) data are saved within `stable` memory.
 
 ### Summary
@@ -7955,7 +7955,7 @@ Some CLI flags affect the context of your commands, such as which environment yo
 The `--mode` flag lets you target a specific environment when executing CLI commands. This is useful for working across development, staging, and production setups.
 
 ```
-juno login --mode developmentjuno deploy --mode staging
+juno login --mode developmentjuno hosting deploy --mode staging
 ```
 
 The value for `--mode` can be any string. If omitted, it defaults to production.
@@ -7971,7 +7971,7 @@ The `development` value is reserved. When you use `--mode development`, the tool
 The optional `--profile` flag lets you switch between different identities. Useful when working with multiple Mission Controls.
 
 ```
-juno login --profile teamjuno deploy --profile team --mode staging
+juno login --profile teamjuno hosting deploy --profile team --mode staging
 ```
 
 It accepts any string. If omitted, no profile is used.
@@ -8015,7 +8015,7 @@ At the top level, the Juno configuration includes two main sections:
 
 **Important:**
 
-To apply any changes you make in your configuration, execute the [juno config](/docs/reference/cli.md#config) command with the CLI.
+To apply any changes you make in your configuration, execute the [juno config apply](/docs/reference/cli.md#apply) command with the CLI.
 
 ---
 
@@ -8086,7 +8086,7 @@ You can disable it entirely or customize which files are precompressed, whether 
 
 **Note:**
 
-If you change the precompress configuration and your project has already been deployed, run `juno clear` before redeploying to ensure you change is applied.
+If you change the precompress configuration and your project has already been deployed, run `juno hosting clear` before redeploying to ensure you change is applied.
 
 #### Disable precompression
 
@@ -8521,7 +8521,7 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 Configurations such as above ([storage](#storage)), ([datastore](#datastore)), ([authentication](#authentication)), and ([settings](#settings)) require explicit application to your module as they directly impact its behavior.
 
-To apply your changes, run the [juno config](/docs/reference/cli.md#config) command in the CLI after modifying your configuration file.
+To apply your changes, run the [juno config apply](/docs/reference/cli.md#apply) command in the CLI after modifying your configuration file.
 
 ---
 
@@ -10360,7 +10360,7 @@ To resolve this issue, you can configure your bundler to polyfill the required l
 
 ### ENOENT: no such file or directory
 
-When encountering the following error after running `juno deploy`, it is likely caused by either not starting the command from the root directory of your project or having an incorrect configuration for the [source](/docs/build/hosting/configuration.md#source) option, which Juno uses to locate the files for deployment.
+When encountering the following error after running `juno hosting deploy`, it is likely caused by either not starting the command from the root directory of your project or having an incorrect configuration for the [source](/docs/build/hosting/configuration.md#source) option, which Juno uses to locate the files for deployment.
 
 > An unexpected error happened 😫. Error: ENOENT: no such file or directory, scandir ...
 
