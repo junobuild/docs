@@ -4,7 +4,33 @@ The creation wizard for Satellites and Orbiters includes advanced provisioning o
 
 ---
 
-### Selecting a Subnet
+## Hosting Memory
+
+When you initialize a satellite, you must decide how the frontend will be kept in memory and served on the web.
+
+In the Console this is presented as _"What are you building? Website or Application"_.
+
+If you pick Website, the hosting will be provisioned on heap memory. If you pick Application, it will be on stable memory.
+
+Heap provides the fastest response. It is a good choice when you want to deliver content as quickly as possible to users, and it also benefits SEO, since speed matters. For this reason, it is the default for websites.
+
+Stable is slightly more expensive and slower on average. Unlike heap, each access requires data to be deserialized. This process is fast but still has an impact. The advantage of stable comes during upgrades: assets do not need to be serialized and deserialized again, which means you are not limited to 1 GB of assets. For this reason, stable is the default for applications with rich features, such as single-page applications.
+
+Our benchmarks showed that heap generally delivered more consistent responses with fewer slow spikes. Stable performed similarly on average but tended to be spikier under load. For larger assets, heap was typically faster and more reliable at higher percentiles, though it could show a small startup penalty or the occasional outlier.
+
+Lighthouse measurements indicated that stable added roughly 0.5 seconds to CFP compared to heap for a small website.
+
+Ultimately, there are no strict rules. You can use heap for an application or stable for a website. You can also switch from one to the other in Hosting > Settings in the Console, with the prerequisite that no files are being served at the time of the switch.
+
+:::info
+
+For more background on memory behavior and limits, see the [Memory](./memory.md) documentation.
+
+:::
+
+---
+
+## Selecting a Subnet
 
 If you want more control over where your module is provisioned, you can select a [subnet] during the creation process.
 
