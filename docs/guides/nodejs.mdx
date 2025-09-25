@@ -1,18 +1,18 @@
 ---
 id: nodejs
 title: NodeJS
-description: SDK usage in a NodeJS context
+description: SDK usage in a NodeJS or CLI context
 toc_min_heading_level: 2
 toc_max_heading_level: 2
 ---
 
 # Use Juno in a NodeJS context
 
-This guide is intended for use of Juno from a client running in a non-interactive environment, i.e. not in a browser.
+This guide explains how to use Juno from a client running in a non-interactive environment (e.g. NodeJS, scripts, or CI).
 
 :::tip
 
-You can find a few examples of NodeJS usage in the [example](https://github.com/junobuild/examples/tree/main/node) repository.
+You can find examples of NodeJS usage in the [example](https://github.com/junobuild/examples/tree/main/node) repository.
 
 :::
 
@@ -20,39 +20,65 @@ You can find a few examples of NodeJS usage in the [example](https://github.com/
 
 ## Usage
 
-To get started, you need to ensure the SDK is installed in your project:
+The simplest and recommended way to interact with your Juno project is by using the [juno run](../reference/cli.mdx#run) command provided by the CLI.
 
-import Core from "../components/core.mdx";
+If you haven't installed it yet, run:
 
-<Core />
+import Cli from "./components/cli.mdx";
 
-Unlike in a web application, initializing Juno globally in your NodeJS app is not required.
+<Cli />
 
-Instead, you can call any of Juno's functions with an additional parameter that includes the satellite ID and other parameters, such as `container` set to `true` if you are [developing locally](local-development.mdx).
+With `juno run`, you can write custom scripts that automatically inherit your environment (`mode`, `profile`, etc.) and [configuration](../reference/configuration.mdx).
 
-Moreover, since no interactive [Authentication](../build/authentication/index.md) is performed in this context, the information must also be provided. The DFINITY [agent-js](https://github.com/dfinity/agent-js/) library can be used to build an `identity`.
+A script — written in JavaScript or TypeScript — must export a single `onRun` produced by `defineRun`. For example:
+
+```ts title="my-task.ts"
+import { defineRun } from "@junobuild/config";
+
+export const onRun = defineRun(({ mode, profile }) => ({
+  run: async ({ satelliteId, identity }) => {
+    console.log("Running task with:", {
+      mode,
+      profile,
+      satelliteId: satelliteId.toText(),
+      whoami: identity.getPrincipal().toText()
+    });
+  }
+}));
+```
+
+Run it with:
+
+```bash
+juno run --src ./my-task.ts
+```
 
 ---
 
 ## Example
 
-To call the `getDoc` function from the Datastore:
+Suppose you want to fetch a document and export it to a file:
 
 ```typescript
-import { getDoc } from "@junobuild/core-peer";
-import { AnonymousIdentity } from "@dfinity/agent";
+import { getDoc } from "@junobuild/core";
+import { defineRun } from "@junobuild/config";
+import { jsonReplacer } from "@dfinity/utils";
+import { writeFile } from "node:fs/promises";
 
-const satellite = {
-  identity: new AnonymousIdentity(),
-  id: "jx5yt-yyaaa-aaaal-abzbq-cai",
-  container: true
-};
+export const onRun = defineRun(({ mode }) => ({
+  run: async (context) => {
+    const key = mode === "staging" ? "123" : "456";
 
-const doc = await getDoc({
-  collection: "demo",
-  key: "id2",
-  satellite
-});
+    const doc = await getDoc({
+      collection: "demo",
+      key,
+      satellite: context
+    });
 
-console.log(doc);
+    await writeFile("./mydoc.json", JSON.stringify(doc, jsonReplacer, 2));
+  }
+}));
 ```
+
+This script retrieves a document using `getDoc`, selects the document ID based on the current `mode` (for example staging or production),
+and writes the result to `mydoc.json`, using `jsonReplacer` to handle types not supported by JSON such as `BigInt`.

@@ -87,7 +87,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [End-to-End Testing](https://juno.build/docs/guides/e2e.md): Learn how to write and run end-to-end (E2E) tests for your Juno project using tools like Playwright and GitHub Actions. Includes emulator setup, authentication handling, and CI integration.
 - [Manual](https://juno.build/docs/guides/manual-deployment.md): Learn how to deploy an application to a Juno Satellite from your device using the CLI.
 - [Next.js](https://juno.build/docs/guides/nextjs.md): Learn how to integrate Juno with Next.js. Follow our quickstart guide and examples to get started.
-- [NodeJS](https://juno.build/docs/guides/nodejs.md): SDK usage in a NodeJS context
+- [NodeJS](https://juno.build/docs/guides/nodejs.md): SDK usage in a NodeJS or CLI context
 - [React](https://juno.build/docs/guides/react.md): Use Juno with React
 - [Rust](https://juno.build/docs/guides/rust.md): Learn how to develop, integrate, and extend Juno Satellites with serverless functions written in Rust.
 - [SvelteKit](https://juno.build/docs/guides/sveltekit.md): Use Juno with SvelteKit
