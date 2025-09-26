@@ -16,14 +16,17 @@ keywords:
 
 # Pricing
 
-There are two types of costs associated with using Juno.
+Juno has a simple starting point:
 
-1. Operating costs for your [mission control], satellites and orbiters
-2. Costs for executing transactions with Juno
+- ✅ Free to get started: new developers receive credits to create one managing container and one project container.
+- 💰 Pay as you grow: additional modules (for projects or analytics) cost 0.4 ICP each to create.
+- 📦 Operating costs: ongoing costs for storage, compute, and deployments are paid with cycles.
+
+From there, you can dive into the details below to estimate storage, deployment, and data costs more precisely.
 
 :::note
 
-Last update: Dec. 3, 2024
+Last update: Sept. 26, 2025
 
 :::
 
