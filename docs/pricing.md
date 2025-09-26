@@ -24,11 +24,7 @@ Juno has a simple starting point:
 
 From there, you can dive into the details below to estimate storage, deployment, and data costs more precisely.
 
-:::note
-
-Last update: Sept. 26, 2025
-
-:::
+---
 
 ## Operating costs
 
@@ -42,6 +38,8 @@ You can top up your cycle balance in the Juno [console](https://console.juno.bui
 - Purchasing cycles with Stripe, thanks to our friends at [cycle.express](https://cycle.express).
 - Transferring cycles between modules, such as moving cycles from one Satellite to another.
 
+---
+
 ## Transaction costs
 
 New developers who join Juno are granted credits to create a mission control and their initial [satellite].
@@ -52,9 +50,11 @@ Similarly, enabling analytics by creating an [orbiter] entails a fee of 0.4 ICP.
 
 Please note that additional transaction fees may be introduced in the future, and pricing and models are subject to change.
 
+---
+
 ## Estimating Costs
 
-Below are a few examples of costs provided for explanatory purposes only and without guarantee. Please note that these cost estimates are subject to change and may vary depending on network conditions and usage patterns.
+Below are a few examples of costs provided for explanatory purposes only. Actual costs may vary depending on network conditions and usage patterns.
 
 :::tip
 
@@ -85,6 +85,14 @@ It's important to note that subsequent deployments of your project can have sign
 Querying data on the Internet Computer is currently free, so there are no additional costs to expect when reading data.
 
 In terms of persisting data, based on our experience, storing 100 instances of a JSON sample data with approximately 90 fields, totaling around 900 bytes, costs approximately 0.0005 TCycles or 0.00017 ICP ($0.000675). This means that the cost for a single transaction of this nature would be approximately 0.000005 TCycles or 0.0000017 ICP ($0.00000675).
+
+:::note
+
+Pricing information was last reviewed on Sept. 26, 2025.
+
+Figures are estimates and may change as the Internet Computer evolves.
+
+:::
 
 [mission control]: terminology.md#mission-control
 [satellite]: terminology.md#satellite
