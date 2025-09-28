@@ -399,9 +399,9 @@ export default defineConfig({
 
 This will use the default image and settings, but with Podman as the container runtime. You can customize the image, volume, and other options just like you would with Docker.
 
-### Emulator
+### Images
 
-You can choose from three emulator types, depending on which part of the stack you want to run locally:
+You can choose from three emulator images, depending on which part of the stack you want to run locally:
 
 - `skylab`: A full emulator stack including the Console UI.
 - `console`: A minimal emulator for Console-only scenarios.
@@ -418,6 +418,49 @@ You can customize the ports exposed by the emulator:
 | server  | The local Internet Computer replica port. Your app or project interacts with it. | `5987`  |
 | admin   | Admin server used for internal tasks (e.g., ICP transfer).                       | `5999`  |
 | console | Console UI port (only used with `skylab`).                                       | `5866`  |
+
+### Network
+
+The `network` field lets you customize which well-known services of the Internet Computer network will start with the emulator.
+
+```ts title="juno.config.ts"
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
+    source: "dist"
+  },
+  emulator: {
+    runner: {
+      type: "podman"
+    },
+    skylab: {},
+    network: {
+      services: {
+        registry: true,
+        sns: true,
+        nns_dapp: true
+      }
+    }
+  }
+});
+```
+
+#### Available Services
+
+| Key                 | Default (skylab/console) | Default (satellite) | Description                                                             |
+| ------------------- | ------------------------ | ------------------- | ----------------------------------------------------------------------- |
+| `internet_identity` | `true`                   | `true`              | Internet Identity canister for authentication.                          |
+| `icp`               | `true`                   | `true`              | ICP ledger and index canisters.                                         |
+| `cmc`               | `true`                   | `false`             | Cycles Minting Canister (CMC): converts ICP to cycles, manages subnets. |
+| `nns`               | `true`                   | `false`             | NNS governance and root canisters (neurons, proposals, voting).         |
+| `registry`          | `false`                  | `false`             | Registry storing topology and configuration.                            |
+| `cycles`            | `false`                  | `false`             | Cycles ledger and index canisters.                                      |
+| `sns`               | `false`                  | `false`             | SNS-W and aggregator canisters (governance for individual dapps).       |
+| `nns_dapp`          | `false`                  | `false`             | NNS frontend dapp.                                                      |
 
 ---
 
