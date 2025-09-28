@@ -233,7 +233,7 @@ import { initSatellite } from "@junobuild/core";await initSatellite({  satellite
 
 # Local Development
 
-Juno offers something most platforms don’t: a full local development environment that closely mirrors production.
+Juno offers something most platforms don't: a full local development environment that closely mirrors production.
 
 ## TL;DR
 
@@ -283,7 +283,7 @@ For **Podman**, we are not aware of any particular version requirements at this 
 
 To run the emulator for local development, you need to have the Juno CLI installed.
 
-If you haven’t installed it yet, run:
+If you haven't installed it yet, run:
 
 *   npm
 *   yarn
@@ -345,20 +345,30 @@ The default (auto-deployed) Satellite is available with a predefined canister ID
 
 ### 📊 Feature Comparison
 
-The table below shows which modules are available in each image and helps clarify what’s included when running locally with Skylab or Satellite.
+The table below shows which modules are available in each image and helps clarify what's included when running locally with Skylab or Satellite.
 
-| Module | Skylab ✅ | Satellite ✅ |
+| Module | Skylab | Satellite |
 | --- | --- | --- |
 | Console (Backend) | ✅   | ❌   |
 | Console (UI) | ✅   | ❌   |
 | Create Satellites / Orbiters via Console UI | ✅   | ❌   |
 | Default (auto-deployed) Satellite | ❌   | ✅   |
 | Observatory | ✅   | ❌   |
+
+Likewise, not all services are mounted by default - but they can be turned on (or off).
+
+| Service | Skylab | Satellite |
+| --- | --- | --- |
 | Internet Identity | ✅   | ✅   |
 | ICP Ledger | ✅   | ✅   |
 | ICP Index | ✅   | ✅   |
-| NNS Governance | ✅   | ❌   |
-| Cycles Minting (CMC) | ✅   | ❌   |
+| NNS Governance | ✅   | ➖   |
+| Cycles Minting (CMC) | ✅   | ➖   |
+| Cycles Ledger | ➖   | ➖   |
+| Cycles Index | ➖   | ➖   |
+| Registry | ➖   | ➖   |
+| SNS | ➖   | ➖   |
+| NNS-dapp | ➖   | ➖   |
 
 ---
 
@@ -423,7 +433,7 @@ The admin server running on port `5999` provides a variety of internal managemen
 
 ### Get ICP
 
-If you're using the full environment, the Console UI includes a "Get ICP" button in the wallet. It’s a quick way to get ICP out of the box.
+If you're using the full environment, the Console UI includes a "Get ICP" button in the wallet. It's a quick way to get ICP out of the box.
 
 ![A screenshot of the wallet with the Get ICP call to action of Console UI in dev mode](/assets/images/wallet-45c84f1968e0c6a2749b439aace1b0c1.webp)
 
@@ -8721,6 +8731,23 @@ The plugin injects environment variables derived from your `juno.config` file. Y
 console.log(process.env.NEXT_PUBLIC_SATELLITE_ID);
 ```
 
+The following variables are available:
+
+| Environment variable | Value |
+| --- | --- |
+| NEXT\_PUBLIC\_SATELLITE\_ID | Satellite ID from Juno config (per `mode`) |
+| NEXT\_PUBLIC\_ORBITER\_ID | `undefined` in development, Orbiter ID from Juno config. |
+| NEXT\_PUBLIC\_INTERNET\_IDENTITY\_ID | `rdmx6-jaaaa-aaaaa-aaadq-cai` |
+| NEXT\_PUBLIC\_ICP\_LEDGER\_ID | `ryjl3-tyaaa-aaaaa-aaaba-cai` |
+| NEXT\_PUBLIC\_ICP\_INDEX\_ID | `qhbym-qaaaa-aaaaa-aaafq-cai` |
+| NEXT\_PUBLIC\_NNS\_GOVERNANCE\_ID | `rrkah-fqaaa-aaaaa-aaaaq-cai` |
+| NEXT\_PUBLIC\_CMC\_ID | `rkp4c-7iaaa-aaaaa-aaaca-cai` |
+| NEXT\_PUBLIC\_REGISTRY\_ID | `rwlgt-iiaaa-aaaaa-aaaaa-cai` |
+| NEXT\_PUBLIC\_CYCLES\_LEDGER\_ID | `um5iw-rqaaa-aaaaq-qaaba-cai` |
+| NEXT\_PUBLIC\_CYCLES\_INDEX\_ID | `ul4oc-4iaaa-aaaaq-qaabq-cai` |
+| NEXT\_PUBLIC\_SNS\_WASM\_ID | `qaa6y-5yaaa-aaaaa-aaafa-cai` |
+| NEXT\_PUBLIC\_NNS\_DAPP\_ID | `qoctq-giaaa-aaaaa-aaaea-cai` |
+
 ### More information
 
 Discover additional information in the library's [README](https://github.com/junobuild/plugins/tree/main/plugins/nextjs-plugin).
@@ -8781,6 +8808,23 @@ The plugin injects environment variables derived from your `juno.config` file. Y
 ```
 console.log(process.env.VITE_SATELLITE_ID);
 ```
+
+The following variables are available:
+
+| Environment variable | Value |
+| --- | --- |
+| VITE\_SATELLITE\_ID | Satellite ID from Juno config (per `mode`) |
+| VITE\_ORBITER\_ID | `undefined` in development, Orbiter ID from Juno config. |
+| VITE\_INTERNET\_IDENTITY\_ID | `rdmx6-jaaaa-aaaaa-aaadq-cai` |
+| VITE\_ICP\_LEDGER\_ID | `ryjl3-tyaaa-aaaaa-aaaba-cai` |
+| VITE\_ICP\_INDEX\_ID | `qhbym-qaaaa-aaaaa-aaafq-cai` |
+| VITE\_NNS\_GOVERNANCE\_ID | `rrkah-fqaaa-aaaaa-aaaaq-cai` |
+| VITE\_CMC\_ID | `rkp4c-7iaaa-aaaaa-aaaca-cai` |
+| VITE\_REGISTRY\_ID | `rwlgt-iiaaa-aaaaa-aaaaa-cai` |
+| VITE\_CYCLES\_LEDGER\_ID | `um5iw-rqaaa-aaaaq-qaaba-cai` |
+| VITE\_CYCLES\_INDEX\_ID | `ul4oc-4iaaa-aaaaq-qaabq-cai` |
+| VITE\_SNS\_WASM\_ID | `qaa6y-5yaaa-aaaaa-aaafa-cai` |
+| VITE\_NNS\_DAPP\_ID | `qoctq-giaaa-aaaaa-aaaea-cai` |
 
 ### More information
 
