@@ -127,7 +127,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Reference - Emulator
   
-- [Infrastructure](https://juno.build/docs/reference/emulator/infrastructure.md): In the local environment, several modules (also known as "canisters" on the Internet Computer) are automatically spun up. This ensures that developers have everything they need to start building right out of the box. Thanks to built-in plugins and tooling, these modules are automatically integrated into the environment, eliminating the need for devs to manually manage their bindings.
+- [Infrastructure](https://juno.build/docs/reference/emulator/infrastructure.md): In the local environment, several services (which can be either canisters or apps on the Internet Computer) are automatically spun up. This ensures that developers have everything they need to start building right out of the box. Thanks to built-in plugins and tooling, these services are automatically integrated into the environment, eliminating the need for developers to manually manage their bindings.
 - [Satellite](https://juno.build/docs/reference/emulator/satellite.md): Unlike Skylab, the image junobuild/satellite runs a single Satellite in a headless environment, without the Console UI. It always mounts the same Satellite, using the fixed ID jx5yt-yyaaa-aaaal-abzbq-cai.
 - [Skylab](https://juno.build/docs/reference/emulator/skylab.md): The junobuild/skylab image is an all-in-one emulator for local development. It bundles everything you need to build, test, and explore the Juno ecosystem:
 
