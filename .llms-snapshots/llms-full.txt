@@ -8747,6 +8747,7 @@ The following variables are available:
 | NEXT\_PUBLIC\_CYCLES\_INDEX\_ID | `ul4oc-4iaaa-aaaaq-qaabq-cai` |
 | NEXT\_PUBLIC\_SNS\_WASM\_ID | `qaa6y-5yaaa-aaaaa-aaafa-cai` |
 | NEXT\_PUBLIC\_NNS\_DAPP\_ID | `qoctq-giaaa-aaaaa-aaaea-cai` |
+| NEXT\_PUBLIC\_CONTAINER | Container URL (emulator or custom); `undefined` by default in production |
 
 ### More information
 
@@ -8825,6 +8826,7 @@ The following variables are available:
 | VITE\_CYCLES\_INDEX\_ID | `ul4oc-4iaaa-aaaaq-qaabq-cai` |
 | VITE\_SNS\_WASM\_ID | `qaa6y-5yaaa-aaaaa-aaafa-cai` |
 | VITE\_NNS\_DAPP\_ID | `qoctq-giaaa-aaaaa-aaaea-cai` |
+| VITE\_PUBLIC\_CONTAINER | Container URL (emulator or custom); `undefined` by default in production |
 
 ### More information
 
