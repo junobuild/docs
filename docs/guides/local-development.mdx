@@ -6,7 +6,7 @@ description: Run a full local development environment with the Juno emulator usi
 
 # Local Development
 
-Juno offers something most platforms don’t: a full local development environment that closely mirrors production.
+Juno offers something most platforms don't: a full local development environment that closely mirrors production.
 
 ## TL;DR
 
@@ -58,7 +58,7 @@ For **Podman**, we are not aware of any particular version requirements at this 
 
 To run the emulator for local development, you need to have the Juno CLI installed.
 
-If you haven’t installed it yet, run:
+If you haven't installed it yet, run:
 
 import Cli from "./components/cli.mdx";
 
@@ -112,20 +112,30 @@ The default (auto-deployed) Satellite is available with a predefined canister ID
 
 ### 📊 Feature Comparison
 
-The table below shows which modules are available in each image and helps clarify what’s included when running locally with Skylab or Satellite.
+The table below shows which modules are available in each image and helps clarify what's included when running locally with Skylab or Satellite.
 
-| Module                                      | Skylab ✅ | Satellite ✅ |
-| ------------------------------------------- | --------- | ------------ |
-| Console (Backend)                           | ✅        | ❌           |
-| Console (UI)                                | ✅        | ❌           |
-| Create Satellites / Orbiters via Console UI | ✅        | ❌           |
-| Default (auto-deployed) Satellite           | ❌        | ✅           |
-| Observatory                                 | ✅        | ❌           |
-| Internet Identity                           | ✅        | ✅           |
-| ICP Ledger                                  | ✅        | ✅           |
-| ICP Index                                   | ✅        | ✅           |
-| NNS Governance                              | ✅        | ❌           |
-| Cycles Minting (CMC)                        | ✅        | ❌           |
+| Module                                      | Skylab | Satellite |
+| ------------------------------------------- | ------ | --------- |
+| Console (Backend)                           | ✅     | ❌        |
+| Console (UI)                                | ✅     | ❌        |
+| Create Satellites / Orbiters via Console UI | ✅     | ❌        |
+| Default (auto-deployed) Satellite           | ❌     | ✅        |
+| Observatory                                 | ✅     | ❌        |
+
+Likewise, not all services are mounted by default - but they can be turned on (or off).
+
+| Service              | Skylab | Satellite |
+| -------------------- | ------ | --------- |
+| Internet Identity    | ✅     | ✅        |
+| ICP Ledger           | ✅     | ✅        |
+| ICP Index            | ✅     | ✅        |
+| NNS Governance       | ✅     | ➖        |
+| Cycles Minting (CMC) | ✅     | ➖        |
+| Cycles Ledger        | ➖     | ➖        |
+| Cycles Index         | ➖     | ➖        |
+| Registry             | ➖     | ➖        |
+| SNS                  | ➖     | ➖        |
+| NNS-dapp             | ➖     | ➖        |
 
 ---
 
@@ -202,7 +212,7 @@ The admin server running on port `5999` provides a variety of internal managemen
 
 ### Get ICP
 
-If you're using the full environment, the Console UI includes a "Get ICP" button in the wallet. It’s a quick way to get ICP out of the box.
+If you're using the full environment, the Console UI includes a "Get ICP" button in the wallet. It's a quick way to get ICP out of the box.
 
 ![A screenshot of the wallet with the Get ICP call to action of Console UI in dev mode](../img/dev-console/wallet.webp)
 
