@@ -43,7 +43,7 @@ The good news is that most modern platforms already encourage syncing passkeys a
 
 Each authentication method has its strengths and weaknesses. Passkeys provide a familiar, device-native login experience with Face ID, Touch ID, or device unlock, relying on either the browser or a password manager for persistence. Internet Identity and NFID, on the other hand, offer privacy-preserving flows aligned with the Internet Computer, but they are less familiar to mainstream users and involve switching context into a separate window.
 
-![When in doubt… why not both?](./why-not-both.webp)
+![When in doubt... why not both?](./why-not-both.webp)
 
 In practice, many developers will probably combine Passkeys and Internet Identity side by side, as we do in the starter templates we provide.
 

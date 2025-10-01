@@ -84,7 +84,7 @@ That's where the idea of a sort of CDN came in.
 
 Each Satellite now has a reserved collection called `#_juno/releases`. It's like a staging area where CI can submit new WASM containers or frontend assets. If the access key has enough privileges, the submission is deployed right away. If not, it's stored as a pending change — waiting for someone to approve it manually via the Console or CLI.
 
-This builds on the change-based workflow that was added to the Console last year. Funny enough, it brought the Console so close to being a Satellite itself that it became… basically a meta example of what you can build with Juno.
+This builds on the change-based workflow that was added to the Console last year. Funny enough, it brought the Console so close to being a Satellite itself that it became... basically a meta example of what you can build with Juno.
 
 And here's the cherry on top: because there's now a CDN tracking versions, developers can rollback or switch between different function versions more easily. A new CDN tab in the Console UI (under Functions) gives you access to all past versions and history.
 
