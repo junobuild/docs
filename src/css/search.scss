@@ -7,6 +7,8 @@ nav {
     --docsearch-searchbox-background: var(--ifm-navbar-background-color);
 
     height: 34px;
+    border: none;
+    color: inherit;
 
     &:hover,
     &:focus {
@@ -17,6 +19,14 @@ nav {
     .DocSearch-Button-Placeholder,
     .DocSearch-Button-Keys {
       display: none;
+    }
+
+    .DocSearch-Button-Container svg {
+      color: inherit;
+
+      circle {
+        stroke-width: 2.35;
+      }
     }
   }
 }
