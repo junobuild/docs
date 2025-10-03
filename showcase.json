@@ -144,5 +144,12 @@
     "description": "A simple tamagochi inspired game about a slime.",
     "img": "https://icpslime.xyz/juno_bg.png",
     "twitter": "moonlightcube"
+  },
+    {
+    "title": "Afritokeni",
+    "url": "https://www.afritokeni.com/",
+    "description": "Bitcoin meets Africa, everywhere, for everyone",
+    "img": "https://www.afritokeni.com/afriTokeni.svg",
+    "twitter": "afritokeni"
   }
 ]
