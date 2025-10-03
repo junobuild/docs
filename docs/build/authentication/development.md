@@ -158,7 +158,7 @@ When a user signs in with Internet Identity, they log in with the provider to co
 import { signIn } from "@junobuild/core";
 
 await signIn({
-  ii: {}
+  internet_identity: {}
 });
 ```
 
@@ -179,7 +179,7 @@ Example with options:
 ```typescript
 // Sign-in with id.ai
 await signIn({
-  ii: {
+  internet_identity: {
     options: {
       domain: "id.ai"
     }
@@ -188,7 +188,7 @@ await signIn({
 
 // Sign-in with a specific session duration
 await signIn({
-  ii: {
+  internet_identity: {
     options: {
       maxTimeToLiveInNanoseconds: BigInt(24 * 60 * 60 * 1000 * 1000 * 1000) // 1 day
     }
@@ -197,7 +197,7 @@ await signIn({
 
 // Sign-in with a derivation origin and progression callback
 await signIn({
-  ii: {
+  internet_identity: {
     options: {
       onProgress: ({ step, state }) => {
         console.log("Step:", step, "State:", state);
@@ -219,7 +219,7 @@ import { signIn } from "@junobuild/core";
 
 try {
   await signIn({
-    ii: {}
+    internet_identity: {}
   });
 } catch (error: unknown) {
   if (error instanceof SignInUserInterruptError) {
