@@ -899,7 +899,7 @@ import { signIn } from "@junobuild/core";await signIn({  webauthn: {    options:
 When a user signs in with Internet Identity, they log in with the provider to confirm their identity. If successful, a session is created and the user can interact with your satellite. There's no separate sign-up step — the account in your satellite is created automatically the first time they sign in, so the user can access your services right away.
 
 ```
-import { signIn } from "@junobuild/core";await signIn({  ii: {}});
+import { signIn } from "@junobuild/core";await signIn({  internet_identity: {}});
 ```
 
 #### Options
@@ -917,7 +917,7 @@ Internet Identity sign-in can be customized with options that let you control se
 Example with options:
 
 ```
-// Sign-in with id.aiawait signIn({  ii: {    options: {      domain: "id.ai"    }  }});// Sign-in with a specific session durationawait signIn({  ii: {    options: {      maxTimeToLiveInNanoseconds: BigInt(24 * 60 * 60 * 1000 * 1000 * 1000) // 1 day    }  }});// Sign-in with a derivation origin and progression callbackawait signIn({  ii: {    options: {      onProgress: ({ step, state }) => {        console.log("Step:", step, "State:", state);      },      derivationOrigin: "https://myapp.com"    }  }});
+// Sign-in with id.aiawait signIn({  internet_identity: {    options: {      domain: "id.ai"    }  }});// Sign-in with a specific session durationawait signIn({  internet_identity: {    options: {      maxTimeToLiveInNanoseconds: BigInt(24 * 60 * 60 * 1000 * 1000 * 1000) // 1 day    }  }});// Sign-in with a derivation origin and progression callbackawait signIn({  internet_identity: {    options: {      onProgress: ({ step, state }) => {        console.log("Step:", step, "State:", state);      },      derivationOrigin: "https://myapp.com"    }  }});
 ```
 
 #### Handling Errors
@@ -927,7 +927,7 @@ If the sign-in flow encounters an error, an exception will be thrown.
 When a user cancels sign-in with Internet Identity (e.g., by closing the modal), the library throws a `SignInUserInterruptError`. This error indicates that the user intentionally interrupted the sign-in process, and it's generally best practice to ignore it rather than showing an error message.
 
 ```
-import { signIn } from "@junobuild/core";try {  await signIn({    ii: {}  });} catch (error: unknown) {  if (error instanceof SignInUserInterruptError) {    // User canceled sign-in, no need to show an error    return;  }  // Handle other errors  console.error("Sign-in failed:", error);}
+import { signIn } from "@junobuild/core";try {  await signIn({    internet_identity: {}  });} catch (error: unknown) {  if (error instanceof SignInUserInterruptError) {    // User canceled sign-in, no need to show an error    return;  }  // Handle other errors  console.error("Sign-in failed:", error);}
 ```
 
 ### NFID
