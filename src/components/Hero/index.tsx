@@ -39,11 +39,10 @@ export default function Hero(): JSX.Element {
     <article className={clsx("hero", styles.heroBanner)}>
       <div className={`${styles.container}`}>
         <h1 className={`hero__title ${styles.title} ${styles.item}`}>
-          <span ref={el} className={styles.typing} />
-          {!typedLoaded && <span className={styles.typing}>Build</span>} ideas
-          in
+          <span ref={el} className={styles.bold} />
+          {!typedLoaded && <span className={styles.bold}>Build</span>} ideas in
           <br />
-          your container
+          your <span className={styles.bold}>container</span>
         </h1>
         <p className={`${styles.item} ${styles.subtitle}`}>
           Juno is an open-source, next-gen serverless platform to build, deploy,
