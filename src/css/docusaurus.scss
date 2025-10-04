@@ -3,10 +3,20 @@
   --ifm-global-shadow-lw: none;
   --ifm-tabs-padding-vertical: 0.25rem;
   --ifm-tabs-color-active: #ff5df9;
+  --ifm-menu-link-padding-vertical: 0.3rem;
+  --ifm-toc-padding-vertical: 0.3rem;
+
+  &[data-theme] {
+    --doc-sidebar-width: 16vw;
+  }
 
   &[data-theme="dark"] {
     --ifm-hover-overlay: rgba(255, 255, 255, 0.1);
   }
+}
+
+nav {
+  font-size: var(--font-size-navbar);
 }
 
 .container {
@@ -145,4 +155,8 @@ table {
 
 .dropdown__menu {
   border: 1px solid var(--ifm-toc-border-color);
+}
+
+.menu__caret:before {
+  background: var(--ifm-menu-link-sublist-icon) 50% / 1.5rem 1.5rem;
 }
