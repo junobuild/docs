@@ -1,4 +1,6 @@
 nav {
+  font-size: var(--font-size-navbar);
+
   div[class*="navbarSearchContainer"] {
     padding-left: 4px;
   }
