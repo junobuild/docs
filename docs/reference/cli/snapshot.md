@@ -5,8 +5,11 @@ Usage: juno snapshot <subcommand> [options]
 
 Subcommands:
   create               Create a snapshot of your current state.
-  restore              Restore a previously created snapshot.
   delete               Delete an existing snapshot.
+  download             Download a snapshot to offline files.
+  list                 List the existing snapshot.
+  upload               Upload a snapshot from offline files.
+  restore              Restore a previously created snapshot.
 
 Options:
   -t, --target          Which module type should be snapshotted? Valid targets are satellite, mission-control or orbiter.
