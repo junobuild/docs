@@ -16,20 +16,34 @@ You can manually create, restore, and delete snapshots for each module as needed
 
 Snapshots are also automatically created during the upgrade process, capturing a snapshot when upgrading to a new version. If preferred, you can opt out in the advanced options to skip creating a snapshot or prevent overwriting an existing one. However, given the sensitivity of such processes, we strongly recommend always having a snapshot available or at least ensuring a way to restore your data—for example, by being prepared to redeploy your application quickly.
 
+Snapshots can also be downloaded and uploaded offline using the CLI, allowing you to store them externally and re-import them later if needed.
+
 ---
 
 ## Limitations
 
-As determined by the Internet Computer (see the [specification](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-take_canister_snapshot)), only one snapshot per module is currently allowed. If this evolves in the future, Juno will be updated accordingly.
+Snapshots are stored on-chain, and the cost of a snapshot's memory consumption is charged to the module itself. This means they follow the lifecycle of your modules — if the module is deleted or runs out of cycles, its snapshot is also removed.
 
-Snapshots are stored on-chain, and the cost of a snapshot’s memory consumption is charged to the module itself. This means they follow the lifecycle of your modules — if the module is deleted or runs out of cycles, its snapshot is also removed.
+Each module is currently limited to one snapshot at a time. This approach offers a balance between flexibility and cost-efficiency, providing a reliable recovery point without unnecessary on-chain storage costs.
+
+If the need for multiple snapshots arises in the future, support may be expanded. Reach out and let us know.
 
 This is why snapshots should not be mistaken for backups. Unlike true backups, they do not provide historical retention, off-chain storage, or protection against accidental loss of control. For long-term data protection, external backups — such as secure cold storage for sensitive data — are recommended.
+
+With the ability to download snapshots offline, you can create your own backup routine, for example, keeping copies in secure storage for long-term protection.
 
 ---
 
 ## Frequency of Snapshots
 
 Snapshots are automated during code upgrades, with the option to opt out. Alternatively, snapshots can be managed manually.
+
+---
+
+## Advanced Use
+
+In addition to standard recovery, snapshots can also be uploaded to reapply the code and state from one module to another. For example, you can download a snapshot from Satellite A and use it to replace Satellite B.
+
+This should be used carefully though, as snapshots also include elements such as public access keys and user IDs. Applying one module's snapshot to another may cause unintended side effects.
 
 [console]: ../terminology.md#console
