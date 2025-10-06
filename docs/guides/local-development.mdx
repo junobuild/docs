@@ -172,11 +172,13 @@ There you'll find detailed information about available options including:
 
 ## Usage
 
-During local development, your app connects to the local emulator (container) by default — no extra configuration needed.
+During local development - `npm run dev` - your app connects to the local emulator (container) by default — no extra configuration needed.
 
-This is handled automatically when using the [plugins](../reference/plugins.mdx), or when starting from a template.
+### Automatic Configuration (Recommended)
 
-If needed, you can opt out of the container behavior by explicitly setting `container: false`.
+The recommended way to connect your app to the local container run in the emulator or any environment is by using the [plugins](../reference/plugins.mdx).
+
+They automatically resolve the Satellite ID and other environment variables and handle initialization for you.
 
 ### Manual Initialization
 
@@ -195,7 +197,9 @@ await initSatellite({
 });
 ```
 
-The SDK will automatically detect the container in local development. If you want to disable that behavior and connect directly to a remote canister (e.g. in CI or production testing), you can do:
+### Opt-out
+
+The SDK automatically uses the emulator in local development. If you want to disable that behavior and connect directly to a remote canister (e.g. in CI or production testing), you can do:
 
 ```javascript
 await initSatellite({
