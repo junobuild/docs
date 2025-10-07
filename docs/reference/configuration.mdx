@@ -419,6 +419,12 @@ You can customize the ports exposed by the emulator:
 | admin   | Admin server used for internal tasks (e.g., ICP transfer).                       | `5999`  |
 | console | Console UI port (only used with `skylab`).                                       | `5866`  |
 
+:::note
+
+The configuration also supports the option `timeoutInSeconds` (default: 30 seconds), which defines how long the emulator waits for ports to become ready during startup.
+
+:::
+
 ### Network
 
 The `network` field lets you customize which well-known services of the Internet Computer network will start with the emulator.
