@@ -30,6 +30,12 @@ export default function Testimonials(): JSX.Element {
       text: "This is the next iteration of the internet I signed up for.🔥"
     },
     {
+      name: "DeeAye.bio",
+      twitter: "DeeAyee3",
+      img: "https://pbs.twimg.com/profile_images/1970688408386445317/DmUvbYXx_400x400.jpg",
+      text: "CI integration with that CLI is pure chef’s kiss mate."
+    },
+    {
       name: "Sam-the-tutor™",
       twitter: "samthetutor2",
       img: "https://pbs.twimg.com/profile_images/1679878586369449984/qv_eQ3oX_400x400.jpg",
