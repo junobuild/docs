@@ -1,9 +1,8 @@
 import Changelog from "@site/src/components/Changelog";
+import { Markdown } from "@site/src/components/Markdown";
 import Release from "@site/src/components/Release";
 import { GitHubRelease } from "@site/src/types/github";
 import type { Props } from "@theme/BlogLayout";
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import styles from "./index.module.scss";
 
 export default function ReleasePage(
@@ -25,7 +24,7 @@ export default function ReleasePage(
       <div key={tag_name} id={tag_name}>
         <Release tag_name={tag_name} published_at={published_at} />
 
-        <Markdown remarkPlugins={[remarkGfm]}>{body}</Markdown>
+        <Markdown body={body} />
 
         <footer className="row docusaurus-mt-lg">
           <div className="col text--left">
