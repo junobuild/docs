@@ -2,7 +2,7 @@
 slug: 2025-10-09-new-kind-of-breadcrumbs-nav-who-dis
 title: New (kind of) breadcrumbs nav, who dis?
 authors: [peterpeterparker]
-tags: [release, ui, console]
+tags: [release, ui, console, frontend]
 date: 2025-10-09
 ---
 
