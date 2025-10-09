@@ -6,10 +6,10 @@ import styles from "./styles.module.scss";
 export default function Testimonials(): JSX.Element {
   const testimonials: TestimonialProps[] = [
     {
-      name: "Krzysztof Woś",
-      twitter: "krzysztofwos",
-      img: "https://pbs.twimg.com/profile_images/1905138464590594048/Y5MsHA2V_400x400.jpg",
-      text: "Juno is the best Web3 app out there."
+      name: "Jay F. Grissom",
+      twitter: "jfgrissom",
+      img: "https://pbs.twimg.com/profile_images/1602168015482519553/UFJ5_rcZ_400x400.jpg",
+      text: "This is the next iteration of the internet I signed up for.🔥"
     },
     {
       name: "daisuke",
@@ -18,22 +18,22 @@ export default function Testimonials(): JSX.Element {
       text: "Yes so easy build MVP with Juno 😍"
     },
     {
-      name: "Jacob Crabtree",
-      twitter: "crabtr26",
-      img: "https://pbs.twimg.com/profile_images/1854279105920823304/-0-W42jG_400x400.jpg",
-      text: "Juno is my favorite hosting service, Web3 or otherwise."
-    },
-    {
-      name: "Jay F. Grissom",
-      twitter: "jfgrissom",
-      img: "https://pbs.twimg.com/profile_images/1602168015482519553/UFJ5_rcZ_400x400.jpg",
-      text: "This is the next iteration of the internet I signed up for.🔥"
+      name: "Krzysztof Woś",
+      twitter: "krzysztofwos",
+      img: "https://pbs.twimg.com/profile_images/1905138464590594048/Y5MsHA2V_400x400.jpg",
+      text: "Juno is the best Web3 app out there."
     },
     {
       name: "DeeAye.bio",
       twitter: "DeeAyee3",
       img: "https://pbs.twimg.com/profile_images/1970688408386445317/DmUvbYXx_400x400.jpg",
       text: "CI integration with that CLI is pure chef’s kiss mate."
+    },
+    {
+      name: "Jacob Crabtree",
+      twitter: "crabtr26",
+      img: "https://pbs.twimg.com/profile_images/1854279105920823304/-0-W42jG_400x400.jpg",
+      text: "Juno is my favorite hosting service, Web3 or otherwise."
     },
     {
       name: "Sam-the-tutor™",
