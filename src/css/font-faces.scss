@@ -45,3 +45,15 @@
     /* Chrome 26+, Opera 23+, Firefox 39+ */
       url("/fonts/jetbrains-mono-v11-latin-800italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+
+/* pixelify-sans-700 - latin */
+@font-face {
+  font-family: "Pixelify Sans";
+  font-style: normal;
+  font-weight: 700;
+  src:
+    local(""),
+    url("/fonts/pixelify-sans-v3-latin-700.woff2") format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url("/fonts/pixelify-sans-v3-latin-700.ttf") format("truetype"); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}

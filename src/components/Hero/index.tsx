@@ -39,8 +39,11 @@ export default function Hero(): JSX.Element {
     <article className={clsx("hero", styles.heroBanner)}>
       <div className={`${styles.container}`}>
         <h1 className={`hero__title ${styles.title} ${styles.item}`}>
-          <span ref={el} className={styles.bold} />
-          {!typedLoaded && <span className={styles.bold}>Build</span>} ideas in
+          <span ref={el} className={`${styles.bold} ${styles.typed}`} />
+          {!typedLoaded && (
+            <span className={`${styles.bold} ${styles.typed}`}>Build</span>
+          )}{" "}
+          ideas in
           <br />
           your <span className={styles.bold}>container</span>
         </h1>

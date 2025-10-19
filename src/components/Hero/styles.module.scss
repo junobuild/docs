@@ -96,6 +96,24 @@
   font-weight: bold;
 }
 
+.typed {
+  font-family: "Pixelify Sans", sans-serif;
+
+  font-size: 2.75rem;
+
+  @media screen and (min-width: 480px) {
+    font-size: 2.95rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 4.6rem;
+  }
+
+  @media screen and (min-width: 960px) {
+    font-size: 5.85rem;
+  }
+}
+
 .llms {
   display: inline-flex;
   justify-content: center;
