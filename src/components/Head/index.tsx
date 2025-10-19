@@ -16,14 +16,14 @@ export default function Home({ children }): JSX.Element {
       <meta content="website" property="og:type" />
       <meta content="https://juno.build" property="og:url" />
       <meta
-        content="https://juno.build/img/social_image_v10.jpg"
+        content="https://juno.build/img/social_image_v11.jpg"
         property="og:image"
       />
       <meta content="summary_large_image" name="twitter:card" />
       <meta content="Juno" name="twitter:title" />
       <meta content="Run ideas in your container" name="twitter:description" />
       <meta
-        content="https://juno.build/img/social_image_v10.jpg"
+        content="https://juno.build/img/social_image_v11.jpg"
         name="twitter:image"
       />
       <meta content="@JunoBuild" name="twitter:creator" />
