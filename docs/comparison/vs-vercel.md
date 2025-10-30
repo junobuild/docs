@@ -9,7 +9,6 @@ tags:
   - developer tools
   - open source
   - full-stack platform
-  - Internet Computer
 ---
 
 # What makes Juno a great Vercel alternative
@@ -56,13 +55,13 @@ Juno offers predictable, usage-based pricing with transparent costs for compute 
 
 ## Beyond Hosting: A Full-Stack Advantage
 
-Vercel excels at frontend deployment, but often requires you to stitch together external services for a complete application (authentication, database, file storage, and more).
+Vercel excels at frontend deployment, but often requires you to stitch together external services for a complete application — databases, file storage, functions, and more.
 
 Juno integrates these natively:
 
-- **Integrated Authentication** — Privacy-first, decentralized identity layer built on Internet Identity. No third-party auth service needed.
-- **Built-in Data & Storage** — Unified datastore and file storage for a complete application backend, owned by your users.
-- **Familiar Developer Workflow** — Works with React, Next.js, Vue, Svelte, and other popular frameworks. Deploy via:
+- **Built-in Data & Storage** — Store app state and user-generated content without managing external services.
+- **Serverless Functions** — Write backend logic in Rust or TypeScript and deploy alongside your frontend.
+- **Familiar Developer Workflow** — Works with React, Next.js (static export), SvelteKit (static), Astro, Vue, and more.
 
 The result: modern serverless development in your own self-contained execution space — the privacy and control of self-hosting without the operational overhead.
 
