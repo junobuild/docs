@@ -48,6 +48,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Comparison
   
+- [What makes Juno a great Netlify alternative](https://juno.build/docs/comparison/vs-netlify.md): Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
 - [What makes Juno a great Vercel alternative](https://juno.build/docs/comparison/vs-vercel.md): Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
 ## Examples
@@ -155,13 +156,16 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Tags
   
-- [One doc tagged with "decentralized infrastructure"](https://juno.build/docs/tags/decentralized-infrastructure.md)
-- [One doc tagged with "developer tools"](https://juno.build/docs/tags/developer-tools.md)
+- [2 docs tagged with "decentralized infrastructure"](https://juno.build/docs/tags/decentralized-infrastructure.md)
+- [2 docs tagged with "developer tools"](https://juno.build/docs/tags/developer-tools.md)
+- [One doc tagged with "frontend deployment"](https://juno.build/docs/tags/frontend-deployment.md)
 - [One doc tagged with "full-stack platform"](https://juno.build/docs/tags/full-stack-platform.md)
 - [One doc tagged with "Internet Computer"](https://juno.build/docs/tags/internet-computer.md)
-- [One doc tagged with "open source"](https://juno.build/docs/tags/open-source.md)
-- [One doc tagged with "self-hosting"](https://juno.build/docs/tags/self-hosting.md)
-- [One doc tagged with "serverless"](https://juno.build/docs/tags/serverless.md)
+- [One doc tagged with "netlify alternative"](https://juno.build/docs/tags/netlify-alternative.md)
+- [2 docs tagged with "open source"](https://juno.build/docs/tags/open-source.md)
+- [2 docs tagged with "self-hosting"](https://juno.build/docs/tags/self-hosting.md)
+- [2 docs tagged with "serverless"](https://juno.build/docs/tags/serverless.md)
+- [One doc tagged with "static hosting"](https://juno.build/docs/tags/static-hosting.md)
 - [One doc tagged with "vercel alternative"](https://juno.build/docs/tags/vercel-alternative.md)
 
 ## Miscellaneous
