@@ -45,14 +45,14 @@ Same autonomy — dramatically less work.
 
 ## Feature Comparison
 
-| Feature              | Traditional Self-Hosting            | Juno                                      |
-| -------------------- | ----------------------------------- | ----------------------------------------- |
-| Infrastructure       | VPS / bare metal                    | Self-contained container (no servers)     |
-| Setup                | Manual                              | CLI + Git-based deployment                |
-| Maintenance          | High (patches, security, upgrades)  | None (platform handles it)                |
-| Core Services        | Install & secure yourself           | Built-in auth, datastore, storage         |
-| Availability         | Single server unless custom setup   | Replicated across independent nodes       |
-| Best For             | Full-time operators / sysadmins     | Developers who want control without ops   |
+| Feature        | Traditional Self-Hosting           | Juno                                    |
+| -------------- | ---------------------------------- | --------------------------------------- |
+| Infrastructure | VPS / bare metal                   | Self-contained container (no servers)   |
+| Setup          | Manual                             | CLI + Git-based deployment              |
+| Maintenance    | High (patches, security, upgrades) | None (platform handles it)              |
+| Core Services  | Install & secure yourself          | Built-in auth, datastore, storage       |
+| Availability   | Single server unless custom setup  | Replicated across independent nodes     |
+| Best For       | Full-time operators / sysadmins    | Developers who want control without ops |
 
 ---
 
@@ -99,4 +99,3 @@ If you want the privacy and autonomy of running your own server, without becomin
 ## Ready to try Juno?
 
 Ready to explore Juno? [Start building](../intro.mdx)
-
