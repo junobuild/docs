@@ -159,7 +159,6 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Miscellaneous
   
-- [Tags](https://juno.build/docs/tags.md)
 - [FAQ](https://juno.build/docs/faq.md): Where do I find support?
 - [Pricing](https://juno.build/docs/pricing.md): Discover Juno's pricing structure, including operating costs, transaction fees, and cost examples. Learn how to manage and optimize your expenses.
 - [Terminology](https://juno.build/docs/terminology.md): In Juno, we use some terms that may be unfamiliar to some. This page provides a summary of the most commonly used terms.
