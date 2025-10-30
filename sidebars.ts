@@ -271,6 +271,7 @@ const sidebars: SidebarsConfig = {
       items: [
         "comparison/vs-vercel",
         "comparison/vs-netlify",
+        "comparison/vs-railway",
         "comparison/vs-heroku",
         "comparison/vs-self-hosting"
       ]
