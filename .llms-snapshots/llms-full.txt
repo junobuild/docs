@@ -47,6 +47,7 @@ Wondering how Juno stacks up in the real world? Compare it to today's most popul
 
 *   [vs Vercel](/docs/comparison/vs-vercel.md)
 *   [vs Netlify](/docs/comparison/vs-netlify.md)
+*   [vs Railway](/docs/comparison/vs-railway.md)
 *   [vs Heroku](/docs/comparison/vs-heroku.md)
 *   [vs Self-Hosting](/docs/comparison/vs-self-hosting.md)
 
@@ -2701,6 +2702,112 @@ For most sites — documentation, marketing, dashboards, landing pages — Juno 
 If you’re deploying a quick hobby site and don’t have long-term infrastructure needs, Netlify remains a great choice.
 
 If you want the same ease — with ownership, clarity, and room to scale — Juno is a powerful Netlify alternative.
+
+---
+
+## Ready to try Juno?
+
+Ready to explore Juno? [Start building](/docs/intro.md)
+
+# What makes Juno a great Railway alternative
+
+Railway has earned a strong reputation among developers by making deployment simple and removing infrastructure friction. It modernized the Heroku experience with a polished workflow and transparent usage-based pricing — great for teams who want to ship quickly without managing cloud resources.
+
+But what if you want that same simplicity while keeping full control over how and where your application runs? What if you want to own your environment instead of depending on someone else’s platform?
+
+This is where Juno steps in — an open-source serverless platform that delivers a similar smooth development and deployment experience, but with true app ownership and privacy built in from day one.
+
+---
+
+## The Trade-Off: Managed Convenience vs. Ownership
+
+Railway makes the cloud feel effortless — but your app ultimately runs inside someone else’s system, governed by their operational rules and platform roadmap.
+
+Juno flips that model. You get the same frictionless deployment and tooling, but your application lives in your own isolated execution environment.
+
+That brings two major benefits:
+
+*   **Your application, your environment** — Juno cannot access your code, data, or infrastructure.
+*   **Resilient by design** — Your project runs in an independent execution layer, not tied to a single commercial provider.
+
+You keep the convenience — without giving up control.
+
+---
+
+## Feature Breakdown: Railway’s PaaS vs Juno’s Owned Stack
+
+| Feature | Railway (Managed Cloud) | Juno (Owned Environment) |
+| --- | --- | --- |
+| Deployment | Fully managed cloud | Self-contained environment you own |
+| Backend services | External database & auth services | Built-in datastore, auth, and storage (optional) |
+| Functions | Container-based execution | Rust/TS serverless functions |
+| Data control | Platform-controlled environment | Full app and data ownership |
+| Core benefit | Fast modern PaaS experience | Same simplicity with long-term control |
+
+---
+
+## Cost Advantage: Usage Simplicity vs. Predictable Ownership
+
+Railway’s metered pricing is clear and modern — you pay as your resources grow. But as your project succeeds, costs can rise and remain tied to a commercial cloud platform.
+
+Juno offers consistent, usage-based pricing in an environment that’s yours. You only pay for the resources your app consumes over time — no add-on fees, no tier upgrades, and no platform-driven pricing surprises.
+
+For projects meant to run and evolve for years, this provides financial stability and confidence.
+
+---
+
+## Beyond Deployment: Your Full Stack, When You Need It
+
+Railway shines for deploying apps quickly. For many setups, you still need to bring your own:
+
+*   Authentication
+*   Database
+*   Object storage
+*   Serverless compute
+*   Access control logic
+
+Juno includes those capabilities by default — and you can adopt them gradually. It’s a full-stack environment that scales with your needs, without piecing together separate vendors or services.
+
+---
+
+## Performance Considerations
+
+Railway leverages centralized cloud performance and may excel in certain latency-critical workloads.
+
+Juno provides competitive real-world performance for the vast majority of modern web apps — with the added benefit of independence, stability, and private execution.
+
+If your primary goal is ultra-optimized centralized edge workloads, Railway remains strong. If you value control and long-term resilience, Juno stands apart.
+
+---
+
+## What You Should Know
+
+**Best fit for:**
+
+*   Teams who want simplicity without platform dependence
+*   Apps that may grow toward full-stack needs
+*   Builders who want privacy and long-term ownership of their environment
+*   Projects where stability and control matter more than managed cloud convenience
+
+**Trade-offs to consider:**
+
+*   Smaller ecosystem vs Railway’s plugin ecosystem
+*   No traditional SSR — Juno is built for static + client-side apps
+
+---
+
+## The Right Choice for Your Project
+
+If you're deploying a traditional backend app and want instant PaaS convenience with managed infrastructure, Railway is a solid choice.
+
+But if your application demands:
+
+*   Your own execution environment
+*   Integrated full-stack building blocks you control
+*   Predictable, usage-based operating costs
+*   An open platform that gives you independence
+
+Then **Juno is a powerful Railway alternative** — all the developer convenience, without handing your app to someone else’s platform.
 
 ---
 
@@ -10579,7 +10686,7 @@ Discover why Juno is a compelling alternative to Netlify, offering true infrastr
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
-# 4 docs tagged with "developer tools"
+# 5 docs tagged with "developer tools"
 
 [View all tags](/docs/tags.md)
 
@@ -10590,6 +10697,10 @@ See how Juno compares to Heroku — the simplicity of PaaS with the ownership an
 [## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
 
 Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
+
+[## What makes Juno a great Railway alternative](/docs/comparison/vs-railway.md)
+
+Discover why Juno is a powerful alternative to Railway, offering full ownership, integrated services, and the convenience of serverless without platform dependency.
 
 [## What makes Juno a great self-hosting alternative](/docs/comparison/vs-self-hosting.md)
 
@@ -10615,9 +10726,13 @@ See how Juno compares to traditional self-hosting and why it offers the control 
 
 Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
 
-# One doc tagged with "full-stack platform"
+# 2 docs tagged with "full-stack platform"
 
 [View all tags](/docs/tags.md)
+
+[## What makes Juno a great Railway alternative](/docs/comparison/vs-railway.md)
+
+Discover why Juno is a powerful alternative to Railway, offering full ownership, integrated services, and the convenience of serverless without platform dependency.
 
 [## What makes Juno a great Vercel alternative](/docs/comparison/vs-vercel.md)
 
@@ -10655,7 +10770,7 @@ Discover why Juno is a powerful alternative to Vercel, offering true ownership, 
 
 Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
 
-# 4 docs tagged with "open source"
+# 5 docs tagged with "open source"
 
 [View all tags](/docs/tags.md)
 
@@ -10666,6 +10781,10 @@ See how Juno compares to Heroku — the simplicity of PaaS with the ownership an
 [## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
 
 Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
+
+[## What makes Juno a great Railway alternative](/docs/comparison/vs-railway.md)
+
+Discover why Juno is a powerful alternative to Railway, offering full ownership, integrated services, and the convenience of serverless without platform dependency.
 
 [## What makes Juno a great self-hosting alternative](/docs/comparison/vs-self-hosting.md)
 
@@ -10683,7 +10802,15 @@ Discover why Juno is a powerful alternative to Vercel, offering true ownership, 
 
 See how Juno compares to Heroku — the simplicity of PaaS with the ownership and modern architecture of a decentralized serverless platform.
 
-# 4 docs tagged with "self-hosting"
+# One doc tagged with "railway alternative"
+
+[View all tags](/docs/tags.md)
+
+[## What makes Juno a great Railway alternative](/docs/comparison/vs-railway.md)
+
+Discover why Juno is a powerful alternative to Railway, offering full ownership, integrated services, and the convenience of serverless without platform dependency.
+
+# 5 docs tagged with "self-hosting"
 
 [View all tags](/docs/tags.md)
 
@@ -10694,6 +10821,10 @@ See how Juno compares to Heroku — the simplicity of PaaS with the ownership an
 [## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
 
 Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
+
+[## What makes Juno a great Railway alternative](/docs/comparison/vs-railway.md)
+
+Discover why Juno is a powerful alternative to Railway, offering full ownership, integrated services, and the convenience of serverless without platform dependency.
 
 [## What makes Juno a great self-hosting alternative](/docs/comparison/vs-self-hosting.md)
 
@@ -10703,7 +10834,7 @@ See how Juno compares to traditional self-hosting and why it offers the control 
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
-# 4 docs tagged with "serverless"
+# 5 docs tagged with "serverless"
 
 [View all tags](/docs/tags.md)
 
@@ -10714,6 +10845,10 @@ See how Juno compares to Heroku — the simplicity of PaaS with the ownership an
 [## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
 
 Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
+
+[## What makes Juno a great Railway alternative](/docs/comparison/vs-railway.md)
+
+Discover why Juno is a powerful alternative to Railway, offering full ownership, integrated services, and the convenience of serverless without platform dependency.
 
 [## What makes Juno a great self-hosting alternative](/docs/comparison/vs-self-hosting.md)
 
@@ -10752,7 +10887,7 @@ See how Juno compares to traditional self-hosting and why it offers the control 
 ## D
 
 *   [decentralized infrastructure3](/docs/tags/decentralized-infrastructure.md)
-*   [developer tools4](/docs/tags/developer-tools.md)
+*   [developer tools5](/docs/tags/developer-tools.md)
 *   [docker1](/docs/tags/docker.md)
 
 ---
@@ -10760,7 +10895,7 @@ See how Juno compares to traditional self-hosting and why it offers the control 
 ## F
 
 *   [frontend deployment1](/docs/tags/frontend-deployment.md)
-*   [full-stack platform1](/docs/tags/full-stack-platform.md)
+*   [full-stack platform2](/docs/tags/full-stack-platform.md)
 
 ---
 
@@ -10785,7 +10920,7 @@ See how Juno compares to traditional self-hosting and why it offers the control 
 
 ## O
 
-*   [open source4](/docs/tags/open-source.md)
+*   [open source5](/docs/tags/open-source.md)
 
 ---
 
@@ -10795,10 +10930,16 @@ See how Juno compares to traditional self-hosting and why it offers the control 
 
 ---
 
+## R
+
+*   [railway alternative1](/docs/tags/railway-alternative.md)
+
+---
+
 ## S
 
-*   [self-hosting4](/docs/tags/self-hosting.md)
-*   [serverless4](/docs/tags/serverless.md)
+*   [self-hosting5](/docs/tags/self-hosting.md)
+*   [serverless5](/docs/tags/serverless.md)
 *   [static hosting1](/docs/tags/static-hosting.md)
 
 ---
