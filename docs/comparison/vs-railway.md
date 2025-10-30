@@ -14,7 +14,7 @@ tags:
 
 Railway has earned a strong reputation among developers by making deployment simple and removing infrastructure friction. It modernized the Heroku experience with a polished workflow and transparent usage-based pricing — great for teams who want to ship quickly without managing cloud resources.
 
-But what if you want that same simplicity while keeping full control over how and where your application runs? What if you want to own your environment instead of depending on someone else’s platform?
+But what if you want that same simplicity while keeping full control over how and where your application runs? What if you want to own your environment instead of depending on someone else's platform?
 
 This is where Juno steps in — an open-source serverless platform that delivers a similar smooth development and deployment experience, but with true app ownership and privacy built in from day one.
 
@@ -22,7 +22,7 @@ This is where Juno steps in — an open-source serverless platform that delivers
 
 ## The Trade-Off: Managed Convenience vs. Ownership
 
-Railway makes the cloud feel effortless — but your app ultimately runs inside someone else’s system, governed by their operational rules and platform roadmap.
+Railway makes the cloud feel effortless — but your app ultimately runs inside someone else's system, governed by their operational rules and platform roadmap.
 
 Juno flips that model. You get the same frictionless deployment and tooling, but your application lives in your own isolated execution environment.
 
@@ -35,7 +35,7 @@ You keep the convenience — without giving up control.
 
 ---
 
-## Feature Breakdown: Railway’s PaaS vs Juno’s Owned Stack
+## Feature Breakdown: Railway's PaaS vs Juno's Owned Stack
 
 | Feature          | Railway (Managed Cloud)           | Juno (Owned Environment)                         |
 | ---------------- | --------------------------------- | ------------------------------------------------ |
@@ -49,9 +49,9 @@ You keep the convenience — without giving up control.
 
 ## Cost Advantage: Usage Simplicity vs. Predictable Ownership
 
-Railway’s metered pricing is clear and modern — you pay as your resources grow. But as your project succeeds, costs can rise and remain tied to a commercial cloud platform.
+Railway's metered pricing is clear and modern — you pay as your resources grow. But as your project succeeds, costs can rise and remain tied to a commercial cloud platform.
 
-Juno offers consistent, usage-based pricing in an environment that’s yours. You only pay for the resources your app consumes over time — no add-on fees, no tier upgrades, and no platform-driven pricing surprises.
+Juno offers consistent, usage-based pricing in an environment that's yours. You only pay for the resources your app consumes over time — no add-on fees, no tier upgrades, and no platform-driven pricing surprises.
 
 For projects meant to run and evolve for years, this provides financial stability and confidence.
 
@@ -67,7 +67,7 @@ Railway shines for deploying apps quickly. For many setups, you still need to br
 - Serverless compute
 - Access control logic
 
-Juno includes those capabilities by default — and you can adopt them gradually. It’s a full-stack environment that scales with your needs, without piecing together separate vendors or services.
+Juno includes those capabilities by default — and you can adopt them gradually. It's a full-stack environment that scales with your needs, without piecing together separate vendors or services.
 
 ---
 
@@ -92,7 +92,7 @@ If your primary goal is ultra-optimized centralized edge workloads, Railway rema
 
 **Trade-offs to consider:**
 
-- Smaller ecosystem vs Railway’s plugin ecosystem
+- Smaller ecosystem vs Railway's plugin ecosystem
 - No traditional SSR — Juno is built for static + client-side apps
 
 ---
@@ -108,7 +108,7 @@ But if your application demands:
 - Predictable, usage-based operating costs
 - An open platform that gives you independence
 
-Then **Juno is a powerful Railway alternative** — all the developer convenience, without handing your app to someone else’s platform.
+Then **Juno is a powerful Railway alternative** — all the developer convenience, without handing your app to someone else's platform.
 
 ---
 

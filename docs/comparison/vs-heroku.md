@@ -15,7 +15,7 @@ tags:
 
 Heroku introduced a simple way to deploy apps — push code, and it ran in the cloud. It remains a solid choice for long-running, traditional web applications.
 
-But today’s stack is different. Modern apps favor lightweight deployments, usage-based execution, and infrastructure that doesn’t require maintaining always-on containers.
+But today's stack is different. Modern apps favor lightweight deployments, usage-based execution, and infrastructure that doesn't require maintaining always-on containers.
 
 Juno brings back Heroku-style simplicity for the modern era — giving you your own execution environment with no servers to manage and no platform control over your app.
 
@@ -50,7 +50,7 @@ Same simplicity — modern execution.
 | Authentication | External add-ons             | Built-in decentralized auth (optional)         |
 | Core Benefit   | Classic simplicity           | Ownership, modern workflow, no server overhead |
 
-> **Note:** Juno isn’t for persistent background workers or long-running processes. It’s optimized for modern web apps.
+> **Note:** Juno isn't for persistent background workers or long-running processes. It's optimized for modern web apps.
 
 ---
 
@@ -77,12 +77,12 @@ For long-term projects, Juno provides stability, ownership, and clarity — with
 - Modern apps, dashboards, APIs, documentation sites
 - Teams who want Heroku-style simplicity without servers
 - Builders who value ownership and platform independence
-- Projects that don’t require persistent processes
+- Projects that don't require persistent processes
 
 **Heroku still fits when:**
 
 - You need a long-running application server
-- You’re operating a legacy stack
+- You're operating a legacy stack
 - Your app has background jobs attached to the runtime
 
 ---
@@ -93,7 +93,7 @@ Heroku pioneered simple cloud deployment.
 
 Juno builds on that spirit — but for modern workloads and developers who want ownership, privacy, and a lightweight execution model without managing infrastructure.
 
-If you love Heroku’s simplicity but want a platform designed for the next decade, Juno is a natural evolution.
+If you love Heroku's simplicity but want a platform designed for the next decade, Juno is a natural evolution.
 
 ---
 

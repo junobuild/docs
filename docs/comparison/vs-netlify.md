@@ -18,16 +18,16 @@ Netlify has long been a go-to platform for frontend developers. It pioneered the
 
 But as projects mature, needs evolve. Ownership starts to matter. Data and infrastructure control matter. Cost predictability matters. And having the freedom to run your application independently becomes increasingly important.
 
-This is where Juno steps in. Juno provides the same simple deployment experience for static sites — but runs your project in a container you own, with full control over its execution. It’s the convenience of managed infrastructure with the control of self-hosting.
+This is where Juno steps in. Juno provides the same simple deployment experience for static sites — but runs your project in a container you own, with full control over its execution. It's the convenience of managed infrastructure with the control of self-hosting.
 
 ---
 
 ## The Trade-Off: Convenience vs Control
 
-Netlify’s strength is its fully managed, centralized hosting. It handles everything, which is great — until you need:
+Netlify's strength is its fully managed, centralized hosting. It handles everything, which is great — until you need:
 
 - Guarantees around application independence
-- Confidence your project can’t be taken offline by a provider
+- Confidence your project can't be taken offline by a provider
 - Predictable long-term pricing
 - Ownership over your data and runtime
 
@@ -40,7 +40,7 @@ Same simplicity — more control.
 
 ---
 
-## Feature Breakdown: Netlify’s Jamstack vs Juno’s Stack
+## Feature Breakdown: Netlify's Jamstack vs Juno's Stack
 
 | Feature        | Netlify (Managed Jamstack)     | Juno (Owned Execution)                       |
 | -------------- | ------------------------------ | -------------------------------------------- |
@@ -57,7 +57,7 @@ Same simplicity — more control.
 
 ## Cost Advantage: Predictable & Transparent Pricing
 
-Netlify’s free tier is generous — but as traffic and features scale, costs can rise quickly due to:
+Netlify's free tier is generous — but as traffic and features scale, costs can rise quickly due to:
 
 - Bandwidth overages
 - Build minutes
@@ -85,7 +85,7 @@ Start static. Scale when you're ready.
 
 ## Performance Considerations
 
-Netlify’s edge network is highly optimized and may have the slight edge for globally-distributed, ultra-low-latency workloads.
+Netlify's edge network is highly optimized and may have the slight edge for globally-distributed, ultra-low-latency workloads.
 
 Juno delivers competitive static performance with the benefit of independence and data sovereignty.
 
@@ -104,10 +104,10 @@ For most sites — documentation, marketing, dashboards, landing pages — Juno 
 
 **Trade-offs to consider:**
 
-- Smaller ecosystem vs Netlify’s long-established plugins
+- Smaller ecosystem vs Netlify's long-established plugins
 - SSR not supported — Juno is optimized for static + client-side apps
 
-If you’re deploying a quick hobby site and don’t have long-term infrastructure needs, Netlify remains a great choice.
+If you're deploying a quick hobby site and don't have long-term infrastructure needs, Netlify remains a great choice.
 
 If you want the same ease — with ownership, clarity, and room to scale — Juno is a powerful Netlify alternative.
 
