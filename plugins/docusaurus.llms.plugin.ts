@@ -62,7 +62,7 @@ export default function docusaurusPluginLLMs(
       const allRoutes = Object.keys(routesBuildMetadata).filter(
         (path) =>
           path.startsWith(`/${docsDir}/`) &&
-          [`/category/`, "/tags/", ...ignorePaths].find((pathToIgnore) =>
+          [`/category/`, "/tags", ...ignorePaths].find((pathToIgnore) =>
             path.includes(pathToIgnore)
           ) === undefined
       );
