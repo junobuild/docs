@@ -46,6 +46,7 @@ And during development, the environment mirrors production as closely as possibl
 Wondering how Juno stacks up in the real world? Compare it to today's most popular platforms:
 
 *   [vs Vercel](/docs/comparison/vs-vercel.md)
+*   [vs Netlify](/docs/comparison/vs-netlify.md)
 
 ---
 
@@ -2509,6 +2510,111 @@ You never need to set this parameter in a browser context.
 ```
 import { getAsset } from "@junobuild/core";await getAsset({  collection: "my_collection_key",  fullPath: "/images/logo.png",  satellite: {    identity: myIdentity,    satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",    container: true  }});
 ```
+
+# What makes Juno a great Netlify alternative
+
+Netlify has long been a go-to platform for frontend developers. It pioneered the Jamstack movement, offers smooth Git-based workflows, and makes shipping static sites fast and simple.
+
+But as projects mature, needs evolve. Ownership starts to matter. Data and infrastructure control matter. Cost predictability matters. And having the freedom to run your application independently becomes increasingly important.
+
+This is where Juno steps in. Juno provides the same simple deployment experience for static sites — but runs your project in a container you own, with full control over its execution. It’s the convenience of managed infrastructure with the control of self-hosting.
+
+---
+
+## The Trade-Off: Convenience vs Control
+
+Netlify’s strength is its fully managed, centralized hosting. It handles everything, which is great — until you need:
+
+*   Guarantees around application independence
+*   Confidence your project can’t be taken offline by a provider
+*   Predictable long-term pricing
+*   Ownership over your data and runtime
+
+Juno flips the model. You get the same simple “git push to deploy” flow, but you run your app in your own execution environment — without managing servers or ops.
+
+*   **Your Own Hosting Container** — Your site runs in a container you own and control. No black-box environment.
+*   **Unstoppable Delivery** — Hosted across independent nodes. No single provider can restrict or remove your project.
+
+Same simplicity — more control.
+
+---
+
+## Feature Breakdown: Netlify’s Jamstack vs Juno’s Stack
+
+| Feature | Netlify (Managed Jamstack) | Juno (Owned Execution) |
+| --- | --- | --- |
+| Deployment | Global CDN (Centralized) | Decentralized Containers (User-owned) |
+| Static Hosting | Yes — fast and convenient | Yes — same simplicity, but with ownership |
+| Functions | Lambda-based (Optional Add-on) | Rust/TypeScript Functions (Optional, Native) |
+| Authentication | Netlify Identity (Add-on) | Built-in Privacy-First Auth (Optional) |
+| Data / Storage | Add-ons (Forms, Large Media) | Built-in Datastore & Storage (Optional) |
+| Core Benefit | Convenience & speed | Ownership, stability, independence |
+
+> **Important:** This comparison focuses on static hosting. Juno also offers integrated backend services, but you can adopt them only if/when needed.
+
+---
+
+## Cost Advantage: Predictable & Transparent Pricing
+
+Netlify’s free tier is generous — but as traffic and features scale, costs can rise quickly due to:
+
+*   Bandwidth overages
+*   Build minutes
+*   Paid add-ons (identity, serverless, large media)
+
+Juno uses a simple usage-based model. You pay for compute and storage like a utility, without surprise bandwidth charges or per-feature pricing layers.
+
+For long-running, growing projects, this creates financial predictability and independence.
+
+---
+
+## Simplicity First: Static Hosting Done Right
+
+Both Netlify and Juno deliver a familiar, modern developer workflow:
+
+*   Git-based deployments
+*   Support for modern frameworks (Next.js static export, Astro, SvelteKit static, Vue, React, etc.)
+*   CLI-first developer experience
+
+The difference is that **Juno gives you ownership from day one**, with the option to add backend capabilities as your app grows — without switching platforms.
+
+Start static. Scale when you're ready.
+
+---
+
+## Performance Considerations
+
+Netlify’s edge network is highly optimized and may have the slight edge for globally-distributed, ultra-low-latency workloads.
+
+Juno delivers competitive static performance with the benefit of independence and data sovereignty.
+
+For most sites — documentation, marketing, dashboards, landing pages — Juno provides excellent real-world performance with long-term control.
+
+---
+
+## When Juno Makes the Most Sense
+
+**Best fit for:**
+
+*   Static sites that may evolve into full apps later
+*   Projects where data independence and platform neutrality matter
+*   Teams planning long-term builds who want infrastructure control
+*   Builders who want the ease of Netlify with a clear path to autonomy
+
+**Trade-offs to consider:**
+
+*   Smaller ecosystem vs Netlify’s long-established plugins
+*   SSR not supported — Juno is optimized for static + client-side apps
+
+If you’re deploying a quick hobby site and don’t have long-term infrastructure needs, Netlify remains a great choice.
+
+If you want the same ease — with ownership, clarity, and room to scale — Juno is a powerful Netlify alternative.
+
+---
+
+## Ready to try Juno?
+
+Ready to explore Juno? [Start building](/docs/intro.md)
 
 # What makes Juno a great Vercel alternative
 
@@ -10276,21 +10382,37 @@ function encodeDocData<T>(data: T): Uint8Array;
 
 *   A `Uint8Array` containing the encoded binary data.
 
-# One doc tagged with "decentralized infrastructure"
+# 2 docs tagged with "decentralized infrastructure"
 
 [View all tags](/docs/tags.md)
+
+[## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
+
+Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
 
 [## What makes Juno a great Vercel alternative](/docs/comparison/vs-vercel.md)
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
-# One doc tagged with "developer tools"
+# 2 docs tagged with "developer tools"
 
 [View all tags](/docs/tags.md)
+
+[## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
+
+Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
 
 [## What makes Juno a great Vercel alternative](/docs/comparison/vs-vercel.md)
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
+
+# One doc tagged with "frontend deployment"
+
+[View all tags](/docs/tags.md)
+
+[## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
+
+Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
 
 # One doc tagged with "full-stack platform"
 
@@ -10308,29 +10430,57 @@ Discover why Juno is a powerful alternative to Vercel, offering true ownership, 
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
-# One doc tagged with "open source"
+# One doc tagged with "netlify alternative"
 
 [View all tags](/docs/tags.md)
+
+[## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
+
+Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
+
+# 2 docs tagged with "open source"
+
+[View all tags](/docs/tags.md)
+
+[## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
+
+Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
 
 [## What makes Juno a great Vercel alternative](/docs/comparison/vs-vercel.md)
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
-# One doc tagged with "self-hosting"
+# 2 docs tagged with "self-hosting"
 
 [View all tags](/docs/tags.md)
+
+[## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
+
+Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
 
 [## What makes Juno a great Vercel alternative](/docs/comparison/vs-vercel.md)
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
-# One doc tagged with "serverless"
+# 2 docs tagged with "serverless"
 
 [View all tags](/docs/tags.md)
+
+[## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
+
+Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
 
 [## What makes Juno a great Vercel alternative](/docs/comparison/vs-vercel.md)
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
+
+# One doc tagged with "static hosting"
+
+[View all tags](/docs/tags.md)
+
+[## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
+
+Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
 
 # One doc tagged with "vercel alternative"
 
@@ -10344,13 +10494,14 @@ Discover why Juno is a powerful alternative to Vercel, offering true ownership, 
 
 ## D
 
-*   [decentralized infrastructure1](/docs/tags/decentralized-infrastructure.md)
-*   [developer tools1](/docs/tags/developer-tools.md)
+*   [decentralized infrastructure2](/docs/tags/decentralized-infrastructure.md)
+*   [developer tools2](/docs/tags/developer-tools.md)
 
 ---
 
 ## F
 
+*   [frontend deployment1](/docs/tags/frontend-deployment.md)
 *   [full-stack platform1](/docs/tags/full-stack-platform.md)
 
 ---
@@ -10361,16 +10512,23 @@ Discover why Juno is a powerful alternative to Vercel, offering true ownership, 
 
 ---
 
+## N
+
+*   [netlify alternative1](/docs/tags/netlify-alternative.md)
+
+---
+
 ## O
 
-*   [open source1](/docs/tags/open-source.md)
+*   [open source2](/docs/tags/open-source.md)
 
 ---
 
 ## S
 
-*   [self-hosting1](/docs/tags/self-hosting.md)
-*   [serverless1](/docs/tags/serverless.md)
+*   [self-hosting2](/docs/tags/self-hosting.md)
+*   [serverless2](/docs/tags/serverless.md)
+*   [static hosting1](/docs/tags/static-hosting.md)
 
 ---
 
