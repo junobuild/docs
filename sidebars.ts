@@ -9,11 +9,7 @@ const sidebars: SidebarsConfig = {
         type: "doc",
         id: "intro"
       },
-      items: [
-        "start-a-new-project",
-        "setup-the-sdk",
-        "create-a-satellite"
-      ]
+      items: ["start-a-new-project", "setup-the-sdk", "create-a-satellite"]
     },
     {
       type: "category",
@@ -272,7 +268,12 @@ const sidebars: SidebarsConfig = {
         description:
           "See how Juno compares to other modern platforms, and when each one makes sense."
       },
-      items: ["comparison/vs-vercel", "comparison/vs-netlify", "comparison/vs-self-hosting"]
+      items: [
+        "comparison/vs-vercel",
+        "comparison/vs-netlify",
+        "comparison/vs-heroku",
+        "comparison/vs-self-hosting"
+      ]
     },
     "terminology",
     "faq",
