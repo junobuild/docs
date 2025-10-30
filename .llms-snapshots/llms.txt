@@ -46,6 +46,14 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [Collections](https://juno.build/docs/build/storage/collections.md): You can create or update a collection in the "Collections" tab in Juno's console under the storage view.
 - [Development](https://juno.build/docs/build/storage/development.md): This page explains how to manage assets using the Juno SDK, including uploading, listing, counting, and deleting files within your application. It also covers configuration options for optimizing storage and access control.
 
+## Comparison
+  
+- [What makes Juno a great Heroku alternative](https://juno.build/docs/comparison/vs-heroku.md): See how Juno compares to Heroku — the simplicity of PaaS with the ownership and modern architecture of a decentralized serverless platform.
+- [What makes Juno a great Netlify alternative](https://juno.build/docs/comparison/vs-netlify.md): Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
+- [What makes Juno a great Railway alternative](https://juno.build/docs/comparison/vs-railway.md): Discover why Juno is a powerful alternative to Railway, offering full ownership, integrated services, and the convenience of serverless without platform dependency.
+- [What makes Juno a great self-hosting alternative](https://juno.build/docs/comparison/vs-self-hosting.md): See how Juno compares to traditional self-hosting and why it offers the control of running your own infrastructure — without the ops burden.
+- [What makes Juno a great Vercel alternative](https://juno.build/docs/comparison/vs-vercel.md): Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
+
 ## Examples
   
 - [Frontend](https://juno.build/docs/examples/frontend.md): Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more.

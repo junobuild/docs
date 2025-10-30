@@ -260,6 +260,22 @@ const sidebars: SidebarsConfig = {
         }
       ]
     },
+    {
+      type: "category",
+      label: "Comparisons",
+      link: {
+        type: "generated-index",
+        description:
+          "See how Juno compares to other modern platforms, and when each one makes sense."
+      },
+      items: [
+        "comparison/vs-vercel",
+        "comparison/vs-netlify",
+        "comparison/vs-railway",
+        "comparison/vs-heroku",
+        "comparison/vs-self-hosting"
+      ]
+    },
     "terminology",
     "faq",
     "troubleshooting",
