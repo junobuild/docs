@@ -46,6 +46,10 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [Collections](https://juno.build/docs/build/storage/collections.md): You can create or update a collection in the "Collections" tab in Juno's console under the storage view.
 - [Development](https://juno.build/docs/build/storage/development.md): This page explains how to manage assets using the Juno SDK, including uploading, listing, counting, and deleting files within your application. It also covers configuration options for optimizing storage and access control.
 
+## Comparison
+  
+- [What makes Juno a great Vercel alternative](https://juno.build/docs/comparison/vs-vercel.md): Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
+
 ## Examples
   
 - [Frontend](https://juno.build/docs/examples/frontend.md): Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more.
@@ -149,8 +153,20 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [SDK](https://juno.build/docs/reference/functions/typescript/sdk.md): The SDK is provided by the @junobuild/functions library.
 - [Utils](https://juno.build/docs/reference/functions/typescript/utils.md): All utilities on this page are provided by the @junobuild/functions library.
 
+## Tags
+  
+- [One doc tagged with "decentralized infrastructure"](https://juno.build/docs/tags/decentralized-infrastructure.md)
+- [One doc tagged with "developer tools"](https://juno.build/docs/tags/developer-tools.md)
+- [One doc tagged with "full-stack platform"](https://juno.build/docs/tags/full-stack-platform.md)
+- [One doc tagged with "Internet Computer"](https://juno.build/docs/tags/internet-computer.md)
+- [One doc tagged with "open source"](https://juno.build/docs/tags/open-source.md)
+- [One doc tagged with "self-hosting"](https://juno.build/docs/tags/self-hosting.md)
+- [One doc tagged with "serverless"](https://juno.build/docs/tags/serverless.md)
+- [One doc tagged with "vercel alternative"](https://juno.build/docs/tags/vercel-alternative.md)
+
 ## Miscellaneous
   
+- [Tags](https://juno.build/docs/tags.md)
 - [FAQ](https://juno.build/docs/faq.md): Where do I find support?
 - [Pricing](https://juno.build/docs/pricing.md): Discover Juno's pricing structure, including operating costs, transaction fees, and cost examples. Learn how to manage and optimize your expenses.
 - [Terminology](https://juno.build/docs/terminology.md): In Juno, we use some terms that may be unfamiliar to some. This page provides a summary of the most commonly used terms.
