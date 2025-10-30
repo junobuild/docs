@@ -47,6 +47,7 @@ Wondering how Juno stacks up in the real world? Compare it to today's most popul
 
 *   [vs Vercel](/docs/comparison/vs-vercel.md)
 *   [vs Netlify](/docs/comparison/vs-netlify.md)
+*   [vs Heroku](/docs/comparison/vs-heroku.md)
 *   [vs Self-Hosting](/docs/comparison/vs-self-hosting.md)
 
 ---
@@ -2511,6 +2512,96 @@ You never need to set this parameter in a browser context.
 ```
 import { getAsset } from "@junobuild/core";await getAsset({  collection: "my_collection_key",  fullPath: "/images/logo.png",  satellite: {    identity: myIdentity,    satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",    container: true  }});
 ```
+
+# What makes Juno a great Heroku alternative
+
+Heroku introduced a simple way to deploy apps — push code, and it ran in the cloud. It remains a solid choice for long-running, traditional web applications.
+
+But today’s stack is different. Modern apps favor lightweight deployments, usage-based execution, and infrastructure that doesn’t require maintaining always-on containers.
+
+Juno brings back Heroku-style simplicity for the modern era — giving you your own execution environment with no servers to manage and no platform control over your app.
+
+---
+
+## The Trade-Off: Always-On Containers vs Modern Execution
+
+Heroku runs long-lived app containers. This works well for classic backend apps, but means:
+
+*   You pay for uptime, even when idle
+*   You manage long-running processes
+*   Operational responsibility increases over time
+
+With Juno, you still deploy your app — but it runs in a self-contained environment on demand, with no OS, runtime patching, or server process to maintain.
+
+*   **You own the deployment**
+*   **No server or container administration**
+*   **No platform access to your code or data**
+
+Same simplicity — modern execution.
+
+---
+
+## Feature Comparison
+
+| Feature | Heroku (Traditional PaaS) | Juno (Modern Serverless) |
+| --- | --- | --- |
+| Architecture | Always-on containers (dynos) | Self-contained containers, executed on demand |
+| Deployment | Git push | CLI or Git-based deploy |
+| Maintenance | App + container upkeep | You deploy updates; no OS to maintain |
+| Data / Storage | Add-ons | Built-in datastore & storage (optional) |
+| Authentication | External add-ons | Built-in decentralized auth (optional) |
+| Core Benefit | Classic simplicity | Ownership, modern workflow, no server overhead |
+
+> **Note:** Juno isn’t for persistent background workers or long-running processes. It’s optimized for modern web apps.
+
+---
+
+## Cost Considerations
+
+Heroku is easy to start with, but costs rise as your app grows — especially if it needs background processes, add-ons, or multiple environments.
+
+Juno keeps things simple. You pay for your own isolated app environment and the resources it actually uses over time — no per-feature charges, no surprise jumps, no scaling tax.
+
+This means:
+
+*   Costs stay steady as your project evolves
+*   No extra fees for enabling auth, data, or functions
+*   You keep full control over how your app runs and spends
+
+For long-term projects, Juno provides stability, ownership, and clarity — without managing servers and without unpredictable pricing.
+
+---
+
+## When Juno Makes the Most Sense
+
+**Ideal for:**
+
+*   Modern apps, dashboards, APIs, documentation sites
+*   Teams who want Heroku-style simplicity without servers
+*   Builders who value ownership and platform independence
+*   Projects that don’t require persistent processes
+
+**Heroku still fits when:**
+
+*   You need a long-running application server
+*   You’re operating a legacy stack
+*   Your app has background jobs attached to the runtime
+
+---
+
+## The takeaway
+
+Heroku pioneered simple cloud deployment.
+
+Juno builds on that spirit — but for modern workloads and developers who want ownership, privacy, and a lightweight execution model without managing infrastructure.
+
+If you love Heroku’s simplicity but want a platform designed for the next decade, Juno is a natural evolution.
+
+---
+
+## Ready to try Juno?
+
+Ready to explore Juno? [Start building](/docs/intro.md)
 
 # What makes Juno a great Netlify alternative
 
@@ -10472,9 +10563,13 @@ function encodeDocData<T>(data: T): Uint8Array;
 
 *   A `Uint8Array` containing the encoded binary data.
 
-# 2 docs tagged with "decentralized infrastructure"
+# 3 docs tagged with "decentralized infrastructure"
 
 [View all tags](/docs/tags.md)
+
+[## What makes Juno a great Heroku alternative](/docs/comparison/vs-heroku.md)
+
+See how Juno compares to Heroku — the simplicity of PaaS with the ownership and modern architecture of a decentralized serverless platform.
 
 [## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
 
@@ -10484,9 +10579,13 @@ Discover why Juno is a compelling alternative to Netlify, offering true infrastr
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
-# 3 docs tagged with "developer tools"
+# 4 docs tagged with "developer tools"
 
 [View all tags](/docs/tags.md)
+
+[## What makes Juno a great Heroku alternative](/docs/comparison/vs-heroku.md)
+
+See how Juno compares to Heroku — the simplicity of PaaS with the ownership and modern architecture of a decentralized serverless platform.
 
 [## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
 
@@ -10524,6 +10623,14 @@ Discover why Juno is a compelling alternative to Netlify, offering true infrastr
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
+# One doc tagged with "heroku alternative"
+
+[View all tags](/docs/tags.md)
+
+[## What makes Juno a great Heroku alternative](/docs/comparison/vs-heroku.md)
+
+See how Juno compares to Heroku — the simplicity of PaaS with the ownership and modern architecture of a decentralized serverless platform.
+
 # One doc tagged with "infrastructure"
 
 [View all tags](/docs/tags.md)
@@ -10548,9 +10655,13 @@ Discover why Juno is a powerful alternative to Vercel, offering true ownership, 
 
 Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
 
-# 3 docs tagged with "open source"
+# 4 docs tagged with "open source"
 
 [View all tags](/docs/tags.md)
+
+[## What makes Juno a great Heroku alternative](/docs/comparison/vs-heroku.md)
+
+See how Juno compares to Heroku — the simplicity of PaaS with the ownership and modern architecture of a decentralized serverless platform.
 
 [## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
 
@@ -10564,9 +10675,21 @@ See how Juno compares to traditional self-hosting and why it offers the control 
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
-# 3 docs tagged with "self-hosting"
+# One doc tagged with "paas"
 
 [View all tags](/docs/tags.md)
+
+[## What makes Juno a great Heroku alternative](/docs/comparison/vs-heroku.md)
+
+See how Juno compares to Heroku — the simplicity of PaaS with the ownership and modern architecture of a decentralized serverless platform.
+
+# 4 docs tagged with "self-hosting"
+
+[View all tags](/docs/tags.md)
+
+[## What makes Juno a great Heroku alternative](/docs/comparison/vs-heroku.md)
+
+See how Juno compares to Heroku — the simplicity of PaaS with the ownership and modern architecture of a decentralized serverless platform.
 
 [## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
 
@@ -10580,9 +10703,13 @@ See how Juno compares to traditional self-hosting and why it offers the control 
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
-# 3 docs tagged with "serverless"
+# 4 docs tagged with "serverless"
 
 [View all tags](/docs/tags.md)
+
+[## What makes Juno a great Heroku alternative](/docs/comparison/vs-heroku.md)
+
+See how Juno compares to Heroku — the simplicity of PaaS with the ownership and modern architecture of a decentralized serverless platform.
 
 [## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
 
@@ -10624,8 +10751,8 @@ See how Juno compares to traditional self-hosting and why it offers the control 
 
 ## D
 
-*   [decentralized infrastructure2](/docs/tags/decentralized-infrastructure.md)
-*   [developer tools3](/docs/tags/developer-tools.md)
+*   [decentralized infrastructure3](/docs/tags/decentralized-infrastructure.md)
+*   [developer tools4](/docs/tags/developer-tools.md)
 *   [docker1](/docs/tags/docker.md)
 
 ---
@@ -10634,6 +10761,12 @@ See how Juno compares to traditional self-hosting and why it offers the control 
 
 *   [frontend deployment1](/docs/tags/frontend-deployment.md)
 *   [full-stack platform1](/docs/tags/full-stack-platform.md)
+
+---
+
+## H
+
+*   [heroku alternative1](/docs/tags/heroku-alternative.md)
 
 ---
 
@@ -10652,14 +10785,20 @@ See how Juno compares to traditional self-hosting and why it offers the control 
 
 ## O
 
-*   [open source3](/docs/tags/open-source.md)
+*   [open source4](/docs/tags/open-source.md)
+
+---
+
+## P
+
+*   [paas1](/docs/tags/paas.md)
 
 ---
 
 ## S
 
-*   [self-hosting3](/docs/tags/self-hosting.md)
-*   [serverless3](/docs/tags/serverless.md)
+*   [self-hosting4](/docs/tags/self-hosting.md)
+*   [serverless4](/docs/tags/serverless.md)
 *   [static hosting1](/docs/tags/static-hosting.md)
 
 ---
