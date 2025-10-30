@@ -272,7 +272,7 @@ const sidebars: SidebarsConfig = {
         description:
           "See how Juno compares to other modern platforms, and when each one makes sense."
       },
-      items: ["comparison/vs-vercel", "comparison/vs-netlify"]
+      items: ["comparison/vs-vercel", "comparison/vs-netlify", "comparison/vs-self-hosting"]
     },
     "terminology",
     "faq",
