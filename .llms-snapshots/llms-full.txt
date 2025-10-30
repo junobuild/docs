@@ -47,6 +47,7 @@ Wondering how Juno stacks up in the real world? Compare it to today's most popul
 
 *   [vs Vercel](/docs/comparison/vs-vercel.md)
 *   [vs Netlify](/docs/comparison/vs-netlify.md)
+*   [vs Self-Hosting](/docs/comparison/vs-self-hosting.md)
 
 ---
 
@@ -2609,6 +2610,95 @@ For most sites — documentation, marketing, dashboards, landing pages — Juno 
 If you’re deploying a quick hobby site and don’t have long-term infrastructure needs, Netlify remains a great choice.
 
 If you want the same ease — with ownership, clarity, and room to scale — Juno is a powerful Netlify alternative.
+
+---
+
+## Ready to try Juno?
+
+Ready to explore Juno? [Start building](/docs/intro.md)
+
+# What makes Juno a great self-hosting alternative
+
+For years, developers had two choices: host everything themselves, or rely on a managed platform.
+
+Traditional self-hosting gives you full control — but also means managing servers, patching systems, setting up reverse proxies, configuring SSL, securing databases, watching logs, scaling when traffic hits, and fixing things at 2 AM.
+
+Juno gives you the control and privacy of self-hosting, without the operational overhead. You get your own execution environment and data ownership — without maintaining machines, containers, or cloud networking.
+
+---
+
+## Control Without the Maintenance
+
+Self-hosting means running and operating the entire stack:
+
+*   Provisioning a VPS or bare metal server
+*   OS updates and security patches
+*   SSL and reverse proxy setup
+*   Deployment pipelines and build tooling
+*   Managing databases, backups, and certificates
+*   Monitoring uptime and infrastructure health
+
+With Juno, you still control your deployments — nothing runs or changes without your action — but you don't need to manage operating systems, server processes, firewall rules, or runtime security layers.
+
+*   **You own the container and trigger upgrades**
+*   **No OS maintenance or server configuration**
+*   **Built-in environment hardening**
+*   **Independent execution with no third-party access**
+
+Same autonomy — dramatically less work.
+
+---
+
+## Feature Comparison
+
+| Feature | Traditional Self-Hosting | Juno |
+| --- | --- | --- |
+| Infrastructure | VPS / bare metal | Self-contained container (no servers) |
+| Setup | Manual | CLI + Git-based deployment |
+| Maintenance | High (patches, security, upgrades) | None (platform handles it) |
+| Core Services | Install & secure yourself | Built-in auth, datastore, storage |
+| Availability | Single server unless custom setup | Replicated across independent nodes |
+| Best For | Full-time operators / sysadmins | Developers who want control without ops |
+
+---
+
+## Cost Considerations
+
+Self-hosting looks cheap on day one, but adds ongoing hidden costs:
+
+*   Time spent on ops
+*   Downtime risk
+*   Security responsibilities
+*   Scaling complexity
+
+Juno uses simple usage-based pricing for compute and storage. No machines to maintain, no surprise maintenance time, no infrastructure overhead.
+
+---
+
+## When Juno Makes the Most Sense
+
+**Best fit for developers who want:**
+
+*   Self-host-level control without running servers
+*   A private, isolated execution environment
+*   Built-in authentication, database, and storage
+*   Production-grade reliability without ops work
+
+**Self-hosting still fits when:**
+
+*   You enjoy running servers
+*   You need bare-metal control
+*   You want to manage every layer yourself
+
+---
+
+## The takeaway
+
+Self-hosting gives you freedom — and a lot of maintenance.
+
+Juno gives you the same ownership and control, but lets you focus entirely on building rather than operating infrastructure.
+
+If you want the privacy and autonomy of running your own server, without becoming your own DevOps team, Juno is the modern alternative.
 
 ---
 
@@ -10394,7 +10484,7 @@ Discover why Juno is a compelling alternative to Netlify, offering true infrastr
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
-# 2 docs tagged with "developer tools"
+# 3 docs tagged with "developer tools"
 
 [View all tags](/docs/tags.md)
 
@@ -10402,9 +10492,21 @@ Discover why Juno is a powerful alternative to Vercel, offering true ownership, 
 
 Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
 
+[## What makes Juno a great self-hosting alternative](/docs/comparison/vs-self-hosting.md)
+
+See how Juno compares to traditional self-hosting and why it offers the control of running your own infrastructure — without the ops burden.
+
 [## What makes Juno a great Vercel alternative](/docs/comparison/vs-vercel.md)
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
+
+# One doc tagged with "docker"
+
+[View all tags](/docs/tags.md)
+
+[## What makes Juno a great self-hosting alternative](/docs/comparison/vs-self-hosting.md)
+
+See how Juno compares to traditional self-hosting and why it offers the control of running your own infrastructure — without the ops burden.
 
 # One doc tagged with "frontend deployment"
 
@@ -10422,6 +10524,14 @@ Discover why Juno is a compelling alternative to Netlify, offering true infrastr
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
+# One doc tagged with "infrastructure"
+
+[View all tags](/docs/tags.md)
+
+[## What makes Juno a great self-hosting alternative](/docs/comparison/vs-self-hosting.md)
+
+See how Juno compares to traditional self-hosting and why it offers the control of running your own infrastructure — without the ops burden.
+
 # One doc tagged with "Internet Computer"
 
 [View all tags](/docs/tags.md)
@@ -10438,37 +10548,49 @@ Discover why Juno is a powerful alternative to Vercel, offering true ownership, 
 
 Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
 
-# 2 docs tagged with "open source"
+# 3 docs tagged with "open source"
 
 [View all tags](/docs/tags.md)
 
 [## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
 
 Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
+
+[## What makes Juno a great self-hosting alternative](/docs/comparison/vs-self-hosting.md)
+
+See how Juno compares to traditional self-hosting and why it offers the control of running your own infrastructure — without the ops burden.
 
 [## What makes Juno a great Vercel alternative](/docs/comparison/vs-vercel.md)
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
-# 2 docs tagged with "self-hosting"
+# 3 docs tagged with "self-hosting"
 
 [View all tags](/docs/tags.md)
 
 [## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
 
 Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
+
+[## What makes Juno a great self-hosting alternative](/docs/comparison/vs-self-hosting.md)
+
+See how Juno compares to traditional self-hosting and why it offers the control of running your own infrastructure — without the ops burden.
 
 [## What makes Juno a great Vercel alternative](/docs/comparison/vs-vercel.md)
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
-# 2 docs tagged with "serverless"
+# 3 docs tagged with "serverless"
 
 [View all tags](/docs/tags.md)
 
 [## What makes Juno a great Netlify alternative](/docs/comparison/vs-netlify.md)
 
 Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
+
+[## What makes Juno a great self-hosting alternative](/docs/comparison/vs-self-hosting.md)
+
+See how Juno compares to traditional self-hosting and why it offers the control of running your own infrastructure — without the ops burden.
 
 [## What makes Juno a great Vercel alternative](/docs/comparison/vs-vercel.md)
 
@@ -10490,12 +10612,21 @@ Discover why Juno is a compelling alternative to Netlify, offering true infrastr
 
 Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
 
+# One doc tagged with "vps"
+
+[View all tags](/docs/tags.md)
+
+[## What makes Juno a great self-hosting alternative](/docs/comparison/vs-self-hosting.md)
+
+See how Juno compares to traditional self-hosting and why it offers the control of running your own infrastructure — without the ops burden.
+
 # Tags
 
 ## D
 
 *   [decentralized infrastructure2](/docs/tags/decentralized-infrastructure.md)
-*   [developer tools2](/docs/tags/developer-tools.md)
+*   [developer tools3](/docs/tags/developer-tools.md)
+*   [docker1](/docs/tags/docker.md)
 
 ---
 
@@ -10508,6 +10639,7 @@ Discover why Juno is a powerful alternative to Vercel, offering true ownership, 
 
 ## I
 
+*   [infrastructure1](/docs/tags/infrastructure.md)
 *   [Internet Computer1](/docs/tags/internet-computer.md)
 
 ---
@@ -10520,14 +10652,14 @@ Discover why Juno is a powerful alternative to Vercel, offering true ownership, 
 
 ## O
 
-*   [open source2](/docs/tags/open-source.md)
+*   [open source3](/docs/tags/open-source.md)
 
 ---
 
 ## S
 
-*   [self-hosting2](/docs/tags/self-hosting.md)
-*   [serverless2](/docs/tags/serverless.md)
+*   [self-hosting3](/docs/tags/self-hosting.md)
+*   [serverless3](/docs/tags/serverless.md)
 *   [static hosting1](/docs/tags/static-hosting.md)
 
 ---
@@ -10535,6 +10667,7 @@ Discover why Juno is a powerful alternative to Vercel, offering true ownership, 
 ## V
 
 *   [vercel alternative1](/docs/tags/vercel-alternative.md)
+*   [vps1](/docs/tags/vps.md)
 
 ---
 
