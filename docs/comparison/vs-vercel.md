@@ -1,6 +1,6 @@
 ---
 description: Discover why Juno is a powerful alternative to Vercel, offering true ownership, decentralized infrastructure, and an integrated full-stack developer experience.
-sidebar_label: Juno vs Vercel
+sidebar_label: vs Vercel
 tags:
   - vercel alternative
   - serverless
