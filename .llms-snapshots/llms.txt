@@ -166,7 +166,6 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [2 docs tagged with "full-stack platform"](https://juno.build/docs/tags/full-stack-platform.md)
 - [One doc tagged with "heroku alternative"](https://juno.build/docs/tags/heroku-alternative.md)
 - [One doc tagged with "infrastructure"](https://juno.build/docs/tags/infrastructure.md)
-- [One doc tagged with "Internet Computer"](https://juno.build/docs/tags/internet-computer.md)
 - [One doc tagged with "netlify alternative"](https://juno.build/docs/tags/netlify-alternative.md)
 - [5 docs tagged with "open source"](https://juno.build/docs/tags/open-source.md)
 - [One doc tagged with "paas"](https://juno.build/docs/tags/paas.md)
