@@ -14,11 +14,11 @@ tags:
 
 # What makes Juno a great Vercel alternative
 
-Vercel defined modern frontend deployment. It's fast, convenient, and delivers a world-class developer experience. For teams prioritizing raw speed and integration with the centralized cloud ecosystem, Vercel is the established leader.
+Vercel has been a default choice for frontend teams building with Next.js. It's fast, convenient, and delivers a world-class developer experience. For teams prioritizing raw speed and integration with the centralized cloud ecosystem, Vercel is the established leader.
 
 But what if you need more than just speed? What if you need true ownership, control over your infrastructure, and a platform that won't lock you in?
 
-This is where Juno steps in. As an open-source, next-generation serverless platform, Juno is a powerful Vercel alternative that gives you the convenience of serverless deployment with the control of self-hosting. It's built for developers who want to escape the limits of the centralized cloud.
+This is where Juno steps in. It's is an open-source, next-gen serverless platform to build, deploy, and run modern apps with the privacy and control of self-hosting — without the infrastructure headache.
 
 ---
 
@@ -26,58 +26,93 @@ This is where Juno steps in. As an open-source, next-generation serverless platf
 
 Vercel's strength lies in its managed infrastructure. It handles everything, but that convenience comes at a cost: your application is entirely dependent on their commercial policies and centralized infrastructure.
 
-Juno flips this model. It provides a similar seamless developer experience but runs on a decentralized serverless platform. This architectural difference is the key benefit for developers:
+Juno flips this model. It provides a similar seamless developer experience but gives you your own self-contained execution space. This architectural difference is the key benefit for developers:
 
-- **Unstoppable Infrastructure**: Your application is deployed to a network of independent nodes, making it resistant to censorship, unexpected downtime, and single points of failure.
-- **True Ownership**: Your application and data are deployed to a public, open network that you control — the ultimate form of self-hosting without the DevOps burden.
+- **Your Own Infrastructure**: Your application runs in a container you own and control — with zero DevOps burden. Juno has zero access to your code, data, or infrastructure. Everything runs under your ownership.
+- **Unstoppable Execution**: Deployed to a network of independent nodes operated by different providers worldwide, making it resistant to censorship, unexpected downtime, and single points of failure.
 
 ---
 
 ## Feature Breakdown: Vercel's Speed vs. Juno's Stack
 
-| Feature | Vercel (Centralized Speed) | Juno (Decentralized Control) |
-|---|---|---|
-| Deployment | Global CDN (Centralized Cloud) | Decentralized Canisters (Unstoppable) |
-| Serverless Functions | Edge Functions (Fast, Centralized) | Rust/TypeScript Functions (Owned, Decentralized) |
-| Authentication | External Services Required | Built-in Decentralized Auth (Privacy-First) |
-| Datastore | External Services Required | Built-in Decentralized Datastore (Owned Data) |
-| Core Benefit | Speed, Convenience, Established Ecosystem | Ownership, Privacy, Integrated Full Stack |
+| Feature              | Vercel (Centralized Speed)                | Juno (Decentralized Control)                     |
+| -------------------- | ----------------------------------------- | ------------------------------------------------ |
+| Deployment           | Global CDN (Centralized Cloud)            | Decentralized Containers (Unstoppable)           |
+| Serverless Functions | Edge Functions (Fast, Centralized)        | Rust/TypeScript Functions (Owned, Decentralized) |
+| Authentication       | External Services Required                | Built-in Decentralized Auth (Privacy-First)      |
+| Datastore            | External Services Required                | Built-in Decentralized Datastore (Owned Data)    |
+| File Storage         | External Services Required                | Built-in Decentralized Storage                   |
+| Core Benefit         | Speed, Convenience, Established Ecosystem | Ownership, Privacy, Integrated Full Stack        |
 
 ---
 
 ## Cost Advantage: Predictable Ownership vs. Escalating Bills
 
-Vercel offers a generous free tier — but its pricing scales quickly and often unpredictably as your traffic grows.
+Vercel offers a generous free tier — but its pricing scales quickly and often unpredictably as your traffic grows. Bandwidth overages and function execution costs can lead to surprise bills as your application succeeds.
 
-Juno, by contrast, offers predictable, long-term cost control. You pay for compute and storage like a utility, with transparent usage-based pricing. This creates cost efficiency and financial stability for growing apps — a core benefit of true ownership.
+Juno offers predictable, usage-based pricing with transparent costs for compute and storage. You pay for what you use like a utility, with no surprise bandwidth charges or vendor lock-in premiums. This creates cost efficiency and financial stability for growing apps.
 
 ---
 
 ## Beyond Hosting: A Full-Stack Advantage
 
-Vercel often requires you to stitch together external services for a complete app (auth, database, storage).
+Vercel excels at frontend deployment, but often requires you to stitch together external services for a complete application (authentication, database, file storage, and more).
 
 Juno integrates these natively:
 
-- **Integrated Authentication** — Privacy-first, decentralized identity layer, no third-party auth needed.
-- **Built-in Data & Storage** — Unified datastore and storage for a complete application backend.
-- **Familiar Developer Workflow** — Works with your favorite frontend frameworks and deploys via:
+- **Integrated Authentication** — Privacy-first, decentralized identity layer built on Internet Identity. No third-party auth service needed.
+- **Built-in Data & Storage** — Unified datastore and file storage for a complete application backend, owned by your users.
+- **Familiar Developer Workflow** — Works with React, Next.js, Vue, Svelte, and other popular frameworks. Deploy via:
 
-```bash
-npm create juno@latest
-```
+The result: modern serverless development in your own self-contained execution space — the privacy and control of self-hosting without the operational overhead.
 
-The result: modern serverless development with a self-hosted architecture — without the operational overhead.
+---
+
+## Performance Considerations
+
+Juno's decentralized network is optimized for web-speed delivery with nodes distributed globally. While Vercel's edge network is highly optimized for raw speed, Juno delivers competitive performance with the added benefit of resilience and data sovereignty.
+
+For applications where sub-50ms response times are critical (like real-time collaborative tools), Vercel's edge infrastructure may have an advantage. For most web applications, Juno provides excellent performance while giving you full ownership of your stack.
+
+---
+
+## What You Should Know
+
+Juno represents a different approach to web infrastructure. Here's what to consider:
+
+**Best fit for:**
+
+- Projects requiring data sovereignty and user-owned data
+- Privacy-focused applications where you don't want to depend on centralized providers
+- Long-term projects where you want infrastructure independence
+- Applications needing censorship resistance or unstoppable availability
+
+**Trade-offs to consider:**
+
+- Smaller (but growing) ecosystem compared to Vercel's mature marketplace
+- No server-side rendering (SSR) support — Juno is optimized for static sites and client-side applications
+
+**Migration path:**
+
+Juno supports standard web frameworks, making it straightforward to port existing applications. Many teams start with a proof of concept to explore the platform — getting started is free, so you can experiment without commitment before deciding to migrate.
+
+---
 
 ## The Right Choice for Your Project
 
-If you’re building a simple marketing site and need maximum speed with a large ecosystem, Vercel remains a strong choice.
+If you're building a simple marketing site and need maximum speed with a large ecosystem of integrations, Vercel remains a strong choice.
 
 But if your application demands:
 
-- **True self-hosting** without DevOps overhead
-- **Owned full-stack services** (auth, data, compute)
-- **Predictable, cost-controlled infrastructure**
-- **Open-source, unstoppable hosting**
+- **Your own infrastructure** without DevOps overhead
+- **Full-stack services you control** (auth, data, storage, compute)
+- **Privacy and ownership** — Juno has zero access to your code or data
+- **Open-source, unstoppable execution**
 
-Then **Juno is the definitive Vercel alternative** — the same serverless experience developers love, with actual ownership and control over your application.
+Then **Juno is a powerful Vercel alternative** — the same serverless experience developers love, with actual ownership and control over your application.
+
+---
+
+## Ready to try Juno?
+
+Ready to explore Juno? [Start building](../intro.mdx)
