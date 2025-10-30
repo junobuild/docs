@@ -157,25 +157,6 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [SDK](https://juno.build/docs/reference/functions/typescript/sdk.md): The SDK is provided by the @junobuild/functions library.
 - [Utils](https://juno.build/docs/reference/functions/typescript/utils.md): All utilities on this page are provided by the @junobuild/functions library.
 
-## Tags
-  
-- [3 docs tagged with "decentralized infrastructure"](https://juno.build/docs/tags/decentralized-infrastructure.md)
-- [5 docs tagged with "developer tools"](https://juno.build/docs/tags/developer-tools.md)
-- [One doc tagged with "docker"](https://juno.build/docs/tags/docker.md)
-- [One doc tagged with "frontend deployment"](https://juno.build/docs/tags/frontend-deployment.md)
-- [2 docs tagged with "full-stack platform"](https://juno.build/docs/tags/full-stack-platform.md)
-- [One doc tagged with "heroku alternative"](https://juno.build/docs/tags/heroku-alternative.md)
-- [One doc tagged with "infrastructure"](https://juno.build/docs/tags/infrastructure.md)
-- [One doc tagged with "netlify alternative"](https://juno.build/docs/tags/netlify-alternative.md)
-- [5 docs tagged with "open source"](https://juno.build/docs/tags/open-source.md)
-- [One doc tagged with "paas"](https://juno.build/docs/tags/paas.md)
-- [One doc tagged with "railway alternative"](https://juno.build/docs/tags/railway-alternative.md)
-- [5 docs tagged with "self-hosting"](https://juno.build/docs/tags/self-hosting.md)
-- [5 docs tagged with "serverless"](https://juno.build/docs/tags/serverless.md)
-- [One doc tagged with "static hosting"](https://juno.build/docs/tags/static-hosting.md)
-- [One doc tagged with "vercel alternative"](https://juno.build/docs/tags/vercel-alternative.md)
-- [One doc tagged with "vps"](https://juno.build/docs/tags/vps.md)
-
 ## Miscellaneous
   
 - [Tags](https://juno.build/docs/tags.md)
