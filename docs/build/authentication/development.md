@@ -92,11 +92,11 @@ if (await isWebAuthnAvailable()) {
 }
 ```
 
-### Internet Identity / NFID
+### Internet Identity
 
-With Internet Identity and NFID there is no separate sign-up step. Users always go through sign-in, and if it's their first time, that flow will automatically create their identity.
+With Internet Identity there is no separate sign-up step. Users always go through sign-in, and if it's their first time, that flow will automatically create their identity.
 
-In practice, your UI could simply show a button like "Continue with Internet Identity" or "Continue with NFID".
+In practice, your UI could simply show a button like "Continue with Internet Identity".
 
 ---
 
@@ -232,50 +232,6 @@ try {
 }
 ```
 
-### NFID
-
-NFID flows follow a similar pattern to authentication with Internet Identity. The user signs in with the provider, and if successful, a session is created so they can interact with your satellite. If it's their first time, the account in your satellite is created automatically.
-
-```typescript
-import { signIn } from "@junobuild/core";
-
-await signIn({
-  nfid: {}
-});
-```
-
-#### Options
-
-NFID sign-in can be customized with following options:
-
-| Option                       | Default Value                              | Default     | Description                                                                                                                                                                                                                                                         |
-| ---------------------------- | ------------------------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `maxTimeToLiveInNanoseconds` | `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)` | **4 hours** | Maximum lifetime of the user's session in **nanoseconds**. Once expired, the session cannot be extended.                                                                                                                                                            |
-| `windowed`                   | `boolean`                                  | `true`      | By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead. |
-| `derivationOrigin`           | `string` or `URL`                          |             | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your satellite's URLs they use to access your application.                                                                                           |
-| `onProgress`                 | `(progress) => void`                       |             | Callback for provider sign-in and user creation/loading.                                                                                                                                                                                                            |
-| `appName`                    | `string`                                   |             | The name of your application, shown to the user during sign-in.                                                                                                                                                                                                     |
-| `logoUrl`                    | `string`                                   |             | URL of your application's logo, shown to the user during sign-in.                                                                                                                                                                                                   |
-
-Example with options:
-
-```typescript
-import { signIn } from "@junobuild/core";
-
-await signIn({
-  nfid: {
-    options: {
-      maxTimeToLiveInNanoseconds: BigInt(24 * 60 * 60 * 1000 * 1000 * 1000), // 1 day
-      onProgress: ({ step, state }) => {
-        console.log("Step:", step, "State:", state);
-      },
-      appName: "My Cool App",
-      logoUrl: "https://myapp.com/logo.png"
-    }
-  }
-});
-```
-
 ---
 
 ## Sign-out
@@ -361,4 +317,3 @@ Typical use case for this function is to enable developers to implement custom f
 - Signing a message or making a one-time authenticated call
 
 [Internet Identity]: ../../terminology.md#internet-identity
-[NFID]: ../../terminology.md#nfid

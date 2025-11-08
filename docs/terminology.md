@@ -75,10 +75,6 @@ It acts as a comprehensive entity, encompassing memory, permission checks, and o
 
 ![A really high level schema representing a Satellite architecture](./img/satellite.png)
 
-## NFID
-
-[NFID](https://nfid.one) is a digital identity that provides private and secure sign-in to applications. It offers a convenient way to authenticate with third-party providers like [Metamask](https://metamask.io/) and [Google](https://www.google.com/account/about/).
-
 ## Orbiter
 
 An orbiter is an optional module you can enable for analytics. It helps you gather valuable, anonymous insights about your users.
