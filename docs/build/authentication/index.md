@@ -6,7 +6,6 @@ keywords:
     secure user identification,
     user identity,
     Internet Identity,
-    NFID,
     Passkey,
     WebAuthn
   ]
@@ -16,7 +15,7 @@ keywords:
 
 Juno allows you to securely identify users anonymously, without passwords and without tracking.
 
-You can choose between [Passkeys](development.md#passkeys) for built-in authentication method, or integrate third-party providers like [Internet Identity](development.md#internet-identity) or [NFID](development.md#nfid).
+You can choose between [Passkeys](development.md#passkeys) for built-in authentication method, or integrate third-party providers like [Internet Identity](development.md#internet-identity).
 
 Authentication works hand-in-hand with other Juno services like [Datastore](../datastore/index.mdx) and [Storage](../storage/index.mdx).
 
@@ -95,13 +94,6 @@ Each authentication method has its strengths. The right choice depends not only 
   - 🤔 Requires context switching to an external window.
   - ❌ Limited awareness among mainstream users beyond the Internet Computer community.
   - ❌ Domain scoping can be confusing if misconfigured.
-
-- **NFID**:
-  - ✅ Good for users already onboarded with a NFID Wallet.
-  - ✅ Offers an alternative on the Internet Computer.
-  - 🤔 Requires context switching to an external window.
-  - ❌ Limited awareness among mainstream users beyond the Internet Computer community.
-  - ❌ Smaller user base compared to Passkeys or Internet Identity.
 
 In practice, we expect many developers will implement both Passkeys and Internet Identity side by side. This approach gives users the choice between a device-native login flow and an Internet Computer–native identity, covering a wider range of expectations.
 
