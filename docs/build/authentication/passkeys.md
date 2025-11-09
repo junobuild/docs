@@ -9,16 +9,17 @@ Passkeys let your users authenticate without passwords - using their device's bu
 
 They are built on WebAuthn, providing strong cryptographic security while offering a frictionless, Web2-like user experience.
 
-When users sign in with a passkey, their private key never leaves the device. Juno uses only a cryptographic signature to confirm their identity - ensuring authentication is secure and privacy-preserving by default.
+When users sign in with a passkey, their private key never leaves the device. Your Satellite uses only a cryptographic signature to confirm their identity, ensuring authentication is secure and privacy-preserving by default.
 
 ---
 
 ## How It Works
 
-1. When a user signs up, Juno creates a passkey on their device that's tied to your domain.
+1. When a user signs up, your project creates a passkey on their device that's tied to your domain.
 2. The passkey is stored securely by the device or its manager (e.g. iCloud Keychain, Google Password Manager).
-3. On sign-in, the user proves ownership of the passkey using their device's authenticator.
-4. Juno verifies the signature and establishes a session - without ever seeing a password.
+3. On sign-in, the user proves ownership of the passkey by signing twice with their device's authenticator.
+4. The identity is verified on the frontend through these signatures, and the resulting public key (the user's identity) is stored in your Satellite.
+5. Whenever the user interacts with your app, the Satellite checks that the caller's public key matches the stored one, ensuring the request comes from the legitimate user.
 
 :::note
 

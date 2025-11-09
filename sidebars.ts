@@ -167,6 +167,7 @@ const sidebars: SidebarsConfig = {
             id: "build/authentication/index"
           },
           items: [
+            "build/authentication/google",
             "build/authentication/internet-identity",
             "build/authentication/passkeys",
             "build/authentication/development",

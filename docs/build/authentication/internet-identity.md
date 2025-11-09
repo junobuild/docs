@@ -17,7 +17,7 @@ Authentication with Internet Identity offers strong privacy guarantees and compl
 
 1. The user signs in via Internet Identity.
 2. The provider issues a unique, domain-specific pseudonymous identity.
-3. Juno associates that identity with the user's data in your project.
+3. Your project associates that identity with the user's data in your Satellite.
 4. The user can immediately start using your app - no email, passwords, or extra setup.
 
 ---
