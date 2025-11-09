@@ -17,7 +17,9 @@ tags:
 image: https://juno.build/assets/images/passkeys-authentication-is-here-43c5075d7199d322001387e171adbe87.webp
 ---
 
-# Google Sign-In Comes to Juno
+![](google-sign-in-comes-to-juno.webp)
+
+---
 
 :::info TL;DR
 
