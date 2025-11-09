@@ -73,6 +73,7 @@ Each authentication method has its strengths. The right choice depends not only 
 - **Internet Identity**:
   - ✅ Fully decentralized and privacy-preserving.
   - ✅ Prevents tracking between domains.
+  - ✅ Supports account recovery.
   - 🤔 Requires a brief context switch to an external window.
   - 🤔 Domain scoping requires correct configuration.
   - 🤔 When users choose to sign in with a third party (Google, Apple, etc.), it also depends on their infrastructure and availability. Plus, it relies on configured credentials owned by the DFINITY Foundation.
@@ -81,6 +82,7 @@ Each authentication method has its strengths. The right choice depends not only 
 - **Passkeys**:
   - ✅ Passwordless and device-native (Face ID, Touch ID, etc.).
   - ✅ Familiar Web2-like UX with strong cryptographic security.
+    ✅ Supports multi-device sync through password managers.
   - 🤔 Users must distinguish between sign-up and sign-in flows.
   - 🤔 Sync depends on Apple or Google password managers and their infrastructure.
   - ⚠️ Passkeys stored locally can be lost if the browser or device is reset.
