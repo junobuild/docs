@@ -251,3 +251,31 @@ authentication: {
 - Keep your frontend and Satellite **Client IDs** in sync.
 - Do not leave a **localhost URI** next to production URIs in the same Client ID.
 - In the future, Juno will support **FedCM (Federated Credential Management)** for Google Sign-In without redirects.
+
+---
+
+---
+
+## Infrastructure Overview
+
+When you enable Google Sign-In, authentication involves two systems: Google and your Satellite.
+
+Google handles the user-facing part — displaying the sign-in screen and issuing a signed OpenID Connect (OIDC) token once the user authenticates.
+
+From there, everything else runs within your Satellite container:
+
+- The Satellite verifies the token's signature.
+- It prepares and signs a delegation identity that represents the authenticated user session.
+- It creates (or retrieves) the user entry that your app can then use with Juno services such as [Datastore](../datastore/index.mdx) and [Storage](../storage/index.mdx).
+
+### Token Verification
+
+OIDC tokens are signed by Google using rotating public keys (JWKS). Therefore, to verify these signatures, Satellites need access to those keys.
+
+Instead of having each Satellite perform HTTPS outcalls to Google — which would add cost and subnet load — Juno provides these keys through a shared infrastructure module called [Observatory](../../miscellaneous/architecture.md#observatory).
+
+Observatory regularly fetches and caches Google's public keys, ensuring that verification inside your Satellite remains fast and reliable without introducing additional overhead.
+
+This setup means your Satellite **trusts Juno** to deliver the correct, untempered, up-to-date keys.
+
+If you prefer to control this part as well, or if you want to improve redundancy in your setup while taking care of the related cost, you can spin your own Observatory instance. Reach out if you're interested in setting that up.
