@@ -1,4 +1,8 @@
 :root {
+  .navbar {
+    border-bottom: 1px solid transparent;
+  }
+
   &.docs-wrapper {
     .navbar {
       border-bottom: 1px solid var(--ifm-toc-border-color);

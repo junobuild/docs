@@ -13,6 +13,95 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Products",
+      collapsed: false,
+      link: {
+        type: "generated-index",
+        slug: "/category/build", // For backward compatibility, we use /build in the URL even though the label is now "Products" (it was originally called "Build")
+        description:
+          "Learn about Juno features to build apps running 100% on blockchain without the need to manage servers or write any backend code."
+      },
+      items: [
+        {
+          type: "category",
+          label: "Authentication",
+          link: {
+            type: "doc",
+            id: "build/authentication/index"
+          },
+          items: [
+            "build/authentication/google",
+            "build/authentication/internet-identity",
+            "build/authentication/passkeys",
+            "build/authentication/development",
+            "build/authentication/customization",
+            "build/authentication/management"
+          ]
+        },
+        {
+          type: "category",
+          label: "Datastore",
+          link: {
+            type: "doc",
+            id: "build/datastore/index"
+          },
+          items: ["build/datastore/collections", "build/datastore/development"]
+        },
+        {
+          type: "category",
+          label: "Storage",
+          link: {
+            type: "doc",
+            id: "build/storage/index"
+          },
+          items: ["build/storage/collections", "build/storage/development"]
+        },
+        {
+          type: "category",
+          label: "Hosting",
+          link: {
+            type: "doc",
+            id: "build/hosting/index"
+          },
+          items: ["build/hosting/development", "build/hosting/configuration"]
+        },
+        {
+          type: "category",
+          label: "Functions",
+          link: {
+            type: "doc",
+            id: "build/functions/index"
+          },
+          items: [
+            "build/functions/lifecycle",
+            {
+              type: "category",
+              label: "Development",
+              link: {
+                type: "doc",
+                id: "build/functions/development/index"
+              },
+              items: [
+                "build/functions/development/rust",
+                "build/functions/development/typescript"
+              ]
+            },
+            "build/functions/logs"
+          ]
+        },
+        {
+          type: "category",
+          label: "Analytics",
+          link: {
+            type: "doc",
+            id: "build/analytics/index"
+          },
+          items: ["build/analytics/setup", "build/analytics/development"]
+        }
+      ]
+    },
+    {
+      type: "category",
       label: "Guides",
       link: {
         type: "generated-index",
@@ -146,94 +235,6 @@ const sidebars: SidebarsConfig = {
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      type: "category",
-      label: "Products",
-      link: {
-        type: "generated-index",
-        slug: "/category/build", // For backward compatibility, we use /build in the URL even though the label is now "Products" (it was originally called "Build")
-        description:
-          "Learn about Juno features to build apps running 100% on blockchain without the need to manage servers or write any backend code."
-      },
-      items: [
-        {
-          type: "category",
-          label: "Authentication",
-          link: {
-            type: "doc",
-            id: "build/authentication/index"
-          },
-          items: [
-            "build/authentication/google",
-            "build/authentication/internet-identity",
-            "build/authentication/passkeys",
-            "build/authentication/development",
-            "build/authentication/customization",
-            "build/authentication/management"
-          ]
-        },
-        {
-          type: "category",
-          label: "Datastore",
-          link: {
-            type: "doc",
-            id: "build/datastore/index"
-          },
-          items: ["build/datastore/collections", "build/datastore/development"]
-        },
-        {
-          type: "category",
-          label: "Storage",
-          link: {
-            type: "doc",
-            id: "build/storage/index"
-          },
-          items: ["build/storage/collections", "build/storage/development"]
-        },
-        {
-          type: "category",
-          label: "Hosting",
-          link: {
-            type: "doc",
-            id: "build/hosting/index"
-          },
-          items: ["build/hosting/development", "build/hosting/configuration"]
-        },
-        {
-          type: "category",
-          label: "Functions",
-          link: {
-            type: "doc",
-            id: "build/functions/index"
-          },
-          items: [
-            "build/functions/lifecycle",
-            {
-              type: "category",
-              label: "Development",
-              link: {
-                type: "doc",
-                id: "build/functions/development/index"
-              },
-              items: [
-                "build/functions/development/rust",
-                "build/functions/development/typescript"
-              ]
-            },
-            "build/functions/logs"
-          ]
-        },
-        {
-          type: "category",
-          label: "Analytics",
-          link: {
-            type: "doc",
-            id: "build/analytics/index"
-          },
-          items: ["build/analytics/setup", "build/analytics/development"]
         }
       ]
     },
