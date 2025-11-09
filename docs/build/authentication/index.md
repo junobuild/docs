@@ -85,4 +85,8 @@ Each authentication method has its strengths. The right choice depends not only 
   - 🤔 Sync depends on Apple or Google password managers and their infrastructure.
   - ⚠️ Passkeys stored locally can be lost if the browser or device is reset.
 
-> 💡 **Tip:** Many developers combine multiple providers - for example, offering Google as the default and Internet Identity or Passkeys as privacy-first alternatives.
+:::tip
+
+Many developers combine multiple providers - for example, offering Google as the default and Internet Identity or Passkeys as alternatives.
+
+:::
