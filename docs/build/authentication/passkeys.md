@@ -175,5 +175,5 @@ if (await isWebAuthnAvailable()) {
 
 - Passkeys work best for users who expect a simple, device-native login experience.
 - Always check for WebAuthn support before showing a Passkey option.
-- Combine Passkeys with other providers (like [Google](google.mdx) or [Internet Identity](internet-identity.mdx)) to cover both mainstream and decentralized use cases.
+- Combine Passkeys with other providers (like [Google](google.md) or [Internet Identity](internet-identity.md)) to cover both mainstream and decentralized use cases.
 - Avoid changing your app's domain setup after users have registered, as identities are tied to the original domain scope.
