@@ -14,17 +14,17 @@ keywords: [
 
 # Authentication
 
-Juno lets you securely identify users without passwords, without tracking, and without managing sensitive data.
-
-You can authenticate users using one or more of these providers:
+Juno provides a secure, passwordless authentication framework built directly into your project. It supports multiple providers out of the box, including:
 
 - [Google](google.md) - secure and familiar login
 - [Internet Identity](internet-identity.md) - decentralized, privacy-preserving authentication
 - [Passkeys](passkeys.md) - passwordless, device-native authentication using WebAuthn
 
-Authentication works hand-in-hand with other Juno services like [Datastore](../datastore/index.mdx) and [Storage](../storage/index.mdx).
+It integrates seamlessly with your [Datastore](../datastore/index.mdx) and [Storage](../storage/index.mdx) to power the rich features you are building.
 
-You can see and manage your users anytime in the [authentication](https://console.juno.build/authentication) view of the Console.
+Whether you need decentralized login, device-native passkeys, or a familiar OAuth-based sign-in, Juno - by extension your project and its Satellite - handles the complexity for you so you can focus on your app instead of managing user accounts, sessions, and sensitive data.
+
+You can view and manage your users anytime in the [Authentication](https://console.juno.build/authentication)
 
 ![An overview of the anonymous display of the users in Juno Console](../../img/satellite/authentication.webp)
 
