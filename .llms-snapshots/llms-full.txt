@@ -787,10 +787,11 @@ Start by creating your Google credentials.
 It's best to use a separate Google Cloud project for each environment (development, staging, production) so you can keep configurations clean and secure.
 
 1.  Go to the [Google Cloud Console](https://console.cloud.google.com/apis/dashboard).
-2.  Create a new project (or select one for your current environment).
-3.  Open **APIs & Services → Credentials**.
-4.  Click **Create Credentials → OAuth 2.0 Client ID**.
-5.  Select **Web application** as the application type.
+2.  Create a new project (or select one for your current environment). You might need to switch to your newly created project after creating it.
+3.  If you created a new project, configure the OAuth consent screen with information about your app. Click Configure consent screen when prompted.
+4.  Open **APIs & Services → Credentials**.
+5.  Click **Create Credentials → OAuth Client ID**.
+6.  Select **Web application** as the application type.
 
 Then, configure your redirect URIs.
 
