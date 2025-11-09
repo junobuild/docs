@@ -20,6 +20,10 @@
   --ifm-code-border-radius: 5px;
 }
 
+html[data-theme="light"] {
+  --ifm-link-color: var(--ifm-color-primary-dark);
+}
+
 html[data-theme="dark"] {
   --ifm-background-color: #000;
   --ifm-background-surface-color: #000;
@@ -35,4 +39,5 @@ html[data-theme="dark"] {
   --navbar-shadow-color: #000;
   --navbar-shadow-size: 30px;
   --navbar-search-border-color: #fff;
+  --ifm-link-color: var(--ifm-color-primary-light);
 }
