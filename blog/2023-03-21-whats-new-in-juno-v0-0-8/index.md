@@ -96,7 +96,7 @@ These [console]'s filters are now saved in local storage, ensuring that the last
 
 ## New CLI and JS library features
 
-Of the many new features added to the CLI and JS library, the most useful one is likely the [Web Worker](/docs/build/authentication/customization#session-expiration) that automatically logs out users when their session expires.
+Of the many new features added to the CLI and JS library, the most useful one is likely the [Web Worker](/docs/build/authentication/utilities#session-expiration) that automatically logs out users when their session expires.
 
 ```typescript
 import { initSatellite } from "@junobuild/core";
