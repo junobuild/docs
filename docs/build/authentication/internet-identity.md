@@ -86,6 +86,16 @@ await signIn({
 
 ---
 
+## Context
+
+In addition to the options above, some settings apply to flow itself.
+
+| Option        | Type      | Default | Description                                                                                                       |
+| ------------- | --------- | ------- | ----------------------------------------------------------------------------------------------------------------- |
+| `windowGuard` | `boolean` | `true`  | Prevents the user from closing the current window/tab while the flow is in progress. Disabling it is discouraged. |
+
+---
+
 ## Handling Errors
 
 If the sign-in flow encounters an error, an exception will be thrown.

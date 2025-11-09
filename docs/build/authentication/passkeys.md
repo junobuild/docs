@@ -147,6 +147,16 @@ await signIn({
 
 ---
 
+## Context
+
+In addition to the options above, some settings apply to both sign-up and sign-in flows themselves.
+
+| Option        | Type      | Default | Description                                                                                                       |
+| ------------- | --------- | ------- | ----------------------------------------------------------------------------------------------------------------- |
+| `windowGuard` | `boolean` | `true`  | Prevents the user from closing the current window/tab while the flow is in progress. Disabling it is discouraged. |
+
+---
+
 ## Checking Availability
 
 Not every browser or device supports Passkeys. You can check availability before showing a sign-up or sign-in button with:
