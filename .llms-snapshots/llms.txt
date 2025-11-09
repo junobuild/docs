@@ -17,9 +17,11 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Build - Authentication
   
-- [Customization](https://juno.build/docs/build/authentication/customization.md): Here are some customization options to tailor your sign-in flow and handle session expiration.
-- [Development](https://juno.build/docs/build/authentication/development.md): This page provides an overview of how to integrate authentication features with the Juno SDK, including sign-in, sign-out, and user session subscription within your app.
+- [Google](https://juno.build/docs/build/authentication/google.md): Learn how to integrate Google Sign-In with Juno using OpenID Connect for secure, standards-based authentication.
+- [Internet Identity](https://juno.build/docs/build/authentication/internet-identity.md): Learn how to integrate Internet Identity with Juno for decentralized, privacy-preserving authentication on the Internet Computer.
 - [Management](https://juno.build/docs/build/authentication/management.md): This page provides an overview of the administrative functions available in the Juno Console related to user management.
+- [Passkeys](https://juno.build/docs/build/authentication/passkeys.md): Learn how to integrate Passkeys (WebAuthn) authentication with Juno for secure, passwordless user identification.
+- [Utilities](https://juno.build/docs/build/authentication/utilities.md): Learn about shared authentication features in Juno, such as signing out, reacting to auth state changes, and accessing user identities.
 
 ## Build - Datastore
   

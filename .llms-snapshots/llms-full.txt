@@ -753,172 +753,225 @@ juno.config.js
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist"  },  orbiter: {    ids: {      production: "aaaa-bbbbb-ccccc-ddddd-cai",      development: "ffff-eeee-ddddd-ccccc-cai"    }  }});
 ```
 
-# Customization
+# Google
 
-Here are some customization options to tailor your sign-in flow and handle session expiration.
+Google Sign-In lets users authenticate with their existing Google account using OpenID Connect (OIDC) - a modern, secure identity standard built on top of OAuth 2.0.
 
----
+This provides a fast and familiar experience for users, without you having to manage passwords or credentials directly.
 
-## Sign Context
-
-Some options apply to both sign-up and sign-in flows.
-
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `windowGuard` | `boolean` | `true` | Prevents the user from closing the current window/tab while the flow is in progress. Disabling it is discouraged. |
+It's the easiest way to onboard users who expect a simple, frictionless login flow that works across devices and browsers.
 
 ---
 
-## Session Expiration
+## How It Works
 
-To proactively detect when a session duration expires, you can use the pre-bundled Web Worker provided by Juno's SDK.
-
-To do so, you can follow these steps:
-
-1.  Copy the worker file provided by Juno's SDK to your app's static folder. For example, to your `public` folder with a NPM `postinstall` script:
-
-```
-{  "scripts": {    "postinstall": "node -e \"require('fs').cpSync('node_modules/@junobuild/core/dist/workers/', './static/workers', {recursive: true});\""  }}
-```
-
-Once configured, run `npm run postinstall` manually to trigger the initial copy. Every time you run `npm ci`, the post-install target will execute, ensuring the worker is copied.
-
-2.  Enable the option when you initialize Juno:
-
-```
-import { initSatellite } from "@junobuild/core";await initSatellite({  workers: {    auth: true  }});
-```
-
-The `auth` option can accept either `true`, which will default to using a worker located at [https://yourapp/workers/auth.worker.js](https://yourapp/workers/auth.worker.js), or a custom `string` to provide your own URL.
-
-When the session expires, it will automatically be terminated with a standard [sign-out](/docs/build/authentication/development.md#sign-out). Additionally, an event called `junoSignOutAuthTimer` will be thrown at the `document` level. This event can be used, for example, to display a warning to your users or if you wish to reload the window.
-
-```
-document.addEventListener(  "junoSignOutAuthTimer",  () => {    // Display an information to your users  },  { passive: true });
-```
-
-The worker also emits an event named `junoDelegationRemainingTime`, which provides the remaining duration in milliseconds of the authentication delegation. This can be useful if you want to display to your users how much time remains in their active session.
-
-```
-document.addEventListener(  "junoDelegationRemainingTime",  ({ detail: remainingTime }) => {    // Display the remaining session duration to your users  },  { passive: true });
-```
-
-# Development
-
-This page provides an overview of how to integrate authentication features with the Juno SDK, including sign-in, sign-out, and user session subscription within your app.
+1.  The user signs in with Google.
+2.  Google verifies their credentials and issues a signed OpenID Connect token.
+3.  Your Satellite verifies the token and its signature, and extracts the user's information (such as email or profile).
+4.  It then establishes a session for the user.
 
 **Note:**
 
-The Juno SDK must be [installed](/docs/setup-the-sdk.md) and initialized in your app to use the authentication features.
+Google authentication is not domain-scoped. Users keep the same identity across all your apps each time you use the same Google Client ID.
 
 ---
 
-## Sign-up
+## Configuration
 
-If your app provides features that require authentication, your users need to sign up to create an identity that grants them access to your application.
+To enable Google authentication for your project:
 
-### Passkeys
+### 1\. Get your Google credentials
 
-With Passkeys, sign-up creates a digital key that lives on the user's device — for example in the browser, iCloud Keychain, Google Password Manager, etc.
+Start by creating your Google credentials.
 
-During sign-up, the user will be asked to use their authenticator twice: once to generate the passkey, and once more to sign their new identity which is then used to interact securely with your satellite.
+It's best to use a separate Google Cloud project for each environment (development, staging, production) so you can keep configurations clean and secure.
+
+1.  Go to the [Google Cloud Console](https://console.cloud.google.com/apis/dashboard).
+2.  Create a new project (or select one for your current environment).
+3.  Open **APIs & Services → Credentials**.
+4.  Click **Create Credentials → OAuth 2.0 Client ID**.
+5.  Select **Web application** as the application type.
+
+Then, configure your redirect URIs.
+
+For local development, you can use something like `http://localhost:3000/auth/callback/google`. In production, use the URL that matches your deployed app, for example `https://example.com/auth/callback/google`.
+
+The exact redirect path depends on how your app handles authentication, but make sure you always set at least one redirect URI in your Google Console.
+
+**Caution:**
+
+Creating a separate OAuth 2.0 Client ID for each environment and always configuring **Authorized redirect URIs** is a must.
+
+Since the Client ID is public, leaving redirect URIs open could let attackers interfere with your authentication flow. Likewise, keeping a localhost URL alongside your production redirect is also a security risk.
+
+It's also recommended to set Authorized JavaScript origins, which will be used once FedCM (Federated Credential Management) support is added.
+
+### 2\. Configure the provider
+
+Once your credentials are ready, you need to add your Google Client ID to your project configuration.
+
+In your `juno.config` file:
 
 ```
-import { signUp } from "@junobuild/core";await signUp({  webauthn: {}});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    authentication: {      google: {        clientId: "1234567890-abcde12345fghijklmno.apps.googleusercontent.com"      }    }  }});
 ```
 
-**Note:**
+If you use different Client IDs for each environment (as recommended), you can leverage the build mode to load configuration conditionally.
 
-Returning users don't need to go through sign-up again. They can simply use ([sign-in](#passkeys-1)) with their existing passkey to authenticate.
+For example, to enable Google Sign-In only in production:
 
-#### Options
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig(({ mode }) => ({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    ...(mode === "production" && {      authentication: {        google: {          clientId: "1234567890-abcde12345fghijklmno.apps.googleusercontent.com"        }      }    })  }}));
+```
 
-Passkey sign-up can be customized with a handful of options. These let you control how long a session lasts, how the passkey is displayed to the user, and whether you want to track progress in your own UI.
+### 3\. Apply the configuration
+
+Once your credentials are set in `juno.config`, you need to make sure both your frontend and your Satellite are using the correct and same Google Client ID.
+
+#### Frontend
+
+The frontend, your application, needs the Client ID to start the sign-in flow.
+
+If you are using the Juno Vite or Next.js plugin, the configuration is read automatically from `juno.config`, so you do not need to do anything. The Client ID is injected at build time.
+
+If you are not using a plugin, you need to pass the Client ID manually, either from your environment variables or directly in the sign-in call (see ([Options](#options))).
+
+#### Backend
+
+Your Satellite also needs the Client ID because it is used to validate the JWT tokens issued during the sign-in flow with the third party provider in this case Google.
+
+You can configure this in two ways:
+
+*   **Through the Console:**
+
+Go to [console.juno.build](https://console.juno.build), select your Satellite, then open **Authentication → Setup** and enable **Google**.
+
+The wizard will ask for your Client ID and enable the provider.
+
+*   **Through the CLI:**
+
+If you already have the CLI installed and since the Client ID has been defined in your `juno.config`, you can apply the configuration directly with:
+
+```
+juno config apply
+```
+
+By default, this applies the production configuration. You can specify another mode using `--mode` argument if needed.
+
+---
+
+## Sign-In
+
+Once your configuration is ready, you can let users sign in with their Google account.
+
+```
+import { signIn } from "@junobuild/core";await signIn({  google: {}});
+```
+
+This starts the standard Google redirect flow.
+
+After the user authenticates, they should be redirected to the URL you configured as an Authorized redirect URI in the Google Cloud Console.
+
+You can pass this URL through the `redirectUrl` option. If you omit it, the current origin (`window.location.origin`) is used.
+
+### Options
+
+Google sign-in supports a few options that let you control scopes, redirect URLs, and the overall sign-in experience.
 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxTimeToLiveInMilliseconds` | `number` | **4 hours** | Maximum lifetime of the user's session in **milliseconds**. Once expired, the session cannot be extended. |
-| `onProgress` | `(progress) => void` |     | Callback fired at each step of the sign-up flow (e.g., creating credential, validating, signing). Useful if you want to show progress indicators in your UI. |
-| `passkey` | `CreatePasskeyOptions` |     | Options for how the passkey should be created. |
+| `clientId` | `string` | from `juno.config` | Your Google OAuth Client ID. If not provided, it is automatically read from your project configuration using the plugins. |
+| `redirectUrl` | `string` | `window.location.origin` | The URL where the user is redirected after sign-in. It must match one of your authorized redirect URIs in the Google Cloud Console. |
+| `authScopes` | `GoogleAuthScopes` | `['openid', 'profile', 'email']` | OAuth scopes to request. Must include `openid` and at least one of `profile` or `email`. |
+| `loginHint` | `string` |     | Optional hint such as an email address that tells Google which user is likely signing in. Helps skip the account picker for known users. |
 
-The `passkey` option accepts the following fields:
-
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `appId.id` | `string` | Current URL `hostname` | Domain your passkeys are tied to (e.g., `example.com` or `login.example.com`). Subdomains are supported. |
-| `user.displayName` | `string` | `document.title` | Friendly name for the account (e.g., `"Maria Sanchez"`). Helps the user recognize which passkey belongs to them. |
-| `user.name` | `string` | `displayName` | User-recognizable account identifier (e.g., email, username, or phone number). Distinguishes between accounts. |
-
-Example with options:
+Example:
 
 ```
-import { signUp } from "@junobuild/core";await signUp({  webauthn: {    options: {      maxTimeToLiveInMilliseconds: 1000 * 60 * 60, // 1 hour      onProgress: ({ step, state }) => {        console.log("Step:", step, "State:", state);      },      passkey: {        displayName: "My Cool App" // or user input      }    }  }});
+import { signIn } from "@junobuild/core";await signIn({  google: {    redirect: {      clientId: "1234567890-abcde12345fghijklmno.apps.googleusercontent.com",      authScopes: ["openid", "email"],      redirectUrl: "https://example.com/auth/callback/google",      loginHint: "user@example.com"    }  }});
 ```
+
+---
+
+## Handling the Redirect
+
+After authentication, Google redirects the user back to your app with a signed token. You must handle that redirect on the route that matches your configured `redirectUrl`. For example, `/auth/callback/google`.
+
+```
+import { handleRedirectCallback } from "@junobuild/core";await handleRedirectCallback();
+```
+
+If the callback is successful, the user is signed in and a session is created.
 
 **Tip:**
 
-It's common to let the user choose a nickname during sign-up.
-
-This nickname can be passed as the `displayName` in the `passkey` option so the passkey is easy to recognize the next time they sign in (e.g. in iCloud Keychain or Google Password Manager).
-
-#### Checking Availability
-
-Not every browser or device supports Passkeys. You can check availability before showing a sign-up button with:
-
-```
-import { isWebAuthnAvailable } from "@junobuild/core";if (await isWebAuthnAvailable()) {  // Show Passkey sign-up option}
-```
-
-### Internet Identity
-
-With Internet Identity there is no separate sign-up step. Users always go through sign-in, and if it's their first time, that flow will automatically create their identity.
-
-In practice, your UI could simply show a button like "Continue with Internet Identity".
+After handling the redirect, it's best to navigate elsewhere in your app without keeping browser history. This prevents the user from re-triggering authentication when pressing the back button.
 
 ---
 
-## Sign-in
+## Advanced Configuration
 
-If your app provides features that require authentication, your users need to sign in to access their identity and continue using your application securely.
+You can optionally configure how authentication sessions behave on your Satellite.
 
-### Passkeys
+These settings can be defined in your `juno.config` file and applied with `juno config apply` or adjusted directly in the Console under **Authentication → Setup**.
 
-With Passkeys, returning users sign in using the digital key previously created on their device — for example in the browser, iCloud Keychain, Google Password Manager, etc.
+### Delegation
 
-The user will be asked to use their authenticator to prove possession of the passkey and re-establish a valid session with your satellite.
-
-```
-import { signIn } from "@junobuild/core";await signIn({  webauthn: {}});
-```
-
-**Note:**
-
-New users must first go through ([sign-up](#passkeys)) to create a passkey before they can sign in.
-
-#### Options
-
-Passkey sign-in can also be customized with options similar to sign-up. These let you control how long a session lasts and whether you want to track progress in your own UI.
+The `delegation` section defines how long sessions last and which modules authenticated users are allowed to call using their active session.
 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `maxTimeToLiveInMilliseconds` | `number` | **4 hours** | Maximum lifetime of the user's session in **milliseconds**. Once expired, the session cannot be extended. |
-| `onProgress` | `(progress) => void` |     | Callback fired at each step of the sign-up flow (e.g., fetching credential, validating, signing). Useful to customize your UI. |
+| `allowedTargets` | `PrincipalText[]` or `null` | restricted to this Satellite | List of modules (canisters on the Internet Computer) that authenticated users may call. Omit to restrict access to this Satellite only. Provide an array to allow calls only to specific targets. Set to `null` to allow calls to **any** backend (**use with caution**). |
+| `sessionDuration` | `bigint` | 1 day | How long a user session remains valid, expressed in **nanoseconds**. Cannot exceed 30 days. Applies only to new sessions. |
 
-Example with options:
+Example configuration:
 
 ```
-import { signIn } from "@junobuild/core";await signIn({  webauthn: {    options: {      maxTimeToLiveInMilliseconds: 1000 * 60 * 60, // 1 hour      onProgress: ({ step, state }) => {        console.log("Step:", step, "State:", state);      }    }  }});
+authentication: {  google: {    clientId: "1234567890-abcde12345fghijklmno.apps.googleusercontent.com"  },  delegation: {    allowedTargets: ["<YOUR_SATELLITE_ID>", "<LEDGER_CANISTER_ID>"],    sessionDuration: BigInt(7 * 24 * 60 * 60 * 1_000_000_000) // 7 days  }}
 ```
 
-### Internet Identity
+---
 
-When a user signs in with Internet Identity, they log in with the provider to confirm their identity. If successful, a session is created and the user can interact with your satellite. There's no separate sign-up step — the account in your satellite is created automatically the first time they sign in, so the user can access your services right away.
+## Recommendations
+
+*   ⚠️ Always configure **Authorized redirect URIs** in the Google Cloud Console.
+*   Use a separate **OAuth Client ID** for each environment (development, staging, production).
+*   Keep your frontend and Satellite **Client IDs** in sync.
+*   Do not leave a **localhost URI** next to production URIs in the same Client ID.
+*   In the future, Juno will support **FedCM (Federated Credential Management)** for Google Sign-In without redirects.
+
+# Internet Identity
+
+[Internet Identity](https://identity.ic0.app) lets users authenticate securely and anonymously through a decentralized identity system built for the Internet Computer.
+
+When a user signs in with Internet Identity, they confirm their identity through the provider. If successful, a session is created automatically and the user can interact with your satellite.
+
+Authentication with Internet Identity offers strong privacy guarantees and complete isolation between domains by design.
+
+---
+
+## How It Works
+
+1.  The user signs in via Internet Identity.
+2.  The provider issues a unique, domain-specific pseudonymous identity.
+3.  Your project associates that identity with the user's data in your Satellite.
+4.  The user can immediately start using your app - no email, passwords, or extra setup.
+
+---
+
+---
+
+## Example
 
 ```
 import { signIn } from "@junobuild/core";await signIn({  internet_identity: {}});
 ```
 
-#### Options
+This creates (or reuses) a session automatically the first time the user signs in.
+
+---
+
+## Options
 
 Internet Identity sign-in can be customized with options that let you control session lifetime, provider configuration, or track progress during the flow.
 
@@ -936,7 +989,19 @@ Example with options:
 // Sign-in with id.aiawait signIn({  internet_identity: {    options: {      domain: "id.ai"    }  }});// Sign-in with a specific session durationawait signIn({  internet_identity: {    options: {      maxTimeToLiveInNanoseconds: BigInt(24 * 60 * 60 * 1000 * 1000 * 1000) // 1 day    }  }});// Sign-in with a derivation origin and progression callbackawait signIn({  internet_identity: {    options: {      onProgress: ({ step, state }) => {        console.log("Step:", step, "State:", state);      },      derivationOrigin: "https://myapp.com"    }  }});
 ```
 
-#### Handling Errors
+---
+
+## Context
+
+In addition to the options above, some settings apply to flow itself.
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `windowGuard` | `boolean` | `true` | Prevents the user from closing the current window/tab while the flow is in progress. Disabling it is discouraged. |
+
+---
+
+## Handling Errors
 
 If the sign-in flow encounters an error, an exception will be thrown.
 
@@ -948,62 +1013,29 @@ import { signIn } from "@junobuild/core";try {  await signIn({    internet_ident
 
 ---
 
-## Sign-out
+## Domain-Based Identity
 
-You can end a user's session, no matter which provider they used to sign in, by logging them out.
+With Internet Identity, a user's identity is created separately for each domain.
 
-```
-import { signOut } from "@junobuild/core";await signOut();
-```
+If a user signs in on two different domains, they will be treated as two separate users by default. The same applies to subdomains: signing in on `hello.com` and `www.hello.com` creates two different identities unless you configure a primary domain.
 
-By default, the page will automatically reload after a successful sign-out. This is a common pattern in logout flows that ensures the application restarts from a clean state.
+The first custom domain you add in the Console is automatically set as the primary domain. You can change this setting later in Authentication, but we don't recommend it once users have already registered, since their identities are not migrated when the configuration changes.
 
-If you wish to opt out, the library does clear its internal state and authentication before the reload, and you can use the `windowReload` option set to `false`.
+To let users keep the same identity across domains, you must also configure your frontend app to specify the main domain at sign-in. This is known as the "derivation origin" (or "alternative origins").
 
-```
-import { signOut } from "@junobuild/core";await signOut({ windowReload: false });
-```
+### Recommendation
 
----
+If you're unsure which domain to use as the primary domain, here are two common approaches:
 
-## Listening to Auth Changes
+*   **Use your custom domain** (e.g. `mydomain.com`) if you're confident it will remain the main entry point for users. This ensures a consistent user experience - users will always see and recognize the same URL when signing in.
+    
+*   Alternatively, stick with **the default domain** (`{satellite-id}.icp0.io`) if:
+    
+    *   You're still experimenting with your domain setup and might change it later.
+    *   You're not ready to commit to a long-term domain.
+    *   You plan to host multiple satellites under different domains and don't want to tie user identity to just one.
 
-You can monitor when a user signs in or out using `onAuthStateChange`. It gives you the current user and notifies you whenever their authentication state changes.
-
-```
-import { onAuthStateChange } from "@junobuild/core";// Reactively track if the user is signed in or signed outonAuthStateChange((user: User | null) => {  console.log("User:", user);});
-```
-
-If you register the subscriber at the top of your application, it will automatically reflect the user's state:
-
-*   `null` when the app first loads and the user is not signed in
-*   A `User` object when they sign in or refresh while authenticated
-*   `null` again when they sign out
-
-To stop listening, you can call the unsubscribe function returned:
-
-```
-import { onAuthStateChange } from "@junobuild/core";const unsubscribe = onAuthStateChange((user: User | null) => {  console.log("User:", user);});// Stop listeningunsubscribe();
-```
-
----
-
-## Imperative Access to Identity
-
-For advanced use cases, you may need direct access to the user's identity. You can use `getIdentityOnce` to retrieve the identity if the user is currently authenticated.
-
-**Caution:**
-
-Use this function **imperatively only**. Do **not** persist the identity in global state or store it for reuse. This function is intended for short-lived, one-time operations only.
-
-```
-import { getIdentityOnce } from "@junobuild/core";// Returns null if the user is not authenticatedconst identity = await getIdentityOnce();if (identity !== null) {  // Use the identity to perform calls on the Internet Computer}
-```
-
-Typical use case for this function is to enable developers to implement custom features for the Internet Computer:
-
-*   Passing the identity to temporarily create an actor or agent to call a canister
-*   Signing a message or making a one-time authenticated call
+Choosing the right derivation origin early helps avoid identity issues later, but both approaches are valid depending on your goals.
 
 # Management
 
@@ -1090,6 +1122,237 @@ This activates the restriction: once at least one identity is listed, only those
 You can then share the app link with others. When they attempt to sign in and are blocked, you can show a message that displays their user key (e.g. using the `unsafeIdentity` function from `@junobuild/core`).
 
 They can send you their key, and you can add them to the list manually to grant access.
+
+# Passkeys
+
+Passkeys let your users authenticate without passwords - using their device's built-in security features such as Face ID, Touch ID, or device unlock.
+
+They are built on WebAuthn, providing strong cryptographic security while offering a frictionless, Web2-like user experience.
+
+When users sign in with a passkey, their private key never leaves the device. Your Satellite uses only a cryptographic signature to confirm their identity, ensuring authentication is secure and privacy-preserving by default.
+
+---
+
+## How It Works
+
+1.  When a user signs up, your project creates a passkey on their device that's tied to your domain.
+2.  The passkey is stored securely by the device or its manager (e.g. iCloud Keychain, Google Password Manager).
+3.  On sign-in, the user proves ownership of the passkey by signing twice with their device's authenticator.
+4.  The identity is verified on the frontend through these signatures, and the resulting public key (the user's identity) is stored in your Satellite.
+5.  Whenever the user interacts with your app, the Satellite checks that the caller's public key matches the stored one, ensuring the request comes from the legitimate user.
+
+**Note:**
+
+Passkeys are **domain-scoped**: a passkey created on `hello.com` will work on its subdomains (like `www.hello.com`), but not on different domains (like `world.com`).
+
+You can change this behavior during setup if you want to use a higher-level domain as the passkey origin, but not a completely different one.
+
+---
+
+## Sign-up
+
+With Passkeys, your users need to sign up to create an identity that grants them access to your application.
+
+During this process, the user will be asked to use their authenticator twice: once to generate the passkey, and once more to sign their new identity which is then used to interact securely with your satellite.
+
+```
+import { signUp } from "@junobuild/core";await signUp({  webauthn: {}});
+```
+
+**Note:**
+
+Returning users don't need to go through sign-up again. They can simply use ([sign-in](#passkeys-1)) with their existing passkey to authenticate.
+
+### Options
+
+Passkey sign-up can be customized with a handful of options. These let you control how long a session lasts, how the passkey is displayed to the user, and whether you want to track progress in your own UI.
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `maxTimeToLiveInMilliseconds` | `number` | **4 hours** | Maximum lifetime of the user's session in **milliseconds**. Once expired, the session cannot be extended. |
+| `onProgress` | `(progress) => void` |     | Callback fired at each step of the sign-up flow (e.g., creating credential, validating, signing). Useful if you want to show progress indicators in your UI. |
+| `passkey` | `CreatePasskeyOptions` |     | Options for how the passkey should be created. |
+
+The `passkey` option accepts the following fields:
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `appId.id` | `string` | Current URL `hostname` | Domain your passkeys are tied to (e.g., `example.com` or `login.example.com`). Subdomains are supported. |
+| `user.displayName` | `string` | `document.title` | Friendly name for the account (e.g., `"Maria Sanchez"`). Helps the user recognize which passkey belongs to them. |
+| `user.name` | `string` | `displayName` | User-recognizable account identifier (e.g., email, username, or phone number). Distinguishes between accounts. |
+
+Example with options:
+
+```
+import { signUp } from "@junobuild/core";await signUp({  webauthn: {    options: {      maxTimeToLiveInMilliseconds: 1000 * 60 * 60, // 1 hour      onProgress: ({ step, state }) => {        console.log("Step:", step, "State:", state);      },      passkey: {        displayName: "My Cool App" // or user input      }    }  }});
+```
+
+**Tip:**
+
+It's common to let the user choose a nickname during sign-up.
+
+This nickname can be passed as the `displayName` in the `passkey` option so the passkey is easy to recognize the next time they sign in (e.g. in iCloud Keychain or Google Password Manager).
+
+---
+
+## Sign-in
+
+Returning users sign in using the digital key previously created on their device — for example in the browser, iCloud Keychain, Google Password Manager, etc.
+
+The user will be asked to use their authenticator to prove possession of the passkey and re-establish a valid session with your satellite.
+
+```
+import { signIn } from "@junobuild/core";await signIn({  webauthn: {}});
+```
+
+**Note:**
+
+New users must first go through ([sign-up](#passkeys)) to create a passkey before they can sign in.
+
+### Options
+
+Passkey sign-in can also be customized with options similar to sign-up. These let you control how long a session lasts and whether you want to track progress in your own UI.
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `maxTimeToLiveInMilliseconds` | `number` | **4 hours** | Maximum lifetime of the user's session in **milliseconds**. Once expired, the session cannot be extended. |
+| `onProgress` | `(progress) => void` |     | Callback fired at each step of the sign-up flow (e.g., fetching credential, validating, signing). Useful to customize your UI. |
+
+Example with options:
+
+```
+import { signIn } from "@junobuild/core";await signIn({  webauthn: {    options: {      maxTimeToLiveInMilliseconds: 1000 * 60 * 60, // 1 hour      onProgress: ({ step, state }) => {        console.log("Step:", step, "State:", state);      }    }  }});
+```
+
+---
+
+## Context
+
+In addition to the options above, some settings apply to both sign-up and sign-in flows themselves.
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `windowGuard` | `boolean` | `true` | Prevents the user from closing the current window/tab while the flow is in progress. Disabling it is discouraged. |
+
+---
+
+## Checking Availability
+
+Not every browser or device supports Passkeys. You can check availability before showing a sign-up or sign-in button with:
+
+```
+import { isWebAuthnAvailable } from "@junobuild/core";if (await isWebAuthnAvailable()) {  // Show Passkey sign-up option}
+```
+
+---
+
+## Recommendations
+
+*   Passkeys work best for users who expect a simple, device-native login experience.
+*   Always check for WebAuthn support before showing a Passkey option.
+*   Combine Passkeys with other providers (like [Google](/docs/build/authentication/google.md) or [Internet Identity](/docs/build/authentication/internet-identity.md)) to cover both mainstream and decentralized use cases.
+*   Avoid changing your app's domain setup after users have registered, as identities are tied to the original domain scope.
+
+# Authentication Utilities
+
+These utilities work with **any authentication provider**.
+
+They let you manage user sessions, react to authentication changes, and access identities for advanced use cases.
+
+---
+
+## Sign-out
+
+You can end a user's session, no matter which provider they used to sign in, by logging them out.
+
+```
+import { signOut } from "@junobuild/core";await signOut();
+```
+
+By default, the page will automatically reload after a successful sign-out. This is a common pattern in logout flows that ensures the application restarts from a clean state.
+
+If you wish to opt out, the library does clear its internal state and authentication before the reload, and you can use the `windowReload` option set to `false`.
+
+```
+import { signOut } from "@junobuild/core";await signOut({ windowReload: false });
+```
+
+---
+
+## Listening to Auth Changes
+
+You can monitor when a user signs in or out using `onAuthStateChange`. It gives you the current user and notifies you whenever their authentication state changes.
+
+```
+import { onAuthStateChange } from "@junobuild/core";// Reactively track if the user is signed in or signed outonAuthStateChange((user: User | null) => {  console.log("User:", user);});
+```
+
+If you register the subscriber at the top of your application, it will automatically reflect the user's state:
+
+*   `null` when the app first loads and the user is not signed in
+*   A `User` object when they sign in or refresh while authenticated
+*   `null` again when they sign out
+
+To stop listening, you can call the unsubscribe function returned:
+
+```
+import { onAuthStateChange } from "@junobuild/core";const unsubscribe = onAuthStateChange((user: User | null) => {  console.log("User:", user);});// Stop listeningunsubscribe();
+```
+
+---
+
+## Imperative Access to Identity
+
+For advanced use cases, you may need direct access to the user's identity. You can use `getIdentityOnce` to retrieve the identity if the user is currently authenticated.
+
+**Caution:**
+
+Use this function **imperatively only**. Do **not** persist the identity in global state or store it for reuse. This function is intended for short-lived, one-time operations only.
+
+```
+import { getIdentityOnce } from "@junobuild/core";// Returns null if the user is not authenticatedconst identity = await getIdentityOnce();if (identity !== null) {  // Use the identity to perform calls on the Internet Computer}
+```
+
+Typical use case for this function is to enable developers to implement custom features for the Internet Computer:
+
+*   Passing the identity to temporarily create an actor or agent to call a canister
+*   Signing a message or making a one-time authenticated call
+
+---
+
+## Session Expiration
+
+To proactively detect when a session duration expires, you can use the pre-bundled Web Worker provided by Juno's SDK.
+
+To do so, you can follow these steps:
+
+1.  Copy the worker file provided by Juno's SDK to your app's static folder. For example, to your `public` folder with a NPM `postinstall` script:
+
+```
+{  "scripts": {    "postinstall": "node -e \"require('fs').cpSync('node_modules/@junobuild/core/dist/workers/', './static/workers', {recursive: true});\""  }}
+```
+
+Once configured, run `npm run postinstall` manually to trigger the initial copy. Every time you run `npm ci`, the post-install target will execute, ensuring the worker is copied.
+
+2.  Enable the option when you initialize Juno:
+
+```
+import { initSatellite } from "@junobuild/core";await initSatellite({  workers: {    auth: true  }});
+```
+
+The `auth` option can accept either `true`, which will default to using a worker located at [https://yourapp/workers/auth.worker.js](https://yourapp/workers/auth.worker.js), or a custom `string` to provide your own URL.
+
+When the session expires, it will automatically be terminated with a standard [sign-out](/docs/build/authentication/utilities.md#sign-out). Additionally, an event called `junoSignOutAuthTimer` will be thrown at the `document` level. This event can be used, for example, to display a warning to your users or if you wish to reload the window.
+
+```
+document.addEventListener(  "junoSignOutAuthTimer",  () => {    // Display an information to your users  },  { passive: true });
+```
+
+The worker also emits an event named `junoDelegationRemainingTime`, which provides the remaining duration in milliseconds of the authentication delegation. This can be useful if you want to display to your users how much time remains in their active session.
+
+```
+document.addEventListener(  "junoDelegationRemainingTime",  ({ detail: remainingTime }) => {    // Display the remaining session duration to your users  },  { passive: true });
+```
 
 # Collections
 
@@ -3149,9 +3412,9 @@ The following functions from `@junobuild/core` are used in this example:
 | Function | Purpose/Description | Where Used (File/Component) | Juno Docs/Source Reference |
 | --- | --- | --- | --- |
 | `initSatellite` | Initialize Juno Satellite container | [`src/app/app.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/app.component.ts) | [Initialization](/docs/setup-the-sdk.md#initialization) |
-| `onAuthStateChange` | Subscribe to auth state changes | [`src/app/services/auth.service.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/services/auth.service.ts) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
-| `signIn` | Sign in user | [`src/app/components/login/login.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/login/login.component.ts) | [Sign-in](/docs/build/authentication/development.md#sign-in) |
-| `signOut` | Sign out user | [`src/app/components/logout/logout.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/logout/logout.component.ts) | [Sign-out](/docs/build/authentication/development.md#sign-out) |
+| `onAuthStateChange` | Subscribe to auth state changes | [`src/app/services/auth.service.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/services/auth.service.ts) | [Listening to Auth Changes](/docs/build/authentication/utilities.md#listening-to-auth-changes) |
+| `signIn` | Sign in user | [`src/app/components/login/login.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/login/login.component.ts) | [Sign-in](/docs/build/authentication/internet-identity.md#sign-in) |
+| `signOut` | Sign out user | [`src/app/components/logout/logout.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/logout/logout.component.ts) | [Sign-out](/docs/build/authentication/utilities.md#sign-out) |
 | `listDocs` | List documents in a collection | [`src/app/services/docs.service.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/services/docs.service.ts) | [List documents](/docs/build/datastore/development.md#list-documents) |
 | `setDoc` | Create or update a document | [`src/app/components/modal/modal.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/modal/modal.component.ts) | [Add a document](/docs/build/datastore/development.md#add-a-document) |
 | `deleteDoc` | Delete a document | [`src/app/components/delete/delete.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/delete/delete.component.ts) | [Delete a document](/docs/build/datastore/development.md#delete-a-document) |
@@ -3279,9 +3542,9 @@ The following functions from `@junobuild/core` are used in this example:
 | Function | Purpose/Description | Where Used (File/Component) | Juno Docs/Source Reference |
 | --- | --- | --- | --- |
 | `initSatellite` | Initialize Juno Satellite container | [`src/app/page.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/app/page.tsx) | [Initialization](/docs/setup-the-sdk.md#initialization) |
-| `onAuthStateChange` | Subscribe to auth state changes | [`src/components/auth.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/auth.tsx) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
-| `signIn` | Sign in user | [`src/components/login.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/login.tsx) | [Sign-in](/docs/build/authentication/development.md#sign-in) |
-| `signOut` | Sign out user | [`src/components/logout.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/logout.tsx) | [Sign-out](/docs/build/authentication/development.md#sign-out) |
+| `onAuthStateChange` | Subscribe to auth state changes | [`src/components/auth.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/auth.tsx) | [Listening to Auth Changes](/docs/build/authentication/utilities.md#listening-to-auth-changes) |
+| `signIn` | Sign in user | [`src/components/login.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/login.tsx) | [Sign-in](/docs/build/authentication/internet-identity.md#sign-in) |
+| `signOut` | Sign out user | [`src/components/logout.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/logout.tsx) | [Sign-out](/docs/build/authentication/utilities.md#sign-out) |
 | `listDocs` | List documents in a collection | [`src/components/table.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/table.tsx) | [List documents](/docs/build/datastore/development.md#list-documents) |
 | `setDoc` | Create or update a document | [`src/components/modal.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/modal.tsx) | [Add a document](/docs/build/datastore/development.md#add-a-document) |
 | `deleteDoc` | Delete a document | [`src/components/delete.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/delete.tsx) | [Delete a document](/docs/build/datastore/development.md#delete-a-document) |
@@ -3413,9 +3676,9 @@ The following functions from `@junobuild/core` are used in this example:
 | Function | Purpose/Description | Where Used (File/Component) | Juno Docs/Source Reference |
 | --- | --- | --- | --- |
 | `initSatellite` | Initialize Juno Satellite container | [`src/App.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/App.jsx) | [Initialization](/docs/setup-the-sdk.md#initialization) |
-| `onAuthStateChange` | Subscribe to auth state changes | [`src/components/Auth.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Auth.jsx) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
-| `signIn` | Sign in user | [`src/components/Login.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Login.jsx) | [Sign-in](/docs/build/authentication/development.md#sign-in) |
-| `signOut` | Sign out user | [`src/components/Logout.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Logout.jsx) | [Sign-out](/docs/build/authentication/development.md#sign-out) |
+| `onAuthStateChange` | Subscribe to auth state changes | [`src/components/Auth.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Auth.jsx) | [Listening to Auth Changes](/docs/build/authentication/utilities.md#listening-to-auth-changes) |
+| `signIn` | Sign in user | [`src/components/Login.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Login.jsx) | [Sign-in](/docs/build/authentication/internet-identity.md#sign-in) |
+| `signOut` | Sign out user | [`src/components/Logout.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Logout.jsx) | [Sign-out](/docs/build/authentication/utilities.md#sign-out) |
 | `listDocs` | List documents in a collection | [`src/components/Table.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Table.jsx) | [List documents](/docs/build/datastore/development.md#list-documents) |
 | `setDoc` | Create or update a document | [`src/components/Modal.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Modal.jsx) | [Add a document](/docs/build/datastore/development.md#add-a-document) |
 | `deleteDoc` | Delete a document | [`src/components/Delete.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Delete.jsx) | [Delete a document](/docs/build/datastore/development.md#delete-a-document) |
@@ -3547,9 +3810,9 @@ The following functions from `@junobuild/core` are used in this example:
 | Function | Purpose/Description | Where Used (File/Component) | Juno Docs/Source Reference |
 | --- | --- | --- | --- |
 | `initSatellite` | Initialize Juno Satellite container | [`src/App.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/App.tsx) | [Initialization](/docs/setup-the-sdk.md#initialization) |
-| `onAuthStateChange` | Subscribe to auth state changes | [`src/components/Auth.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Auth.tsx) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
-| `signIn` | Sign in user | [`src/components/Login.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Login.tsx) | [Sign-in](/docs/build/authentication/development.md#sign-in) |
-| `signOut` | Sign out user | [`src/components/Logout.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Logout.tsx) | [Sign-out](/docs/build/authentication/development.md#sign-out) |
+| `onAuthStateChange` | Subscribe to auth state changes | [`src/components/Auth.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Auth.tsx) | [Listening to Auth Changes](/docs/build/authentication/utilities.md#listening-to-auth-changes) |
+| `signIn` | Sign in user | [`src/components/Login.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Login.tsx) | [Sign-in](/docs/build/authentication/internet-identity.md#sign-in) |
+| `signOut` | Sign out user | [`src/components/Logout.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Logout.tsx) | [Sign-out](/docs/build/authentication/utilities.md#sign-out) |
 | `listDocs` | List documents in a collection | [`src/components/Table.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Table.tsx) | [List documents](/docs/build/datastore/development.md#list-documents) |
 | `setDoc` | Create or update a document | [`src/components/Modal.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Modal.tsx) | [Add a document](/docs/build/datastore/development.md#add-a-document) |
 | `deleteDoc` | Delete a document | [`src/components/Delete.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Delete.tsx) | [Delete a document](/docs/build/datastore/development.md#delete-a-document) |
@@ -3678,9 +3941,9 @@ The following functions from `@junobuild/core` are used in this example:
 | Function | Purpose/Description | Where Used (File/Component) | Juno Docs/Source Reference |
 | --- | --- | --- | --- |
 | `initSatellite` | Initialize Juno Satellite container | [`src/routes/+layout.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/routes/+layout.svelte) | [Initialization](/docs/setup-the-sdk.md#initialization) |
-| `onAuthStateChange` | Subscribe to auth state changes | [`src/lib/components/Auth.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Auth.svelte) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
-| `signIn` | Sign in user | [`src/lib/components/Login.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Login.svelte) | [Sign-in](/docs/build/authentication/development.md#sign-in) |
-| `signOut` | Sign out user | [`src/lib/components/Logout.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Logout.svelte) | [Sign-out](/docs/build/authentication/development.md#sign-out) |
+| `onAuthStateChange` | Subscribe to auth state changes | [`src/lib/components/Auth.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Auth.svelte) | [Listening to Auth Changes](/docs/build/authentication/utilities.md#listening-to-auth-changes) |
+| `signIn` | Sign in user | [`src/lib/components/Login.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Login.svelte) | [Sign-in](/docs/build/authentication/internet-identity.md#sign-in) |
+| `signOut` | Sign out user | [`src/lib/components/Logout.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Logout.svelte) | [Sign-out](/docs/build/authentication/utilities.md#sign-out) |
 | `listDocs` | List documents in a collection | [`src/lib/components/Table.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Table.svelte) | [List documents](/docs/build/datastore/development.md#list-documents) |
 | `setDoc` | Create or update a document | [`src/lib/components/Modal.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Modal.svelte) | [Add a document](/docs/build/datastore/development.md#add-a-document) |
 | `deleteDoc` | Delete a document | [`src/lib/components/Delete.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Delete.svelte) | [Delete a document](/docs/build/datastore/development.md#delete-a-document) |
@@ -3807,9 +4070,9 @@ The following functions from `@junobuild/core` are used in this example:
 | Function | Purpose/Description | Where Used (File/Component) | Juno Docs/Source Reference |
 | --- | --- | --- | --- |
 | `initSatellite` | Initialize Juno Satellite container | [`src/main.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/main.js) | [Initialization](/docs/setup-the-sdk.md#initialization) |
-| `onAuthStateChange` | Subscribe to auth state changes | [`src/main.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/main.js), [`src/components/modal.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/modal.js) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
-| `signIn` | Sign in user | [`src/components/login.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/login.js) | [Sign-in](/docs/build/authentication/development.md#sign-in) |
-| `signOut` | Sign out user | [`src/components/logout.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/logout.js) | [Sign-out](/docs/build/authentication/development.md#sign-out) |
+| `onAuthStateChange` | Subscribe to auth state changes | [`src/main.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/main.js), [`src/components/modal.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/modal.js) | [Listening to Auth Changes](/docs/build/authentication/utilities.md#listening-to-auth-changes) |
+| `signIn` | Sign in user | [`src/components/login.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/login.js) | [Sign-in](/docs/build/authentication/internet-identity.md#sign-in) |
+| `signOut` | Sign out user | [`src/components/logout.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/logout.js) | [Sign-out](/docs/build/authentication/utilities.md#sign-out) |
 | `listDocs` | List documents in a collection | [`src/components/table.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/table.js) | [List documents](/docs/build/datastore/development.md#list-documents) |
 | `setDoc` | Create or update a document | [`src/components/modal.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/modal.js) | [Add a document](/docs/build/datastore/development.md#add-a-document) |
 | `deleteDoc` | Delete a document | [`src/components/delete.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/delete.js) | [Delete a document](/docs/build/datastore/development.md#delete-a-document) |
@@ -3938,9 +4201,9 @@ The following functions from `@junobuild/core` are used in this example:
 | Function | Purpose/Description | Where Used (File/Component) | Juno Docs/Source Reference |
 | --- | --- | --- | --- |
 | `initSatellite` | Initialize Juno Satellite container | [`src/App.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/App.vue) | [Initialization](/docs/setup-the-sdk.md#initialization) |
-| `onAuthStateChange` | Subscribe to auth state changes | [`src/stores/auth.store.ts`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/stores/auth.store.ts) | [Listening to Auth Changes](/docs/build/authentication/development.md#listening-to-auth-changes) |
-| `signIn` | Sign in user | [`src/components/Login.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Login.vue) | [Sign-in](/docs/build/authentication/development.md#sign-in) |
-| `signOut` | Sign out user | [`src/components/Logout.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Logout.vue) | [Sign-out](/docs/build/authentication/development.md#sign-out) |
+| `onAuthStateChange` | Subscribe to auth state changes | [`src/stores/auth.store.ts`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/stores/auth.store.ts) | [Listening to Auth Changes](/docs/build/authentication/utilities.md#listening-to-auth-changes) |
+| `signIn` | Sign in user | [`src/components/Login.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Login.vue) | [Sign-in](/docs/build/authentication/internet-identity.md#sign-in) |
+| `signOut` | Sign out user | [`src/components/Logout.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Logout.vue) | [Sign-out](/docs/build/authentication/utilities.md#sign-out) |
 | `listDocs` | List documents in a collection | [`src/components/Table.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Table.vue) | [List documents](/docs/build/datastore/development.md#list-documents) |
 | `setDoc` | Create or update a document | [`src/components/Modal.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Modal.vue) | [Add a document](/docs/build/datastore/development.md#add-a-document) |
 | `deleteDoc` | Delete a document | [`src/components/Delete.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Delete.vue) | [Delete a document](/docs/build/datastore/development.md#delete-a-document) |
