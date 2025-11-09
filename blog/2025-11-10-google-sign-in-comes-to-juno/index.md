@@ -17,7 +17,7 @@ tags:
 image: https://juno.build/assets/images/passkeys-authentication-is-here-43c5075d7199d322001387e171adbe87.webp
 ---
 
-![](google-sign-in-comes-to-juno.webp)
+![](all-hail-to-do-not-be-evil.webp)
 
 ---
 
@@ -33,7 +33,7 @@ Today marks quite a milestone and I'm excited to share that Google Sign-In is no
 
 From my perspective, though time will tell, this update has the potential to be a real game changer. It brings what users expect: a familiar, secure, and frictionless authentication flow.
 
-I'm also really happy to ship this feature again without compromising on the core values: providing developers secure features and modern tools with a state-of-the-art developer experience, while empowering them with full control over a cloud-native serverless infrastructure.
+It might sound a bit ironic at first - we're integrating Google, after all - but I'm genuinely happy to ship this feature without compromising on the core values: providing developers secure features and modern tools with a state-of-the-art developer experience, while empowering them with full control over a cloud-native serverless infrastructure.
 
 Let's see how it all comes together.
 
