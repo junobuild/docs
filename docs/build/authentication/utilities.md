@@ -96,7 +96,6 @@ Typical use case for this function is to enable developers to implement custom f
 
 ---
 
-
 ## Session Expiration
 
 To proactively detect when a session duration expires, you can use the pre-bundled Web Worker provided by Juno's SDK.
@@ -152,4 +151,3 @@ document.addEventListener(
   { passive: true }
 );
 ```
-
