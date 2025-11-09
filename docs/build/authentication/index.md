@@ -67,21 +67,21 @@ Each authentication method has its strengths. The right choice depends not only 
   - ✅ Familiar and frictionless login with a trusted provider.
   - ✅ Works across devices and browsers - no domain scoping required.
   - ✅ Supports account recovery and multi-device sync.
-  - 🤔 Relies on Google’s infrastructure and policies.
-  - ❌ Not decentralized - users authenticate via Google’s identity layer.
+  - 🤔 Depends on Google's infrastructure and availability.
+  - 🤔 Slightly higher resource usage on your Satellite and per extension costs, since it must validate and sign external identities.
 
 - **Internet Identity**:
   - ✅ Fully decentralized and privacy-preserving.
   - ✅ Prevents tracking between domains.
   - 🤔 Requires a brief context switch to an external window.
-  - ❌ Domain scoping requires correct configuration.
-  - ❌ Less known outside the Internet Computer ecosystem.
+  - 🤔 Domain scoping requires correct configuration.
+  - 🤔 Less known outside the Internet Computer ecosystem.
 
 - **Passkeys**:
   - ✅ Passwordless and device-native (Face ID, Touch ID, etc.).
   - ✅ Familiar Web2-like UX with strong cryptographic security.
   - 🤔 Users must distinguish between sign-up and sign-in flows.
-  - ❌ Passkeys stored locally can be lost if the browser or device is reset.
-  - ❌ Sync depends on Apple or Google password managers.
+  - 🤔 Passkeys stored locally can be lost if the browser or device is reset.
+  - 🤔 Sync depends on Apple or Google password managers.
 
 > 💡 **Tip:** Many developers combine multiple providers - for example, offering Google as the default and Internet Identity or Passkeys as privacy-first alternatives.
