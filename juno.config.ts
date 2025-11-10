@@ -227,6 +227,16 @@ const redirects: StorageConfigRedirect[] = [
     source: "/docs/miscellaneous/controllers",
     location: "/docs/miscellaneous/access-keys",
     code: 301
+  },
+  {
+    source: "docs/build/authentication/development",
+    location: "/docs/build/authentication/",
+    code: 301
+  },
+  {
+    source: "docs/build/authentication/customization",
+    location: "/docs/build/authentication/utilities",
+    code: 301
   }
 ];
 

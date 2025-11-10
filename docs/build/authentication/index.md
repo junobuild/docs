@@ -1,25 +1,30 @@
 ---
-description: Learn how to securely identify users anonymously and save their data in containers you own and control using Juno's authentication services.
-keywords:
-  [
+description: Learn how to securely identify users and save their data in containers you own and control using Juno's authentication services.
+keywords: [
     authentication,
     secure user identification,
     user identity,
     Internet Identity,
     Passkey,
     WebAuthn
+    Google Sign-In,
+    OpenID Connect
   ]
 ---
 
 # Authentication
 
-Juno allows you to securely identify users anonymously, without passwords and without tracking.
+Juno provides a secure, passwordless authentication framework built directly into your project. It supports multiple providers out of the box, including:
 
-You can choose between [Passkeys](development.md#passkeys) for built-in authentication method, or integrate third-party providers like [Internet Identity](development.md#internet-identity).
+- [Google](google.md) - secure and familiar login
+- [Internet Identity](internet-identity.md) - decentralized, privacy-preserving authentication
+- [Passkeys](passkeys.md) - passwordless, device-native authentication using WebAuthn
 
-Authentication works hand-in-hand with other Juno services like [Datastore](../datastore/index.mdx) and [Storage](../storage/index.mdx).
+It integrates seamlessly with your [Datastore](../datastore/index.mdx) and [Storage](../storage/index.mdx) to power the rich features you are building.
 
-You can see and manage your users anytime in the [authentication](https://console.juno.build/authentication) view of the Console.
+Whether you need decentralized login, device-native passkeys, or a familiar OAuth-based sign-in, Juno - by extension your project and its Satellite - handles the complexity for you so you can focus on your app instead of managing user accounts, sessions, and sensitive data.
+
+You can view and manage your users anytime in the [Authentication](https://console.juno.build/authentication)
 
 ![An overview of the anonymous display of the users in Juno Console](../../img/satellite/authentication.webp)
 
@@ -34,7 +39,7 @@ That identity is what ties them to the data they create and the actions they tak
 Identities are:
 
 - **Anonymous**: they don't expose personal info.
-- **Scoped**: they are unique to the domain (or subdomain) where the user signs in.
+- **Scoped to your app**: users can't be tracked across other sites or services.
 
 Together, this makes authentication privacy-friendly by default and predictable for developers.
 
@@ -52,49 +57,38 @@ For example, a passkey created on `hello.com` will also work on `www.hello.com`,
 
 You can change this in the sign-up options if you want it to cover a different domain than the one read from the browser's URL. For example, you may want to use the top-level domain when signing in on a subdomain. You cannot specify a totally different domain.
 
-### Internet Identity
-
-With Internet Identity, a user's identity is created separately for each domain.
-
-If a user signs in on two different domains, they will be treated as two separate users by default. The same applies to subdomains: signing in on `hello.com` and `www.hello.com` creates two different identities unless you configure a primary domain.
-
-The first custom domain you add in the Console is automatically set as the primary domain. You can change this setting later in Authentication, but we don't recommend it once users have already registered, since their identities are not migrated when the configuration changes.
-
-To let users keep the same identity across domains, you must also configure your frontend app to specify the main domain at sign-in. This is known as the "derivation origin" (or "alternative origins").
-
-### Recommendation
-
-If you're unsure which domain to use as the primary domain, here are two common approaches:
-
-- **Use your custom domain** (e.g. `mydomain.com`) if you're confident it will remain the main entry point for users. This ensures a consistent user experience — users will always see and recognize the same URL when signing in.
-
-- Alternatively, stick with **the default domain** (`{satellite-id}.icp0.io`) if:
-  - You're still experimenting with your domain setup and might change it later.
-  - You're not ready to commit to a long-term domain.
-  - You plan to host multiple satellites under different domains and don't want to tie user identity to just one.
-
-Choosing the right derivation origin early helps avoid identity issues later, but both approaches are valid depending on your goals.
-
 ---
 
 ## Choosing a Provider
 
 Each authentication method has its strengths. The right choice depends not only on your app's technical needs, but also on what your users expect and feel comfortable with.
 
-- **Passkeys**:
-  - ✅ Best for mainstream users who expect a familiar, frictionless login with Face ID, Touch ID, or device unlock.
-  - ✅ Great when you want a Web2-like UX but with stronger security.
-  - 🤔 Users must explicitly choose between sign-up and sign-in, which can add friction if not guided.
-  - ❌ Without syncing to iCloud or Google Password Manager, a passkey stored only in the browser can be lost if the browser is reset or uninstalled.
-  - ❌ When using a manager, users must trust Apple/Google and other big tech for privacy preservation and safekeeping of their passkey.
+- **Google**:
+  - ✅ Familiar and frictionless login with a trusted provider.
+  - ✅ Works across devices and browsers in all your applications.
+  - ✅ Supports account recovery and multi-device sync.
+  - 🤔 Depends on Google's infrastructure and availability.
+  - 🤔 Slightly higher resource usage on your Satellite and per extension costs, since it must verify tokens issued by Google and sign identities.
 
 - **Internet Identity**:
-  - ✅ Best if you want users to authenticate with a fully decentralized and privacy-preserving identity.
-  - ✅ Provides strong guarantees against tracking between domains.
-  - 🤔 Requires context switching to an external window.
-  - ❌ Limited awareness among mainstream users beyond the Internet Computer community.
-  - ❌ Domain scoping can be confusing if misconfigured.
+  - ✅ Fully decentralized and privacy-preserving.
+  - ✅ Prevents tracking between domains.
+  - ✅ Supports account recovery.
+  - 🤔 Requires a brief context switch to an external window.
+  - 🤔 Domain scoping requires correct configuration.
+  - 🤔 When users choose to sign in with a third party (Google, Apple, etc.), it also depends on their infrastructure and availability. Plus, it relies on configured credentials owned by the DFINITY Foundation.
+  - 🤔 Less known outside the Internet Computer ecosystem.
 
-In practice, we expect many developers will implement both Passkeys and Internet Identity side by side. This approach gives users the choice between a device-native login flow and an Internet Computer–native identity, covering a wider range of expectations.
+- **Passkeys**:
+  - ✅ Passwordless and device-native (Face ID, Touch ID, etc.).
+  - ✅ Familiar Web2-like UX with strong cryptographic security.
+    ✅ Supports multi-device sync through password managers.
+  - 🤔 Users must distinguish between sign-up and sign-in flows.
+  - 🤔 Sync depends on Apple or Google password managers and their infrastructure.
+  - ⚠️ Passkeys stored locally can be lost if the browser or device is reset.
 
-Ultimately, the choice should be guided by the audience you're targeting and how strongly you weigh the considerations outlined above.
+:::tip
+
+Many developers combine multiple providers - for example, offering Google as the default and Internet Identity or Passkeys as alternatives.
+
+:::

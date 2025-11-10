@@ -30,8 +30,10 @@ const sidebars: SidebarsConfig = {
             id: "build/authentication/index"
           },
           items: [
-            "build/authentication/development",
-            "build/authentication/customization",
+            "build/authentication/google",
+            "build/authentication/internet-identity",
+            "build/authentication/passkeys",
+            "build/authentication/utilities",
             "build/authentication/management"
           ]
         },
