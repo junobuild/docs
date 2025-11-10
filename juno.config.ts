@@ -229,12 +229,12 @@ const redirects: StorageConfigRedirect[] = [
     code: 301
   },
   {
-    source: "docs/build/authentication/development",
+    source: "/docs/build/authentication/development",
     location: "/docs/build/authentication/",
     code: 301
   },
   {
-    source: "docs/build/authentication/customization",
+    source: "/docs/build/authentication/customization",
     location: "/docs/build/authentication/utilities",
     code: 301
   }
