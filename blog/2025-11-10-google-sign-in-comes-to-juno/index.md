@@ -163,6 +163,22 @@ if (isGoogleUser(user)) {
 
 ---
 
+## 🛠️ Managing Users
+
+Once users start signing in, you can view and manage them directly in the **Authentication** section of the [Console](https://console.juno.build).
+
+Each user entry displays key details such as:
+
+- Name and email address
+- Authentication provider
+- Profile picture (if available)
+
+This view also lets you filter, sort, refresh or ban users etc.
+
+![Screenshot of the Juno Console showing users authenticated with Google](./auth-view-with-signed-in-users.webp)
+
+---
+
 ## 📚 Learn More
 
 You can find all the details - including setup, configuration, and advanced options - in the documentation:
