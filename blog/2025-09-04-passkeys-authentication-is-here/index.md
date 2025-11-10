@@ -179,10 +179,10 @@ Passkeys are now available, alongside updates to the authentication JS APIs. Wit
 
 Check out the updated documentation for details on:
 
-- [signUp](/docs/build/authentication/development#sign-up)
-- [signIn](/docs/build/authentication/development#sign-in)
-- [signOut](/docs/build/authentication/development#sign-out)
-- [onAuthStateChange](/docs/build/authentication/development#listening-to-auth-changes)
+- [signUp](/docs/build/authentication/passkeys#sign-up)
+- [signIn](/docs/build/authentication/passkeys#sign-in)
+- [signOut](/docs/build/authentication/utilities#sign-out)
+- [onAuthStateChange](/docs/build/authentication/utilities#listening-to-auth-changes)
 
 ---
 
