@@ -14,7 +14,7 @@ tags:
     javascript,
     sdk
   ]
-image: https://juno.build/assets/images/passkeys-authentication-is-here-43c5075d7199d322001387e171adbe87.webp
+image: https://juno.build/assets/images/all-hail-to-do-not-be-evil-673e40ac0b2363c66c4015b00d038d84.webp
 ---
 
 ![](all-hail-to-do-not-be-evil.webp)
