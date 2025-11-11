@@ -42,10 +42,16 @@ export default function Testimonials(): JSX.Element {
       text: "I know you will love it when you try it out. I was amazed by how it is very easy to deploy an app on Juno."
     },
     {
-      name: "Swissy ∞",
-      twitter: "swissy_icp",
-      img: "https://pbs.twimg.com/profile_images/1870241290094301184/StoU-tQ6_400x400.jpg",
-      text: "I’m still amazed at how Juno has simplified the development process on ICP. It’s like a magic wand for devs - I get to focus on frontend and Juno handles the rest."
+      name: "marco ∞",
+      twitter: "marc0olo",
+      img: "https://pbs.twimg.com/profile_images/1831053462672384001/pWl-giV1_400x400.jpg",
+      text: "Juno is the best platform to host full-stack web applications where you stay sovereign and remove any dependency from big tech cloud providers 💪."
+    },
+    {
+      name: "Nezovskii Konstantin",
+      twitter: "nezovskii",
+      img: "https://pbs.twimg.com/profile_images/1673509145104850945/V87HzJPL_400x400.jpg",
+      text: "If you're looking to start building on ICP, you definitely need to check out Juno! It's been a game-changer for me."
     },
     {
       name: "Coti",
@@ -54,10 +60,10 @@ export default function Testimonials(): JSX.Element {
       text: "Thanks to Juno's well-documented get-started guide, we had it up and running in under 5 minutes. Our first decentralized analytics tool is now live and kicking!"
     },
     {
-      name: "Nezovskii Konstantin",
-      twitter: "nezovskii",
-      img: "https://pbs.twimg.com/profile_images/1673509145104850945/V87HzJPL_400x400.jpg",
-      text: "If you're looking to start building on ICP, you definitely need to check out Juno! It's been a game-changer for me."
+      name: "Swissy ∞",
+      twitter: "swissy_icp",
+      img: "https://pbs.twimg.com/profile_images/1870241290094301184/StoU-tQ6_400x400.jpg",
+      text: "I’m still amazed at how Juno has simplified the development process on ICP. It’s like a magic wand for devs - I get to focus on frontend and Juno handles the rest."
     },
     {
       name: "DFINITY Developers ∞",
