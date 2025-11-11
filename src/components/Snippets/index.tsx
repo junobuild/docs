@@ -68,7 +68,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Authentication"
-              text="Maximize security and privacy with anonymous decentralyzed user access."
+              text="Add privacy-first authentication to your app."
               link={
                 <Link to="/docs/build/authentication" className={styles.link}>
                   Learn more
@@ -86,7 +86,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Datastore"
-              text="Store data in a simple key-value model, organized by collections of documents."
+              text="SStore JSON documents in collections with a simple key–value model."
               link={
                 <Link to="/docs/build/datastore" className={styles.link}>
                   Learn more
@@ -104,7 +104,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Storage"
-              text="Easily upload and serve user-generated content, such as files, and images."
+              text="Upload and serve user-generated files and images with access control."
               link={
                 <Link to="/docs/build/storage" className={styles.link}>
                   Learn more
@@ -122,7 +122,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Hosting"
-              text="Serve your app globally with custom domains. No infra, just config."
+              text="Serve your app globally on custom domains. No infra, just config."
               link={
                 <Link to="/docs/build/hosting" className={styles.link}>
                   Learn more
@@ -140,7 +140,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Functions"
-              text="Extend Juno's features and develop custom serverless functions."
+              text="Run serverless functions in Rust or TypeScript with hooks and assertions."
               link={
                 <Link to="/docs/build/functions" className={styles.link}>
                   Learn more
@@ -158,7 +158,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Analytics"
-              text="Gather valuable insights with simple, open-source web analytics that don't use cookies."
+              text="Capture privacy-friendly, open-source web analytic. No cookies."
               link={
                 <Link to="/docs/build/analytics" className={styles.link}>
                   Learn more

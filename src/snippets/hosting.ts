@@ -1,12 +1,11 @@
 export const code = {
   lang: "language-javascript",
-  value: `// Hosting behavior can be configured using 
-// JavaScript, TypeScript, or JSON configuration files
+  value: `// Configure hosting - and the rest of your setup -
+// using a familiar JavaScript or TypeScript define pattern.
 import { defineConfig } from "@junobuild/config";
 
-// Data is served directly from the blockchain 
-// without compromising web functionality. 
-// Headers, redirects, rewrites, 404s, etc., are supported.
+// Serve static assets directly from your container -
+// full web behavior supported: headers, redirects, 404, and more.
 export default defineConfig({
   satellite: {
     ids: {

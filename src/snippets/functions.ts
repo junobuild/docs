@@ -1,8 +1,7 @@
 export const code = {
   lang: "language-rust",
   value: `// --------------------------------------------------
-// You can supercharge Juno's capabilities
-// by developing serverless features in Rust
+// Extend Juno with serverless functions written in Rust
 // --------------------------------------------------
 #[on_set_doc(collection = ["notes"])]
 fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
@@ -12,7 +11,7 @@ fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
   print(format!("Name: {}", data.name));
 }
 
-// You can also define your own assertions
+// Define custom assertions to protect your data
 #[assert_delete_doc(collections = ["answers"])]
 fn assert_delete_doc(_: AssertDeleteDocContext) -> Result<(), String> {
     Err("Deletion not authorized".to_string())
