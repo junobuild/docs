@@ -17,7 +17,7 @@ export default function Hero(): JSX.Element {
 
     const timeout = setTimeout(() => {
       typed = new Typed(el.current, {
-        strings: ["Run", "Ship", "Build"],
+        strings: ["Run", "Ship", "Build", "Host"],
         typeSpeed: 50,
         backSpeed: 50,
         backDelay: 3500,
