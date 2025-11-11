@@ -5,8 +5,7 @@ export const code = {
 const collection = "my_collection";
 const key = crypto.randomUUID();
 
-// Set a document by specifying its collection,
-// key, and data.
+// Create or update a document
 await setDoc({
   collection,
   doc: {
@@ -17,13 +16,13 @@ await setDoc({
   },
 });
 
-// Retrieve a document by collection and key
+// Retrieve a document by its collection and key
 const myDoc = await getDoc({
   collection,
   key
 });
 
-// List documents with pagination, filtering, and ordering, etc.
+// List documents with pagination, filters, and ordering
 const myList = await listDocs({
   collection,
   paginate: {

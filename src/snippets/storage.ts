@@ -2,30 +2,29 @@ export const code = {
   lang: "language-javascript",
   value: `import { uploadFile, listAssets } from "@junobuild/core";
 
-// Files are organized into collections,
-// with each collection having specific permissions.
 const collection = "images";
 
-// Uploading a file requires a File or Blob object
-// and the target collection. That's it.
+// Files are organized into collections,
+// each with its own access permissions.
+ 
+// Upload a file using a File or Blob object
 const result = await uploadFile({
   collection,
   data,
 });
 
-// All assets are publicly accessible by default but
-// can be made "private" using a query token for access.
-
-// Example: https://url/data.jpg?token=secret
-const secret = crypto.randomUUID();
+// Assets are public by default but can be made private
+// using an access token in the URL, e.g.:
+// https://url/data.jpg?token=secret
+const token = crypto.randomUUID();
 
 await uploadFile({
   collection,
   data,
-  token: secret
+  token
 });
 
-// Assets can be listed with pagination, filtering, ordering, etc.
+// List assets with pagination, filters, and ordering
 const myList = await listAssets({
   collection
 });

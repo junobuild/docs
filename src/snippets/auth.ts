@@ -1,32 +1,22 @@
 export const code = {
   lang: "language-javascript",
-  value: `// Import functions from the JavaScript SDK.
-import { signIn, signOut, authSubscribe, 
-    InternetIdentityProvider 
-} from "@junobuild/core";
+  value: `// Import what you need from the Juno SDK
+import { signIn, signOut, authSubscribe } from "@junobuild/core";
 
-// Subscribe to changes in the user state at
-// the top level of your app.
+// Listen for changes in the authentication state
 authSubscribe((user) => {
-  console.log("User is defined or null:", user);
+  console.log("User:", user); // null when signed out
 });
 
-// Sign-in with the default function
-<button onClick={signIn}>Sign-in</button>
+// Trigger a sign-in with Google
+const handleSignIn = () => signIn({google: {}})
 
-// Or sign in with custom options,
-// like specifying a specific provider.
-await signIn({
-  provider: new InternetIdentityProvider({
-    domain: "ic0.app"
-  })
-});
+<button onClick={handleSignIn}>Continue with Google</button>
 
-// Obviously, sign-out is also supported
+// Sign out the current user
 await signOut();
 
-// Automatically sign out users when their session expires
-// by initializing the library with a watcher worker.
+// Automatically handle session expiry
 await initSatellite({
   workers: {
     auth: true
