@@ -39,7 +39,7 @@ jobs:
       - name: Deploy to Juno
         uses: junobuild/juno-action@main
         with:
-          args: deploy
+          args: hosting deploy
         env:
           JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
@@ -71,7 +71,7 @@ You can either hardcode the mode in the arguments:
 - name: Deploy to Juno
   uses: junobuild/juno-action@main
   with:
-    args: deploy --mode staging
+    args: hosting deploy --mode staging
   env:
     JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
@@ -82,7 +82,7 @@ Or, if you're using an environment variable, pass it like this:
 - name: Deploy to Juno
   uses: junobuild/juno-action@main
   with:
-    args: deploy --mode ${{ env.JUNO_MODE }}
+    args: hosting deploy --mode ${{ env.JUNO_MODE }}
   env:
     JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
     JUNO_MODE: staging
