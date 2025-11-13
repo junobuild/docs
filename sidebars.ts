@@ -132,7 +132,20 @@ const sidebars: SidebarsConfig = {
               ]
             },
             "guides/react",
-            "guides/vue",
+            {
+              type: "category",
+              label: "Vue",
+              link: {
+                slug: "/guides/vue",
+                type: "generated-index",
+                description:
+                  "Explore how to create a Juno project developed with Vue."
+              },
+              items: [
+                "guides/vue/build",
+                "guides/vue/deploy",
+              ]
+            },
             {
               type: "category",
               label: "SvelteKit",

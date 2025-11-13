@@ -1,0 +1,39 @@
+---
+sidebar_label: Deploy
+description: Learn how to deploy your Vue project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.
+keywords:
+  [Juno, Vue, integration, quickstart, guide, build, SDK, emulator]
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+
+# Deploy a Vue App
+
+Use this guide to deploy and host your project to production.
+
+import CreateSatellite from "../components/create-satellite.mdx";
+
+<CreateSatellite index={1} />
+
+## 2. Configure your project
+
+Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
+
+```typescript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      development: "<DEV_SATELLITE_ID>",
+      production: "<PROD_SATELLITE_ID>"
+    },
+    source: "dist",
+    predeploy: ["npm run build"]
+  }
+});
+```
+
+import Deploy from "../components/deploy.mdx";
+
+<Deploy index={3} />

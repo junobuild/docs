@@ -1,42 +1,33 @@
 ---
-id: vue
-title: Vue
-description: Use Juno with Vue
+sidebar_label: Build
+description: Learn how to integrate Juno with Vue. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.
+keywords:
+  [Juno, Vue, deployment, hosting, production, guide, static exports, satellite]
 toc_min_heading_level: 2
 toc_max_heading_level: 2
 ---
 
-# Use Juno with Vue
+# Build a Vue App
 
-Explore how to create a Juno project developed with Vue.
-
-import Choice from "./components/choice.mdx";
-
-<Choice />
-
----
-
-## Build
-
-import Build from "./components/build.mdx";
+import Build from "../components/build.mdx";
 
 <Build />
 
 ---
 
-### Step-by-step
+## Step-by-step
 
 This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing Vue app.
 
-#### 1. Choose Your Integration Path
+### 1. Choose Your Integration Path
 
 You can either start a new project or add Juno to an existing app.
 
-##### Path A: Start a new project with a template
+### Path A: Start a new project with a template
 
 Create a new project using the Juno quickstart CLI:
 
-import { Bash } from "../components/bash.mdx";
+import { Bash } from "../../components/bash.mdx";
 
 <Bash
   npm="npm create juno@latest -- --template vue-starter"
@@ -44,7 +35,7 @@ import { Bash } from "../components/bash.mdx";
   pnpm="pnpm create juno -- --template vue-starter"
 />
 
-##### Path B: Integrate Juno into an existing Vue app
+### Path B: Integrate Juno into an existing Vue app
 
 Navigate to your existing app:
 
@@ -54,17 +45,17 @@ cd your-existing-app
 
 and install Juno SDK:
 
-import Core from "../components/core.mdx";
+import Core from "../../components/core.mdx";
 
 <Core />
 
-#### 2. Start the Emulator
+### 2. Start the Emulator
 
-import Emulator from "./components/emulator.mdx";
+import Emulator from "../components/emulator.mdx";
 
 <Emulator />
 
-#### 3. Configure
+### 3. Configure
 
 To initialize the library with the Satellite ID you created, configure it in the `juno.config.ts` file (or other extension), which should be available at the root of your project.
 
@@ -85,13 +76,13 @@ export default defineConfig({
 });
 ```
 
-#### 4. Install the Plugin (If Needed)
+### 4. Install the Plugin (If Needed)
 
 If you didn't start your project from a template, you'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
 
 Proceed as documented [here](../reference/plugins.mdx#vite-plugin).
 
-#### 5. Insert data from your app
+### 5. Insert data from your app
 
 In `App.vue`, or at the top of your app, initialize the Satellite when your app is mounted.
 
@@ -100,7 +91,7 @@ Add an `insert` function to persist a document.
 ```html title="App.vue"
 <script setup>
   import { initSatellite, setDoc } from "@junobuild/core";
-  import { onMounted, ref } from "vue";
+  import { onMounted, ref } from "docs/guides/vue/build.mdx";
 
   onMounted(initSatellite);
 
@@ -125,17 +116,17 @@ Add an `insert` function to persist a document.
 </template>
 ```
 
-#### 6. Start the app
+### 6. Start the app
 
 Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite.
 
-import WhatsNext from "./components/whats-next.md";
+import WhatsNext from "../components/whats-next.md";
 
 <WhatsNext />
 
 ---
 
-### Quickstart
+## Quickstart
 
 This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
 
@@ -155,38 +146,3 @@ Using the Juno CLI, you can easily scaffold this app.
 Follow the CLI prompts to choose the note-taking app example and select local
 development. The CLI will manage all configurations and dependencies, allowing
 you to focus on exploring and customizing your app right away.
-
----
-
-## Deployment
-
-Use this guide to deploy and host your project to production.
-
-import CreateSatellite from "./components/create-satellite.mdx";
-
-<CreateSatellite index={1} />
-
-### 2. Configure your project
-
-Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
-
-```typescript
-import { defineConfig } from "@junobuild/config";
-
-export default defineConfig({
-  satellite: {
-    ids: {
-      development: "<DEV_SATELLITE_ID>",
-      production: "<PROD_SATELLITE_ID>"
-    },
-    source: "dist",
-    predeploy: ["npm run build"]
-  }
-});
-```
-
-import Deploy from "./components/deploy.mdx";
-
-<Deploy index={3} />
-
-[satellite]: ../terminology.md#satellite
