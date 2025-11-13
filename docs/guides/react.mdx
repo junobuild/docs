@@ -4,8 +4,6 @@ title: React
 description: Use Juno with React
 toc_min_heading_level: 2
 toc_max_heading_level: 2
-pagination_next: null
-pagination_prev: null
 ---
 
 # Use Juno with React
@@ -168,28 +166,35 @@ you to focus on exploring and customizing your app right away.
 
 ---
 
-## Hosting
-
-If you already have an [React](https://react.dev/) app, you're all set — proceed to the [Deployment](#deployment) section to upload your project to production.
-
-Otherwise, you can bootstrap a new website using the Juno template by running the following command:
-
-<Bash
-  npm="npm create juno@latest -- --template react-starter"
-  yarn="yarn create juno -- --template react-starter"
-  pnpm="pnpm create juno -- --template react-starter"
-/>
-
-Once you’re set up, continue to the [Deployment](#deployment) section below.
-
----
-
 ## Deployment
 
-Use this guide to deploy your project to production — directly to a satellite on mainnet.
+Use this guide to deploy and host your project to production.
+
+import CreateSatellite from "./components/create-satellite.mdx";
+
+<CreateSatellite index={1} />
+
+### 2. Configure your project
+
+Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
+
+```typescript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      development: "<DEV_SATELLITE_ID>",
+      production: "<PROD_SATELLITE_ID>"
+    },
+    source: "dist",
+    predeploy: ["npm run build"]
+  }
+});
+```
 
 import Deploy from "./components/deploy.mdx";
 
-<Deploy index={1} />
+<Deploy index={3} />
 
 [satellite]: ../terminology.md#satellite

@@ -4,8 +4,6 @@ title: Angular
 description: Use Juno with Angular
 toc_min_heading_level: 2
 toc_max_heading_level: 2
-pagination_next: null
-pagination_prev: null
 ---
 
 # Use Juno with Angular
@@ -72,7 +70,7 @@ To initialize your project with the Satellite ID you created, configure it in th
 
 Replace `<DEV_SATELLITE_ID>` with the ID.
 
-```typescript
+```javascript
 import { defineConfig } from "@junobuild/config";
 
 /** @type {import('@junobuild/config').JunoConfig} */
@@ -171,40 +169,36 @@ you to focus on exploring and customizing your app right away.
 
 ---
 
-## Hosting
-
-If you already have an [Angular](https://angular.dev/) app, you're all set — proceed to the [Deployment](#deployment) section to upload your project to production.
-
-Otherwise, you can bootstrap a new website using the Juno template by running the following command:
-
-<Bash
-  npm="npm create juno@latest -- --template angular-starter"
-  yarn="yarn create juno -- --template angular-starter"
-  pnpm="pnpm create juno -- --template angular-starter"
-/>
-
-Once you’re set up, continue to the [Deployment](#deployment) section below.
-
----
-
 ## Deployment
 
-Use this guide to deploy your project to production — directly to a satellite on mainnet.
+Use this guide to deploy your project to production.
 
-:::note
+import CreateSatellite from "./components/create-satellite.mdx";
 
-When following the steps below, make sure to:
+<CreateSatellite index={1} />
 
-1. Register the `satelliteId` in the environment:
-   When you create the satellite using juno build, a `satelliteId` is generated. This `satelliteId` must be copied into the `src/environments/environment.prod.ts` file.
+### 2. Configure your project
 
-2. Configure the dist folder correctly:
-   In Angular, the build artifacts are not always placed directly under the `dist` folder. Instead, they may be located at `dist/<application-name>` or `dist/<application-name>/browser`. When running `juno config init`, you need to provide the full path to ensure that `juno hosting deploy` works as expected.
+Create a `juno.config.mjs` file at the root of your project. Replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier and `dist/<application-name>/browser` with your project's name.
 
-:::
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+/** @type {import('@junobuild/config').JunoConfig} */
+export default defineConfig({
+  satellite: {
+    ids: {
+      development: "<DEV_SATELLITE_ID>",
+      production: "<PROD_SATELLITE_ID>"
+    },
+    source: "dist/<application-name>/browser",
+    predeploy: ["npm run build"]
+  }
+});
+```
 
 import Deploy from "./components/deploy.mdx";
 
-<Deploy index={1} />
+<Deploy index={3} />
 
 [satellite]: ../terminology.md#satellite

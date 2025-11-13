@@ -1,25 +1,79 @@
-import Link from "@docusaurus/Link";
-
 export const index = 1;
 
-### {props.index}. Set up a satellite
+### {props.index}. How to deploy
 
-If you haven't created a satellite yet, go ahead and [create](../../create-a-satellite.mdx) a new one in the Juno's console.
+You can deploy using either [GitHub Actions](#github-actions-deployment) or [CLI](#cli-deployment) (command line interface).
 
-### {props.index + 1}. Deploy
+#### GitHub Actions deployment
 
-Once your satellite is up and running, you can proceed with uploading your app.
+1. From your Satellite's overview, navigate to the **Setup** tab.
 
-You can either automate your deployment with GitHub Actions (recommended) or deploy manually from your device. Choose your method:
+2. Click on **Add an access key**.
 
-<div style={{display: "flex", gap: "1rem", justifyContent: "center", margin: "2rem 0 2.45rem"}}>
-  <Link
-    className="button button--hero"
-    to="/docs/guides/github-actions"
-  >GitHub Actions</Link>
+3. Generate a new key with the default option. Click **Submit**.
 
-  <Link
-    className="button button--juno"
-    to="/docs/guides/manual-deployment"
-  >Manual</Link>
-</div>
+4. Upon successful creation, a **Secret token** will be displayed. Copy the value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your GitHub repository or organization, using the key `JUNO_TOKEN`.
+
+5. Create a `deploy.yml` file in the `.github/workflows` subfolder of your repo.
+
+6. Add the following workflow configuration:
+
+```yaml title=".github/workflows/deploy.yml"
+name: Deploy to Juno
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Deploy to Juno
+        uses: junobuild/juno-action@main
+        with:
+          args: hosting deploy
+        env:
+          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+#### CLI deployment
+
+1. Install the CLI
+
+import Cli from "./cli.mdx";
+
+<Cli />
+
+2. Authenticate the CLI. This will open the Juno Console.
+
+```bash
+juno login
+```
+
+:::tip
+
+An access token is used to identify your terminal. That's why the CLI asks whether you want to encrypt it with a password.
+For security reasons, it's recommended that you do so.
+
+:::
+
+3. In the browser window, click **Authorize** to grant permission.
+
+4. Deploy your site:
+
+```bash
+juno hosting deploy
+```
