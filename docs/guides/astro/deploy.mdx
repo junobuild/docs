@@ -1,0 +1,45 @@
+---
+sidebar_label: Deploy
+description: Learn how to deploy your Astro project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.
+keywords: [Juno, Astro, integration, quickstart, guide, build, SDK, emulator]
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+
+# Deploy an Astro Site
+
+Use this guide to deploy and host your project to production.
+
+## 1. Create a container
+
+import CreateSatellite from "../components/create-satellite.mdx";
+
+<CreateSatellite index={1} />
+
+## 2. Configure your project
+
+Create a `juno.config.mjs` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+/** @type {import('@junobuild/config').JunoConfig} */
+export default defineConfig({
+  satellite: {
+    ids: {
+      development: "<DEV_SATELLITE_ID>",
+      production: "<PROD_SATELLITE_ID>"
+    },
+    source: "dist",
+    predeploy: ["npm run build"]
+  }
+});
+```
+
+## 3. How to deploy
+
+import Deploy from "../components/deploy.mdx";
+
+<Deploy index={3} />
+
+[satellite]: ../terminology.md#satellite

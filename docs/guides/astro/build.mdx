@@ -1,35 +1,24 @@
 ---
-id: astro
-title: Astro
-description: Learn how to integrate Juno with Astro for seamless development. Follow our quickstart guide and hosting instructions.
-keywords: [Astro, integrate Juno, quickstart, hosting, CLI, SDK]
+sidebar_label: Build
+description: Learn how to integrate Juno with Astro. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.
+keywords: [Juno, Astro, deployment, hosting, production, guide, static exports]
 toc_min_heading_level: 2
 toc_max_heading_level: 2
 ---
 
-# Use Juno with Astro
-
-Easily set up and deploy your Astro project with Juno.
-
-import Choice from "./components/choice.mdx";
-
-<Choice />
-
----
-
-## Build
+# Build an Astro App
 
 This guide provides quickstart instructions for integrating Juno and building a feature-rich application. It also includes guidance on developing locally.
 
-### 1. Choose Your Integration Path
+## 1. Choose Your Integration Path
 
 You can either start a new project or add Juno to an existing app.
 
-#### Path A: Start a new project with a template
+### Path A: Start a new project with a template
 
 Create a new project using the Juno quickstart CLI:
 
-import { Bash } from "../components/bash.mdx";
+import { Bash } from "../../components/bash.mdx";
 
 <Bash
   npm="npm create juno@latest -- --template astro-starter"
@@ -37,7 +26,7 @@ import { Bash } from "../components/bash.mdx";
   pnpm="pnpm create juno -- --template astro-starter"
 />
 
-#### Path B: Integrate Juno into an existing Astro app
+### Path B: Integrate Juno into an existing Astro app
 
 Navigate to your existing app:
 
@@ -47,17 +36,17 @@ cd your-existing-app
 
 and install Juno SDK:
 
-import Core from "../components/core.mdx";
+import Core from "../../components/core.mdx";
 
 <Core />
 
-### 2. Start the Emulator
+## 2. Start the Emulator
 
-import Emulator from "./components/emulator.mdx";
+import Emulator from "../components/emulator.mdx";
 
 <Emulator />
 
-### 3. Configure
+## 3. Configure
 
 To initialize the library with the Satellite ID you created, configure it in the `juno.config.mjs` file (or other extension), which should be available at the root of your project.
 
@@ -79,11 +68,11 @@ export default defineConfig({
 });
 ```
 
-### 4. Install the Plugin
+## 4. Install the Plugin
 
 You'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
 
-Proceed as documented [here](../reference/plugins.mdx#vite-plugin).
+Proceed as documented [here](../../reference/plugins.mdx#vite-plugin).
 
 ```javascript title="astro.config.mjs"
 import { defineConfig } from "astro/config";
@@ -103,7 +92,7 @@ export default defineConfig({
 });
 ```
 
-### 5. Insert data from your app
+## 5. Insert data from your app
 
 In `index.astro`, initialize the Satellite.
 
@@ -152,46 +141,10 @@ Add an `insert` function to persist a document.
 </html>
 ```
 
-### 6. Start the app
+## 6. Start the app
 
 Start the app, go to [http://localhost:4321/](http://localhost:4321/) in a browser, click "Insert a document", and you should see the data successfully persisted in your satellite.
 
-import WhatsNext from "./components/whats-next.md";
+import WhatsNext from "../components/whats-next.mdx";
 
-<WhatsNext />
-
----
-
-## Deployment
-
-Use this guide to deploy and host your project to production.
-
-import CreateSatellite from "./components/create-satellite.mdx";
-
-<CreateSatellite index={1} />
-
-### 2. Configure your project
-
-Create a `juno.config.mjs` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
-
-```javascript
-import { defineConfig } from "@junobuild/config";
-
-/** @type {import('@junobuild/config').JunoConfig} */
-export default defineConfig({
-  satellite: {
-    ids: {
-      development: "<DEV_SATELLITE_ID>",
-      production: "<PROD_SATELLITE_ID>"
-    },
-    source: "dist",
-    predeploy: ["npm run build"]
-  }
-});
-```
-
-import Deploy from "./components/deploy.mdx";
-
-<Deploy index={3} />
-
-[satellite]: ../terminology.md#satellite
+<WhatsNext path={"/docs/guides/astro/deploy"} />

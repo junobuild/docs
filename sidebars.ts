@@ -117,12 +117,72 @@ const sidebars: SidebarsConfig = {
               "Integrate Juno with your favorite frontend frameworks."
           },
           items: [
-            "guides/nextjs",
-            "guides/react",
-            "guides/vue",
-            "guides/sveltekit",
-            "guides/angular",
-            "guides/astro"
+            {
+              type: "category",
+              label: "Next.js",
+              link: {
+                slug: "/guides/nextjs",
+                type: "generated-index",
+                description:
+                  "Explore how to create a Juno project developed with Next.js."
+              },
+              items: ["guides/nextjs/build", "guides/nextjs/deploy"]
+            },
+            {
+              type: "category",
+              label: "React",
+              link: {
+                slug: "/guides/react",
+                type: "generated-index",
+                description:
+                  "Explore how to create a Juno project developed with React."
+              },
+              items: ["guides/react/build", "guides/react/deploy"]
+            },
+            {
+              type: "category",
+              label: "Vue",
+              link: {
+                slug: "/guides/vue",
+                type: "generated-index",
+                description:
+                  "Explore how to create a Juno project developed with Vue."
+              },
+              items: ["guides/vue/build", "guides/vue/deploy"]
+            },
+            {
+              type: "category",
+              label: "SvelteKit",
+              link: {
+                slug: "/guides/sveltekit",
+                type: "generated-index",
+                description:
+                  "Explore how to create a Juno project developed with SvelteKit."
+              },
+              items: ["guides/sveltekit/build", "guides/sveltekit/deploy"]
+            },
+            {
+              type: "category",
+              label: "Angular",
+              link: {
+                slug: "/guides/angular",
+                type: "generated-index",
+                description:
+                  "Explore how to create a Juno project developed with Angular."
+              },
+              items: ["guides/angular/build", "guides/angular/deploy"]
+            },
+            {
+              type: "category",
+              label: "Astro",
+              link: {
+                slug: "/guides/astro",
+                type: "generated-index",
+                description:
+                  "Explore how to create a Juno project developed with Astro."
+              },
+              items: ["guides/astro/build", "guides/astro/deploy"]
+            }
           ]
         },
         {

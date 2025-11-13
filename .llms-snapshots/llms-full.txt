@@ -5540,483 +5540,29 @@ For example, you could start a conversation with: _I want to create a web shop a
 
 Read more in the [Cursor documentation](https://docs.cursor.com/context/@-symbols/@-docs).
 
-# Use Juno with Angular
+# Angular
 
 Explore how to create a Juno project developed with Angular.
 
-What would you like to do?
+[## 📄️ Build
 
-([Build](#build))([Deploy](#deployment))
+Learn how to integrate Juno with Angular. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/angular/build.md)
 
----
+[## 📄️ Deploy
 
-## Build
+Learn how to deploy your Angular project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/angular/deploy.md)
 
-Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
+# Astro
 
-Which path would you like to explore next?
+Explore how to create a Juno project developed with Astro.
 
-([Step-by-step](#step-by-step))([Quickstart](#quickstart))
+[## 📄️ Build
 
----
+Learn how to integrate Juno with Astro. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/astro/build.md)
 
-### Step-by-step
+[## 📄️ Deploy
 
-This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing Angular app.
-
-#### 1\. Choose Your Integration Path
-
-You can either start a new project or add Juno to an existing app.
-
-##### Path A: Start a new project with a template
-
-Create a new project using the Juno quickstart CLI:
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm create juno@latest -- --template angular-starter
-```
-
-```
-yarn create juno -- --template angular-starter
-```
-
-```
-pnpm create juno -- --template angular-starter
-```
-
-##### Path B: Integrate Juno into an existing Angular app
-
-Navigate to your existing app:
-
-```
-cd your-existing-app
-```
-
-and install Juno SDK:
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm i @junobuild/core
-```
-
-```
-yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
-```
-
-```
-pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
-```
-
-#### 2\. Start the Emulator
-
-If the Juno admin CLI (required to run the emulator) is not installed yet, run:
-
-```
-npm i -g @junobuild/cli
-```
-
-Once installed, start the local emulator:
-
-```
-juno emulator start
-```
-
-Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
-
-**Note:**
-
-When developing locally, you get an all-in-one emulator that closely mimics the production environment. This includes providing Juno and its Console UI locally.
-
-Sign in, create a Satellite, navigate to the **Datastore** section, and create a collection named **demo**.
-
-#### 3\. Configure
-
-To initialize your project with the Satellite ID you created, configure it in the `juno.config.mjs` file (or other extension), which should be available at the root.
-
-Replace `<DEV_SATELLITE_ID>` with the ID.
-
-```
-import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "out",    predeploy: ["npm run build"]  }});
-```
-
-In addition, add also the ID to your `environment.ts` file:
-
-```
-export const environment = {  satelliteId: "<DEV_SATELLITE_ID>"};
-```
-
-#### 4\. Insert data from your app
-
-In `app.component.ts`, initialize the Satellite.
-
-Add an `insert` function to persist a document.
-
-app.component.ts
-
-```
-import { Component } from "@angular/core";import { type Doc, initSatellite, setDoc } from "@junobuild/core";import { environment } from "../environments/environment";@Component({  selector: "app-root",  template: `    <button (click)="insert()">Insert a document</button>    <span *ngIf="doc !== undefined">Key: {{ doc.key }}</span>  `,  styleUrls: ["./app.component.css"]})export class AppComponent {  doc: Doc<{ hello: string }> | undefined = undefined;  async ngOnInit() {    await initSatellite({      satelliteId: environment.satelliteId    });  }  async insert() {    this.doc = await setDoc({      collection: "demo",      doc: {        key: window.crypto.randomUUID(),        data: {          hello: "world"        }      }    });  }}
-```
-
-#### 5\. Start the app
-
-Start the app, go to [http://localhost:4200](http://localhost:4200) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite.
-
-**What's Next: Going Live:**
-
-Once you're ready to deploy your app for others to access, continue to the ([Deployment guide](#deployment)).
-
----
-
-### Quickstart
-
-This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
-
-*   [Authentication](/docs/build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
-*   [Datastore](/docs/build/datastore.md): a simple key-pair database for storing user data and other information.
-*   [Storage](/docs/build/storage.md): a file storage system to store and serve user-generated content, such as photos.
-
-Using the Juno CLI, you can easily scaffold this app.
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm create juno@latest -- --template angular-example
-```
-
-```
-yarn create juno -- --template angular-example
-```
-
-```
-pnpm create juno -- --template angular-example
-```
-
-  
-
-Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
-
----
-
-## Deployment
-
-Use this guide to deploy your project to production.
-
-### 1. Create a container
-
-1.  Log in to the [Juno Console](https://console.juno.build).
-    
-2.  Click the **Launch a new satellite** button (the container for your project) from the launchpad
-    
-3.  Enter a **name** and select **Website**
-    
-4.  Confirm with **Create a Satellite**
-    
-5.  The platform will then provision its resources.
-    
-6.  Once the process is complete, click Continue to access the overview page.
-    
-
-### 2\. Configure your project
-
-Create a `juno.config.mjs` file at the root of your project. Replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier and `dist/<application-name>/browser` with your project's name.
-
-```
-import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist/<application-name>/browser",    predeploy: ["npm run build"]  }});
-```
-
-### 3. How to deploy
-
-You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([CLI](#cli-deployment)) (command line interface).
-
-#### GitHub Actions deployment
-
-1.  From your Satellite's overview, navigate to the **Setup** tab.
-    
-2.  Click on **Add an access key**.
-    
-3.  Generate a new key with the default option. Click **Submit**.
-    
-4.  Upon successful creation, a **Secret token** will be displayed. Copy the value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your GitHub repository or organization, using the key `JUNO_TOKEN`.
-    
-5.  Create a `deploy.yml` file in the `.github/workflows` subfolder of your repo.
-    
-6.  Add the following workflow configuration:
-    
-
-.github/workflows/deploy.yml
-
-```
-name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
-```
-
-#### CLI deployment
-
-1.  Install the CLI
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm i -g @junobuild/cli
-```
-
-```
-yarn global add @junobuild/cli
-```
-
-```
-pnpm add -g @junobuild/cli
-```
-
-2.  Authenticate the CLI. This will open the Juno Console.
-
-```
-juno login
-```
-
-**Tip:**
-
-An access token is used to identify your terminal. That's why the CLI asks whether you want to encrypt it with a password. For security reasons, it's recommended that you do so.
-
-3.  In the browser window, click **Authorize** to grant permission.
-    
-4.  Deploy your site:
-    
-
-```
-juno hosting deploy
-```
-
-# Use Juno with Astro
-
-Easily set up and deploy your Astro project with Juno.
-
-What would you like to do?
-
-([Build](#build))([Deploy](#deployment))
-
----
-
-## Build
-
-This guide provides quickstart instructions for integrating Juno and building a feature-rich application. It also includes guidance on developing locally.
-
-### 1\. Choose Your Integration Path
-
-You can either start a new project or add Juno to an existing app.
-
-#### Path A: Start a new project with a template
-
-Create a new project using the Juno quickstart CLI:
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm create juno@latest -- --template astro-starter
-```
-
-```
-yarn create juno -- --template astro-starter
-```
-
-```
-pnpm create juno -- --template astro-starter
-```
-
-#### Path B: Integrate Juno into an existing Astro app
-
-Navigate to your existing app:
-
-```
-cd your-existing-app
-```
-
-and install Juno SDK:
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm i @junobuild/core
-```
-
-```
-yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
-```
-
-```
-pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
-```
-
-### 2\. Start the Emulator
-
-If the Juno admin CLI (required to run the emulator) is not installed yet, run:
-
-```
-npm i -g @junobuild/cli
-```
-
-Once installed, start the local emulator:
-
-```
-juno emulator start
-```
-
-Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
-
-**Note:**
-
-When developing locally, you get an all-in-one emulator that closely mimics the production environment. This includes providing Juno and its Console UI locally.
-
-Sign in, create a Satellite, navigate to the **Datastore** section, and create a collection named **demo**.
-
-### 3\. Configure
-
-To initialize the library with the Satellite ID you created, configure it in the `juno.config.mjs` file (or other extension), which should be available at the root of your project.
-
-Replace `<DEV_SATELLITE_ID>` with the ID.
-
-```
-import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
-```
-
-### 4\. Install the Plugin
-
-You'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
-
-Proceed as documented [here](/docs/reference/plugins.md#vite-plugin).
-
-astro.config.mjs
-
-```
-import { defineConfig } from "astro/config";import juno from "@junobuild/vite-plugin";import sitemap from "@astrojs/sitemap";// https://astro.build/configexport default defineConfig({  site: "https://hello.com",  integrations: [sitemap()],  vite: {    plugins: [juno()]  },  devToolbar: {    enabled: false  }});
-```
-
-### 5\. Insert data from your app
-
-In `index.astro`, initialize the Satellite.
-
-Add an `insert` function to persist a document.
-
-index.astro
-
-```
-<!doctype html><html lang="en">  <body>    <main>      <button id="insert">Insert a document</button>      <p>Document persisted key: <output id="result"></output></p>      <script>        import { initSatellite, setDoc } from "@junobuild/core";        // Initialize Juno's satellite        document.addEventListener("DOMContentLoaded", initSatellite, {          once: true        });        // Insert a document in Juno's datastore        const insert = async () => {          const doc = await setDoc({            collection: "demo",            doc: {              key: window.crypto.randomUUID(),              data: {                hello: "world"              }            }          });          const result = document.querySelector("#result");          if (result !== null) {            result.textContent = doc.key;          }        };        document          .querySelector("#insert")          ?.addEventListener("click", insert, { passive: true });      </script>    </main>  </body></html>
-```
-
-### 6\. Start the app
-
-Start the app, go to [http://localhost:4321/](http://localhost:4321/) in a browser, click "Insert a document", and you should see the data successfully persisted in your satellite.
-
-**What's Next: Going Live:**
-
-Once you're ready to deploy your app for others to access, continue to the ([Deployment guide](#deployment)).
-
----
-
-## Deployment
-
-Use this guide to deploy and host your project to production.
-
-### 1. Create a container
-
-1.  Log in to the [Juno Console](https://console.juno.build).
-    
-2.  Click the **Launch a new satellite** button (the container for your project) from the launchpad
-    
-3.  Enter a **name** and select **Website**
-    
-4.  Confirm with **Create a Satellite**
-    
-5.  The platform will then provision its resources.
-    
-6.  Once the process is complete, click Continue to access the overview page.
-    
-
-### 2\. Configure your project
-
-Create a `juno.config.mjs` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
-
-```
-import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
-```
-
-### 3. How to deploy
-
-You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([CLI](#cli-deployment)) (command line interface).
-
-#### GitHub Actions deployment
-
-1.  From your Satellite's overview, navigate to the **Setup** tab.
-    
-2.  Click on **Add an access key**.
-    
-3.  Generate a new key with the default option. Click **Submit**.
-    
-4.  Upon successful creation, a **Secret token** will be displayed. Copy the value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your GitHub repository or organization, using the key `JUNO_TOKEN`.
-    
-5.  Create a `deploy.yml` file in the `.github/workflows` subfolder of your repo.
-    
-6.  Add the following workflow configuration:
-    
-
-.github/workflows/deploy.yml
-
-```
-name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
-```
-
-#### CLI deployment
-
-1.  Install the CLI
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm i -g @junobuild/cli
-```
-
-```
-yarn global add @junobuild/cli
-```
-
-```
-pnpm add -g @junobuild/cli
-```
-
-2.  Authenticate the CLI. This will open the Juno Console.
-
-```
-juno login
-```
-
-**Tip:**
-
-An access token is used to identify your terminal. That's why the CLI asks whether you want to encrypt it with a password. For security reasons, it's recommended that you do so.
-
-3.  In the browser window, click **Authorize** to grant permission.
-    
-4.  Deploy your site:
-    
-
-```
-juno hosting deploy
-```
+Learn how to deploy your Astro project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/astro/deploy.md)
 
 # End-to-End Testing
 
@@ -6206,280 +5752,17 @@ juno functions buildjuno functions publishjuno functions upgrade
 
 For a full overview of the serverless lifecycle—including setup, development, local testing, publishing, approvals, and upgrades — see the Serverless Functions Lifecycle guide.
 
-# Use Juno with Next.js
+# Next.js
 
 Explore how to create a Juno project developed with Next.js.
 
-What would you like to do?
+[## 📄️ Build
 
-([Build](#build))([Deploy](#deployment))
+Learn how to integrate Juno with Next.js. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/nextjs/build.md)
 
----
+[## 📄️ Deploy
 
-## Build
-
-Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
-
-Which path would you like to explore next?
-
-([Step-by-step](#step-by-step))([Quickstart](#quickstart))
-
----
-
-### Step-by-step
-
-This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing Next.js app.
-
-#### 1\. Choose Your Integration Path
-
-You can either start a new project or add Juno to an existing app.
-
-##### Path A: Start a new project with a template
-
-Create a new project using the Juno quickstart CLI:
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm create juno@latest -- --template nextjs-starter
-```
-
-```
-yarn create juno -- --template nextjs-starter
-```
-
-```
-pnpm create juno -- --template nextjs-starter
-```
-
-##### Path B: Integrate Juno into an existing Next.js app
-
-Navigate to your existing app:
-
-```
-cd your-existing-app
-```
-
-and install Juno SDK:
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm i @junobuild/core
-```
-
-```
-yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
-```
-
-```
-pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
-```
-
-#### 2\. Start the Emulator
-
-If the Juno admin CLI (required to run the emulator) is not installed yet, run:
-
-```
-npm i -g @junobuild/cli
-```
-
-Once installed, start the local emulator:
-
-```
-juno emulator start
-```
-
-Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
-
-**Note:**
-
-When developing locally, you get an all-in-one emulator that closely mimics the production environment. This includes providing Juno and its Console UI locally.
-
-Sign in, create a Satellite, navigate to the **Datastore** section, and create a collection named **demo**.
-
-#### 3\. Configure
-
-To initialize the library with the Satellite ID you created, configure it in the `juno.config.mjs` file (or other extension), which should be available at the root of your project.
-
-Replace `<DEV_SATELLITE_ID>` with the ID.
-
-```
-import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "out",    predeploy: ["npm run build"]  }});
-```
-
-#### 4\. Install the Plugin (If Needed)
-
-If you didn't start your project from a template, you'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
-
-Proceed as documented [here](/docs/reference/plugins.md#nextjs-plugin).
-
-#### 5\. Insert data from your app
-
-In `Page.tsx`, (if using TypeScript) or the corresponding JavaScript file, initialize the Satellite.
-
-Add an `insert` function to persist a document as well.
-
-Page.tsx
-
-```
-"use client";import { useEffect, useState } from "react";import { type Doc, initSatellite, setDoc } from "@junobuild/core";type Record = {  hello: string;};export default function Home() {  const [record, setRecord] = useState<Doc<Record> | undefined>(undefined);  useEffect(() => {    (async () =>      await initSatellite())();  }, []);  const insert = async () => {    const doc = await setDoc({      collection: "demo",      doc: {        key: window.crypto.randomUUID(),        data: {          hello: "world",        },      },    });    setRecord(doc);  };  return (    <>      <button onClick={insert}>Insert a document</button>      {record !== undefined && <span>Key: {record.key}</span>}    </>  );}
-```
-
-#### 6\. Start the app
-
-Start the app and go to [http://localhost:3000](http://localhost:3000) in a browser. Click "Insert a document" to see the data successfully persisted in your satellite.
-
-**What's Next: Going Live:**
-
-Once you're ready to deploy your app for others to access, continue to the ([Deployment guide](#deployment)).
-
----
-
-### Quickstart
-
-This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
-
-*   [Authentication](/docs/build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
-*   [Datastore](/docs/build/datastore.md): a simple key-pair database for storing user data and other information.
-*   [Storage](/docs/build/storage.md): a file storage system to store and serve user-generated content, such as photos.
-
-Using the Juno CLI, you can easily scaffold this app.
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm create juno@latest -- --template nextjs-example
-```
-
-```
-yarn create juno -- --template nextjs-example
-```
-
-```
-pnpm create juno -- --template nextjs-example
-```
-
-  
-
-Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
-
----
-
-## Deployment
-
-Use this guide to deploy and host your project to production.
-
-### 1\. Static exports
-
-The Internet Computer, including Juno, currently does not support Server Side Rendering (_without workaround_). Therefore, it is recommended to generate a pre-rendered or client-side-only frontend application.
-
-We suggest using the [static exports](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) option from Next.js.
-
-**Note:**
-
-If you’re using the official Juno [Next.js plugin](/docs/reference/plugins.md#nextjs-plugin), static exports are already configured for you.
-
-In `next.config.js` file:
-
-next.config.js
-
-```
-/** @type {import('next').NextConfig} */const nextConfig = {  output: "export"};module.exports = nextConfig;
-```
-
-### 2. Create a container
-
-1.  Log in to the [Juno Console](https://console.juno.build).
-    
-2.  Click the **Launch a new satellite** button (the container for your project) from the launchpad
-    
-3.  Enter a **name** and select **Website**
-    
-4.  Confirm with **Create a Satellite**
-    
-5.  The platform will then provision its resources.
-    
-6.  Once the process is complete, click Continue to access the overview page.
-    
-
-### 3\. Configure your project
-
-Create a `juno.config.mjs` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
-
-```
-import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "out",    predeploy: ["npm run build"]  }});
-```
-
-### 4. How to deploy
-
-You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([CLI](#cli-deployment)) (command line interface).
-
-#### GitHub Actions deployment
-
-1.  From your Satellite's overview, navigate to the **Setup** tab.
-    
-2.  Click on **Add an access key**.
-    
-3.  Generate a new key with the default option. Click **Submit**.
-    
-4.  Upon successful creation, a **Secret token** will be displayed. Copy the value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your GitHub repository or organization, using the key `JUNO_TOKEN`.
-    
-5.  Create a `deploy.yml` file in the `.github/workflows` subfolder of your repo.
-    
-6.  Add the following workflow configuration:
-    
-
-.github/workflows/deploy.yml
-
-```
-name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
-```
-
-#### CLI deployment
-
-1.  Install the CLI
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm i -g @junobuild/cli
-```
-
-```
-yarn global add @junobuild/cli
-```
-
-```
-pnpm add -g @junobuild/cli
-```
-
-2.  Authenticate the CLI. This will open the Juno Console.
-
-```
-juno login
-```
-
-**Tip:**
-
-An access token is used to identify your terminal. That's why the CLI asks whether you want to encrypt it with a password. For security reasons, it's recommended that you do so.
-
-3.  In the browser window, click **Authorize** to grant permission.
-    
-4.  Deploy your site:
-    
-
-```
-juno hosting deploy
-```
+Learn how to deploy your Next.js project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/nextjs/deploy.md)
 
 # Use Juno in a NodeJS context
 
@@ -6541,262 +5824,17 @@ import { getDoc } from "@junobuild/core";import { defineRun } from "@junobuild/c
 
 This script retrieves a document using `getDoc`, selects the document ID based on the current `mode` (for example staging or production), and writes the result to `mydoc.json`, using `jsonReplacer` to handle types not supported by JSON such as `BigInt`.
 
-# Use Juno with React
+# React
 
 Explore how to create a Juno project developed with React.
 
-What would you like to do?
+[## 📄️ Build
 
-([Build](#build))([Deploy](#deployment))
+Learn how to integrate Juno with React. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/react/build.md)
 
----
+[## 📄️ Deploy
 
-## Build
-
-Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
-
-Which path would you like to explore next?
-
-([Step-by-step](#step-by-step))([Quickstart](#quickstart))
-
----
-
-### Step-by-step
-
-This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing React app.
-
-#### 1\. Choose Your Integration Path
-
-You can either start a new project or add Juno to an existing app.
-
-##### Path A: Start a new project with a template
-
-Create a new project using the Juno quickstart CLI:
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm create juno@latest -- --template react-starter
-```
-
-```
-yarn create juno -- --template react-starter
-```
-
-```
-pnpm create juno -- --template react-starter
-```
-
-##### Path B: Integrate Juno into an existing React app
-
-Navigate to your existing app:
-
-```
-cd your-existing-app
-```
-
-and install Juno SDK:
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm i @junobuild/core
-```
-
-```
-yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
-```
-
-```
-pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
-```
-
-#### 2\. Start the Emulator
-
-If the Juno admin CLI (required to run the emulator) is not installed yet, run:
-
-```
-npm i -g @junobuild/cli
-```
-
-Once installed, start the local emulator:
-
-```
-juno emulator start
-```
-
-Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
-
-**Note:**
-
-When developing locally, you get an all-in-one emulator that closely mimics the production environment. This includes providing Juno and its Console UI locally.
-
-Sign in, create a Satellite, navigate to the **Datastore** section, and create a collection named **demo**.
-
-#### 3\. Configure
-
-To initialize the library with the Satellite ID you created, configure it in the `juno.config.ts` file (or other extension), which should be available at the root of your project.
-
-Replace `<DEV_SATELLITE_ID>` with the ID.
-
-```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
-```
-
-#### 4\. Install the Plugin (If Needed)
-
-If you didn't start your project from a template, you'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
-
-Proceed as documented [here](/docs/reference/plugins.md#vite-plugin).
-
-#### 5\. Insert data from your app
-
-In `App.jsx`, initialize the library with the satellite.
-
-Add an `insert` function to persist a document.
-
-App.jsx
-
-```
-import { useEffect, useState } from "react";import { initSatellite, setDoc } from "@junobuild/core";function App() {  const [record, setRecord] = useState(undefined);  useEffect(() => {    (async () => await initSatellite())();  }, []);  const insert = async () => {    const doc = await setDoc({      collection: "demo",      doc: {        key: window.crypto.randomUUID(),        data: {          hello: "world"        }      }    });    setRecord(doc);  };  return (    <>      <button onClick={insert}>Insert a document</button>      {record !== undefined && <span>Key: {record.key}</span>}    </>  );}export default App;
-```
-
-#### 6\. Start the app
-
-Start the app and go to [http://localhost:5173](http://localhost:5173) in a browser. Click "Insert a document" to see the data successfully persisted in your satellite.
-
-**What's Next: Going Live:**
-
-Once you're ready to deploy your app for others to access, continue to the ([Deployment guide](#deployment)).
-
----
-
-### Quickstart
-
-This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
-
-*   [Authentication](/docs/build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
-*   [Datastore](/docs/build/datastore.md): a simple key-pair database for storing user data and other information.
-*   [Storage](/docs/build/storage.md): a file storage system to store and serve user-generated content, such as photos.
-
-Using the Juno CLI, you can easily scaffold this app.
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm create juno@latest -- --template react-example
-```
-
-```
-yarn create juno -- --template react-example
-```
-
-```
-pnpm create juno -- --template react-example
-```
-
-  
-
-Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
-
----
-
-## Deployment
-
-Use this guide to deploy and host your project to production.
-
-### 1. Create a container
-
-1.  Log in to the [Juno Console](https://console.juno.build).
-    
-2.  Click the **Launch a new satellite** button (the container for your project) from the launchpad
-    
-3.  Enter a **name** and select **Website**
-    
-4.  Confirm with **Create a Satellite**
-    
-5.  The platform will then provision its resources.
-    
-6.  Once the process is complete, click Continue to access the overview page.
-    
-
-### 2\. Configure your project
-
-Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
-
-```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
-```
-
-### 3. How to deploy
-
-You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([CLI](#cli-deployment)) (command line interface).
-
-#### GitHub Actions deployment
-
-1.  From your Satellite's overview, navigate to the **Setup** tab.
-    
-2.  Click on **Add an access key**.
-    
-3.  Generate a new key with the default option. Click **Submit**.
-    
-4.  Upon successful creation, a **Secret token** will be displayed. Copy the value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your GitHub repository or organization, using the key `JUNO_TOKEN`.
-    
-5.  Create a `deploy.yml` file in the `.github/workflows` subfolder of your repo.
-    
-6.  Add the following workflow configuration:
-    
-
-.github/workflows/deploy.yml
-
-```
-name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
-```
-
-#### CLI deployment
-
-1.  Install the CLI
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm i -g @junobuild/cli
-```
-
-```
-yarn global add @junobuild/cli
-```
-
-```
-pnpm add -g @junobuild/cli
-```
-
-2.  Authenticate the CLI. This will open the Juno Console.
-
-```
-juno login
-```
-
-**Tip:**
-
-An access token is used to identify your terminal. That's why the CLI asks whether you want to encrypt it with a password. For security reasons, it's recommended that you do so.
-
-3.  In the browser window, click **Authorize** to grant permission.
-    
-4.  Deploy your site:
-    
-
-```
-juno hosting deploy
-```
+Learn how to deploy your React project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/react/deploy.md)
 
 # Code Functions in Rust
 
@@ -6968,296 +6006,17 @@ If replication or IPv6 support is not available, a common workaround is to use a
 
 Looking for more examples? Check out [Rust](/docs/examples/functions/rust.md) for patterns like custom assertions, data manipulation, and canister calls.
 
-# Use Juno with SvelteKit
+# SvelteKit
 
 Explore how to create a Juno project developed with SvelteKit.
 
-What would you like to do?
+[## 📄️ Build
 
-([Build](#build))([Deploy](#deployment))
+Learn how to integrate Juno with SvelteKit. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/sveltekit/build.md)
 
----
+[## 📄️ Deploy
 
-## Build
-
-Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
-
-Which path would you like to explore next?
-
-([Step-by-step](#step-by-step))([Quickstart](#quickstart))
-
----
-
-### Step-by-step
-
-This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing SvelteKit app.
-
-#### 1\. Choose Your Integration Path
-
-You can either start a new project or add Juno to an existing app.
-
-##### Path A: Start a new project with a template
-
-Create a new project using the Juno quickstart CLI:
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm create juno@latest -- --template sveltekit-starter
-```
-
-```
-yarn create juno -- --template sveltekit-starter
-```
-
-```
-pnpm create juno -- --template sveltekit-starter
-```
-
-##### Path B: Integrate Juno into an existing SvelteKit app
-
-Navigate to your existing app:
-
-```
-cd your-existing-app
-```
-
-and install Juno SDK:
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm i @junobuild/core
-```
-
-```
-yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
-```
-
-```
-pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
-```
-
-#### 2\. Start the Emulator
-
-If the Juno admin CLI (required to run the emulator) is not installed yet, run:
-
-```
-npm i -g @junobuild/cli
-```
-
-Once installed, start the local emulator:
-
-```
-juno emulator start
-```
-
-Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
-
-**Note:**
-
-When developing locally, you get an all-in-one emulator that closely mimics the production environment. This includes providing Juno and its Console UI locally.
-
-Sign in, create a Satellite, navigate to the **Datastore** section, and create a collection named **demo**.
-
-#### 3\. Configure
-
-To initialize the library with the Satellite ID you created, configure it in the `juno.config.ts` file (or other extension), which should be available at the root of your project.
-
-Replace `<DEV_SATELLITE_ID>` with the ID.
-
-```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "build",    predeploy: ["npm run build"]  }});
-```
-
-#### 4\. Install the Plugin (If Needed)
-
-If you didn't start your project from a template, you'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
-
-Proceed as documented [here](/docs/reference/plugins.md#vite-plugin).
-
-#### 5\. Insert data from your app
-
-Create a new file `+layout.svelte` in `src/routes` and initialize your Satellite for your app.
-
-+layout.svelte
-
-```
-<script>  import { onMount } from "svelte";  import { initSatellite } from "@junobuild/core";  onMount(initSatellite);</script><slot />
-```
-
-Replace the existing content in your `+page.svelte` file in the same `routes` directory with the following code.
-
-+page.svelte
-
-```
-<script>  import { setDoc } from "@junobuild/core";  let doc;  const insert = async () =>    (doc = await setDoc({      collection: "demo",      doc: {        key: window.crypto.randomUUID(),        data: {          hello: "world"        }      }    }));</script><button on:click="{insert}">Insert a document</button>{#if doc !== undefined}<span>Key: {doc.key}</span>{/if}
-```
-
-#### 6\. Start the app
-
-Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite.
-
-**What's Next: Going Live:**
-
-Once you're ready to deploy your app for others to access, continue to the ([Deployment guide](#deployment)).
-
----
-
-### Quickstart
-
-This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
-
-*   [Authentication](/docs/build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
-*   [Datastore](/docs/build/datastore.md): a simple key-pair database for storing user data and other information.
-*   [Storage](/docs/build/storage.md): a file storage system to store and serve user-generated content, such as photos.
-
-Using the Juno CLI, you can easily scaffold this app.
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm create juno@latest -- --template sveltekit-example
-```
-
-```
-yarn create juno -- --template sveltekit-example
-```
-
-```
-pnpm create juno -- --template sveltekit-example
-```
-
-  
-
-Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
-
----
-
-## Deployment
-
-Use this guide to deploy and host your project to production.
-
-### 1\. Static site generation
-
-The Internet Computer, including Juno, currently does not support Server Side Rendering (_without workaround_). Therefore, it is recommended to generate a pre-rendered or client-side-only frontend application.
-
-We suggest using the [adapter-static](https://kit.svelte.dev/docs/adapter-static) option from SvelteKit and replacing the default adapter.
-
-Remove and install the adapter:
-
-```
-npm rm @sveltejs/adapter-auto && npm i -D @sveltejs/adapter-static
-```
-
-Update the import in `svelte.config.js` file:
-
-svelte.config.js
-
-```
-import adapter from "@sveltejs/adapter-static";/** @type {import('@sveltejs/kit').Config} */const config = {  kit: {    adapter: adapter()  }};export default config;
-```
-
-Create a file `+layout.js` in `src/routes` to set the prerender option:
-
-+layout.js
-
-```
-export const prerender = true;
-```
-
-### 2. Create a container
-
-1.  Log in to the [Juno Console](https://console.juno.build).
-    
-2.  Click the **Launch a new satellite** button (the container for your project) from the launchpad
-    
-3.  Enter a **name** and select **Website**
-    
-4.  Confirm with **Create a Satellite**
-    
-5.  The platform will then provision its resources.
-    
-6.  Once the process is complete, click Continue to access the overview page.
-    
-
-### 3\. Configure your project
-
-Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
-
-```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "build",    predeploy: ["npm run build"]  }});
-```
-
-### 4. How to deploy
-
-You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([CLI](#cli-deployment)) (command line interface).
-
-#### GitHub Actions deployment
-
-1.  From your Satellite's overview, navigate to the **Setup** tab.
-    
-2.  Click on **Add an access key**.
-    
-3.  Generate a new key with the default option. Click **Submit**.
-    
-4.  Upon successful creation, a **Secret token** will be displayed. Copy the value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your GitHub repository or organization, using the key `JUNO_TOKEN`.
-    
-5.  Create a `deploy.yml` file in the `.github/workflows` subfolder of your repo.
-    
-6.  Add the following workflow configuration:
-    
-
-.github/workflows/deploy.yml
-
-```
-name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
-```
-
-#### CLI deployment
-
-1.  Install the CLI
-
-*   npm
-*   yarn
-*   pnpm
-
-```
-npm i -g @junobuild/cli
-```
-
-```
-yarn global add @junobuild/cli
-```
-
-```
-pnpm add -g @junobuild/cli
-```
-
-2.  Authenticate the CLI. This will open the Juno Console.
-
-```
-juno login
-```
-
-**Tip:**
-
-An access token is used to identify your terminal. That's why the CLI asks whether you want to encrypt it with a password. For security reasons, it's recommended that you do so.
-
-3.  In the browser window, click **Authorize** to grant permission.
-    
-4.  Deploy your site:
-    
-
-```
-juno hosting deploy
-```
+Learn how to deploy your SvelteKit project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/sveltekit/deploy.md)
 
 # Code Functions in TypeScript
 
@@ -7403,17 +6162,19 @@ import {  defineHook,  type OnSetDoc,  type OnSetDocContext,  type RunFunction} 
 
 This ensures all collections are handled and you'll get a TypeScript error if one is missing.
 
-# Use Juno with Vue
+# Vue
 
 Explore how to create a Juno project developed with Vue.
 
-What would you like to do?
+[## 📄️ Build
 
-([Build](#build))([Deploy](#deployment))
+Learn how to integrate Juno with Vue. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/vue/build.md)
 
----
+[## 📄️ Deploy
 
-## Build
+Learn how to deploy your Vue project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/vue/deploy.md)
+
+# Build an Angular App
 
 Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
 
@@ -7423,15 +6184,15 @@ Which path would you like to explore next?
 
 ---
 
-### Step-by-step
+## Step-by-step
 
-This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing Vue app.
+This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing Angular app.
 
-#### 1\. Choose Your Integration Path
+### 1\. Choose Your Integration Path
 
 You can either start a new project or add Juno to an existing app.
 
-##### Path A: Start a new project with a template
+### Path A: Start a new project with a template
 
 Create a new project using the Juno quickstart CLI:
 
@@ -7440,18 +6201,18 @@ Create a new project using the Juno quickstart CLI:
 *   pnpm
 
 ```
-npm create juno@latest -- --template vue-starter
+npm create juno@latest -- --template angular-starter
 ```
 
 ```
-yarn create juno -- --template vue-starter
+yarn create juno -- --template angular-starter
 ```
 
 ```
-pnpm create juno -- --template vue-starter
+pnpm create juno -- --template angular-starter
 ```
 
-##### Path B: Integrate Juno into an existing Vue app
+### Path B: Integrate Juno into an existing Angular app
 
 Navigate to your existing app:
 
@@ -7477,7 +6238,7 @@ yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @df
 pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
 ```
 
-#### 2\. Start the Emulator
+### 2\. Start the Emulator
 
 If the Juno admin CLI (required to run the emulator) is not installed yet, run:
 
@@ -7499,45 +6260,45 @@ When developing locally, you get an all-in-one emulator that closely mimics the 
 
 Sign in, create a Satellite, navigate to the **Datastore** section, and create a collection named **demo**.
 
-#### 3\. Configure
+### 3\. Configure
 
-To initialize the library with the Satellite ID you created, configure it in the `juno.config.ts` file (or other extension), which should be available at the root of your project.
+To initialize your project with the Satellite ID you created, configure it in the `juno.config.mjs` file (or other extension), which should be available at the root.
 
 Replace `<DEV_SATELLITE_ID>` with the ID.
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "out",    predeploy: ["npm run build"]  }});
 ```
 
-#### 4\. Install the Plugin (If Needed)
+In addition, add also the ID to your `environment.ts` file:
 
-If you didn't start your project from a template, you'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
+```
+export const environment = {  satelliteId: "<DEV_SATELLITE_ID>"};
+```
 
-Proceed as documented [here](/docs/reference/plugins.md#vite-plugin).
+### 4\. Insert data from your app
 
-#### 5\. Insert data from your app
-
-In `App.vue`, or at the top of your app, initialize the Satellite when your app is mounted.
+In `app.component.ts`, initialize the Satellite.
 
 Add an `insert` function to persist a document.
 
-App.vue
+app.component.ts
 
 ```
-<script setup>  import { initSatellite, setDoc } from "@junobuild/core";  import { onMounted, ref } from "vue";  onMounted(initSatellite);  const doc = ref(undefined);  const insert = async () => {    doc.value = await setDoc({      collection: "demo",      doc: {        key: window.crypto.randomUUID(),        data: {          hello: "world"        }      }    });  };</script><template>  <button @click="insert">Insert a document</button>  <span v-if="doc !== undefined">Key: {{ doc.key }}</span></template>
+import { Component } from "@angular/core";import { type Doc, initSatellite, setDoc } from "@junobuild/core";import { environment } from "../environments/environment";@Component({  selector: "app-root",  template: `    <button (click)="insert()">Insert a document</button>    <span *ngIf="doc !== undefined">Key: {{ doc.key }}</span>  `,  styleUrls: ["./app.component.css"]})export class AppComponent {  doc: Doc<{ hello: string }> | undefined = undefined;  async ngOnInit() {    await initSatellite({      satelliteId: environment.satelliteId    });  }  async insert() {    this.doc = await setDoc({      collection: "demo",      doc: {        key: window.crypto.randomUUID(),        data: {          hello: "world"        }      }    });  }}
 ```
 
-#### 6\. Start the app
+### 5\. Start the app
 
-Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite.
+Start the app, go to [http://localhost:4200](http://localhost:4200) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite.
 
 **What's Next: Going Live:**
 
-Once you're ready to deploy your app for others to access, continue to the ([Deployment guide](#deployment)).
+Once you're ready to deploy your app for others to access, continue to the [Deployment guide](/docs/guides/angular/deploy.md).
 
 ---
 
-### Quickstart
+## Quickstart
 
 This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
 
@@ -7552,28 +6313,26 @@ Using the Juno CLI, you can easily scaffold this app.
 *   pnpm
 
 ```
-npm create juno@latest -- --template vue-example
+npm create juno@latest -- --template angular-example
 ```
 
 ```
-yarn create juno -- --template vue-example
+yarn create juno -- --template angular-example
 ```
 
 ```
-pnpm create juno -- --template vue-example
+pnpm create juno -- --template angular-example
 ```
 
   
 
 Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
 
----
+# Deploy an Angular App
 
-## Deployment
+Use this guide to deploy your project to production.
 
-Use this guide to deploy and host your project to production.
-
-### 1. Create a container
+## 1\. Create a container
 
 1.  Log in to the [Juno Console](https://console.juno.build).
     
@@ -7588,19 +6347,19 @@ Use this guide to deploy and host your project to production.
 6.  Once the process is complete, click Continue to access the overview page.
     
 
-### 2\. Configure your project
+## 2\. Configure your project
 
-Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
+Create a `juno.config.mjs` file at the root of your project. Replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier and `dist/<application-name>/browser` with your project's name.
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist/<application-name>/browser",    predeploy: ["npm run build"]  }});
 ```
 
-### 3. How to deploy
+## 3\. How to deploy
 
 You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([CLI](#cli-deployment)) (command line interface).
 
-#### GitHub Actions deployment
+### GitHub Actions deployment
 
 1.  From your Satellite's overview, navigate to the **Setup** tab.
     
@@ -7621,7 +6380,216 @@ You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([
 name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
-#### CLI deployment
+### CLI deployment
+
+1.  Install the CLI
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm i -g @junobuild/cli
+```
+
+```
+yarn global add @junobuild/cli
+```
+
+```
+pnpm add -g @junobuild/cli
+```
+
+2.  Authenticate the CLI. This will open the Juno Console.
+
+```
+juno login
+```
+
+**Tip:**
+
+An access token is used to identify your terminal. That's why the CLI asks whether you want to encrypt it with a password. For security reasons, it's recommended that you do so.
+
+3.  In the browser window, click **Authorize** to grant permission.
+    
+4.  Deploy your site:
+    
+
+```
+juno hosting deploy
+```
+
+# Build an Astro App
+
+This guide provides quickstart instructions for integrating Juno and building a feature-rich application. It also includes guidance on developing locally.
+
+## 1\. Choose Your Integration Path
+
+You can either start a new project or add Juno to an existing app.
+
+### Path A: Start a new project with a template
+
+Create a new project using the Juno quickstart CLI:
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm create juno@latest -- --template astro-starter
+```
+
+```
+yarn create juno -- --template astro-starter
+```
+
+```
+pnpm create juno -- --template astro-starter
+```
+
+### Path B: Integrate Juno into an existing Astro app
+
+Navigate to your existing app:
+
+```
+cd your-existing-app
+```
+
+and install Juno SDK:
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm i @junobuild/core
+```
+
+```
+yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+```
+
+```
+pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+```
+
+## 2\. Start the Emulator
+
+If the Juno admin CLI (required to run the emulator) is not installed yet, run:
+
+```
+npm i -g @junobuild/cli
+```
+
+Once installed, start the local emulator:
+
+```
+juno emulator start
+```
+
+Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
+
+**Note:**
+
+When developing locally, you get an all-in-one emulator that closely mimics the production environment. This includes providing Juno and its Console UI locally.
+
+Sign in, create a Satellite, navigate to the **Datastore** section, and create a collection named **demo**.
+
+## 3\. Configure
+
+To initialize the library with the Satellite ID you created, configure it in the `juno.config.mjs` file (or other extension), which should be available at the root of your project.
+
+Replace `<DEV_SATELLITE_ID>` with the ID.
+
+```
+import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
+```
+
+## 4\. Install the Plugin
+
+You'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
+
+Proceed as documented [here](/docs/reference/plugins.md#vite-plugin).
+
+astro.config.mjs
+
+```
+import { defineConfig } from "astro/config";import juno from "@junobuild/vite-plugin";import sitemap from "@astrojs/sitemap";// https://astro.build/configexport default defineConfig({  site: "https://hello.com",  integrations: [sitemap()],  vite: {    plugins: [juno()]  },  devToolbar: {    enabled: false  }});
+```
+
+## 5\. Insert data from your app
+
+In `index.astro`, initialize the Satellite.
+
+Add an `insert` function to persist a document.
+
+index.astro
+
+```
+<!doctype html><html lang="en">  <body>    <main>      <button id="insert">Insert a document</button>      <p>Document persisted key: <output id="result"></output></p>      <script>        import { initSatellite, setDoc } from "@junobuild/core";        // Initialize Juno's satellite        document.addEventListener("DOMContentLoaded", initSatellite, {          once: true        });        // Insert a document in Juno's datastore        const insert = async () => {          const doc = await setDoc({            collection: "demo",            doc: {              key: window.crypto.randomUUID(),              data: {                hello: "world"              }            }          });          const result = document.querySelector("#result");          if (result !== null) {            result.textContent = doc.key;          }        };        document          .querySelector("#insert")          ?.addEventListener("click", insert, { passive: true });      </script>    </main>  </body></html>
+```
+
+## 6\. Start the app
+
+Start the app, go to [http://localhost:4321/](http://localhost:4321/) in a browser, click "Insert a document", and you should see the data successfully persisted in your satellite.
+
+**What's Next: Going Live:**
+
+Once you're ready to deploy your app for others to access, continue to the [Deployment guide](/docs/guides/astro/deploy.md).
+
+# Deploy an Astro Site
+
+Use this guide to deploy and host your project to production.
+
+## 1\. Create a container
+
+1.  Log in to the [Juno Console](https://console.juno.build).
+    
+2.  Click the **Launch a new satellite** button (the container for your project) from the launchpad
+    
+3.  Enter a **name** and select **Website**
+    
+4.  Confirm with **Create a Satellite**
+    
+5.  The platform will then provision its resources.
+    
+6.  Once the process is complete, click Continue to access the overview page.
+    
+
+## 2\. Configure your project
+
+Create a `juno.config.mjs` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
+
+```
+import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
+```
+
+## 3\. How to deploy
+
+You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([CLI](#cli-deployment)) (command line interface).
+
+### GitHub Actions deployment
+
+1.  From your Satellite's overview, navigate to the **Setup** tab.
+    
+2.  Click on **Add an access key**.
+    
+3.  Generate a new key with the default option. Click **Submit**.
+    
+4.  Upon successful creation, a **Secret token** will be displayed. Copy the value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your GitHub repository or organization, using the key `JUNO_TOKEN`.
+    
+5.  Create a `deploy.yml` file in the `.github/workflows` subfolder of your repo.
+    
+6.  Add the following workflow configuration:
+    
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+### CLI deployment
 
 1.  Install the CLI
 
@@ -7793,6 +6761,1038 @@ upgrade.yml
 
 ```
 name: Upgrade Satellite Containeron:  workflow_dispatch:jobs:  upgrade:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Build        uses: junobuild/juno-action@full        with:          args: functions build      - name: Upgrade        uses: junobuild/juno-action@full        with:          args: functions upgrade        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+# Build a Next.js App
+
+Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
+
+Which path would you like to explore next?
+
+([Step-by-step](#step-by-step))([Quickstart](#quickstart))
+
+---
+
+## Step-by-step
+
+This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing Next.js app.
+
+### 1\. Choose Your Integration Path
+
+You can either start a new project or add Juno to an existing app.
+
+#### Path A: Start a new project with a template
+
+Create a new project using the Juno quickstart CLI:
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm create juno@latest -- --template nextjs-starter
+```
+
+```
+yarn create juno -- --template nextjs-starter
+```
+
+```
+pnpm create juno -- --template nextjs-starter
+```
+
+#### Path B: Integrate Juno into an existing Next.js app
+
+Navigate to your existing app:
+
+```
+cd your-existing-app
+```
+
+and install Juno SDK:
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm i @junobuild/core
+```
+
+```
+yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+```
+
+```
+pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+```
+
+#### 2\. Start the Emulator
+
+If the Juno admin CLI (required to run the emulator) is not installed yet, run:
+
+```
+npm i -g @junobuild/cli
+```
+
+Once installed, start the local emulator:
+
+```
+juno emulator start
+```
+
+Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
+
+**Note:**
+
+When developing locally, you get an all-in-one emulator that closely mimics the production environment. This includes providing Juno and its Console UI locally.
+
+Sign in, create a Satellite, navigate to the **Datastore** section, and create a collection named **demo**.
+
+### 3\. Configure
+
+To initialize the library with the Satellite ID you created, configure it in the `juno.config.mjs` file (or other extension), which should be available at the root of your project.
+
+Replace `<DEV_SATELLITE_ID>` with the ID.
+
+```
+import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "out",    predeploy: ["npm run build"]  }});
+```
+
+### 4\. Install the Plugin (If Needed)
+
+If you didn't start your project from a template, you'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
+
+Proceed as documented [here](/docs/reference/plugins.md#nextjs-plugin).
+
+### 5\. Insert data from your app
+
+In `Page.tsx`, (if using TypeScript) or the corresponding JavaScript file, initialize the Satellite.
+
+Add an `insert` function to persist a document as well.
+
+Page.tsx
+
+```
+"use client";import { useEffect, useState } from "react";import { type Doc, initSatellite, setDoc } from "@junobuild/core";type Record = {  hello: string;};export default function Home() {  const [record, setRecord] = useState<Doc<Record> | undefined>(undefined);  useEffect(() => {    (async () =>      await initSatellite())();  }, []);  const insert = async () => {    const doc = await setDoc({      collection: "demo",      doc: {        key: window.crypto.randomUUID(),        data: {          hello: "world",        },      },    });    setRecord(doc);  };  return (    <>      <button onClick={insert}>Insert a document</button>      {record !== undefined && <span>Key: {record.key}</span>}    </>  );}
+```
+
+### 6\. Start the app
+
+Start the app and go to [http://localhost:3000](http://localhost:3000) in a browser. Click "Insert a document" to see the data successfully persisted in your satellite.
+
+**What's Next: Going Live:**
+
+Once you're ready to deploy your app for others to access, continue to the [Deployment guide](/docs/guides/nextjs/deploy.md).
+
+---
+
+## Quickstart
+
+This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
+
+*   [Authentication](/docs/build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
+*   [Datastore](/docs/build/datastore.md): a simple key-pair database for storing user data and other information.
+*   [Storage](/docs/build/storage.md): a file storage system to store and serve user-generated content, such as photos.
+
+Using the Juno CLI, you can easily scaffold this app.
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm create juno@latest -- --template nextjs-example
+```
+
+```
+yarn create juno -- --template nextjs-example
+```
+
+```
+pnpm create juno -- --template nextjs-example
+```
+
+  
+
+Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
+
+# Deploy a Next.js App
+
+Use this guide to deploy and host your project to production.
+
+## 1\. Static exports
+
+The Internet Computer, including Juno, currently does not support Server Side Rendering (_without workaround_). Therefore, it is recommended to generate a pre-rendered or client-side-only frontend application.
+
+We suggest using the [static exports](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) option from Next.js.
+
+**Note:**
+
+If you’re using the official Juno [Next.js plugin](/docs/reference/plugins.md#nextjs-plugin), static exports are already configured for you.
+
+In `next.config.js` file:
+
+next.config.js
+
+```
+/** @type {import('next').NextConfig} */const nextConfig = {  output: "export"};module.exports = nextConfig;
+```
+
+## 2\. Create a container
+
+1.  Log in to the [Juno Console](https://console.juno.build).
+    
+2.  Click the **Launch a new satellite** button (the container for your project) from the launchpad
+    
+3.  Enter a **name** and select **Website**
+    
+4.  Confirm with **Create a Satellite**
+    
+5.  The platform will then provision its resources.
+    
+6.  Once the process is complete, click Continue to access the overview page.
+    
+
+## 3\. Configure your project
+
+Create a `juno.config.mjs` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
+
+```
+import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "out",    predeploy: ["npm run build"]  }});
+```
+
+## 4\. How to deploy
+
+You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([CLI](#cli-deployment)) (command line interface).
+
+### GitHub Actions deployment
+
+1.  From your Satellite's overview, navigate to the **Setup** tab.
+    
+2.  Click on **Add an access key**.
+    
+3.  Generate a new key with the default option. Click **Submit**.
+    
+4.  Upon successful creation, a **Secret token** will be displayed. Copy the value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your GitHub repository or organization, using the key `JUNO_TOKEN`.
+    
+5.  Create a `deploy.yml` file in the `.github/workflows` subfolder of your repo.
+    
+6.  Add the following workflow configuration:
+    
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+### CLI deployment
+
+1.  Install the CLI
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm i -g @junobuild/cli
+```
+
+```
+yarn global add @junobuild/cli
+```
+
+```
+pnpm add -g @junobuild/cli
+```
+
+2.  Authenticate the CLI. This will open the Juno Console.
+
+```
+juno login
+```
+
+**Tip:**
+
+An access token is used to identify your terminal. That's why the CLI asks whether you want to encrypt it with a password. For security reasons, it's recommended that you do so.
+
+3.  In the browser window, click **Authorize** to grant permission.
+    
+4.  Deploy your site:
+    
+
+```
+juno hosting deploy
+```
+
+# Build a React App
+
+Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
+
+Which path would you like to explore next?
+
+([Step-by-step](#step-by-step))([Quickstart](#quickstart))
+
+---
+
+## Step-by-step
+
+This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing React app.
+
+### 1\. Choose Your Integration Path
+
+You can either start a new project or add Juno to an existing app.
+
+### Path A: Start a new project with a template
+
+Create a new project using the Juno quickstart CLI:
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm create juno@latest -- --template react-starter
+```
+
+```
+yarn create juno -- --template react-starter
+```
+
+```
+pnpm create juno -- --template react-starter
+```
+
+### Path B: Integrate Juno into an existing React app
+
+Navigate to your existing app:
+
+```
+cd your-existing-app
+```
+
+and install Juno SDK:
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm i @junobuild/core
+```
+
+```
+yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+```
+
+```
+pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+```
+
+### 2\. Start the Emulator
+
+If the Juno admin CLI (required to run the emulator) is not installed yet, run:
+
+```
+npm i -g @junobuild/cli
+```
+
+Once installed, start the local emulator:
+
+```
+juno emulator start
+```
+
+Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
+
+**Note:**
+
+When developing locally, you get an all-in-one emulator that closely mimics the production environment. This includes providing Juno and its Console UI locally.
+
+Sign in, create a Satellite, navigate to the **Datastore** section, and create a collection named **demo**.
+
+### 3\. Configure
+
+To initialize the library with the Satellite ID you created, configure it in the `juno.config.ts` file (or other extension), which should be available at the root of your project.
+
+Replace `<DEV_SATELLITE_ID>` with the ID.
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
+```
+
+### 4\. Install the Plugin (If Needed)
+
+If you didn't start your project from a template, you'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
+
+Proceed as documented [here](/docs/reference/plugins.md#vite-plugin).
+
+### 5\. Insert data from your app
+
+In `App.jsx`, initialize the library with the satellite.
+
+Add an `insert` function to persist a document.
+
+App.jsx
+
+```
+import { useEffect, useState } from "react";import { initSatellite, setDoc } from "@junobuild/core";function App() {  const [record, setRecord] = useState(undefined);  useEffect(() => {    (async () => await initSatellite())();  }, []);  const insert = async () => {    const doc = await setDoc({      collection: "demo",      doc: {        key: window.crypto.randomUUID(),        data: {          hello: "world"        }      }    });    setRecord(doc);  };  return (    <>      <button onClick={insert}>Insert a document</button>      {record !== undefined && <span>Key: {record.key}</span>}    </>  );}export default App;
+```
+
+### 6\. Start the app
+
+Start the app and go to [http://localhost:5173](http://localhost:5173) in a browser. Click "Insert a document" to see the data successfully persisted in your satellite.
+
+**What's Next: Going Live:**
+
+Once you're ready to deploy your app for others to access, continue to the [Deployment guide](/docs/guides/react/deploy.md).
+
+---
+
+## Quickstart
+
+This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
+
+*   [Authentication](/docs/build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
+*   [Datastore](/docs/build/datastore.md): a simple key-pair database for storing user data and other information.
+*   [Storage](/docs/build/storage.md): a file storage system to store and serve user-generated content, such as photos.
+
+Using the Juno CLI, you can easily scaffold this app.
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm create juno@latest -- --template react-example
+```
+
+```
+yarn create juno -- --template react-example
+```
+
+```
+pnpm create juno -- --template react-example
+```
+
+  
+
+Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
+
+# Deploy a React App
+
+Use this guide to deploy and host your project to production.
+
+## 1\. Create a container
+
+1.  Log in to the [Juno Console](https://console.juno.build).
+    
+2.  Click the **Launch a new satellite** button (the container for your project) from the launchpad
+    
+3.  Enter a **name** and select **Website**
+    
+4.  Confirm with **Create a Satellite**
+    
+5.  The platform will then provision its resources.
+    
+6.  Once the process is complete, click Continue to access the overview page.
+    
+
+## 2\. Configure your project
+
+Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
+```
+
+## 3\. How to deploy
+
+You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([CLI](#cli-deployment)) (command line interface).
+
+### GitHub Actions deployment
+
+1.  From your Satellite's overview, navigate to the **Setup** tab.
+    
+2.  Click on **Add an access key**.
+    
+3.  Generate a new key with the default option. Click **Submit**.
+    
+4.  Upon successful creation, a **Secret token** will be displayed. Copy the value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your GitHub repository or organization, using the key `JUNO_TOKEN`.
+    
+5.  Create a `deploy.yml` file in the `.github/workflows` subfolder of your repo.
+    
+6.  Add the following workflow configuration:
+    
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+### CLI deployment
+
+1.  Install the CLI
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm i -g @junobuild/cli
+```
+
+```
+yarn global add @junobuild/cli
+```
+
+```
+pnpm add -g @junobuild/cli
+```
+
+2.  Authenticate the CLI. This will open the Juno Console.
+
+```
+juno login
+```
+
+**Tip:**
+
+An access token is used to identify your terminal. That's why the CLI asks whether you want to encrypt it with a password. For security reasons, it's recommended that you do so.
+
+3.  In the browser window, click **Authorize** to grant permission.
+    
+4.  Deploy your site:
+    
+
+```
+juno hosting deploy
+```
+
+# Build a SvelteKit App
+
+Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
+
+Which path would you like to explore next?
+
+([Step-by-step](#step-by-step))([Quickstart](#quickstart))
+
+---
+
+## Step-by-step
+
+This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing SvelteKit app.
+
+### 1\. Choose Your Integration Path
+
+You can either start a new project or add Juno to an existing app.
+
+### Path A: Start a new project with a template
+
+Create a new project using the Juno quickstart CLI:
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm create juno@latest -- --template sveltekit-starter
+```
+
+```
+yarn create juno -- --template sveltekit-starter
+```
+
+```
+pnpm create juno -- --template sveltekit-starter
+```
+
+### Path B: Integrate Juno into an existing SvelteKit app
+
+Navigate to your existing app:
+
+```
+cd your-existing-app
+```
+
+and install Juno SDK:
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm i @junobuild/core
+```
+
+```
+yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+```
+
+```
+pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+```
+
+### 2\. Start the Emulator
+
+If the Juno admin CLI (required to run the emulator) is not installed yet, run:
+
+```
+npm i -g @junobuild/cli
+```
+
+Once installed, start the local emulator:
+
+```
+juno emulator start
+```
+
+Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
+
+**Note:**
+
+When developing locally, you get an all-in-one emulator that closely mimics the production environment. This includes providing Juno and its Console UI locally.
+
+Sign in, create a Satellite, navigate to the **Datastore** section, and create a collection named **demo**.
+
+### 3\. Configure
+
+To initialize the library with the Satellite ID you created, configure it in the `juno.config.ts` file (or other extension), which should be available at the root of your project.
+
+Replace `<DEV_SATELLITE_ID>` with the ID.
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "build",    predeploy: ["npm run build"]  }});
+```
+
+### 4\. Install the Plugin (If Needed)
+
+If you didn't start your project from a template, you'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
+
+Proceed as documented [here](/docs/reference/plugins.md#vite-plugin).
+
+### 5\. Insert data from your app
+
+Create a new file `+layout.svelte` in `src/routes` and initialize your Satellite for your app.
+
++layout.svelte
+
+```
+<script>  import { onMount } from "svelte";  import { initSatellite } from "@junobuild/core";  onMount(initSatellite);</script><slot />
+```
+
+Replace the existing content in your `+page.svelte` file in the same `routes` directory with the following code.
+
++page.svelte
+
+```
+<script>  import { setDoc } from "@junobuild/core";  let doc;  const insert = async () =>    (doc = await setDoc({      collection: "demo",      doc: {        key: window.crypto.randomUUID(),        data: {          hello: "world"        }      }    }));</script><button on:click="{insert}">Insert a document</button>{#if doc !== undefined}<span>Key: {doc.key}</span>{/if}
+```
+
+### 6\. Start the app
+
+Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite.
+
+**What's Next: Going Live:**
+
+Once you're ready to deploy your app for others to access, continue to the [Deployment guide](/docs/guides/sveltekit/deploy.md).
+
+---
+
+## Quickstart
+
+This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
+
+*   [Authentication](/docs/build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
+*   [Datastore](/docs/build/datastore.md): a simple key-pair database for storing user data and other information.
+*   [Storage](/docs/build/storage.md): a file storage system to store and serve user-generated content, such as photos.
+
+Using the Juno CLI, you can easily scaffold this app.
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm create juno@latest -- --template sveltekit-example
+```
+
+```
+yarn create juno -- --template sveltekit-example
+```
+
+```
+pnpm create juno -- --template sveltekit-example
+```
+
+  
+
+Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
+
+# Deploy a SvelteKit App
+
+Use this guide to deploy and host your project to production.
+
+## 1\. Static site generation
+
+The Internet Computer, including Juno, currently does not support Server Side Rendering (_without workaround_). Therefore, it is recommended to generate a pre-rendered or client-side-only frontend application.
+
+We suggest using the [adapter-static](https://kit.svelte.dev/docs/adapter-static) option from SvelteKit and replacing the default adapter.
+
+Remove and install the adapter:
+
+```
+npm rm @sveltejs/adapter-auto && npm i -D @sveltejs/adapter-static
+```
+
+Update the import in `svelte.config.js` file:
+
+svelte.config.js
+
+```
+import adapter from "@sveltejs/adapter-static";/** @type {import('@sveltejs/kit').Config} */const config = {  kit: {    adapter: adapter()  }};export default config;
+```
+
+Create a file `+layout.js` in `src/routes` to set the prerender option:
+
++layout.js
+
+```
+export const prerender = true;
+```
+
+## 2\. Create a container
+
+1.  Log in to the [Juno Console](https://console.juno.build).
+    
+2.  Click the **Launch a new satellite** button (the container for your project) from the launchpad
+    
+3.  Enter a **name** and select **Website**
+    
+4.  Confirm with **Create a Satellite**
+    
+5.  The platform will then provision its resources.
+    
+6.  Once the process is complete, click Continue to access the overview page.
+    
+
+## 3\. Configure your project
+
+Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "build",    predeploy: ["npm run build"]  }});
+```
+
+## 4\. How to deploy
+
+You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([CLI](#cli-deployment)) (command line interface).
+
+### GitHub Actions deployment
+
+1.  From your Satellite's overview, navigate to the **Setup** tab.
+    
+2.  Click on **Add an access key**.
+    
+3.  Generate a new key with the default option. Click **Submit**.
+    
+4.  Upon successful creation, a **Secret token** will be displayed. Copy the value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your GitHub repository or organization, using the key `JUNO_TOKEN`.
+    
+5.  Create a `deploy.yml` file in the `.github/workflows` subfolder of your repo.
+    
+6.  Add the following workflow configuration:
+    
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+### CLI deployment
+
+1.  Install the CLI
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm i -g @junobuild/cli
+```
+
+```
+yarn global add @junobuild/cli
+```
+
+```
+pnpm add -g @junobuild/cli
+```
+
+2.  Authenticate the CLI. This will open the Juno Console.
+
+```
+juno login
+```
+
+**Tip:**
+
+An access token is used to identify your terminal. That's why the CLI asks whether you want to encrypt it with a password. For security reasons, it's recommended that you do so.
+
+3.  In the browser window, click **Authorize** to grant permission.
+    
+4.  Deploy your site:
+    
+
+```
+juno hosting deploy
+```
+
+# Build a Vue App
+
+Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
+
+Which path would you like to explore next?
+
+([Step-by-step](#step-by-step))([Quickstart](#quickstart))
+
+---
+
+## Step-by-step
+
+This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing Vue app.
+
+### 1\. Choose Your Integration Path
+
+You can either start a new project or add Juno to an existing app.
+
+### Path A: Start a new project with a template
+
+Create a new project using the Juno quickstart CLI:
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm create juno@latest -- --template vue-starter
+```
+
+```
+yarn create juno -- --template vue-starter
+```
+
+```
+pnpm create juno -- --template vue-starter
+```
+
+### Path B: Integrate Juno into an existing Vue app
+
+Navigate to your existing app:
+
+```
+cd your-existing-app
+```
+
+and install Juno SDK:
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm i @junobuild/core
+```
+
+```
+yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+```
+
+```
+pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+```
+
+### 2\. Start the Emulator
+
+If the Juno admin CLI (required to run the emulator) is not installed yet, run:
+
+```
+npm i -g @junobuild/cli
+```
+
+Once installed, start the local emulator:
+
+```
+juno emulator start
+```
+
+Open the Console UI at [http://localhost:5866/](http://localhost:5866/).
+
+**Note:**
+
+When developing locally, you get an all-in-one emulator that closely mimics the production environment. This includes providing Juno and its Console UI locally.
+
+Sign in, create a Satellite, navigate to the **Datastore** section, and create a collection named **demo**.
+
+### 3\. Configure
+
+To initialize the library with the Satellite ID you created, configure it in the `juno.config.ts` file (or other extension), which should be available at the root of your project.
+
+Replace `<DEV_SATELLITE_ID>` with the ID.
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
+```
+
+### 4\. Install the Plugin (If Needed)
+
+If you didn't start your project from a template, you'll need to install the plugin to automatically inject the Satellite ID into your app as an environment variable.
+
+Proceed as documented [here](/docs/reference/plugins.md#vite-plugin).
+
+### 5\. Insert data from your app
+
+In `App.vue`, or at the top of your app, initialize the Satellite when your app is mounted.
+
+Add an `insert` function to persist a document.
+
+App.vue
+
+```
+<script setup>  import { initSatellite, setDoc } from "@junobuild/core";  import { onMounted, ref } from "docs/guides/vue/build.mdx";  onMounted(initSatellite);  const doc = ref(undefined);  const insert = async () => {    doc.value = await setDoc({      collection: "demo",      doc: {        key: window.crypto.randomUUID(),        data: {          hello: "world"        }      }    });  };</script><template>  <button @click="insert">Insert a document</button>  <span v-if="doc !== undefined">Key: {{ doc.key }}</span></template>
+```
+
+### 6\. Start the app
+
+Start the app, go to [http://localhost:5173](http://localhost:5173) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite.
+
+**What's Next: Going Live:**
+
+Once you're ready to deploy your app for others to access, continue to the [Deployment guide](/docs/guides/vue/deploy.md).
+
+---
+
+## Quickstart
+
+This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
+
+*   [Authentication](/docs/build/authentication.md): easy-to-use SDKs that support truly anonymous authentication.
+*   [Datastore](/docs/build/datastore.md): a simple key-pair database for storing user data and other information.
+*   [Storage](/docs/build/storage.md): a file storage system to store and serve user-generated content, such as photos.
+
+Using the Juno CLI, you can easily scaffold this app.
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm create juno@latest -- --template vue-example
+```
+
+```
+yarn create juno -- --template vue-example
+```
+
+```
+pnpm create juno -- --template vue-example
+```
+
+  
+
+Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
+
+# Deploy a Vue App
+
+Use this guide to deploy and host your project to production.
+
+## 1\. Create a container
+
+1.  Log in to the [Juno Console](https://console.juno.build).
+    
+2.  Click the **Launch a new satellite** button (the container for your project) from the launchpad
+    
+3.  Enter a **name** and select **Website**
+    
+4.  Confirm with **Create a Satellite**
+    
+5.  The platform will then provision its resources.
+    
+6.  Once the process is complete, click Continue to access the overview page.
+    
+
+## 2\. Configure your project
+
+Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
+```
+
+## 3\. How to deploy
+
+You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([CLI](#cli-deployment)) (command line interface).
+
+### GitHub Actions deployment
+
+1.  From your Satellite's overview, navigate to the **Setup** tab.
+    
+2.  Click on **Add an access key**.
+    
+3.  Generate a new key with the default option. Click **Submit**.
+    
+4.  Upon successful creation, a **Secret token** will be displayed. Copy the value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your GitHub repository or organization, using the key `JUNO_TOKEN`.
+    
+5.  Create a `deploy.yml` file in the `.github/workflows` subfolder of your repo.
+    
+6.  Add the following workflow configuration:
+    
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+### CLI deployment
+
+1.  Install the CLI
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm i -g @junobuild/cli
+```
+
+```
+yarn global add @junobuild/cli
+```
+
+```
+pnpm add -g @junobuild/cli
+```
+
+2.  Authenticate the CLI. This will open the Juno Console.
+
+```
+juno login
+```
+
+**Tip:**
+
+An access token is used to identify your terminal. That's why the CLI asks whether you want to encrypt it with a password. For security reasons, it's recommended that you do so.
+
+3.  In the browser window, click **Authorize** to grant permission.
+    
+4.  Deploy your site:
+    
+
+```
+juno hosting deploy
 ```
 
 # Monitoring
