@@ -121,9 +121,9 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Guides - Github-actions
   
-- [Deploy Frontend](https://juno.build/docs/guides/github-actions/deploy-frontend.mdx): This section describes how to deploy the frontend of your project using GitHub Actions. The frontend typically includes all client-side assets — such as HTML, CSS, JavaScript, and other static files—that are served to users.
-- [Publish Functions](https://juno.build/docs/guides/github-actions/publish-functions.mdx): This section explains how to automate the build and publication of your serverless functions using GitHub Actions. The process works for functions written in TypeScript or Rust and helps integrate function deployment into your development workflow.
-- [Upgrade Functions](https://juno.build/docs/guides/github-actions/upgrade-functions.mdx): We do not recommend upgrading your container directly from CI in production.
+- [Deploy Frontend](https://juno.build/docs/guides/github-actions/deploy-frontend.md): This section describes how to deploy the frontend of your project using GitHub Actions. The frontend typically includes all client-side assets — such as HTML, CSS, JavaScript, and other static files—that are served to users.
+- [Publish Functions](https://juno.build/docs/guides/github-actions/publish-functions.md): This section explains how to automate the build and publication of your serverless functions using GitHub Actions. The process works for functions written in TypeScript or Rust and helps integrate function deployment into your development workflow.
+- [Upgrade Functions](https://juno.build/docs/guides/github-actions/upgrade-functions.md): We do not recommend upgrading your container directly from CI in production.
 
 ## Guides - Nextjs
   

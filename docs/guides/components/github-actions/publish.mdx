@@ -1,0 +1,130 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs groupId="npm2yarn">
+  <TabItem value="npm">
+```yaml title=".github/workflows/publish.yml"
+name: Publish Serverless Functions
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        uses: junobuild/juno-action@full
+        with:
+          args: functions build
+
+      - name: Publish
+        uses: junobuild/juno-action@full
+        with:
+          args: functions publish
+        env:
+          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+  </TabItem>
+
+  <TabItem value="yarn" label="yarn">
+```yaml title=".github/workflows/publish.yml"
+name: Publish Serverless Functions
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Activate Yarn
+        run: corepack prepare yarn@1.x --activate
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        uses: junobuild/juno-action@full
+        with:
+          args: functions build
+
+      - name: Publish
+        uses: junobuild/juno-action@full
+        with:
+          args: functions publish
+        env:
+          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+  </TabItem>
+
+  <TabItem value="pnpm" label="pnpm">
+```yaml title=".github/workflows/publish.yml"
+name: Publish Serverless Functions
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install Dependencies
+        run: pnpm i --frozen-lockfile
+
+      - name: Build
+        uses: junobuild/juno-action@full
+        with:
+          args: functions build
+
+      - name: Publish
+        uses: junobuild/juno-action@full
+        with:
+          args: functions publish
+        env:
+          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+  </TabItem>
+
+</Tabs>
+
