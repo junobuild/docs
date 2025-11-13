@@ -1,42 +1,42 @@
 ---
-id: angular
-title: Angular
-description: Use Juno with Angular
+sidebar_label: Build
+description: Learn how to integrate Juno with Angular. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.
+keywords:
+[
+Juno,
+Angular,
+deployment,
+hosting,
+production,
+guide,
+static exports,
+satellite
+]
 toc_min_heading_level: 2
 toc_max_heading_level: 2
 ---
 
-# Use Juno with Angular
+# Build an Angular App
 
-Explore how to create a Juno project developed with Angular.
-
-import Choice from "./components/choice.mdx";
-
-<Choice />
-
----
-
-## Build
-
-import Build from "./components/build.mdx";
+import Build from "../components/build.mdx";
 
 <Build />
 
 ---
 
-### Step-by-step
+## Step-by-step
 
 This guide provides quickstart instructions for integrating Juno in two scenarios: starting a new project and adding Juno to an existing Angular app.
 
-#### 1. Choose Your Integration Path
+### 1. Choose Your Integration Path
 
 You can either start a new project or add Juno to an existing app.
 
-##### Path A: Start a new project with a template
+### Path A: Start a new project with a template
 
 Create a new project using the Juno quickstart CLI:
 
-import { Bash } from "../components/bash.mdx";
+import { Bash } from "../../components/bash.mdx";
 
 <Bash
   npm="npm create juno@latest -- --template angular-starter"
@@ -44,7 +44,7 @@ import { Bash } from "../components/bash.mdx";
   pnpm="pnpm create juno -- --template angular-starter"
 />
 
-##### Path B: Integrate Juno into an existing Angular app
+### Path B: Integrate Juno into an existing Angular app
 
 Navigate to your existing app:
 
@@ -54,17 +54,17 @@ cd your-existing-app
 
 and install Juno SDK:
 
-import Core from "../components/core.mdx";
+import Core from "../../components/core.mdx";
 
 <Core />
 
-import Emulator from "./components/emulator.mdx";
+import Emulator from "../components/emulator.mdx";
 
-#### 2. Start the Emulator
+### 2. Start the Emulator
 
 <Emulator />
 
-#### 3. Configure
+### 3. Configure
 
 To initialize your project with the Satellite ID you created, configure it in the `juno.config.mjs` file (or other extension), which should be available at the root.
 
@@ -94,7 +94,7 @@ export const environment = {
 };
 ```
 
-#### 4. Insert data from your app
+### 4. Insert data from your app
 
 In `app.component.ts`, initialize the Satellite.
 
@@ -136,17 +136,17 @@ export class AppComponent {
 }
 ```
 
-#### 5. Start the app
+### 5. Start the app
 
 Start the app, go to [http://localhost:4200](http://localhost:4200) in a browser, click "Insert a document," and you should see the data successfully persisted in your satellite.
 
-import WhatsNext from "./components/whats-next.md";
+import WhatsNext from "../components/whats-next.md";
 
 <WhatsNext />
 
 ---
 
-### Quickstart
+## Quickstart
 
 This example demonstrates how to quickly deploy a basic note-taking app that integrates Juno's core features:
 
@@ -166,39 +166,3 @@ Using the Juno CLI, you can easily scaffold this app.
 Follow the CLI prompts to choose the note-taking app example and select local
 development. The CLI will manage all configurations and dependencies, allowing
 you to focus on exploring and customizing your app right away.
-
----
-
-## Deployment
-
-Use this guide to deploy your project to production.
-
-import CreateSatellite from "./components/create-satellite.mdx";
-
-<CreateSatellite index={1} />
-
-### 2. Configure your project
-
-Create a `juno.config.mjs` file at the root of your project. Replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier and `dist/<application-name>/browser` with your project's name.
-
-```javascript
-import { defineConfig } from "@junobuild/config";
-
-/** @type {import('@junobuild/config').JunoConfig} */
-export default defineConfig({
-  satellite: {
-    ids: {
-      development: "<DEV_SATELLITE_ID>",
-      production: "<PROD_SATELLITE_ID>"
-    },
-    source: "dist/<application-name>/browser",
-    predeploy: ["npm run build"]
-  }
-});
-```
-
-import Deploy from "./components/deploy.mdx";
-
-<Deploy index={3} />
-
-[satellite]: ../terminology.md#satellite

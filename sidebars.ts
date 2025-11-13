@@ -117,12 +117,51 @@ const sidebars: SidebarsConfig = {
               "Integrate Juno with your favorite frontend frameworks."
           },
           items: [
-            "guides/nextjs",
+            {
+              type: "category",
+              label: "Next.js",
+              link: {
+                slug: "/guides/nextjs",
+                type: "generated-index",
+                description:
+                  "Explore how to create a Juno project developed with Next.js."
+              },
+              items: [
+                "guides/nextjs/build",
+                "guides/nextjs/deploy",
+              ]
+            },
             "guides/react",
             "guides/vue",
             "guides/sveltekit",
-            "guides/angular",
-            "guides/astro"
+            {
+              type: "category",
+              label: "Angular",
+              link: {
+                slug: "/guides/angular",
+                type: "generated-index",
+                description:
+                  "Explore how to create a Juno project developed with Angular."
+              },
+              items: [
+                "guides/angular/build",
+                "guides/angular/deploy",
+              ]
+            },
+            {
+              type: "category",
+              label: "Astro",
+              link: {
+                slug: "/guides/astro",
+                type: "generated-index",
+                description:
+                  "Explore how to create a Juno project developed with Astro."
+              },
+              items: [
+                "guides/astro/build",
+                "guides/astro/deploy",
+              ]
+            },
           ]
         },
         {

@@ -1,0 +1,62 @@
+---
+sidebar_label: Deploy
+description: Learn how to deploy your Next.js project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.
+keywords: [Juno, Next.js, integration, quickstart, guide, build, SDK, emulator]
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+
+# Deploy a Next.js App
+
+Use this guide to deploy and host your project to production.
+
+## 1. Static exports
+
+The Internet Computer, including Juno, currently does not support Server Side Rendering (_without workaround_). Therefore, it is recommended to generate a pre-rendered or client-side-only frontend application.
+
+We suggest using the [static exports](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) option from Next.js.
+
+:::note
+
+If you’re using the official Juno [Next.js plugin](../reference/plugins.mdx#nextjs-plugin), static exports are already configured for you.
+
+:::
+
+In `next.config.js` file:
+
+```javascript title="next.config.js"
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: "export"
+};
+
+module.exports = nextConfig;
+```
+
+import CreateSatellite from "../components/create-satellite.mdx";
+
+<CreateSatellite index={2} />
+
+## 3. Configure your project
+
+Create a `juno.config.mjs` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
+
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+/** @type {import('@junobuild/config').JunoConfig} */
+export default defineConfig({
+  satellite: {
+    ids: {
+      development: "<DEV_SATELLITE_ID>",
+      production: "<PROD_SATELLITE_ID>"
+    },
+    source: "out",
+    predeploy: ["npm run build"]
+  }
+});
+```
+
+import Deploy from "../components/deploy.mdx";
+
+<Deploy index={4} />
