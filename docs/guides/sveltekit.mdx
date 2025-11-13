@@ -4,8 +4,6 @@ title: SvelteKit
 description: Use Juno with SvelteKit
 toc_min_heading_level: 2
 toc_max_heading_level: 2
-pagination_next: null
-pagination_prev: null
 ---
 
 # Use Juno with SvelteKit
@@ -168,25 +166,9 @@ you to focus on exploring and customizing your app right away.
 
 ---
 
-## Hosting
-
-If you already have an [SvelteKit](https://svelte.dev/) app, you're all set — proceed to the [Deployment](#deployment) section to upload your project to production.
-
-Otherwise, you can bootstrap a new website using the Juno template by running the following command:
-
-<Bash
-  npm="npm create juno@latest -- --template sveltekit-starter"
-  yarn="yarn create juno -- --template sveltekit-starter"
-  pnpm="pnpm create juno -- --template sveltekit-starter"
-/>
-
-Once you’re set up, continue to the [Deployment](#deployment) section below.
-
----
-
 ## Deployment
 
-Use this guide to deploy your project to production — directly to a satellite on mainnet.
+Use this guide to deploy and host your project to production.
 
 ### 1. Static site generation
 
@@ -221,8 +203,31 @@ Create a file `+layout.js` in `src/routes` to set the prerender option:
 export const prerender = true;
 ```
 
+import CreateSatellite from "./components/create-satellite.mdx";
+
+<CreateSatellite index={2} />
+
+### 3. Configure your project
+
+Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
+
+```typescript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      development: "<DEV_SATELLITE_ID>",
+      production: "<PROD_SATELLITE_ID>"
+    },
+    source: "build",
+    predeploy: ["npm run build"]
+  }
+});
+```
+
 import Deploy from "./components/deploy.mdx";
 
-<Deploy index={2} />
+<Deploy index={4} />
 
 [satellite]: ../terminology.md#satellite
