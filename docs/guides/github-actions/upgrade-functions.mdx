@@ -1,0 +1,26 @@
+---
+title: Upgrade Functions
+---
+
+# Upgrade Serverless Functions (Optional)
+
+:::caution
+
+We do not recommend upgrading your container directly from CI in **production**.
+This approach hands over control to automation, which may not be suitable for critical environments.
+Prefer a change workflow and executing the upgrade with your CLI or in the Console UI.
+
+:::
+
+---
+
+## Configuration
+
+To configure an action to upgrade your Satellite container, follow these steps:
+
+1. Create an `upgrade.yml` file in the `.github/workflows` subfolder of your repository.
+2. Paste the following code into the file:
+
+import Upgrade from "../components/github-actions/upgrade.mdx";
+
+<Upgrade />
