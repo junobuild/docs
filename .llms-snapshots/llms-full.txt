@@ -6382,10 +6382,26 @@ You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([
 6.  Add the following workflow configuration:
     
 
+*   npm
+*   yarn
+*   pnpm
+
 .github/workflows/deploy.yml
 
 ```
-name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+name: Deploy to Junoon:workflow_dispatch:push:branches: [main]jobs:deploy:runs-on: ubuntu-lateststeps: - name: Check out the repouses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Enable Corepack        run: corepack enable      - name: Activate Yarn        run: corepack prepare yarn@1.x --activate      - name: Install Dependencies        run: yarn install --frozen-lockfile      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:workflow_dispatch:push:branches: [main]jobs:deploy:runs-on: ubuntu-lateststeps: - name: Check out the repouses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - uses: pnpm/action-setup@v4        with:          version: 10      - name: Install Dependencies        run: pnpm i --frozen-lockfile      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
 ### CLI deployment
@@ -6591,10 +6607,26 @@ You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([
 6.  Add the following workflow configuration:
     
 
+*   npm
+*   yarn
+*   pnpm
+
 .github/workflows/deploy.yml
 
 ```
-name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+name: Deploy to Junoon:workflow_dispatch:push:branches: [main]jobs:deploy:runs-on: ubuntu-lateststeps: - name: Check out the repouses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Enable Corepack        run: corepack enable      - name: Activate Yarn        run: corepack prepare yarn@1.x --activate      - name: Install Dependencies        run: yarn install --frozen-lockfile      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:workflow_dispatch:push:branches: [main]jobs:deploy:runs-on: ubuntu-lateststeps: - name: Check out the repouses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - uses: pnpm/action-setup@v4        with:          version: 10      - name: Install Dependencies        run: pnpm i --frozen-lockfile      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
 ### CLI deployment
@@ -6682,10 +6714,26 @@ You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([
 6.  Add the following workflow configuration:
     
 
+*   npm
+*   yarn
+*   pnpm
+
 .github/workflows/deploy.yml
 
 ```
-name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+name: Deploy to Junoon:workflow_dispatch:push:branches: [main]jobs:deploy:runs-on: ubuntu-lateststeps: - name: Check out the repouses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Enable Corepack        run: corepack enable      - name: Activate Yarn        run: corepack prepare yarn@1.x --activate      - name: Install Dependencies        run: yarn install --frozen-lockfile      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:workflow_dispatch:push:branches: [main]jobs:deploy:runs-on: ubuntu-lateststeps: - name: Check out the repouses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - uses: pnpm/action-setup@v4        with:          version: 10      - name: Install Dependencies        run: pnpm i --frozen-lockfile      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
 ### CLI deployment
@@ -7080,10 +7128,26 @@ You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([
 6.  Add the following workflow configuration:
     
 
+*   npm
+*   yarn
+*   pnpm
+
 .github/workflows/deploy.yml
 
 ```
-name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+name: Deploy to Junoon:workflow_dispatch:push:branches: [main]jobs:deploy:runs-on: ubuntu-lateststeps: - name: Check out the repouses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Enable Corepack        run: corepack enable      - name: Activate Yarn        run: corepack prepare yarn@1.x --activate      - name: Install Dependencies        run: yarn install --frozen-lockfile      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:workflow_dispatch:push:branches: [main]jobs:deploy:runs-on: ubuntu-lateststeps: - name: Check out the repouses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - uses: pnpm/action-setup@v4        with:          version: 10      - name: Install Dependencies        run: pnpm i --frozen-lockfile      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
 ### CLI deployment
@@ -7325,10 +7389,26 @@ You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([
 6.  Add the following workflow configuration:
     
 
+*   npm
+*   yarn
+*   pnpm
+
 .github/workflows/deploy.yml
 
 ```
-name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+name: Deploy to Junoon:workflow_dispatch:push:branches: [main]jobs:deploy:runs-on: ubuntu-lateststeps: - name: Check out the repouses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Enable Corepack        run: corepack enable      - name: Activate Yarn        run: corepack prepare yarn@1.x --activate      - name: Install Dependencies        run: yarn install --frozen-lockfile      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:workflow_dispatch:push:branches: [main]jobs:deploy:runs-on: ubuntu-lateststeps: - name: Check out the repouses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - uses: pnpm/action-setup@v4        with:          version: 10      - name: Install Dependencies        run: pnpm i --frozen-lockfile      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
 ### CLI deployment
@@ -7604,10 +7684,26 @@ You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([
 6.  Add the following workflow configuration:
     
 
+*   npm
+*   yarn
+*   pnpm
+
 .github/workflows/deploy.yml
 
 ```
-name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+name: Deploy to Junoon:workflow_dispatch:push:branches: [main]jobs:deploy:runs-on: ubuntu-lateststeps: - name: Check out the repouses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Enable Corepack        run: corepack enable      - name: Activate Yarn        run: corepack prepare yarn@1.x --activate      - name: Install Dependencies        run: yarn install --frozen-lockfile      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:workflow_dispatch:push:branches: [main]jobs:deploy:runs-on: ubuntu-lateststeps: - name: Check out the repouses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - uses: pnpm/action-setup@v4        with:          version: 10      - name: Install Dependencies        run: pnpm i --frozen-lockfile      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
 ### CLI deployment
@@ -7849,10 +7945,26 @@ You can deploy using either ([GitHub Actions](#github-actions-deployment)) or ([
 6.  Add the following workflow configuration:
     
 
+*   npm
+*   yarn
+*   pnpm
+
 .github/workflows/deploy.yml
 
 ```
-name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+name: Deploy to Junoon:workflow_dispatch:push:branches: [main]jobs:deploy:runs-on: ubuntu-lateststeps: - name: Check out the repouses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Install Dependencies        run: npm ci      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:  workflow_dispatch:  push:    branches: [main]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - name: Enable Corepack        run: corepack enable      - name: Activate Yarn        run: corepack prepare yarn@1.x --activate      - name: Install Dependencies        run: yarn install --frozen-lockfile      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
+```
+
+.github/workflows/deploy.yml
+
+```
+name: Deploy to Junoon:workflow_dispatch:push:branches: [main]jobs:deploy:runs-on: ubuntu-lateststeps: - name: Check out the repouses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - uses: pnpm/action-setup@v4        with:          version: 10      - name: Install Dependencies        run: pnpm i --frozen-lockfile      - name: Deploy to Juno        uses: junobuild/juno-action@main        with:          args: hosting deploy        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
 ### CLI deployment
