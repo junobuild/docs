@@ -126,12 +126,19 @@ const sidebars: SidebarsConfig = {
                 description:
                   "Explore how to create a Juno project developed with Next.js."
               },
-              items: [
-                "guides/nextjs/build",
-                "guides/nextjs/deploy",
-              ]
+              items: ["guides/nextjs/build", "guides/nextjs/deploy"]
             },
-            "guides/react",
+            {
+              type: "category",
+              label: "React",
+              link: {
+                slug: "/guides/react",
+                type: "generated-index",
+                description:
+                  "Explore how to create a Juno project developed with React."
+              },
+              items: ["guides/react/build", "guides/react/deploy"]
+            },
             {
               type: "category",
               label: "Vue",
@@ -141,10 +148,7 @@ const sidebars: SidebarsConfig = {
                 description:
                   "Explore how to create a Juno project developed with Vue."
               },
-              items: [
-                "guides/vue/build",
-                "guides/vue/deploy",
-              ]
+              items: ["guides/vue/build", "guides/vue/deploy"]
             },
             {
               type: "category",
@@ -155,10 +159,7 @@ const sidebars: SidebarsConfig = {
                 description:
                   "Explore how to create a Juno project developed with SvelteKit."
               },
-              items: [
-                "guides/sveltekit/build",
-                "guides/sveltekit/deploy",
-              ]
+              items: ["guides/sveltekit/build", "guides/sveltekit/deploy"]
             },
             {
               type: "category",
@@ -169,10 +170,7 @@ const sidebars: SidebarsConfig = {
                 description:
                   "Explore how to create a Juno project developed with Angular."
               },
-              items: [
-                "guides/angular/build",
-                "guides/angular/deploy",
-              ]
+              items: ["guides/angular/build", "guides/angular/deploy"]
             },
             {
               type: "category",
@@ -183,11 +181,8 @@ const sidebars: SidebarsConfig = {
                 description:
                   "Explore how to create a Juno project developed with Astro."
               },
-              items: [
-                "guides/astro/build",
-                "guides/astro/deploy",
-              ]
-            },
+              items: ["guides/astro/build", "guides/astro/deploy"]
+            }
           ]
         },
         {
