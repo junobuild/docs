@@ -110,10 +110,11 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "category",
-          label: "Clients",
+          label: "Frontend",
           link: {
             type: "generated-index",
-            description: "Integrate Juno with your favorite frameworks."
+            description:
+              "Integrate Juno with your favorite frontend frameworks."
           },
           items: [
             "guides/nextjs",
@@ -121,8 +122,7 @@ const sidebars: SidebarsConfig = {
             "guides/vue",
             "guides/sveltekit",
             "guides/angular",
-            "guides/astro",
-            "guides/nodejs"
+            "guides/astro"
           ]
         },
         {
@@ -134,6 +134,15 @@ const sidebars: SidebarsConfig = {
               "Build serverless functions to run backend code in response to events or requests."
           },
           items: ["guides/rust", "guides/typescript"]
+        },
+        {
+          type: "category",
+          label: "Scripts",
+          link: {
+            type: "generated-index",
+            description: "Run Juno operations using scripts and tooling."
+          },
+          items: ["guides/nodejs"]
         },
         {
           type: "category",
