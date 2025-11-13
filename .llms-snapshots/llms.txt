@@ -94,6 +94,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [AI](https://juno.build/docs/guides/ai.md): Learn how to use Juno's llms.txt files to provide AI tools with better context for building serverless functions, deploying satellites, and integrating the SDK.
 - [Angular](https://juno.build/docs/guides/angular.md): Explore how to create a Juno project developed with Angular.
 - [Astro](https://juno.build/docs/guides/astro.md): Explore how to create a Juno project developed with Astro.
+- [Docusaurus](https://juno.build/docs/guides/docusaurus.md): Explore how to deploy a Juno project developed with Docusaurus.
 - [End-to-End Testing](https://juno.build/docs/guides/e2e.md): Learn how to write and run end-to-end (E2E) tests for your Juno project using tools like Playwright and GitHub Actions. Includes emulator setup, authentication handling, and CI integration.
 - [Manual](https://juno.build/docs/guides/manual-deployment.md): Learn how to deploy an application to a Juno Satellite from your device using the CLI.
 - [Next.js](https://juno.build/docs/guides/nextjs.md): Explore how to create a Juno project developed with Next.js.
@@ -113,6 +114,10 @@ Juno is your self-contained serverless platform for building full-stack web apps
   
 - [Build an Astro App](https://juno.build/docs/guides/astro/build.md): Learn how to integrate Juno with Astro. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.
 - [Deploy an Astro Site](https://juno.build/docs/guides/astro/deploy.md): Learn how to deploy your Astro project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.
+
+## Guides - Docusaurus
+  
+- [Deploy a Docusaurus Site](https://juno.build/docs/guides/docusaurus/deploy.md): Learn how to deploy your Docusaurus project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.
 
 ## Guides - Github-actions
   
