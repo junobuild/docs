@@ -133,7 +133,20 @@ const sidebars: SidebarsConfig = {
             },
             "guides/react",
             "guides/vue",
-            "guides/sveltekit",
+            {
+              type: "category",
+              label: "SvelteKit",
+              link: {
+                slug: "/guides/sveltekit",
+                type: "generated-index",
+                description:
+                  "Explore how to create a Juno project developed with SvelteKit."
+              },
+              items: [
+                "guides/sveltekit/build",
+                "guides/sveltekit/deploy",
+              ]
+            },
             {
               type: "category",
               label: "Angular",

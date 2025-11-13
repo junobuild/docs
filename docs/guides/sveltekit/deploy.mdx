@@ -1,0 +1,74 @@
+---
+sidebar_label: Deploy
+description: Learn how to deploy your SvelteKit project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.
+keywords:
+  [Juno, SvelteKit, integration, quickstart, guide, build, SDK, emulator]
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+
+# Deploy a SvelteKit App
+
+Use this guide to deploy and host your project to production.
+
+## 1. Static site generation
+
+The Internet Computer, including Juno, currently does not support Server Side Rendering (_without workaround_). Therefore, it is recommended to generate a pre-rendered or client-side-only frontend application.
+
+We suggest using the [adapter-static](https://kit.svelte.dev/docs/adapter-static) option from SvelteKit and replacing the default adapter.
+
+Remove and install the adapter:
+
+```bash
+npm rm @sveltejs/adapter-auto && npm i -D @sveltejs/adapter-static
+```
+
+Update the import in `svelte.config.js` file:
+
+```javascript title="svelte.config.js"
+import adapter from "@sveltejs/adapter-static";
+
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+  kit: {
+    adapter: adapter()
+  }
+};
+
+export default config;
+```
+
+Create a file `+layout.js` in `src/routes` to set the prerender option:
+
+```javascript title="+layout.js"
+export const prerender = true;
+```
+
+import CreateSatellite from "../components/create-satellite.mdx";
+
+<CreateSatellite index={2} />
+
+## 3. Configure your project
+
+Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
+
+```typescript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      development: "<DEV_SATELLITE_ID>",
+      production: "<PROD_SATELLITE_ID>"
+    },
+    source: "build",
+    predeploy: ["npm run build"]
+  }
+});
+```
+
+import Deploy from "../components/deploy.mdx";
+
+<Deploy index={4} />
+
+[satellite]: ../terminology.md#satellite
