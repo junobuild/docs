@@ -182,6 +182,17 @@ const sidebars: SidebarsConfig = {
                   "Explore how to create a Juno project developed with Astro."
               },
               items: ["guides/astro/build", "guides/astro/deploy"]
+            },
+            {
+              type: "category",
+              label: "Docusaurus",
+              link: {
+                slug: "/guides/docusaurus",
+                type: "generated-index",
+                description:
+                  "Explore how to deploy a Juno project developed with Docusaurus."
+              },
+              items: ["guides/docusaurus/deploy"]
             }
           ]
         },
