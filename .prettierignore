@@ -1,2 +1,4 @@
 .docusaurus/**/*
 build/**/*
+
+docs/guides/components/github-actions/deploy.mdx
