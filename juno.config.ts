@@ -253,6 +253,18 @@ export default defineConfig({
       headers,
       redirects
     },
+    precompress: [
+      {
+        pattern: "**/*.+(js|mjs|css)",
+        algorithm: "brotli",
+        mode: "replace"
+      },
+      {
+        pattern: "**/*.html",
+        algorithm: "brotli",
+        mode: "both"
+      }
+    ],
     predeploy: ["npm run build"]
   },
   orbiter: {
