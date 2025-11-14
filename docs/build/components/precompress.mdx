@@ -103,6 +103,12 @@ export default defineConfig({
 
 #### Use multiple rules
 
+:::tip
+
+This strategy works great for modern static sites.
+
+:::
+
 In some cases, particularly when using `mode: replace`, you may want to apply different precompression strategies depending on the file type. For example, using replace for JavaScript and CSS files, but doing so for HTML can break social media previews.
 
 To handle this, the precompress option also accepts an array of rules:
