@@ -178,11 +178,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
 ```
-pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
 2.  Initialize your satellite in your web app:
@@ -6243,11 +6243,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
 ```
-pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
 ### 2\. Start the Emulator
@@ -6494,11 +6494,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
 ```
-pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
 ## 2\. Start the Emulator
@@ -7019,11 +7019,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
 ```
-pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
 #### 2\. Start the Emulator
@@ -7298,11 +7298,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
 ```
-pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
 ### 2\. Start the Emulator
@@ -7559,11 +7559,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
 ```
-pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
 ### 2\. Start the Emulator
@@ -7854,11 +7854,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
 ```
-pnpm add @junobuild/core @dfinity/agent @dfinity/auth-client @dfinity/candid @dfinity/identity @dfinity/principal
+pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
 ### 2\. Start the Emulator
