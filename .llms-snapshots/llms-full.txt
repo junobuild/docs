@@ -3179,7 +3179,7 @@ Vercel has been a default choice for frontend teams building with Next.js. It's 
 
 But what if you need more than just speed? What if you need true ownership, control over your infrastructure, and a platform that won't lock you in?
 
-This is where Juno steps in. It's an open-source, next-gen serverless platform to build, deploy, and run modern apps with the privacy and control of self-hosting — without the infrastructure headache.
+This is where Juno steps in. It's an open-source serverless platform to build, deploy, and run modern apps with the privacy and control of self-hosting — without the infrastructure headache.
 
 ---
 

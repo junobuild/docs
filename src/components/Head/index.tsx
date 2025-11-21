@@ -8,7 +8,7 @@ export default function Home({ children }): JSX.Element {
     <Head>
       <title>{`${siteConfig.title} | Run ideas in your container`}</title>
       <meta
-        content="Juno is an open-source, next-gen serverless platform that helps developers build and ship secure projects at scale."
+        content="Juno is an open-source serverless platform that helps developers build and ship secure projects at scale."
         name="description"
       />
       <meta content="Juno" property="og:title" />
