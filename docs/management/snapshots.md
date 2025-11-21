@@ -22,9 +22,9 @@ Snapshots can also be downloaded and uploaded offline using the CLI, allowing yo
 
 ## Limitations
 
-Snapshots are stored on-chain, and the cost of a snapshot's memory consumption is charged to the module itself. This means they follow the lifecycle of your modules — if the module is deleted or runs out of cycles, its snapshot is also removed.
+Snapshots are stored on the network, and the cost of a snapshot's memory consumption is charged to the module itself. This means they follow the lifecycle of your modules — if the module is deleted or runs out of cycles, its snapshot is also removed.
 
-Each module is currently limited to one snapshot at a time. This approach offers a balance between flexibility and cost-efficiency, providing a reliable recovery point without unnecessary on-chain storage costs.
+Each module is currently limited to one snapshot at a time. This approach offers a balance between flexibility and cost-efficiency, providing a reliable recovery point without unnecessary network storage costs.
 
 If the need for multiple snapshots arises in the future, support may be expanded. Reach out and let us know.
 

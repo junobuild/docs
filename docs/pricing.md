@@ -76,7 +76,7 @@ To calculate the estimated monthly cost for 1 gigabyte of storage, you can refer
 
 ### Deployment
 
-Based on our experimentation, deploying an entire website on-chain, such as the website http://juno.build, which consists of approximately 900 files (including compressed versions of the files) and is 40 MB in size, is estimated to cost around 0.114 T Cycles, which converts to 0.0105 ICP ($0.15).
+Based on our experimentation, deploying an entire website, such as the website http://juno.build, which consists of approximately 900 files (including compressed versions of the files) and is 40 MB in size, is estimated to cost around 0.114 T Cycles, which converts to 0.0105 ICP ($0.15).
 
 It's important to note that subsequent deployments of your project can have significantly lower costs if the build consistency of your application is maintained. Juno only uploads new files to your satellites, which helps reduce costs compared to initial deployments.
 
