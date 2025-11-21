@@ -14,7 +14,7 @@ export default function Testimonials(): JSX.Element {
     {
       name: "daisuke",
       twitter: "freedomforcode",
-      img: "https://pbs.twimg.com/profile_images/1643476680667979778/HfVPe0mL_400x400.jpg",
+      img: "https://pbs.twimg.com/profile_images/1988237606392594433/MTbuj-jB_400x400.jpg",
       text: "Yes so easy build MVP with Juno 😍"
     },
     {
