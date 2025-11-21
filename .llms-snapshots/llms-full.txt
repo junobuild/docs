@@ -4465,7 +4465,7 @@ When a document is added to the `request` collection, a serverless function is t
 *   Transfer ICP from the user's wallet to the Satellite using the ICRC ledger's `transfer_from` method
 *   Mark the request as `processed` if the transfer succeeds
 
-This pattern is useful for building workflows that require on-chain asset transfers or other canister calls in response to user actions.
+This pattern is useful for building workflows that require asset transfers or other canister calls in response to user actions.
 
 You can browse the source code here: [github.com/junobuild/examples/tree/main/functions/rust/calls](https://github.com/junobuild/examples/tree/main/functions/rust/calls)
 
@@ -5153,7 +5153,7 @@ When a document is added to the `request` collection, a serverless function is t
 *   Transfer ICP from the user's wallet to the Satellite using the ICRC ledger's `transfer_from` method
 *   Mark the request as `processed` if the transfer succeeds
 
-This pattern is useful for building workflows that require on-chain asset transfers or other canister calls in response to user actions.
+This pattern is useful for building workflows that require asset transfers or other canister calls in response to user actions.
 
 You can browse the source code here: [github.com/junobuild/examples/tree/main/functions/typescript/calls](https://github.com/junobuild/examples/tree/main/functions/typescript/calls)
 
@@ -8198,9 +8198,9 @@ Snapshots can also be downloaded and uploaded offline using the CLI, allowing yo
 
 ## Limitations
 
-Snapshots are stored on-chain, and the cost of a snapshot's memory consumption is charged to the module itself. This means they follow the lifecycle of your modules — if the module is deleted or runs out of cycles, its snapshot is also removed.
+Snapshots are stored on the network, and the cost of a snapshot's memory consumption is charged to the module itself. This means they follow the lifecycle of your modules — if the module is deleted or runs out of cycles, its snapshot is also removed.
 
-Each module is currently limited to one snapshot at a time. This approach offers a balance between flexibility and cost-efficiency, providing a reliable recovery point without unnecessary on-chain storage costs.
+Each module is currently limited to one snapshot at a time. This approach offers a balance between flexibility and cost-efficiency, providing a reliable recovery point without unnecessary network storage costs.
 
 If the need for multiple snapshots arises in the future, support may be expanded. Reach out and let us know.
 
@@ -11604,7 +11604,7 @@ To calculate the estimated monthly cost for 1 gigabyte of storage, you can refer
 
 ### Deployment
 
-Based on our experimentation, deploying an entire website on-chain, such as the website [http://juno.build](http://juno.build), which consists of approximately 900 files (including compressed versions of the files) and is 40 MB in size, is estimated to cost around 0.114 T Cycles, which converts to 0.0105 ICP ($0.15).
+Based on our experimentation, deploying an entire website, such as the website [http://juno.build](http://juno.build), which consists of approximately 900 files (including compressed versions of the files) and is 40 MB in size, is estimated to cost around 0.114 T Cycles, which converts to 0.0105 ICP ($0.15).
 
 It's important to note that subsequent deployments of your project can have significantly lower costs if the build consistency of your application is maintained. Juno only uploads new files to your satellites, which helps reduce costs compared to initial deployments.
 
