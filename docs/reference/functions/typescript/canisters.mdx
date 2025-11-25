@@ -1,0 +1,445 @@
+# Canisters
+
+The following functions can be used to interact with well-known Internet Computer canisters from your serverless functions.
+
+:::note[📦 Library]
+
+The Canisters API is provided by the [@junobuild/functions](https://www.npmjs.com/package/@junobuild/functions) library.
+
+To add it to your project:
+
+import { Bash } from "../../../components/bash.mdx";
+
+<Bash
+  npm="npm i @junobuild/functions"
+  yarn="yarn add @junobuild/functions"
+  pnpm="pnpm add @junobuild/functions"
+/>
+
+You have to follow the pace of the Juno release to ensure compatibility. Refer to the [maintenance guide](../../../build/functions/development/typescript.mdx#maintenance) for instructions.
+
+:::
+
+---
+
+## Overview
+
+The `@junobuild/functions/canisters` module provides a unified interface for interacting with core Internet Computer canisters from within your Juno serverless functions. It offers:
+
+- ⚙️ Type-safe interfaces for well-known IC canisters
+- 🧩 Modular structure with independent sub-packages
+- 🔄 Up-to-date Candid declarations and types
+- 🧪 Battle-tested through production applications
+
+---
+
+## Available Canisters
+
+### Import Structure
+
+Each canister is available as a sub-entry. Import the desired module directly from its entry point:
+
+| Canister(s)   | Import                                         | Status                     |
+| ------------- | ---------------------------------------------- | -------------------------- |
+| ICP Ledger    | `@junobuild/functions/canisters/ledger/icp`    | ✅ Canister + Declarations |
+| ICRC Ledger   | `@junobuild/functions/canisters/ledger/icrc`   | ✅ Canister + Declarations |
+| CMC           | `@junobuild/functions/canisters/cmc`           | ✅ Canister + Declarations |
+| ckBTC         | `@junobuild/functions/canisters/ckbtc`         | 📦 Declarations Only       |
+| ckETH         | `@junobuild/functions/canisters/cketh`         | 📦 Declarations Only       |
+| IC Management | `@junobuild/functions/canisters/ic-management` | 📦 Declarations Only       |
+| NNS           | `@junobuild/functions/canisters/nns`           | 📦 Declarations Only       |
+| SNS           | `@junobuild/functions/canisters/sns`           | 📦 Declarations Only       |
+
+---
+
+## ICP Ledger
+
+You can interact with the ICP Ledger through the class `IcpLedgerCanister`.
+
+### transfer
+
+Sends ICP using the Ledger canister `transfer` method.
+
+```typescript
+transfer(params: {
+  args: IcpLedgerDid.TransferArgs
+}): Promise<IcpLedgerDid.TransferResult>
+```
+
+#### Parameters:
+
+- `args`: The ledger transfer arguments
+- `to`: Destination account identifier (AccountIdentifier)
+- `amount`: Transfer amount object with `e8s` (bigint)
+- `fee`: Fee object with `e8s` (bigint)
+- `memo`: Optional transfer memo (bigint)
+- `from_subaccount`: Optional subaccount (Uint8Array | number[])
+- `created_at_time`: Optional timestamp object with `timestamp_nanos` (bigint)
+
+#### Returns:
+
+- `Promise<IcpLedgerDid.TransferResult>`: The result of the ICP transfer
+- On success: `{ Ok: bigint }` (block height)
+- On error: `{ Err: TransferError }`
+
+#### Example:
+
+```typescript
+import { IcpLedgerCanister } from "@junobuild/functions/canisters/ledger/icp";
+
+export const onExecute = async () => {
+  const ledger = new IcpLedgerCanister();
+
+  const result = await ledger.transfer({
+    args: {
+      to: "destination-account-identifier",
+      amount: { e8s: 100_000_000n }, // 1 ICP
+      fee: { e8s: 10_000n },
+      memo: 0n
+    }
+  });
+
+  if ("Ok" in result) {
+    console.log("Transfer successful, block height:", result.Ok);
+  } else {
+    console.error("Transfer failed:", result.Err);
+  }
+};
+```
+
+---
+
+## ICRC Ledger
+
+Interact with ICRC compatible ledgers through the class `IcrcLedgerCanister`.
+
+### icrc1BalanceOf
+
+Returns the balance of an ICRC account.
+
+```typescript
+icrc1BalanceOf(params: {
+  account: IcrcLedgerDid.Account
+}): Promise<IcrcLedgerDid.Tokens>
+```
+
+#### Parameters:
+
+- `account`: The account to query
+- `owner`: Principal of the account owner
+- `subaccount`: Optional subaccount (Uint8Array | number[])
+
+#### Returns:
+
+- `Promise<IcrcLedgerDid.Tokens>`: The token balance (bigint)
+
+#### Example:
+
+```typescript
+import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";
+import { Principal } from "@dfinity/principal";
+
+export const onExecute = async () => {
+  const ledger = new IcrcLedgerCanister({
+    canisterId: "your-icrc-ledger-canister-id"
+  });
+
+  const balance = await ledger.icrc1BalanceOf({
+    account: {
+      owner: Principal.fromText("user-principal"),
+      subaccount: []
+    }
+  });
+
+  console.log("Balance:", balance);
+};
+```
+
+### icrc1Transfer
+
+Transfers tokens using the ICRC-1 `icrc1_transfer` method.
+
+```typescript
+icrc1Transfer(params: {
+  args: IcrcLedgerDid.TransferArg
+}): Promise<IcrcLedgerDid.TransferResult>
+```
+
+#### Parameters:
+
+- `args`: Transfer arguments
+- `to`: Destination account (Account object)
+- `amount`: Transfer amount (bigint)
+- `fee`: Optional fee (bigint)
+- `memo`: Optional memo (Uint8Array | number[])
+- `from_subaccount`: Optional subaccount (Uint8Array | number[])
+- `created_at_time`: Optional timestamp (bigint)
+
+#### Returns:
+
+- `Promise<IcrcLedgerDid.TransferResult>`: The result of the transfer
+- On success: `{ Ok: bigint }` (block index)
+- On error: `{ Err: TransferError }`
+
+#### Example:
+
+```typescript
+import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";
+import { Principal } from "@dfinity/principal";
+
+export const onExecute = async () => {
+  const ledger = new IcrcLedgerCanister({
+    canisterId: "your-icrc-ledger-canister-id"
+  });
+
+  const result = await ledger.icrc1Transfer({
+    args: {
+      to: {
+        owner: Principal.fromText("recipient-principal"),
+        subaccount: []
+      },
+      amount: 1_000_000n,
+      fee: 10_000n
+    }
+  });
+
+  if ("Ok" in result) {
+    console.log("Transfer successful, block index:", result.Ok);
+  } else {
+    console.error("Transfer failed:", result.Err);
+  }
+};
+```
+
+### icrc2TransferFrom
+
+Transfers tokens using the ICRC-2 `icrc2_transfer_from` method.
+
+Allows transferring tokens from another user's account when an approval has previously been granted via `icrc2_approve`.
+
+```typescript
+icrc2TransferFrom(params: {
+  args: IcrcLedgerDid.TransferFromArgs
+}): Promise<IcrcLedgerDid.TransferFromResult>
+```
+
+#### Parameters:
+
+- `args`: Transfer-from arguments
+- `from`: Source account (Account object)
+- `to`: Destination account (Account object)
+- `amount`: Transfer amount (bigint)
+- `fee`: Optional fee (bigint)
+- `memo`: Optional memo (Uint8Array | number[])
+- `spender_subaccount`: Optional spender subaccount (Uint8Array | number[])
+- `created_at_time`: Optional timestamp (bigint)
+
+#### Returns:
+
+- `Promise<IcrcLedgerDid.TransferFromResult>`: The result of the transfer-from operation
+- On success: `{ Ok: bigint }` (block index)
+- On error: `{ Err: TransferFromError }`
+
+#### Example:
+
+```typescript
+import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";
+import { Principal } from "@dfinity/principal";
+
+export const onExecute = async () => {
+  const ledger = new IcrcLedgerCanister({
+    canisterId: "your-icrc-ledger-canister-id"
+  });
+
+  const result = await ledger.icrc2TransferFrom({
+    args: {
+      from: {
+        owner: Principal.fromText("source-principal"),
+        subaccount: []
+      },
+      to: {
+        owner: Principal.fromText("destination-principal"),
+        subaccount: []
+      },
+      amount: 500_000n
+    }
+  });
+
+  if ("Ok" in result) {
+    console.log("Transfer from successful, block index:", result.Ok);
+  } else {
+    console.error("Transfer from failed:", result.Err);
+  }
+};
+```
+
+---
+
+## Cycle Minting Canister (CMC)
+
+Interact with the Cycle Minting Canister to convert ICP into cycles using the class `CMCCanister`.
+
+### notifyTopUp
+
+Notifies the Cycle Minting Canister that a top-up transfer has been completed.
+
+After sending ICP to the CMC top-up account for a canister, the transfer is recorded on the ledger. The CMC does not automatically convert that ICP into cycles — you must call this function to let the CMC know which transaction to process.
+
+The CMC will then convert the ICP from the given ledger block into cycles and add them to the specified canister.
+
+```typescript
+notifyTopUp(params: {
+  args: CmcDid.NotifyTopUpArg
+}): Promise<CmcDid.NotifyTopUpResult>
+```
+
+#### Parameters:
+
+- `args`: Arguments containing:
+- `block_index`: The ledger block index of the ICP transfer (bigint)
+- `canister_id`: The canister ID that should receive the cycles (Principal)
+
+#### Returns:
+
+- `Promise<CmcDid.NotifyTopUpResult>`: The result of the CMC conversion and deposit
+- On success: `{ Ok: bigint }` (cycles deposited)
+- On error: `{ Err: NotifyError }`
+
+#### Example:
+
+```typescript
+import { CMCCanister } from "@junobuild/functions/canisters/cmc";
+import { IcpLedgerCanister } from "@junobuild/functions/canisters/ledger/icp";
+import { Principal } from "@dfinity/principal";
+
+export const onExecute = async () => {
+  // Step 1: Send ICP to the CMC top-up account
+  const ledger = new IcpLedgerCanister();
+  const transferResult = await ledger.transfer({
+    args: {
+      to: "cmc-top-up-account-identifier",
+      amount: { e8s: 100_000_000n }, // 1 ICP
+      fee: { e8s: 10_000n },
+      memo: 0n
+    }
+  });
+
+  if ("Err" in transferResult) {
+    console.error("Transfer failed:", transferResult.Err);
+    return;
+  }
+
+  const blockIndex = transferResult.Ok;
+
+  // Step 2: Notify the CMC to convert the ICP to cycles
+  const cmc = new CMCCanister();
+  const notifyResult = await cmc.notifyTopUp({
+    args: {
+      block_index: blockIndex,
+      canister_id: Principal.fromText("your-canister-id")
+    }
+  });
+
+  if ("Ok" in notifyResult) {
+    console.log("Cycles deposited:", notifyResult.Ok);
+  } else {
+    console.error("Notify failed:", notifyResult.Err);
+  }
+};
+```
+
+---
+
+## Declarations-Only Exports
+
+The following canisters currently provide Candid type definitions and IDL declarations only. You can use these with the [call](./ic-cdk.mdx#call) function for custom interactions.
+
+### ckBTC
+
+```typescript
+import {
+  CkBTCBitcoinIdl,
+  CkBTCMinterIdl,
+  type CkBTCBitcoinDid,
+  type CkBTCMinterDid
+} from "@junobuild/functions/canisters/ckbtc";
+```
+
+### ckETH
+
+```typescript
+import {
+  CkETHMinterIdl,
+  CkETHOrchestratorIdl,
+  type CkETHMinterDid,
+  type CkETHOrchestratorDid
+} from "@junobuild/functions/canisters/cketh";
+```
+
+### IC Management
+
+```typescript
+import {
+  IcManagementIdl,
+  type IcManagementDid
+} from "@junobuild/functions/canisters/ic-management";
+```
+
+### NNS
+
+```typescript
+import {
+  NnsGovernanceIdl,
+  NnsSnsWasmIdl,
+  type NnsGovernanceDid,
+  type NnsSnsWasmDid
+} from "@junobuild/functions/canisters/nns";
+```
+
+### SNS
+
+```typescript
+import {
+  NnsSnsWasmIdl,
+  SnsGovernanceIdl,
+  SnsRootIdl,
+  SnsSwapIdl,
+  type SnsGovernanceDid,
+  type SnsRootDid,
+  type SnsSwapDid
+} from "@junobuild/functions/canisters/sns";
+```
+
+### Usage with call()
+
+You can use these type definitions with the [call](./ic-cdk.mdx#call) function to interact with any canister:
+
+```typescript
+import { call } from "@junobuild/functions/ic-cdk";
+import {
+  IcManagementIdl,
+  type IcManagementDid
+} from "@junobuild/functions/canisters/ic-management";
+
+export const onExecute = async () => {
+  const status = await call<IcManagementDid.CanisterStatusResult>({
+    canisterId: "aaaaa-aa", // Management canister
+    method: "canister_status",
+    args: [
+      [IcManagementIdl.CanisterIdRecord, { canister_id: "your-canister-id" }]
+    ],
+    result: IcManagementIdl.CanisterStatusResult
+  });
+
+  console.log("Canister status:", status);
+};
+```
+
+---
+
+## Notes
+
+- All canister classes use the [call](./ic-cdk.mdx#call) function internally to communicate with the Internet Computer.
+- The caller's identity is automatically determined by the serverless function execution context.
+- For admin operations, you can use the [id](./ic-cdk.mdx#id) function to get the Satellite's principal, which has admin privileges.
+- Error handling follows the Result pattern: check for `Ok` or `Err` properties in the response.
