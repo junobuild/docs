@@ -407,6 +407,7 @@ const sidebars: SidebarsConfig = {
             "reference/functions/typescript/sdk",
             "reference/functions/typescript/utils",
             "reference/functions/typescript/ic-cdk",
+            "reference/functions/typescript/canisters",
             "reference/functions/typescript/node"
           ]
         }
