@@ -189,6 +189,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Reference - Functions - Typescript
   
+- [Canisters](https://juno.build/docs/reference/functions/typescript/canisters.md): The following functions can be used to interact with well-known Internet Computer canisters from your serverless functions.
 - [IC-CDK](https://juno.build/docs/reference/functions/typescript/ic-cdk.md): Juno exposes a growing set of these features for TypeScript, allowing you to build serverless functions that interact with the IC using a familiar developer experience.
 - [Node.js](https://juno.build/docs/reference/functions/typescript/node.md): The TypeScript runtime used in Juno does not provide full Node.js support. Polyfills are added iteratively to keep the environment stable and predictable.
 - [SDK](https://juno.build/docs/reference/functions/typescript/sdk.md): The SDK is provided by the @junobuild/functions library.
