@@ -16,7 +16,7 @@ You can manually create, restore, and delete snapshots for each module as needed
 
 Snapshots are also automatically created during the upgrade process, capturing a snapshot when upgrading to a new version. If preferred, you can opt out in the advanced options to skip creating a snapshot or prevent overwriting an existing one. However, given the sensitivity of such processes, we strongly recommend always having a snapshot available or at least ensuring a way to restore your data—for example, by being prepared to redeploy your application quickly.
 
-Snapshots can also be downloaded and uploaded offline using the CLI, allowing you to store them externally and re-import them later if needed.
+Snapshots can also be [downloaded and uploaded](../reference/cli.mdx#snapshot) offline using the CLI, allowing you to store them externally and re-import them later if needed.
 
 ---
 
