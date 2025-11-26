@@ -43,9 +43,9 @@ for cmd in $(echo $CONFIG_COMMANDS | sed "s/,/ /g"); do
   generate_command_markdown "config $cmd"
 done
 
-EMULATOR_COMMANDS=upload
+SNAPSHOT_COMMANDS=upload
 
-for cmd in $(echo $EMULATOR_COMMANDS | sed "s/,/ /g"); do
+for cmd in $(echo $SNAPSHOT_COMMANDS | sed "s/,/ /g"); do
   generate_command_markdown "snapshot $cmd"
 done
 
