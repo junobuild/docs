@@ -49,9 +49,14 @@ export const AskAi = () => {
     siteConfig: { url }
   } = useDocusaurusContext();
 
-  const markdownLink = `${pathname}.md`;
+  // Some URL such as https://juno.build/docs/build/authentication/ ends with a slash
+  const cleanPathname = pathname.replace(/\/+$/, "");
 
-  const prompt = encodeURIComponent(`Read from this URL: ${url}${pathname}`);
+  const markdownLink = `${cleanPathname}.md`;
+
+  const prompt = encodeURIComponent(
+    `Read from this URL: ${url}${cleanPathname}`
+  );
   const claudeLink = `https://claude.ai/new?q=${prompt}`;
   const chatGPTLink = `https://chatgpt.com/?prompt=${prompt}`;
 
@@ -72,7 +77,7 @@ export const AskAi = () => {
         <AskAiLink
           icon={<IconMarkdown />}
           link={markdownLink}
-          pathname={pathname}
+          pathname={cleanPathname}
           text="View as Markdown"
           description="Open this page in Markdown"
           eventName="ask_ai_view_markdown"
@@ -81,7 +86,7 @@ export const AskAi = () => {
         <AskAiLink
           icon={<IconClaude />}
           link={claudeLink}
-          pathname={pathname}
+          pathname={cleanPathname}
           text="Open in Claude"
           description="Ask questions about this page"
           eventName="ask_ai_claude"
@@ -90,7 +95,7 @@ export const AskAi = () => {
         <AskAiLink
           icon={<IconOpenAI />}
           link={chatGPTLink}
-          pathname={pathname}
+          pathname={cleanPathname}
           text="Open in ChatGPT"
           description="Ask questions about this page"
           eventName="ask_ai_chatgpt"
