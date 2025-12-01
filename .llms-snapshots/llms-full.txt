@@ -2463,42 +2463,17 @@ If you're looking to extend backend capabilities using serverless logic, refer t
 
 ---
 
-## Upload file
+## Concepts
 
-When you upload a file, it becomes an **asset** stored in the Storage of your Satellite. Assets are accessible over the web and can be listed, deleted, or protected using tokens.
+Before working with the Storage API, it's helpful to understand two key concepts: assets and `fullPath`.
 
-To upload a file, use the following code:
+### Assets
 
-```
-import { uploadFile } from "@junobuild/core";const result = await uploadFile({  data,  collection: "images"});
-```
+Uploaded files become **assets** stored in your Satellite's Storage. These assets are web-accessible and can be managed with permissions, access tokens, and custom paths.
 
-#### Parameters
+### fullPath
 
-The `data` parameter is the file you want to upload. This is a `Blob`, typically selected using an HTML `<input type="file" />` element.
-
-The `uploadFile` function provides various options, including:
-
-*   `filename`: By default, Juno uses the file's filename. You can overwrite this and provide a custom filename. Example: `myimage.jpg`.
-*   `fullPath`: The unique path where the asset will be stored and accessed. 👉 See ([What is a `fullPath`?](#what-is-a-fullpath)) for details and examples.
-*   `headers`: The headers can affect how the browser handles the asset. If no headers are provided Juno will infer the `Content-Type` from the file type.
-*   `encoding`: The type of encoding for the file. For example, `identity` (raw) or `gzip`.
-
-**Note:**
-
-*   URL encoding is currently not supported on the Internet Computer. Therefore, it's important to keep in mind that your `filename` should not be encoded. That is why the library decodes the `filename` automatically.
-
-#### Returns
-
-The function returns the uploaded asset key as an object with the following fields:
-
-*   `fullPath`: The unique path to the asset. Example: `/images/myimage.jpg`.
-*   `name`: The name of the asset (typically the filename). Example: `myimage.jpg`.
-*   `downloadUrl`: The URL to access the asset on the web or to download it. This URL can be used in a browser or embedded directly in HTML elements like `<img>` or `<a>`.
-
-#### What is a `fullPath`?
-
-The `fullPath` is the **unique path** of an asset within your Satellite's storage. It determines the asset’s public-facing URL and is used throughout the SDK to identify, retrieve, list, or delete the asset.
+A `fullPath` is the **unique path** of an asset within your Satellite's storage. It determines the asset’s public-facing URL and is used throughout the SDK to identify, retrieve, list, or delete the asset.
 
 It always starts with a **slash**, and follows the structure:
 
@@ -2516,7 +2491,7 @@ For example, uploading a file to the `"images"` collection with the filename `"l
 
 *   If the asset is **not part of the frontend**, the `fullPath` always includes the **collection** name.
 *   By default, the `fullPath` is automatically derived from the uploaded file's name (e.g. `/images/photo.jpg`).
-*   You can override the path using a custom filename. These are both valid:
+*   You can override the path using a custom filename. These are e.g. both valid:
 *   `/collection/hello.jpg`
 *   `/collection/my/sub/path/hello.jpg`
 *   The `fullPath` is effectively the **asset key** used in Juno Storage.
@@ -2524,7 +2499,46 @@ For example, uploading a file to the `"images"` collection with the filename `"l
 
 ---
 
-## Upload blob
+## Upload
+
+The SDK provides multiple functions to upload files to your Satellite's Storage, each suited for different use cases.
+
+---
+
+### Upload file
+
+To upload a file, use the following code:
+
+```
+import { uploadFile } from "@junobuild/core";const result = await uploadFile({  data,  collection: "images"});
+```
+
+#### Parameters
+
+The `data` parameter is the file you want to upload. This is a `Blob`, typically selected using an HTML `<input type="file" />` element.
+
+The `uploadFile` function provides various options, including:
+
+*   `filename`: By default, Juno uses the file's filename. You can overwrite this and provide a custom filename. Example: `myimage.jpg`.
+*   `fullPath`: The unique path where the asset will be stored and accessed.
+*   `headers`: The headers can affect how the browser handles the asset. If no headers are provided Juno will infer the `Content-Type` from the file type.
+*   `encoding`: The type of encoding for the file. For example, `identity` (raw) or `gzip`.
+
+**Note:**
+
+*   URL encoding is currently not supported on the Internet Computer. Therefore, it's important to keep in mind that your `filename` should not be encoded. That is why the library decodes the `filename` automatically.
+
+#### Returns
+
+The function returns the uploaded asset key as an object with the following fields:
+
+*   `fullPath`: The unique path to the asset. Example: `/images/myimage.jpg`.
+*   `name`: The name of the asset (typically the filename). Example: `myimage.jpg`.
+*   `downloadUrl`: The URL to access the asset on the web or to download it. This URL can be used in a browser or embedded directly in HTML elements like `<img>` or `<a>`.
+
+---
+
+### Upload blob
 
 The `uploadBlob` function works like ([`uploadFile`](#upload-file)) but does **not** infer the filename from the data. You must explicitly provide the `filename`.
 
@@ -2536,17 +2550,17 @@ This is useful when uploading raw binary data that wasn't selected via a file in
 
 ---
 
-## Protected assets
+### Protected asset
 
 While all assets can be found on the internet, it is possible to make their URL difficult to guess so that they remain undiscoverable (**as long as they are not shared**) and considered "private".
 
-Juno achieves this by using an optional `token` query parameter.
+Juno achieves this by using an optional access `token` query parameter.
 
 ```
 import { uploadFile } from "@junobuild/core";import { nanoid } from "nanoid";const result = await uploadFile({  data,  collection: "images",  token: nanoid()});
 ```
 
-Imagine a file "mydata.jpg" uploaded with a token. Attempting to access it through the URL "[https://yoursatellite/mydata.jpg](https://yoursatellite/mydata.jpg)" will not work. The asset can only be retrieved if a token is provided: "[https://yoursatellite/mydata.jpg?token=a-super-long-secret-id](https://yoursatellite/mydata.jpg?token=a-super-long-secret-id)".
+Imagine a file "mydata.jpg" uploaded with an access token. Attempting to access it through the URL "[https://yoursatellite/mydata.jpg](https://yoursatellite/mydata.jpg)" will not work. The asset can only be retrieved if a `token` parameter is provided: "[https://yoursatellite/mydata.jpg?token=a-super-long-secret-id](https://yoursatellite/mydata.jpg?token=a-super-long-secret-id)".
 
 ---
 
@@ -2680,7 +2694,7 @@ import { downloadUrl } from "@junobuild/core";const url = downloadUrl({  assetKe
     
 *   **`fullPath`**: The full path to the asset (e.g., `/images/file.jpg`).
     
-*   **`token`** (optional): A secret token used to access protected assets.
+*   **`token`** (optional): A access token used to protect the asset.
     
 *   **`satellite`** (optional) Required only in Node.js environments to specify which Satellite to use.
     
