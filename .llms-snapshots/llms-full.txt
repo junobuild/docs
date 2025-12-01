@@ -10643,6 +10643,18 @@ pub fn delete_filtered_assets_store(    caller: Principal,    collection: Collec
 
 ---
 
+### set\_asset\_token\_store
+
+Set or update an access token for an asset.
+
+```
+pub fn set_asset_token_store(    caller: Principal,    collection: &CollectionKey,    full_path: &FullPath,    token: &AssetAccessToken,) -> Result<Option<Asset>, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.set_asset_token_store.html)
+
+---
+
 ### get\_content\_chunks\_store
 
 Retrieves content chunks of an asset. Particularly useful when stable memory is used.
@@ -11648,6 +11660,35 @@ function deleteFilteredAssetsStore(  params: DeleteFilteredAssetsStoreParams): O
 #### Returns:
 
 *   `OptionAsset[]`: List of deleted assets.
+
+#### Throws:
+
+*   `ZodError` if the input schema is invalid.
+*   `Error` if the operation fails.
+
+---
+
+### setAssetTokenStore
+
+Set or update an access token for an asset.
+
+```
+function setAssetTokenStore(params: SetAssetTokenStoreParams): void;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+*   `params`: An object containing:
+*   `caller`: The identity initiating the deletion.
+*   `collection`: The collection name.
+*   `full_path`: The asset path to delete.
+*   `token`: The token to apply to the asset. Setting `undefined` removes the protection and makes the asset public.
+
+#### Returns:
+
+*   `void`
 
 #### Throws:
 
