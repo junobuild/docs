@@ -485,6 +485,35 @@ function deleteFilteredAssetsStore(
 
 ---
 
+### setAssetTokenStore
+
+Set or update an access token for an asset.
+
+```typescript
+function setAssetTokenStore(params: SetAssetTokenStoreParams): void;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+- `params`: An object containing:
+- `caller`: The identity initiating the deletion.
+- `collection`: The collection name.
+- `full_path`: The asset path to delete.
+- `token`: The token to apply to the asset. Setting `undefined` removes the protection and makes the asset public.
+
+#### Returns:
+
+- `void`
+
+#### Throws:
+
+- `ZodError` if the input schema is invalid.
+- `Error` if the operation fails.
+
+---
+
 ### getContentChunksStore
 
 Retrieves a specific chunk of an asset.

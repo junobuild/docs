@@ -283,6 +283,23 @@ pub fn delete_filtered_assets_store(
 
 ---
 
+### set_asset_token_store
+
+Set or update an access token for an asset.
+
+```rust
+pub fn set_asset_token_store(
+    caller: Principal,
+    collection: &CollectionKey,
+    full_path: &FullPath,
+    token: &AssetAccessToken,
+) -> Result<Option<Asset>, String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.set_asset_token_store.html)
+
+---
+
 ### get_content_chunks_store
 
 Retrieves content chunks of an asset. Particularly useful when stable memory is used.
