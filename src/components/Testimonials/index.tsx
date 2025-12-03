@@ -36,6 +36,12 @@ export default function Testimonials(): JSX.Element {
       text: "Juno is my favorite hosting service, Web3 or otherwise."
     },
     {
+      name: "Twofiveoone",
+      twitter: "twofiveoonevfx",
+      img: "https://pbs.twimg.com/profile_images/1995583616768765952/z4AdjnPM_400x400.jpg",
+      text: "Love to see juno on here, all my websites hosted with it, 10/10"
+    },
+    {
       name: "Sam-the-tutor™",
       twitter: "samthetutor2",
       img: "https://pbs.twimg.com/profile_images/1679878586369449984/qv_eQ3oX_400x400.jpg",
