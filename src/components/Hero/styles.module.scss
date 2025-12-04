@@ -1,6 +1,4 @@
 .heroBanner {
-  padding: 0 1rem;
-
   z-index: 1;
   background: transparent;
 
@@ -12,6 +10,7 @@
 
   @media screen and (min-width: 768px) {
     min-height: 520px;
+    padding: 0 1rem;
   }
 }
 
@@ -23,10 +22,11 @@
   align-items: center;
 
   p {
-    max-width: 760px;
+    max-width: 680px;
     text-align: center;
 
     @media screen and (min-width: 960px) {
+      max-width: 760px;
       font-size: 18px;
       line-height: 32px;
     }
@@ -56,12 +56,12 @@
 
   text-align: center;
 
-  max-width: 380px;
+  max-width: 520px;
 
   letter-spacing: -0.15rem;
   word-spacing: -0.5rem;
   line-height: 1.1;
-  font-size: 2.35rem;
+  font-size: 2rem;
   font-weight: inherit;
 
   @media screen and (min-width: 480px) {
@@ -70,10 +70,11 @@
 
   @media screen and (min-width: 768px) {
     max-width: 720px;
-    font-size: 4rem;
+    font-size: 3rem;
   }
   @media screen and (min-width: 960px) {
-    font-size: 5rem;
+    max-width: 830px;
+    font-size: 4rem;
   }
 }
 
@@ -94,24 +95,6 @@
 
 .bold {
   font-weight: bold;
-}
-
-.typed {
-  font-family: "Pixelify Sans", sans-serif;
-
-  font-size: 2.75rem;
-
-  @media screen and (min-width: 480px) {
-    font-size: 2.95rem;
-  }
-
-  @media screen and (min-width: 768px) {
-    font-size: 4.6rem;
-  }
-
-  @media screen and (min-width: 960px) {
-    font-size: 5.85rem;
-  }
 }
 
 .llms {

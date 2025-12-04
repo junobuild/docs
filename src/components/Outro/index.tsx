@@ -7,7 +7,7 @@ export default function Outro(): JSX.Element {
     <section className={styles.section}>
       <div className={`container ${styles.container}`}>
         <div>
-          <h2 className={`${styles.sub}`}>Your apps. Your terms.</h2>
+          <h2 className={`${styles.sub}`}>Your apps. Your cloud.</h2>
           <p className={styles.subText}>
             No setup. No DevOps. No strings attached.
           </p>

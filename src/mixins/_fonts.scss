@@ -1,15 +1,12 @@
 @mixin h2 {
   line-height: 1.2;
-  font-size: 2.5rem;
+  font-size: 2rem;
   letter-spacing: -0.05em;
   @media screen and (min-width: 768px) {
-    font-size: 3rem;
+    font-size: 2.75rem;
   }
   @media screen and (min-width: 1480px) {
-    font-size: 4rem;
-  }
-  @media screen and (min-width: 1900px) {
-    font-size: 4.75rem;
+    font-size: 3.25rem;
   }
 }
 

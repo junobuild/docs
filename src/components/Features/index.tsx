@@ -10,10 +10,14 @@ export default function Features(): JSX.Element {
           <CloudIllustration />
         </picture>
         <aside>
-          <h2>Move Fast. Ship Smart.</h2>
+          <h2>
+            Complete stack.
+            <br />
+            Zero overhead.
+          </h2>
           <p>
-            Develop modern apps with zero backend setup. Build, test and deploy
-            your way.
+            Key-value datastore, storage, auth, analytics, and serverless
+            functions running in secure containers. No infrastructure to manage.
           </p>
         </aside>
       </div>
