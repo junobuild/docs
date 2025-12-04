@@ -17,7 +17,7 @@ export default function Hero(): JSX.Element {
 
     const timeout = setTimeout(() => {
       typed = new Typed(el.current, {
-        strings: ["Run", "Ship", "Build", "Launch", "Host"],
+        strings: ["Run", "Ship", "Build", "Launch"],
         typeSpeed: 50,
         backSpeed: 50,
         backDelay: 3500,
@@ -43,13 +43,13 @@ export default function Hero(): JSX.Element {
           {!typedLoaded && (
             <span className={`${styles.bold} ${styles.typed}`}>Build</span>
           )}{" "}
-          ideas in
+          serverless apps
           <br />
-          your <span className={styles.bold}>container</span>
+          with self-hosting <span className={styles.bold}>control</span>
         </h1>
         <p className={`${styles.item} ${styles.subtitle}`}>
           Juno is an open-source serverless platform to build, deploy, and run
-          modern apps with the privacy and control of self-hosting.
+          apps in WASM containers with complete ownership and zero DevOps.
         </p>
         <p className={`${styles.item}`}></p>
         <div className={`${styles.item} ${styles.actions}`}>

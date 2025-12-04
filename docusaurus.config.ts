@@ -42,7 +42,7 @@ codeTheme.styles = [
 
 const config: Config = {
   title: "Juno",
-  tagline: "Run ideas in your container",
+  tagline: "Build serverless apps with self-hosting control",
   url: "https://juno.build",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -134,7 +134,7 @@ const config: Config = {
             "Web3, blockchain platform, decentralized applications, Web3 development, passwordless authentication, datastore, file storage, hosting, serverless functions, analytics, open source"
         }
       ],
-      image: "img/social_image_v11.jpg",
+      image: "img/social_image_v12.jpg",
       navbar: {
         logo: {
           alt: "Juno Logo",

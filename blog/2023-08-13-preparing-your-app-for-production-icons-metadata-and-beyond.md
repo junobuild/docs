@@ -61,7 +61,10 @@ There are two other aspects that are of utmost importance:
     <meta charset="utf-8" />
 
     <title>Juno</title>
-    <meta content="Run ideas in your container" name="description" />
+    <meta
+      content="Build serverless apps with self-hosting control"
+      name="description"
+    />
 
     <link href="https://juno.build" rel="canonical" />
   </head>
@@ -96,7 +99,10 @@ Among the plethora of available tags, we typically employ only the following fiv
     <!-- Here same HTML tags as previous chapter -->
 
     <meta content="Juno" property="og:title" />
-    <meta content="Run ideas in your container" property="og:description" />
+    <meta
+      content="Build serverless apps with self-hosting control"
+      property="og:description"
+    />
     <meta content="website" property="og:type" />
     <meta content="https://juno.build" property="og:url" />
     <meta
@@ -136,7 +142,10 @@ It's crucial to keep in mind that tweets are limited to 280 characters without p
 
     <meta content="summary_large_image" name="twitter:card" />
     <meta content="Juno" name="twitter:title" />
-    <meta content="Run ideas in your container" name="twitter:description" />
+    <meta
+      content="Build serverless apps with self-hosting control"
+      name="twitter:description"
+    />
     <meta
       content="https://juno.build/images/social-image.jpg"
       name="twitter:image"
