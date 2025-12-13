@@ -24,12 +24,6 @@
     "img": "/showcase/aegir.jpg"
   },
   {
-    "title": "BEE-2B PLATFORM",
-    "url": "https://bee-2b.com",
-    "description": "Tech community with passion.",
-    "img": "/showcase/bee-2b.png"
-  },
-  {
     "title": "icdraw",
     "url": "https://icdraw.com",
     "description": "A whiteboard for sketching hand-drawn like diagrams on Web3.",
@@ -102,13 +96,6 @@
     "description": "Incentivizing Governance Participation on the Internet Computer",
     "img": "/showcase/stack.jpg",
     "twitter": "StackICP"
-  },
-  {
-    "title": "Wumbo",
-    "url": "https://qmpah-qqaaa-aaaal-ajabq-cai.icp0.io/",
-    "description": "Wumbo is built on the Internet Computer Protocol utilizing Magic Conch Shell's Immutable Token Creator, rendering the canister code trustless and unmodifiable.",
-    "img": "/showcase/wumbo.jpg",
-    "twitter": "WUMBOicp"
   },
   {
     "title": "stik coin",
