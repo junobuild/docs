@@ -7,23 +7,23 @@ import { defineConfig } from "@junobuild/config";
 const headers: StorageConfigHeader[] = [
   {
     source: "**/*.svg",
-    headers: [["Cache-Control", "max-age=2592000"]]
+    headers: [["Cache-Control", "max-age=2592000, public"]]
   },
   {
     source: "**/*.png",
-    headers: [["Cache-Control", "max-age=2592000"]]
+    headers: [["Cache-Control", "max-age=2592000, public"]]
   },
   {
     source: "**/*.webp",
-    headers: [["Cache-Control", "max-age=2592000"]]
+    headers: [["Cache-Control", "max-age=2592000, public"]]
   },
   {
     source: "/animations/**/*.lottie",
-    headers: [["Cache-Control", "max-age=2592000"]]
+    headers: [["Cache-Control", "max-age=2592000, public"]]
   },
   {
     source: "/assets/fonts/**/*",
-    headers: [["Cache-Control", "public, max-age=31536000"]]
+    headers: [["Cache-Control", "max-age=31536000, public"]]
   }
 ];
 
