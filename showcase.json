@@ -139,5 +139,12 @@
     "description": "The driving force that unites governance, projects, and collaboration. Fostering innovation, connectivity, and decentralized growth on the Internet Computer.",
     "img": "https://ic-toolkit.app/og-image.png",
     "twitter": "ic_toolkit"
+  },
+  {
+    "title": "Swiss Subnet",
+    "url": "https://subnet.ch",
+    "description": "Empowering institutions and enterprises with on-chain privacy, legal compliance, and innovative blockchain technology.",
+    "img": "/showcase/swiss-subnet.webp",
+    "twitter": "SwissSubnet"
   }
 ]
