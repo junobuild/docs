@@ -146,5 +146,12 @@
     "description": "Empowering institutions and enterprises with on-chain privacy, legal compliance, and innovative blockchain technology.",
     "img": "/showcase/swiss-subnet.webp",
     "twitter": "SwissSubnet"
+  },
+  {
+    "title": "NFT Studio",
+    "url": "https://dpl4s-kqaaa-aaaal-asg3a-cai.icp0.io",
+    "description": "Create Stunning NFT Collections",
+    "img": "https://dpl4s-kqaaa-aaaal-asg3a-cai.icp0.io/nft-studio-preview.webp",
+    "twitter": "aimsomnia"
   }
 ]
