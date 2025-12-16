@@ -30,12 +30,6 @@ export default function Testimonials(): JSX.Element {
       text: "CI integration with that CLI is pure chef’s kiss mate."
     },
     {
-      name: "Twofiveoone",
-      twitter: "twofiveoonevfx",
-      img: "https://pbs.twimg.com/profile_images/1995583616768765952/z4AdjnPM_400x400.jpg",
-      text: "Love to see juno on here, all my websites hosted with it, 10/10"
-    },
-    {
       name: "Jacob Crabtree",
       twitter: "crabtr26",
       img: "https://pbs.twimg.com/profile_images/1854279105920823304/-0-W42jG_400x400.jpg",
