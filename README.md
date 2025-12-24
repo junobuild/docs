@@ -27,8 +27,4 @@ For an example JSON entry and formatting guidelines, refer to the existing entri
 
 Thank you for contributing!
 
-## License
-
-This application is released under the GNU Affero General Public License. Copyright [David Dal Busco](mailto:david.dalbusco@outlook.com), Zürich, Switzerland. See COPYING for more details.
-
 [juno]: https://juno.build
