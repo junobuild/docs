@@ -194,7 +194,6 @@ const config: Config = {
               { to: "/showcase", label: "Showcase" },
               { to: "/blog", label: "Blog" },
               { to: "/newsletter", label: "Newsletter" },
-              { to: "/sponsorship", label: "Sponsorship" },
               { to: "/contact", label: "Contact" }
             ]
           },
@@ -314,10 +313,6 @@ const config: Config = {
               {
                 label: "Newsletter",
                 to: "/newsletter"
-              },
-              {
-                label: "Sponsorship",
-                to: "/sponsorship"
               },
               {
                 label: "Changelog",
