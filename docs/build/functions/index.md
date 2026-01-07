@@ -55,8 +55,8 @@ Custom hooks are not active by default. You need to opt in to enable event-drive
 | `on_delete_asset`           | Storage   | Activated when an asset is deleted.                             |
 | `on_delete_many_assets`     | Storage   | Used for deleting multiple assets.                              |
 | `on_delete_filtered_assets` | Storage   | Invoked when assets are deleted based on filters.               |
-| `on_init`                   | Satellite | Called during the initialization of the satellite.              |
-| `on_post_upgrade`           | Satellite | Invoked after the satellite has been upgraded to a new version. |
+| `on_init`                   | Satellite | Called during the initialization of the Satellite.              |
+| `on_post_upgrade`           | Satellite | Invoked after the Satellite has been upgraded to a new version. |
 
 ---
 

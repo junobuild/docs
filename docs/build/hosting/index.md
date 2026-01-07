@@ -14,7 +14,7 @@ keywords:
 
 Juno Hosting makes it easy to put your project online: fast, secure, and reliable by default.
 
-Deploy your web applications or static sites directly to a satellite using [GitHub Actions](../../guides/github-actions/index.mdx). Your builds run automatically, so shipping updates feels as simple as pushing code.
+Deploy your web applications or static sites directly to a Satellite using [GitHub Actions](../../guides/github-actions/index.mdx). Your builds run automatically, so shipping updates feels as simple as pushing code.
 
 Prefer running things locally? You can also use the [CLI](../../guides/manual-deployment.mdx).
 
