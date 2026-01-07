@@ -34,7 +34,7 @@ To ensure that your infrastructure usage is covered, you must maintain a minimum
 You can top up your cycle balance in the Juno [console](https://console.juno.build/) through one of the following methods:
 
 - Purchasing cycles with Stripe, thanks to our friends at [cycle.express](https://cycle.express).
-- Using cycles from your [wallet](miscellaneous/wallet.md).
+- Using cycles from your [wallet](miscellaneous/wallet.mdx).
 - Transferring cycles between modules, such as moving cycles from one Satellite to another.
 
 ---
