@@ -8739,25 +8739,34 @@ For most applications, we recommend using the default subnets and staying on the
 
 # Wallet
 
-This section provides guidance on managing your assets and cycles with your [wallet](/docs/terminology.md#wallet), which are essential for maintaining and providing enough resources for your modules in the Juno ecosystem.
+This section provides guidance on managing your cycles with your wallet (your account), which are essential for maintaining and providing enough resources for your modules in the Juno ecosystem.
 
 **Important:**
 
-Just like your modules, your wallet is fully under your control — Juno cannot access, move, or recover the ICP or cycles held inside.
+Just like your modules, your wallet is under your control — Juno cannot access, move, or recover the cycles held inside.
 
-Because of this non-custodial model, there are no refunds, reversals, or recovery options. Always double-check destination addresses before sending funds.
+Because of this model, there are no refunds, reversals, or recovery options. Always double-check destination addresses before sending funds.
 
-As a best practice, we recommend not holding large amounts of ICP in your Juno wallet unless necessary. Use it as a utility wallet for fueling your modules — not as a long-term vault.
+As a best practice, we recommend not holding large amounts of cycles unless necessary. Use it as a utility for fueling your modules — not as a long-term vault.
 
-We also recommend enabling [monitoring](/docs/management/monitoring.md) to ensure your Mission Control stays alive and responsive at all times.
+We also recommend enabling [monitoring](/docs/management/monitoring.md) to ensure your projects and analytics stay alive and responsive at all times.
 
 ---
 
-## What are ICP?
+## What are Cycles?
 
-ICP are the native cryptocurrency of the [Internet Computer](https://internetcomputer.org). They provide utility for powering the network and are also used for governance.
+Cycles are used to pay for infrastructure usage. Your Satellite, Mission Control or Orbiter consume cycles while they are active.
 
-One key usage is converting ICP tokens to cycles, which are used to cover the computational and storage costs of running modules.
+The amount of cycles available determines whether a module will be active, inactive, or eventually decommissioned (deleted).
+
+This ensures that related costs cannot surpass the amount of cycles available.
+
+Think of cycles like prepaid mobile data:
+
+*   Just like your mobile plan allows you to make calls and browse the internet, cycles enable your containers to process computations and store data.
+*   When your data (cycles) runs out, your service becomes inactive.
+*   To keep your modules running smoothly, you need to top up your cycles regularly (manually or automatically).
+*   If you don’t top it up, after some time, it will be decommissioned, similar to losing your prepaid number due to prolonged inactivity.
 
 ---
 
@@ -11882,8 +11891,8 @@ Do you have more questions or need further assistance? Feel free to reach out to
 
 Juno has a simple starting point:
 
-*   ✅ Free to get started: new developers receive credits to create one managing container and one project container.
-*   💰 Pay as you grow: additional modules (for projects or analytics) cost 0.4 ICP each to create.
+*   ✅ Free to get started: new developers receive credits to create a container for their first project, with initial resources included, ready to use.
+*   💰 Pay as you grow: additional modules (for projects, monitoring or analytics) cost 3 T Cycles each to create.
 *   📦 Operating costs: ongoing costs for storage, compute, and deployments are paid with cycles.
 
 From there, you can dive into the details below to estimate storage, deployment, and data costs more precisely.
@@ -11898,21 +11907,28 @@ To ensure that your infrastructure usage is covered, you must maintain a minimum
 
 You can top up your cycle balance in the Juno [console](https://console.juno.build/) through one of the following methods:
 
-*   Using ICP from your wallet.
 *   Purchasing cycles with Stripe, thanks to our friends at [cycle.express](https://cycle.express).
+*   Using cycles from your [wallet](/docs/miscellaneous/wallet.md).
 *   Transferring cycles between modules, such as moving cycles from one Satellite to another.
 
 ---
 
 ## Transaction costs
 
-New developers who join Juno are granted credits to create a Mission Control and their initial [satellite](/docs/terminology.md#satellite).
+New developers who join Juno are granted credits to create an initial [Satellite](/docs/terminology.md#satellite).
 
-To create additional Satellites, a fee of 0.4 ICP is necessary, along with the infrastructure costs for setting up the container.
+To create additional Satellites, a fee of 3 T Cycles is necessary, along with the infrastructure costs for setting up the container.
 
-Similarly, enabling analytics by creating an [orbiter](/docs/terminology.md#orbiter) entails a fee of 0.4 ICP.
+Similarly, enabling analytics by creating an [Orbiter](/docs/terminology.md#orbiter) or monitoring with a [Mission Control](/docs/terminology.md#mission-control) entails a fee of 3 T Cycles.
 
-Please note that additional transaction fees may be introduced in the future, and pricing and models are subject to change.
+Each module is provisioned with approximately 1.5 T Cycles in usable resources.
+
+**Note:**
+
+*   For backwards compatibility, modules can still be created using Mission Control (deprecated). The transaction cost for this approach is 1.5 ICP.
+    
+*   Additional transaction fees may be introduced in the future, and pricing and models are subject to change.
+    
 
 ---
 
@@ -11950,7 +11966,7 @@ In terms of persisting data, based on our experience, storing 100 instances of a
 
 **Note:**
 
-Pricing information was last reviewed on Sept. 26, 2025.
+Pricing information was last reviewed on Jan. 7, 2026.
 
 Figures are estimates and may change as the Internet Computer evolves.
 
@@ -11958,13 +11974,9 @@ Figures are estimates and may change as the Internet Computer evolves.
 
 In Juno, we use some terms that may be unfamiliar to some. This page provides a summary of the most commonly used terms.
 
-## Account Identifier
-
-An "Account Identifier" is an address, serving as the textual representation of an account on the Internet Computer (ICP) ledger. It can represent an account owned by an individual or a smart contract.
-
 ## Canister
 
-A canister is the term for a smart contract on the Internet Computer. It includes both logic and state (memory), bundled together and deployed as a WebAssembly (WASM) container.
+A canister is the term for a container on the Internet Computer. It includes both logic and state (memory), bundled together and deployed as a WebAssembly (WASM).
 
 All ([modules](#modules)) in Juno — such as ([satellites](#satellite)), ([mission controls](#mission-control)), and ([orbiters](#orbiter)) — are canisters under the hood.
 
@@ -11982,7 +11994,7 @@ For current usage and setup, refer to the [Access Keys documentation](/docs/misc
 
 ## Cycles
 
-Cycles are used to pay for [infrastructure](/docs/miscellaneous/infrastructure.md) usage. Your [mission control](/docs/terminology.md#mission-control) or [satellite](/docs/terminology.md#satellite) consumes cycles while it's active.
+Cycles are used to pay for [infrastructure](/docs/miscellaneous/infrastructure.md) usage. Your [satellite](/docs/terminology.md#satellite), [mission control](/docs/terminology.md#mission-control) or [orbiter](/docs/terminology.md#orbiter) consume cycles while they are active.
 
 The amount of cycles available determines whether a module will be active, inactive, or eventually decommissioned (deleted).
 
@@ -11995,17 +12007,9 @@ Think of cycles like prepaid mobile data:
 *   To keep your modules running smoothly, you need to top up your cycles regularly (manually or automatically).
 *   If you don’t top it up, after some time, it will be decommissioned, similar to losing your prepaid number due to prolonged inactivity.
 
-Learn more about [computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/gas-cost).
-
 ## Doc
 
 "doc" is a commonly used shorthand in Juno for a "document of the Datastore". Wherever you see the term "doc" in the codebase or documentation, it refers specifically to a document entity managed by the [Datastore](/docs/build/datastore.md). This abbreviation is used for brevity and consistency throughout the project.
-
-## ICP
-
-The ICP token is the cryptocurrency used to pay for transactions on Juno's [infrastructure](/docs/miscellaneous/infrastructure.md).
-
-It can also be converted into cycles, which are used to pay for computation and storage. Unlike the market price of ICP, the price of cycles remains constant, ensuring predictable costs for infrastructure usage.
 
 ## Internet Identity
 
@@ -12065,15 +12069,17 @@ By picking the right group (or subnet), everyone can play faster and have more f
 
 ## Wallet
 
-A wallet is your secure repository for managing and storing crypto money. Your wallet is controlled exclusively by you, ensuring that no one, including Juno, can ever access it.
+A wallet is your secure repository for managing and storing resources in Juno.
 
-Think of it like a digital vault:
+Think of it like a prepaid account:
 
-*   It securely stores your ICP tokens.
-*   It acts as your gateway for transactions within the Juno ecosystem.
-*   It allows you to top up your modules with cycles.
+*   It holds your available resources (cycles).
+*   It lets you allocate resources to your projects and modules - e.g. with top-up.
+*   It's automatically created when you sign in to the Console.
 
-Because your wallet is also your ([mission-control](#mission-control)), which requires resources to stay alive, we recommend holding a reasonable amount of tokens. Think of it like a day-to-day wallet for frequent operations rather than one for savings.
+Your wallet is tied to your identity, which is generated when you first log in.
+
+For more information see [Wallet](/docs/miscellaneous/wallet.md) documentation.
 
 # Troubleshooting
 
