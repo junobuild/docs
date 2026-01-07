@@ -185,7 +185,7 @@ yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
-2.  Initialize your satellite in your web app:
+2.  Initialize your Satellite in your web app:
 
 ```
 import { initSatellite } from "@junobuild/core";await initSatellite();
@@ -467,29 +467,18 @@ For example, you can use the following script:
 
 # Create a Satellite
 
-When you're ready to deploy your project to production, you'll need to create a [Satellite](/docs/terminology.md#satellite).
+When you're ready to deploy your project to production, you'll need to create a [satellite](/docs/terminology.md#satellite).
 
-1.  To get started, sign-in to the Juno [Console](https://console.juno.build).
-2.  Click **Launch your first Satellite**.
+1.  To get started, sign-in to the Juno [console](https://console.juno.build). If you are a new developer on Juno and the Internet Computer, you may be prompted to create your first anonymous [Internet Identity](/docs/terminology.md#internet-identity).
+2.  Click **Launch a new Satellite**.
 3.  Enter a name for your Satellite (note: this is for display purposes only and does not need to be unique).
-4.  Select whether you're deploying a **Website** or **Application**.
-5.  Confirm with **Create a Satellite.**
-6.  The platform will then create your Satellite and provision its resources.
-7.  Once the process is complete, click **Continue** to access the service page.
+4.  Confirm with **Create a Satellite.**
+5.  The platform will then create your Satellite and provision its resources.
+6.  Once the process is complete, click **Continue** to access the overview page.
 
 🎉 You’re all set! You can now deploy your frontend app, static website, or publish your serverless functions to production.
 
 ➡️ Continue with the [deployment](/docs/category/deployment.md) guides to take the next step.
-
----
-
-**Note:**
-
-Choose **Website** if you're deploying a static site, blog, portfolio, etc.
-
-Choose **Application** if your project needs user sign-in, data management, or serverless functions.
-
-You can change this later in your Satellite "Hosting" settings.
 
 # Development
 
@@ -984,7 +973,7 @@ If you prefer to control this part as well, or if you want to improve redundancy
 
 [Internet Identity](https://identity.ic0.app) lets users authenticate securely and anonymously through a decentralized identity system built for the Internet Computer.
 
-When a user signs in with Internet Identity, they confirm their identity through the provider. If successful, a session is created automatically and the user can interact with your satellite.
+When a user signs in with Internet Identity, they confirm their identity through the provider. If successful, a session is created automatically and the user can interact with your Satellite.
 
 Authentication with Internet Identity offers strong privacy guarantees and complete isolation between domains by design.
 
@@ -1019,7 +1008,7 @@ Internet Identity sign-in can be customized with options that let you control se
 | --- | --- | --- | --- |
 | `maxTimeToLiveInNanoseconds` | `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)` | **4 hours** | Maximum lifetime of the user's session in **nanoseconds**. Once expired, the session cannot be extended. |
 | `windowed` | `boolean` | `true` | By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead. |
-| `derivationOrigin` | `string` or `URL` |     | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your satellite's URLs they use to access your application. |
+| `derivationOrigin` | `string` or `URL` |     | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your Satellite's URLs they use to access your application. |
 | `onProgress` | `(progress) => void` |     | Callback for provider sign-in and user creation/loading. |
 | `domain` | `internetcomputer.org` or `ic0.app` or `id.ai` | `internetcomputer.org` | The domain on which to open Internet Identity. |
 
@@ -1073,7 +1062,7 @@ If you're unsure which domain to use as the primary domain, here are two common 
     
     *   You're still experimenting with your domain setup and might change it later.
     *   You're not ready to commit to a long-term domain.
-    *   You plan to host multiple satellites under different domains and don't want to tie user identity to just one.
+    *   You plan to host multiple Satellites under different domains and don't want to tie user identity to just one.
 
 Choosing the right derivation origin early helps avoid identity issues later, but both approaches are valid depending on your goals.
 
@@ -1424,9 +1413,9 @@ Permissions define who can read and write documents in a collection. Writing inc
 | Permission | Description |
 | --- | --- |
 | **Public** | Anyone can read or write documents in the collection. |
-| **Private** | Only the creator (owner) of a document can read or write to it. However, note that since satellite administrators manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
-| **Managed** | The owner of a document, the administrator and editor of the satellite can read or write to it in the collection. |
-| **Restricted** | Only satellite administrator and editor can read or write any document in the collection. |
+| **Private** | Only the creator (owner) of a document can read or write to it. However, note that since Satellite administrators manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
+| **Managed** | The owner of a document, the administrator and editor of the Satellite can read or write to it in the collection. |
+| **Restricted** | Only Satellite administrator and editor can read or write any document in the collection. |
 
 If not set to immutable, you can modify the permissions at any time, and the changes will take effect immediately.
 
@@ -1504,7 +1493,7 @@ To update a document, use the `setDoc` function with its current version to vali
 import { setDoc } from "@junobuild/core";await setDoc({  collection: "my_collection_key",  doc: {    key: myId,    data: myExample,    version: 3n  }});
 ```
 
-The `version` must match the current version of the last document within the satellite; otherwise, the call will fail. This prevents unexpected concurrent overwrites, which is useful, for example, if your users use your projects simultaneously on multiple devices.
+The `version` must match the current version of the last document within the Satellite; otherwise, the call will fail. This prevents unexpected concurrent overwrites, which is useful, for example, if your users use your projects simultaneously on multiple devices.
 
 **Tip:**
 
@@ -1660,7 +1649,7 @@ To delete a document, use the `deleteDoc` function, which performs version valid
 import { deleteDoc } from "@junobuild/core";await deleteDoc({  collection: "my_collection_key",  doc: myDoc});
 ```
 
-The document must include the current `version` from the latest entry within the satellite; otherwise, the call will fail. This prevents unexpected concurrent overwrites, which is particularly useful if your users access your projects simultaneously on multiple devices.
+The document must include the current `version` from the latest entry within the Satellite; otherwise, the call will fail. This prevents unexpected concurrent overwrites, which is particularly useful if your users access your projects simultaneously on multiple devices.
 
 ### Delete multiple documents
 
@@ -2103,7 +2092,7 @@ The list below outlines the available hosting options you can configure to tailo
 
 ### Source
 
-The `source` field specifies the directory that contains the built assets for your satellite. This is typically the output directory generated by your build process after running a command like `npm run build`.
+The `source` field specifies the directory that contains the built assets for your Satellite. This is typically the output directory generated by your build process after running a command like `npm run build`.
 
 Commonly, or if you are using the templates, these are the folders that can be set as the `source` field:
 
@@ -2114,7 +2103,7 @@ Commonly, or if you are using the templates, these are the folders that can be s
 | SvelteKit | `build` |
 | Angular | `dist/<your-project-name>/browser` |
 
-Juno uses this directory to locate the files that will be deployed as part of your satellite. Ensure that this directory includes all the necessary assets, such as HTML, JavaScript, CSS, and any other static or dynamic resources your application requires.
+Juno uses this directory to locate the files that will be deployed as part of your Satellite. Ensure that this directory includes all the necessary assets, such as HTML, JavaScript, CSS, and any other static or dynamic resources your application requires.
 
 juno.config.js
 
@@ -2124,7 +2113,7 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 ### Ignore files
 
-The `ignore` attribute allows you to exclude certain files from being deployed to your satellite.
+The `ignore` attribute allows you to exclude certain files from being deployed to your Satellite.
 
 This attribute works similarly to Git's `.gitignore`, and you can specify which files to ignore using globs.
 
@@ -2138,7 +2127,7 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 ### HTTP Headers
 
-Headers allow the client and the satellite to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
+Headers allow the client and the Satellite to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
 
 For instance, you may want to set a specific `Cache-Control` for performance reasons.
 
@@ -2164,7 +2153,7 @@ The `headers` is an array of objects, each containing `key` and `value`, and the
 
 By default, all unknown paths are automatically rewritten to `/index.html`. However, if you wish to serve a custom `404 Not Found` error when a user attempts to access a non-existent page, you can do so without requiring additional configuration.
 
-Simply upload a custom `404.html` file to your satellite that should be served from the root path of your site.
+Simply upload a custom `404.html` file to your Satellite that should be served from the root path of your site.
 
 ### Redirects
 
@@ -2286,7 +2275,7 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 ### Encoding types
 
-When deploying, the CLI automatically maps the encoding type based on the file extension. The encoding information is then used in the satellite to provide the appropriate HTTP response header `Content-Encoding`.
+When deploying, the CLI automatically maps the encoding type based on the file extension. The encoding information is then used in the Satellite to provide the appropriate HTTP response header `Content-Encoding`.
 
 The default mappings are as follows:
 
@@ -2351,7 +2340,7 @@ This section covers how to configure and manage your custom domain in Juno, incl
 To connect your custom domain, follow these steps:
 
 1.  Start the custom domain wizard from the Juno console [hosting](https://console.juno.build/hosting) page
-2.  Enter the desired domain name for your satellite
+2.  Enter the desired domain name for your Satellite
 3.  Log into your domain provider's site and configure the DNS records as indicated by Juno
 4.  Continue the process in Juno
 
@@ -2452,9 +2441,9 @@ Assets are publicly accessible on the Internet regardless of the permission sche
 | Permission | Description |
 | --- | --- |
 | **Public** | Anyone can read or write assets in the collection. |
-| **Private** | Only the creator (owner) of the asset can read or write to it. However, note that since satellite administrators manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
-| **Managed** | The owner of an asset, the administrator and editor of the satellite can read or write to it in the collection. |
-| **Restricted** | Only satellite administrator and editor can read or write any asset in the collection. |
+| **Private** | Only the creator (owner) of the asset can read or write to it. However, note that since Satellite administrators manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
+| **Managed** | The owner of an asset, the administrator and editor of the Satellite can read or write to it in the collection. |
+| **Restricted** | Only Satellite administrator and editor can read or write any asset in the collection. |
 
 If not set to immutable, you can modify the permissions at any time, and the changes will take effect immediately.
 
@@ -5578,7 +5567,7 @@ Learn how to integrate Juno with Angular. Follow our quickstart guide to set up 
 
 [## 📄️ Deploy
 
-Learn how to deploy your Angular project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/angular/deploy.md)
+Learn how to deploy your Angular project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/angular/deploy.md)
 
 # Astro
 
@@ -5590,7 +5579,7 @@ Learn how to integrate Juno with Astro. Follow our quickstart guide to set up yo
 
 [## 📄️ Deploy
 
-Learn how to deploy your Astro project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/astro/deploy.md)
+Learn how to deploy your Astro project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/astro/deploy.md)
 
 # Docusaurus
 
@@ -5598,7 +5587,7 @@ Explore how to deploy a Juno project developed with Docusaurus.
 
 [## 📄️ Deploy
 
-Learn how to deploy your Docusaurus project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/docusaurus/deploy.md)
+Learn how to deploy your Docusaurus project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/docusaurus/deploy.md)
 
 # End-to-End Testing
 
@@ -5870,7 +5859,7 @@ Learn how to integrate Juno with React. Follow our quickstart guide to set up yo
 
 [## 📄️ Deploy
 
-Learn how to deploy your React project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/react/deploy.md)
+Learn how to deploy your React project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/react/deploy.md)
 
 # Code Functions in Rust
 
@@ -6878,7 +6867,7 @@ Below are key considerations to ensure efficient and cost-effective deployment o
 
 ### Build Reproducibility
 
-Only new resources will be deployed to your satellite. Changes are detected through sha256 comparison. Therefore, ensuring the build reproducibility of your application is crucial to accurately identify and deploy the necessary updates.
+Only new resources will be deployed to your Satellite. Changes are detected through sha256 comparison. Therefore, ensuring the build reproducibility of your application is crucial to accurately identify and deploy the necessary updates.
 
 ### Deployment Costs
 
@@ -8254,7 +8243,7 @@ When you sign in to Juno's [Console](/docs/terminology.md#console) using [Intern
 
 ![Juno&#39;s console flow](/assets/images/console-d0903e4989f7c4db5f4e85567211d266.png)
 
-When you create a [satellite](/docs/terminology.md#satellite), you and your mission control become its owners. Per extension, you — and no one else (including not Juno) — own your satellite.
+When you create a [satellite](/docs/terminology.md#satellite), you and your Mission Control become its owners. Per extension, you — and no one else (including not Juno) — own your satellite.
 
 **Note:**
 
@@ -8273,7 +8262,7 @@ Each access key is assigned a **role** that defines what it can do:
 | **Write** | Editor | ✅   | ✅   | ✅   | ❌   |
 | **Submit** | Submitter | ✅   | ❌   | ❌   | ❌   |
 
-An **administrator** can perform tasks such as configuring or deploying an app, topping up a mission control or satellite, creating a new collection in the [datastore](/docs/build/datastore.md) or [storage](/docs/build/storage.md), or configuring a custom domain in the [hosting](/docs/build/hosting.md).
+An **administrator** can perform tasks such as configuring or deploying an app, topping up a Mission Control or satellite, creating a new collection in the [datastore](/docs/build/datastore.md) or [storage](/docs/build/storage.md), or configuring a custom domain in the [hosting](/docs/build/hosting.md).
 
 An **editor** can publish new serverless function versions to a Satellite’s CDN, deploy your frontend application, and read data from a collection. However, it cannot directly upgrade a Satellite or start/stop a module.
 
@@ -8987,7 +8976,7 @@ The authentication process requires a browser.
 
 If you've previously authenticated your terminal and decide to log in again, the CLI will prompt you about reusing your existing access key.
 
-This allows you to reuse your authorization, especially when creating new modules like satellites or orbiters.
+This allows you to reuse your authorization, especially when creating new modules like Satellites or Orbiters.
 
 ---
 
@@ -8995,7 +8984,7 @@ This allows you to reuse your authorization, especially when creating new module
 
 **Caution:**
 
-This action currently does not remove the controllers from satellites and/or mission control and/or orbiter. It only logs out your local machine by removing the locally saved key (principal).
+This action currently does not remove the controllers from Satellites and/or Mission Control and/or Orbiter. It only logs out your local machine by removing the locally saved key (principal).
 
 Log out of the current device. ⚠️ This action does not remove the access keys from the module.
 
@@ -9025,7 +9014,7 @@ Usage: juno hosting clear [options]Options:  -f, --fullPath        Clear a parti
 
 **Note:**
 
-This command removes existing files from the satellite and only affects the app assets, your frontend. Your user's uploaded files will not be cleared from your custom collections in the storage.
+This command removes existing files from the Satellite and only affects the app assets, your frontend. Your user's uploaded files will not be cleared from your custom collections in the storage.
 
 ---
 
@@ -9407,7 +9396,7 @@ If you are using a framework like Next.js or Vite, Juno provides plugins to simp
 
 ### Source
 
-The `source` field specifies the directory that contains the built assets for your satellite. This is typically the output directory generated by your build process after running a command like `npm run build`.
+The `source` field specifies the directory that contains the built assets for your Satellite. This is typically the output directory generated by your build process after running a command like `npm run build`.
 
 Commonly, or if you are using the templates, these are the folders that can be set as the `source` field:
 
@@ -9418,7 +9407,7 @@ Commonly, or if you are using the templates, these are the folders that can be s
 | SvelteKit | `build` |
 | Angular | `dist/<your-project-name>/browser` |
 
-Juno uses this directory to locate the files that will be deployed as part of your satellite. Ensure that this directory includes all the necessary assets, such as HTML, JavaScript, CSS, and any other static or dynamic resources your application requires.
+Juno uses this directory to locate the files that will be deployed as part of your Satellite. Ensure that this directory includes all the necessary assets, such as HTML, JavaScript, CSS, and any other static or dynamic resources your application requires.
 
 juno.config.js
 
@@ -9428,7 +9417,7 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 ### Ignore files
 
-The `ignore` attribute allows you to exclude certain files from being deployed to your satellite.
+The `ignore` attribute allows you to exclude certain files from being deployed to your Satellite.
 
 This attribute works similarly to Git's `.gitignore`, and you can specify which files to ignore using globs.
 
@@ -9521,7 +9510,7 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 ### Encoding
 
-When deploying, the CLI automatically maps the encoding type based on the file extension. The encoding information is then used in the satellite to provide the appropriate HTTP response header `Content-Encoding`.
+When deploying, the CLI automatically maps the encoding type based on the file extension. The encoding information is then used in the Satellite to provide the appropriate HTTP response header `Content-Encoding`.
 
 The default mappings are as follows:
 
@@ -9577,7 +9566,7 @@ The `storage` configuration accepts the following options and parameters:
 
 #### HTTP Headers
 
-Headers allow the client and the satellite to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
+Headers allow the client and the Satellite to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
 
 For instance, you may want to set a specific `Cache-Control` for performance reasons.
 
@@ -9745,7 +9734,7 @@ Orbiters are an optional component of your application used for analytics.
 
 ### ID
 
-An orbiter has a unique identifier (id). This ID is used to reference the orbiter during operations and deployments.
+An Orbiter has a unique identifier (id). This ID is used to reference the Orbiter during operations and deployments.
 
 **Tip:**
 
@@ -11903,7 +11892,7 @@ From there, you can dive into the details below to estimate storage, deployment,
 
 ## Operating costs
 
-As the owner of your mission control, satellites and orbiters, you are responsible for their operating costs.
+As the owner of your Mission Control, Satellites and Orbiters, you are responsible for their operating costs.
 
 To ensure that your infrastructure usage is covered, you must maintain a minimum balance of [cycles](/docs/terminology.md#cycles).
 
@@ -11917,9 +11906,9 @@ You can top up your cycle balance in the Juno [console](https://console.juno.bui
 
 ## Transaction costs
 
-New developers who join Juno are granted credits to create a mission control and their initial [satellite](/docs/terminology.md#satellite).
+New developers who join Juno are granted credits to create a Mission Control and their initial [satellite](/docs/terminology.md#satellite).
 
-To create additional satellites, a fee of 0.4 ICP is necessary, along with the infrastructure costs for setting up the container.
+To create additional Satellites, a fee of 0.4 ICP is necessary, along with the infrastructure costs for setting up the container.
 
 Similarly, enabling analytics by creating an [orbiter](/docs/terminology.md#orbiter) entails a fee of 0.4 ICP.
 
@@ -11951,7 +11940,7 @@ To calculate the estimated monthly cost for 1 gigabyte of storage, you can refer
 
 Based on our experimentation, deploying an entire website, such as the website [http://juno.build](http://juno.build), which consists of approximately 900 files (including compressed versions of the files) and is 40 MB in size, is estimated to cost around 0.114 T Cycles, which converts to 0.0105 ICP ($0.15).
 
-It's important to note that subsequent deployments of your project can have significantly lower costs if the build consistency of your application is maintained. Juno only uploads new files to your satellites, which helps reduce costs compared to initial deployments.
+It's important to note that subsequent deployments of your project can have significantly lower costs if the build consistency of your application is maintained. Juno only uploads new files to your Satellites, which helps reduce costs compared to initial deployments.
 
 ### Data
 
@@ -12028,9 +12017,9 @@ It is free and passwordless. It integrates WebAuthn for maximum compatibility an
 
 Mission control is the command center for your project. It is under your exclusive control, allowing it, for example, to hold ICP and perform various operations such as topping up your modules.
 
-Think of it like the command center for a space mission. Just as NASA's mission control coordinates spacecraft and satellites, your mission control manages all your [satellites](/docs/terminology.md#satellite) or ([orbiters](#orbiter)).
+Think of it like the command center for a space mission. Just as NASA's Mission Control coordinates spacecraft and Satellites, your Mission Control manages all your [satellites](/docs/terminology.md#satellite) or ([orbiters](#orbiter)).
 
-Because it can hold ICP and is only controlled by you, your mission control also functions as your ([wallet](#wallet)).
+Because it can hold ICP and is only controlled by you, your Mission Control also functions as your ([wallet](#wallet)).
 
 For a schematic representation, refer to the [Architecture](/docs/miscellaneous/architecture.md) documentation page.
 
@@ -12044,7 +12033,7 @@ It acts as a comprehensive entity, encompassing memory, permission checks, and o
 
 ## Orbiter
 
-An orbiter is an optional module you can enable for analytics. It helps you gather valuable, anonymous insights about your users.
+An Orbiter is an optional module you can enable for analytics. It helps you gather valuable, anonymous insights about your users.
 
 ## Principal
 
@@ -12056,9 +12045,9 @@ Learn more about [principals](https://internetcomputer.org/docs/current/referenc
 
 ## Satellite
 
-A satellite is a container for your application. It holds your project’s data, storage, application bundle, and assets.
+A Satellite is a container for your application. It holds your project’s data, storage, application bundle, and assets.
 
-Each satellite is commonly dedicated to a single application.
+Each Satellite is commonly dedicated to a single application.
 
 ## Subnet
 
@@ -12146,7 +12135,7 @@ To resolve this issue, make sure your SDK is correctly configured by following t
 
 ### Invalid character: "<"
 
-When you scaffold an app with a template, the `juno.config` file includes placeholder values for the satellite IDs:
+When you scaffold an app with a template, the `juno.config` file includes placeholder values for the Satellite IDs:
 
 ```
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist"  }});
@@ -12156,7 +12145,7 @@ If you start your frontend development server without replacing these placeholde
 
 This happens because the app tries to parse the config at runtime and encounters the invalid placeholder character `<` in the ID values.
 
-Continue with your setup or tutorial until you receive your actual satellite ID(s). Once you’ve updated the config with real values, make sure to restart your development server.
+Continue with your setup or tutorial until you receive your actual Satellite ID(s). Once you’ve updated the config with real values, make sure to restart your development server.
 
 **Note:**
 

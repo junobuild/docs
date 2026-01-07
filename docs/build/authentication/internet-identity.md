@@ -7,7 +7,7 @@ keywords: [Internet Identity, decentralized authentication, Internet Computer]
 
 [Internet Identity](https://identity.ic0.app) lets users authenticate securely and anonymously through a decentralized identity system built for the Internet Computer.
 
-When a user signs in with Internet Identity, they confirm their identity through the provider. If successful, a session is created automatically and the user can interact with your satellite.
+When a user signs in with Internet Identity, they confirm their identity through the provider. If successful, a session is created automatically and the user can interact with your Satellite.
 
 Authentication with Internet Identity offers strong privacy guarantees and complete isolation between domains by design.
 
@@ -46,7 +46,7 @@ Internet Identity sign-in can be customized with options that let you control se
 | ---------------------------- | ---------------------------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `maxTimeToLiveInNanoseconds` | `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)`     | **4 hours**            | Maximum lifetime of the user's session in **nanoseconds**. Once expired, the session cannot be extended.                                                                                                                                                            |
 | `windowed`                   | `boolean`                                      | `true`                 | By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead. |
-| `derivationOrigin`           | `string` or `URL`                              |                        | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your satellite's URLs they use to access your application.                                                                                           |
+| `derivationOrigin`           | `string` or `URL`                              |                        | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your Satellite's URLs they use to access your application.                                                                                           |
 | `onProgress`                 | `(progress) => void`                           |                        | Callback for provider sign-in and user creation/loading.                                                                                                                                                                                                            |
 | `domain`                     | `internetcomputer.org` or `ic0.app` or `id.ai` | `internetcomputer.org` | The domain on which to open Internet Identity.                                                                                                                                                                                                                      |
 
@@ -141,6 +141,6 @@ If you're unsure which domain to use as the primary domain, here are two common 
 - Alternatively, stick with **the default domain** (`{satellite-id}.icp0.io`) if:
   - You're still experimenting with your domain setup and might change it later.
   - You're not ready to commit to a long-term domain.
-  - You plan to host multiple satellites under different domains and don't want to tie user identity to just one.
+  - You plan to host multiple Satellites under different domains and don't want to tie user identity to just one.
 
 Choosing the right derivation origin early helps avoid identity issues later, but both approaches are valid depending on your goals.

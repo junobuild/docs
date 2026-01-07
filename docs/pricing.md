@@ -28,7 +28,7 @@ From there, you can dive into the details below to estimate storage, deployment,
 
 ## Operating costs
 
-As the owner of your mission control, satellites and orbiters, you are responsible for their operating costs.
+As the owner of your Mission Control, Satellites and Orbiters, you are responsible for their operating costs.
 
 To ensure that your infrastructure usage is covered, you must maintain a minimum balance of [cycles](terminology.md#cycles).
 
@@ -42,9 +42,9 @@ You can top up your cycle balance in the Juno [console](https://console.juno.bui
 
 ## Transaction costs
 
-New developers who join Juno are granted credits to create a mission control and their initial [satellite].
+New developers who join Juno are granted credits to create a Mission Control and their initial [satellite].
 
-To create additional satellites, a fee of 0.4 ICP is necessary, along with the infrastructure costs for setting up the container.
+To create additional Satellites, a fee of 0.4 ICP is necessary, along with the infrastructure costs for setting up the container.
 
 Similarly, enabling analytics by creating an [orbiter] entails a fee of 0.4 ICP.
 
@@ -78,7 +78,7 @@ To calculate the estimated monthly cost for 1 gigabyte of storage, you can refer
 
 Based on our experimentation, deploying an entire website, such as the website http://juno.build, which consists of approximately 900 files (including compressed versions of the files) and is 40 MB in size, is estimated to cost around 0.114 T Cycles, which converts to 0.0105 ICP ($0.15).
 
-It's important to note that subsequent deployments of your project can have significantly lower costs if the build consistency of your application is maintained. Juno only uploads new files to your satellites, which helps reduce costs compared to initial deployments.
+It's important to note that subsequent deployments of your project can have significantly lower costs if the build consistency of your application is maintained. Juno only uploads new files to your Satellites, which helps reduce costs compared to initial deployments.
 
 ### Data
 
