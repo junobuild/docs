@@ -9,7 +9,7 @@ This section covers how to configure and manage your custom domain in Juno, incl
 To connect your custom domain, follow these steps:
 
 1. Start the custom domain wizard from the Juno console [hosting](https://console.juno.build/hosting) page
-2. Enter the desired domain name for your satellite
+2. Enter the desired domain name for your Satellite
 3. Log into your domain provider's site and configure the DNS records as indicated by Juno
 4. Continue the process in Juno
 

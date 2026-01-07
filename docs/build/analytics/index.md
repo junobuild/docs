@@ -69,7 +69,7 @@ All tracked data is securely stored on the [Internet Computer](https://internetc
 
 ### No cross-dapp tracking
 
-Juno Analytics does not follow users across websites and applications they visit. All data remains isolated to a single satellite.
+Juno Analytics does not follow users across websites and applications they visit. All data remains isolated to a single Satellite.
 
 ### You 100% own your data
 
@@ -83,7 +83,7 @@ You have the capability to delete all collected data within your Analytics at an
 
 To gather analytics for your dapps, you need to create an [orbiter]. Creating an Orbiter requires ICP, and its price is defined in the [transaction costs](../../pricing#transaction-costs).
 
-Each orbiter is used to collect analytics for one or multiple [satellites].
+Each Orbiter is used to collect analytics for one or multiple [satellites].
 
 Page views are collected anonymously and saved with a unique random ID for attribution. This data is organized based on its collection timestamp.
 
@@ -95,11 +95,11 @@ Additionally, a unique random session ID is generated for all data. Each time a 
 
 ## Limitation
 
-Currently, an orbiter can store up to 500 GB of data.
+Currently, an Orbiter can store up to 500 GB of data.
 
 :::caution
 
-Similar to other analytics services, an Orbiter accepts data submitted from any source as long as the requested payload matches the expected format, and the targeted satellite is configured to accept analytics. This is because the origin of the HTTP request cannot be accessed, for a valid reason – to prevent tracking. Therefore, calls cannot be limited to the domain of your dapps.
+Similar to other analytics services, an Orbiter accepts data submitted from any source as long as the requested payload matches the expected format, and the targeted Satellite is configured to accept analytics. This is because the origin of the HTTP request cannot be accessed, for a valid reason – to prevent tracking. Therefore, calls cannot be limited to the domain of your dapps.
 
 Consequently, this leaves the canister open to potential attacks that can pollute the data and consume cycles. For this reason, we recommend the following:
 

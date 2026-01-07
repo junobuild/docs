@@ -1,7 +1,7 @@
 ---
 id: ai
 title: AI
-description: Learn how to use Juno's llms.txt files to provide AI tools with better context for building serverless functions, deploying satellites, and integrating the SDK.
+description: Learn how to use Juno's llms.txt files to provide AI tools with better context for building serverless functions, deploying Satellites, and integrating the SDK.
 ---
 
 # Using Juno with AI

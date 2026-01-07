@@ -61,9 +61,9 @@ It is free and passwordless. It integrates WebAuthn for maximum compatibility an
 
 Mission control is the command center for your project. It is under your exclusive control, allowing it, for example, to hold ICP and perform various operations such as topping up your modules.
 
-Think of it like the command center for a space mission. Just as NASA's mission control coordinates spacecraft and satellites, your mission control manages all your [satellites] or [orbiters](#orbiter).
+Think of it like the command center for a space mission. Just as NASA's Mission Control coordinates spacecraft and Satellites, your Mission Control manages all your [satellites] or [orbiters](#orbiter).
 
-Because it can hold ICP and is only controlled by you, your mission control also functions as your [wallet](#wallet).
+Because it can hold ICP and is only controlled by you, your Mission Control also functions as your [wallet](#wallet).
 
 For a schematic representation, refer to the [Architecture](miscellaneous/architecture.md) documentation page.
 
@@ -77,7 +77,7 @@ It acts as a comprehensive entity, encompassing memory, permission checks, and o
 
 ## Orbiter
 
-An orbiter is an optional module you can enable for analytics. It helps you gather valuable, anonymous insights about your users.
+An Orbiter is an optional module you can enable for analytics. It helps you gather valuable, anonymous insights about your users.
 
 ## Principal
 
@@ -89,9 +89,9 @@ Learn more about [principals](https://internetcomputer.org/docs/current/referenc
 
 ## Satellite
 
-A satellite is a container for your application. It holds your project’s data, storage, application bundle, and assets.
+A Satellite is a container for your application. It holds your project’s data, storage, application bundle, and assets.
 
-Each satellite is commonly dedicated to a single application.
+Each Satellite is commonly dedicated to a single application.
 
 ## Subnet
 

@@ -28,9 +28,9 @@ Permissions define who can read and write documents in a collection. Writing inc
 | Permission     | Description                                                                                                                                                                                                                                 |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Public**     | Anyone can read or write documents in the collection.                                                                                                                                                                                       |
-| **Private**    | Only the creator (owner) of a document can read or write to it. However, note that since satellite administrators manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
-| **Managed**    | The owner of a document, the administrator and editor of the satellite can read or write to it in the collection.                                                                                                                           |
-| **Restricted** | Only satellite administrator and editor can read or write any document in the collection.                                                                                                                                                   |
+| **Private**    | Only the creator (owner) of a document can read or write to it. However, note that since Satellite administrators manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
+| **Managed**    | The owner of a document, the administrator and editor of the Satellite can read or write to it in the collection.                                                                                                                           |
+| **Restricted** | Only Satellite administrator and editor can read or write any document in the collection.                                                                                                                                                   |
 
 If not set to immutable, you can modify the permissions at any time, and the changes will take effect immediately.
 

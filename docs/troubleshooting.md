@@ -67,7 +67,7 @@ To resolve this issue, make sure your SDK is correctly configured by following t
 
 ### Invalid character: "&lt;"
 
-When you scaffold an app with a template, the `juno.config` file includes placeholder values for the satellite IDs:
+When you scaffold an app with a template, the `juno.config` file includes placeholder values for the Satellite IDs:
 
 ```typescript
 import { defineConfig } from "@junobuild/config";
@@ -87,7 +87,7 @@ If you start your frontend development server without replacing these placeholde
 
 This happens because the app tries to parse the config at runtime and encounters the invalid placeholder character `<` in the ID values.
 
-Continue with your setup or tutorial until you receive your actual satellite ID(s). Once you’ve updated the config with real values, make sure to restart your development server.
+Continue with your setup or tutorial until you receive your actual Satellite ID(s). Once you’ve updated the config with real values, make sure to restart your development server.
 
 :::note
 
