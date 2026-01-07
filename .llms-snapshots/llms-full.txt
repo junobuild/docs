@@ -376,8 +376,8 @@ Likewise, not all services are mounted by default - but they can be turned on (o
 | ICP Index | ✅   | ✅   |
 | NNS Governance | ✅   | ➖   |
 | Cycles Minting (CMC) | ✅   | ➖   |
-| Cycles Ledger | ➖   | ➖   |
-| Cycles Index | ➖   | ➖   |
+| Cycles Ledger | ✅   | ➖   |
+| Cycles Index | ✅   | ➖   |
 | Registry | ➖   | ➖   |
 | SNS | ➖   | ➖   |
 | NNS-dapp | ➖   | ➖   |
@@ -447,16 +447,16 @@ await initSatellite({  satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",  container: f
 
 The admin server running on port `5999` provides a variety of internal management. Below are some tips and example scripts to make use of this little server.
 
-### Get ICP
+### Get Cycles
 
-If you're using the full environment, the Console UI includes a "Get ICP" button in the wallet. It's a quick way to get ICP out of the box.
+If you're using the full environment, the Console UI includes a "Get Cycles" button in the wallet. It's a quick way to get Cycles out of the box.
 
-![A screenshot of the wallet with the Get ICP call to action of Console UI in dev mode](/assets/images/wallet-45c84f1968e0c6a2749b439aace1b0c1.webp)
+**TODO Screenshot** ![A screenshot of the wallet with the Get ICP call to action of Console UI in dev mode](/assets/images/wallet-45c84f1968e0c6a2749b439aace1b0c1.webp)
 
-You might want to transfer some ICP from the ledger to a specified principal, which can be particularly useful when you're just getting started developing your app and no users currently own ICP. This can be achieved by querying:
+You might want to transfer some Cycles from the ledger to a specified principal, which can be particularly useful when you're just getting started developing your app and no users currently own Cycles. This can be achieved by querying:
 
 ```
-http://localhost:5999/ledger/transfer/?to=$PRINCIPAL
+http://localhost:5999/ledger/transfer/?to=$PRINCIPAL&ledgerId=um5iw-rqaaa-aaaaq-qaaba-cai&amount330000000000000
 ```
 
 For example, you can use the following script:
@@ -8083,8 +8083,8 @@ Keeping your modules running smoothly is essential for any application. The moni
 
 *   **Cycle refilling**: Monitored modules are automatically topped up when their balance falls below what's needed to stay active.
 *   **Self-Monitoring**: Your Mission Control ensures that both your wallet and modules maintain sufficient cycles, with full control remaining in your hands at all times.
-*   **Automatic ICP Conversion**: Can mint new cycles from the ICP in your wallet, ensuring your modules stay adequately funded.
 *   **Hourly Checks**: The system evaluates balances once an hour.
+*   **Automatic ICP Conversion**: Can mint new cycles from the ICP in your wallet, ensuring your modules stay adequately funded.
 
 ---
 
@@ -8770,73 +8770,59 @@ Think of cycles like prepaid mobile data:
 
 ---
 
-## Why do I need ICP?
+## Buying Cycles
 
-Given that Juno is built on top of the Internet Computer (see [architecture](/docs/miscellaneous/architecture.md)), your modules require cycles to stay alive.
+The easiest way to purchase cycles — and get the best deal — is through [Cycle.express](https://cycle.express), which lets you pay with a credit card via Stripe.
 
-While you don’t necessarily need ICP in the Juno ecosystem since you can acquire cycles with Stripe through [cycle.express](https://cycle.express), having some ICP can still be interesting.
+The service is integrated directly into the Juno Console. From your wallet, click "Buy" and follow the steps.
 
-It provides independence by allowing you to top up your modules without relying on third-party services. Depending on how you obtain your tokens, using ICP can also help lower transaction costs and offers interoperability with other Internet Computer projects, making it a flexible and practical option.
+**Note:**
 
----
+The default purchase amount is $1 USD. You can change this amount on Stripe's payment page (maximum $100).
 
-## Buying ICP
-
-To get ICP from the outside world into your wallet, you can use most cryptocurrency exchange platforms that allow you to buy ICP (refer to this [list](https://coinranking.com/fr/coin/aMNLwaUbY+internetcomputerdfinity-icp/exchanges) of major ones). These platforms let you convert dollars (or other currencies) into ICP. Keep in mind that exchanges charge a fee for this service.
-
-Once you have obtained ICP on those platforms, you can initiate a transaction to send it to your wallet. For this purpose, you will need to provide a destination address where the ICP should be sent. This destination address corresponds to the [Account Identifier](/docs/terminology.md#account-identifier) of your wallet.
-
-You can locate the destination address in Juno's [console](https://console.juno.build). Once you've logged in, go to your [wallet](https://console.juno.build/wallet) and click "Receive".
-
-![A screenshot of the wallet with the &quot;Receive&quot; button](/assets/images/wallet-receive-dbb873738cb48ce074e1201c3fff535f.png)
-
-Select "Account identifier".
-
-![A screenshot of the wallet &quot;Receive&quot; modal with an arrow pointing to the Account Identifier option](/assets/images/wallet-receive-account-identifier-e320146e191bcf52d00d22238a92bb4b.png)
-
-Either copy your account identifier or use the provided QR code. This is the address you should use to receive ICP from the outside world.
-
-![A screenshot of the Account Identifier and QR code](/assets/images/wallet-receive-account-identifier-qrcode-ea0f266be5c83547e4843d4a4b5a7a4b.png)
+**TODO SCREENSHOT**
 
 ---
 
-## Receiving ICP
+## Receiving Cycles
 
-If you already hold ICP, you can transfer it from wallets within the ecosystem such as the [NNS dapp](https://nns.internetcomputer.org/), [OISY](https://oisy.com) or [others](https://internetcomputer.org/ecosystem?tag=Wallet).
+If you already hold cycles or want to swap some, you can use the [OISY Wallet](https://oisy.com).
 
-To initiate a transaction to send it to your wallet, you will need to provide a destination address, which in this case is your wallet ID.
+To initiate a transaction manually, you will need to provide a destination address. To find it in the [console](https://console.juno.build), open the shortcut to your [wallet](https://console.juno.build/wallet) and click "Receive" select "Wallet ID".
 
-You can locate your wallet ID in Juno's [console](https://console.juno.build). Once you've logged in, go to your [wallet](https://console.juno.build/wallet), where the information is easy to find.
+**TODO SCREENSHOT**
 
-![A screenshot of the wallet with &quot;Wallet ID&quot; information](/assets/images/wallet-id-a806ae0c58411c9129c604868d98f7b0.png)
+You can also connect OISY to Juno's console to initiate the transaction and proceed with the approval. This eliminates the need to copy, paste, or scan any addresses.
 
-If you wish to use a QR code, click "Receive" and select "Wallet ID".
-
-![A screenshot of the wallet &quot;Receive&quot; modal with an arrow pointing to the Wallet ID option](/assets/images/wallet-receive-wallet-id-da09f22b7fe82d18b42836c013d451cd.png)
-
-Either copy your account identifier or use the provided QR code. This is the address you should use to transfer ICP within the ecosystem.
-
-![A screenshot of the Wallet ID and QR code](/assets/images/wallet-receive-wallet-id-qrcode-de9cc6b8681da618c8758a364fb18d05.png)
-
-If you are using OISY, you can also connect this third-party wallet to Juno's console to initiate the transaction and proceed with the approval. This eliminates the need to copy, paste, or scan any addresses.
-
-![A screenshot of the wallet &quot;Receive&quot; modal with an arrow pointing to the OISY option](/assets/images/wallet-receive-oisy-a6dabf8ca3d87e45da773c58f8a0eda3.png)
+**TODO SCREENSHOT** ![A screenshot of the wallet &quot;Receive&quot; modal with an arrow pointing to the OISY option](/assets/images/wallet-receive-oisy-a6dabf8ca3d87e45da773c58f8a0eda3.png)
 
 ---
 
-## Send ICP
+## Send Cycles
 
-Sending ICP to the ecosystem or the outside world can be initiated from your wallet in Juno's [console](https://console.juno.build). To start a transaction, click "Send".
+Sending Cycles to the ecosystem or the outside world can be initiated from your wallet in Juno's [console](https://console.juno.build). To start a transaction, click "Send".
 
-![A screenshot of the wallet with the &quot;Send&quot; button](/assets/images/wallet-send-09f0b1267286be0ebb67a985e432deb8.png)
+**Important:**
 
-Enter the destination wallet ID or account identifier where you want to send ICP, along with the amount.
+Sending cycles transfers them to another wallet. To add manually cycles (resources) to your modules (Satellites, Orbiters, or Mission Control), use the **Top-up** feature instead.
 
-![A screenshot of the wallet send form](/assets/images/wallet-send-form-03440e3f0718c16c0b08a70cfa18d0ee.png)
+**TODO SCREENSHOT** ![A screenshot of the wallet with the &quot;Send&quot; button](/assets/images/wallet-send-09f0b1267286be0ebb67a985e432deb8.png)
+
+Enter the destination wallet ID or account identifier where you want to send cycles, along with the amount.
+
+**TODO SCREENSHOT** ![A screenshot of the wallet send form](/assets/images/wallet-send-form-03440e3f0718c16c0b08a70cfa18d0ee.png)
 
 Review the transaction details and confirm to execute it.
 
-![A screenshot of the wallet send review mask](/assets/images/wallet-send-review-52b726f5d9cc0977a04dba319dfa1ec3.png)
+**TODO SCREENSHOT** ![A screenshot of the wallet send review mask](/assets/images/wallet-send-review-52b726f5d9cc0977a04dba319dfa1ec3.png)
+
+---
+
+## Legacy Support
+
+For backwards compatibility with Mission Control that operated in ICP, the wallet features still support those tokens. You can receive and send ICP if needed.
+
+However, using cycles is now the recommended approach for all operations.
 
 # Workarounds
 
@@ -9812,7 +9798,7 @@ You can customize the ports exposed by the emulator:
 | Field | Description | Default |
 | --- | --- | --- |
 | server | The local Internet Computer replica port. Your app or project interacts with it. | `5987` |
-| admin | Admin server used for internal tasks (e.g., ICP transfer). | `5999` |
+| admin | Admin server used for internal tasks (e.g., Cycles transfer). | `5999` |
 | console | Console UI port (only used with `skylab`). | `5866` |
 
 **Note:**
@@ -10305,13 +10291,13 @@ However, in some cases, it may be useful to explicitly reference their IDs or UR
 | Service | Canister ID |
 | --- | --- |
 | [Internet Identity](https://dashboard.internetcomputer.org/canister/rdmx6-jaaaa-aaaaa-aaadq-cai) | `rdmx6-jaaaa-aaaaa-aaadq-cai` |
+| [Cycles Ledger](https://dashboard.internetcomputer.org/canister/um5iw-rqaaa-aaaaq-qaaba-cai) | `um5iw-rqaaa-aaaaq-qaaba-cai` |
+| [Cycles Index](https://dashboard.internetcomputer.org/canister/ul4oc-4iaaa-aaaaq-qaabq-cai) | `ul4oc-4iaaa-aaaaq-qaabq-cai` |
 | [ICP Ledger](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai) | `ryjl3-tyaaa-aaaaa-aaaba-cai` |
 | [ICP Index](https://dashboard.internetcomputer.org/canister/qhbym-qaaaa-aaaaa-aaafq-cai) | `qhbym-qaaaa-aaaaa-aaafq-cai` |
 | [CMC (Cycles Minting Canister)](https://dashboard.internetcomputer.org/canister/rkp4c-7iaaa-aaaaa-aaaca-cai) | `rkp4c-7iaaa-aaaaa-aaaca-cai` |
 | [NNS Governance](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai) | `rrkah-fqaaa-aaaaa-aaaaq-cai` |
 | [Registry](https://dashboard.internetcomputer.org/canister/rwlgt-iiaaa-aaaaa-aaaaa-cai) | `rwlgt-iiaaa-aaaaa-aaaaa-cai` |
-| [Cycles Ledger](https://dashboard.internetcomputer.org/canister/um5iw-rqaaa-aaaaq-qaaba-cai) | `um5iw-rqaaa-aaaaq-qaaba-cai` |
-| [Cycles Index](https://dashboard.internetcomputer.org/canister/ul4oc-4iaaa-aaaaq-qaabq-cai) | `ul4oc-4iaaa-aaaaq-qaabq-cai` |
 | [SNS-Wasm](https://dashboard.internetcomputer.org/canister/qaa6y-5yaaa-aaaaa-aaafa-cai) | `qaa6y-5yaaa-aaaaa-aaafa-cai` |
 | [NNS-dapp](https://dashboard.internetcomputer.org/canister/qoctq-giaaa-aaaaa-aaaea-cai) | `qoctq-giaaa-aaaaa-aaaea-cai` |
 
@@ -11962,7 +11948,7 @@ It's important to note that subsequent deployments of your project can have sign
 
 Querying data on the Internet Computer is currently free, so there are no additional costs to expect when reading data.
 
-In terms of persisting data, based on our experience, storing 100 instances of a JSON sample data with approximately 90 fields, totaling around 900 bytes, costs approximately 0.0005 TCycles or 0.00017 ICP ($0.000675). This means that the cost for a single transaction of this nature would be approximately 0.000005 TCycles or 0.0000017 ICP ($0.00000675).
+In terms of persisting data, based on our experience, storing 100 instances of a JSON sample data with approximately 90 fields, totaling around 900 bytes, costs approximately 0.0005 TCycles ($0.000675). This means that the cost for a single transaction of this nature would be approximately 0.000005 TCycles or 0.0000017 ICP ($0.00000675).
 
 **Note:**
 
