@@ -20,86 +20,72 @@ We also recommend enabling [monitoring](../management/monitoring.md) to ensure y
 
 Cycles are used to pay for infrastructure usage. Your Satellite, Mission Control or Orbiter consume cycles while they are active.
 
-The amount of cycles available determines whether a module will be active, inactive, or eventually decommissioned (deleted).
+import Cycles from "../components/cycles.md";
 
-This ensures that related costs cannot surpass the amount of cycles available.
-
-Think of cycles like prepaid mobile data:
-
-- Just like your mobile plan allows you to make calls and browse the internet, cycles enable your containers to process computations and store data.
-- When your data (cycles) runs out, your service becomes inactive.
-- To keep your modules running smoothly, you need to top up your cycles regularly (manually or automatically).
-- If you don’t top it up, after some time, it will be decommissioned, similar to losing your prepaid number due to prolonged inactivity.
-
+<Cycles />
 
 ---
 
-## Why do I need ICP?
+## Buying Cycles
 
-Given that Juno is built on top of the Internet Computer (see [architecture](architecture.md)), your modules require cycles to stay alive.
+The easiest way to purchase cycles — and get the best deal — is through [Cycle.express](https://cycle.express), which lets you pay with a credit card via Stripe.
 
-While you don’t necessarily need ICP in the Juno ecosystem since you can acquire cycles with Stripe through [cycle.express](https://cycle.express), having some ICP can still be interesting.
+The service is integrated directly into the Juno Console. From your wallet, click "Buy" and follow the steps.
 
-It provides independence by allowing you to top up your modules without relying on third-party services. Depending on how you obtain your tokens, using ICP can also help lower transaction costs and offers interoperability with other Internet Computer projects, making it a flexible and practical option.
+:::note
 
----
+The default purchase amount is $1 USD. You can change this amount on Stripe's payment page (maximum $100).
 
-## Buying ICP
+:::
 
-To get ICP from the outside world into your wallet, you can use most cryptocurrency exchange platforms that allow you to buy ICP (refer to this [list](https://coinranking.com/fr/coin/aMNLwaUbY+internetcomputerdfinity-icp/exchanges) of major ones). These platforms let you convert dollars (or other currencies) into ICP. Keep in mind that exchanges charge a fee for this service.
-
-Once you have obtained ICP on those platforms, you can initiate a transaction to send it to your wallet. For this purpose, you will need to provide a destination address where the ICP should be sent. This destination address corresponds to the [Account Identifier](../terminology.mdx#account-identifier) of your wallet.
-
-You can locate the destination address in Juno's [console]. Once you've logged in, go to your [wallet](https://console.juno.build/wallet) and click "Receive".
-
-![A screenshot of the wallet with the "Receive" button](../img/wallet/wallet-receive.png)
-
-Select "Account identifier".
-
-![A screenshot of the wallet "Receive" modal with an arrow pointing to the Account Identifier option](../img/wallet/wallet-receive-account-identifier.png)
-
-Either copy your account identifier or use the provided QR code. This is the address you should use to receive ICP from the outside world.
-
-![A screenshot of the Account Identifier and QR code](../img/wallet/wallet-receive-account-identifier-qrcode.png)
+**TODO SCREENSHOT**
 
 ---
 
-## Receiving ICP
+## Receiving Cycles
 
-If you already hold ICP, you can transfer it from wallets within the ecosystem such as the [NNS dapp](https://nns.internetcomputer.org/), [OISY](https://oisy.com) or [others](https://internetcomputer.org/ecosystem?tag=Wallet).
+If you already hold cycles or want to swap some, you can use the [OISY Wallet](https://oisy.com).
 
-To initiate a transaction to send it to your wallet, you will need to provide a destination address, which in this case is your wallet ID.
+To initiate a transaction manually, you will need to provide a destination address. To find it in the [console], open the shortcut to your [wallet](https://console.juno.build/wallet) and click "Receive" select "Wallet ID".
 
-You can locate your wallet ID in Juno's [console]. Once you've logged in, go to your [wallet](https://console.juno.build/wallet), where the information is easy to find.
+**TODO SCREENSHOT**
 
-![A screenshot of the wallet with "Wallet ID" information](../img/wallet/wallet-id.png)
+You can also connect OISY to Juno's console to initiate the transaction and proceed with the approval. This eliminates the need to copy, paste, or scan any addresses.
 
-If you wish to use a QR code, click "Receive" and select "Wallet ID".
-
-![A screenshot of the wallet "Receive" modal with an arrow pointing to the Wallet ID option](../img/wallet/wallet-receive-wallet-id.png)
-
-Either copy your account identifier or use the provided QR code. This is the address you should use to transfer ICP within the ecosystem.
-
-![A screenshot of the Wallet ID and QR code](../img/wallet/wallet-receive-wallet-id-qrcode.png)
-
-If you are using OISY, you can also connect this third-party wallet to Juno's console to initiate the transaction and proceed with the approval. This eliminates the need to copy, paste, or scan any addresses.
-
+**TODO SCREENSHOT**
 ![A screenshot of the wallet "Receive" modal with an arrow pointing to the OISY option](../img/wallet/wallet-receive-oisy.png)
 
 ---
 
-## Send ICP
+## Send Cycles
 
-Sending ICP to the ecosystem or the outside world can be initiated from your wallet in Juno's [console]. To start a transaction, click "Send".
+Sending Cycles to the ecosystem or the outside world can be initiated from your wallet in Juno's [console]. To start a transaction, click "Send".
 
+:::important
+
+Sending cycles transfers them to another wallet. To add manually cycles (resources) to your modules (Satellites, Orbiters, or Mission Control), use the **Top-up** feature instead.
+
+:::
+
+**TODO SCREENSHOT**
 ![A screenshot of the wallet with the "Send" button](../img/wallet/wallet-send.png)
 
-Enter the destination wallet ID or account identifier where you want to send ICP, along with the amount.
+Enter the destination wallet ID or account identifier where you want to send cycles, along with the amount.
 
+**TODO SCREENSHOT**
 ![A screenshot of the wallet send form](../img/wallet/wallet-send-form.png)
 
 Review the transaction details and confirm to execute it.
 
+**TODO SCREENSHOT**
 ![A screenshot of the wallet send review mask](../img/wallet/wallet-send-review.png)
+
+---
+
+## Legacy Support
+
+For backwards compatibility with Mission Control that operated in ICP, the wallet features still support those tokens. You can receive and send ICP if needed.
+
+However, using cycles is now the recommended approach for all operations.
 
 [console]: https://console.juno.build
