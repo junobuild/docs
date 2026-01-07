@@ -14,7 +14,7 @@ keywords:
 
 # Functions
 
-Functions are a set of features enabling developers to extend the native capabilities of [Satellites](../../terminology.md#satellite) using Rust or TypeScript. They let you define serverless behaviors directly within your containerized environment.
+Functions are a set of features enabling developers to extend the native capabilities of [Satellites](../../terminology.mdx#satellite) using Rust or TypeScript. They let you define serverless behaviors directly within your containerized environment.
 
 Triggered by events like document and asset operations, they allow you to automatically run backend code or assertions. These functions are shipped with your container and don’t require you to manage or scale your own servers.
 

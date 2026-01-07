@@ -46,4 +46,4 @@ In addition to standard recovery, snapshots can also be uploaded to reapply the 
 
 This should be used carefully though, as snapshots also include elements such as public access keys and user IDs. Applying one module's snapshot to another may cause unintended side effects.
 
-[console]: ../terminology.md#console
+[console]: ../terminology.mdx#console

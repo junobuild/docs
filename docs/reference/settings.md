@@ -16,7 +16,7 @@ When a module runs out of cycles, it will be uninstalled, meaning its code and s
 
 This grace period gives developers and users time to react. For sensitive applications, it's common to set a relatively long freezing threshold to ensure there’s enough time to notice a low balance and top up the module before removal
 
-That’s why [Mission Control](../terminology.md#mission-control) (your wallet) and [Satellites](../terminology.md#satellite) (your projects) are spun up with a default freezing threshold of **one year** (360 days), reflecting their high importance.
+That’s why [Mission Control](../terminology.mdx#mission-control) (your wallet) and [Satellites](../terminology.mdx#satellite) (your projects) are spun up with a default freezing threshold of **one year** (360 days), reflecting their high importance.
 
 In contrast, [Analytics](../build/analytics/index.md) modules are considered less critical and are provisioned with a default threshold of **three months** (90 days).
 
@@ -125,6 +125,6 @@ The default value is `0n` - i.e. no particular allocation.
 
 If you set the compute allocation to `50n`, the module will be allocated 50% of the compute capacity. This ensures that the module has a guaranteed share of the compute resources, potentially improving its performance by ensuring it has sufficient processing power for its operations.
 
-[satellites]: ../terminology.md#satellite
-[mission controls]: ../terminology.md#mission-control
-[orbiters]: ../terminology.md#orbiter
+[satellites]: ../terminology.mdx#satellite
+[mission controls]: ../terminology.mdx#mission-control
+[orbiters]: ../terminology.mdx#orbiter

@@ -40,5 +40,5 @@ Any collection with read permissions set to `public`, `managed` or `restricted` 
 
 :::
 
-[satellite]: ../../terminology.md#satellite
-[controllers]: ../../terminology.md#controller
+[satellite]: ../../terminology.mdx#satellite
+[controllers]: ../../terminology.mdx#controller
