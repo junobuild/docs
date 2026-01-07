@@ -143,6 +143,6 @@ In any case, the best course of action is to reach out so we can assess your sit
 - [Measure different collection libraries written in Rust](https://dfinity.github.io/canister-profiling/collections/)
 - [Question about freeing/shrinking memory in WebAssembly design](https://github.com/WebAssembly/design/issues/1300)
 
-[satellite]: ../terminology.md#satellite
-[orbiter]: ../terminology.md#orbiter
-[mission control]: ../terminology.md#mission-control
+[satellite]: ../terminology.mdx#satellite
+[orbiter]: ../terminology.mdx#orbiter
+[mission control]: ../terminology.mdx#mission-control

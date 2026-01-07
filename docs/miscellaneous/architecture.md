@@ -95,7 +95,7 @@ While it functions as a CDN, technically it's not a traditional content delivery
 
 Mission Control is your personal management container. It tracks your Satellites and Orbiters, and it acts as your wallet.
 
-You use it for example to spin up new containers or provide [cycles](../terminology.md#cycles) to keep your modules running. It serves as your central hub for managing projects and resources.
+You use it for example to spin up new containers or provide [cycles](../terminology.mdx#cycles) to keep your modules running. It serves as your central hub for managing projects and resources.
 
 Mission Control belongs to you. No one else can access it — not Juno, not the Console, not any other service.
 
