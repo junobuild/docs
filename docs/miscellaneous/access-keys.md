@@ -15,7 +15,7 @@ When you create a [satellite], you and your Mission Control become its owners. P
 :::note
 
 - What was previously referred to as _controllers_ in earlier versions of the documentation is now called _administrative access keys_. The concept remains the same — only the terminology has been updated for clarity and consistency.
-- One access key is identified by a [principal](../terminology.md#principal).
+- One access key is identified by a [principal](../terminology.mdx#principal).
 
 :::
 
@@ -117,6 +117,6 @@ This action will overwrite the previously saved key used to configure your local
 
 :::
 
-[console]: ../terminology.md#console
-[satellite]: ../terminology.md#satellite
-[mission control]: ../terminology.md#mission-control
+[console]: ../terminology.mdx#console
+[satellite]: ../terminology.mdx#satellite
+[mission control]: ../terminology.mdx#mission-control

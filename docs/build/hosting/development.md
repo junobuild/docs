@@ -78,4 +78,4 @@ If you're having trouble, feel free to reach out for assistance—we’re happy 
 
 If one of the status `Pending...` is reached, the console will automatically refresh the status every few seconds until your domain is available.
 
-[console]: ../../terminology.md#console
+[console]: ../../terminology.mdx#console

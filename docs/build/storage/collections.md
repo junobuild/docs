@@ -46,4 +46,4 @@ Any collection with read permissions set to `public`, `managed` or `restricted` 
 
 :::
 
-[controllers]: ../../terminology.md#controller
+[controllers]: ../../terminology.mdx#controller
