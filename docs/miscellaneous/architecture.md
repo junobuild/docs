@@ -51,10 +51,6 @@ Juno provides supporting services to manage your projects, while keeping everyth
 
 The Console is a platform for managing your projects. It runs as its own container, combining a user interface with orchestration logic.
 
-It only holds one piece of data: a keypair linking each developer's anonymous ID to their Mission Control ID.
-
-When you sign in, the Console returns your Mission Control ID. From there, all project management happens under your control. The Console does not have access to your apps, your data, or your infrastructure.
-
 It provides services such as:
 
 - Creating, upgrading, and deleting Satellites.
@@ -91,13 +87,7 @@ While it functions as a CDN, technically it's not a traditional content delivery
 
 ## Developer-Owned Spaces
 
-### Mission Control
-
-Mission Control is your personal management container. It tracks your Satellites and Orbiters, and it acts as your wallet.
-
-You use it for example to spin up new containers or provide [cycles](../terminology.mdx#cycles) to keep your modules running. It serves as your central hub for managing projects and resources.
-
-Mission Control belongs to you. No one else can access it — not Juno, not the Console, not any other service.
+Juno's architecture is built on a microservices approach, where each component runs independently as its own WASM container, giving you modular control over your infrastructure.
 
 ### Satellites
 
@@ -112,6 +102,12 @@ Satellites are your applications. Each one is a self-contained unit that bundles
 ### Orbiters
 
 Orbiters provide analytics — a decentralized alternative to services like Google Analytics. Orbiters collect traffic, page views, and device information, under your ownership and without exposing user data to third parties.
+
+### Mission Control
+
+Mission Control is an optional monitoring service that automatically tracks and maintains your Satellites and Orbiters.
+
+When enabled, it monitors [cycles](../terminology.mdx#cycles) balances across your modules and automatically tops them up when needed, ensuring your applications stay running without manual intervention.
 
 ---
 
