@@ -1,26 +1,36 @@
 # Wallet
 
-This section provides guidance on managing your assets and cycles with your [wallet](../terminology.md#wallet), which are essential for maintaining and providing enough resources for your modules in the Juno ecosystem.
+This section provides guidance on managing your cycles with your wallet (your account), which are essential for maintaining and providing enough resources for your modules in the Juno ecosystem.
 
 :::important
 
-Just like your modules, your wallet is fully under your control — Juno cannot access, move, or recover the ICP or cycles held inside.
+Just like your modules, your wallet is under your control — Juno cannot access, move, or recover the cycles held inside.
 
-Because of this non-custodial model, there are no refunds, reversals, or recovery options. Always double-check destination addresses before sending funds.
+Because of this model, there are no refunds, reversals, or recovery options. Always double-check destination addresses before sending funds.
 
-As a best practice, we recommend not holding large amounts of ICP in your Juno wallet unless necessary. Use it as a utility wallet for fueling your modules — not as a long-term vault.
+As a best practice, we recommend not holding large amounts of cycles unless necessary. Use it as a utility for fueling your modules — not as a long-term vault.
 
-We also recommend enabling [monitoring](../management/monitoring.md) to ensure your Mission Control stays alive and responsive at all times.
+We also recommend enabling [monitoring](../management/monitoring.md) to ensure your projects and analytics stay alive and responsive at all times.
 
 :::
 
 ---
 
-## What are ICP?
+## What are Cycles?
 
-ICP are the native cryptocurrency of the [Internet Computer](https://internetcomputer.org). They provide utility for powering the network and are also used for governance.
+Cycles are used to pay for infrastructure usage. Your Satellite, Mission Control or Orbiter consume cycles while they are active.
 
-One key usage is converting ICP tokens to cycles, which are used to cover the computational and storage costs of running modules.
+The amount of cycles available determines whether a module will be active, inactive, or eventually decommissioned (deleted).
+
+This ensures that related costs cannot surpass the amount of cycles available.
+
+Think of cycles like prepaid mobile data:
+
+- Just like your mobile plan allows you to make calls and browse the internet, cycles enable your containers to process computations and store data.
+- When your data (cycles) runs out, your service becomes inactive.
+- To keep your modules running smoothly, you need to top up your cycles regularly (manually or automatically).
+- If you don’t top it up, after some time, it will be decommissioned, similar to losing your prepaid number due to prolonged inactivity.
+
 
 ---
 

@@ -2,13 +2,9 @@
 
 In Juno, we use some terms that may be unfamiliar to some. This page provides a summary of the most commonly used terms.
 
-## Account Identifier
-
-An "Account Identifier" is an address, serving as the textual representation of an account on the Internet Computer (ICP) ledger. It can represent an account owned by an individual or a smart contract.
-
 ## Canister
 
-A canister is the term for a smart contract on the Internet Computer. It includes both logic and state (memory), bundled together and deployed as a WebAssembly (WASM) container.
+A canister is the term for a container on the Internet Computer. It includes both logic and state (memory), bundled together and deployed as a WebAssembly (WASM).
 
 All [modules](#modules) in Juno — such as [satellites](#satellite), [mission controls](#mission-control), and [orbiters](#orbiter) — are canisters under the hood.
 
@@ -26,7 +22,7 @@ For current usage and setup, refer to the [Access Keys documentation](miscellane
 
 ## Cycles
 
-Cycles are used to pay for [infrastructure] usage. Your [mission control] or [satellite] consumes cycles while it's active.
+Cycles are used to pay for [infrastructure] usage. Your [satellite], [mission control] or [orbiter] consume cycles while they are active.
 
 The amount of cycles available determines whether a module will be active, inactive, or eventually decommissioned (deleted).
 
@@ -39,17 +35,9 @@ Think of cycles like prepaid mobile data:
 - To keep your modules running smoothly, you need to top up your cycles regularly (manually or automatically).
 - If you don’t top it up, after some time, it will be decommissioned, similar to losing your prepaid number due to prolonged inactivity.
 
-Learn more about [computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/gas-cost).
-
 ## Doc
 
 "doc" is a commonly used shorthand in Juno for a "document of the Datastore". Wherever you see the term "doc" in the codebase or documentation, it refers specifically to a document entity managed by the [Datastore](build/datastore/index.mdx). This abbreviation is used for brevity and consistency throughout the project.
-
-## ICP
-
-The ICP token is the cryptocurrency used to pay for transactions on Juno's [infrastructure].
-
-It can also be converted into cycles, which are used to pay for computation and storage. Unlike the market price of ICP, the price of cycles remains constant, ensuring predictable costs for infrastructure usage.
 
 ## Internet Identity
 
@@ -109,19 +97,22 @@ By picking the right group (or subnet), everyone can play faster and have more f
 
 ## Wallet
 
-A wallet is your secure repository for managing and storing crypto money. Your wallet is controlled exclusively by you, ensuring that no one, including Juno, can ever access it.
+A wallet is your secure repository for managing and storing resources in Juno.
 
-Think of it like a digital vault:
+Think of it like a prepaid account:
 
-- It securely stores your ICP tokens.
-- It acts as your gateway for transactions within the Juno ecosystem.
-- It allows you to top up your modules with cycles.
+- It holds your available resources (cycles).
+- It lets you allocate resources to your projects and modules - e.g. with top-up.
+- It's automatically created when you sign in to the Console.
 
-Because your wallet is also your [mission-control](#mission-control), which requires resources to stay alive, we recommend holding a reasonable amount of tokens. Think of it like a day-to-day wallet for frequent operations rather than one for savings.
+Your wallet is tied to your identity, which is generated when you first log in.
+
+For more information see [Wallet](miscellaneous/wallet.md) documentation.
 
 [console]: terminology.md#console
 [satellite]: terminology.md#satellite
 [satellites]: terminology.md#satellite
+[orbiter]: terminology.md#orbiter
 [orbiters]: terminology.md#orbiter
 [mission control]: terminology.md#mission-control
 [mission controls]: terminology.md#mission-control
