@@ -81,7 +81,7 @@ You have the capability to delete all collected data within your Analytics at an
 
 ## How does it work?
 
-To gather analytics for your dapps, you need to create an [orbiter]. Creating an Orbiter requires ICP, and its price is defined in the [transaction costs](../../pricing#transaction-costs).
+To gather analytics for your dapps, you need to create an [orbiter]. Creating an Orbiter requires Cycles, and its price is defined in the [transaction costs](../../pricing#transaction-costs).
 
 Each Orbiter is used to collect analytics for one or multiple [satellites].
 

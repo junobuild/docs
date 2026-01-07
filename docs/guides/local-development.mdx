@@ -131,8 +131,8 @@ Likewise, not all services are mounted by default - but they can be turned on (o
 | ICP Index            | ✅     | ✅        |
 | NNS Governance       | ✅     | ➖        |
 | Cycles Minting (CMC) | ✅     | ➖        |
-| Cycles Ledger        | ➖     | ➖        |
-| Cycles Index         | ➖     | ➖        |
+| Cycles Ledger        | ✅     | ➖        |
+| Cycles Index         | ✅     | ➖        |
 | Registry             | ➖     | ➖        |
 | SNS                  | ➖     | ➖        |
 | NNS-dapp             | ➖     | ➖        |
@@ -214,16 +214,17 @@ await initSatellite({
 
 The admin server running on port `5999` provides a variety of internal management. Below are some tips and example scripts to make use of this little server.
 
-### Get ICP
+### Get Cycles
 
-If you're using the full environment, the Console UI includes a "Get ICP" button in the wallet. It's a quick way to get ICP out of the box.
+If you're using the full environment, the Console UI includes a "Get Cycles" button in the wallet. It's a quick way to get Cycles out of the box.
 
+**TODO Screenshot**
 ![A screenshot of the wallet with the Get ICP call to action of Console UI in dev mode](../img/dev-console/wallet.webp)
 
-You might want to transfer some ICP from the ledger to a specified principal, which can be particularly useful when you're just getting started developing your app and no users currently own ICP. This can be achieved by querying:
+You might want to transfer some Cycles from the ledger to a specified principal, which can be particularly useful when you're just getting started developing your app and no users currently own Cycles. This can be achieved by querying:
 
 ```
-http://localhost:5999/ledger/transfer/?to=$PRINCIPAL
+http://localhost:5999/ledger/transfer/?to=$PRINCIPAL&ledgerId=um5iw-rqaaa-aaaaq-qaaba-cai&amount330000000000000
 ```
 
 For example, you can use the following script:

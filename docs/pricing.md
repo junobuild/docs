@@ -5,7 +5,6 @@ keywords:
     Juno pricing,
     operating costs,
     transaction fees,
-    ICP,
     cycles,
     infrastructure costs,
     storage costs,
@@ -92,7 +91,7 @@ It's important to note that subsequent deployments of your project can have sign
 
 Querying data on the Internet Computer is currently free, so there are no additional costs to expect when reading data.
 
-In terms of persisting data, based on our experience, storing 100 instances of a JSON sample data with approximately 90 fields, totaling around 900 bytes, costs approximately 0.0005 TCycles or 0.00017 ICP ($0.000675). This means that the cost for a single transaction of this nature would be approximately 0.000005 TCycles or 0.0000017 ICP ($0.00000675).
+In terms of persisting data, based on our experience, storing 100 instances of a JSON sample data with approximately 90 fields, totaling around 900 bytes, costs approximately 0.0005 TCycles ($0.000675). This means that the cost for a single transaction of this nature would be approximately 0.000005 TCycles or 0.0000017 ICP ($0.00000675).
 
 :::note
 

@@ -7,12 +7,12 @@ However, in some cases, it may be useful to explicitly reference their IDs or UR
 | Service                                                                                                      | Canister ID                   |
 | ------------------------------------------------------------------------------------------------------------ | ----------------------------- |
 | [Internet Identity](https://dashboard.internetcomputer.org/canister/rdmx6-jaaaa-aaaaa-aaadq-cai)             | `rdmx6-jaaaa-aaaaa-aaadq-cai` |
+| [Cycles Ledger](https://dashboard.internetcomputer.org/canister/um5iw-rqaaa-aaaaq-qaaba-cai)                 | `um5iw-rqaaa-aaaaq-qaaba-cai` |
+| [Cycles Index](https://dashboard.internetcomputer.org/canister/ul4oc-4iaaa-aaaaq-qaabq-cai)                  | `ul4oc-4iaaa-aaaaq-qaabq-cai` |
 | [ICP Ledger](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai)                    | `ryjl3-tyaaa-aaaaa-aaaba-cai` |
 | [ICP Index](https://dashboard.internetcomputer.org/canister/qhbym-qaaaa-aaaaa-aaafq-cai)                     | `qhbym-qaaaa-aaaaa-aaafq-cai` |
 | [CMC (Cycles Minting Canister)](https://dashboard.internetcomputer.org/canister/rkp4c-7iaaa-aaaaa-aaaca-cai) | `rkp4c-7iaaa-aaaaa-aaaca-cai` |
 | [NNS Governance](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai)                | `rrkah-fqaaa-aaaaa-aaaaq-cai` |
 | [Registry](https://dashboard.internetcomputer.org/canister/rwlgt-iiaaa-aaaaa-aaaaa-cai)                      | `rwlgt-iiaaa-aaaaa-aaaaa-cai` |
-| [Cycles Ledger](https://dashboard.internetcomputer.org/canister/um5iw-rqaaa-aaaaq-qaaba-cai)                 | `um5iw-rqaaa-aaaaq-qaaba-cai` |
-| [Cycles Index](https://dashboard.internetcomputer.org/canister/ul4oc-4iaaa-aaaaq-qaabq-cai)                  | `ul4oc-4iaaa-aaaaq-qaabq-cai` |
 | [SNS-Wasm](https://dashboard.internetcomputer.org/canister/qaa6y-5yaaa-aaaaa-aaafa-cai)                      | `qaa6y-5yaaa-aaaaa-aaafa-cai` |
 | [NNS-dapp](https://dashboard.internetcomputer.org/canister/qoctq-giaaa-aaaaa-aaaea-cai)                      | `qoctq-giaaa-aaaaa-aaaea-cai` |

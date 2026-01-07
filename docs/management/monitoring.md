@@ -24,8 +24,8 @@ Keeping your modules running smoothly is essential for any application. The moni
 
 - **Cycle refilling**: Monitored modules are automatically topped up when their balance falls below what's needed to stay active.
 - **Self-Monitoring**: Your Mission Control ensures that both your wallet and modules maintain sufficient cycles, with full control remaining in your hands at all times.
-- **Automatic ICP Conversion**: Can mint new cycles from the ICP in your wallet, ensuring your modules stay adequately funded.
 - **Hourly Checks**: The system evaluates balances once an hour.
+- **Automatic ICP Conversion**: Can mint new cycles from the ICP in your wallet, ensuring your modules stay adequately funded.
 
 ---
 
