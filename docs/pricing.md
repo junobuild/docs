@@ -5,7 +5,6 @@ keywords:
     Juno pricing,
     operating costs,
     transaction fees,
-    ICP,
     cycles,
     infrastructure costs,
     storage costs,
@@ -18,8 +17,8 @@ keywords:
 
 Juno has a simple starting point:
 
-- ✅ Free to get started: new developers receive credits to create one managing container and one project container.
-- 💰 Pay as you grow: additional modules (for projects or analytics) cost 0.4 ICP each to create.
+- ✅ Free to get started: new developers receive credits to create a container for their first project, with initial resources included, ready to use.
+- 💰 Pay as you grow: additional modules (for projects, monitoring or analytics) cost 3 T Cycles each to create.
 - 📦 Operating costs: ongoing costs for storage, compute, and deployments are paid with cycles.
 
 From there, you can dive into the details below to estimate storage, deployment, and data costs more precisely.
@@ -34,21 +33,29 @@ To ensure that your infrastructure usage is covered, you must maintain a minimum
 
 You can top up your cycle balance in the Juno [console](https://console.juno.build/) through one of the following methods:
 
-- Using ICP from your wallet.
 - Purchasing cycles with Stripe, thanks to our friends at [cycle.express](https://cycle.express).
+- Using cycles from your [wallet](miscellaneous/wallet.mdx).
 - Transferring cycles between modules, such as moving cycles from one Satellite to another.
 
 ---
 
 ## Transaction costs
 
-New developers who join Juno are granted credits to create a Mission Control and their initial [satellite].
+New developers who join Juno are granted credits to create an initial [Satellite].
 
-To create additional Satellites, a fee of 0.4 ICP is necessary, along with the infrastructure costs for setting up the container.
+To create additional Satellites, a fee of 3 T Cycles is necessary, along with the infrastructure costs for setting up the container.
 
-Similarly, enabling analytics by creating an [orbiter] entails a fee of 0.4 ICP.
+Similarly, enabling analytics by creating an [Orbiter] or monitoring with a [Mission Control] entails a fee of 3 T Cycles.
 
-Please note that additional transaction fees may be introduced in the future, and pricing and models are subject to change.
+Each module is provisioned with approximately 1.5 T Cycles in usable resources.
+
+:::note
+
+- For backwards compatibility, modules can still be created using Mission Control (deprecated). The transaction cost for this approach is 1.5 ICP.
+
+- Additional transaction fees may be introduced in the future, and pricing and models are subject to change.
+
+:::
 
 ---
 
@@ -84,11 +91,11 @@ It's important to note that subsequent deployments of your project can have sign
 
 Querying data on the Internet Computer is currently free, so there are no additional costs to expect when reading data.
 
-In terms of persisting data, based on our experience, storing 100 instances of a JSON sample data with approximately 90 fields, totaling around 900 bytes, costs approximately 0.0005 TCycles or 0.00017 ICP ($0.000675). This means that the cost for a single transaction of this nature would be approximately 0.000005 TCycles or 0.0000017 ICP ($0.00000675).
+In terms of persisting data, based on our experience, storing 100 instances of a JSON sample data with approximately 90 fields, totaling around 900 bytes, costs approximately 0.0005 TCycles ($0.000675). This means that the cost for a single transaction of this nature would be approximately 0.000005 TCycles or 0.0000017 ICP ($0.00000675).
 
 :::note
 
-Pricing information was last reviewed on Sept. 26, 2025.
+Pricing information was last reviewed on Jan. 7, 2026.
 
 Figures are estimates and may change as the Internet Computer evolves.
 
