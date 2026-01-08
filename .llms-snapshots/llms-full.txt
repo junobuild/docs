@@ -268,7 +268,7 @@ This enables:
 *   A smooth dev loop, from prototype to deployment
 *   A unique way to build, debug, and validate smart contract logic and frontend behavior — all in one place
 
-![A screenshot of the DEV Console UI login screen](/assets/images/login-c6e898b09eac53a54e6f2d2e2b27e03e.webp)
+![A screenshot of the DEV Console UI login screen](/assets/images/login-22bd49b1624f8c4c89c5c1e33b2fc70c.png)
 
 ---
 
@@ -451,7 +451,7 @@ The admin server running on port `5999` provides a variety of internal managemen
 
 If you're using the full environment, the Console UI includes a "Get Cycles" button in the wallet. It's a quick way to get Cycles out of the box.
 
-**TODO Screenshot** ![A screenshot of the wallet with the Get ICP call to action of Console UI in dev mode](/assets/images/wallet-45c84f1968e0c6a2749b439aace1b0c1.webp)
+![A screenshot of the wallet with the Get Cycles call to action of Console UI in dev mode](/assets/images/wallet-2337251849c790b75db91656c65e61d5.png)
 
 You might want to transfer some Cycles from the ledger to a specified principal, which can be particularly useful when you're just getting started developing your app and no users currently own Cycles. This can be achieved by querying:
 
@@ -8790,7 +8790,7 @@ The service is integrated directly into the Juno Console. From your wallet, clic
 
 The default purchase amount is $1 USD. You can change this amount on Stripe's payment page (maximum $100).
 
-**TODO SCREENSHOT**
+![A screenshot of where to find the call to action Buy](/assets/images/wallet-buy-fddf8fcc9927dd1923600a7e2283aeef.png)
 
 ---
 
@@ -8800,11 +8800,13 @@ If you already hold cycles or want to swap some, you can use the [OISY Wallet](h
 
 To initiate a transaction manually, you will need to provide a destination address. To find it in the [console](https://console.juno.build), open the shortcut to your [wallet](https://console.juno.build/wallet) and click "Receive" select "Wallet ID".
 
-**TODO SCREENSHOT**
+![A screenshot of where to find the call to action Receive](/assets/images/wallet-receive-78153f6bf10b0507baf66fb0d01fec5d.png)
+
+![A screenshot of where to find the link to the Wallet ID](/assets/images/wallet-receive-wallet-id-b4f97e0e100bf750a8a962309f6d05df.png)
 
 You can also connect OISY to Juno's console to initiate the transaction and proceed with the approval. This eliminates the need to copy, paste, or scan any addresses.
 
-**TODO SCREENSHOT** ![A screenshot of the wallet &quot;Receive&quot; modal with an arrow pointing to the OISY option](/assets/images/wallet-receive-oisy-a6dabf8ca3d87e45da773c58f8a0eda3.png)
+![A screenshot of the wallet &quot;Receive&quot; modal with an arrow pointing to the OISY option](/assets/images/wallet-receive-oisy-a48815e1d68d20fc10c13548b53fbc69.png)
 
 ---
 
@@ -8816,15 +8818,15 @@ Sending Cycles to the ecosystem or the outside world can be initiated from your 
 
 Sending cycles transfers them to another wallet. To add manually cycles (resources) to your modules (Satellites, Orbiters, or Mission Control), use the **Top-up** feature instead.
 
-**TODO SCREENSHOT** ![A screenshot of the wallet with the &quot;Send&quot; button](/assets/images/wallet-send-09f0b1267286be0ebb67a985e432deb8.png)
+![A screenshot of the wallet with the &quot;Send&quot; button](/assets/images/wallet-send-966cfbae083d2287efaa23ad4a754177.png)
 
 Enter the destination wallet ID or account identifier where you want to send cycles, along with the amount.
 
-**TODO SCREENSHOT** ![A screenshot of the wallet send form](/assets/images/wallet-send-form-03440e3f0718c16c0b08a70cfa18d0ee.png)
+![A screenshot of the wallet send form](/assets/images/wallet-send-form-53bc9d2aa33d85a71542462d52464313.png)
 
 Review the transaction details and confirm to execute it.
 
-**TODO SCREENSHOT** ![A screenshot of the wallet send review mask](/assets/images/wallet-send-review-52b726f5d9cc0977a04dba319dfa1ec3.png)
+![A screenshot of the wallet send review mask](/assets/images/wallet-send-review-0d7e6b1fac55e36bdf0fe94f47dea223.png)
 
 ---
 
