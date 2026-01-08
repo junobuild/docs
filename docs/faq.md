@@ -37,7 +37,7 @@ For reproducibility, developers can run the official Docker build for Juno and i
 
 ### What happens if Juno disappears?
 
-In the unlikely event of Juno's disappearance, you, as the sole controller of your [mission control] and [satellites], would retain full control over your creations. They would continue to function independently without any reliance on Juno.
+In the unlikely event of Juno's disappearance, you retain full control over your creations. They would continue to function independently without any reliance on Juno.
 
 ### Can I just deploy my website on the Internet Computer?
 
@@ -51,7 +51,7 @@ No, Juno is an independent project. In 2024, we received a [Developer Grant](htt
 
 No, Juno does not exert any control over developers' work. Juno is designed to provide developers with true control and autonomy over their projects.
 
-Developers have full ownership and control over their [mission control], [satellites], and the applications they build on the platform.
+Developers have full ownership and control over their modules, and the applications they build on the platform.
 
 Juno's philosophy aligns with the principles of Web3, empowering developers with transparency, decentralization, and the freedom to create and innovate without external interference.
 
