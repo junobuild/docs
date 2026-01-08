@@ -8863,7 +8863,6 @@ Never ever add access keys to your modules without being absolutely certain of t
 
 In your satellite, assign the access key of the destination account with administrative permissions:
 
-*   The Mission Control ID
 *   The Developer ID (available under "Preferences")
 
 In other words, ask your friend or colleague for their Developer ID and Mission Control ID, and add those as new access keys. Again, **please be absolutely certain** before adding the controllers.
