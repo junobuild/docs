@@ -158,7 +158,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [Infrastructure](https://juno.build/docs/miscellaneous/infrastructure.md): Discover how Juno's infrastructure blends self-hosted deployment with WebAssembly containers, focusing on simplicity, control, and modern Web2-compatible tooling.
 - [Memory](https://juno.build/docs/miscellaneous/memory.md): This page explains how memory works conceptually and how you can monitor its usage through the Console.
 - [Provisioning Options](https://juno.build/docs/miscellaneous/provisioning-options.md): The creation wizard for Satellites and Orbiters includes advanced provisioning options for developers who need more control.
-- [Wallet](https://juno.build/docs/miscellaneous/wallet.md): This section provides guidance on managing your assets and cycles with your wallet, which are essential for maintaining and providing enough resources for your modules in the Juno ecosystem.
+- [Wallet](https://juno.build/docs/miscellaneous/wallet.md): This section provides guidance on managing your cycles with your wallet (your account), which are essential for maintaining and providing enough resources for your modules in the Juno ecosystem.
 - [Workarounds](https://juno.build/docs/miscellaneous/workarounds.md): This page is dedicated to helping you make the most of Juno features, even when some functionalities are not yet fully supported out of the box. Below, you'll find practical workarounds and guidance for processes which in the future will be resolved by new features.
 
 ## Reference
