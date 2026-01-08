@@ -8,14 +8,6 @@ This page is dedicated to helping you make the most of Juno features, even when 
 
 Although Juno does not yet support direct satellite transfers - such as if you want to hand over a project to your friends or colleagues - you can use the following steps as a workaround:
 
-:::note
-
-There is no "account" on Juno. The Console solely holds a key-pair list of the developer IDs with their respective Mission Control IDs. All data and control are entirely managed by you.
-
-Nevertheless, for this tutorial, "account" refers to someone able to sign in into the Juno Console and who has a Mission Control.
-
-:::
-
 #### 1. Add the new access key to the Satellite
 
 :::danger
@@ -28,13 +20,13 @@ In your satellite, assign the access key of the destination account with adminis
 
 - The Developer ID (available under "Preferences")
 
-In other words, ask your friend or colleague for their Developer ID and Mission Control ID, and add those as new access keys. Again, **please be absolutely certain** before adding the controllers.
+In other words, ask your friend or colleague for their Developer ID, and add it as new access keys. Again, **please be absolutely certain** before adding the controllers.
 
 #### 2. Attach Satellite in destination account
 
-The destination account — your friend or colleague — can use the "Attach Satellite" feature in their [Mission Control](https://console.juno.build/mission-control/). To do this, they will need the Satellite ID.
+The destination account — your friend or colleague — can use the "Attach Satellite" feature available in the launchpad of the [Console](https://console.juno.build) (the "Home" screen). To do this, they will need the Satellite ID.
 
-By doing so, and because you have set them as a controller in the previous step, the Satellite you are transferring will be linked with their account and made available in the Console.
+By doing so, and because you have set them as an administrator in the previous step, the Satellite you are transferring will be linked with their account and made available in the Console.
 
 :::tip
 
@@ -42,13 +34,13 @@ At this stage, the satellite is linked to both accounts, making it accessible fr
 
 :::
 
-#### 3. Remove Unnecessary Controllers
+#### 3. Remove Unnecessary Access Keys
 
-The destination account — your friend or colleague, who is now the owner of the satellite — can then remove the access key(s) that should no longer be listed, specifically your own Developer ID and your Mission Control ID.
+The destination account — your friend or colleague, who is now the owner of the satellite — can then remove the access key(s) that should no longer be listed, specifically your own Developer ID and, if you got one, your Mission Control ID.
 
 #### 4. Confirm and Detach
 
-Wait for confirmation that the destination account has completed all the steps and successfully taken over the satellite. Once confirmed, you can remove the satellite from your console using the "Detach Satellite" option available in the satellite overview.
+Wait for confirmation that the destination account has completed all the steps and successfully taken over the satellite. Once confirmed, you can remove the satellite from your console using the "Detach Satellite" option available in the Satellite overview.
 
 ---
 
