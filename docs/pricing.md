@@ -30,7 +30,7 @@ From there, you can dive into the details below to estimate storage, deployment,
 
 As the owner of your Mission Control, Satellites and Orbiters, you are responsible for their operating costs.
 
-To ensure that your infrastructure usage is covered, you must maintain a minimum balance of [cycles](terminology.md#cycles).
+To ensure that your infrastructure usage is covered, you must maintain a minimum balance of [cycles](terminology.mdx#cycles).
 
 You can top up your cycle balance in the Juno [console](https://console.juno.build/) through one of the following methods:
 
@@ -94,6 +94,6 @@ Figures are estimates and may change as the Internet Computer evolves.
 
 :::
 
-[mission control]: terminology.md#mission-control
-[satellite]: terminology.md#satellite
-[orbiter]: terminology.md#orbiter
+[mission control]: terminology.mdx#mission-control
+[satellite]: terminology.mdx#satellite
+[orbiter]: terminology.mdx#orbiter

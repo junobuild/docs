@@ -69,7 +69,7 @@ In contrast, Juno is fully [open-source](https://github.com/junobuild/), providi
 
 Firebase follows a usage-based pricing model, where costs are calculated based on factors like request volume and data storage. The absence of a cap-setting option is a cause for concern, as unexpected spikes in usage can result in substantial expenses.
 
-In contrast, Juno takes a different approach. Developers pre-charge their modules with [cycles](./terminology.md#cycles), which are then utilized to cover computation and memory usage. This mechanism eliminates the risk of encountering unexpected financial burdens due to unforeseen usage surges.
+In contrast, Juno takes a different approach. Developers pre-charge their modules with [cycles](terminology.mdx#cycles), which are then utilized to cover computation and memory usage. This mechanism eliminates the risk of encountering unexpected financial burdens due to unforeseen usage surges.
 
 ### Do you have a library for [some other language]?
 
@@ -91,6 +91,6 @@ You can also check out the [guides](/docs/category/guides), which feature exampl
 
 Do you have more questions or need further assistance? Feel free to reach out to us on [Discord](https://discord.gg/wHZ57Z2RAG) or [Twitter](https://twitter.com/junobuild). We're here to help!
 
-[mission control]: terminology.md#mission-control
-[satellites]: terminology.md#satellite
+[mission control]: terminology.mdx#mission-control
+[satellites]: terminology.mdx#satellite
 [Internet Computer]: https://internetcomputer.org/
