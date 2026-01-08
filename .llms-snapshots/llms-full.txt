@@ -8084,7 +8084,7 @@ juno hosting deploy
 
 # Monitoring
 
-Keeping your modules running smoothly is essential for any application. The monitoring feature ensures your [Mission Control](/docs/terminology.md#mission-control) (your wallet) and modules — Satellites and Orbiter (Analytics) — stay operational by automatically refilling cycles when they run low. This helps prevent unexpected downtime, allowing you to focus on building and growing your product without worrying about cycle balances.
+Keeping your modules running smoothly is essential for any application. The monitoring feature ensures your modules — Satellites and Orbiter (Analytics) — stay operational by automatically refilling cycles when they run low. This helps prevent unexpected downtime, allowing you to focus on building and growing your product without worrying about cycle balances.
 
 ![A screenshot of the monitoring overview within Juno Console](/assets/images/monitoring-dashboard-caf86757b1501c3fe41cbae3cffa3ff3.webp)
 
@@ -8093,7 +8093,7 @@ Keeping your modules running smoothly is essential for any application. The moni
 ## Features
 
 *   **Cycle refilling**: Monitored modules are automatically topped up when their balance falls below what's needed to stay active.
-*   **Self-Monitoring**: Your Mission Control ensures that both your wallet and modules maintain sufficient cycles, with full control remaining in your hands at all times.
+*   **Self-Monitoring**: The monitoring monitors itself to maintain sufficient cycles, with full control remaining in your hands at all times.
 *   **Automatic ICP Conversion**: Can mint new cycles from the ICP in your wallet, ensuring your modules stay adequately funded.
 *   **Hourly Checks**: The system evaluates balances once an hour.
 
@@ -8101,15 +8101,15 @@ Keeping your modules running smoothly is essential for any application. The moni
 
 ## Why Enable Monitoring?
 
-When a smart contract runs out of [cycles](/docs/terminology.md#cycles) on the [Internet Computer](https://internetcomputer.org), it stops functioning, which can disrupt your application or service. Enabling monitoring provides peace of mind by automating the management of cycles, ensuring your modules are always ready to perform. It also saves a little time by eliminating the need for manual top-ups.
+When a container runs out of [cycles](/docs/terminology.md#cycles) on the [Internet Computer](https://internetcomputer.org), it stops functioning, which can disrupt your application or service. Enabling monitoring provides peace of mind by automating the management of cycles, ensuring your modules are always ready to perform. It also saves a little time by eliminating the need for manual top-ups.
 
-It's important to note that if your wallet or a module run out of cycles, they will enter a grace period. During this time, the module stops working but can still be restored. If no action is taken, the module eventually gets deleted, resulting in the permanent loss of its data and functionality.
+It's important to note that if your modules run out of cycles, they will enter a grace period. During this time, the module stops working but can still be restored. If no action is taken, the module eventually gets deleted, resulting in the permanent loss of its data and functionality.
 
 ---
 
 ## How does it work?
 
-Monitoring runs hourly within your Mission Control, which acts as the central hub for managing all monitored modules. The process follows these steps:
+Monitoring runs hourly within a dedicated service called Mission Control, which acts as the central hub for managing all monitored modules. The process follows these steps:
 
 ---
 
@@ -8198,9 +8198,14 @@ In the case of failed attempts (e.g., when Mission Control or a module could not
 
 ## Configuration
 
-To enable monitoring, go to the [Monitoring Section](https://console.juno.build/monitoring) in the Juno Console. Start the wizard by clicking **Enable Auto-Refill** and follow the prompts to select the modules you want to monitor, choose a pre-defined strategy or create a custom one, and enable the feature.
+To enable monitoring, go to the [Monitoring Section](https://console.juno.build/monitoring) in the Juno Console. Start the wizard by clicking **Get started** and follow the prompts to:
 
-The wizard simplifies the setup process, making it easy to configure monitoring according to your needs.
+*   Create the Mission Control service
+*   Select the modules you want to monitor
+*   Choose a pre-defined strategy or create a custom one
+*   Enable the feature
+
+The wizard guides you through the setup process, making it easy to configure monitoring according to your needs.
 
 # Snapshots
 
@@ -8248,13 +8253,11 @@ This should be used carefully though, as snapshots also include elements such as
 
 # Access Keys
 
-Access keys play a crucial role in granting permissions to Mission Controls, Satellites or Analytics within Juno.
+Access keys play a crucial role in granting permissions to Mission Controls, Satellites or Orbiters within Juno.
 
-When you sign in to Juno's [Console](/docs/terminology.md#console) using [Internet Identity](https://internetcomputer.org/internet-identity), you — and no one else (including not Juno) — become the owner of your [mission control](/docs/terminology.md#mission-control). This information is then sent back to your browser, where you can manage your modules.
+When you sign in to Juno's [Console](/docs/terminology.md#console) (for example, with Internet Identity) and create modules, you — and no one else, not even Juno — become their owner.
 
 ![Juno&#39;s console flow](/assets/images/console-d0903e4989f7c4db5f4e85567211d266.png)
-
-When you create a [satellite](/docs/terminology.md#satellite), you and your Mission Control become its owners. Per extension, you — and no one else (including not Juno) — own your satellite.
 
 **Note:**
 
@@ -8273,7 +8276,7 @@ Each access key is assigned a **role** that defines what it can do:
 | **Write** | Editor | ✅   | ✅   | ✅   | ❌   |
 | **Submit** | Submitter | ✅   | ❌   | ❌   | ❌   |
 
-An **administrator** can perform tasks such as configuring or deploying an app, topping up a Mission Control or satellite, creating a new collection in the [datastore](/docs/build/datastore.md) or [storage](/docs/build/storage.md), or configuring a custom domain in the [hosting](/docs/build/hosting.md).
+An **administrator** can perform tasks such as configuring or deploying an app, topping up a module, creating a new collection in the [datastore](/docs/build/datastore.md) or [storage](/docs/build/storage.md), or configuring a custom domain in the [hosting](/docs/build/hosting.md).
 
 An **editor** can publish new serverless function versions to a Satellite’s CDN, deploy your frontend application, and read data from a collection. However, it cannot directly upgrade a Satellite or start/stop a module.
 
@@ -8339,7 +8342,7 @@ When you run the command, the CLI checks if an access key is already present on 
 
 ### Generate a new access key
 
-To **generate a new access key** and attach it to your desired Mission Controls and Satellites, you can run:
+To **generate a new access key** and attach it to your desired module, you can run:
 
 ```
 juno login
@@ -8390,10 +8393,6 @@ Juno provides supporting services to manage your projects, while keeping everyth
 
 The Console is a platform for managing your projects. It runs as its own container, combining a user interface with orchestration logic.
 
-It only holds one piece of data: a keypair linking each developer's anonymous ID to their Mission Control ID.
-
-When you sign in, the Console returns your Mission Control ID. From there, all project management happens under your control. The Console does not have access to your apps, your data, or your infrastructure.
-
 It provides services such as:
 
 *   Creating, upgrading, and deleting Satellites.
@@ -8428,13 +8427,7 @@ While it functions as a CDN, technically it's not a traditional content delivery
 
 ## Developer-Owned Spaces
 
-### Mission Control
-
-Mission Control is your personal management container. It tracks your Satellites and Orbiters, and it acts as your wallet.
-
-You use it for example to spin up new containers or provide [cycles](/docs/terminology.md#cycles) to keep your modules running. It serves as your central hub for managing projects and resources.
-
-Mission Control belongs to you. No one else can access it — not Juno, not the Console, not any other service.
+Juno's architecture is built on a microservices approach, where each component runs independently as its own WASM container, giving you modular control over your infrastructure.
 
 ### Satellites
 
@@ -8449,6 +8442,12 @@ Satellites are your applications. Each one is a self-contained unit that bundles
 ### Orbiters
 
 Orbiters provide analytics — a decentralized alternative to services like Google Analytics. Orbiters collect traffic, page views, and device information, under your ownership and without exposing user data to third parties.
+
+### Mission Control
+
+Mission Control is an optional monitoring service that automatically tracks and maintains your Satellites and Orbiters.
+
+When enabled, it monitors [cycles](/docs/terminology.md#cycles) balances across your modules and automatically tops them up when needed, ensuring your applications stay running without manual intervention.
 
 ---
 
@@ -11835,7 +11834,7 @@ For reproducibility, developers can run the official Docker build for Juno and i
 
 ### What happens if Juno disappears?
 
-In the unlikely event of Juno's disappearance, you, as the sole controller of your [mission control](/docs/terminology.md#mission-control) and [satellites](/docs/terminology.md#satellite), would retain full control over your creations. They would continue to function independently without any reliance on Juno.
+In the unlikely event of Juno's disappearance, you retain full control over your creations. They would continue to function independently without any reliance on Juno.
 
 ### Can I just deploy my website on the Internet Computer?
 
@@ -11849,7 +11848,7 @@ No, Juno is an independent project. In 2024, we received a [Developer Grant](htt
 
 No, Juno does not exert any control over developers' work. Juno is designed to provide developers with true control and autonomy over their projects.
 
-Developers have full ownership and control over their [mission control](/docs/terminology.md#mission-control), [satellites](/docs/terminology.md#satellite), and the applications they build on the platform.
+Developers have full ownership and control over their modules, and the applications they build on the platform.
 
 Juno's philosophy aligns with the principles of Web3, empowering developers with transparency, decentralization, and the freedom to create and innovate without external interference.
 
@@ -12026,13 +12025,9 @@ It is free and passwordless. It integrates WebAuthn for maximum compatibility an
 
 ## Mission control
 
-Mission control is the command center for your project. It is under your exclusive control, allowing it, for example, to hold ICP and perform various operations such as topping up your modules.
+Mission Control is an optional monitoring service. When enabled, it automatically monitors and tops up your Satellites and Orbiters to keep them running smoothly.
 
-Think of it like the command center for a space mission. Just as NASA's Mission Control coordinates spacecraft and Satellites, your Mission Control manages all your [satellites](/docs/terminology.md#satellite) or ([orbiters](#orbiter)).
-
-Because it can hold ICP and is only controlled by you, your Mission Control also functions as your ([wallet](#wallet)).
-
-For a schematic representation, refer to the [Architecture](/docs/miscellaneous/architecture.md) documentation page.
+Think of it like the command center for a space mission. Just as NASA's Mission Control monitors spacecraft and Satellites, your Mission Control watches over all your modules and ensures they have the resources they need.
 
 ## Modules
 
