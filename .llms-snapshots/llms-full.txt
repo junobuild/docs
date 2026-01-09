@@ -8830,11 +8830,13 @@ Review the transaction details and confirm to execute it.
 
 ---
 
-## Legacy Support
+## ICP
 
-For backwards compatibility with Mission Control that operated in ICP, the wallet features still support those tokens. You can receive and send ICP if needed.
+For convenience, the developer wallet can hold ICP tokens as well. When its balance is greater than zero, a conversion feature lets you easily convert them to cycles.
 
-However, using cycles is now the recommended approach for all operations.
+You can also receive and send ICP for backwards compatibility with Mission Control.
+
+Cycles remain the recommended approach for all operations.
 
 # Workarounds
 
