@@ -16,10 +16,10 @@ export default function Features(): JSX.Element {
             Zero overhead.
           </h2>
           <p>
-            Key-value datastore, storage, auth, analytics, and serverless
-            functions running in secure containers. No infrastructure to manage.
-            No cold start.
+            Key-value store, storage, auth, analytics, and serverless functions
+            running in secure containers.
           </p>
+          <p>No infrastructure to manage. No cold start.</p>
         </aside>
       </div>
 
