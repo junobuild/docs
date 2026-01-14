@@ -18,6 +18,7 @@ export default function Features(): JSX.Element {
           <p>
             Key-value datastore, storage, auth, analytics, and serverless
             functions running in secure containers. No infrastructure to manage.
+            No cold start.
           </p>
         </aside>
       </div>
