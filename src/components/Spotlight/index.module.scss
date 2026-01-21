@@ -60,4 +60,19 @@
     word-break: break-word;
     white-space: pre-wrap;
   }
+
+  h4 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This pushes items to the edges */
+  }
+
+  .githubLogo {
+    width: 40px; /* Adjust the size of the logo */
+    height: 40px;
+  }
+}
+
+.githubLink {
+  margin-left: auto; /* Pushes the link to the right */
 }
