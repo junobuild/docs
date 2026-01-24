@@ -63,12 +63,30 @@ export default function Snippets(): JSX.Element {
       <ul className={styles.list}>
         <li>
           <button
+            onClick={() => setSnippet("hosting")}
+            className={`${styles.btn} ${snippet === "hosting" ? styles.active : ""} button button--juno`}
+          >
+            <Feature
+              title="Hosting"
+              text="Static sites, SPA, SSG"
+              link={
+                <Link to="/docs/build/hosting" className={styles.link}>
+                  Learn more
+                </Link>
+              }
+              icon={<Hosting />}
+            />
+          </button>
+        </li>
+
+        <li>
+          <button
             onClick={() => setSnippet("auth")}
             className={`${styles.btn} ${snippet === "auth" ? styles.active : ""} button button--juno`}
           >
             <Feature
               title="Authentication"
-              text="Add privacy-first authentication to your app."
+              text="Google, GitHub, Passkeys and Internet Identity"
               link={
                 <Link to="/docs/build/authentication" className={styles.link}>
                   Learn more
@@ -86,7 +104,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Datastore"
-              text="SStore JSON documents in collections with a simple key–value model."
+              text="Simple key–value store (NoSQL like)"
               link={
                 <Link to="/docs/build/datastore" className={styles.link}>
                   Learn more
@@ -104,7 +122,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Storage"
-              text="Upload and serve user-generated files and images with access control."
+              text="File storage with access control"
               link={
                 <Link to="/docs/build/storage" className={styles.link}>
                   Learn more
@@ -117,30 +135,12 @@ export default function Snippets(): JSX.Element {
 
         <li>
           <button
-            onClick={() => setSnippet("hosting")}
-            className={`${styles.btn} ${snippet === "hosting" ? styles.active : ""} button button--juno`}
-          >
-            <Feature
-              title="Hosting"
-              text="Serve your app globally on custom domains. No infra, just config."
-              link={
-                <Link to="/docs/build/hosting" className={styles.link}>
-                  Learn more
-                </Link>
-              }
-              icon={<Hosting />}
-            />
-          </button>
-        </li>
-
-        <li>
-          <button
             onClick={() => setSnippet("functions")}
             className={`${styles.btn} ${snippet === "functions" ? styles.active : ""} button button--juno`}
           >
             <Feature
               title="Functions"
-              text="Run serverless functions in Rust or TypeScript with hooks and assertions."
+              text="Serverless functions with Rust or TypeScript"
               link={
                 <Link to="/docs/build/functions" className={styles.link}>
                   Learn more
@@ -158,7 +158,7 @@ export default function Snippets(): JSX.Element {
           >
             <Feature
               title="Analytics"
-              text="Capture privacy-friendly, open-source web analytic. No cookies."
+              text="Privacy-friendly web analytics"
               link={
                 <Link to="/docs/build/analytics" className={styles.link}>
                   Learn more
