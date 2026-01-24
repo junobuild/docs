@@ -914,7 +914,7 @@ import { signIn } from "@junobuild/core";await signIn({  google: {    redirect: 
 After authentication, Google redirects the user back to your app with a signed token. You must handle that redirect on the route that matches your configured `redirectUrl`. For example, `/auth/callback/google`.
 
 ```
-import { handleRedirectCallback } from "@junobuild/core";await handleRedirectCallback();
+import { handleRedirectCallback } from "@junobuild/core";await handleRedirectCallback({ google: null });
 ```
 
 If the callback is successful, the user is signed in and a session is created.
