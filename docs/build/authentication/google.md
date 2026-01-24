@@ -201,7 +201,7 @@ After authentication, Google redirects the user back to your app with a signed t
 ```typescript
 import { handleRedirectCallback } from "@junobuild/core";
 
-await handleRedirectCallback();
+await handleRedirectCallback({ google: null });
 ```
 
 If the callback is successful, the user is signed in and a session is created.
