@@ -8,6 +8,12 @@ image: https://juno.build/assets/images/setting-up-your-internet-identity-on-int
 
 ![](./setting-up-your-internet-identity-on-internetcomputer-dot-org.png)
 
+:::important
+
+This blog post is no longer needed as the latest version of Internet Identity natively supports both domains. It's just still live for posterity.
+
+:::
+
 ---
 
 Web 2.0 uses usernames and passwords for logging into websites, which isn't very secure, can be a hassle, and doesn't always keep your information private.
