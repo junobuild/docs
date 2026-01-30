@@ -58,7 +58,7 @@ Sharing the same identity also means sharing access to the same wallet linked to
 
 #### 1. Create a new identity
 
-Go to [identity.internetcomputer.org](https://identity.internetcomputer.org) and create a new identity.
+Go to [id.ai](https://id.ai) and create a new identity.
 
 #### 2. Set up
 
@@ -70,7 +70,7 @@ Arrange a call or meeting with the person you want to share the identity with, a
 
 #### 4. Sign into your Internet Identity
 
-Once ready, sign again into [identity.internetcomputer.org](https://identity.internetcomputer.org) using the newly created identity.
+Once ready, sign again into [id.ai](https://id.ai) using the newly created identity.
 
 #### 5. Add a new passkey
 
@@ -78,7 +78,7 @@ Click "Add new passkey" to initiate the process of adding the other person’s d
 
 #### 6. Share the generated link
 
-A link (e.g.,`https://identity.internetcomputer.org/?action=add-passkey&ii=1122333` for an identity number `1122333`) will be generated and valid for 15 minutes. Copy and send this link to the person you want to share the identity with.
+A link (e.g.,`https://id.ai/pair#12345`) will be generated and valid for 15 minutes. Copy and send this link to the person you want to share the identity with.
 
 #### 7. Approve the new passkey
 
