@@ -288,7 +288,7 @@ export class ListComponent {
 
 ### Uploading File
 
-Storing user-generated content on Web3 can be a challenge, but Juno makes it easy for app developers. It’s designed to enable the storage and serving of assets such as photos or videos effortlessly.
+Storing user-generated content on Web3 can be a challenge, but Juno makes it easy for app developers. It’s designed to enable the storage and serving of assets such as photos or videos.
 
 To upload files, you’ll need to create a collection by following the instructions in the [documentation](https://juno.build/docs/build/storage#collections-and-rules). In this tutorial, we’ll focus on image uploads, so the collection should be named “images.”
 

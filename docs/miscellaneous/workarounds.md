@@ -46,7 +46,7 @@ Wait for confirmation that the destination account has completed all the steps a
 
 ## How to collaborate on the same "project"
 
-Since team collaboration isn't available yet, developers often find ways to share a satellite with friends or colleagues by either adding access keys—explained in the previous section—or by sharing an Internet Identity. With the latter approach, everyone in the group logs into the Juno Console using the same identity, allowing them to access the same data effortlessly.
+Since team collaboration isn't available yet, developers often find ways to share a satellite with friends or colleagues by either adding access keys—explained in the previous section—or by sharing an Internet Identity. With the latter approach, everyone in the group logs into the Juno Console using the same identity, allowing them to access the same data.
 
 While this method falls outside Juno's intended scope, it works similarly to adding multiple passkeys to your own Internet Identity. Here’s a simple guide to help you set it up.
 

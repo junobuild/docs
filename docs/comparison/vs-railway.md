@@ -22,7 +22,7 @@ This is where Juno steps in — an open-source serverless platform that delivers
 
 ## The Trade-Off: Managed Convenience vs. Ownership
 
-Railway makes the cloud feel effortless — but your app ultimately runs inside someone else's system, governed by their operational rules and platform roadmap.
+Railway makes the cloud feel accessible — but your app ultimately runs inside someone else's system, governed by their operational rules and platform roadmap.
 
 Juno flips that model. You get the same frictionless deployment and tooling, but your application lives in your own isolated execution environment.
 

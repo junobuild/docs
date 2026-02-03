@@ -12,7 +12,7 @@ image: https://juno.build/assets/images/deploy-to-the-internet-computer-using-gi
 
 In the fast-paced world of decentralized applications (dapps), automating deployment processes is key to accelerating development workflows. Juno, an innovative platform for building and hosting dapps on the [Internet Computer](https://internetcomputer.org/), introduces an exciting new feature that simplifies the deployment process - the [Juno GitHub Action](https://github.com/marketplace/actions/github-action-for-juno).
 
-In this blog post, we will delve into how this powerful integration enables developers to effortlessly deploy their dapps to the Internet Computer, leveraging the capabilities of the Juno platform.
+In this blog post, we will delve into how this powerful integration enables developers to deploy their dapps to the Internet Computer, leveraging the capabilities of the Juno platform.
 
 <!--truncate-->
 
