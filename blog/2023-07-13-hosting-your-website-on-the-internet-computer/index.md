@@ -16,7 +16,7 @@ _Photo by <a href="https://unsplash.com/@sebastiansvenson?utm_source=unsplash&ut
 
 ---
 
-Deploying a static site fully on Web3 is possible thanks to the [Internet Computer](https://internetcomputer.org/) and made effortless with the help of [Juno](https://juno.build/). It’s just as easy as it is on the good old Web 2.0, but without the limitations of trust-based or centralized approaches that may not be as beloved.
+Deploying a static site fully on Web3 is possible thanks to the [Internet Computer](https://internetcomputer.org/) and made easy with the help of [Juno](https://juno.build/). It’s just as easy as it is on the good old Web 2.0, but without the limitations of trust-based or centralized approaches that may not be as beloved.
 
 <!--truncate-->
 

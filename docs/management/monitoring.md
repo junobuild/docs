@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-description: Juno Monitoring ensures your containers remain operational by automatically managing cycle balances. Monitor your modules, configure thresholds, and enable auto-refill to prevent downtime effortlessly.
+description: Juno Monitoring ensures your containers remain operational by automatically managing cycle balances. Monitor your modules, configure thresholds, and enable auto-refill to prevent downtime.
 keywords:
   [
     Infrastructure Monitoring,
