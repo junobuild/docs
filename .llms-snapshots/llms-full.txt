@@ -768,6 +768,94 @@ juno.config.js
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist"  },  orbiter: {    ids: {      production: "aaaa-bbbbb-ccccc-ddddd-cai",      development: "ffff-eeee-ddddd-ccccc-cai"    }  }});
 ```
 
+# Local Development and E2E
+
+Implementing Google, Internet Identity, or Passkeys requires some setup and doesn't always fit best in a local development environment or E2E test suite. For example, they take various steps to complete and therefore consume repetitive time.
+
+Local dev identities skip all that.
+
+They let you test authentication flows instantly - no setup, no external services, no waiting. Just one click with names like "alice" or "bob", and you're signed in.
+
+**Caution:**
+
+**For local development only** - works exclusively on `localhost` and `127.0.0.1`.
+
+---
+
+## How It Works
+
+1.  You optionally provide an identifier (e.g., "alice", "bob"). Default is "dev".
+2.  A deterministic identity is generated on the client side from that identifier.
+3.  The identifier is stored in IndexedDB and reused across sessions.
+4.  You can switch between different dev identities easily.
+
+**Note:**
+
+Given the deterministic nature of these identities, as mentioned above, they cannot be used in production. That's why the library prevents any usage outside of localhost.
+
+---
+
+## Sign-In
+
+```
+import { signIn } from "@junobuild/core";// ⚠️ LOCAL DEVELOPMENT ONLY - Replace with a real provider for productionawait signIn({  dev: {}});
+```
+
+---
+
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `identifier` | `string` | `"dev"` | Unique identifier for this dev identity (max 32 characters) |
+| `maxTimeToLiveInMilliseconds` | `number` | 7 days | How long the session lasts in milliseconds |
+
+Example:
+
+```
+// ⚠️ LOCAL DEVELOPMENT ONLY - Replace with a real provider for productionawait signIn({  dev: {    identifier: "alice",    maxTimeToLiveInMilliseconds: 24 * 60 * 60 * 1000 // 1 day  }});
+```
+
+---
+
+---
+
+## Managing Identifiers
+
+During development, you may want to see which identities you've used or clear them out.
+
+---
+
+### Load
+
+Retrieve all previously used dev identifiers, sorted by most recent first:
+
+```
+import { loadDevIdentifiers } from "@junobuild/ic-client/dev";// ⚠️ DEV UTILITY - Not needed for production appsconst identifiers = await loadDevIdentifiers();// [['alice', { createdAt: 1234567890, updatedAt: 1234567899 }], ...]// You can also limit resultsconst recent = await loadDevIdentifiers({ limit: 5 });
+```
+
+---
+
+### Clear
+
+Remove all stored dev identifiers from browser's IndexedDB:
+
+```
+import { clearDevIdentifiers } from "@junobuild/ic-client/dev";// ⚠️ DEV UTILITY - Not needed for production appsawait clearDevIdentifiers();
+```
+
+**Note:**
+
+Clearing identifiers only removes the usage history.
+
+---
+
+## Recommendations
+
+*   ⚠️ **Never use in production** - automatically blocked on non-localhost domains
+*   Use different identifiers to test multi-user scenarios
+*   Switch to real providers (Google, Internet Identity, Passkeys) before deploying
+
 # Google
 
 Google Sign-In lets users authenticate with their existing Google account using OpenID Connect (OIDC) - a modern, secure identity standard built on top of OAuth 2.0.
@@ -8720,7 +8808,7 @@ For most applications, we recommend using the default subnets and staying on the
 
 | Subnet ID | Type | Canisters (Running/Stopped) | Nodes (Up/Total) |
 | --- | --- | --- | --- |
-| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 36001/696 | 13/13 |
+| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 36101/703 | 13/13 |
 | pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae | Fiduciary | 3564/12 | 34/34 |
 | bkfrj-6k62g-dycql-7h53p-atvkj-zg4to-gaogh-netha-ptybj-ntsgw-rqe | European | 25096/663 | 13/13 |
 | brlsh-zidhj-3yy3e-6vqbz-7xnih-xeq2l-as5oc-g32c4-i5pdn-2wwof-oae |     | 35432/815 | 13/13 |
