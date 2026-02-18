@@ -9,27 +9,11 @@ toc_max_heading_level: 3
 
 You can leverage the Juno [CLI] to perform tasks within GitHub Actions.
 
-This guide will show you how to use the [junobuild/juno-action](https://github.com/junobuild/juno-action) to deploy your frontend assets, build and publish serverless functions, and optionally upgrade your WASM container.
+This guide shows you how to use the [junobuild/juno-action](https://github.com/junobuild/juno-action) to deploy your frontend assets, build and publish serverless functions, and optionally upgrade your WASM container.
 
 ---
 
-## 1. Add a Secret Token for Automation
-
-Before you can effectively implement automation, it is necessary to add a secret token to your GitHub repository or organization. This token will enable the CI (Continuous Integration) to interact with your [satellite].
-
-Follow the steps below to generate a new controller:
-
-1. Go to the Juno's [console](https://console.juno.build).
-2. Select your Satellite.
-3. On the Satellite's dashboard, navigate to the "Setup" tab.
-4. Click on "Add an access key".
-5. Generate a new key (default option) and assign it an appropriate role based on your workflow. [Learn more about the available roles and their permissions](../../miscellaneous/access-keys.md) to choose the appropriate level of access for your use case.
-6. Click "Submit".
-7. Upon successful creation, a new access key will be generated, and a "Secret token" will be displayed. Copy the token value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your repository or organization, using the key `JUNO_TOKEN`.
-
----
-
-## 2. Configure your project
+## 1. Configure your project
 
 If you already have a `juno.config` file at the root of your project, you can skip to the next chapter. Otherwise, you need to create one [manually](#configuration-file-example) or by running:
 
@@ -78,6 +62,35 @@ For detailed information about all available configuration options, refer to the
 
 ---
 
+## 2. Connect Your Repository
+
+By default, your Satellite does not accept any deployments from unknown source. To enable automation from GitHub Actions, you need to authorize which repositories are allowed to trigger them.
+
+### Using the Console
+
+1. Go to the Juno [Console](https://console.juno.build).
+2. Select your Satellite.
+3. Navigate to the **Deployments** tab.
+4. Click **Connect repository** and follow the steps to register your repository and, optionally, restrict deployments to specific references.
+
+// A screenshot of the Deployments tab in Juno Console // Screenshot
+
+Once configured, the Console will start displaying your future deployments from GitHub Actions.
+
+### Using the CLI
+
+You can also configure automation via the CLI. Refer to the [CLI configuration](../../reference/cli.mdx) documentation for details.
+
+:::note
+
+Juno uses GitHub's OpenID Connect (OIDC) to authenticate your workflows without requiring any secret tokens. GitHub automatically generates short-lived tokens for each workflow run, which Juno verifies to authorize deployments.
+
+The duration (up to one hour) and role of those short-lived tokens can also be configured.
+
+:::
+
+---
+
 ## 3. Create the GitHub Action
 
 You can use GitHub Actions to automate different parts of your Juno deployment workflow:
@@ -94,10 +107,9 @@ Each task can be performed independently or combined, depending on your project 
 
 When using the Actions, you can configure the following environment variables:
 
-| Environment Variable | Mandatory | Description                                                                                                                                                                                |
-| -------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `JUNO_TOKEN`         | Yes       | The token to use for authentication. It can be generated through Juno's [Console](https://console.juno.build). Prefer a controller with "Read-write" permission rather than administrator. |
-| `PROJECT_PATH`       | No        | The path to the folder containing the `juno.config` file if it doesn't exist at the root of your repository. e.g. `./my-app-subfolder`.                                                    |
+| Environment Variable | Mandatory | Description                                                                                                                             |
+| -------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `PROJECT_PATH`       | No        | The path to the folder containing the `juno.config` file if it doesn't exist at the root of your repository. e.g. `./my-app-subfolder`. |
 
 [CLI]: ../../reference/cli.mdx
 [satellite]: ../../terminology.mdx#satellite
