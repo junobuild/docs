@@ -8,6 +8,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,5 +22,3 @@ jobs:
         uses: junobuild/juno-action@main
         with:
           args: hosting deploy
-        env:
-          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}

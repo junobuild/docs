@@ -2,17 +2,13 @@ You can deploy using either [GitHub Actions](#github-actions-deployment) or [CLI
 
 ### GitHub Actions deployment
 
-1. From your Satellite's overview, navigate to the **Setup** tab.
+1. From your Satellite's overview, navigate to the **Deployments** page.
 
-2. Click on **Add an access key**.
+2. Click **Connect repository** and follow the steps to register your repository.
 
-3. Generate a new key with the default option. Click **Submit**.
+3. Create a `deploy.yml` file in the `.github/workflows` subfolder of your repo.
 
-4. Upon successful creation, a **Secret token** will be displayed. Copy the value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your GitHub repository or organization, using the key `JUNO_TOKEN`.
-
-5. Create a `deploy.yml` file in the `.github/workflows` subfolder of your repo.
-
-6. Add the following workflow configuration:
+4. Add the following workflow configuration:
 
 import Deploy from "./github-actions/deploy.mdx";
 
