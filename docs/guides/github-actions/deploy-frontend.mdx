@@ -45,8 +45,6 @@ You can either hardcode the mode in the arguments:
   uses: junobuild/juno-action@main
   with:
     args: hosting deploy --mode staging
-  env:
-    JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
 Or, if you're using an environment variable, pass it like this:
@@ -57,7 +55,6 @@ Or, if you're using an environment variable, pass it like this:
   with:
     args: hosting deploy --mode ${{ env.JUNO_MODE }}
   env:
-    JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
     JUNO_MODE: staging
 ```
 
