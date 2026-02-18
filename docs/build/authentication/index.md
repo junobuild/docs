@@ -34,14 +34,11 @@ You can view and manage your users anytime in the [Authentication](https://conso
 
 When someone signs in to your app, they get an identity.
 
-That identity is what ties them to the data they create and the actions they take.
+That user identity is what ties them to the data they create and the actions they take.
 
-Identities are:
+Identities are **scoped to your app** - users can't be tracked across other sites or services.
 
-- **Anonymous**: they don't expose personal info.
-- **Scoped to your app**: users can't be tracked across other sites or services.
-
-Together, this makes authentication privacy-friendly by default and predictable for developers.
+Depending on the sign-in method and what the user consents to, your app may also receive basic profile metadata such as a name or email address.
 
 ---
 
