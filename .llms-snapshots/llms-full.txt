@@ -7049,7 +7049,23 @@ We do not recommend upgrading your container directly from CI in **production**.
 
 ---
 
-## Configuration
+## 1\. Authentication
+
+Unlike other actions, upgrading a container requires admin privileges. Since OIDC-generated tokens are intentionally restricted from admin permissions for security reasons, you need to set up a secret token instead.
+
+Follow the steps below to generate such a token:
+
+1.  Go to the Juno's [console](https://console.juno.build).
+2.  Select your Satellite.
+3.  On the Satellite's dashboard, navigate to the "Setup" tab.
+4.  Click on "Add an access key".
+5.  Generate a new key and assign it an "Administrator" (⚠️) role.
+6.  Click "Submit".
+7.  Upon successful creation, a new access key will be generated, and a "Secret token" will be displayed. Copy the token value and save it as an [encrypted secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) in your repository or organization, using the key `JUNO_TOKEN`.
+
+---
+
+## 2\. Configuration
 
 To configure an action to upgrade your Satellite container, follow these steps:
 
