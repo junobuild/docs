@@ -1,0 +1,29 @@
+#### Frontend
+
+The frontend, your application, needs the Client ID to start the sign-in flow.
+
+If you are using the Juno Vite or Next.js plugin, the configuration is read automatically from `juno.config`, so you do not need to do anything. The Client ID is injected at build time.
+
+If you are not using a plugin, you need to pass the Client ID manually, either from your environment variables or directly in the sign-in call (see [Options](#options)).
+
+#### Backend
+
+Your Satellite also needs the Client ID because it is used to validate the JWT tokens issued during the sign-in flow with the third party provider in this case {props.provider}.
+
+You can configure this in two ways:
+
+- **Through the Console:**
+
+Go to [console.juno.build](https://console.juno.build), select your Satellite, then open **Authentication → Setup** and enable **{props.provider}**.
+
+The wizard will ask for your Client ID and enable the provider.
+
+- **Through the CLI:**
+
+If you already have the CLI installed and since the Client ID has been defined in your `juno.config`, you can apply the configuration directly with:
+
+```bash
+juno config apply
+```
+
+By default, this applies the production configuration. You can specify another mode using `--mode` argument if needed.
