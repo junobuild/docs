@@ -31,6 +31,7 @@ const sidebars: SidebarsConfig = {
           },
           items: [
             "build/authentication/google",
+            "build/authentication/github",
             "build/authentication/internet-identity",
             "build/authentication/passkeys",
             "build/authentication/dev",

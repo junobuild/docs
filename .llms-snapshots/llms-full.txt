@@ -856,6 +856,211 @@ Clearing identifiers only removes the usage history.
 *   Use different identifiers to test multi-user scenarios
 *   Switch to real providers (Google, Internet Identity, Passkeys) before deploying
 
+# GitHub
+
+GitHub Sign-In lets users authenticate with their existing GitHub account — a natural fit for developer-facing apps.
+
+Because GitHub does not natively support OpenID Connect, authentication requires a small backend proxy that handles the OAuth flow and issues a signed JWT your Satellite can verify.
+
+---
+
+## How It Works
+
+1.  The user signs in with GitHub.
+2.  GitHub verifies their credentials and issues an OAuth access token.
+3.  The proxy exchanges that token for user information and issues a signed JWT.
+4.  Your Satellite verifies the JWT and extracts the user's information (such as email or profile).
+5.  It then establishes a session for the user.
+
+**Note:**
+
+GitHub authentication is not domain-scoped. A user signing in with the same GitHub account will have the same identity across all domains pointing to the same Satellite.
+
+---
+
+## The Proxy API
+
+Because the GitHub OAuth flow requires a client secret that cannot be exposed in the browser, you need a backend service to handle the exchange securely.
+
+Juno provides an open-source API for this purpose. You can find it at [github.com/junobuild/api](https://github.com/junobuild/api), where setup and self-hosting instructions are documented.
+
+---
+
+## Configuration
+
+To enable GitHub authentication for your project:
+
+### 1\. Create a GitHub App
+
+1.  Go to [GitHub Developer Settings](https://github.com/settings/developers).
+2.  Click **New GitHub App**.
+3.  Under **Identifying and authorizing users**, enable **Request user authorization (OAuth) during installation**.
+4.  Set the **Callback URL** to match your app — for example `https://example.com/auth/callback/github` in production or `http://localhost:3000/auth/callback/github` for local development.
+5.  Save your **Client ID** and generate a **Client Secret** — you will need both when configuring the proxy.
+
+**Caution:**
+
+Use a separate GitHub App for each environment (development, staging, production) and always configure the correct callback URL. Leaving a localhost callback URL alongside production is a security risk.
+
+### 2\. Set up the proxy
+
+Deploy your own instance of the [Juno API](https://github.com/junobuild/juno-api) and configure it with your GitHub App credentials. The repo contains all the documentation you need to get it running.
+
+### 3\. Configure the provider
+
+Once your proxy is running, add your GitHub configuration to your `juno.config` file:
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    authentication: {      github: {        clientId: "your-github-client-id"      }    }  }});
+```
+
+If you use different Client IDs for each environment (as recommended), you can leverage the build mode to load configuration conditionally.
+
+For example, to enable GitHub Sign-In only in production:
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig(({ mode }) => ({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    ...(mode === "production" && {      authentication: {        github: {          clientId: "your-github-client-id"        }      }    })  }}));
+```
+
+### 4\. Apply the configuration
+
+Once your credentials are set in `juno.config`, you need to make sure both your frontend and your Satellite are using the correct and same Google Client ID.
+
+#### Frontend
+
+The frontend, your application, needs the Client ID to start the sign-in flow.
+
+If you are using the Juno Vite or Next.js plugin, the configuration is read automatically from `juno.config`, so you do not need to do anything. The Client ID is injected at build time.
+
+If you are not using a plugin, you need to pass the Client ID manually, either from your environment variables or directly in the sign-in call (see ([Options](#options))).
+
+#### Backend
+
+Your Satellite also needs the Client ID because it is used to validate the JWT tokens issued during the sign-in flow with the third party provider in this case GitHub.
+
+You can configure this in two ways:
+
+*   **Through the Console:**
+
+Go to [console.juno.build](https://console.juno.build), select your Satellite, then open **Authentication → Setup** and enable **GitHub**.
+
+The wizard will ask for your Client ID and enable the provider.
+
+*   **Through the CLI:**
+
+If you already have the CLI installed and since the Client ID has been defined in your `juno.config`, you can apply the configuration directly with:
+
+```
+juno config apply
+```
+
+By default, this applies the production configuration. You can specify another mode using `--mode` argument if needed.
+
+---
+
+## Sign-In
+
+Once your configuration is ready, you can let users sign in with their GitHub account.
+
+```
+import { signIn } from "@junobuild/core";await signIn({  github: {}});
+```
+
+After the user authenticates, they are redirected to the URL you configured as the Authorization callback URL in your GitHub OAuth App.
+
+You can pass this URL through the `redirectUrl` option. If you omit it, the current origin (`window.location.origin`) is used.
+
+### Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `clientId` | `string` | from `juno.config` | Your GitHub OAuth Client ID. If not provided, it is automatically read from your project configuration using the plugins. |
+| `redirectUrl` | `string` | `window.location.origin` | The URL where the user is redirected after sign-in. It must match the callback URL in your GitHub OAuth App. |
+| `initUrl` | `string` |     | The URL of your proxy's init endpoint. |
+| `finalizeUrl` | `string` |     | The URL of your proxy's finalize endpoint. |
+
+Example:
+
+```
+import { signIn } from "@junobuild/core";await signIn({  github: {    redirect: {      clientId: "your-github-client-id",      redirectUrl: "https://example.com/auth/callback/github",      initUrl: "https://your-api.example.com/v1/auth/init/github",      finalizeUrl: "https://your-api.example.com/v1/auth/finalize/github"    }  }});
+```
+
+---
+
+## Handling the Redirect
+
+After authentication, GitHub redirects the user back to your app. You must handle that redirect on the route that matches your configured callback URL.
+
+```
+import { handleRedirectCallback } from "@junobuild/core";await handleRedirectCallback({ github: null });
+```
+
+If the callback is successful, the user is signed in and a session is created.
+
+**Tip:**
+
+After handling the redirect, navigate elsewhere in your app without keeping browser history. This prevents the user from re-triggering authentication when pressing the back button.
+
+---
+
+## Advanced Configuration
+
+You can optionally configure how authentication sessions behave on your Satellite.
+
+These settings can be defined in your `juno.config` file and applied with `juno config apply` or adjusted directly in the Console under **Authentication → Setup**.
+
+### Delegation
+
+The `delegation` section defines how long sessions last and which modules authenticated users are allowed to call using their active session.
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `allowedTargets` | `PrincipalText[]` or `null` | restricted to this Satellite | List of modules (canisters on the Internet Computer) that authenticated users may call. Omit to restrict access to this Satellite only. Provide an array to allow calls only to specific targets. Set to `null` to allow calls to **any** backend (**use with caution**). |
+| `sessionDuration` | `bigint` | 1 day | How long a user session remains valid, expressed in **nanoseconds**. Cannot exceed 30 days. Applies only to new sessions. |
+
+Example configuration:
+
+```
+authentication: {  github: {    clientId: "1234567890-abcde12345fghijklmno.apps.googleusercontent.com"  },  delegation: {    allowedTargets: ["<YOUR_SATELLITE_ID>", "<LEDGER_CANISTER_ID>"],    sessionDuration: BigInt(7 * 24 * 60 * 60 * 1_000_000_000) // 7 days  }}
+```
+
+---
+
+## Recommendations
+
+*   ⚠️ Always configure the **Callback URL** in your GitHub App.
+*   Use a separate **GitHub App** for each environment (development, staging, production).
+*   Keep your frontend and Satellite **Client IDs** in sync.
+*   Do not expose your **Client Secret** in the browser — that is exactly what the proxy is for.
+
+---
+
+## Infrastructure Overview
+
+When you enable GitHub Sign-In, authentication involves three systems: GitHub, the Juno API proxy, and your Satellite.
+
+GitHub handles the user-facing part — displaying the sign-in screen and issuing an OAuth access token once the user authenticates.
+
+The proxy exchanges that token for user information, signs a JWT, and exposes a JWKS endpoint so Satellites can verify those tokens.
+
+From there, everything else runs within your Satellite container:
+
+*   The Satellite verifies the JWT's signature.
+*   It prepares and signs a delegation identity that represents the authenticated user session.
+*   It creates (or retrieves) the user entry that your app can then use with Juno services such as [Datastore](/docs/build/datastore.md) and [Storage](/docs/build/storage.md).
+
+### Token Verification
+
+JWTs are signed by the proxy using RSA keys. Therefore, to verify these signatures, Satellites need access to those keys.
+
+Instead of having each Satellite perform HTTPS outcalls to your proxy — which would add cost and subnet load — Juno relies on a shared infrastructure module called [Observatory](/docs/miscellaneous/architecture.md#observatory) to fetch and cache those keys.
+
+Observatory regularly polls your proxy's JWKS endpoint and makes the public keys available to your Satellite, ensuring that verification remains fast and reliable without additional overhead.
+
+Since you are self-hosting the proxy, you will also need to deploy your own Observatory instance and configure it to point to your proxy's JWKS endpoint. This gives you full control over the verification chain.
+
+Reach out if you need guidance on setting that up.
+
 # Google
 
 Google Sign-In lets users authenticate with their existing Google account using OpenID Connect (OIDC) - a modern, secure identity standard built on top of OAuth 2.0.
@@ -875,7 +1080,7 @@ It's the easiest way to onboard users who expect a simple, frictionless login fl
 
 **Note:**
 
-Google authentication is not domain-scoped. Users keep the same identity across all your apps each time you use the same Google Client ID.
+Google authentication is not domain-scoped. A user signing in with the same Google account will have the same identity across all domains pointing to the same Satellite.
 
 ---
 
@@ -1043,8 +1248,6 @@ authentication: {  google: {    clientId: "1234567890-abcde12345fghijklmno.apps.
 *   Keep your frontend and Satellite **Client IDs** in sync.
 *   Do not leave a **localhost URI** next to production URIs in the same Client ID.
 *   In the future, Juno will support **FedCM (Federated Credential Management)** for Google Sign-In without redirects.
-
----
 
 ---
 

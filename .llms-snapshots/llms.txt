@@ -18,6 +18,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 ## Build - Authentication
   
 - [Development](https://juno.build/docs/build/authentication/dev.md): Learn how to use development identities for local testing or E2E with Juno without external authentication providers.
+- [GitHub](https://juno.build/docs/build/authentication/github.md): Learn how to integrate GitHub Sign-In with Juno for authentication in developer-focused apps.
 - [Google](https://juno.build/docs/build/authentication/google.md): Learn how to integrate Google Sign-In with Juno using OpenID Connect for secure, standards-based authentication.
 - [Internet Identity](https://juno.build/docs/build/authentication/internet-identity.md): Learn how to integrate Internet Identity with Juno for decentralized, privacy-preserving authentication on the Internet Computer.
 - [Management](https://juno.build/docs/build/authentication/management.md): This page provides an overview of the administrative functions available in the Juno Console related to user management.
