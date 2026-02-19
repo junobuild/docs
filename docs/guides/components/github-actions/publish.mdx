@@ -14,6 +14,8 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -35,8 +37,6 @@ jobs:
         uses: junobuild/juno-action@full
         with:
           args: functions publish
-        env:
-          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
   </TabItem>
 
@@ -52,6 +52,8 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -79,8 +81,6 @@ jobs:
         uses: junobuild/juno-action@full
         with:
           args: functions publish
-        env:
-          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
   </TabItem>
 
@@ -96,6 +96,8 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -121,8 +123,6 @@ jobs:
         uses: junobuild/juno-action@full
         with:
           args: functions publish
-        env:
-          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
   </TabItem>
 
