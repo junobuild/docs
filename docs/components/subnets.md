@@ -1,6 +1,6 @@
 | Subnet ID                                                       | Type          | Canisters (Running/Stopped) | Nodes (Up/Total) |
 | --------------------------------------------------------------- | ------------- | --------------------------- | ---------------- |
-| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 36101/703                   | 13/13            |
+| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 36185/704                   | 13/13            |
 | pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae | Fiduciary     | 3564/12                     | 34/34            |
 | bkfrj-6k62g-dycql-7h53p-atvkj-zg4to-gaogh-netha-ptybj-ntsgw-rqe | European      | 25096/663                   | 13/13            |
 | brlsh-zidhj-3yy3e-6vqbz-7xnih-xeq2l-as5oc-g32c4-i5pdn-2wwof-oae |               | 35432/815                   | 13/13            |
