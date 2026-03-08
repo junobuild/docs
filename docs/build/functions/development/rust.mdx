@@ -37,17 +37,17 @@ With this setup, only `on_set_doc` and `assert_set_doc` must be implemented with
 
 ---
 
-## Maintenance
+## Upgrade
 
 After deployment, keeping your Satellite functional and optimized requires ongoing monitoring and updates. Staying up to date is also a key factor, as we may introduce new features that need to be integrated into your Satellite to ensure full functionality within the Juno Console.
 
-Since your project includes all Satellite features using `include_satellite!();`, it's essential to stay in sync with Juno’s updates to maintain compatibility.
+Since your project includes all Satellite features using `include_satellite!();`, it's essential to stay in sync with Juno's updates to maintain compatibility.
 
-import Caution from "./components/upgrade-caution.mdx";
+import Danger from "./components/upgrade-danger.mdx";
 
-<Caution />
+<Danger />
 
-### Updating Your Satellite
+### What to do
 
 To upgrade your Satellite, bump the dependencies in your `Cargo.toml` file located in `/src/satellite/`. The key dependencies to check and update are:
 
@@ -59,9 +59,15 @@ To upgrade your Satellite, bump the dependencies in your `Cargo.toml` file locat
 
 If other crates in your project depend on these, they should also be upgraded accordingly.
 
+Once updated, build your functions and redeploy using the CLI or the GitHub Actions flow.
+
 The recommended versions for each release can be found in the [changelog](/changelog) or [release notes on GitHub](https://github.com/junobuild/juno/releases).
 
 If you need assistance, feel free to reach out through the available support channels.
+
+import Caution from "./components/upgrade-caution.mdx";
+
+<Caution />
 
 ---
 

@@ -4,11 +4,25 @@ This page covers advanced options for writing serverless functions in TypeScript
 
 ---
 
-## Maintenance
+## Upgrade
 
 Since your project includes all Satellite features, it's essential to stay in sync with Juno’s updates to maintain compatibility.
 
 Always check the [releases](https://github.com/junobuild/juno/releases) page for the latest changes, and update your local container image (source [repo](https://github.com/junobuild/juno-docker)) accordingly to ensure you're running the latest runtime and features.
+
+import Danger from "./components/upgrade-danger.mdx";
+
+<Danger />
+
+### What to do
+
+The most important step is to keep your local Docker image up to date by pulling the latest version. The entire toolchain is shipped within the emulator, so you don't have to install additional tools on your machine, but it also means the image needs to stay current.
+
+Check the [releases](https://github.com/junobuild/juno/releases) page to know when a new image is available.
+
+If a release also includes updates to the JavaScript library, bump the relevant package in your project accordingly.
+
+If you deploy with GitHub Actions, your workflow always inherits the latest image, so triggering a new CI run is enough to stay up to date, unless you have pinned a specific action version, in which case update it to `latest`.
 
 import Caution from "./components/upgrade-caution.mdx";
 
