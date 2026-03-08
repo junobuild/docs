@@ -185,6 +185,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Reference - Functions - Rust
   
+- [Crate Versions](https://juno.build/docs/reference/functions/rust/crate-versions.md): This page lists the crate versions for each Juno release, to help you upgrade your Rust Serverless Functions. If a release is not listed, no crate updates were required for that version.
 - [IC-CDK](https://juno.build/docs/reference/functions/rust/ic-cdk.md): In the context of Juno, it enables your Satellite to perform low-level operations such as logging, accessing your Satellite identities, or communicating with other canisters — all essential when writing advanced serverless functions.
 - [SDK](https://juno.build/docs/reference/functions/rust/sdk.md): The SDK is provided by the junobuild-satellite crate.
 - [Utils](https://juno.build/docs/reference/functions/rust/utils.md): All utilities on this page are provided by the junobuild-utils crate.

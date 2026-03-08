@@ -393,7 +393,8 @@ const sidebars: SidebarsConfig = {
           items: [
             "reference/functions/rust/sdk",
             "reference/functions/rust/utils",
-            "reference/functions/rust/ic-cdk"
+            "reference/functions/rust/ic-cdk",
+            "reference/functions/rust/crate-versions"
           ]
         },
         {
