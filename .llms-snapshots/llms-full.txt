@@ -2261,19 +2261,19 @@ With this setup, only `on_set_doc` and `assert_set_doc` must be implemented with
 
 ---
 
-## Maintenance
+## Upgrade
 
 After deployment, keeping your Satellite functional and optimized requires ongoing monitoring and updates. Staying up to date is also a key factor, as we may introduce new features that need to be integrated into your Satellite to ensure full functionality within the Juno Console.
 
-Since your project includes all Satellite features using `include_satellite!();`, it's essential to stay in sync with Juno’s updates to maintain compatibility.
+Since your project includes all Satellite features using `include_satellite!();`, it's essential to stay in sync with Juno's updates to maintain compatibility.
 
-**Caution:**
+**Important:**
 
-Always upgrade iteratively and avoid skipping version numbers. While we strive to minimize breaking changes, it's crucial to upgrade through each released version sequentially.
+If your Satellite includes custom serverless functions, **do not upgrade through the Juno Console**. The Console upgrade replaces your Satellite with the stock version, which would overwrite your custom code.
 
-For example, if you're on **v0.0.23** and the latest release is **v0.0.26**, first upgrade to **v0.0.24**, then **v0.0.25**, and finally **v0.0.26**. Skipping versions could lead to unexpected issues.
+When the Console notifies you of a new version, use it as a reminder to update your dependencies and redeploy your custom build, as described below.
 
-### Updating Your Satellite
+### What to do
 
 To upgrade your Satellite, bump the dependencies in your `Cargo.toml` file located in `/src/satellite/`. The key dependencies to check and update are:
 
@@ -2285,9 +2285,17 @@ To upgrade your Satellite, bump the dependencies in your `Cargo.toml` file locat
 
 If other crates in your project depend on these, they should also be upgraded accordingly.
 
+Once updated, build your functions and redeploy using the CLI or the GitHub Actions flow.
+
 The recommended versions for each release can be found in the [changelog](/changelog) or [release notes on GitHub](https://github.com/junobuild/juno/releases).
 
 If you need assistance, feel free to reach out through the available support channels.
+
+**Caution:**
+
+Always upgrade iteratively and avoid skipping version numbers. While we strive to minimize breaking changes, it's crucial to upgrade through each released version sequentially.
+
+For example, if you're on **v0.0.23** and the latest release is **v0.0.26**, first upgrade to **v0.0.24**, then **v0.0.25**, and finally **v0.0.26**. Skipping versions could lead to unexpected issues.
 
 ---
 
@@ -2325,11 +2333,27 @@ This page covers advanced options for writing serverless functions in TypeScript
 
 ---
 
-## Maintenance
+## Upgrade
 
 Since your project includes all Satellite features, it's essential to stay in sync with Juno’s updates to maintain compatibility.
 
 Always check the [releases](https://github.com/junobuild/juno/releases) page for the latest changes, and update your local container image (source [repo](https://github.com/junobuild/juno-docker)) accordingly to ensure you're running the latest runtime and features.
+
+**Important:**
+
+If your Satellite includes custom serverless functions, **do not upgrade through the Juno Console**. The Console upgrade replaces your Satellite with the stock version, which would overwrite your custom code.
+
+When the Console notifies you of a new version, use it as a reminder to update your dependencies and redeploy your custom build, as described below.
+
+### What to do
+
+The most important step is to keep your local Docker image up to date by pulling the latest version. The entire toolchain is shipped within the emulator, so you don't have to install additional tools on your machine, but it also means the image needs to stay current.
+
+Check the [releases](https://github.com/junobuild/juno/releases) page to know when a new image is available.
+
+If a release also includes updates to the JavaScript library, bump the relevant package in your project accordingly.
+
+If you deploy with GitHub Actions, your workflow always inherits the latest image, so triggering a new CI run is enough to stay up to date, unless you have pinned a specific action version, in which case update it to `latest`.
 
 **Caution:**
 
@@ -8999,7 +9023,7 @@ For most applications, we recommend using the default subnets and staying on the
 
 | Subnet ID | Type | Canisters (Running/Stopped) | Nodes (Up/Total) |
 | --- | --- | --- | --- |
-| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 36101/703 | 13/13 |
+| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 36185/704 | 13/13 |
 | pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae | Fiduciary | 3564/12 | 34/34 |
 | bkfrj-6k62g-dycql-7h53p-atvkj-zg4to-gaogh-netha-ptybj-ntsgw-rqe | European | 25096/663 | 13/13 |
 | brlsh-zidhj-3yy3e-6vqbz-7xnih-xeq2l-as5oc-g32c4-i5pdn-2wwof-oae |     | 35432/815 | 13/13 |
@@ -9457,7 +9481,7 @@ Usage: juno changes reject [options]Options:  -i, --id              The ID of th
 Handle tasks related to the emulator like starting/stopping a local network.
 
 ```
-Usage: juno emulator <subcommand> [options]Subcommands:  start               Start the emulator for local development.  stop                Stop the local network.  wait                Wait until the emulator is ready.
+Usage: juno emulator <subcommand> [options]Subcommands:  clear               Clear the local emulator state (volume and container).  start               Start the emulator for local development.  stop                Stop the local network.  wait                Wait until the emulator is ready.
 ```
 
 ---
