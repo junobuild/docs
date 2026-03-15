@@ -6205,7 +6205,7 @@ yarn global add @junobuild/cli
 pnpm add -g @junobuild/cli
 ```
 
-At the root of your application, eject the Satellite if you haven't already used a template.
+At your project root, eject the Satellite if you haven't already used a template.
 
 ```
 juno functions eject
@@ -6229,35 +6229,19 @@ Changes are detected and automatically deployed, allowing you to test your custo
 
 ---
 
-## Hooks and Data Operations
+## Hooks
 
-Serverless Functions are triggered by hooks, which respond to events occurring in the Satellite, such as setting a document. Before implementing a hook that manipulates data ("backend"), let's first set up a JavaScript function in your ("frontend") dApp.
+Hooks respond to events occurring in your Satellite, such as a document being created or updated. They run automatically in the background and are not invoked directly.
 
-Define a setter function in your frontend dApp as follows:
-
-```
-interface Example {  hello: string;}let key: string | undefined;const set = async () => {  key = crypto.randomUUID();  const record = await setDoc<Example>({    collection: "demo",    doc: {      key,      data: {        hello: "world"      }    }  });  console.log("Set done", record);};
-```
-
-This code generates a key and persists a document in a collection of the Datastore named "demo".
-
-Additionally, add a getter to your code:
-
-```
-const get = async () => {  if (key === undefined) {    return;  }  const record = await getDoc({    collection: "demo",    key  });  console.log("Get done", record);};
-```
-
-Without a hook, executing these two operations one after the other would result in a record containing "hello: world".
-
-Now, let's create a hook within `src/satellite/src/lib.rs` with the following implementation:
+The following example declares a hook that listens to changes in the `demo` collection and modifies the document's data before saving it back:
 
 ```
 use ic_cdk::print;use junobuild_macros::{    on_delete_asset, on_delete_doc, on_delete_many_assets, on_delete_many_docs, on_set_doc,    on_set_many_docs, on_upload_asset,};use junobuild_satellite::{    include_satellite, set_doc_store, OnDeleteAssetContext, OnDeleteDocContext,    OnDeleteManyAssetsContext, OnDeleteManyDocsContext, OnSetDocContext, OnSetManyDocsContext,    OnUploadAssetContext, SetDoc,};use junobuild_utils::{decode_doc_data, encode_doc_data};use serde::{Deserialize, Serialize};// The data of the document we are looking to update in the Satellite's Datastore.#[derive(Serialize, Deserialize)]struct Person {    hello: String,}// We tells the hooks that we only want to listen to changes in collection "demo".#[on_set_doc(collections = ["demo"])]async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {    // We decode the new data saved in the Datastore because it holds those as blob.    let mut data: Person = decode_doc_data(&context.data.data.after.data)?;    // We update the document's data that was saved in the Datastore with the call from the frontend dapp.    // i.e. the frontend saved "hello: world" and we enhance it to "hello: world checked"    data.hello = format!("{} checked", data.hello);    // We encode the data back to blob.    let encode_data = encode_doc_data(&data)?;    // We construct the parameters required to call the function that save the data in the Datastore.    let doc: SetDoc = SetDoc {        data: encode_data,        description: context.data.data.after.description,        version: context.data.data.after.version,    };    // We save the document for the same caller as the one who triggered the original on_set_doc, in the same collection with the same key as well.    set_doc_store(        context.caller,        context.data.collection,        context.data.key,        doc,    )?;    Ok(())}// Other hooksinclude_satellite!();
 ```
 
-As outlined in the ([Quickstart](#quickstart)) chapter, run `juno emulator build` to compile and deploy the code locally.
+**Note:**
 
-When testing this feature, if you wait a bit before calling the getter, unlike in the previous step, you should now receive the modified "hello: world checked" text set by the hook. This delay occurs because serverless Functions run fully asynchronously from the request-response between your frontend and the Satellite.
+Hooks execute asynchronously, separate from the request-response cycle. Changes made by a hook will not be immediately visible to the caller.
 
 ---
 
@@ -6273,7 +6257,7 @@ This example ensures that any document added to the `notes` collection does not 
 
 ---
 
-## Calling Canisters on ICP
+## Calling Other Canisters
 
 You can make calls to other canisters on the Internet Computer directly from your serverless functions using `ic_cdk::call`.
 
@@ -6359,9 +6343,9 @@ Learn how to integrate Juno with SvelteKit. Follow our quickstart guide to set u
 
 Learn how to deploy your SvelteKit project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/sveltekit/deploy.md)
 
-# Code Functions in TypeScript
+# Serverless Functions in TypeScript
 
-Learn how to develop, integrate, and extend Juno Satellites with serverless functions written in TypeScript.
+Learn how to write and extend serverless functions for your Satellite in TypeScript.
 
 ---
 
@@ -6387,7 +6371,7 @@ yarn global add @junobuild/cli
 pnpm add -g @junobuild/cli
 ```
 
-At the root of your application, eject the Satellite if you haven't already used a template.
+At your project root, eject the Satellite if you haven't already used a template.
 
 ```
 juno functions eject
@@ -6399,41 +6383,71 @@ In a new terminal window, kick off the emulator:
 juno emulator start --watch
 ```
 
-Now, your local development environment is up and running, ready for you to start coding.
-
-Every time you make changes to your code, it will automatically recompile and reload.
+Your local development environment is now up and running.
 
 ---
 
-## Hooks and Data Operations
+## Hooks
 
-Serverless Functions are triggered by hooks, which respond to events occurring in the Satellite, such as setting a document. Before implementing a hook that manipulates data ("backend"), let's first set up a JavaScript function in your ("frontend") dApp.
+Hooks respond to events occurring in your Satellite, such as a document being created or updated. They run automatically in the background and are not invoked directly.
 
-Define a setter function in your frontend dApp as follows:
-
-```
-interface Example {  hello: string;}let key: string | undefined;const set = async () => {  key = crypto.randomUUID();  const record = await setDoc<Example>({    collection: "demo",    doc: {      key,      data: {        hello: "world"      }    }  });  console.log("Set done", record);};
-```
-
-This code generates a key and persists a document in a collection of the Datastore named "demo".
-
-Additionally, add a getter to your code:
-
-```
-const get = async () => {  if (key === undefined) {    return;  }  const record = await getDoc({    collection: "demo",    key  });  console.log("Get done", record);};
-```
-
-Without a hook, executing these two operations one after the other would result in a record containing "hello: world".
-
-Now, let's create a hook within `src/satellite/index.ts` with the following implementation:
+The following example declares a hook that listens to changes in the `demo` collection and modifies the document's data before saving it back:
 
 ```
 import { defineHook, type OnSetDoc } from "@junobuild/functions";import {  decodeDocData,  encodeDocData,  setDocStore} from "@junobuild/functions/sdk";// The data shape stored in the Satellite's Datastoreinterface Person {  hello: string;}// We declare a hook that listens to changes in the "demo" collectionexport const onSetDoc = defineHook<OnSetDoc>({  collections: ["demo"],  run: async (context) => {    // Decode the document's data (stored as a blob)    const data = decodeDocData<Person>(context.data.data.after.data);    // Update the document's data by enhancing the "hello" field    const updated = {      hello: `${data.hello} checked`    };    // Encode the data back to blob format    const encoded = encodeDocData(updated);    // Save the updated document using the same caller, collection, and key    await setDocStore({      caller: context.caller,      collection: context.data.collection,      key: context.data.key,      doc: {        data: encoded,        description: context.data.data.after.description,        version: context.data.data.after.version      }    });  }});
 ```
 
-Once saved, your code should be automatically compiled and deployed.
+**Note:**
 
-When testing this feature, if you wait a bit before calling the getter, you should now receive the modified "hello: world checked" text set by the hook. This delay occurs because serverless Functions execute fully asynchronously, separate from the request-response cycle between your frontend and the Satellite.
+Hooks execute asynchronously, separate from the request-response cycle. Changes made by a hook will not be immediately visible to the caller.
+
+### Handling Multiple Collections
+
+If your hook applies to many collections, a switch statement is one way to route logic:
+
+```
+import { defineHook, type OnSetDoc } from "@junobuild/functions";export const onSetDoc = defineHook<OnSetDoc>({  collections: ["posts", "comments"],  run: async (context) => {    switch (context.data.collection) {      case "posts":        // Handle posts logic        break;      case "comments":        // Handle comments logic        break;    }  }});
+```
+
+While this works, you might accidentally forget to handle one of the observed collections. To prevent that, you can use a typed map:
+
+```
+import {  defineHook,  type OnSetDoc,  type OnSetDocContext,  type RunFunction} from "@junobuild/functions";const collections = ["posts", "comments"] as const;type OnSetDocCollection = (typeof collections)[number];export const onSetDoc = defineHook<OnSetDoc>({  collections,  run: async (context) => {    const fn: Record<OnSetDocCollection, RunFunction<OnSetDocContext>> = {      posts: yourFunction,      comments: yourOtherFunction    };    await fn[context.data.collection as OnSetDocCollection]?.(context);  }});
+```
+
+This ensures all collections are handled and you'll get a TypeScript error if one is missing.
+
+---
+
+## Custom Functions
+
+Custom Functions let you define callable endpoints directly inside your Satellite. Unlike hooks, which react to events, custom functions are explicitly invoked - from your frontend or from other modules.
+
+You define them using `defineQuery` or `defineUpdate`, describe their input and output shapes with the `j` type system, and Juno takes care of generating all the necessary bindings under the hood.
+
+### Query vs. Update
+
+A **query** is a read-only function. It returns data without modifying any state. Queries are fast and suitable for fetching or computing information.
+
+An **update** is a function that can read and write state. Use it when your logic needs to persist data or trigger side effects. Updates can also be used for read operations when the response needs to be certified - making them suitable for security-sensitive use cases where data integrity must be guaranteed.
+
+### Defining a Function
+
+Describe your function's input and output shapes using the `j` type system, then pass them to `defineQuery` or `defineUpdate` along with your handler:
+
+```
+import { defineUpdate } from "@junobuild/functions";import { j } from "@junobuild/schema";const Schema = j.strictObject({  name: j.string(),  id: j.principal()});export const helloWorld = defineUpdate({  args: Schema,  returns: Schema,  handler: async ({ args }) => {    // Your logic here    return args;  }});
+```
+
+Handlers can be synchronous or asynchronous. Both `args` and `returns` are optional.
+
+### Calling from the Frontend
+
+When you build your project, a type-safe client API is automatically generated based on your function definitions. You can import and call your functions directly from your frontend without writing any glue code:
+
+```
+import { functions } from "../declarations/satellite/satellite.api.ts";await functions.helloWorld({ name: "World", id: Principal.anonymous() });
+```
 
 ---
 
@@ -6449,21 +6463,7 @@ This example ensures that any document added to the `notes` collection does not 
 
 ---
 
-### Validating with Zod
-
-To simplify and strengthen your assertions, we recommend using [Zod](https://zod.dev/) — a TypeScript-first schema validation library. It's already bundled as a dependency of the `@junobuild/functions` package, so there's nothing else to install.
-
-Here's how you can rewrite your assertion using Zod for a cleaner and more declarative approach:
-
-```
-import { z } from "zod";import { decodeDocData } from "@junobuild/functions/sdk";import { defineAssert, type AssertSetDoc } from "@junobuild/functions";interface NoteData {  text: string;}const noteSchema = z.object({  text: z    .string()    .refine(      (value) => !value.toLowerCase().includes("hello"),      "The text must not include the word 'hello'"    )});export const assertSetDoc = defineAssert<AssertSetDoc>({  collections: ["notes"],  assert: (context) => {    const data = decodeDocData<NoteData>(context.data.data.proposed.data);    noteSchema.parse(data);  }});
-```
-
-This approach is more expressive, easier to extend, and automatically gives you type safety and error messaging. If the validation fails, `parse()` will throw and reject the request.
-
----
-
-## Calling Canisters on ICP
+## Calling Other Canisters
 
 This is useful if you want to:
 
@@ -6483,25 +6483,21 @@ The `args` field contains a tuple with the Candid type definition and the corres
 
 The `call` function handles both encoding the request and decoding the response using the provided types.
 
-To encode and decode these calls, you need JavaScript structures that match the Candid types used by the target canister. Currently, the best (and slightly annoying) way to get them is to copy/paste from the `service` output generated by tools like `didc`. It's not ideal, but that’s the current status. We’ll improve this in the future — meanwhile, feel free to reach out if you need help finding or shaping the types.
+To encode and decode these calls, you need JavaScript structures that match the Candid IDL types used by the target canister.
 
 ---
 
-## Handling Multiple Collections
+## Schema Types
 
-If your hook applies to many collections, a switch statement is one way to route logic:
+The `j` type system is Juno's schema layer for custom functions. It is built on top of [Zod](https://zod.dev/) and extends it with types specific to the Juno and Internet Computer environment, such as `j.principal()`.
 
-```
-import { defineHook, type OnSetDoc } from "@junobuild/functions";export const onSetDoc = defineHook<OnSetDoc>({  collections: ["posts", "comments"],  run: async (context) => {    switch (context.data.collection) {      case "posts":        // Handle posts logic        break;      case "comments":        // Handle comments logic        break;    }  }});
-```
-
-While this works, you might accidentally forget to handle one of the observed collections. To prevent that, you can use a typed map:
+You use it to describe the shape of your function's arguments and return value. These schemas are both validated at runtime and used at build time to generate the necessary types and bindings.
 
 ```
-import {  defineHook,  type OnSetDoc,  type OnSetDocContext,  type RunFunction} from "@junobuild/functions";const collections = ["posts", "comments"] as const;type OnSetDocCollection = (typeof collections)[number];export const onSetDoc = defineHook<OnSetDoc>({  collections,  run: async (context) => {    const fn: Record<OnSetDocCollection, RunFunction<OnSetDocContext>> = {      posts: yourFunction,      comments: yourOtherFunction    };    await fn[context.data.collection as OnSetDocCollection]?.(context);  }});
+import { j } from "@junobuild/schema";const Schema = j.strictObject({  name: j.string(),  id: j.principal()});
 ```
 
-This ensures all collections are handled and you'll get a TypeScript error if one is missing.
+📦 Import from `@junobuild/schema`
 
 # Vue
 
