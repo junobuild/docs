@@ -31,7 +31,7 @@ for cmd in $(echo $CHANGES_COMMANDS | sed "s/,/ /g"); do
   generate_command_markdown "changes $cmd"
 done
 
-HOSTING_COMMANDS=deploy,clear
+HOSTING_COMMANDS=deploy,clear,prune
 
 for cmd in $(echo $HOSTING_COMMANDS | sed "s/,/ /g"); do
   generate_command_markdown "hosting $cmd"
