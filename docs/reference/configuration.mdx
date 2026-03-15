@@ -55,7 +55,7 @@ Each satellite must be uniquely identified using either:
 - `id`: A single identifier for the satellite.
 - `ids`: A mapping of identifiers for multiple environments, such as staging or production.
 
-You can use one of these options but not both simultaneously. See the [Environments - Multiple Satellites](#environments---multiple-satellites) chapter below for details on setting up multiple ids.
+You can use one of these options but not both simultaneously. See the [Environments](#multiple-environments) chapter below for details on setting up multiple ids.
 
 import Plugins from "./components/plugins.mdx";
 
@@ -644,7 +644,7 @@ export default defineConfig(({ mode }) => ({
 
 ## Multiple Environments
 
-You might want to deploy or manage a project across different environments, such as staging and production. Juno supports this through the `ids` field, allowing you to define separate Satellite IDs for each [mode](#modes).
+You might want to deploy or manage a project across different environments, such as staging and production. Juno supports this through the `ids` field, allowing you to define separate Satellite IDs for each mode.
 
 ```javascript title="juno.config.js"
 import { defineConfig } from "@junobuild/config";
