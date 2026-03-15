@@ -47,7 +47,7 @@ await signUp({
 
 :::note
 
-Returning users don't need to go through sign-up again. They can simply use [sign-in](#passkeys-1) with their existing passkey to authenticate.
+Returning users don't need to go through sign-up again. They can simply use [sign-in](#sign-in) with their existing passkey to authenticate.
 
 :::
 
@@ -115,7 +115,7 @@ await signIn({
 
 :::note
 
-New users must first go through [sign-up](#passkeys) to create a passkey before they can sign in.
+New users must first go through [sign-up](#sign-up) to create a passkey before they can sign in.
 
 :::
 
