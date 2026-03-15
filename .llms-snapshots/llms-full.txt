@@ -9308,7 +9308,7 @@ Usage: juno logout [options]Options:  -h, --help            Output usage informa
 Deploy or clear the frontend code of your app on your satellite.
 
 ```
-Usage: juno hosting <subcommand> [options]Subcommands:  clear               Remove frontend files (JS, HTML, CSS, etc.) from your satellite.  deploy              Deploy your app to your satellite.
+Usage: juno hosting <subcommand> [options]Subcommands:  clear               Remove frontend files (JS, HTML, CSS, etc.) from your satellite.  deploy              Deploy your app to your satellite.  prune               Remove stale frontend files from your satellite that are no longer in your build output.
 ```
 
 ---
@@ -9329,10 +9329,10 @@ This command removes existing assets from the Satellite related to your frontend
 
 #### Prune
 
-TBD
+Remove stale frontend files from your satellite that are no longer in your build output.
 
 ```
-Usage: juno hosting prune [options]
+Usage: juno hosting prune [options]Options:  --batch               Number of files to prune in parallel per batch (default: 100).  --dry-run             List stale files that would be deleted without actually deleting them.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.
 ```
 
 ---
@@ -9342,7 +9342,7 @@ Usage: juno hosting prune [options]
 Deploy your app to your satellite.
 
 ```
-Usage: juno hosting deploy [options]Options:  --batch               Number of files to upload in parallel per batch (default: 50).  --clear               Clear existing app files before proceeding with deployment.  --config              Apply configuration after deployment succeeds.  --no-apply            Submit the deployment as a change but do not apply it yet.  -k, --keep-staged     Keep staged assets in memory after applying the change.  -i, --immediate       Deploy files instantly (bypasses the change workflow).  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- The option --keep-staged only applies when --no-apply is NOT used (i.e. the change is applied immediately).
+Usage: juno hosting deploy [options]Options:  --batch               Number of files to upload in parallel per batch (default: 50).  --clear               Clear existing app files before proceeding with deployment.  --config              Apply configuration after deployment succeeds.  --no-apply            Submit the deployment as a change but do not apply it yet.  -k, --keep-staged     Keep proposed staged assets in memory after applying the change.  -i, --immediate       Deploy files instantly (bypasses the change workflow).  --prune               Prune stale app files after successful deployment.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- The option --keep-staged only applies when --no-apply is NOT used (i.e. the change is applied immediately).
 ```
 
 ---
@@ -9461,7 +9461,7 @@ Usage: juno changes <subcommand> [options]Subcommands:  apply               Appl
 Apply a submitted change.
 
 ```
-Usage: juno changes apply [options]Options:  -i, --id              The ID of the change to apply.  --snapshot            Create a snapshot before applying.  --hash                The expected hash of all included changes (for verification).  -k, --keep-staged     Keep staged assets in memory after applying the change.  -h, --help            Output usage information.
+Usage: juno changes apply [options]Options:  -i, --id              The ID of the change to apply.  --snapshot            Create a snapshot before applying.  --hash                The expected hash of all included changes (for verification).  -k, --keep-staged     Keep proposed staged assets in memory after applying the change.  -h, --help            Output usage information.
 ```
 
 ---
@@ -9481,7 +9481,7 @@ Usage: juno changes list [options]Options:  -a, --all           Search through a
 Reject a change.
 
 ```
-Usage: juno changes reject [options]Options:  -i, --id              The ID of the change to reject.  --hash                The expected hash of all included changes (for verification).  -k, --keep-staged     Keep staged assets in memory after applying the change.  -h, --help            Output usage information.
+Usage: juno changes reject [options]Options:  -i, --id              The ID of the change to reject.  --hash                The expected hash of all included changes (for verification).  -k, --keep-staged     Keep proposed staged assets in memory after applying the change.  -h, --help            Output usage information.
 ```
 
 ---
@@ -9551,7 +9551,7 @@ Usage: juno functions eject [options]Options:  -l, --lang            Specify the
 Publish a new version of your serverless functions.
 
 ```
-Usage: juno functions publish [options]Options:  --no-apply            Submit the release as a change but do not apply it yet.  -k, --keep-staged     Keep staged assets in memory after applying the change.  -s, --src             A path to a specific local gzipped WASM file to publish.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- The option --keep-staged only applies when --no-apply is NOT used (i.e. the change is applied immediately).
+Usage: juno functions publish [options]Options:  --no-apply            Submit the release as a change but do not apply it yet.  -k, --keep-staged     Keep proposed staged assets in memory after applying the change.  -s, --src             A path to a specific local gzipped WASM file to publish.  -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.  -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.  --container-url       Override a custom container URL. If not provided, defaults to production or the local container in development mode.  --console-url         Specify a custom URL to access the developer Console.  -h, --help            Output usage information.Notes:- The option --keep-staged only applies when --no-apply is NOT used (i.e. the change is applied immediately).
 ```
 
 ---
