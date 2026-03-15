@@ -9323,7 +9323,17 @@ Usage: juno hosting clear [options]Options:  -f, --fullPath        Clear a parti
 
 **Note:**
 
-This command removes existing files from the Satellite and only affects the app assets, your frontend. Your user's uploaded files will not be cleared from your custom collections in the storage.
+This command removes existing assets from the Satellite related to your frontend app. Your user's uploaded files will not be cleared from your custom collections.
+
+---
+
+#### Prune
+
+TBD
+
+```
+Usage: juno hosting prune [options]
+```
 
 ---
 
