@@ -2,7 +2,7 @@
 id: rust
 title: Rust
 toc_min_heading_level: 2
-toc_max_heading_level: 3
+toc_max_heading_level: 2
 ---
 
 # Code Functions in Rust
@@ -35,13 +35,11 @@ Changes are detected and automatically deployed, allowing you to test your custo
 
 ---
 
-## Hooks and Data Operations
+## Hooks
 
 import Hooks from "./components/functions/hooks.md";
 
 <Hooks />
-
-Now, let's create a hook within `src/satellite/src/lib.rs` with the following implementation:
 
 ```rust
 use ic_cdk::print;
@@ -99,9 +97,11 @@ async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {
 include_satellite!();
 ```
 
-As outlined in the [Quickstart](#quickstart) chapter, run `juno emulator build` to compile and deploy the code locally.
+:::note
 
-When testing this feature, if you wait a bit before calling the getter, unlike in the previous step, you should now receive the modified "hello: world checked" text set by the hook. This delay occurs because serverless Functions run fully asynchronously from the request-response between your frontend and the Satellite.
+Hooks execute asynchronously, separate from the request-response cycle. Changes made by a hook will not be immediately visible to the caller.
+
+:::
 
 ---
 
@@ -137,7 +137,7 @@ This example ensures that any document added to the <code>notes</code> collectio
 
 ---
 
-## Calling Canisters on ICP
+## Calling Other Canisters
 
 You can make calls to other canisters on the Internet Computer directly from your serverless functions using `ic_cdk::call`.
 
