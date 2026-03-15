@@ -28,14 +28,14 @@ You have to follow the pace of the Juno release to ensure compatibility. Refer t
 
 ---
 
-## id
+## canisterSelf
 
 Retrieves the Principal ID of the current Satellite.
 
 This is useful when you want to use functions such as [setDocStore](./sdk.mdx#setdocstore) with the caller set as the administrator. Since the code is running on the backend side (inside the container), the Satellite itself is considered the caller and has admin-level permissions.
 
 ```typescript
-function id(): Principal;
+function canisterSelf(): Principal;
 ```
 
 📦 Import from `@junobuild/functions/ic-cdk`
@@ -47,6 +47,7 @@ function id(): Principal;
 #### Notes:
 
 - This function is a JavaScript binding for the Rust function [ic_cdk::id()](https://docs.rs/ic-cdk/latest/ic_cdk/fn.id.html).
+- It was previously named `id()` and is also accessible as `satelliteSelf()`.
 
 ---
 
@@ -77,6 +78,28 @@ function call<T>(params: CallParams): Promise<T | undefined>;
 #### Notes:
 
 - This function is a JavaScript binding for the Rust function [ic_cdk::call()](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.call.html).
+
+---
+
+## msgCaller
+
+Returns the Principal ID of the caller of the current function.
+
+```typescript
+function msgCaller(): Principal;
+```
+
+📦 Import from `@junobuild/functions/ic-cdk`
+
+#### Returns:
+
+- `Principal`: The Principal ID of the caller.
+
+#### Notes:
+
+- This function is a JavaScript binding for the Rust function [ic_cdk::api::msg_caller()](https://docs.rs/ic-cdk/latest/ic_cdk/api/fn.msg_caller.html).
+- In serverless hooks, the caller is the Satellite itself. The end user's Principal can be retrieved from the payload instead.
+- This function was previously named `caller()`.
 
 ---
 
