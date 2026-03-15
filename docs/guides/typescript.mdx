@@ -2,12 +2,12 @@
 id: typescript
 title: TypeScript
 toc_min_heading_level: 2
-toc_max_heading_level: 3
+toc_max_heading_level: 2
 ---
 
-# Code Functions in TypeScript
+# Serverless Functions in TypeScript
 
-Learn how to develop, integrate, and extend Juno Satellites with serverless functions written in TypeScript.
+Learn how to write and extend serverless functions for your Satellite in TypeScript.
 
 ---
 
@@ -23,19 +23,15 @@ In a new terminal window, kick off the emulator:
 juno emulator start --watch
 ```
 
-Now, your local development environment is up and running, ready for you to start coding.
-
-Every time you make changes to your code, it will automatically recompile and reload.
+Your local development environment is now up and running.
 
 ---
 
-## Hooks and Data Operations
+## Hooks
 
 import Hooks from "./components/functions/hooks.md";
 
 <Hooks />
-
-Now, let's create a hook within `src/satellite/index.ts` with the following implementation:
 
 ```typescript
 import { defineHook, type OnSetDoc } from "@junobuild/functions";
@@ -80,9 +76,111 @@ export const onSetDoc = defineHook<OnSetDoc>({
 });
 ```
 
-Once saved, your code should be automatically compiled and deployed.
+:::note
 
-When testing this feature, if you wait a bit before calling the getter, you should now receive the modified "hello: world checked" text set by the hook. This delay occurs because serverless Functions execute fully asynchronously, separate from the request-response cycle between your frontend and the Satellite.
+Hooks execute asynchronously, separate from the request-response cycle. Changes made by a hook will not be immediately visible to the caller.
+
+:::
+
+### Handling Multiple Collections
+
+If your hook applies to many collections, a switch statement is one way to route logic:
+
+```typescript
+import { defineHook, type OnSetDoc } from "@junobuild/functions";
+
+export const onSetDoc = defineHook<OnSetDoc>({
+  collections: ["posts", "comments"],
+  run: async (context) => {
+    switch (context.data.collection) {
+      case "posts":
+        // Handle posts logic
+        break;
+      case "comments":
+        // Handle comments logic
+        break;
+    }
+  }
+});
+```
+
+While this works, you might accidentally forget to handle one of the observed collections. To prevent that, you can use a typed map:
+
+```typescript
+import {
+  defineHook,
+  type OnSetDoc,
+  type OnSetDocContext,
+  type RunFunction
+} from "@junobuild/functions";
+
+const collections = ["posts", "comments"] as const;
+
+type OnSetDocCollection = (typeof collections)[number];
+
+export const onSetDoc = defineHook<OnSetDoc>({
+  collections,
+  run: async (context) => {
+    const fn: Record<OnSetDocCollection, RunFunction<OnSetDocContext>> = {
+      posts: yourFunction,
+      comments: yourOtherFunction
+    };
+
+    await fn[context.data.collection as OnSetDocCollection]?.(context);
+  }
+});
+```
+
+This ensures all collections are handled and you'll get a TypeScript error if one is missing.
+
+---
+
+## Custom Functions
+
+Custom Functions let you define callable endpoints directly inside your Satellite. Unlike hooks, which react to events, custom functions are explicitly invoked - from your frontend or from other modules.
+
+You define them using `defineQuery` or `defineUpdate`, describe their input and output shapes with the `j` type system, and Juno takes care of generating all the necessary bindings under the hood.
+
+### Query vs. Update
+
+A **query** is a read-only function. It returns data without modifying any state. Queries are fast and suitable for fetching or computing information.
+
+An **update** is a function that can read and write state. Use it when your logic needs to persist data or trigger side effects. Updates can also be used for read operations when the response needs to be certified - making them suitable for security-sensitive use cases where data integrity must be guaranteed.
+
+### Defining a Function
+
+Describe your function's input and output shapes using the `j` type system, then pass them to `defineQuery` or `defineUpdate` along with your handler:
+
+```typescript
+import { defineUpdate } from "@junobuild/functions";
+import { j } from "@junobuild/schema";
+
+const Schema = j.strictObject({
+  name: j.string(),
+  id: j.principal()
+});
+
+export const helloWorld = defineUpdate({
+  args: Schema,
+  returns: Schema,
+  handler: async ({ args }) => {
+    // Your logic here
+    return args;
+  }
+});
+```
+
+Handlers can be synchronous or asynchronous. Both `args` and `returns` are optional.
+
+### Calling from the Frontend
+
+When you build your project, a type-safe client API is automatically generated based on your function definitions. You can import and call your functions directly from your frontend without writing any glue code:
+
+```typescript
+import { functions } from "../declarations/satellite/satellite.api.ts";
+
+await functions.helloWorld({ name: "World", id: Principal.anonymous() });
+```
 
 ---
 
@@ -110,48 +208,11 @@ export const assertSetDoc = defineAssert<AssertSetDoc>({
 });
 ```
 
-This example ensures that any document added to the <code>notes</code> collection does not contain the word <code>"hello"</code> (case-insensitive). If it does, the operation is rejected before the data is saved.
+This example ensures that any document added to the `notes` collection does not contain the word `"hello"` (case-insensitive). If it does, the operation is rejected before the data is saved.
 
 ---
 
-### Validating with Zod
-
-To simplify and strengthen your assertions, we recommend using [Zod](https://zod.dev/) — a TypeScript-first schema validation library. It's already bundled as a dependency of the `@junobuild/functions` package, so there's nothing else to install.
-
-Here's how you can rewrite your assertion using Zod for a cleaner and more declarative approach:
-
-```typescript
-import { z } from "zod";
-import { decodeDocData } from "@junobuild/functions/sdk";
-import { defineAssert, type AssertSetDoc } from "@junobuild/functions";
-
-interface NoteData {
-  text: string;
-}
-
-const noteSchema = z.object({
-  text: z
-    .string()
-    .refine(
-      (value) => !value.toLowerCase().includes("hello"),
-      "The text must not include the word 'hello'"
-    )
-});
-
-export const assertSetDoc = defineAssert<AssertSetDoc>({
-  collections: ["notes"],
-  assert: (context) => {
-    const data = decodeDocData<NoteData>(context.data.data.proposed.data);
-    noteSchema.parse(data);
-  }
-});
-```
-
-This approach is more expressive, easier to extend, and automatically gives you type safety and error messaging. If the validation fails, `parse()` will throw and reject the request.
-
----
-
-## Calling Canisters on ICP
+## Calling Other Canisters
 
 import Call from "./components/functions/call.md";
 
@@ -211,57 +272,23 @@ The `args` field contains a tuple with the Candid type definition and the corres
 
 The `call` function handles both encoding the request and decoding the response using the provided types.
 
-To encode and decode these calls, you need JavaScript structures that match the Candid types used by the target canister. Currently, the best (and slightly annoying) way to get them is to copy/paste from the `service` output generated by tools like `didc`. It's not ideal, but that’s the current status. We’ll improve this in the future — meanwhile, feel free to reach out if you need help finding or shaping the types.
+To encode and decode these calls, you need JavaScript structures that match the Candid IDL types used by the target canister.
 
 ---
 
-## Handling Multiple Collections
+## Schema Types
 
-If your hook applies to many collections, a switch statement is one way to route logic:
+The `j` type system is Juno's schema layer for custom functions. It is built on top of [Zod](https://zod.dev/) and extends it with types specific to the Juno and Internet Computer environment, such as `j.principal()`.
+
+You use it to describe the shape of your function's arguments and return value. These schemas are both validated at runtime and used at build time to generate the necessary types and bindings.
 
 ```typescript
-import { defineHook, type OnSetDoc } from "@junobuild/functions";
+import { j } from "@junobuild/schema";
 
-export const onSetDoc = defineHook<OnSetDoc>({
-  collections: ["posts", "comments"],
-  run: async (context) => {
-    switch (context.data.collection) {
-      case "posts":
-        // Handle posts logic
-        break;
-      case "comments":
-        // Handle comments logic
-        break;
-    }
-  }
+const Schema = j.strictObject({
+  name: j.string(),
+  id: j.principal()
 });
 ```
 
-While this works, you might accidentally forget to handle one of the observed collections. To prevent that, you can use a typed map:
-
-```typescript
-import {
-  defineHook,
-  type OnSetDoc,
-  type OnSetDocContext,
-  type RunFunction
-} from "@junobuild/functions";
-
-const collections = ["posts", "comments"] as const;
-
-type OnSetDocCollection = (typeof collections)[number];
-
-export const onSetDoc = defineHook<OnSetDoc>({
-  collections,
-  run: async (context) => {
-    const fn: Record<OnSetDocCollection, RunFunction<OnSetDocContext>> = {
-      posts: yourFunction,
-      comments: yourOtherFunction
-    };
-
-    await fn[context.data.collection as OnSetDocCollection]?.(context);
-  }
-});
-```
-
-This ensures all collections are handled and you'll get a TypeScript error if one is missing.
+📦 Import from `@junobuild/schema`

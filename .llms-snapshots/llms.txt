@@ -102,9 +102,9 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [Next.js](https://juno.build/docs/guides/nextjs.md): Explore how to create a Juno project developed with Next.js.
 - [NodeJS](https://juno.build/docs/guides/nodejs.md): SDK usage in a NodeJS or CLI context
 - [React](https://juno.build/docs/guides/react.md): Explore how to create a Juno project developed with React.
-- [Rust](https://juno.build/docs/guides/rust.md): Learn how to develop, integrate, and extend Juno Satellites with serverless functions written in Rust.
+- [Rust](https://juno.build/docs/guides/rust.md): Learn how to write and extend serverless functions for your Satellite in Rust.
 - [SvelteKit](https://juno.build/docs/guides/sveltekit.md): Explore how to create a Juno project developed with SvelteKit.
-- [TypeScript](https://juno.build/docs/guides/typescript.md): Learn how to develop, integrate, and extend Juno Satellites with serverless functions written in TypeScript.
+- [TypeScript](https://juno.build/docs/guides/typescript.md): Learn how to write and extend serverless functions for your Satellite in TypeScript.
 - [Vue](https://juno.build/docs/guides/vue.md): Explore how to create a Juno project developed with Vue.
 
 ## Guides - Angular
