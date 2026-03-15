@@ -6,4 +6,5 @@ Usage: juno hosting <subcommand> [options]
 Subcommands:
   clear               Remove frontend files (JS, HTML, CSS, etc.) from your satellite.
   deploy              Deploy your app to your satellite.
+  prune               Remove stale frontend files from your satellite that are no longer in your build output.
 ```
