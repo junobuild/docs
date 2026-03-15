@@ -5,7 +5,7 @@ Usage: juno functions publish [options]
 
 Options:
   --no-apply            Submit the release as a change but do not apply it yet.
-  -k, --keep-staged     Keep staged assets in memory after applying the change.
+  -k, --keep-staged     Keep proposed staged assets in memory after applying the change.
   -s, --src             A path to a specific local gzipped WASM file to publish.
   -m, --mode            Choose which environment to use (production, staging, development). Defaults to production if omitted.
   -p, --profile         Specify an optional profile to use (e.g. personal, team). Useful when managing multiple Mission Controls.
