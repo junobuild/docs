@@ -6179,7 +6179,7 @@ Learn how to deploy your React project to Juno. Follow the deployment guide to c
 
 # Code Functions in Rust
 
-Learn how to develop, integrate, and extend Juno Satellites with serverless functions written in Rust.
+Learn how to write and extend serverless functions for your Satellite in Rust.
 
 ---
 
