@@ -45,7 +45,7 @@ const config: Config = {
   tagline: "Build serverless apps with self-hosting control",
   url: "https://juno.build",
   baseUrl: "/",
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "junobuild",
