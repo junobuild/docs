@@ -441,5 +441,5 @@ export const onExecute = async () => {
 
 - All canister classes use the [call](./ic-cdk.mdx#call) function internally to communicate with the Internet Computer.
 - The caller's identity is automatically determined by the serverless function execution context.
-- For admin operations, you can use the [id](./ic-cdk.mdx#id) function to get the Satellite's principal, which has admin privileges.
+- For admin operations, you can use the [id](./ic-cdk.mdx#canisterself) function to get the Satellite's principal, which has admin privileges.
 - Error handling follows the Result pattern: check for `Ok` or `Err` properties in the response.
