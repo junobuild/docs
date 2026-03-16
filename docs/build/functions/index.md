@@ -16,33 +16,28 @@ keywords:
 
 Functions are a set of features enabling developers to extend the native capabilities of [Satellites](../../terminology.mdx#satellite) using Rust or TypeScript. They let you define serverless behaviors directly within your containerized environment.
 
-Triggered by events like document and asset operations, they allow you to automatically run backend code or assertions. These functions are shipped with your container and don’t require you to manage or scale your own servers.
+There are two types of functions:
+
+- [Event-driven functions](#event-driven-functions): triggered automatically in response to actions such as a document being created or an asset being uploaded.
+- [Callable functions](#callable-functions): explicitly invoked from your frontend or from other services.
 
 ---
 
-## How does it work?
+## Event-driven Functions
 
-Functions are defined using hooks that automatically respond to document and asset events such as create, update, or delete. This allows you to embed dynamic behavior directly into your container.
+Event-driven functions respond to actions occurring in your Satellite. They are triggered automatically and never invoked directly.
 
-A naive schema representation of a hook that is triggered when a document is set:
+### Hooks
+
+Hooks respond to specific actions within your Satellite. They run asynchronously, independently of the caller's request - meaning the caller may receive a response before the hook has finished executing.
 
 ![Functions hooks flow](../../img/functions.png)
 
-### Asynchronous Hook Spawning
+:::note
 
-When a Function is triggered, it spawns hooks asynchronously, operating independently of the caller's action. This means that the execution of the hooks is initiated without waiting for a synchronous response, ensuring that the flow of update calls to the Satellite remains unhindered. Consequently, callers may receive feedback on their actions before the corresponding hooks have commenced their execution.
+Hooks are only initiated when the preceding operation completes without errors.
 
-### Error-Resilient Execution
-
-Hooks are initiated only when there are no errors in the preceding operations. This ensures a robust and dependable execution flow, promoting reliability and consistency in the functioning of Functions.
-
-### Optional
-
-Custom hooks are not active by default. You need to opt in to enable event-driven execution of your own logic.
-
----
-
-## Available Hooks
+:::
 
 | Hook                        | Provider  | Description                                                     |
 | --------------------------- | --------- | --------------------------------------------------------------- |
@@ -58,11 +53,9 @@ Custom hooks are not active by default. You need to opt in to enable event-drive
 | `on_init`                   | Satellite | Called during the initialization of the Satellite.              |
 | `on_post_upgrade`           | Satellite | Invoked after the Satellite has been upgraded to a new version. |
 
----
+### Assertions
 
-## Assertions
-
-In addition to hooks, developers have the option to expand the native rule set of their Satellites by creating custom assertions. These assertions can be implemented similarly to hooks, with the key difference being that they are synchronous and must return a result indicating the outcome of the assertion.
+Assertions run synchronously before an operation is executed. They allow you to validate or reject actions before any data is written.
 
 | Assertion             | Provider  | Description                                   |
 | --------------------- | --------- | --------------------------------------------- |
@@ -70,6 +63,23 @@ In addition to hooks, developers have the option to expand the native rule set o
 | `assert_delete_doc`   | Datastore | Verifies that a document can be deleted.      |
 | `assert_upload_asset` | Storage   | Confirms an asset upload can be committed.    |
 | `assert_delete_asset` | Storage   | Checks that an asset can be deleted.          |
+
+---
+
+## Callable Functions
+
+Callable functions are explicitly invoked — from your frontend or from other services. They expose query and update endpoints directly from your Satellite.
+
+:::tip
+
+This is conceptually similar to exposing your own endpoints on an API.
+
+:::
+
+| Type     | Description                                                     |
+| -------- | --------------------------------------------------------------- |
+| `query`  | A read-only function that returns data without modifying state. |
+| `update` | A function that can read and write state.                       |
 
 ---
 
