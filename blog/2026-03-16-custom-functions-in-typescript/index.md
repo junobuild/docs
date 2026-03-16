@@ -47,7 +47,7 @@ const ResultSchema = j.strictObject({
 
 export const myUpdate = defineUpdate({
   args: ArgsSchema,
-  returns: ResultSchema,
+  result: ResultSchema,
   handler: async ({ name }) => {
     // your logic here
     return { message: `Saved ${name}.` };

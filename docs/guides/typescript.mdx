@@ -162,7 +162,7 @@ const Schema = j.strictObject({
 
 export const helloWorld = defineUpdate({
   args: Schema,
-  returns: Schema,
+  result: Schema,
   handler: async ({ args }) => {
     // Your logic here
     return args;

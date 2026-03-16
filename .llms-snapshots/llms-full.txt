@@ -2876,7 +2876,7 @@ Defines a read-only function that returns data without modifying any state.
 ```
 
 ```
-export const myFunction = defineQuery({  args: Schema,  returns: Schema,  handler: ({ args }) => {    // Your logic here    return args;  }});
+export const myFunction = defineQuery({  args: Schema,  result: Schema,  handler: ({ args }) => {    // Your logic here    return args;  }});
 ```
 
 ### Update
@@ -2891,7 +2891,7 @@ Defines a function that can read and write state.
 ```
 
 ```
-export const myFunction = defineUpdate({  args: Schema,  returns: Schema,  handler: async ({ args }) => {    // Your logic here    return args;  }});
+export const myFunction = defineUpdate({  args: Schema,  result: Schema,  handler: async ({ args }) => {    // Your logic here    return args;  }});
 ```
 
 ---
@@ -7292,7 +7292,7 @@ An **update** is a function that can read and write state. Use it when your logi
 Describe your function's input and output shapes using the `j` type system, then pass them to `defineQuery` or `defineUpdate` along with your handler:
 
 ```
-import { defineUpdate } from "@junobuild/functions";import { j } from "@junobuild/schema";const Schema = j.strictObject({  name: j.string(),  id: j.principal()});export const helloWorld = defineUpdate({  args: Schema,  returns: Schema,  handler: async ({ args }) => {    // Your logic here    return args;  }});
+import { defineUpdate } from "@junobuild/functions";import { j } from "@junobuild/schema";const Schema = j.strictObject({  name: j.string(),  id: j.principal()});export const helloWorld = defineUpdate({  args: Schema,  result: Schema,  handler: async ({ args }) => {    // Your logic here    return args;  }});
 ```
 
 Handlers can be synchronous or asynchronous. Both `args` and `returns` are optional.
