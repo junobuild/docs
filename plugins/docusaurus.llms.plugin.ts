@@ -470,12 +470,16 @@ const generateLlmsTxt = async ({
   };
 
   const content = groupedRoutes
-    .map(
-      ([key, { children, title }]) => `${buildTitle({ key, title })}
+    .map(([key, { children, title }]) => {
+      const rootLink = buildLink({ path: key, title });
+
+      return `${buildTitle({ key, title })}
   
-${buildLink({ path: key, title })}
-${children.map(buildLink).join("\n")}`
-    )
+${rootLink !== undefined ? `${rootLink}\n` : ""}${children
+        .map(buildLink)
+        .filter((l) => l !== undefined)
+        .join("\n")}`;
+    })
     .join("\n\n");
 
   await generateLlmsTxtFile({
@@ -513,10 +517,14 @@ const generateLlmsTxtFull = async ({
   };
 
   const content = groupedRoutes
-    .map(
-      ([key, { children, title }]) => `${buildMarkdown({ path: key, title })}
-${children.map(buildMarkdown).join("\n\n")}`
-    )
+    .map(([key, { children, title }]) => {
+      const rootMarkdown = buildMarkdown({ path: key, title });
+
+      return `${rootMarkdown !== undefined ? `${rootMarkdown}\n\n` : ""}${children
+        .map(buildMarkdown)
+        .filter((m) => m !== undefined)
+        .join("\n\n")}`;
+    })
     .join("\n\n");
 
   await generateLlmsTxtFile({
