@@ -2,6 +2,7 @@
 
 Juno is your self-contained serverless platform for building full-stack web apps without DevOps or backend boilerplate. Developers use their favorite frontend frameworks like React, SvelteKit, or Next.js, and write backend logic in Rust or TypeScript as serverless functions. Everything is bundled into a single WebAssembly (WASM) artifact that runs in a decentralized, stateful environment — under full user ownership — on the Internet Computer. Juno cannot access or modify your code, data, or infrastructure. It supports GitHub Actions for deploys and upgrades, and provides both a CLI and web Console UI for managing projects. The local development environment closely mirrors production, ensuring smooth transitions from build to deployment — all with the privacy and control developers expect from self-hosting.
 
+undefined
 # Getting Started with Juno
 
 Unless you're looking to solely host your static website, the recommended way to start with Juno is by developing locally using the emulator — a production-like environment with full support for data, authentication, storage, and serverless functions.
@@ -495,6 +496,101 @@ Choose **Application** if your project needs user sign-in, data management, or s
 
 You can change this later in your Satellite "Hosting" settings.
 
+# Analytics
+
+Juno Analytics, a simple, performant, and open-source analytics solution that respects your users' privacy and doesn't use cookies, ensuring anonymity while providing valuable user insights.
+
+![A screenshot of the Juno&#39;s Analytics dashboard](/assets/images/analytics-dashboard-5382305cc42b9e367eb0e84046a58585.webp)
+
+---
+
+## Features
+
+Juno Analytics offers several advantages for developers:
+
+### 🍪 No Cookie Banners Needed
+
+Just like all of Juno's features, Analytics prioritizes privacy. It conducts dapp and site measurements entirely anonymously, without using cookies or collecting personal data. There are no persistent identifiers, cross-site tracking, or cross-device tracking. Your analytics data is not used for any other purposes.
+
+### ⚡️ Tiny & Blazing Fast
+
+Juno’s analytics library is built for speed and simplicity. It’s a tiny JavaScript snippet (under 3KB gzipped) that integrates seamlessly with your application’s UI without affecting performance or boot time. This lightweight design ensures that analytics tracking won’t interfere with your user experience or your conversion rates.
+
+### 🎯 Track What Matters
+
+Beyond standard page views, you can gain valuable insights into your visitors by creating custom events to track conversions and attribution.
+
+### 📣 Understand Campaign Performance
+
+Measure the impact of your campaigns using `utm` parameters. See how people find your app — whether through ads, newsletters, or social posts — and track which sources drive the most traffic, all from your dashboard.
+
+### 📊 Web Vitals Insights Built-In
+
+In addition to tracking user interactions, the Analytics can also automatically collect key performance metrics using [Web Vitals](https://web.dev/articles/vitals). These metrics are essential for measuring user experience accurately, aligning with how they are captured by Chrome and reported to other Google tools. This enhancement is valuable for developers aiming to optimize the UI performance of their applications, ensuring a smoother and more responsive user experience.
+
+### 🔍 Transparent & Open Source
+
+Juno is fully open source, including all its Analytics features, setting it apart from proprietary tools like Google Analytics.
+
+### 🧑🚀 Built for the Future
+
+Unlike any other analytics alternative or solution, Juno's long-term vision is to evolve into a decentralized organization (DAO), embracing a new paradigm in the analytics industry.
+
+---
+
+## Considerations
+
+In deploying Juno Analytics, it's important to understand various aspects that can affect its use and compliance.
+
+### GDPR and PECR compliance
+
+Juno Analytics refrains from generating persistent identifiers. It employs a random unique string to calculate unique visitor sessions on a website with each new visit.
+
+While we are not legal experts and the responsibility for adding analytics to your project ultimately rests with you, the above approach aligns our analytics with various cookie laws and privacy regulations, including GDPR and PECR.
+
+### Hosted on the blockchain
+
+All tracked data is securely stored on the [Internet Computer](https://internetcomputer.org/) blockchain, without any specific geolocation by default. However, if you select a European subnet when creating the Orbiter for Analytics, your data will be stored in Europe. This gives you flexibility based on your data residency needs.
+
+### No cross-dapp tracking
+
+Juno Analytics does not follow users across websites and applications they visit. All data remains isolated to a single Satellite.
+
+### You 100% own your data
+
+As with all services provided by Juno, you are the sole controller of your containers, and your data belongs exclusively to you.
+
+You have the capability to delete all collected data within your Analytics at any time by utilizing the [CLI](/docs/reference/cli.md).
+
+---
+
+## How does it work?
+
+To gather analytics for your dapps, you need to create a module called [orbiter](/docs/terminology.md#orbiter). Creating an Orbiter requires Cycles, and its price is defined in the [transaction costs](/docs/pricing.md#transaction-costs).
+
+Each Orbiter is used to collect analytics for one or multiple [satellites](/docs/terminology.md#satellite).
+
+Page views are collected anonymously and saved with a unique random ID for attribution. This data is organized based on its collection timestamp.
+
+You can also collect custom tracking events, which are organized in the same manner.
+
+Additionally, a unique random session ID is generated for all data. Each time a visitor visits your dapps, a new session is created.
+
+---
+
+## Limitation
+
+Currently, an Orbiter can store up to 500 GB of data.
+
+**Caution:**
+
+Similar to other analytics services, an Orbiter accepts data submitted from any source as long as the requested payload matches the expected format, and the targeted Satellite is configured to accept analytics. This is because the origin of the HTTP request cannot be accessed, for a valid reason – to prevent tracking. Therefore, calls cannot be limited to the domain of your dapps.
+
+Consequently, this leaves the canister open to potential attacks that can pollute the data and consume cycles. For this reason, we recommend the following:
+
+1.  Avoid topping up with excessive cycles; instead, adopt a lean approach.
+2.  Enable [monitoring](/docs/management/monitoring.md) to ensure your modules are automatically refueled and stay online.
+3.  Interpret the statistics provided by this feature with some reservation, similar to any other analytics data, considering potential inaccuracies.
 # Development
 
 Learn how to track page views, custom events, and performance metrics.
@@ -768,6 +864,88 @@ juno.config.js
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist"  },  orbiter: {    ids: {      production: "aaaa-bbbbb-ccccc-ddddd-cai",      development: "ffff-eeee-ddddd-ccccc-cai"    }  }});
 ```
 
+# Authentication
+
+Juno provides a secure, passwordless authentication framework built directly into your project. It supports multiple providers out of the box, including:
+
+*   [Google](/docs/build/authentication/google.md) - secure and familiar login
+*   [GitHub](/docs/build/authentication/github.md) - the login your developers already use
+*   [Internet Identity](/docs/build/authentication/internet-identity.md) - decentralized, privacy-preserving authentication
+*   [Passkeys](/docs/build/authentication/passkeys.md) - passwordless, device-native authentication using WebAuthn
+
+It integrates seamlessly with your [Datastore](/docs/build/datastore.md) and [Storage](/docs/build/storage.md) to power the rich features you are building.
+
+Whether you need decentralized login, device-native passkeys, or a familiar OAuth-based sign-in, Juno - by extension your project and its Satellite - handles the complexity for you so you can focus on your app instead of managing user accounts, sessions, and sensitive data.
+
+You can view and manage your users anytime in the [Authentication](https://console.juno.build/authentication)
+
+![An overview of the anonymous display of the users in Juno Console](/assets/images/authentication-ab02444b993f7be77642939b0437e586.webp)
+
+---
+
+## User Identity
+
+When someone signs in to your app, they get an identity.
+
+That user identity is what ties them to the data they create and the actions they take.
+
+Identities are **scoped to your app** - users can't be tracked across other sites or services.
+
+Depending on the sign-in method and what the user consents to, your app may also receive basic profile metadata such as a name or email address.
+
+---
+
+## Domain-Based Identity
+
+For privacy reasons and to prevent tracking across sites, a user's identity is tied to the domain where they sign in.
+
+### Passkeys
+
+With Passkeys, the identity is linked to the hostname the user signs in on. It works for that domain and its subdomains.
+
+For example, a passkey created on `hello.com` will also work on `www.hello.com`, but not on a different domain like `world.com`.
+
+You can change this in the sign-up options if you want it to cover a different domain than the one read from the browser's URL. For example, you may want to use the top-level domain when signing in on a subdomain. You cannot specify a totally different domain.
+
+---
+
+## Choosing a Provider
+
+Each authentication method has its strengths. The right choice depends not only on your app's technical needs, but also on what your users expect and feel comfortable with.
+
+*   **Google**:
+    
+    *   ✅ Familiar and frictionless login with a trusted provider.
+    *   ✅ Works across devices and browsers in all your applications.
+    *   ✅ Supports account recovery and multi-device sync.
+    *   🤔 Depends on Google's infrastructure and availability.
+    *   🤔 Slightly higher resource usage on your Satellite and per extension costs, since it must verify tokens issued by Google and sign identities.
+*   **GitHub**:
+    
+    *   ✅ Familiar login for developer-focused apps.
+    *   ✅ Works across devices and browsers in all your applications.
+    *   🤔 Requires a backend proxy to handle the OAuth flow securely.
+    *   ⚠️ You need to self-host the [Juno API](https://github.com/junobuild/api) or run your own compatible proxy.
+*   **Internet Identity**:
+    
+    *   ✅ Fully decentralized and privacy-preserving.
+    *   ✅ Prevents tracking between domains.
+    *   ✅ Supports account recovery.
+    *   🤔 Requires a brief context switch to an external window.
+    *   🤔 Domain scoping requires correct configuration.
+    *   🤔 When users choose to sign in with a third party (Google, Apple, etc.), it also depends on their infrastructure and availability. Plus, it relies on configured credentials owned by the DFINITY Foundation.
+    *   🤔 Less known outside the Internet Computer ecosystem.
+*   **Passkeys**:
+    
+    *   ✅ Passwordless and device-native (Face ID, Touch ID, etc.).
+    *   ✅ Familiar Web2-like UX with strong cryptographic security. ✅ Supports multi-device sync through password managers.
+    *   🤔 Users must distinguish between sign-up and sign-in flows.
+    *   🤔 Sync depends on Apple or Google password managers and their infrastructure.
+    *   ⚠️ Passkeys stored locally can be lost if the browser or device is reset.
+
+**Tip:**
+
+Many developers combine multiple providers - for example, offering Google as the default and Internet Identity or Passkeys as alternatives.
 # Local Development and E2E
 
 Implementing Google, Internet Identity, or Passkeys requires some setup and doesn't always fit best in a local development environment or E2E test suite. For example, they take various steps to complete and therefore consume repetitive time.
@@ -1689,6 +1867,79 @@ The worker also emits an event named `junoDelegationRemainingTime`, which provid
 document.addEventListener(  "junoDelegationRemainingTime",  ({ detail: remainingTime }) => {    // Display the remaining session duration to your users  },  { passive: true });
 ```
 
+# Datastore
+
+The Juno Datastore offers a simple key-value model, organized by collections containing documents, for managing structured data.
+
+Use it for structured data like user profiles, tasks, settings, or other data of your app stored as documents inside collections.
+
+**Tip:**
+
+For binary files like images or files, use the [Storage](/docs/build/storage.md) instead.
+
+![A screenshot of the Datastore in Juno&#39;s Console](/assets/images/datastore-0157af5a41e6910f0fb30a49552c4da1.webp)
+
+---
+
+## How does it work?
+
+Each [satellite](/docs/terminology.md#satellite) you create has a "Datastore", which can have as many [collections](/docs/build/datastore/collections.md) as you wish.
+
+A collection contains a list of documents, each identified by a textual key that you define.
+
+Each document is a record that holds the data you want to persist, along with timestamps (created and last updated), an associated owner (the creator of the document), and a version.
+
+The version is used to prevent data from being overwritten, and the associated owner is used to grant read and write permissions.
+
+Each document is identified by a `key` (unique within a collection).
+
+In essence, a "Datastore" functions as a keypair store.
+
+---
+
+## Limitation
+
+Each Satellite has specific memory limits. For detailed information, please refer to the related [documentation](/docs/miscellaneous/memory.md) page.
+
+As for documents, they can be up to 2MB in size. However, larger files can be saved in the [storage](/docs/build/storage.md).
+
+---
+
+## Configuration
+
+The Datastore supports various configuration options to fine-tune its behavior, such as resource limits and operational constraints. For a detailed explanation of all available options, see the [configuration](/docs/reference/configuration.md#datastore) section.
+
+---
+
+## Datastore vs Storage
+
+Juno gives you two ways to persist data. Both follow a collections-based architecture, but they serve different purposes and behave differently in practice.
+
+| Feature | **Datastore** (Structured) | **Storage** (Files) |
+| --- | --- | --- |
+| Use case | App state, user profiles, config | Images, files, generated user content |
+| Data format | JSON-like documents | Binary files |
+| Identifier | `key` (string you define) | `fullPath` (auto or custom) |
+| Accessible via web URL | No  | Yes |
+| Size limit | Max 2 MB per document | Chunked; limited by available Satellite space |
+
+**`key` vs `fullPath`**
+
+Both Datastore and Storage use a unique identifier per item — but they refer to different things and are used differently.
+
+*   **Datastore → `key`**:
+    
+    *   A unique string you assign to each document within a collection.
+    *   Used to retrieve, update, or delete a specific document.
+    *   Commonly a UUID (e.g. `crypto.randomUUID()`), a nanoid, or any meaningful string like a slug or user ID.
+    *   Example: `bafkb4by...`, `user:42`, or `config/theme`.
+*   **Storage → `fullPath`**:
+    
+    *   The full path of an asset used to build a valid web URL.
+    *   It's automatically generated from the uploaded filename unless explicitly set.
+    *   The `fullPath` must include the collection name (except for your app's frontend assets like HTML, JS, etc.).
+    *   Used to serve, list, or delete files.
+    *   Example: `/images/logo.png` (collection: `images`) or `/avatars/user42/profile.jpg` (collection: `avatars`).
 # Collections
 
 You can create or update a collection in the "Collections" tab in Juno's console under the [datastore](https://console.juno.build/datastore) view.
@@ -2015,6 +2266,90 @@ You never need to set this parameter in a browser context.
 import { getDoc } from "@junobuild/core";await getDoc({  collection: "my_collection_key",  key: "my_document_key",  satellite: {    identity: myIdentity,    satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",    container: true  }});
 ```
 
+# Functions
+
+Functions are a set of features enabling developers to extend the native capabilities of [Satellites](/docs/terminology.md#satellite) using Rust or TypeScript. They let you define serverless behaviors directly within your containerized environment.
+
+Triggered by events like document and asset operations, they allow you to automatically run backend code or assertions. These functions are shipped with your container and don’t require you to manage or scale your own servers.
+
+---
+
+## How does it work?
+
+Functions are defined using hooks that automatically respond to document and asset events such as create, update, or delete. This allows you to embed dynamic behavior directly into your container.
+
+A naive schema representation of a hook that is triggered when a document is set:
+
+![Functions hooks flow](/assets/images/functions-b7f754766a61062ffb5d9ebf5d8519a5.png)
+
+### Asynchronous Hook Spawning
+
+When a Function is triggered, it spawns hooks asynchronously, operating independently of the caller's action. This means that the execution of the hooks is initiated without waiting for a synchronous response, ensuring that the flow of update calls to the Satellite remains unhindered. Consequently, callers may receive feedback on their actions before the corresponding hooks have commenced their execution.
+
+### Error-Resilient Execution
+
+Hooks are initiated only when there are no errors in the preceding operations. This ensures a robust and dependable execution flow, promoting reliability and consistency in the functioning of Functions.
+
+### Optional
+
+Custom hooks are not active by default. You need to opt in to enable event-driven execution of your own logic.
+
+---
+
+## Available Hooks
+
+| Hook | Provider | Description |
+| --- | --- | --- |
+| `on_set_doc` | Datastore | Triggered when a document is created or updated. |
+| `on_set_many_docs` | Datastore | Activated for operations involving multiple documents. |
+| `on_delete_doc` | Datastore | Invoked when a document is deleted. |
+| `on_delete_many_docs` | Datastore | Used when multiple documents are deleted. |
+| `on_delete_filtered_docs` | Datastore | Invoked when documents are deleted according filters. |
+| `on_upload_asset` | Storage | Triggered during asset upload. |
+| `on_delete_asset` | Storage | Activated when an asset is deleted. |
+| `on_delete_many_assets` | Storage | Used for deleting multiple assets. |
+| `on_delete_filtered_assets` | Storage | Invoked when assets are deleted based on filters. |
+| `on_init` | Satellite | Called during the initialization of the Satellite. |
+| `on_post_upgrade` | Satellite | Invoked after the Satellite has been upgraded to a new version. |
+
+---
+
+## Assertions
+
+In addition to hooks, developers have the option to expand the native rule set of their Satellites by creating custom assertions. These assertions can be implemented similarly to hooks, with the key difference being that they are synchronous and must return a result indicating the outcome of the assertion.
+
+| Assertion | Provider | Description |
+| --- | --- | --- |
+| `assert_set_doc` | Datastore | Ensures a document can be created or updated. |
+| `assert_delete_doc` | Datastore | Verifies that a document can be deleted. |
+| `assert_upload_asset` | Storage | Confirms an asset upload can be committed. |
+| `assert_delete_asset` | Storage | Checks that an asset can be deleted. |
+
+---
+
+## Rust vs. TypeScript
+
+You can write serverless functions in either [Rust](/docs/build/functions/development/rust.md) or [TypeScript](/docs/build/functions/development/typescript.md), depending on your needs and project goals.
+
+Rust will always be more performant than TypeScript because TypeScript code is evaluated by the Rust runtime under the hood. This means that, no matter how optimized, functions written in Rust will consume fewer cycles and execute faster. That said, not every project needs maximum performance from day one. For smaller apps, rapid prototypes, or internal tools, TypeScript can be a perfect fit.
+
+The Rust ecosystem is also more mature, having been supported on the Internet Computer from the beginning. It benefits from better compatibility with libraries that support `wasm32-unknown-unknown`.
+
+TypeScript support was introduced on Juno in April 2025. While developer-friendly, it currently lacks Node.js polyfills, which means many npm libraries may not work out of the box. That said, we’re actively improving this — and if there's a specific package or feature you'd like to use, reach out. We're happy to explore adding support.
+
+It is worth to note that in both environments, there is no standard library or file system access. Functions like reading from or writing to disk aren’t available. Instead, e.g. Juno provides purpose-built features such as Storage.
+
+Despite their differences, Rust and TypeScript serverless functions are designed with interoperability in mind. The API surface and structure are intentionally aligned, so migrating from TypeScript to Rust later should feel intuitive and straightforward.
+
+### Summary
+
+| Feature / Consideration | Rust | TypeScript |
+| --- | --- | --- |
+| **Performance** | ✅ Highest, runs natively in WASM | ⚠️ Interpreted by Rust, slower |
+| **Library Support** | ✅ Many crates | ⚠️ Limited (only few Node.js polyfills currently supported) |
+| **Ease of Use** | ✅ Developer-friendly (with or without AI) | ✅ Developer-friendly (with or without AI) |
+| **Migration Path** | —   | ✅ Can migrate to Rust easily |
+| **Recommended For** | Production apps, performance-critical code | Prototypes, smaller tools, quick dev cycles |
 # Lifecycle
 
 Understand the full journey of Serverless Functions in Juno, from setup and development to deployment and maintenance.
@@ -2225,6 +2560,299 @@ Logs are stored in stable memory, accommodating up to 100 entries. Once this lim
 | `error` | Error | Logs an error message. |
 | `error_with_data` | Error | Logs an error message with additional serialized data. |
 
+# Development
+
+When you're ready to implement Functions within your Juno Satellite, you'll have a variety of event-driven macros at your disposal, enabling custom logic execution in response to specific actions. Here's how to implement each available Function:
+
+---
+
+## Hooks
+
+Hooks allow you to define event-driven logic that responds to specific actions within your Satellite. The following is a list of available hooks and their respective use cases.
+
+### on\_set\_doc
+
+Triggered when a document is created or updated in the datastore.
+
+*   Rust
+*   TypeScript
+
+```
+#[on_set_doc]async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {    // Custom logic for handling document creation or updates    Ok(())}
+```
+
+```
+export const onSetDoc = defineHook<OnSetDoc>({  collections: [],  run: async (context) => {    // Custom logic for handling document creation or updates  }});
+```
+
+### on\_set\_many\_docs
+
+Invoked for batch operations involving multiple document creations or updates.
+
+*   Rust
+*   TypeScript
+
+```
+#[on_set_many_docs]async fn on_set_many_docs(context: OnSetManyDocsContext) -> Result<(), String> {    // Custom logic for handling multiple document creations or updates    Ok(())}
+```
+
+```
+export const onSetManyDocs = defineHook<OnSetManyDocs>({  collections: [],  run: async (context) => {    // Custom logic for handling multiple document creations or updates  }});
+```
+
+### on\_delete\_doc
+
+Invoked when a document is deleted from the datastore.
+
+*   Rust
+*   TypeScript
+
+```
+#[on_delete_doc]async fn on_delete_doc(context: OnDeleteDocContext) -> Result<(), String> {    // Custom logic for handling document deletion    Ok(())}
+```
+
+```
+export const onDeleteDoc = defineHook<OnDeleteDoc>({  collections: [],  run: async (context) => {    // Custom logic for handling document deletion  }});
+```
+
+### on\_delete\_many\_docs
+
+Used when multiple documents are deleted in a batch operation.
+
+*   Rust
+*   TypeScript
+
+```
+#[on_delete_many_docs]async fn on_delete_many_docs(context: OnDeleteManyDocsContext) -> Result<(), String> {    // Custom logic for handling the deletion of multiple documents    Ok(())}
+```
+
+```
+export const onDeleteManyDocs = defineHook<OnDeleteManyDocs>({  collections: [],  run: async (context) => {    // Custom logic for handling the deletion of multiple documents  }});
+```
+
+### on\_delete\_filtered\_docs
+
+Invoked when documents are deleted according to specified filters in the datastore.
+
+*   Rust
+*   TypeScript
+
+```
+#[on_delete_filtered_docs]async fn on_delete_filtered_docs(context: OnDeleteFilteredDocsContext) -> Result<(), String> {    // Custom logic for handling the deletion of filtered documents    Ok(())}
+```
+
+```
+export const onDeleteFilteredDocs = defineHook<OnDeleteFilteredDocs>({  collections: [],  run: async (context) => {    // Custom logic for handling the deletion of filtered documents  }});
+```
+
+### on\_upload\_asset
+
+Triggered during the process of uploading an asset.
+
+*   Rust
+*   TypeScript
+
+```
+#[on_upload_asset]async fn on_upload_asset(context: OnUploadAssetContext) -> Result<(), String> {    // Custom logic for handling asset uploads    Ok(())}
+```
+
+```
+export const onUploadAsset = defineHook<OnUploadAsset>({  collections: [],  run: async (context) => {    // Custom logic for handling asset uploads  }});
+```
+
+### on\_delete\_asset
+
+Activated when an asset is removed from the datastore.
+
+*   Rust
+*   TypeScript
+
+```
+#[on_delete_asset]async fn on_delete_asset(context: OnDeleteAssetContext) -> Result<(), String> {    // Custom logic for handling asset deletion    Ok(())}
+```
+
+```
+export const onDeleteAsset = defineHook<OnDeleteAsset>({  collections: [],  run: async (context) => {    // Custom logic for handling asset deletion  }});
+```
+
+### on\_delete\_many\_assets
+
+Used for operations that involve deleting multiple assets in a batch.
+
+*   Rust
+*   TypeScript
+
+```
+#[on_delete_many_assets]async fn on_delete_many_assets(context: OnDeleteManyAssetsContext) -> Result<(), String> {    // Custom logic for handling the deletion of multiple assets    Ok(())}
+```
+
+```
+export const onDeleteManyAssets = defineHook<OnDeleteManyAssets>({  collections: [],  run: async (context) => {    // Custom logic for handling the deletion of multiple assets  }});
+```
+
+### on\_delete\_filtered\_assets
+
+Invoked when assets are deleted according to specified filters in the storage.
+
+*   Rust
+*   TypeScript
+
+```
+#[on_delete_filtered_assets]async fn on_delete_filtered_assets(context: OnDeleteFilteredAssetsContext) -> Result<(), String> {    // Custom logic for handling the deletion of filtered assets    Ok(())}
+```
+
+```
+export const onDeleteFilteredAssets = defineHook<OnDeleteFilteredAssets>({  collections: [],  run: async (context) => {    // Custom logic for handling the deletion of filtered assets  }});
+```
+
+### on\_init
+
+*   Rust
+*   TypeScript
+
+Called during the initialization of the Satellite. This hook is invoked when the Satellite is first deployed and can be used to set up initial configurations or resources.
+
+```
+#[on_init]fn on_init() -> Result<(), String> {    // Custom logic for initialization    Ok(())}
+```
+
+Unlike datastore or storage hooks, `on_init` cannot be scoped to specific collections or assets, as it is meant to handle global initialization logic.
+
+This feature is not enabled by default. To use it, you’ll need to opt in by updating your `Cargo.toml` file.
+
+```
+[dependencies]junobuild-satellite = { version = "*", features = ["default", "on_init"] }
+```
+
+This hook is not available when writing functions in TypeScript.
+
+### on\_post\_upgrade
+
+*   Rust
+*   TypeScript
+
+Invoked after the Satellite has been upgraded to a new version. This hook is typically used to manage migration tasks, or starting custom processes like timers.
+
+```
+#[on_post_upgrade]fn on_post_upgrade() -> Result<(), String> {    // Custom logic for post-upgrade tasks    Ok(())}
+```
+
+Similar to `on_init`, the `on_post_upgrade` hook cannot be scoped to collections or assets. It operates globally to handle upgrade-related operations.
+
+This feature is not enabled by default. To use it, you’ll need to opt in by updating your `Cargo.toml` file.
+
+```
+[dependencies]junobuild-satellite = { version = "*", features = ["default", "on_post_upgrade"] }
+```
+
+This hook is not available when writing functions in TypeScript.
+
+---
+
+## Assertions
+
+Assertions enable validation checks before specific actions are executed within your Satellite. The following is a list of available assertions and their functionalities.
+
+### assert\_set\_doc
+
+Ensures a document can be created or updated.
+
+*   Rust
+*   TypeScript
+
+```
+#[assert_set_doc]fn assert_set_doc(_context: AssertSetDocContext) -> Result<(), String> {    // Custom logic for asserting a document's creation or update is possible    // Return an error if the condition fails to prevent the action    Ok(())}
+```
+
+```
+export const assertSetDoc = defineAssert<AssertSetDoc>({  collections: [],  assert: (context) => {    // Custom logic for asserting a document's creation or update is possible    // Throw an error if the condition fails to prevent the action  }});
+```
+
+### assert\_delete\_doc
+
+Verifies that a document can be deleted.
+
+*   Rust
+*   TypeScript
+
+```
+#[assert_delete_doc]fn assert_delete_doc(context: AssertDeleteDocContext) -> Result<(), String> {    // Custom logic for asserting a document can be deleted    // Return an error if the condition fails to prevent the action    Ok(())}
+```
+
+```
+export const assertDeleteDoc = defineAssert<AssertDeleteDoc>({  collections: [],  assert: (context) => {    // Custom logic for asserting a document can be deleted    // Throw an error if the condition fails to prevent the action  }});
+```
+
+### assert\_upload\_asset
+
+Confirms an asset upload can be committed.
+
+*   Rust
+*   TypeScript
+
+```
+#[assert_upload_asset]fn assert_upload_asset(_context: AssertUploadAssetContext) -> Result<(), String> {    // Custom logic for asserting an asset upload is possible    // Return an error if the condition fails to prevent the action    Ok(())}
+```
+
+```
+export const assertUploadAsset = defineAssert<AssertUploadAsset>({  collections: [],  assert: (context) => {    // Custom logic for asserting an asset upload is possible    // Throw an error if the condition fails to prevent the action  }});
+```
+
+### assert\_delete\_asset
+
+Checks that an asset can be deleted.
+
+*   Rust
+*   TypeScript
+
+```
+#[assert_delete_asset]fn assert_delete_asset(_context: AssertDeleteAssetContext) -> Result<(), String> {    // Custom logic for asserting an asset can be deleted    // Return an error if the condition fails to prevent the action    Ok(())}
+```
+
+```
+export const assertDeleteAsset = defineAssert<AssertDeleteAsset>({  collections: [],  assert: (context) => {    // Custom logic for asserting an asset can be deleted    // Throw an error if the condition fails to prevent the action  }});
+```
+
+---
+
+## When the Functions Run
+
+*   Rust
+*   TypeScript
+
+When no attributes are provided, the hook is triggered for any document set in any collection. For better control and performance, it’s recommended to scope the hook to a specific list of `collections`.
+
+This behavior applies to **all hooks and assertions**, except for the lifecycle hooks such as `on_init` or `on_post_upgrade`, which operate globally.
+
+A hook is only executed if the function is declared and exported. Additionally, the `collections` field must be defined. If it's empty, the hook will not run.
+
+This behavior applies to **all hooks and assertions**, except for the lifecycle hooks such as `on_init` or `on_post_upgrade`, which operate globally.
+
+*   Rust
+*   TypeScript
+
+```
+#[on_set_doc(collections = ["demo"])]async fn on_set_doc(context: OnSetDocContext) -> Result<(), String> {    // Custom logic for handling document creation or updates    Ok(())}
+```
+
+The attributes accept a list of comma-separated collections. If the attribute array is left empty, the hook will never be called.
+
+```
+export const onSetDoc = defineHook<OnSetDoc>({  collections: ["demo"],  run: async (context) => {    // Custom logic for handling document creation or updates  }});
+```
+
+The `collections` attribute accepts a list of comma-separated collection names.
+
+---
+
+## Further Resources
+
+*   Rust
+*   TypeScript
+
+For practical use cases, check out the [Examples](/docs/guides/rust.md) page with sample projects and resources available on GitHub.
+
+For practical use cases, check out the [Examples](/docs/guides/typescript.md) page with sample projects and resources available on GitHub.
 # Rust
 
 This page covers advanced options for writing serverless functions in Rust.
@@ -2387,6 +3015,23 @@ This version is embedded into the compiled Wasm binary and displayed in the Juno
 
 You can use any versioning scheme that suits your development workflow (e.g. `0.1.0`, `1.0.0-beta`, `2025.04.18`...).
 
+# Hosting
+
+Juno Hosting makes it easy to put your project online: fast, secure, and reliable by default.
+
+Deploy your web applications or static sites directly to a Satellite using [GitHub Actions](/docs/guides/github-actions.md). Your builds run automatically, so shipping updates feels as simple as pushing code.
+
+Prefer running things locally? You can also use the [CLI](/docs/guides/manual-deployment.md).
+
+![An overview of the custom domains once configured](/assets/images/hosting-6a7825c7b43defaa3854209bebc03ff0.webp)
+
+---
+
+## Using your Custom Domain
+
+Want to maintain your unique brand identity? You can use your own domain - like `yolo.com` or `hello.world.com` - instead of the default provisioned address.
+
+This comes with an automatically generated SSL certificate for each domain, ensuring secure connections for your users.
 # Configuration
 
 You can customize your hosting environment to fit your needs, including:
@@ -2737,6 +3382,83 @@ If you're having trouble, feel free to reach out for assistance—we’re happy 
 
 If one of the status `Pending...` is reached, the console will automatically refresh the status every few seconds until your domain is available.
 
+# Storage
+
+Juno Storage is for files — like images or other user-generated content.
+
+It provides a simple way to upload, serve, and delete files, with support for multiple encodings and custom headers.
+
+**Tip:**
+
+For structured data, use the [Datastore](/docs/build/datastore.md) instead.
+
+![A screenshot of the Storage in Juno&#39;s Console](/assets/images/storage-e26671e1f672a816f3f99ee9947a7920.webp)
+
+---
+
+## How does it work?
+
+Each [satellite](/docs/terminology.md#satellite) you create includes a "Storage" provider, which can store assets (images, documents, etc.) that are automatically made available on the internet.
+
+Assets are stored in [collections](/docs/build/storage/collections.md), and you can create as many as you need.
+
+Each asset within a collection is identified by a `path` -- e.g. `/images/a-user-image.jpg` -- unique within all collections.
+
+Those assets hold the data you want to persist on chain, along with metadata (the "owner" or creator of the asset).
+
+**Caution:**
+
+Unless you use the optional [`token` parameter](/docs/build/storage/development.md#protected-asset) to persist an asset in your Satellite and make its URL difficult to guess, any asset stored in Juno Storage will be publicly available on the internet.
+
+---
+
+## Limitation
+
+Each Satellite has specific memory limits. For detailed information, please refer to the related [documentation](/docs/miscellaneous/memory.md) page.
+
+There is no specific limit on the size of assets (files) that can be uploaded to Juno, unless you choose to set an optional [rule](/docs/build/storage/collections.md#permissions) to restrict it.
+
+---
+
+## Configuration
+
+The Storage system offers various configuration options to fine-tune its behavior, including HTTP headers, redirects, and iFrame support. These settings help optimize how stored files are accessed and delivered.
+
+If you're configuring the hosting behavior of your site, start by checking out the [Hosting Configuration](/docs/build/hosting/configuration.md) section, as Storage is an integral part of the hosting system.
+
+For a complete list of available Storage options, refer to the [configuration](/docs/reference/configuration.md) section.
+
+---
+
+## Datastore vs Storage
+
+Juno gives you two ways to persist data. Both follow a collections-based architecture, but they serve different purposes and behave differently in practice.
+
+| Feature | **Datastore** (Structured) | **Storage** (Files) |
+| --- | --- | --- |
+| Use case | App state, user profiles, config | Images, files, generated user content |
+| Data format | JSON-like documents | Binary files |
+| Identifier | `key` (string you define) | `fullPath` (auto or custom) |
+| Accessible via web URL | No  | Yes |
+| Size limit | Max 2 MB per document | Chunked; limited by available Satellite space |
+
+**`key` vs `fullPath`**
+
+Both Datastore and Storage use a unique identifier per item — but they refer to different things and are used differently.
+
+*   **Datastore → `key`**:
+    
+    *   A unique string you assign to each document within a collection.
+    *   Used to retrieve, update, or delete a specific document.
+    *   Commonly a UUID (e.g. `crypto.randomUUID()`), a nanoid, or any meaningful string like a slug or user ID.
+    *   Example: `bafkb4by...`, `user:42`, or `config/theme`.
+*   **Storage → `fullPath`**:
+    
+    *   The full path of an asset used to build a valid web URL.
+    *   It's automatically generated from the uploaded filename unless explicitly set.
+    *   The `fullPath` must include the collection name (except for your app's frontend assets like HTML, JS, etc.).
+    *   Used to serve, list, or delete files.
+    *   Example: `/images/logo.png` (collection: `images`) or `/avatars/user42/profile.jpg` (collection: `avatars`).
 # Collections
 
 You can create or update a collection in the "Collections" tab in Juno's console under the [storage](https://console.juno.build/storage) view.
@@ -3127,6 +3849,7 @@ You never need to set this parameter in a browser context.
 import { getAsset } from "@junobuild/core";await getAsset({  collection: "my_collection_key",  fullPath: "/images/logo.png",  satellite: {    identity: myIdentity,    satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",    container: true  }});
 ```
 
+undefined
 # What makes Juno a great Heroku alternative
 
 Heroku introduced a simple way to deploy apps — push code, and it ran in the cloud. It remains a solid choice for long-running, traditional web applications.
@@ -3622,6 +4345,7 @@ Then **Juno is a powerful Vercel alternative** — the same serverless experienc
 
 Ready to explore Juno? [Start building](/docs/intro.md)
 
+undefined
 # Frontend
 
 Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more.
@@ -3666,6 +4390,37 @@ Write serverless backend logic for your app using TypeScript or Rust. These exam
 
 3 items](/docs/examples/functions/typescript.md)
 
+# Frontend
+
+Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more.
+
+[## 📄️ Next.js
+
+A fullstack note-taking app built with Next.js, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/nextjs.md)
+
+[## 📄️ React TypeScript
+
+A fullstack note-taking app built with React, TypeScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/react-typescript.md)
+
+[## 📄️ React JavaScript
+
+A fullstack note-taking app built with React, JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/react-javascript.md)
+
+[## 📄️ Vue
+
+A fullstack note-taking app built with Vue, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/vue.md)
+
+[## 📄️ SvelteKit
+
+A fullstack note-taking app built with SvelteKit, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/sveltekit.md)
+
+[## 📄️ Angular
+
+A fullstack note-taking app built with Angular, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/angular.md)
+
+[## 📄️ Vanilla JavaScript
+
+A fullstack note-taking app built with vanilla JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/vanilla-javascript.md)
 # Angular Example
 
 This project is a note-taking app template built with **Angular**, **TypeScript**, and **Tailwind CSS**, designed to demonstrate integration with Juno for app development. It showcases authentication, data storage, and file storage using Juno's Satellite container.
@@ -4573,6 +5328,17 @@ The following functions from `@junobuild/core` are used in this example:
 | `uploadFile` | Upload a file to storage | [`src/components/Modal.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Modal.vue) | [Upload file](/docs/build/storage/development.md#upload-file) |
 | `deleteAsset` | Delete a file from storage | [`src/components/Delete.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Delete.vue) | [Delete asset](/docs/build/storage/development.md#delete-asset) |
 
+# Functions
+
+Write serverless backend logic for your app using TypeScript or Rust. These examples show how to use hooks, assertions, and common function patterns on Juno.
+
+[## 🗃️ Rust
+
+4 items](/docs/examples/functions/rust.md)
+
+[## 🗃️ TypeScript
+
+3 items](/docs/examples/functions/typescript.md)
 # Rust
 
 Examples of writing serverless functions in Rust for Juno. Includes patterns like custom assertions, data manipulation and calls.
@@ -4609,6 +5375,25 @@ An example demonstrating how to modify and re-save documents in Juno Satellites 
 
 An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in TypeScript using Juno Satellites.](/docs/examples/functions/typescript/canister-calls.md)
 
+# Rust
+
+Examples of writing serverless functions in Rust for Juno. Includes patterns like custom assertions, data manipulation and calls.
+
+[## 📄️ Assertion
+
+An example demonstrating how to write custom assertions in Rust for Juno serverless functions.](/docs/examples/functions/rust/assertion.md)
+
+[## 📄️ Mutation
+
+An example demonstrating how to modify and re-save documents in Juno Satellites using Rust hooks.](/docs/examples/functions/rust/mutating-docs.md)
+
+[## 📄️ Asset Generation
+
+An example showing how to dynamically generate and store assets (like JSON) in Storage using Rust in Juno Satellites.](/docs/examples/functions/rust/generating-assets.md)
+
+[## 📄️ Canister Calls
+
+An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in Rust using Juno Satellites.](/docs/examples/functions/rust/canister-calls.md)
 # Rust Assertion Example
 
 This example demonstrates how to write a **custom assertion** in **Rust** for a Juno **serverless function**. It shows how to intercept and validate data operations—such as rejecting specific content—before it's written to the datastore.
@@ -5308,6 +6093,21 @@ These crates are used to build and extend serverless functions in Rust with Juno
 *   [junobuild-shared](https://docs.rs/junobuild-shared): Shared types and helpers for Juno projects. Used by all containers including the Console.
 *   [junobuild-storage](https://docs.rs/junobuild-storage): Storage helpers for working with assets and HTTP headers in Juno.
 
+# TypeScript
+
+Examples of writing serverless functions in TypeScript for Juno. Includes patterns like custom assertions, data manipulation and calls.
+
+[## 📄️ Assertion
+
+An example demonstrating how to write custom assertions in TypeScript for Juno serverless functions.](/docs/examples/functions/typescript/assertion.md)
+
+[## 📄️ Mutation
+
+An example demonstrating how to modify and re-save documents in Juno Satellites using TypeScript hooks.](/docs/examples/functions/typescript/mutating-docs.md)
+
+[## 📄️ Canister Calls
+
+An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in TypeScript using Juno Satellites.](/docs/examples/functions/typescript/canister-calls.md)
 # TypeScript Assertion Example
 
 This example demonstrates how to write a **custom assertion** in **TypeScript** for a Juno **serverless function**. It shows how to intercept and validate data operations—such as rejecting specific content—before it's written to the datastore.
@@ -5813,6 +6613,7 @@ It’s a great reference for more advanced setups and orchestration.
 *   [Configuration Reference](/docs/reference/configuration.md)
 *   [Datastore Collections](/docs/build/datastore/collections.md)
 
+undefined
 # Using Juno with AI
 
 If you're using AI to build with Juno, you can use our `llms.txt` files to help AI tools better understand the platform.
@@ -6511,6 +7312,17 @@ Learn how to integrate Juno with Vue. Follow our quickstart guide to set up your
 
 Learn how to deploy your Vue project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/vue/deploy.md)
 
+# Angular
+
+Explore how to create a Juno project developed with Angular.
+
+[## 📄️ Build
+
+Learn how to integrate Juno with Angular. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/angular/build.md)
+
+[## 📄️ Deploy
+
+Learn how to deploy your Angular project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/angular/deploy.md)
 # Build an Angular App
 
 Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
@@ -6768,6 +7580,17 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
+# Astro
+
+Explore how to create a Juno project developed with Astro.
+
+[## 📄️ Build
+
+Learn how to integrate Juno with Astro. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/astro/build.md)
+
+[## 📄️ Deploy
+
+Learn how to deploy your Astro project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/astro/deploy.md)
 # Build an Astro App
 
 This guide provides quickstart instructions for integrating Juno and building a feature-rich application. It also includes guidance on developing locally.
@@ -6989,6 +7812,13 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
+# Docusaurus
+
+Explore how to deploy a Juno project developed with Docusaurus.
+
+[## 📄️ Deploy
+
+Learn how to deploy your Docusaurus project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/docusaurus/deploy.md)
 # Deploy a Docusaurus Site
 
 Use this guide to deploy and host your project to production.
@@ -7092,6 +7922,106 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
+# GitHub Actions
+
+You can leverage the Juno [CLI](/docs/reference/cli.md) to perform tasks within GitHub Actions.
+
+This guide shows you how to use the [junobuild/juno-action](https://github.com/junobuild/juno-action) to deploy your frontend assets, build and publish serverless functions, and optionally upgrade your WASM container.
+
+---
+
+## 1\. Configure your project
+
+If you already have a `juno.config` file at the root of your project, you can skip to the next chapter. Otherwise, you need to create one ([manually](#configuration-file-example)) or by running:
+
+```
+npx @junobuild/cli init --minimal
+```
+
+The configuration file can be a TypeScript, JavaScript, or JSON file (`juno.config.ts`, `juno.config.js|.mjs`, or `juno.config.json`), depending on your preference.
+
+At a minimum, the configuration file must include the following:
+
+*   **Satellite ID**: A unique identifier for your Satellite.
+*   **Source**: The directory containing the built assets for your Satellite. This is typically the output folder of your build process, generated after running a command like `npm run build`.
+
+### Satellite ID
+
+Your Satellite ID can be found in the 'Overview' tab.
+
+![A screenshot of the Overview tab in Juno Console where the Satellite ID finds place](/assets/images/overview-13ccdf2cda43e8ce477508c9776543b3.png)
+
+### Source
+
+Commonly, or if you are using the templates, these are the folders that can be set as the `source` field:
+
+| Framework | Source |
+| --- | --- |
+| Next.js | `out` |
+| React, Astro, or Vue | `dist` |
+| SvelteKit | `build` |
+| Angular | `dist/<your-project-name>/browser` |
+
+### Configuration File Example
+
+Here’s an example of configuration file:
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai" // Replace with your satellite ID    },    source: "dist", // Replace with your build output directory    predeploy: ["npm run build"] // Adjust based on your package manager  }});
+```
+
+For detailed information about all available configuration options, refer to the [configuration](/docs/reference/configuration.md) section.
+
+---
+
+## 2\. Connect Your Repository
+
+By default, your Satellite does not accept any deployments from unknown source. To enable automation from GitHub Actions, you need to authorize which repositories are allowed to trigger them.
+
+### Using the Console
+
+1.  Go to the Juno [Console](https://console.juno.build).
+2.  Select your Satellite.
+3.  Navigate to the **Deployments** tab.
+4.  Click **Connect repository** and follow the steps to register your repository and, optionally, restrict deployments to specific references.
+
+![A screenshot of the Deployments page in Juno Console when the Satellite is not yet configured](/assets/images/deployments-config-cf0c3b6440e3528c713c106bab3fded3.png)
+
+Once configured, the Console will start displaying your future deployments from GitHub Actions.
+
+![A screenshot of the Deployments page in Juno Console with few executed worfklows](/assets/images/deployments-workflows-36e9e685e36149aa3fce64f190e44ebf.png)
+
+### Using the CLI
+
+You can also configure automation via the CLI. Refer to the [CLI configuration](/docs/reference/cli.md) documentation for details.
+
+**Note:**
+
+Juno uses GitHub's OpenID Connect (OIDC) to authenticate your workflows without requiring any secret tokens. GitHub automatically generates short-lived tokens for each workflow run, which Juno verifies to authorize deployments.
+
+The duration (up to one hour) and role of those short-lived tokens can also be configured.
+
+---
+
+## 3\. Create the GitHub Action
+
+You can use GitHub Actions to automate different parts of your Juno deployment workflow:
+
+*   🪄 Deploy frontend assets to your Satellite. [Learn how.](/docs/guides/github-actions/deploy-frontend.md)
+*   🛠️ Build and publish serverless functions (TypeScript or Rust). [Learn how.](/docs/guides/github-actions/publish-functions.md)
+*   ⚠️ Optionally upgrade your Satellite's WASM container. [Learn how.](/docs/guides/github-actions/upgrade-functions.md)
+
+Each task can be performed independently or combined, depending on your project setup.
+
+---
+
+## Environment Variables
+
+When using the Actions, you can configure the following environment variables:
+
+| Environment Variable | Mandatory | Description |
+| --- | --- | --- |
+| `PROJECT_PATH` | No  | The path to the folder containing the `juno.config` file if it doesn't exist at the root of your repository. e.g. `./my-app-subfolder`. |
 # Deploy Frontend
 
 This section describes how to deploy the frontend of your project using GitHub Actions. The frontend typically includes all client-side assets — such as HTML, CSS, JavaScript, and other static files—that are served to users.
@@ -7291,6 +8221,17 @@ name: Upgrade Satellite Containeron:  workflow_dispatch:jobs:  upgrade:    runs-
 name: Upgrade Satellite Containeron:  workflow_dispatch:jobs:  upgrade:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - uses: pnpm/action-setup@v4        with:          version: 10      - name: Install Dependencies        run: pnpm i --frozen-lockfile      - name: Build        uses: junobuild/juno-action@full        with:          args: functions build      - name: Upgrade        uses: junobuild/juno-action@full        with:          args: functions upgrade        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
+# Next.js
+
+Explore how to create a Juno project developed with Next.js.
+
+[## 📄️ Build
+
+Learn how to integrate Juno with Next.js. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/nextjs/build.md)
+
+[## 📄️ Deploy
+
+Learn how to deploy your Next.js project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/nextjs/deploy.md)
 # Build a Next.js App
 
 Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
@@ -7566,6 +8507,17 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
+# React
+
+Explore how to create a Juno project developed with React.
+
+[## 📄️ Build
+
+Learn how to integrate Juno with React. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/react/build.md)
+
+[## 📄️ Deploy
+
+Learn how to deploy your React project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/react/deploy.md)
 # Build a React App
 
 Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
@@ -7823,6 +8775,17 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
+# SvelteKit
+
+Explore how to create a Juno project developed with SvelteKit.
+
+[## 📄️ Build
+
+Learn how to integrate Juno with SvelteKit. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/sveltekit/build.md)
+
+[## 📄️ Deploy
+
+Learn how to deploy your SvelteKit project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/sveltekit/deploy.md)
 # Build a SvelteKit App
 
 Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
@@ -8114,6 +9077,17 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
+# Vue
+
+Explore how to create a Juno project developed with Vue.
+
+[## 📄️ Build
+
+Learn how to integrate Juno with Vue. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/vue/build.md)
+
+[## 📄️ Deploy
+
+Learn how to deploy your Vue project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/vue/deploy.md)
 # Build a Vue App
 
 Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
@@ -8371,6 +9345,7 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
+undefined
 # Monitoring
 
 Keeping your modules running smoothly is essential for any application. The monitoring feature ensures your modules — Satellites and Orbiter (Analytics) — stay operational by automatically refilling cycles when they run low. This helps prevent unexpected downtime, allowing you to focus on building and growing your product without worrying about cycle balances.
@@ -8540,6 +9515,7 @@ In addition to standard recovery, snapshots can also be uploaded to reapply the 
 
 This should be used carefully though, as snapshots also include elements such as public access keys and user IDs. Applying one module's snapshot to another may cause unintended side effects.
 
+undefined
 # Access Keys
 
 Access keys play a crucial role in granting permissions to Mission Controls, Satellites or Orbiters within Juno.
@@ -9223,6 +10199,7 @@ It's recommended to rename the newly added passkey in Internet Identity to keep 
 
 A maximum of 8 passkeys can be assigned to an identity, allowing you to share a project with up to 7 other people.
 
+undefined
 # CLI
 
 The Juno CLI provides a variety of tools for managing and deploying projects.
@@ -10588,6 +11565,21 @@ The default value is `0n` - i.e. no particular allocation.
 
 If you set the compute allocation to `50n`, the module will be allocated 50% of the compute capacity. This ensures that the module has a guaranteed share of the compute resources, potentially improving its performance by ensuring it has sufficient processing power for its operations.
 
+# Emulator
+
+The emulator provides a complete local environment to build, test, and run your project without deploying anything live. There are two images available, depending on your needs:
+
+[## 📄️ Skylab
+
+The junobuild/skylab image is an all-in-one emulator for local development. It bundles everything you need to build, test, and explore the Juno ecosystem:](/docs/reference/emulator/skylab.md)
+
+[## 📄️ Satellite
+
+Unlike Skylab, the image junobuild/satellite runs a single Satellite in a headless environment, without the Console UI. It always mounts the same Satellite, using the fixed ID jx5yt-yyaaa-aaaal-abzbq-cai.](/docs/reference/emulator/satellite.md)
+
+[## 📄️ Infrastructure
+
+In the local environment, several services (which can be either canisters or apps on the Internet Computer) are automatically spun up. This ensures that developers have everything they need to start building right out of the box. Thanks to built-in plugins and tooling, these services are automatically integrated into the environment, eliminating the need for developers to manually manage their bindings.](/docs/reference/emulator/infrastructure.md)
 # Infrastructure
 
 In the local environment, several services (which can be either canisters or apps on the Internet Computer) are automatically spun up. This ensures that developers have everything they need to start building right out of the box. Thanks to built-in plugins and tooling, these services are automatically integrated into the environment, eliminating the need for developers to manually manage their bindings.
@@ -10666,6 +11658,17 @@ When running Skylab, the Console UI is available at [http://localhost:5866](http
 
 This is the same interface used in production at [console.juno.build](https://console.juno.build), allowing you to create Satellites and Orbiters, inspect your wallet, manage your Datastore and Storage, etc.
 
+# Functions
+
+API reference for writing serverless functions in Rust or TypeScript.
+
+[## 🗃️ Rust
+
+4 items](/docs/reference/functions/rust.md)
+
+[## 🗃️ TypeScript
+
+5 items](/docs/reference/functions/typescript.md)
 # Rust
 
 API reference for writing serverless functions in Rust.
@@ -10710,6 +11713,25 @@ The following functions can be used to interact with well-known Internet Compute
 
 The TypeScript runtime used in Juno does not provide full Node.js support. Polyfills are added iteratively to keep the environment stable and predictable.](/docs/reference/functions/typescript/node.md)
 
+# Rust
+
+API reference for writing serverless functions in Rust.
+
+[## 📄️ SDK
+
+The SDK is provided by the junobuild-satellite crate.](/docs/reference/functions/rust/sdk.md)
+
+[## 📄️ Utils
+
+All utilities on this page are provided by the junobuild-utils crate.](/docs/reference/functions/rust/utils.md)
+
+[## 📄️ IC-CDK
+
+In the context of Juno, it enables your Satellite to perform low-level operations such as logging, accessing your Satellite identities, or communicating with other canisters — all essential when writing advanced serverless functions.](/docs/reference/functions/rust/ic-cdk.md)
+
+[## 📄️ Crate Versions
+
+This page lists the crate versions for each Juno release, to help you upgrade your Rust Serverless Functions. If a release is not listed, no crate updates were required for that version.](/docs/reference/functions/rust/crate-versions.md)
 # Crate Versions
 
 This page lists the crate versions for each Juno release, to help you upgrade your Rust Serverless Functions. If a release is not listed, no crate updates were required for that version.
@@ -11148,6 +12170,29 @@ pub fn encode_doc_data_to_string<T: Serialize>(    data: &T,) -> Result<String, 
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-utils/latest/junobuild_utils/fn.encode_doc_data_to_string.html)
 
+# TypeScript
+
+API reference for writing serverless functions with TypeScript.
+
+[## 📄️ SDK
+
+The SDK is provided by the @junobuild/functions library.](/docs/reference/functions/typescript/sdk.md)
+
+[## 📄️ Utils
+
+All utilities on this page are provided by the @junobuild/functions library.](/docs/reference/functions/typescript/utils.md)
+
+[## 📄️ IC-CDK
+
+Juno exposes a growing set of these features for TypeScript, allowing you to build serverless functions that interact with the IC using a familiar developer experience.](/docs/reference/functions/typescript/ic-cdk.md)
+
+[## 📄️ Canisters
+
+The following functions can be used to interact with well-known Internet Computer canisters from your serverless functions.](/docs/reference/functions/typescript/canisters.md)
+
+[## 📄️ Node.js
+
+The TypeScript runtime used in Juno does not provide full Node.js support. Polyfills are added iteratively to keep the environment stable and predictable.](/docs/reference/functions/typescript/node.md)
 # Canisters
 
 The following functions can be used to interact with well-known Internet Computer canisters from your serverless functions.
@@ -11421,7 +12466,7 @@ import { call } from "@junobuild/functions/ic-cdk";import {  IcManagementIdl,  t
 
 *   All canister classes use the [call](/docs/reference/functions/typescript/ic-cdk.md#call) function internally to communicate with the Internet Computer.
 *   The caller's identity is automatically determined by the serverless function execution context.
-*   For admin operations, you can use the [id](/docs/reference/functions/typescript/ic-cdk.md#id) function to get the Satellite's principal, which has admin privileges.
+*   For admin operations, you can use the [id](/docs/reference/functions/typescript/ic-cdk.md#canisterself) function to get the Satellite's principal, which has admin privileges.
 *   Error handling follows the Result pattern: check for `Ok` or `Err` properties in the response.
 
 # IC-CDK
@@ -12191,6 +13236,7 @@ function encodeDocData<T>(data: T): Uint8Array;
 
 *   A `Uint8Array` containing the encoded binary data.
 
+undefined
 # FAQ
 
 ### Where do I find support?
