@@ -514,10 +514,7 @@ const generateLlmsTxtFull = async ({
 
   const content = groupedRoutes
     .map(
-      ([
-        key,
-        { children, title }
-      ]) => `${buildMarkdown({ path: key, title })}\n\n
+      ([key, { children, title }]) => `${buildMarkdown({ path: key, title })}
 ${children.map(buildMarkdown).join("\n\n")}`
     )
     .join("\n\n");
