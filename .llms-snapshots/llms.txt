@@ -12,11 +12,13 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Build - Analytics
   
+- [Analytics](https://juno.build/docs/build/analytics.md): Juno Analytics offers a privacy-focused, cookie-free, open-source web3 analytics solution. Ensure user anonymity while gaining valuable insights.
 - [Development](https://juno.build/docs/build/analytics/development.md): Learn how to track page views, custom events, and performance metrics.
 - [Setup](https://juno.build/docs/build/analytics/setup.md): This section covers how to integrate and configure Juno Analytics in your app or website.
 
 ## Build - Authentication
   
+- [Authentication](https://juno.build/docs/build/authentication.md): Learn how to securely identify users and save their data in containers you own and control using Juno's authentication services.
 - [Development](https://juno.build/docs/build/authentication/dev.md): Learn how to use development identities for local testing or E2E with Juno without external authentication providers.
 - [GitHub](https://juno.build/docs/build/authentication/github.md): Learn how to integrate GitHub Sign-In with Juno for authentication in developer-focused apps.
 - [Google](https://juno.build/docs/build/authentication/google.md): Learn how to integrate Google Sign-In with Juno using OpenID Connect for secure, standards-based authentication.
@@ -27,26 +29,31 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Build - Datastore
   
+- [Datastore](https://juno.build/docs/build/datastore.md): Learn how Juno's Datastore simplifies structured data management with an easy-to-use SDK and clear collection-document model.
 - [Collections](https://juno.build/docs/build/datastore/collections.md): You can create or update a collection in the "Collections" tab in Juno's console under the datastore view.
 - [Development](https://juno.build/docs/build/datastore/development.md): This page provides an overview of how to integrate and manage documents using the Juno SDK, including adding, retrieving, updating, listing, and deleting documents within your app.
 
 ## Build - Functions
   
+- [Functions](https://juno.build/docs/build/functions.md): Learn how to develop and deploy Serverless Functions with Juno using Rust or TypeScript, enabling event-driven execution without infrastructure constraints.
 - [Lifecycle](https://juno.build/docs/build/functions/lifecycle.md): Understand the full journey of Serverless Functions in Juno, from setup and development to deployment and maintenance.
 - [Logs](https://juno.build/docs/build/functions/logs.md): Writing and viewing logs is a crucial tool for debugging and monitoring your code. Serverless Functions offer you the option to utilize loggers to report status effectively.
 
 ## Build - Functions - Development
   
+- [Development](https://juno.build/docs/build/functions/development.md): When you're ready to implement Functions within your Juno Satellite, you'll have a variety of event-driven macros at your disposal, enabling custom logic execution in response to specific actions. Here's how to implement each available Function:
 - [Rust](https://juno.build/docs/build/functions/development/rust.md): This page covers advanced options for writing serverless functions in Rust.
 - [TypeScript](https://juno.build/docs/build/functions/development/typescript.md): This page covers advanced options for writing serverless functions in TypeScript.
 
 ## Build - Hosting
   
+- [Hosting](https://juno.build/docs/build/hosting.md): Discover Juno Hosting: Fast and Secure Web Hosting. Deploy with ease and custom domains.
 - [Configuration](https://juno.build/docs/build/hosting/configuration.md): You can customize your hosting environment to fit your needs, including:
 - [Development](https://juno.build/docs/build/hosting/development.md): This section covers how to configure and manage your custom domain in Juno, including setting up DNS records, troubleshooting common issues, and ensuring compatibility with various domain providers.
 
 ## Build - Storage
   
+- [Storage](https://juno.build/docs/build/storage.md): Learn how Juno Storage handles files like images or user content through a simple and efficient storage model.
 - [Collections](https://juno.build/docs/build/storage/collections.md): You can create or update a collection in the "Collections" tab in Juno's console under the storage view.
 - [Development](https://juno.build/docs/build/storage/development.md): This page explains how to manage assets using the Juno SDK, including uploading, listing, counting, and deleting files within your application. It also covers configuration options for optimizing storage and access control.
 
@@ -65,6 +72,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Examples - Frontend
   
+- [Frontend](https://juno.build/docs/examples/frontend.md): Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more.
 - [Angular Example](https://juno.build/docs/examples/frontend/angular.md): A fullstack note-taking app built with Angular, and Tailwind CSS using Juno for authentication, data, and file storage.
 - [Next.js Example](https://juno.build/docs/examples/frontend/nextjs.md): A fullstack note-taking app built with Next.js, and Tailwind CSS using Juno for authentication, data, and file storage.
 - [React JavaScript Example](https://juno.build/docs/examples/frontend/react-javascript.md): A fullstack note-taking app built with React, JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.
@@ -75,11 +83,13 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Examples - Functions
   
+- [Functions](https://juno.build/docs/examples/functions.md): Write serverless backend logic for your app using TypeScript or Rust. These examples show how to use hooks, assertions, and common function patterns on Juno.
 - [Rust](https://juno.build/docs/examples/functions/rust.md): Examples of writing serverless functions in Rust for Juno. Includes patterns like custom assertions, data manipulation and calls.
 - [TypeScript](https://juno.build/docs/examples/functions/typescript.md): Examples of writing serverless functions in TypeScript for Juno. Includes patterns like custom assertions, data manipulation and calls.
 
 ## Examples - Functions - Rust
   
+- [Rust](https://juno.build/docs/examples/functions/rust.md): Examples of writing serverless functions in Rust for Juno. Includes patterns like custom assertions, data manipulation and calls.
 - [Rust Assertions Example](https://juno.build/docs/examples/functions/rust/assertion.md): An example demonstrating how to write custom assertions in Rust for Juno serverless functions.
 - [Making Canister Calls in Rust Serverless Functions](https://juno.build/docs/examples/functions/rust/canister-calls.md): An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in Rust using Juno Satellites.
 - [Generating Assets with Rust Serverless Functions](https://juno.build/docs/examples/functions/rust/generating-assets.md): An example showing how to dynamically generate and store assets (like JSON) in Storage using Rust in Juno Satellites.
@@ -87,6 +97,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Examples - Functions - Typescript
   
+- [TypeScript](https://juno.build/docs/examples/functions/typescript.md): Examples of writing serverless functions in TypeScript for Juno. Includes patterns like custom assertions, data manipulation and calls.
 - [TypeScript Assertions Example](https://juno.build/docs/examples/functions/typescript/assertion.md): An example demonstrating how to write custom assertions in TypeScript for Juno serverless functions.
 - [Making Canister Calls in TypeScript Serverless Functions](https://juno.build/docs/examples/functions/typescript/canister-calls.md): An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in TypeScript using Juno Satellites.
 - [Mutating Documents with TypeScript Hooks](https://juno.build/docs/examples/functions/typescript/mutating-docs.md): An example demonstrating how to modify and re-save documents in Juno Satellites using TypeScript hooks.
@@ -109,41 +120,49 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Guides - Angular
   
+- [Angular](https://juno.build/docs/guides/angular.md): Explore how to create a Juno project developed with Angular.
 - [Build an Angular App](https://juno.build/docs/guides/angular/build.md): Learn how to integrate Juno with Angular. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.
 - [Deploy an Angular App](https://juno.build/docs/guides/angular/deploy.md): Learn how to deploy your Angular project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.
 
 ## Guides - Astro
   
+- [Astro](https://juno.build/docs/guides/astro.md): Explore how to create a Juno project developed with Astro.
 - [Build an Astro App](https://juno.build/docs/guides/astro/build.md): Learn how to integrate Juno with Astro. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.
 - [Deploy an Astro Site](https://juno.build/docs/guides/astro/deploy.md): Learn how to deploy your Astro project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.
 
 ## Guides - Docusaurus
   
+- [Docusaurus](https://juno.build/docs/guides/docusaurus.md): Explore how to deploy a Juno project developed with Docusaurus.
 - [Deploy a Docusaurus Site](https://juno.build/docs/guides/docusaurus/deploy.md): Learn how to deploy your Docusaurus project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.
 
 ## Guides - Github-actions
   
+- [GitHub Actions](https://juno.build/docs/guides/github-actions.md): Learn how to use GitHub Actions for continuous integration and deployment.
 - [Deploy Frontend](https://juno.build/docs/guides/github-actions/deploy-frontend.md): This section describes how to deploy the frontend of your project using GitHub Actions. The frontend typically includes all client-side assets — such as HTML, CSS, JavaScript, and other static files—that are served to users.
 - [Publish Functions](https://juno.build/docs/guides/github-actions/publish-functions.md): This section explains how to automate the build and publication of your serverless functions using GitHub Actions. The process works for functions written in TypeScript or Rust and helps integrate function deployment into your development workflow.
 - [Upgrade Functions](https://juno.build/docs/guides/github-actions/upgrade-functions.md): We do not recommend upgrading your container directly from CI in production.
 
 ## Guides - Nextjs
   
+- [Next.js](https://juno.build/docs/guides/nextjs.md): Explore how to create a Juno project developed with Next.js.
 - [Build a Next.js App](https://juno.build/docs/guides/nextjs/build.md): Learn how to integrate Juno with Next.js. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.
 - [Deploy a Next.js App](https://juno.build/docs/guides/nextjs/deploy.md): Learn how to deploy your Next.js project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.
 
 ## Guides - React
   
+- [React](https://juno.build/docs/guides/react.md): Explore how to create a Juno project developed with React.
 - [Build a React App](https://juno.build/docs/guides/react/build.md): Learn how to integrate Juno with React. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.
 - [Deploy a React App](https://juno.build/docs/guides/react/deploy.md): Learn how to deploy your React project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.
 
 ## Guides - Sveltekit
   
+- [SvelteKit](https://juno.build/docs/guides/sveltekit.md): Explore how to create a Juno project developed with SvelteKit.
 - [Build a SvelteKit App](https://juno.build/docs/guides/sveltekit/build.md): Learn how to integrate Juno with SvelteKit. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.
 - [Deploy a SvelteKit App](https://juno.build/docs/guides/sveltekit/deploy.md): Learn how to deploy your SvelteKit project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.
 
 ## Guides - Vue
   
+- [Vue](https://juno.build/docs/guides/vue.md): Explore how to create a Juno project developed with Vue.
 - [Build a Vue App](https://juno.build/docs/guides/vue/build.md): Learn how to integrate Juno with Vue. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.
 - [Deploy a Vue App](https://juno.build/docs/guides/vue/deploy.md): Learn how to deploy your Vue project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.
 
@@ -174,17 +193,20 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Reference - Emulator
   
+- [Emulator](https://juno.build/docs/reference/emulator.md): The emulator provides a complete local environment to build, test, and run your project without deploying anything live. There are two images available, depending on your needs:
 - [Infrastructure](https://juno.build/docs/reference/emulator/infrastructure.md): In the local environment, several services (which can be either canisters or apps on the Internet Computer) are automatically spun up. This ensures that developers have everything they need to start building right out of the box. Thanks to built-in plugins and tooling, these services are automatically integrated into the environment, eliminating the need for developers to manually manage their bindings.
 - [Satellite](https://juno.build/docs/reference/emulator/satellite.md): Unlike Skylab, the image junobuild/satellite runs a single Satellite in a headless environment, without the Console UI. It always mounts the same Satellite, using the fixed ID jx5yt-yyaaa-aaaal-abzbq-cai.
 - [Skylab](https://juno.build/docs/reference/emulator/skylab.md): The junobuild/skylab image is an all-in-one emulator for local development. It bundles everything you need to build, test, and explore the Juno ecosystem:
 
 ## Reference - Functions
   
+- [Functions](https://juno.build/docs/reference/functions.md): API reference for writing serverless functions in Rust or TypeScript.
 - [Rust](https://juno.build/docs/reference/functions/rust.md): API reference for writing serverless functions in Rust.
 - [TypeScript](https://juno.build/docs/reference/functions/typescript.md): API reference for writing serverless functions with TypeScript.
 
 ## Reference - Functions - Rust
   
+- [Rust](https://juno.build/docs/reference/functions/rust.md): API reference for writing serverless functions in Rust.
 - [Crate Versions](https://juno.build/docs/reference/functions/rust/crate-versions.md): This page lists the crate versions for each Juno release, to help you upgrade your Rust Serverless Functions. If a release is not listed, no crate updates were required for that version.
 - [IC-CDK](https://juno.build/docs/reference/functions/rust/ic-cdk.md): In the context of Juno, it enables your Satellite to perform low-level operations such as logging, accessing your Satellite identities, or communicating with other canisters — all essential when writing advanced serverless functions.
 - [SDK](https://juno.build/docs/reference/functions/rust/sdk.md): The SDK is provided by the junobuild-satellite crate.
@@ -192,6 +214,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Reference - Functions - Typescript
   
+- [TypeScript](https://juno.build/docs/reference/functions/typescript.md): API reference for writing serverless functions with TypeScript.
 - [Canisters](https://juno.build/docs/reference/functions/typescript/canisters.md): The following functions can be used to interact with well-known Internet Computer canisters from your serverless functions.
 - [IC-CDK](https://juno.build/docs/reference/functions/typescript/ic-cdk.md): Juno exposes a growing set of these features for TypeScript, allowing you to build serverless functions that interact with the IC using a familiar developer experience.
 - [Node.js](https://juno.build/docs/reference/functions/typescript/node.md): The TypeScript runtime used in Juno does not provide full Node.js support. Polyfills are added iteratively to keep the environment stable and predictable.

@@ -408,6 +408,23 @@ const prepareMarkdown = async ({
 const LLMS_TXT = "llms.txt";
 const LLMS_TXT_FULL = "llms-full.txt";
 
+const resolveMarkdown = ({
+  dataRoutes,
+  path
+}: {
+  dataRoutes: RoutesData;
+  path: string;
+}): RouteData | undefined => {
+  const data = dataRoutes.get(path);
+
+  if (data !== undefined) {
+    return data;
+  }
+
+  // root dir is indexed with a trailing slash
+  return dataRoutes.get(`${path}/`);
+};
+
 const generateLlmsTxt = async ({
   groupedRoutes,
   dataRoutes,
@@ -426,7 +443,7 @@ const generateLlmsTxt = async ({
     path,
     title: customTitle
   }: GroupedRouteChild): string | undefined => {
-    const data = dataRoutes.get(path);
+    const data = resolveMarkdown({ dataRoutes, path });
 
     if (data === undefined) {
       return undefined;
@@ -453,11 +470,16 @@ const generateLlmsTxt = async ({
   };
 
   const content = groupedRoutes
-    .map(
-      ([key, { children, title }]) => `${buildTitle({ key, title })}
+    .map(([key, { children, title }]) => {
+      const rootLink = buildLink({ path: key, title });
+
+      return `${buildTitle({ key, title })}
   
-${children.map(buildLink).join("\n")}`
-    )
+${rootLink !== undefined ? `${rootLink}\n` : ""}${children
+        .map(buildLink)
+        .filter((l) => l !== undefined)
+        .join("\n")}`;
+    })
     .join("\n\n");
 
   await generateLlmsTxtFile({
@@ -481,7 +503,7 @@ const generateLlmsTxtFull = async ({
 } & Pick<LoadContext, "siteConfig" | "outDir"> &
   Pick<PluginOptions, "description" | "docsDir">) => {
   const buildMarkdown = ({ path }: GroupedRouteChild): string | undefined => {
-    const data = dataRoutes.get(path);
+    const data = resolveMarkdown({ dataRoutes, path });
 
     if (data === undefined) {
       return undefined;
@@ -495,7 +517,14 @@ const generateLlmsTxtFull = async ({
   };
 
   const content = groupedRoutes
-    .map(([_, { children }]) => children.map(buildMarkdown).join("\n\n"))
+    .map(([key, { children, title }]) => {
+      const rootMarkdown = buildMarkdown({ path: key, title });
+
+      return `${rootMarkdown !== undefined ? `${rootMarkdown}\n\n` : ""}${children
+        .map(buildMarkdown)
+        .filter((m) => m !== undefined)
+        .join("\n\n")}`;
+    })
     .join("\n\n");
 
   await generateLlmsTxtFile({
