@@ -1,0 +1,37 @@
+Defines a function that can read and write state.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```mdx-code-block
+<Tabs groupId="functions">
+<TabItem value="Rust">
+```
+
+```rust
+#[ic_cdk::update]
+fn my_function() -> String {
+    // Your logic here
+}
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="TypeScript">
+```
+
+```typescript
+export const myFunction = defineUpdate({
+  args: Schema,
+  returns: Schema,
+  handler: async ({ args }) => {
+    // Your logic here
+    return args;
+  }
+});
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```

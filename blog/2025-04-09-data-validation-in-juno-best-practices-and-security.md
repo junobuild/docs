@@ -486,7 +486,7 @@ Remember: Security is about preventing unauthorized or invalid operations, not j
 ## References
 
 - [Deep Dive into Serverless Functions](/docs/build/functions/)
-- [Available Hooks](/docs/build/functions/#available-hooks)
+- [Available Hooks](/docs/build/functions/development/#hooks)
 - [List of Assertions](/docs/build/functions/#assertions)
 - [Examples of Writing Functions in Rust](/docs/guides/rust)
 

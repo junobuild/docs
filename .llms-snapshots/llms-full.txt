@@ -2272,33 +2272,26 @@ import { getDoc } from "@junobuild/core";await getDoc({  collection: "my_collect
 
 Functions are a set of features enabling developers to extend the native capabilities of [Satellites](/docs/terminology.md#satellite) using Rust or TypeScript. They let you define serverless behaviors directly within your containerized environment.
 
-Triggered by events like document and asset operations, they allow you to automatically run backend code or assertions. These functions are shipped with your container and don’t require you to manage or scale your own servers.
+There are two types of functions:
+
+*   ([Event-driven functions](#event-driven-functions)): triggered automatically in response to actions such as a document being created or an asset being uploaded.
+*   ([Callable functions](#callable-functions)): explicitly invoked from your frontend or from other services.
 
 ---
 
-## How does it work?
+## Event-driven Functions
 
-Functions are defined using hooks that automatically respond to document and asset events such as create, update, or delete. This allows you to embed dynamic behavior directly into your container.
+Event-driven functions respond to actions occurring in your Satellite. They are triggered automatically and never invoked directly.
 
-A naive schema representation of a hook that is triggered when a document is set:
+### Hooks
+
+Hooks respond to specific actions within your Satellite. They run asynchronously, independently of the caller's request - meaning the caller may receive a response before the hook has finished executing.
 
 ![Functions hooks flow](/assets/images/functions-b7f754766a61062ffb5d9ebf5d8519a5.png)
 
-### Asynchronous Hook Spawning
+**Note:**
 
-When a Function is triggered, it spawns hooks asynchronously, operating independently of the caller's action. This means that the execution of the hooks is initiated without waiting for a synchronous response, ensuring that the flow of update calls to the Satellite remains unhindered. Consequently, callers may receive feedback on their actions before the corresponding hooks have commenced their execution.
-
-### Error-Resilient Execution
-
-Hooks are initiated only when there are no errors in the preceding operations. This ensures a robust and dependable execution flow, promoting reliability and consistency in the functioning of Functions.
-
-### Optional
-
-Custom hooks are not active by default. You need to opt in to enable event-driven execution of your own logic.
-
----
-
-## Available Hooks
+Hooks are only initiated when the preceding operation completes without errors.
 
 | Hook | Provider | Description |
 | --- | --- | --- |
@@ -2314,11 +2307,9 @@ Custom hooks are not active by default. You need to opt in to enable event-drive
 | `on_init` | Satellite | Called during the initialization of the Satellite. |
 | `on_post_upgrade` | Satellite | Invoked after the Satellite has been upgraded to a new version. |
 
----
+### Assertions
 
-## Assertions
-
-In addition to hooks, developers have the option to expand the native rule set of their Satellites by creating custom assertions. These assertions can be implemented similarly to hooks, with the key difference being that they are synchronous and must return a result indicating the outcome of the assertion.
+Assertions run synchronously before an operation is executed. They allow you to validate or reject actions before any data is written.
 
 | Assertion | Provider | Description |
 | --- | --- | --- |
@@ -2326,6 +2317,21 @@ In addition to hooks, developers have the option to expand the native rule set o
 | `assert_delete_doc` | Datastore | Verifies that a document can be deleted. |
 | `assert_upload_asset` | Storage | Confirms an asset upload can be committed. |
 | `assert_delete_asset` | Storage | Checks that an asset can be deleted. |
+
+---
+
+## Callable Functions
+
+Callable functions are explicitly invoked — from your frontend or from other services. They expose query and update endpoints directly from your Satellite.
+
+**Tip:**
+
+This is conceptually similar to exposing your own endpoints on an API.
+
+| Type | Description |
+| --- | --- |
+| `query` | A read-only function that returns data without modifying state. |
+| `update` | A function that can read and write state. |
 
 ---
 
@@ -2569,11 +2575,17 @@ When you're ready to implement Functions within your Juno Satellite, you'll have
 
 ---
 
-## Hooks
+## Event-driven Functions
+
+Event-driven functions respond to actions occurring in your Satellite. They are triggered automatically and never invoked directly.
+
+---
+
+### Hooks
 
 Hooks allow you to define event-driven logic that responds to specific actions within your Satellite. The following is a list of available hooks and their respective use cases.
 
-### on\_set\_doc
+#### on\_set\_doc
 
 Triggered when a document is created or updated in the datastore.
 
@@ -2588,7 +2600,7 @@ Triggered when a document is created or updated in the datastore.
 export const onSetDoc = defineHook<OnSetDoc>({  collections: [],  run: async (context) => {    // Custom logic for handling document creation or updates  }});
 ```
 
-### on\_set\_many\_docs
+#### on\_set\_many\_docs
 
 Invoked for batch operations involving multiple document creations or updates.
 
@@ -2603,7 +2615,7 @@ Invoked for batch operations involving multiple document creations or updates.
 export const onSetManyDocs = defineHook<OnSetManyDocs>({  collections: [],  run: async (context) => {    // Custom logic for handling multiple document creations or updates  }});
 ```
 
-### on\_delete\_doc
+#### on\_delete\_doc
 
 Invoked when a document is deleted from the datastore.
 
@@ -2618,7 +2630,7 @@ Invoked when a document is deleted from the datastore.
 export const onDeleteDoc = defineHook<OnDeleteDoc>({  collections: [],  run: async (context) => {    // Custom logic for handling document deletion  }});
 ```
 
-### on\_delete\_many\_docs
+#### on\_delete\_many\_docs
 
 Used when multiple documents are deleted in a batch operation.
 
@@ -2633,7 +2645,7 @@ Used when multiple documents are deleted in a batch operation.
 export const onDeleteManyDocs = defineHook<OnDeleteManyDocs>({  collections: [],  run: async (context) => {    // Custom logic for handling the deletion of multiple documents  }});
 ```
 
-### on\_delete\_filtered\_docs
+#### on\_delete\_filtered\_docs
 
 Invoked when documents are deleted according to specified filters in the datastore.
 
@@ -2648,7 +2660,7 @@ Invoked when documents are deleted according to specified filters in the datasto
 export const onDeleteFilteredDocs = defineHook<OnDeleteFilteredDocs>({  collections: [],  run: async (context) => {    // Custom logic for handling the deletion of filtered documents  }});
 ```
 
-### on\_upload\_asset
+#### on\_upload\_asset
 
 Triggered during the process of uploading an asset.
 
@@ -2663,7 +2675,7 @@ Triggered during the process of uploading an asset.
 export const onUploadAsset = defineHook<OnUploadAsset>({  collections: [],  run: async (context) => {    // Custom logic for handling asset uploads  }});
 ```
 
-### on\_delete\_asset
+#### on\_delete\_asset
 
 Activated when an asset is removed from the datastore.
 
@@ -2678,7 +2690,7 @@ Activated when an asset is removed from the datastore.
 export const onDeleteAsset = defineHook<OnDeleteAsset>({  collections: [],  run: async (context) => {    // Custom logic for handling asset deletion  }});
 ```
 
-### on\_delete\_many\_assets
+#### on\_delete\_many\_assets
 
 Used for operations that involve deleting multiple assets in a batch.
 
@@ -2693,7 +2705,7 @@ Used for operations that involve deleting multiple assets in a batch.
 export const onDeleteManyAssets = defineHook<OnDeleteManyAssets>({  collections: [],  run: async (context) => {    // Custom logic for handling the deletion of multiple assets  }});
 ```
 
-### on\_delete\_filtered\_assets
+#### on\_delete\_filtered\_assets
 
 Invoked when assets are deleted according to specified filters in the storage.
 
@@ -2708,7 +2720,7 @@ Invoked when assets are deleted according to specified filters in the storage.
 export const onDeleteFilteredAssets = defineHook<OnDeleteFilteredAssets>({  collections: [],  run: async (context) => {    // Custom logic for handling the deletion of filtered assets  }});
 ```
 
-### on\_init
+#### on\_init
 
 *   Rust
 *   TypeScript
@@ -2729,7 +2741,7 @@ This feature is not enabled by default. To use it, you’ll need to opt in by up
 
 This hook is not available when writing functions in TypeScript.
 
-### on\_post\_upgrade
+#### on\_post\_upgrade
 
 *   Rust
 *   TypeScript
@@ -2752,11 +2764,11 @@ This hook is not available when writing functions in TypeScript.
 
 ---
 
-## Assertions
+### Assertions
 
 Assertions enable validation checks before specific actions are executed within your Satellite. The following is a list of available assertions and their functionalities.
 
-### assert\_set\_doc
+#### assert\_set\_doc
 
 Ensures a document can be created or updated.
 
@@ -2771,7 +2783,7 @@ Ensures a document can be created or updated.
 export const assertSetDoc = defineAssert<AssertSetDoc>({  collections: [],  assert: (context) => {    // Custom logic for asserting a document's creation or update is possible    // Throw an error if the condition fails to prevent the action  }});
 ```
 
-### assert\_delete\_doc
+#### assert\_delete\_doc
 
 Verifies that a document can be deleted.
 
@@ -2786,7 +2798,7 @@ Verifies that a document can be deleted.
 export const assertDeleteDoc = defineAssert<AssertDeleteDoc>({  collections: [],  assert: (context) => {    // Custom logic for asserting a document can be deleted    // Throw an error if the condition fails to prevent the action  }});
 ```
 
-### assert\_upload\_asset
+#### assert\_upload\_asset
 
 Confirms an asset upload can be committed.
 
@@ -2801,7 +2813,7 @@ Confirms an asset upload can be committed.
 export const assertUploadAsset = defineAssert<AssertUploadAsset>({  collections: [],  assert: (context) => {    // Custom logic for asserting an asset upload is possible    // Throw an error if the condition fails to prevent the action  }});
 ```
 
-### assert\_delete\_asset
+#### assert\_delete\_asset
 
 Checks that an asset can be deleted.
 
@@ -2818,7 +2830,7 @@ export const assertDeleteAsset = defineAssert<AssertDeleteAsset>({  collections:
 
 ---
 
-## When the Functions Run
+### When Hooks and Assertions Run
 
 *   Rust
 *   TypeScript
@@ -2845,6 +2857,42 @@ export const onSetDoc = defineHook<OnSetDoc>({  collections: ["demo"],  run: asy
 ```
 
 The `collections` attribute accepts a list of comma-separated collection names.
+
+---
+
+## Callable Functions
+
+Callable functions (also referenced as custom functions) are explicitly invoked — from your frontend or from other canisters.
+
+### Query
+
+Defines a read-only function that returns data without modifying any state.
+
+*   Rust
+*   TypeScript
+
+```
+#[ic_cdk::query]fn my_function() -> String {    // Your logic here}
+```
+
+```
+export const myFunction = defineQuery({  args: Schema,  returns: Schema,  handler: ({ args }) => {    // Your logic here    return args;  }});
+```
+
+### Update
+
+Defines a function that can read and write state.
+
+*   Rust
+*   TypeScript
+
+```
+#[ic_cdk::update]fn my_function() -> String {    // Your logic here}
+```
+
+```
+export const myFunction = defineUpdate({  args: Schema,  returns: Schema,  handler: async ({ args }) => {    // Your logic here    return args;  }});
+```
 
 ---
 
