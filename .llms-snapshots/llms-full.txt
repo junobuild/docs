@@ -11325,7 +11325,7 @@ API reference for writing serverless functions in Rust or TypeScript.
 
 [## 🗃️ TypeScript
 
-5 items](/docs/reference/functions/typescript.md)
+6 items](/docs/reference/functions/typescript.md)
 
 # Plugins
 
@@ -11729,7 +11729,7 @@ API reference for writing serverless functions in Rust or TypeScript.
 
 [## 🗃️ TypeScript
 
-5 items](/docs/reference/functions/typescript.md)
+6 items](/docs/reference/functions/typescript.md)
 
 # Rust
 
@@ -11754,6 +11754,10 @@ This page lists the crate versions for each Juno release, to help you upgrade yo
 # TypeScript
 
 API reference for writing serverless functions with TypeScript.
+
+[## 📄️ Schema Types
+
+Juno provides a type system built on top of Zod, extended with a few additional types you'll need when working with serverless functions.](/docs/reference/functions/typescript/schema.md)
 
 [## 📄️ SDK
 
@@ -12237,6 +12241,10 @@ pub fn encode_doc_data_to_string<T: Serialize>(    data: &T,) -> Result<String, 
 
 API reference for writing serverless functions with TypeScript.
 
+[## 📄️ Schema Types
+
+Juno provides a type system built on top of Zod, extended with a few additional types you'll need when working with serverless functions.](/docs/reference/functions/typescript/schema.md)
+
 [## 📄️ SDK
 
 The SDK is provided by the @junobuild/functions library.](/docs/reference/functions/typescript/sdk.md)
@@ -12697,6 +12705,48 @@ Logging is fully supported. Objects are stringified and logs are routed to the I
 ```
 console.log("Hello from the Satellite");console.info("Hello", { type: "info", msg: "Something happened" });
 ```
+
+# Schema Types
+
+Juno provides a type system built on top of [Zod](https://zod.dev/), extended with a few additional types you'll need when working with serverless functions.
+
+All types are available through `j`.
+
+```
+import { j } from "@junobuild/schema";
+```
+
+---
+
+## Juno Types
+
+The following are specific types provided by Juno:
+
+### j.principal()
+
+Validates and represents an Internet Computer Principal.
+
+```
+j.principal();
+```
+
+### j.uint8array()
+
+Validates and represents a `Uint8Array`.
+
+```
+j.uint8array();
+```
+
+---
+
+## Zod Types
+
+All Zod types are available through `j`. Refer to the [Zod documentation](https://zod.dev/) for the full API reference.
+
+**Note:**
+
+`union` is not supported. Use `discriminatedUnion` instead.
 
 # SDK
 

@@ -407,6 +407,7 @@ const sidebars: SidebarsConfig = {
               "API reference for writing serverless functions with TypeScript."
           },
           items: [
+            "reference/functions/typescript/schema",
             "reference/functions/typescript/sdk",
             "reference/functions/typescript/utils",
             "reference/functions/typescript/ic-cdk",
