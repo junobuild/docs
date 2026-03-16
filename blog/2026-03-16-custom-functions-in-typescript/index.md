@@ -4,11 +4,12 @@ title: Custom Functions in TypeScript
 authors: [peterpeterparker]
 tags: [functions, typescript, sputnik, serverless]
 date: 2026-03-16
+image: https://juno.build/assets/images/custom-functions-in-typescript-snippet-11baea283d0c73597d0f4a159eb4ad7d.png
 ---
 
-For many use cases, frontend code gets you far. But even in smaller projects, you quickly hit a point where you need some backend logic. That's where serverless functions come in.
+![](custom-functions-in-typescript-snippet.png)
 
-The idea behind Juno's functions is that you should be able to write them in either Rust or TypeScript. Hooks have been available in TypeScript for a while and are handy for reacting to events. But developers also often want to define their own functions, query or update, akin to adding custom endpoints to an HTTP API. That wasn't supported in TypeScript, until now 🚀.
+The idea behind Juno's serverless functions is that you should be able to write them in either Rust or TypeScript following the same pattern and mental model. Parts of those, hooks, have been available in TypeScript for a while and are handy for reacting to events. But developers also often want to define their own functions, akin to adding custom endpoints to an HTTP API. That wasn't supported in TypeScript, until now 🚀.
 
 ---
 
@@ -20,7 +21,7 @@ There are two kinds.
 
 A **query** is read-only. It returns data without touching any state, and it's fast. Use it when you just need to fetch something.
 
-An **update** can read and write. Use it when your logic needs to persist data, trigger side effects, or when you need the response to be certified, making it suitable for security-sensitive use cases where data integrity must be guaranteed.
+An **update** can read and write. Use it when your logic needs to persist data, trigger side effects, or when you need an absolute tamper-proof guarantee on the result.
 
 ```typescript
 import { defineQuery } from "@junobuild/functions";
