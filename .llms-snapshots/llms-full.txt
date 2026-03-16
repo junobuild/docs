@@ -2,7 +2,6 @@
 
 Juno is your self-contained serverless platform for building full-stack web apps without DevOps or backend boilerplate. Developers use their favorite frontend frameworks like React, SvelteKit, or Next.js, and write backend logic in Rust or TypeScript as serverless functions. Everything is bundled into a single WebAssembly (WASM) artifact that runs in a decentralized, stateful environment — under full user ownership — on the Internet Computer. Juno cannot access or modify your code, data, or infrastructure. It supports GitHub Actions for deploys and upgrades, and provides both a CLI and web Console UI for managing projects. The local development environment closely mirrors production, ensuring smooth transitions from build to deployment — all with the privacy and control developers expect from self-hosting.
 
-undefined
 # Getting Started with Juno
 
 Unless you're looking to solely host your static website, the recommended way to start with Juno is by developing locally using the emulator — a production-like environment with full support for data, authentication, storage, and serverless functions.
@@ -591,6 +590,7 @@ Consequently, this leaves the canister open to potential attacks that can pollut
 1.  Avoid topping up with excessive cycles; instead, adopt a lean approach.
 2.  Enable [monitoring](/docs/management/monitoring.md) to ensure your modules are automatically refueled and stay online.
 3.  Interpret the statistics provided by this feature with some reservation, similar to any other analytics data, considering potential inaccuracies.
+
 # Development
 
 Learn how to track page views, custom events, and performance metrics.
@@ -946,6 +946,7 @@ Each authentication method has its strengths. The right choice depends not only 
 **Tip:**
 
 Many developers combine multiple providers - for example, offering Google as the default and Internet Identity or Passkeys as alternatives.
+
 # Local Development and E2E
 
 Implementing Google, Internet Identity, or Passkeys requires some setup and doesn't always fit best in a local development environment or E2E test suite. For example, they take various steps to complete and therefore consume repetitive time.
@@ -1940,6 +1941,7 @@ Both Datastore and Storage use a unique identifier per item — but they refer t
     *   The `fullPath` must include the collection name (except for your app's frontend assets like HTML, JS, etc.).
     *   Used to serve, list, or delete files.
     *   Example: `/images/logo.png` (collection: `images`) or `/avatars/user42/profile.jpg` (collection: `avatars`).
+
 # Collections
 
 You can create or update a collection in the "Collections" tab in Juno's console under the [datastore](https://console.juno.build/datastore) view.
@@ -2350,6 +2352,7 @@ Despite their differences, Rust and TypeScript serverless functions are designed
 | **Ease of Use** | ✅ Developer-friendly (with or without AI) | ✅ Developer-friendly (with or without AI) |
 | **Migration Path** | —   | ✅ Can migrate to Rust easily |
 | **Recommended For** | Production apps, performance-critical code | Prototypes, smaller tools, quick dev cycles |
+
 # Lifecycle
 
 Understand the full journey of Serverless Functions in Juno, from setup and development to deployment and maintenance.
@@ -2853,6 +2856,7 @@ The `collections` attribute accepts a list of comma-separated collection names.
 For practical use cases, check out the [Examples](/docs/guides/rust.md) page with sample projects and resources available on GitHub.
 
 For practical use cases, check out the [Examples](/docs/guides/typescript.md) page with sample projects and resources available on GitHub.
+
 # Rust
 
 This page covers advanced options for writing serverless functions in Rust.
@@ -3032,6 +3036,7 @@ Prefer running things locally? You can also use the [CLI](/docs/guides/manual-de
 Want to maintain your unique brand identity? You can use your own domain - like `yolo.com` or `hello.world.com` - instead of the default provisioned address.
 
 This comes with an automatically generated SSL certificate for each domain, ensuring secure connections for your users.
+
 # Configuration
 
 You can customize your hosting environment to fit your needs, including:
@@ -3459,6 +3464,7 @@ Both Datastore and Storage use a unique identifier per item — but they refer t
     *   The `fullPath` must include the collection name (except for your app's frontend assets like HTML, JS, etc.).
     *   Used to serve, list, or delete files.
     *   Example: `/images/logo.png` (collection: `images`) or `/avatars/user42/profile.jpg` (collection: `avatars`).
+
 # Collections
 
 You can create or update a collection in the "Collections" tab in Juno's console under the [storage](https://console.juno.build/storage) view.
@@ -3849,7 +3855,6 @@ You never need to set this parameter in a browser context.
 import { getAsset } from "@junobuild/core";await getAsset({  collection: "my_collection_key",  fullPath: "/images/logo.png",  satellite: {    identity: myIdentity,    satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",    container: true  }});
 ```
 
-undefined
 # What makes Juno a great Heroku alternative
 
 Heroku introduced a simple way to deploy apps — push code, and it ran in the cloud. It remains a solid choice for long-running, traditional web applications.
@@ -4345,7 +4350,6 @@ Then **Juno is a powerful Vercel alternative** — the same serverless experienc
 
 Ready to explore Juno? [Start building](/docs/intro.md)
 
-undefined
 # Frontend
 
 Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more.
@@ -4421,6 +4425,7 @@ A fullstack note-taking app built with Angular, and Tailwind CSS using Juno for 
 [## 📄️ Vanilla JavaScript
 
 A fullstack note-taking app built with vanilla JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/vanilla-javascript.md)
+
 # Angular Example
 
 This project is a note-taking app template built with **Angular**, **TypeScript**, and **Tailwind CSS**, designed to demonstrate integration with Juno for app development. It showcases authentication, data storage, and file storage using Juno's Satellite container.
@@ -5339,6 +5344,7 @@ Write serverless backend logic for your app using TypeScript or Rust. These exam
 [## 🗃️ TypeScript
 
 3 items](/docs/examples/functions/typescript.md)
+
 # Rust
 
 Examples of writing serverless functions in Rust for Juno. Includes patterns like custom assertions, data manipulation and calls.
@@ -5394,6 +5400,7 @@ An example showing how to dynamically generate and store assets (like JSON) in S
 [## 📄️ Canister Calls
 
 An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in Rust using Juno Satellites.](/docs/examples/functions/rust/canister-calls.md)
+
 # Rust Assertion Example
 
 This example demonstrates how to write a **custom assertion** in **Rust** for a Juno **serverless function**. It shows how to intercept and validate data operations—such as rejecting specific content—before it's written to the datastore.
@@ -6108,6 +6115,7 @@ An example demonstrating how to modify and re-save documents in Juno Satellites 
 [## 📄️ Canister Calls
 
 An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in TypeScript using Juno Satellites.](/docs/examples/functions/typescript/canister-calls.md)
+
 # TypeScript Assertion Example
 
 This example demonstrates how to write a **custom assertion** in **TypeScript** for a Juno **serverless function**. It shows how to intercept and validate data operations—such as rejecting specific content—before it's written to the datastore.
@@ -6613,7 +6621,6 @@ It’s a great reference for more advanced setups and orchestration.
 *   [Configuration Reference](/docs/reference/configuration.md)
 *   [Datastore Collections](/docs/build/datastore/collections.md)
 
-undefined
 # Using Juno with AI
 
 If you're using AI to build with Juno, you can use our `llms.txt` files to help AI tools better understand the platform.
@@ -7323,6 +7330,7 @@ Learn how to integrate Juno with Angular. Follow our quickstart guide to set up 
 [## 📄️ Deploy
 
 Learn how to deploy your Angular project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/angular/deploy.md)
+
 # Build an Angular App
 
 Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
@@ -7591,6 +7599,7 @@ Learn how to integrate Juno with Astro. Follow our quickstart guide to set up yo
 [## 📄️ Deploy
 
 Learn how to deploy your Astro project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/astro/deploy.md)
+
 # Build an Astro App
 
 This guide provides quickstart instructions for integrating Juno and building a feature-rich application. It also includes guidance on developing locally.
@@ -7819,6 +7828,7 @@ Explore how to deploy a Juno project developed with Docusaurus.
 [## 📄️ Deploy
 
 Learn how to deploy your Docusaurus project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/docusaurus/deploy.md)
+
 # Deploy a Docusaurus Site
 
 Use this guide to deploy and host your project to production.
@@ -8022,6 +8032,7 @@ When using the Actions, you can configure the following environment variables:
 | Environment Variable | Mandatory | Description |
 | --- | --- | --- |
 | `PROJECT_PATH` | No  | The path to the folder containing the `juno.config` file if it doesn't exist at the root of your repository. e.g. `./my-app-subfolder`. |
+
 # Deploy Frontend
 
 This section describes how to deploy the frontend of your project using GitHub Actions. The frontend typically includes all client-side assets — such as HTML, CSS, JavaScript, and other static files—that are served to users.
@@ -8232,6 +8243,7 @@ Learn how to integrate Juno with Next.js. Follow our quickstart guide to set up 
 [## 📄️ Deploy
 
 Learn how to deploy your Next.js project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/nextjs/deploy.md)
+
 # Build a Next.js App
 
 Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
@@ -8518,6 +8530,7 @@ Learn how to integrate Juno with React. Follow our quickstart guide to set up yo
 [## 📄️ Deploy
 
 Learn how to deploy your React project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/react/deploy.md)
+
 # Build a React App
 
 Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
@@ -8786,6 +8799,7 @@ Learn how to integrate Juno with SvelteKit. Follow our quickstart guide to set u
 [## 📄️ Deploy
 
 Learn how to deploy your SvelteKit project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/sveltekit/deploy.md)
+
 # Build a SvelteKit App
 
 Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
@@ -9088,6 +9102,7 @@ Learn how to integrate Juno with Vue. Follow our quickstart guide to set up your
 [## 📄️ Deploy
 
 Learn how to deploy your Vue project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/vue/deploy.md)
+
 # Build a Vue App
 
 Ready to implement a feature-rich application with Juno? You can choose a step-by-step approach, building each component gradually, or dive into our quickstart template, which showcases Juno's core features.
@@ -9345,7 +9360,6 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
-undefined
 # Monitoring
 
 Keeping your modules running smoothly is essential for any application. The monitoring feature ensures your modules — Satellites and Orbiter (Analytics) — stay operational by automatically refilling cycles when they run low. This helps prevent unexpected downtime, allowing you to focus on building and growing your product without worrying about cycle balances.
@@ -9515,7 +9529,6 @@ In addition to standard recovery, snapshots can also be uploaded to reapply the 
 
 This should be used carefully though, as snapshots also include elements such as public access keys and user IDs. Applying one module's snapshot to another may cause unintended side effects.
 
-undefined
 # Access Keys
 
 Access keys play a crucial role in granting permissions to Mission Controls, Satellites or Orbiters within Juno.
@@ -10199,7 +10212,6 @@ It's recommended to rename the newly added passkey in Internet Identity to keep 
 
 A maximum of 8 passkeys can be assigned to an identity, allowing you to share a project with up to 7 other people.
 
-undefined
 # CLI
 
 The Juno CLI provides a variety of tools for managing and deploying projects.
@@ -11580,6 +11592,7 @@ Unlike Skylab, the image junobuild/satellite runs a single Satellite in a headle
 [## 📄️ Infrastructure
 
 In the local environment, several services (which can be either canisters or apps on the Internet Computer) are automatically spun up. This ensures that developers have everything they need to start building right out of the box. Thanks to built-in plugins and tooling, these services are automatically integrated into the environment, eliminating the need for developers to manually manage their bindings.](/docs/reference/emulator/infrastructure.md)
+
 # Infrastructure
 
 In the local environment, several services (which can be either canisters or apps on the Internet Computer) are automatically spun up. This ensures that developers have everything they need to start building right out of the box. Thanks to built-in plugins and tooling, these services are automatically integrated into the environment, eliminating the need for developers to manually manage their bindings.
@@ -11669,6 +11682,7 @@ API reference for writing serverless functions in Rust or TypeScript.
 [## 🗃️ TypeScript
 
 5 items](/docs/reference/functions/typescript.md)
+
 # Rust
 
 API reference for writing serverless functions in Rust.
@@ -11732,6 +11746,7 @@ In the context of Juno, it enables your Satellite to perform low-level operation
 [## 📄️ Crate Versions
 
 This page lists the crate versions for each Juno release, to help you upgrade your Rust Serverless Functions. If a release is not listed, no crate updates were required for that version.](/docs/reference/functions/rust/crate-versions.md)
+
 # Crate Versions
 
 This page lists the crate versions for each Juno release, to help you upgrade your Rust Serverless Functions. If a release is not listed, no crate updates were required for that version.
@@ -12193,6 +12208,7 @@ The following functions can be used to interact with well-known Internet Compute
 [## 📄️ Node.js
 
 The TypeScript runtime used in Juno does not provide full Node.js support. Polyfills are added iteratively to keep the environment stable and predictable.](/docs/reference/functions/typescript/node.md)
+
 # Canisters
 
 The following functions can be used to interact with well-known Internet Computer canisters from your serverless functions.
@@ -13236,7 +13252,6 @@ function encodeDocData<T>(data: T): Uint8Array;
 
 *   A `Uint8Array` containing the encoded binary data.
 
-undefined
 # FAQ
 
 ### Where do I find support?

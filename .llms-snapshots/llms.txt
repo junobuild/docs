@@ -4,7 +4,6 @@ Juno is your self-contained serverless platform for building full-stack web apps
 
 ## Getting Started
   
-undefined
 - [Introduction to Juno](https://juno.build/docs/intro.md): Explore Juno's serverless functions, hosting, and data capabilities. Start building with Juno today — no DevOps, no setup friction.
 - [Start a New Project](https://juno.build/docs/start-a-new-project.md): Build a full-stack app with Juno — whether you're using a template, starting from scratch, or adding it to an existing project.
 - [Setup the SDK](https://juno.build/docs/setup-the-sdk.md): Connect your web app to a Juno Satellite to unlock features like auth, data, storage, and functions. This guide shows how to set up the SDK with or without build plugins.
@@ -60,7 +59,6 @@ undefined
 
 ## Comparison
   
-undefined
 - [What makes Juno a great Heroku alternative](https://juno.build/docs/comparison/vs-heroku.md): See how Juno compares to Heroku — the simplicity of PaaS with the ownership and modern architecture of a decentralized serverless platform.
 - [What makes Juno a great Netlify alternative](https://juno.build/docs/comparison/vs-netlify.md): Discover why Juno is a compelling alternative to Netlify, offering true infrastructure ownership, predictable costs, and the same seamless static deployment experience — with more long-term control.
 - [What makes Juno a great Railway alternative](https://juno.build/docs/comparison/vs-railway.md): Discover why Juno is a powerful alternative to Railway, offering full ownership, integrated services, and the convenience of serverless without platform dependency.
@@ -69,7 +67,6 @@ undefined
 
 ## Examples
   
-undefined
 - [Frontend](https://juno.build/docs/examples/frontend.md): Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more.
 - [Functions](https://juno.build/docs/examples/functions.md): Write serverless backend logic for your app using TypeScript or Rust. These examples show how to use hooks, assertions, and common function patterns on Juno.
 
@@ -107,7 +104,6 @@ undefined
 
 ## Guides
   
-undefined
 - [AI](https://juno.build/docs/guides/ai.md): Learn how to use Juno's llms.txt files to provide AI tools with better context for building serverless functions, deploying Satellites, and integrating the SDK.
 - [Angular](https://juno.build/docs/guides/angular.md): Explore how to create a Juno project developed with Angular.
 - [Astro](https://juno.build/docs/guides/astro.md): Explore how to create a Juno project developed with Astro.
@@ -172,13 +168,11 @@ undefined
 
 ## Management
   
-undefined
 - [Monitoring](https://juno.build/docs/management/monitoring.md): Juno Monitoring ensures your containers remain operational by automatically managing cycle balances. Monitor your modules, configure thresholds, and enable auto-refill to prevent downtime.
 - [Snapshots](https://juno.build/docs/management/snapshots.md): Snapshots are an essential component of any disaster recovery strategy. In the fast-paced world of development, unexpected issues can arise—such as accidental overwrites of critical data or bugs in updates. While these scenarios can't always be avoided, their impact can be minimized or mitigated.
 
 ## Miscellaneous
   
-undefined
 - [Access Keys](https://juno.build/docs/miscellaneous/access-keys.md): Learn how to manage access keys in Juno, their roles, and how to generate them using the CLI or Console.
 - [Architecture](https://juno.build/docs/miscellaneous/architecture.md): Explore the architecture behind Juno — a self-contained execution space where your entire application lives in a single deployable unit under your full control.
 - [Best Practices](https://juno.build/docs/miscellaneous/best-practices.md): This page provides recommendations to improve your application when developing and deploying with Juno.
@@ -190,7 +184,6 @@ undefined
 
 ## Reference
   
-undefined
 - [CLI](https://juno.build/docs/reference/cli.md): Learn how to use the Juno CLI for managing, deploying and developing applications. Includes installation, login, deploy, building and more.
 - [Configuration](https://juno.build/docs/reference/configuration.md): When the juno command is run from your terminal or used in a CI environment, it will automatically attempt to locate a config file named juno.config.ts or juno.config.js or juno.config.json within your project's root directory.
 - [Emulator](https://juno.build/docs/reference/emulator.md): The emulator provides a complete local environment to build, test, and run your project without deploying anything live. There are two images available, depending on your needs:
@@ -230,7 +223,6 @@ undefined
 
 ## Miscellaneous
   
-undefined
 - [FAQ](https://juno.build/docs/faq.md): Where do I find support?
 - [Pricing](https://juno.build/docs/pricing.md): Discover Juno's pricing structure, including operating costs, transaction fees, and cost examples. Learn how to manage and optimize your expenses.
 - [Terminology](https://juno.build/docs/terminology.md): In Juno, we use some terms that may be unfamiliar to some. This page provides a summary of the most commonly used terms.
