@@ -408,6 +408,23 @@ const prepareMarkdown = async ({
 const LLMS_TXT = "llms.txt";
 const LLMS_TXT_FULL = "llms-full.txt";
 
+const resolveMarkdown = ({
+  dataRoutes,
+  path
+}: {
+  dataRoutes: RoutesData;
+  path: string;
+}): RouteData | undefined => {
+  const data = dataRoutes.get(path);
+
+  if (data !== undefined) {
+    return data;
+  }
+
+  // root dir is indexed with a trailing slash
+  return dataRoutes.get(`${path}/`);
+};
+
 const generateLlmsTxt = async ({
   groupedRoutes,
   dataRoutes,
@@ -426,7 +443,7 @@ const generateLlmsTxt = async ({
     path,
     title: customTitle
   }: GroupedRouteChild): string | undefined => {
-    const data = dataRoutes.get(path);
+    const data = resolveMarkdown({ dataRoutes, path });
 
     if (data === undefined) {
       return undefined;
@@ -456,6 +473,7 @@ const generateLlmsTxt = async ({
     .map(
       ([key, { children, title }]) => `${buildTitle({ key, title })}
   
+${buildLink({ path: key, title })}
 ${children.map(buildLink).join("\n")}`
     )
     .join("\n\n");
@@ -481,7 +499,7 @@ const generateLlmsTxtFull = async ({
 } & Pick<LoadContext, "siteConfig" | "outDir"> &
   Pick<PluginOptions, "description" | "docsDir">) => {
   const buildMarkdown = ({ path }: GroupedRouteChild): string | undefined => {
-    const data = dataRoutes.get(path);
+    const data = resolveMarkdown({ dataRoutes, path });
 
     if (data === undefined) {
       return undefined;
@@ -495,7 +513,13 @@ const generateLlmsTxtFull = async ({
   };
 
   const content = groupedRoutes
-    .map(([_, { children }]) => children.map(buildMarkdown).join("\n\n"))
+    .map(
+      ([
+        key,
+        { children, title }
+      ]) => `${buildMarkdown({ path: key, title })}\n\n
+${children.map(buildMarkdown).join("\n\n")}`
+    )
     .join("\n\n");
 
   await generateLlmsTxtFile({
