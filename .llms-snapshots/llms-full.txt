@@ -10617,10 +10617,16 @@ Usage: juno status [options]Options:  -m, --mode            Choose which environ
 
 ### Version
 
-Check the version of the CLI.
+Manage version related tasks.
 
 ```
-Usage: juno version [options]Options:  -h, --help            Output usage information.
+Usage: juno version <subcommand>Subcommands:  check                 Configure the weekly version check.Options:  -h, --help            Output usage information.
+```
+
+You can also print the current versions of the CLI and emulator (if running) by using:
+
+```
+juno --version
 ```
 
 ---
