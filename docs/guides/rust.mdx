@@ -105,6 +105,56 @@ Hooks execute asynchronously, separate from the request-response cycle. Changes 
 
 ---
 
+## Custom Functions
+
+Custom Functions let you define callable endpoints directly inside your Satellite. Unlike hooks, which react to events, custom functions are explicitly invoked - from your frontend or from other modules.
+
+import QueryVsUpdate from "./components/functions/query-vs-update.md";
+
+<QueryVsUpdate />
+
+### Defining a Function
+
+You define them using standard `ic_cdk` macros:
+
+```rust
+use ic_cdk::query;
+
+#[ic_cdk::query]
+fn hello_world() -> String {
+    "Hello, World!".to_string()
+}
+
+include_satellite!();
+```
+
+When you build your project, Juno automatically generates a client API based on your function definitions, so you can call them directly from your frontend.
+
+### Guards
+
+Guards let you protect custom functions by running a check before the handler executes. If the guard returns an error, the function is not invoked.
+
+```rust
+use junobuild_satellite::caller_is_admin;
+
+fn my_function_guard() -> Result<(), String> {
+    caller_is_admin()
+}
+
+#[ic_cdk::query(guard = "my_function_guard")]
+fn hello_world() -> String {
+    "Hello, admin!".to_string()
+}
+
+include_satellite!();
+```
+
+Juno provides built-in guards you can use directly.
+
+📦 See all available built-in guards in the [SDK reference](#guards).
+
+---
+
 ## Assertions
 
 Assertions allow you to validate or reject operations before they are executed. They're useful for enforcing data integrity, security policies, or business rules inside your Satellite, and they run synchronously during the request lifecycle.
