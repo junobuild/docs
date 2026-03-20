@@ -346,6 +346,51 @@ pub fn get_admin_access_keys() -> AccessKeys
 
 ---
 
+### is_valid_access_key
+
+Checks if a principal is a non-expired access key regardless of scope (admin, write, or submit).
+
+```rust
+pub fn is_valid_access_key(
+    id: Principal,
+    access_keys: &AccessKeys,
+) -> bool
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.is_valid_access_key.html)
+
+---
+
+### is_write_access_key
+
+Checks if a principal is a non-expired access key with admin or write scope.
+
+```rust
+pub fn is_write_access_key(
+    id: Principal,
+    access_keys: &AccessKeys,
+) -> bool
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.is_write_access_key.html)
+
+---
+
+### is_admin_controller
+
+Checks if a principal is an admin access key and a controller known by the Internet Computer.
+
+```rust
+pub fn is_admin_controller(
+    id: Principal,
+    access_keys: &AccessKeys,
+) -> bool
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.is_admin_controller.html)
+
+---
+
 ## Guards
 
 The following guard functions can be used to validate the caller in your custom serverless functions.
