@@ -12141,33 +12141,75 @@ pub fn get_content_chunks_store(    encoding: &AssetEncoding,    chunk_index: us
 
 ---
 
-## Controllers
+## Access Keys
 
-The following functions allow you to inspect and assert the controllers of your Satellite.
-
----
-
-### get\_controllers
-
-Retrieves all controllers of the Satellite.
-
-```
-pub fn get_controllers() -> Controllers
-```
-
-📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_controllers.html)
+The following functions allow you to inspect and assert the access keys of your Satellite.
 
 ---
 
-### get\_admin\_controllers
+### get\_access\_keys
 
-Retrieves only the admin controllers of the Satellite.
+Retrieves all access keys of the Satellite.
 
 ```
-pub fn get_admin_controllers() -> Controllers
+pub fn get_access_keys() -> AccessKeys
 ```
 
-📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_admin_controllers.html)
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_access_keys.html)
+
+---
+
+### get\_admin\_access\_keys
+
+Retrieves only the admin access\_keys of the Satellite.
+
+```
+pub fn get_admin_access_keys() -> AccessKeys
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_admin_access_keys.html)
+
+---
+
+## Guards
+
+The following guard functions can be used to validate the caller in your custom serverless functions.
+
+---
+
+### caller\_is\_admin
+
+Guards that the caller is an admin access key of this satellite. Admin access keys have full management privileges and never expire.
+
+```
+pub fn caller_is_admin() -> Result<(), String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.caller_is_admin.html)
+
+---
+
+### caller\_has\_write\_permission
+
+Guards that the caller has write permission. Admin and editor access keys pass; submitter access keys do not.
+
+```
+pub fn caller_has_write_permission() -> Result<(), String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.caller_has_write_permission.html)
+
+---
+
+### caller\_is\_access\_key
+
+Guards that the caller is any recognized access key of this satellite. Accepts admin, editor, and submitter access keys alike.
+
+```
+pub fn caller_is_access_key() -> Result<(), String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.caller_is_access_key.html)
 
 ---
 
