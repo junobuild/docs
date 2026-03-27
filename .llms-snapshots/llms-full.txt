@@ -13290,6 +13290,196 @@ function getContentChunksStore(  params: GetContentChunksStoreParams): Blob | un
 *   `ZodError` if the input schema is invalid.
 *   `Error` if the operation fails.
 
+---
+
+## Access Keys
+
+The following functions allow you to inspect and assert the access keys of your Satellite.
+
+---
+
+### getAccessKeys
+
+Retrieves all access keys of the Satellite.
+
+```
+function getAccessKeys(): AccessKeys;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Returns:
+
+*   `AccessKeys`: The list of all access keys.
+
+#### Throws:
+
+*   `ZodError` if the returned value does not match the expected schema.
+
+---
+
+### getAdminAccessKeys
+
+Retrieves only the admin access keys of the Satellite.
+
+```
+function getAdminAccessKeys(): AccessKeys;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Returns:
+
+*   `AccessKeys`: The list of admin access keys.
+
+#### Throws:
+
+*   `ZodError` if the returned value does not match the expected schema.
+
+---
+
+### isWriteAccessKey
+
+Checks if the given id is a non-expired access key with admin or write scope.
+
+```
+function isWriteAccessKey(params: AccessKeyCheckParams): boolean;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+*   `params`: An object containing:
+*   `id`: The principal to check (`RawUserId` or `UserId`).
+*   `accessKeys`: The list of access keys to verify against.
+
+#### Returns:
+
+*   `boolean`: Whether the id is an access key with write permission.
+
+#### Throws:
+
+*   `ZodError` if any input does not match the expected schema.
+
+---
+
+### isValidAccessKey
+
+Checks if the given id is a non-expired access key regardless of scope (admin, write, or submit).
+
+```
+function isValidAccessKey(params: AccessKeyCheckParams): boolean;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+*   `params`: An object containing:
+*   `id`: The principal to check (`RawUserId` or `UserId`).
+*   `accessKeys`: The list of access keys to verify against.
+
+#### Returns:
+
+*   `boolean`: Whether the id is a recognized access key.
+
+#### Throws:
+
+*   `ZodError` if any input does not match the expected schema.
+
+---
+
+### isAdminController
+
+Checks if the given id is an admin access key and a controller known by the Internet Computer.
+
+```
+function isAdminController(params: AccessKeyCheckParams): boolean;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+*   `params`: An object containing:
+*   `id`: The principal to check (`RawUserId` or `UserId`).
+*   `accessKeys`: The list of access keys to verify against.
+
+#### Returns:
+
+*   `boolean`: Whether the id is an admin and a controller of the Satellite.
+
+#### Throws:
+
+*   `ZodError` if any input does not match the expected schema.
+
+---
+
+## Guards
+
+The following guard functions can be used to validate the caller in your custom serverless functions.
+
+---
+
+### callerIsAdmin
+
+Guards that the caller is an admin access key of this satellite. Admin access keys have full management privileges and never expire.
+
+```
+function callerIsAdmin(): void;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Returns:
+
+*   `void`
+
+#### Throws:
+
+*   `ZodError` if the caller is not an admin access key.
+
+---
+
+### callerHasWritePermission
+
+Guards that the caller has write permission. Admin and editor access keys pass; submitter access keys do not.
+
+```
+function callerHasWritePermission(): void;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Returns:
+
+*   `void`
+
+#### Throws:
+
+*   `ZodError` if the caller does not have write permission.
+
+---
+
+### callerIsAccessKey
+
+Guards that the caller is any recognized access key of this satellite. Accepts admin, editor, and submitter access keys alike.
+
+```
+function callerIsAccessKey(): void;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Returns:
+
+*   `void`
+
+#### Throws:
+
+*   `ZodError` if the caller is not a recognized access key.
+
 # Utils
 
 The following utilities are provided to help you work with document and asset data inside your Satellite. They simplify tasks such as decoding and encoding data, serializing custom types, and interacting with Juno’s core features in a consistent way.
