@@ -141,11 +141,9 @@ Custom Functions let you define callable endpoints directly inside your Satellit
 
 You define them using `defineQuery` or `defineUpdate`, describe their input and output shapes with the `j` type system, and Juno takes care of generating all the necessary bindings under the hood.
 
-### Query vs. Update
+import QueryVsUpdate from "./components/functions/query-vs-update.md";
 
-A **query** is a read-only function. It returns data without modifying any state. Queries are fast and suitable for fetching or computing information.
-
-An **update** is a function that can read and write state. Use it when your logic needs to persist data or trigger side effects. Updates can also be used for read operations when the response needs to be certified - making them suitable for security-sensitive use cases where data integrity must be guaranteed.
+<QueryVsUpdate />
 
 ### Defining a Function
 
@@ -181,6 +179,39 @@ import { functions } from "../declarations/satellite/satellite.api.ts";
 
 await functions.helloWorld({ name: "World", id: Principal.anonymous() });
 ```
+
+### Guards
+
+Guards let you protect custom functions by running a check before the handler executes. If the guard throws, the function is not invoked.
+
+```typescript
+import { defineQuery } from "@junobuild/functions";
+
+export const ping = defineQuery({
+  guard: () => {
+    throw new Error("No pong today");
+  },
+  handler: () => {
+    console.log("Hello");
+  }
+});
+```
+
+Juno also provides built-in guards you can use out of the box:
+
+```typescript
+import { defineQuery } from "@junobuild/functions";
+import { callerIsAdmin } from "@junobuild/functions/sdk";
+
+export const ping = defineQuery({
+  guard: callerIsAdmin,
+  handler: () => {
+    console.log("Hello, admin!");
+  }
+});
+```
+
+📦 See all available built-in guards in the [SDK reference](../reference/functions/typescript/sdk.mdx).
 
 ---
 
