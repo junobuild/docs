@@ -316,33 +316,120 @@ pub fn get_content_chunks_store(
 
 ---
 
-## Controllers
+## Access Keys
 
-The following functions allow you to inspect and assert the controllers of your Satellite.
-
----
-
-### get_controllers
-
-Retrieves all controllers of the Satellite.
-
-```rust
-pub fn get_controllers() -> Controllers
-```
-
-📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_controllers.html)
+The following functions allow you to inspect and assert the access keys of your Satellite.
 
 ---
 
-### get_admin_controllers
+### get_access_keys
 
-Retrieves only the admin controllers of the Satellite.
+Retrieves all access keys of the Satellite.
 
 ```rust
-pub fn get_admin_controllers() -> Controllers
+pub fn get_access_keys() -> AccessKeys
 ```
 
-📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_admin_controllers.html)
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_access_keys.html)
+
+---
+
+### get_admin_access_keys
+
+Retrieves only the admin access_keys of the Satellite.
+
+```rust
+pub fn get_admin_access_keys() -> AccessKeys
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_admin_access_keys.html)
+
+---
+
+### is_valid_access_key
+
+Checks if a principal is a non-expired access key regardless of scope (admin, write, or submit).
+
+```rust
+pub fn is_valid_access_key(
+    id: Principal,
+    access_keys: &AccessKeys,
+) -> bool
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.is_valid_access_key.html)
+
+---
+
+### is_write_access_key
+
+Checks if a principal is a non-expired access key with admin or write scope.
+
+```rust
+pub fn is_write_access_key(
+    id: Principal,
+    access_keys: &AccessKeys,
+) -> bool
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.is_write_access_key.html)
+
+---
+
+### is_admin_controller
+
+Checks if a principal is an admin access key and a controller known by the Internet Computer.
+
+```rust
+pub fn is_admin_controller(
+    id: Principal,
+    access_keys: &AccessKeys,
+) -> bool
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.is_admin_controller.html)
+
+---
+
+## Guards
+
+The following guard functions can be used to validate the caller in your custom serverless functions.
+
+---
+
+### caller_is_admin
+
+Guards that the caller is an admin access key of this satellite. Admin access keys have full management privileges and never expire.
+
+```rust
+pub fn caller_is_admin() -> Result<(), String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.caller_is_admin.html)
+
+---
+
+### caller_has_write_permission
+
+Guards that the caller has write permission. Admin and editor access keys pass; submitter access keys do not.
+
+```rust
+pub fn caller_has_write_permission() -> Result<(), String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.caller_has_write_permission.html)
+
+---
+
+### caller_is_access_key
+
+Guards that the caller is any recognized access key of this satellite. Accepts admin, editor, and submitter access keys alike.
+
+```rust
+pub fn caller_is_access_key() -> Result<(), String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.caller_is_access_key.html)
 
 ---
 

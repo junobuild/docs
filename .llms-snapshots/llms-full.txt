@@ -182,11 +182,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+yarn add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ```
-pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+pnpm add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 2.  Initialize your Satellite in your web app:
@@ -7101,6 +7101,40 @@ Hooks execute asynchronously, separate from the request-response cycle. Changes 
 
 ---
 
+## Custom Functions
+
+Custom Functions let you define callable endpoints directly inside your Satellite. Unlike hooks, which react to events, custom functions are explicitly invoked - from your frontend or from other modules.
+
+### Query vs. Update
+
+A **query** is a read-only function. It returns data without modifying any state. Queries are fast and suitable for fetching or computing information.
+
+An **update** is a function that can read and write state. Use it when your logic needs to persist data or trigger side effects. Updates can also be used for read operations when the response needs to be certified - making them suitable for security-sensitive use cases where data integrity must be guaranteed.
+
+### Defining a Function
+
+You define them using standard `ic_cdk` macros:
+
+```
+use ic_cdk::query;#[ic_cdk::query]fn hello_world() -> String {    "Hello, World!".to_string()}include_satellite!();
+```
+
+When you build your project, Juno automatically generates a client API based on your function definitions, so you can call them directly from your frontend.
+
+### Guards
+
+Guards let you protect custom functions by running a check before the handler executes. If the guard returns an error, the function is not invoked.
+
+```
+use junobuild_satellite::caller_is_admin;fn my_function_guard() -> Result<(), String> {    caller_is_admin()}#[ic_cdk::query(guard = "my_function_guard")]fn hello_world() -> String {    "Hello, admin!".to_string()}include_satellite!();
+```
+
+Juno provides built-in guards you can use directly.
+
+📦 See all available built-in guards in the ([SDK reference](#guards)).
+
+---
+
 ## Assertions
 
 Assertions allow you to validate or reject operations before they are executed. They're useful for enforcing data integrity, security policies, or business rules inside your Satellite, and they run synchronously during the request lifecycle.
@@ -7305,6 +7339,22 @@ When you build your project, a type-safe client API is automatically generated b
 import { functions } from "../declarations/satellite/satellite.api.ts";await functions.helloWorld({ name: "World", id: Principal.anonymous() });
 ```
 
+### Guards
+
+Guards let you protect custom functions by running a check before the handler executes. If the guard throws, the function is not invoked.
+
+```
+import { defineQuery } from "@junobuild/functions";export const ping = defineQuery({  guard: () => {    throw new Error("No pong today");  },  handler: () => {    console.log("Hello");  }});
+```
+
+Juno also provides built-in guards you can use out of the box:
+
+```
+import { defineQuery } from "@junobuild/functions";import { callerIsAdmin } from "@junobuild/functions/sdk";export const ping = defineQuery({  guard: callerIsAdmin,  handler: () => {    console.log("Hello, admin!");  }});
+```
+
+📦 See all available built-in guards in the [SDK reference](/docs/reference/functions/typescript/sdk.md).
+
 ---
 
 ## Assertions
@@ -7436,11 +7486,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+yarn add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ```
-pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+pnpm add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ### 2\. Start the Emulator
@@ -7695,11 +7745,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+yarn add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ```
-pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+pnpm add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ## 2\. Start the Emulator
@@ -8349,11 +8399,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+yarn add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ```
-pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+pnpm add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 #### 2\. Start the Emulator
@@ -8636,11 +8686,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+yarn add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ```
-pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+pnpm add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ### 2\. Start the Emulator
@@ -8905,11 +8955,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+yarn add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ```
-pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+pnpm add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ### 2\. Start the Emulator
@@ -9208,11 +9258,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+yarn add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ```
-pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+pnpm add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ### 2\. Start the Emulator
@@ -12151,33 +12201,111 @@ pub fn get_content_chunks_store(    encoding: &AssetEncoding,    chunk_index: us
 
 ---
 
-## Controllers
+## Access Keys
 
-The following functions allow you to inspect and assert the controllers of your Satellite.
-
----
-
-### get\_controllers
-
-Retrieves all controllers of the Satellite.
-
-```
-pub fn get_controllers() -> Controllers
-```
-
-📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_controllers.html)
+The following functions allow you to inspect and assert the access keys of your Satellite.
 
 ---
 
-### get\_admin\_controllers
+### get\_access\_keys
 
-Retrieves only the admin controllers of the Satellite.
+Retrieves all access keys of the Satellite.
 
 ```
-pub fn get_admin_controllers() -> Controllers
+pub fn get_access_keys() -> AccessKeys
 ```
 
-📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_admin_controllers.html)
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_access_keys.html)
+
+---
+
+### get\_admin\_access\_keys
+
+Retrieves only the admin access\_keys of the Satellite.
+
+```
+pub fn get_admin_access_keys() -> AccessKeys
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.get_admin_access_keys.html)
+
+---
+
+### is\_valid\_access\_key
+
+Checks if a principal is a non-expired access key regardless of scope (admin, write, or submit).
+
+```
+pub fn is_valid_access_key(    id: Principal,    access_keys: &AccessKeys,) -> bool
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.is_valid_access_key.html)
+
+---
+
+### is\_write\_access\_key
+
+Checks if a principal is a non-expired access key with admin or write scope.
+
+```
+pub fn is_write_access_key(    id: Principal,    access_keys: &AccessKeys,) -> bool
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.is_write_access_key.html)
+
+---
+
+### is\_admin\_controller
+
+Checks if a principal is an admin access key and a controller known by the Internet Computer.
+
+```
+pub fn is_admin_controller(    id: Principal,    access_keys: &AccessKeys,) -> bool
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.is_admin_controller.html)
+
+---
+
+## Guards
+
+The following guard functions can be used to validate the caller in your custom serverless functions.
+
+---
+
+### caller\_is\_admin
+
+Guards that the caller is an admin access key of this satellite. Admin access keys have full management privileges and never expire.
+
+```
+pub fn caller_is_admin() -> Result<(), String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.caller_is_admin.html)
+
+---
+
+### caller\_has\_write\_permission
+
+Guards that the caller has write permission. Admin and editor access keys pass; submitter access keys do not.
+
+```
+pub fn caller_has_write_permission() -> Result<(), String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.caller_has_write_permission.html)
+
+---
+
+### caller\_is\_access\_key
+
+Guards that the caller is any recognized access key of this satellite. Accepts admin, editor, and submitter access keys alike.
+
+```
+pub fn caller_is_access_key() -> Result<(), String>
+```
+
+📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.caller_is_access_key.html)
 
 ---
 
@@ -13299,6 +13427,196 @@ function getContentChunksStore(  params: GetContentChunksStoreParams): Blob | un
 
 *   `ZodError` if the input schema is invalid.
 *   `Error` if the operation fails.
+
+---
+
+## Access Keys
+
+The following functions allow you to inspect and assert the access keys of your Satellite.
+
+---
+
+### getAccessKeys
+
+Retrieves all access keys of the Satellite.
+
+```
+function getAccessKeys(): AccessKeys;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Returns:
+
+*   `AccessKeys`: The list of all access keys.
+
+#### Throws:
+
+*   `ZodError` if the returned value does not match the expected schema.
+
+---
+
+### getAdminAccessKeys
+
+Retrieves only the admin access keys of the Satellite.
+
+```
+function getAdminAccessKeys(): AccessKeys;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Returns:
+
+*   `AccessKeys`: The list of admin access keys.
+
+#### Throws:
+
+*   `ZodError` if the returned value does not match the expected schema.
+
+---
+
+### isWriteAccessKey
+
+Checks if the given id is a non-expired access key with admin or write scope.
+
+```
+function isWriteAccessKey(params: AccessKeyCheckParams): boolean;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+*   `params`: An object containing:
+*   `id`: The principal to check (`RawUserId` or `UserId`).
+*   `accessKeys`: The list of access keys to verify against.
+
+#### Returns:
+
+*   `boolean`: Whether the id is an access key with write permission.
+
+#### Throws:
+
+*   `ZodError` if any input does not match the expected schema.
+
+---
+
+### isValidAccessKey
+
+Checks if the given id is a non-expired access key regardless of scope (admin, write, or submit).
+
+```
+function isValidAccessKey(params: AccessKeyCheckParams): boolean;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+*   `params`: An object containing:
+*   `id`: The principal to check (`RawUserId` or `UserId`).
+*   `accessKeys`: The list of access keys to verify against.
+
+#### Returns:
+
+*   `boolean`: Whether the id is a recognized access key.
+
+#### Throws:
+
+*   `ZodError` if any input does not match the expected schema.
+
+---
+
+### isAdminController
+
+Checks if the given id is an admin access key and a controller known by the Internet Computer.
+
+```
+function isAdminController(params: AccessKeyCheckParams): boolean;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Parameters:
+
+*   `params`: An object containing:
+*   `id`: The principal to check (`RawUserId` or `UserId`).
+*   `accessKeys`: The list of access keys to verify against.
+
+#### Returns:
+
+*   `boolean`: Whether the id is an admin and a controller of the Satellite.
+
+#### Throws:
+
+*   `ZodError` if any input does not match the expected schema.
+
+---
+
+## Guards
+
+The following guard functions can be used to validate the caller in your custom serverless functions.
+
+---
+
+### callerIsAdmin
+
+Guards that the caller is an admin access key of this satellite. Admin access keys have full management privileges and never expire.
+
+```
+function callerIsAdmin(): void;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Returns:
+
+*   `void`
+
+#### Throws:
+
+*   `ZodError` if the caller is not an admin access key.
+
+---
+
+### callerHasWritePermission
+
+Guards that the caller has write permission. Admin and editor access keys pass; submitter access keys do not.
+
+```
+function callerHasWritePermission(): void;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Returns:
+
+*   `void`
+
+#### Throws:
+
+*   `ZodError` if the caller does not have write permission.
+
+---
+
+### callerIsAccessKey
+
+Guards that the caller is any recognized access key of this satellite. Accepts admin, editor, and submitter access keys alike.
+
+```
+function callerIsAccessKey(): void;
+```
+
+📦 Import from `@junobuild/functions/sdk`
+
+#### Returns:
+
+*   `void`
+
+#### Throws:
+
+*   `ZodError` if the caller is not a recognized access key.
 
 # Utils
 
