@@ -10,6 +10,24 @@ It is advised to locate the entry matching your current `junobuild-satellite` ve
 
 ---
 
+## Juno v0.0.72
+
+Release notes on [GitHub](https://github.com/junobuild/juno/releases/tag/v0.0.72).
+
+```toml
+[dependencies]
+candid = "0.10.20"
+ic-cdk = "0.19.0"
+ic-cdk-macros = "0.19.0"
+serde = "1.0.225"
+serde_cbor = "0.11.2"
+junobuild-satellite = "0.6.0"
+junobuild-macros = "0.4.0"
+junobuild-utils = "0.4.0"
+```
+
+---
+
 ## Juno v0.0.71
 
 Release notes on [GitHub](https://github.com/junobuild/juno/releases/tag/v0.0.71).
