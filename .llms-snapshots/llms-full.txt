@@ -182,11 +182,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+yarn add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ```
-pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+pnpm add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 2.  Initialize your Satellite in your web app:
@@ -7486,11 +7486,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+yarn add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ```
-pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+pnpm add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ### 2\. Start the Emulator
@@ -7745,11 +7745,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+yarn add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ```
-pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+pnpm add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ## 2\. Start the Emulator
@@ -8399,11 +8399,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+yarn add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ```
-pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+pnpm add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 #### 2\. Start the Emulator
@@ -8686,11 +8686,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+yarn add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ```
-pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+pnpm add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ### 2\. Start the Emulator
@@ -8955,11 +8955,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+yarn add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ```
-pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+pnpm add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ### 2\. Start the Emulator
@@ -9258,11 +9258,11 @@ npm i @junobuild/core
 ```
 
 ```
-yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+yarn add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ```
-pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
+pnpm add @junobuild/core @junobuild/utils @icp-sdk/core @icp-sdk/auth
 ```
 
 ### 2\. Start the Emulator
