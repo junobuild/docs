@@ -270,7 +270,7 @@ This enables:
 
 *   A development experience that mirrors mainnet, helping you build with confidence
 *   A smooth dev loop, from prototype to deployment
-*   A unique way to build, debug, and validate smart contract logic and frontend behavior — all in one place
+*   A unique way to build, debug, and validate serverless functions logic and frontend behavior — all in one place
 
 ![A screenshot of the DEV Console UI login screen](/assets/images/login-22bd49b1624f8c4c89c5c1e33b2fc70c.png)
 
