@@ -7,7 +7,7 @@ Juno is your self-contained serverless platform for building full-stack web apps
 - [Introduction to Juno](https://juno.build/docs/intro.md): Explore Juno's serverless functions, hosting, and data capabilities. Start building with Juno today — no DevOps, no setup friction.
 - [Start a New Project](https://juno.build/docs/start-a-new-project.md): Build a full-stack app with Juno — whether you're using a template, starting from scratch, or adding it to an existing project.
 - [Setup the SDK](https://juno.build/docs/setup-the-sdk.md): Connect your web app to a Juno Satellite to unlock features like auth, data, storage, and functions. This guide shows how to set up the SDK with or without build plugins.
-- [Run your project locally](https://juno.build/docs/guides/local-development.md): Run a full local development environment with the Juno emulator using Docker or Podman, complete with Console UI, live reload, and smart contract support.
+- [Run your project locally](https://juno.build/docs/guides/local-development.md): Run a full local development environment with the Juno emulator using Docker or Podman, complete with Console UI, live reload, and all the containers.
 - [Deploy with a Satellite](https://juno.build/docs/create-a-satellite.md): A quick guide to creating a Satellite on Juno in production — the container that powers your app.
 
 ## Build - Analytics
