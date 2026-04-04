@@ -7389,6 +7389,50 @@ To encode and decode these calls, you need JavaScript structures that match the 
 
 ---
 
+## HTTPS Outcalls
+
+[HTTPS outcalls](https://internetcomputer.org/https-outcalls) are a feature that enables your serverless functions to make HTTP requests to any external API.
+
+**Tip:**
+
+This example is also available on [GitHub](https://github.com/junobuild/examples/tree/main/functions/typescript/https-outcalls).
+
+For this example, we'll skip a few steps as the logic remains consistent:
+
+*   Your frontend makes a call to the Satellite.
+*   The Satellite performs some work, such as asserting and setting a document.
+*   If everything succeeds, the Satellite triggers a hook before returning the result of the call.
+
+Here is an example of an hook which fetches an API to get the link to an image of a dog and saves that information within the Datastore. While this might not be a practical real-world use case, it is simple enough to demonstrate the feature.
+
+Here is an example of an `onSetDoc` hook which fetches an API to get the link to an image of a dog and saves that information within the Datastore. While this might not be a practical real-world use case, it is simple enough to demonstrate the feature.
+
+```
+import { defineHook, type OnSetDoc, SetDoc } from "@junobuild/functions";import { j } from "@junobuild/schema";import { httpRequest, HttpRequestArgs } from "@junobuild/functions/ic-cdk";import { encodeDocData, setDocStore } from "@junobuild/functions/sdk";// The data of the document we are looking to update in the Satellite's Datastore.const DogDataSchema = j.strictObject({  src: j.string().optional()});// We are using the Dog CEO API in this example.// https://dog.ceo/dog-api///// Its endpoint "random" returns such JSON data:// {//     "message": "https://images.dog.ceo/breeds/mountain-swiss/n02107574_1118.jpg",//     "status": "success"// }//// That's why we declare a struct that matches the structure of the answer.const DogApiResponseSchema = j.strictObject({  message: j.url(),  status: j.string()});export const onSetDoc = defineHook<OnSetDoc>({  collections: ["dogs"],  run: async ({    caller,    data: {      collection,      key,      data: {        after: { description, version }      }    }  }) => {    // 1. Prepare the HTTP GET request    const url = "https://dog.ceo/api/breeds/image/random";    const args: HttpRequestArgs = {      url,      method: "GET",      headers: [],      // Use a single node as we do not require that a trust level for fetching a dog image for demo purposes. 😉      isReplicated: false    };    // 2. Execute the HTTP request.    const result = await httpRequest(args);    // 3. Transform the response to a structured data object.    const decoder = new TextDecoder();    const body = decoder.decode(result.body);    const dogResponse = DogApiResponseSchema.parse(JSON.parse(body));    // 4. Our goal is to update the document in the Datastore with an update that contains the link to the image fetched from the API we just called.    const dogData = DogDataSchema.parse({      src: dogResponse.message    });    // 5. We encode those data back to blob because the Datastore holds data as blob.    const encodedData = encodeDocData(dogData);    // 6. Then we construct the parameters required to call the function that save the data in the Datastore.    const doc: SetDoc = {      description,      version,      data: encodedData    };    // 7. We store the data in the Datastore for the same caller as the one who triggered the original on_set_doc, in the same collection with the same key as well.    setDocStore({      caller,      collection,      key,      doc    });  }});
+```
+
+As with the previous example, the hook will asynchronously update the document. If you wait a bit before retrieving the document in your frontend, you might notice that the source of the image has been updated by your hook.
+
+### Replication
+
+By default, all nodes that run your Satellite execute the same request and must agree on the response for the call to succeed. This ensures the result is verified but means the target API must return identical responses across repeated calls.
+
+Setting switches to a single-node mode which by extension skips such assertion. It's also cheaper, but the response is not verified by others. Suitable when you trust the data source or consistency is not critical.
+
+### Costs
+
+HTTPS outcalls consume cycles to execute. Refer to the [ICP documentation](https://internetcomputer.org/docs/current/references/https-outcalls-how-it-works#pricing) for the current pricing model.
+
+You can also use the [HTTPS Outcalls Cost Calculator](https://7joko-hiaaa-aaaal-ajz7a-cai.icp0.io/) to estimate the cost of a specific request.
+
+### Technical Requirements
+
+HTTPS outcalls support both IPv4 and IPv6.
+
+One consideration when using replicated mode: since all nodes execute the same request, the API must return an identical response each time. Many APIs support this via an idempotency key. If that's not an option, non-replicated mode is usually the practical alternative.
+
+---
+
 ## Schema Types
 
 The `j` type system is Juno's schema layer for custom functions. It is built on top of [Zod](https://zod.dev/) and extends it with types specific to the Juno and Internet Computer environment, such as `j.principal()`.
