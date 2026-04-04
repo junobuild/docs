@@ -1,0 +1,21 @@
+export const isReplicated = "isReplicated: false";
+
+As with the previous example, the hook will asynchronously update the document. If you wait a bit before retrieving the document in your frontend, you might notice that the source of the image has been updated by your hook.
+
+### Replication
+
+By default, all nodes that run your Satellite execute the same request and must agree on the response for the call to succeed. This ensures the result is verified but means the target API must return identical responses across repeated calls.
+
+Setting <code>{props.isReplicated}</code> switches to a single-node mode which by extension skips such assertion. It's also cheaper, but the response is not verified by others. Suitable when you trust the data source or consistency is not critical.
+
+### Costs
+
+HTTPS outcalls consume cycles to execute. Refer to the [ICP documentation](https://internetcomputer.org/docs/current/references/https-outcalls-how-it-works#pricing) for the current pricing model.
+
+You can also use the [HTTPS Outcalls Cost Calculator](https://7joko-hiaaa-aaaal-ajz7a-cai.icp0.io/) to estimate the cost of a specific request.
+
+### Technical Requirements
+
+HTTPS outcalls support both IPv4 and IPv6.
+
+One consideration when using replicated mode: since all nodes execute the same request, the API must return an identical response each time. Many APIs support this via an idempotency key. If that's not an option, non-replicated mode is usually the practical alternative.
