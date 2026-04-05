@@ -43,7 +43,6 @@ export const fetchRandomDog = defineUpdate({
     const args: HttpRequestArgs = {
       url: "https://dog.ceo/api/breeds/image/random",
       method: "GET",
-      headers: [],
       isReplicated: false
     };
 
@@ -90,8 +89,7 @@ export const fetchRandomDog = defineUpdate({
     const args: HttpRequestArgs = {
       url: "https://dog.ceo/api/breeds/image/random",
       method: "GET",
-      headers: [],
-      isReplicated: false,
+      isReplicated: true,
       transform: "trimHeaders"
     };
 
