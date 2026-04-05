@@ -81,6 +81,42 @@ function call<T>(params: CallParams): Promise<T | undefined>;
 
 ---
 
+## httpRequest
+
+Performs an HTTP request from a Juno serverless function.
+
+```typescript
+function httpRequest(args: HttpRequestArgs): Promise<HttpRequestResult>;
+```
+
+📦 Import from `@junobuild/functions/ic-cdk`
+
+#### Parameters:
+
+- `args`: The HTTP request parameters.
+- `url`: The requested URL.
+- `method`: The HTTP method — `GET`, `POST`, or `HEAD`.
+- `headers` (optional): A list of HTTP request headers.
+- `body` (optional): The request body as a `Uint8Array`.
+- `maxResponseBytes` (optional): The maximal size of the response in bytes.
+- `transform` (optional): The name of a query function used to transform the response before consensus. If provided, a corresponding query must be declared using `defineQuery`.
+- `isReplicated` (optional): Whether all nodes should perform the request and agree on the response, or just one node. Defaults to all nodes if not specified.
+
+#### Returns:
+
+- `Promise<HttpRequestResult>`: A promise resolving to the HTTP response, containing `status` (bigint), `headers`, and `body` (Uint8Array).
+
+#### Throws:
+
+- `ZodError` if the provided arguments do not match the expected schema.
+- `Error` if the HTTP request fails.
+
+#### Notes:
+
+- This function is a JavaScript binding for the Rust function [ic_cdk::management_canister::http_request()](https://docs.rs/ic-cdk/0.19.0/ic_cdk/management_canister/fn.http_request.html).
+
+---
+
 ## msgCaller
 
 Returns the Principal ID of the caller of the current function.
