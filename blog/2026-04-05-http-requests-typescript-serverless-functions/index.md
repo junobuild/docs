@@ -2,10 +2,12 @@
 slug: http-requests-typescript-serverless-functions
 title: HTTP Requests in TypeScript Serverless Functions
 authors: [peterpeterparker]
-tags: [functions, typescript, sputnik, serverless]
-date: 2026-04-04
-image: https://juno.build/assets/images/https-outcalls-in-typescript-snippet.png
+tags: [functions, typescript, sputnik, serverless, fetch, api]
+date: 2026-04-05
+image: https://juno.build/assets/images/http-requests-typescript-serverless-functions-548b19a5c5103a1c7d99e6018a74ecea.png
 ---
+
+![](http-requests-typescript-serverless-functions.png)
 
 One of the most requested features for TypeScript serverless functions has always been the ability to make HTTP requests to external APIs.
 
@@ -56,7 +58,7 @@ export const fetchRandomDog = defineUpdate({
 });
 ```
 
-Define the function, call the API, return the result. That's it.
+Define the function, call the API, use the result. That's it.
 
 ![Magic GIF for fun](./magical-magic.gif)
 
