@@ -367,7 +367,6 @@ export const onSetDoc = defineHook<OnSetDoc>({
     const args: HttpRequestArgs = {
       url,
       method: "GET",
-      headers: [],
       // Use a single node as we do not require that a trust level for fetching a dog image for demo purposes. 😉
       isReplicated: false
     };
