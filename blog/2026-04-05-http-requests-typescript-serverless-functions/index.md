@@ -151,9 +151,8 @@ export const hello = defineQuery({
 
 Following sections of the documentation have been updated:
 
-- [Development](/docs/build/functions/development/)
-- [Guides](/docs/guides/typescript)
-- [References (SDK, schema, etc.)](/docs/reference/functions/typescript)
+- [Guides](/docs/guides/typescript#https-outcalls)
+- [References](/docs/reference/functions/typescript/ic-cdk#httprequest)
 
 ---
 
