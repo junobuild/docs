@@ -473,6 +473,10 @@ For example, you can use the following script:
 
 When you're ready to deploy your project to production, you'll need to create a [Satellite](/docs/terminology.md#satellite).
 
+**Tip:**
+
+New to Juno? Reach out on [Discord](https://discord.gg/wHZ57Z2RAG) and we'll get you started for free.
+
 1.  To get started, sign-in to the Juno [Console](https://console.juno.build).
 2.  Click **Launch your first Satellite**.
 3.  Enter a name for your Satellite (note: this is for display purposes only and does not need to be unique).
@@ -10166,6 +10170,10 @@ For most applications, we recommend using the default subnets and staying on the
 # Wallet
 
 This section provides guidance on managing your cycles with your wallet (your account), which are essential for maintaining and providing enough resources for your modules in the Juno ecosystem.
+
+**Tip:**
+
+New to Juno? You don't need to set up a wallet. Reach out on [Discord](https://discord.gg/wHZ57Z2RAG) and we'll get you started for free.
 
 **Important:**
 
