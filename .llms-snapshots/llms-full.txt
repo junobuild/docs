@@ -3047,9 +3047,17 @@ For example, if you're on **v0.0.23** and the latest release is **v0.0.26**, fir
 
 ---
 
+## Runtime
+
+When building TypeScript serverless functions, the runtime version is always **the one bundled in the tool** you are using — the emulator or the GitHub Action. It is not a dependency you declare or control in your project.
+
+This means the runtime is tied to the image version. Keeping the emulator and GitHub Action up to date is the way to get the latest runtime features and fixes.
+
+---
+
 ## Versioning
 
-When writing serverless functions in TypeScript, Juno uses the version defined in your project’s `package.json`. This version is embedded into the compiled Wasm module and shown in the Juno Console, making it easier to keep track of deployments.
+Juno uses the version defined in your project’s `package.json`. This version is embedded into the compiled Wasm module and shown in the Juno Console, making it easier to keep track of deployments.
 
 By default, the version is inherited from the root-level `version` field:
 
