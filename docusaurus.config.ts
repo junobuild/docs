@@ -42,7 +42,7 @@ codeTheme.styles = [
 
 const config: Config = {
   title: "Juno",
-  tagline: "Build serverless apps with self-hosting control",
+  tagline: "Open-Source SDK for building apps",
   url: "https://juno.build",
   baseUrl: "/",
   onBrokenLinks: "warn",

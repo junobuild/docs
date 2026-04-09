@@ -40,7 +40,6 @@
     "react-dom": "^19.2.1",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
-    "typed.js": "^2.1.0",
     "use-mailchimp-form": "^3.1.4"
   },
   "devDependencies": {
