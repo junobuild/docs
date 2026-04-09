@@ -1,9 +1,7 @@
 @use "../../mixins/section";
 
-.container {
+.section {
   margin: 0 auto;
-  max-width: var(--ifm-container-width);
-  width: 100%;
 
   @include section.standalone;
 }

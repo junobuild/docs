@@ -1,0 +1,30 @@
+@mixin border-horizontal() {
+  @media screen and (min-width: 1140px) {
+    border-left: 1px solid var(--ifm-toc-border-color);
+    border-right: 1px solid var(--ifm-toc-border-color);
+  }
+}
+
+@mixin section($border-top: false) {
+  @include border-horizontal;
+
+  @media screen and (min-width: 1140px) {
+    border-bottom: 1px solid var(--ifm-toc-border-color);
+
+    @if $border-top {
+      border-top: 1px solid var(--ifm-toc-border-color);
+    }
+
+    padding: 0 3rem;
+  }
+}
+
+@mixin standalone {
+  @include border-horizontal;
+
+  padding: 3rem var(--ifm-spacing-horizontal) 12rem;
+
+  @media screen and (min-width: 1140px) {
+    padding: 3rem 3rem 16rem;
+  }
+}

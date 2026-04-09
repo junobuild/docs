@@ -1,0 +1,24 @@
+@use "../mixins/section";
+
+:root {
+  &.blog-wrapper {
+    .main-wrapper {
+      div.container {
+        margin-bottom: unset !important;
+        margin-top: unset !important;
+
+        @include section.standalone;
+
+        padding: 3rem var(--ifm-spacing-horizontal) 0;
+
+        @media screen and (min-width: 1140px) {
+          padding: 3rem 3rem 0;
+        }
+
+        main {
+          padding-bottom: 3rem;
+        }
+      }
+    }
+  }
+}

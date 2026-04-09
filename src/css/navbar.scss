@@ -1,3 +1,5 @@
+@use "../mixins/section";
+
 :root {
   .navbar {
     border-bottom: 1px solid transparent;
@@ -6,6 +8,23 @@
   &.docs-wrapper {
     .navbar {
       border-bottom: 1px solid var(--ifm-toc-border-color);
+    }
+  }
+
+  &:not(.docs-wrapper) {
+    @media screen and (min-width: 1140px) {
+      .navbar {
+        width: var(--ifm-container-width);
+        margin: 0 auto;
+
+        @include section.section(true);
+      }
+    }
+
+    @media screen and (min-width: 1440px) {
+      .navbar {
+        width: var(--ifm-container-width-xl);
+      }
     }
   }
 }
