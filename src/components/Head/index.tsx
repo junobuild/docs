@@ -6,14 +6,14 @@ export default function Home({ children }): JSX.Element {
 
   return (
     <Head>
-      <title>{`${siteConfig.title} | Build serverless apps with self-hosting control`}</title>
+      <title>{`${siteConfig.title} | Open-Source SDK for building apps`}</title>
       <meta
         content="Juno is an open-source serverless platform to build, deploy, and run apps in WASM containers with complete ownership and zero DevOps."
         name="description"
       />
       <meta content="Juno" property="og:title" />
       <meta
-        content="Build serverless apps with self-hosting control"
+        content="Open-Source SDK for building apps"
         property="og:description"
       />
       <meta content="website" property="og:type" />
@@ -25,7 +25,7 @@ export default function Home({ children }): JSX.Element {
       <meta content="summary_large_image" name="twitter:card" />
       <meta content="Juno" name="twitter:title" />
       <meta
-        content="Build serverless apps with self-hosting control"
+        content="Open-Source SDK for building apps"
         name="twitter:description"
       />
       <meta

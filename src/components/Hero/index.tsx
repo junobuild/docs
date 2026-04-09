@@ -3,53 +3,26 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Start from "@site/src/components/Start";
 import { trackEvent } from "@site/src/providers/analytics.providers";
 import clsx from "clsx";
-import { useEffect, useRef, useState } from "react";
-import Typed from "typed.js";
+import { useRef } from "react";
 import styles from "./styles.module.scss";
 
 export default function Hero(): JSX.Element {
   const el = useRef(null);
 
-  const [typedLoaded, setTypedLoaded] = useState(false);
-
-  useEffect(() => {
-    let typed: Typed | undefined;
-
-    const timeout = setTimeout(() => {
-      typed = new Typed(el.current, {
-        strings: ["Run", "Ship", "Build", "Launch"],
-        typeSpeed: 50,
-        backSpeed: 50,
-        backDelay: 3500,
-        loop: true,
-        showCursor: false
-      });
-
-      setTypedLoaded(true);
-    }, 2500);
-
-    return () => {
-      clearTimeout(timeout);
-      typed?.destroy();
-    };
-  }, []);
-
   const { siteConfig } = useDocusaurusContext();
   return (
     <article className={clsx("hero", styles.heroBanner)}>
       <div className={`${styles.container}`}>
-        <h1 className={`hero__title ${styles.title} ${styles.item}`}>
-          <span ref={el} className={`${styles.bold} ${styles.typed}`} />
-          {!typedLoaded && (
-            <span className={`${styles.bold} ${styles.typed}`}>Build</span>
-          )}{" "}
-          serverless apps
+        <h1
+          className={`hero__title ${styles.title} ${styles.item} ${styles.bold}`}
+        >
+          Open-Source SDK
           <br />
-          with self-hosting <span className={styles.bold}>control</span>
+          for building apps
         </h1>
         <p className={`${styles.item} ${styles.subtitle}`}>
-          Juno is an open-source serverless platform to build, deploy, and run
-          apps in WASM containers with complete ownership and zero DevOps.
+          Juno is a full-stack platform to develop, deploy, and run apps in WASM
+          containers with zero DevOps.
         </p>
         <p className={`${styles.item}`}></p>
         <div className={`${styles.item} ${styles.actions}`}>
