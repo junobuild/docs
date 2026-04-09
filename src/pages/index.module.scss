@@ -19,6 +19,10 @@
   @include section.section;
 
   padding: 1rem 3rem 4rem;
+
+  @media screen and (min-width: 1140px) {
+    padding: 1rem 3rem 4rem;
+  }
 }
 
 .launch {
@@ -27,7 +31,11 @@
   padding: 0 3rem 8rem;
 
   @media screen and (min-width: 960px) {
-    padding: 2rem 3rem 2rem;
+    padding: 2rem 3rem;
+  }
+
+  @media screen and (min-width: 1140px) {
+    padding: 2rem 3rem;
   }
 }
 
@@ -35,6 +43,10 @@
   @include section.section;
 
   padding: 4rem 3rem 4rem;
+
+  @media screen and (min-width: 1140px) {
+    padding: 4rem 3rem 4rem;
+  }
 }
 
 .grid {
