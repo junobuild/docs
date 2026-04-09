@@ -6,6 +6,8 @@
   --ifm-menu-link-padding-vertical: 0.3rem;
   --ifm-toc-padding-vertical: 0.3rem;
 
+  --ifm-container-width: 1078px;
+
   &[data-theme] {
     --doc-sidebar-width: 18vw;
   }
@@ -17,12 +19,6 @@
 
 nav {
   font-size: var(--font-size-navbar);
-}
-
-.container {
-  @media (min-width: 1440px) {
-    max-width: 1640px;
-  }
 }
 
 .main-wrapper {

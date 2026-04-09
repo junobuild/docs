@@ -7,6 +7,7 @@ import type { Props } from "@theme/BlogLayout";
 import BlogSidebar from "@theme/BlogSidebar";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
+import styles from "./styles.module.scss";
 
 export default function Changelog(
   props: Props & { releases: GitHubRelease[] }
@@ -30,7 +31,7 @@ export default function Changelog(
 
   return (
     <Layout {...layoutProps}>
-      <div className="container margin-vert--lg">
+      <div className={`container ${styles.section}`}>
         <div className="row">
           <BlogSidebar sidebar={sidebar} />
           <main

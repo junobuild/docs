@@ -1,5 +1,6 @@
 @use "../../mixins/grid";
 @use "../../mixins/fonts";
+@use "../../mixins/section";
 
 .title {
   @include fonts.h1;
@@ -17,10 +18,20 @@
   justify-content: center;
   align-items: center;
 
-  margin: 3rem 0 6rem;
+  max-width: var(--ifm-container-width);
+  width: 100%;
+
+  margin: 0 auto;
+
+  @include section.standalone;
+
+  padding: 6rem 3rem;
 }
 
 .grid {
-  margin: 0 1rem 6rem;
   @include grid.columns;
+}
+
+.section {
+  @include section.standalone;
 }
