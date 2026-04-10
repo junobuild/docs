@@ -303,10 +303,6 @@ const config: Config = {
             title: "More",
             items: [
               {
-                label: "Showcase",
-                to: "/showcase"
-              },
-              {
                 label: "Blog",
                 to: "/blog"
               },
