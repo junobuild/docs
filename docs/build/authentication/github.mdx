@@ -70,7 +70,9 @@ export default defineConfig({
       development: "<DEV_SATELLITE_ID>",
       production: "<PROD_SATELLITE_ID>"
     },
-    source: "dist",
+    hosting: {
+      source: "dist"
+    },
     authentication: {
       github: {
         clientId: "your-github-client-id"

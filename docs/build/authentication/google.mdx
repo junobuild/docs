@@ -75,7 +75,9 @@ export default defineConfig({
       development: "<DEV_SATELLITE_ID>",
       production: "<PROD_SATELLITE_ID>"
     },
-    source: "dist",
+    hosting: {
+      source: "dist"
+    },
     authentication: {
       google: {
         clientId: "1234567890-abcde12345fghijklmno.apps.googleusercontent.com"

@@ -52,8 +52,10 @@ export default defineConfig({
     ids: {
       production: "qsgjb-riaaa-aaaaa-aaaga-cai" // Replace with your satellite ID
     },
-    source: "dist", // Replace with your build output directory
-    predeploy: ["npm run build"] // Adjust based on your package manager
+    hosting: {
+      source: "dist", // Replace with your build output directory
+      predeploy: ["npm run build"] // Adjust based on your package manager
+    }
   }
 });
 ```

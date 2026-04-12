@@ -12,8 +12,10 @@ export default defineConfig({
     ids: {
       production: "qsgjb-riaaa-aaaaa-aaaga-cai"
     },
-    source: "dist",
-    ignore: ["**/*.txt", ".tmp/"]
+    hosting: {
+      source: "dist",
+      ignore: ["**/*.txt", ".tmp/"]
+    }
   }
 });
 ```

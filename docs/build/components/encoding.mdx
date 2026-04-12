@@ -22,8 +22,10 @@ export default defineConfig({
     ids: {
       production: "qsgjb-riaaa-aaaaa-aaaga-cai"
     },
-    source: "dist",
-    encoding: [["**/releases/*.gz", "identity"]]
+    hosting: {
+      source: "dist",
+      encoding: [["**/releases/*.gz", "identity"]]
+    }
   }
 });
 ```

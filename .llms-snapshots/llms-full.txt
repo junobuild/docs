@@ -736,7 +736,7 @@ If you're using the [Next.js](/docs/reference/plugins.md#nextjs-plugin) or [Vite
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist"  },  orbiter: {    ids: {      production: "aaaa-bbbbb-ccccc-ddddd-cai" // <-- Replace with your ID    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    }  },  orbiter: {    ids: {      production: "aaaa-bbbbb-ccccc-ddddd-cai" // <-- Replace with your ID    }  }});
 ```
 
 If you're not using a plugin, you can skip this step and instead provide the IDs manually when initializing the Orbiter (see next section).
@@ -865,7 +865,7 @@ You can also configure different IDs for different environments (e.g., developme
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist"  },  orbiter: {    ids: {      production: "aaaa-bbbbb-ccccc-ddddd-cai",      development: "ffff-eeee-ddddd-ccccc-cai"    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    }  },  orbiter: {    ids: {      production: "aaaa-bbbbb-ccccc-ddddd-cai",      development: "ffff-eeee-ddddd-ccccc-cai"    }  }});
 ```
 
 # Authentication
@@ -1094,7 +1094,7 @@ Deploy your own instance of the [Juno API](https://github.com/junobuild/juno-api
 Once your proxy is running, add your GitHub configuration to your `juno.config` file:
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    authentication: {      github: {        clientId: "your-github-client-id"      }    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "dist"    },    authentication: {      github: {        clientId: "your-github-client-id"      }    }  }});
 ```
 
 If you use different Client IDs for each environment (as recommended), you can leverage the build mode to load configuration conditionally.
@@ -1305,7 +1305,7 @@ Once your credentials are ready, you need to add your Google Client ID to your p
 In your `juno.config` file:
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    authentication: {      google: {        clientId: "1234567890-abcde12345fghijklmno.apps.googleusercontent.com"      }    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "dist"    },    authentication: {      google: {        clientId: "1234567890-abcde12345fghijklmno.apps.googleusercontent.com"      }    }  }});
 ```
 
 If you use different Client IDs for each environment (as recommended), you can leverage the build mode to load configuration conditionally.
@@ -3148,7 +3148,7 @@ Juno uses this directory to locate the files that will be deployed as part of yo
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist"  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    }  }});
 ```
 
 ### Ignore files
@@ -3162,7 +3162,7 @@ Here is an example of how the ignore attribute can be utilized:
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    ignore: ["**/*.txt", ".tmp/"]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      ignore: ["**/*.txt", ".tmp/"]    }  }});
 ```
 
 ### HTTP Headers
@@ -3176,7 +3176,7 @@ Here's an example of the `headers` object:
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    storage: {      headers: [        {          source: "/",          headers: [["Cache-Control", "public,max-age=0,must-revalidate"]]        },        {          source: "assets/fonts/*",          headers: [["Cache-Control", "max-age=31536000"]]        },        {          source: "**/*.jpg",          headers: [            ["Cache-Control", "max-age=31536000"],            ["Access-Control-Allow-Origin", "*"]          ]        }      ]    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    storage: {      headers: [        {          source: "/",          headers: [["Cache-Control", "public,max-age=0,must-revalidate"]]        },        {          source: "assets/fonts/*",          headers: [["Cache-Control", "max-age=31536000"]]        },        {          source: "**/*.jpg",          headers: [            ["Cache-Control", "max-age=31536000"],            ["Access-Control-Allow-Origin", "*"]          ]        }      ]    }  }});
 ```
 
 This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the headers using globs.
@@ -3204,7 +3204,7 @@ Here's the basic structure for a `redirects` attribute.
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    storage: {      redirects: [        {          source: "/hello",          location: "/world/index.html",          code: 301        }      ]    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    storage: {      redirects: [        {          source: "/hello",          location: "/world/index.html",          code: 301        }      ]    }  }});
 ```
 
 The `redirects` attribute contains an array of redirect rules:
@@ -3224,7 +3224,7 @@ Here's the basic structure for a `rewrites` attribute.
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    storage: {      rewrites: [        {          source: "/hello/**",          destination: "/hello/world.html"        }      ]    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    storage: {      rewrites: [        {          source: "/hello/**",          destination: "/hello/world.html"        }      ]    }  }});
 ```
 
 This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the rewrites using globs.
@@ -3253,7 +3253,7 @@ Set the `precompress` option to `false` in your configuration:
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    precompress: false  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      precompress: false    }  }});
 ```
 
 #### Customize the file matching pattern
@@ -3263,7 +3263,7 @@ If you want to customize the default pattern `**/*.+(css|js|mjs|html)` to better
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    precompress: {      pattern: "**/*.jpg" // precompress JPEG files only    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      precompress: {        pattern: "**/*.jpg" // precompress JPEG files only      }    }  }});
 ```
 
 #### Decide what happens to original files
@@ -3282,7 +3282,7 @@ To avoid this, instead of providing a single precompression rule, it's recommend
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    precompress: {      mode: "replace"    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      precompress: {        mode: "replace"      }    }  }});
 ```
 
 #### Choose the compression algorithm
@@ -3294,7 +3294,7 @@ You can switch to **Brotli** (`algorithm: "brotli"`) for potentially smaller fil
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    precompress: {      algorithm: "brotli"    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      precompress: {        algorithm: "brotli"      }    }  }});
 ```
 
 #### Use multiple rules
@@ -3310,7 +3310,7 @@ To handle this, the precompress option also accepts an array of rules:
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    precompress: [      {        pattern: "**/*.+(js|mjs|css)",        algorithm: "brotli",        mode: "replace"      },      {        pattern: "**/*.html",        algorithm: "brotli",        mode: "both"      }    ]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      precompress: [        {          pattern: "**/*.+(js|mjs|css)",          algorithm: "brotli",          mode: "replace"        },        {          pattern: "**/*.html",          algorithm: "brotli",          mode: "both"        }      ]    }  }});
 ```
 
 ### Encoding types
@@ -3334,7 +3334,7 @@ Here is an example of how the "encoding" attribute can be utilized:
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    encoding: [["**/releases/*.gz", "identity"]]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      encoding: [["**/releases/*.gz", "identity"]]    }  }});
 ```
 
 ### iframe
@@ -3346,7 +3346,7 @@ You can customize this behavior by setting the `iframe` option to either `same-o
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    storage: {      iframe: "same-origin"    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    storage: {      iframe: "same-origin"    }  }});
 ```
 
 ### Assertions
@@ -3358,7 +3358,7 @@ You can customize this behavior by adjusting the heap memory limit in bytes. For
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    assertions: {      heapMemory: 678000000    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    assertions: {      heapMemory: 678000000    }  }});
 ```
 
 Alternatively, these checks can be completely disabled. To do so, set the `heapMemory` assertion to `false`:
@@ -3366,7 +3366,7 @@ Alternatively, these checks can be completely disabled. To do so, set the `heapM
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    assertions: {      heapMemory: false    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    assertions: {      heapMemory: false    }  }});
 ```
 
 # Development
@@ -6826,7 +6826,7 @@ If you're using a different image like Skylab, you can make this configuration d
 You can also replace `development` with `test` or any other mode. Adapt as you wish.
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "jx5yt-yyaaa-aaaal-abzbq-cai",      production: "<PROD_SATELLITE_ID>"    },    source: "out",    collections: {      datastore: [        {          collection: "notes",          read: "managed",          write: "managed",          memory: "stable"        }      ],      storage: [        {          collection: "images",          read: "managed",          write: "managed",          memory: "stable"        }      ]    }  },  emulator: {    runner: {      type: "docker"    },    satellite: {}  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "jx5yt-yyaaa-aaaal-abzbq-cai",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "out"    },    collections: {      datastore: [        {          collection: "notes",          read: "managed",          write: "managed",          memory: "stable"        }      ],      storage: [        {          collection: "images",          read: "managed",          write: "managed",          memory: "stable"        }      ]    }  },  emulator: {    runner: {      type: "docker"    },    satellite: {}  }});
 ```
 
 The configuration above also defines the collections used by the application under test.
@@ -7574,7 +7574,7 @@ To initialize your project with the Satellite ID you created, configure it in th
 Replace `<DEV_SATELLITE_ID>` with the ID.
 
 ```
-import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "out",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "out",      predeploy: ["npm run build"]    }  }});
 ```
 
 In addition, add also the ID to your `environment.ts` file:
@@ -7659,7 +7659,7 @@ Use this guide to deploy your project to production.
 Create a `juno.config.mjs` file at the root of your project. Replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier and `dist/<application-name>/browser` with your project's name.
 
 ```
-import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist/<application-name>/browser",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "dist/<application-name>/browser",      predeploy: ["npm run build"]    }  }});
 ```
 
 ## 3\. How to deploy
@@ -7833,7 +7833,7 @@ To initialize the library with the Satellite ID you created, configure it in the
 Replace `<DEV_SATELLITE_ID>` with the ID.
 
 ```
-import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "dist",      predeploy: ["npm run build"]    }  }});
 ```
 
 ## 4\. Install the Plugin
@@ -7892,7 +7892,7 @@ Use this guide to deploy and host your project to production.
 Create a `juno.config.mjs` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
 
 ```
-import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "dist",      predeploy: ["npm run build"]    }  }});
 ```
 
 ## 3\. How to deploy
@@ -8003,7 +8003,7 @@ Use this guide to deploy and host your project to production.
 Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "build",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "build",      predeploy: ["npm run build"]    }  }});
 ```
 
 ## 3\. How to deploy
@@ -8127,7 +8127,7 @@ Commonly, or if you are using the templates, these are the folders that can be s
 Here’s an example of configuration file:
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai" // Replace with your satellite ID    },    source: "dist", // Replace with your build output directory    predeploy: ["npm run build"] // Adjust based on your package manager  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai" // Replace with your satellite ID    },    hosting: {      source: "dist", // Replace with your build output directory      predeploy: ["npm run build"] // Adjust based on your package manager    }  }});
 ```
 
 For detailed information about all available configuration options, refer to the [configuration](/docs/reference/configuration.md) section.
@@ -8487,7 +8487,7 @@ To initialize the library with the Satellite ID you created, configure it in the
 Replace `<DEV_SATELLITE_ID>` with the ID.
 
 ```
-import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "out",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "out",      predeploy: ["npm run build"]    }  }});
 ```
 
 ### 4\. Install the Plugin (If Needed)
@@ -8590,7 +8590,7 @@ next.config.js
 Create a `juno.config.mjs` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
 
 ```
-import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "out",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";/** @type {import('@junobuild/config').JunoConfig} */export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "out",      predeploy: ["npm run build"]    }  }});
 ```
 
 ## 4\. How to deploy
@@ -8859,7 +8859,7 @@ Use this guide to deploy and host your project to production.
 Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "dist",      predeploy: ["npm run build"]    }  }});
 ```
 
 ## 3\. How to deploy
@@ -9043,7 +9043,7 @@ To initialize the library with the Satellite ID you created, configure it in the
 Replace `<DEV_SATELLITE_ID>` with the ID.
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "build",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "dist",      predeploy: ["npm run build"]    }  }});
 ```
 
 ### 4\. Install the Plugin (If Needed)
@@ -9162,7 +9162,7 @@ export const prerender = true;
 Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "build",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "build",      predeploy: ["npm run build"]    }  }});
 ```
 
 ## 4\. How to deploy
@@ -9346,7 +9346,7 @@ To initialize the library with the Satellite ID you created, configure it in the
 Replace `<DEV_SATELLITE_ID>` with the ID.
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "dist",      predeploy: ["npm run build"]    }  }});
 ```
 
 ### 4\. Install the Plugin (If Needed)
@@ -9431,7 +9431,7 @@ Use this guide to deploy and host your project to production.
 Create a `juno.config.ts` file at the root of your project, and replace the `PROD_SATELLITE_ID` with the ID of the Satellite you created earlier.
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "dist",      predeploy: ["npm run build"]    }  }});
 ```
 
 ## 3\. How to deploy
@@ -9926,7 +9926,7 @@ Add a CSP as the first `<meta>` tag of the `<head>` in your HTML file.
 Configure your Satellite to send a CSP header as part of the HTTP response. Headers can be configured as specified in this [chapter](/docs/reference/configuration.md#http-headers) of the documentation.
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    storage: {      headers: [        {          source: "**/*",          headers: [["Content-Security-Policy", "REPLACE_THIS_WITH_YOUR_RULES"]]        }      ]    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    storage: {      headers: [        {          source: "**/*",          headers: [["Content-Security-Policy", "REPLACE_THIS_WITH_YOUR_RULES"]]        }      ]    }  }});
 ```
 
 # Infrastructure
@@ -10808,7 +10808,7 @@ The Juno config file defines the settings and options needed for managing and de
 A basic config file looks like this:
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "build"  },  orbiter: {    ids: {      production: "eeeee-fffff-ddddd-11111-cai"    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "build"    }  },  orbiter: {    ids: {      production: "eeeee-fffff-ddddd-11111-cai"    }  }});
 ```
 
 At the top level, the Juno configuration includes two main sections:
@@ -10862,7 +10862,7 @@ Juno uses this directory to locate the files that will be deployed as part of yo
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist"  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    }  }});
 ```
 
 ### Ignore files
@@ -10876,7 +10876,7 @@ Here is an example of how the ignore attribute can be utilized:
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    ignore: ["**/*.txt", ".tmp/"]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      ignore: ["**/*.txt", ".tmp/"]    }  }});
 ```
 
 ### Precompress
@@ -10898,7 +10898,7 @@ Set the `precompress` option to `false` in your configuration:
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    precompress: false  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      precompress: false    }  }});
 ```
 
 #### Customize the file matching pattern
@@ -10908,7 +10908,7 @@ If you want to customize the default pattern `**/*.+(css|js|mjs|html)` to better
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    precompress: {      pattern: "**/*.jpg" // precompress JPEG files only    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      precompress: {        pattern: "**/*.jpg" // precompress JPEG files only      }    }  }});
 ```
 
 #### Decide what happens to original files
@@ -10927,7 +10927,7 @@ To avoid this, instead of providing a single precompression rule, it's recommend
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    precompress: {      mode: "replace"    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      precompress: {        mode: "replace"      }    }  }});
 ```
 
 #### Choose the compression algorithm
@@ -10939,7 +10939,7 @@ You can switch to **Brotli** (`algorithm: "brotli"`) for potentially smaller fil
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    precompress: {      algorithm: "brotli"    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      precompress: {        algorithm: "brotli"      }    }  }});
 ```
 
 #### Use multiple rules
@@ -10955,7 +10955,7 @@ To handle this, the precompress option also accepts an array of rules:
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    precompress: [      {        pattern: "**/*.+(js|mjs|css)",        algorithm: "brotli",        mode: "replace"      },      {        pattern: "**/*.html",        algorithm: "brotli",        mode: "both"      }    ]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      precompress: [        {          pattern: "**/*.+(js|mjs|css)",          algorithm: "brotli",          mode: "replace"        },        {          pattern: "**/*.html",          algorithm: "brotli",          mode: "both"        }      ]    }  }});
 ```
 
 ### Encoding
@@ -10979,7 +10979,7 @@ Here is an example of how the "encoding" attribute can be utilized:
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    encoding: [["**/releases/*.gz", "identity"]]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      encoding: [["**/releases/*.gz", "identity"]]    }  }});
 ```
 
 ### Predeploy
@@ -10993,7 +10993,7 @@ The predeploy option allows you to define a list of scripts or commands to be ex
 These scripts are executed sequentially in the order they are listed.
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    predeploy: ["npm run build", "npm run lint"]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      predeploy: ["npm run build", "npm run lint"]    }  }});
 ```
 
 ### Postdeploy
@@ -11007,7 +11007,7 @@ The postdeploy option allows you to define a list of scripts or commands to be e
 Like `predeploy`, these scripts are executed sequentially in the order they are listed.
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    postdeploy: ["./scripts/notify-admins.sh", "echo 'Deployment complete'"]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist",      postdeploy: ["./scripts/notify-admins.sh", "echo 'Deployment complete'"]    }  }});
 ```
 
 ### Storage
@@ -11025,7 +11025,7 @@ Here's an example of the `headers` object:
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    storage: {      headers: [        {          source: "/",          headers: [["Cache-Control", "public,max-age=0,must-revalidate"]]        },        {          source: "assets/fonts/*",          headers: [["Cache-Control", "max-age=31536000"]]        },        {          source: "**/*.jpg",          headers: [            ["Cache-Control", "max-age=31536000"],            ["Access-Control-Allow-Origin", "*"]          ]        }      ]    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    storage: {      headers: [        {          source: "/",          headers: [["Cache-Control", "public,max-age=0,must-revalidate"]]        },        {          source: "assets/fonts/*",          headers: [["Cache-Control", "max-age=31536000"]]        },        {          source: "**/*.jpg",          headers: [            ["Cache-Control", "max-age=31536000"],            ["Access-Control-Allow-Origin", "*"]          ]        }      ]    }  }});
 ```
 
 This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the headers using globs.
@@ -11047,7 +11047,7 @@ Here's the basic structure for a `rewrites` attribute.
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    storage: {      rewrites: [        {          source: "/hello/**",          destination: "/hello/world.html"        }      ]    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    storage: {      rewrites: [        {          source: "/hello/**",          destination: "/hello/world.html"        }      ]    }  }});
 ```
 
 This `source` attribute works similarly to Git's `.gitignore`, and you can specify which files match the rewrites using globs.
@@ -11066,7 +11066,7 @@ Here's the basic structure for a `redirects` attribute.
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    storage: {      redirects: [        {          source: "/hello",          location: "/world/index.html",          code: 301        }      ]    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    storage: {      redirects: [        {          source: "/hello",          location: "/world/index.html",          code: 301        }      ]    }  }});
 ```
 
 The `redirects` attribute contains an array of redirect rules:
@@ -11086,7 +11086,7 @@ You can customize this behavior by setting the `iframe` option to either `same-o
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    storage: {      iframe: "same-origin"    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    storage: {      iframe: "same-origin"    }  }});
 ```
 
 #### Maximum Memory Size
@@ -11096,7 +11096,7 @@ You can set optional limits on heap and stable memory to control how assets are 
 When the limit is reached, the Storage will continue to operate normally but will reject the upload of new assets.
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    storage: {      maxMemorySize: {        stable: 1_073_741_824n // For example max. 1 GiB in bytes of Stable memory      }    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    storage: {      maxMemorySize: {        stable: 1_073_741_824n // For example max. 1 GiB in bytes of Stable memory      }    }  }});
 ```
 
 ### Datastore
@@ -11110,7 +11110,7 @@ You can set optional limits on heap and stable memory to control how documents a
 When the limit is reached, the Datastore will continue to operate normally but will reject changes to documents.
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    datastore: {      maxMemorySize: {        stable: 1_073_741_824n // For example max. 1 GiB in bytes of Stable memory      }    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    datastore: {      maxMemorySize: {        stable: 1_073_741_824n // For example max. 1 GiB in bytes of Stable memory      }    }  }});
 ```
 
 ### Authentication
@@ -11146,7 +11146,7 @@ You can customize this behavior by adjusting the heap memory limit in bytes. For
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    assertions: {      heapMemory: 678000000    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    assertions: {      heapMemory: 678000000    }  }});
 ```
 
 Alternatively, these checks can be completely disabled. To do so, set the `heapMemory` assertion to `false`:
@@ -11154,7 +11154,7 @@ Alternatively, these checks can be completely disabled. To do so, set the `heapM
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    assertions: {      heapMemory: false    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    assertions: {      heapMemory: false    }  }});
 ```
 
 ### Settings
@@ -11204,7 +11204,7 @@ A basic example of a custom emulator configuration:
 juno.config.ts
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist"  },  emulator: {    runner: {      type: "docker",      image: "junobuild/skylab:latest",      name: "juno-skylab",      volume: "juno",      platform: "linux/amd64"    },    skylab: {      ports: {        server: 5987,        admin: 5999,        console: 5866      }    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    }  },  emulator: {    runner: {      type: "docker",      image: "junobuild/skylab:latest",      name: "juno-skylab",      volume: "juno",      platform: "linux/amd64"    },    skylab: {      ports: {        server: 5987,        admin: 5999,        console: 5866      }    }  }});
 ```
 
 ### Runner Options
@@ -11231,7 +11231,7 @@ If you're using Podman instead of Docker, you can specify it with the `type` fie
 juno.config.ts
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist"  },  emulator: {    runner: {      type: "podman"    },    skylab: {}  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    }  },  emulator: {    runner: {      type: "podman"    },    skylab: {}  }});
 ```
 
 This will use the default image and settings, but with Podman as the container runtime. You can customize the image, volume, and other options just like you would with Docker.
@@ -11267,7 +11267,7 @@ The `network` field lets you customize which well-known services of the Internet
 juno.config.ts
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist"  },  emulator: {    runner: {      type: "podman"    },    skylab: {},    network: {      services: {        registry: true,        sns: true,        nns_dapp: true      }    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    }  },  emulator: {    runner: {      type: "podman"    },    skylab: {},    network: {      services: {        registry: true,        sns: true,        nns_dapp: true      }    }  }});
 ```
 
 #### Available Services
@@ -11306,7 +11306,7 @@ Use `datastore` field to define the collection of your Datastore.
 juno.config.ts
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    collections: {      datastore: [        {          collection: "tasks",          memory: "stable",          read: "managed",          write: "managed"        },        {          collection: "announcements",          memory: "stable",          read: "public",          write: "controllers"        }      ]    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    collections: {      datastore: [        {          collection: "tasks",          memory: "stable",          read: "managed",          write: "managed"        },        {          collection: "announcements",          memory: "stable",          read: "public",          write: "controllers"        }      ]    }  }});
 ```
 
 #### Fields
@@ -11332,7 +11332,7 @@ Use the `storage` field to define the collection of your Storage.
 juno.config.ts
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    collections: {      storage: [        {          collection: "images",          memory: "stable",          read: "managed",          write: "managed"        },        {          collection: "files",          memory: "stable",          read: "public",          write: "managed"        }      ]    }  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    collections: {      storage: [        {          collection: "images",          memory: "stable",          read: "managed",          write: "managed"        },        {          collection: "files",          memory: "stable",          read: "public",          write: "managed"        }      ]    }  }});
 ```
 
 #### Fields
@@ -11404,7 +11404,7 @@ You might want to deploy or manage a project across different environments, such
 juno.config.js
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "xxxxx-zzzzz-wwwww-77777-cai",      staging: "11111-22222-33333-44444-cai",      production: "aaaaa-bbbbb-ccccc-ddddd-cai"    },    source: "dist"  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "xxxxx-zzzzz-wwwww-77777-cai",      staging: "11111-22222-33333-44444-cai",      production: "aaaaa-bbbbb-ccccc-ddddd-cai"    },    hosting: {      source: "dist"    }  }});
 ```
 
 **Note:**
@@ -11787,7 +11787,7 @@ Make also sure to set the `runner` type to match your container runtime, and def
 juno.config.ts
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "jx5yt-yyaaa-aaaal-abzbq-cai",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  },  emulator: {    runner: {      type: "docker"    },    satellite: {}  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "jx5yt-yyaaa-aaaal-abzbq-cai",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "dist",      predeploy: ["npm run build"]    }  },  emulator: {    runner: {      type: "docker"    },    satellite: {}  }});
 ```
 
 For more advanced options like customizing ports, image name, or CI setup, see the [Emulator Configuration](/docs/reference/configuration.md#emulator-configuration) section.
@@ -11818,7 +11818,7 @@ You can specify this ID under the `development` key in your Juno Config file:
 juno.config.ts
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist",    predeploy: ["npm run build"]  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "dist",      predeploy: ["npm run build"]    }  }});
 ```
 
 For more advanced options like customizing ports, image name, or CI setup, see the [Emulator Configuration](/docs/reference/configuration.md#emulator-configuration) section.
@@ -14118,7 +14118,7 @@ To resolve this issue, make sure your SDK is correctly configured by following t
 When you scaffold an app with a template, the `juno.config` file includes placeholder values for the Satellite IDs:
 
 ```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist"  }});
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    hosting: {      source: "dist"    }  }});
 ```
 
 If you start your frontend development server without replacing these placeholders, you may encounter an error like: `Invalid character: "&lt;"` while running your app in the browser.
