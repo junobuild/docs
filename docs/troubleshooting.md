@@ -78,7 +78,9 @@ export default defineConfig({
       development: "<DEV_SATELLITE_ID>",
       production: "<PROD_SATELLITE_ID>"
     },
-    source: "dist"
+    hosting: {
+      source: "dist"
+    }
   }
 });
 ```

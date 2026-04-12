@@ -22,8 +22,10 @@ export default defineConfig({
     ids: {
       production: "qsgjb-riaaa-aaaaa-aaaga-cai"
     },
-    source: "dist",
-    precompress: false
+    hosting: {
+      source: "dist",
+      precompress: false
+    }
   }
 });
 ```
@@ -40,9 +42,11 @@ export default defineConfig({
     ids: {
       production: "qsgjb-riaaa-aaaaa-aaaga-cai"
     },
-    source: "dist",
-    precompress: {
-      pattern: "**/*.jpg" // precompress JPEG files only
+    hosting: {
+      source: "dist",
+      precompress: {
+        pattern: "**/*.jpg" // precompress JPEG files only
+      }
     }
   }
 });
@@ -71,9 +75,11 @@ export default defineConfig({
     ids: {
       production: "qsgjb-riaaa-aaaaa-aaaga-cai"
     },
-    source: "dist",
-    precompress: {
-      mode: "replace"
+    hosting: {
+      source: "dist",
+      precompress: {
+        mode: "replace"
+      }
     }
   }
 });
@@ -93,9 +99,11 @@ export default defineConfig({
     ids: {
       production: "qsgjb-riaaa-aaaaa-aaaga-cai"
     },
-    source: "dist",
-    precompress: {
-      algorithm: "brotli"
+    hosting: {
+      source: "dist",
+      precompress: {
+        algorithm: "brotli"
+      }
     }
   }
 });
@@ -121,19 +129,21 @@ export default defineConfig({
     ids: {
       production: "qsgjb-riaaa-aaaaa-aaaga-cai"
     },
-    source: "dist",
-    precompress: [
-      {
-        pattern: "**/*.+(js|mjs|css)",
-        algorithm: "brotli",
-        mode: "replace"
-      },
-      {
-        pattern: "**/*.html",
-        algorithm: "brotli",
-        mode: "both"
-      }
-    ]
+    hosting: {
+      source: "dist",
+      precompress: [
+        {
+          pattern: "**/*.+(js|mjs|css)",
+          algorithm: "brotli",
+          mode: "replace"
+        },
+        {
+          pattern: "**/*.html",
+          algorithm: "brotli",
+          mode: "both"
+        }
+      ]
+    }
   }
 });
 ```

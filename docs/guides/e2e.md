@@ -71,7 +71,9 @@ export default defineConfig({
       development: "jx5yt-yyaaa-aaaal-abzbq-cai",
       production: "<PROD_SATELLITE_ID>"
     },
-    source: "out",
+    hosting: {
+      source: "out"
+    },
     collections: {
       datastore: [
         {

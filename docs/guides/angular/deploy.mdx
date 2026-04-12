@@ -30,8 +30,10 @@ export default defineConfig({
       development: "<DEV_SATELLITE_ID>",
       production: "<PROD_SATELLITE_ID>"
     },
-    source: "dist/<application-name>/browser",
-    predeploy: ["npm run build"]
+    hosting: {
+      source: "dist/<application-name>/browser",
+      predeploy: ["npm run build"]
+    }
   }
 });
 ```

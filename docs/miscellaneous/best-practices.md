@@ -41,7 +41,9 @@ export default defineConfig({
     ids: {
       production: "qsgjb-riaaa-aaaaa-aaaga-cai"
     },
-    source: "dist",
+    hosting: {
+      source: "dist"
+    },
     storage: {
       headers: [
         {

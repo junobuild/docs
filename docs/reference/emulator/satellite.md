@@ -19,8 +19,10 @@ export default defineConfig({
       development: "jx5yt-yyaaa-aaaal-abzbq-cai",
       production: "<PROD_SATELLITE_ID>"
     },
-    source: "dist",
-    predeploy: ["npm run build"]
+    hosting: {
+      source: "dist",
+      predeploy: ["npm run build"]
+    }
   },
   emulator: {
     runner: {
