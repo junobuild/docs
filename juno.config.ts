@@ -248,24 +248,26 @@ const redirects: StorageConfigRedirect[] = [
 export default defineConfig({
   satellite: {
     id: "ucnx3-aqaaa-aaaal-ab3ea-cai",
-    source: "build",
+    hosting: {
+      source: "build",
+      precompress: [
+        {
+          pattern: "**/*.+(js|mjs|css)",
+          algorithm: "brotli",
+          mode: "replace"
+        },
+        {
+          pattern: "**/*.html",
+          algorithm: "brotli",
+          mode: "both"
+        }
+      ],
+      predeploy: ["npm run build"]
+    },
     storage: {
       headers,
       redirects
-    },
-    precompress: [
-      {
-        pattern: "**/*.+(js|mjs|css)",
-        algorithm: "brotli",
-        mode: "replace"
-      },
-      {
-        pattern: "**/*.html",
-        algorithm: "brotli",
-        mode: "both"
-      }
-    ],
-    predeploy: ["npm run build"]
+    }
   },
   orbiter: {
     id: "3iier-sqaaa-aaaal-aczaa-cai"
