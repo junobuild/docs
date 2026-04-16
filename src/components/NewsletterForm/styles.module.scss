@@ -19,6 +19,8 @@
   }
 
   html[data-theme="dark"] & {
+    background: initial;
+
     &::placeholder {
       color: #707070;
     }
