@@ -11,6 +11,8 @@ keywords:
     deployment costs,
     data costs
   ]
+toc_min_heading_level: 2
+toc_max_heading_level: 2
 ---
 
 # Pricing
@@ -55,51 +57,32 @@ Each module is provisioned with approximately 1.5 T Cycles in usable resources.
 
 - Additional transaction fees may be introduced in the future, and pricing and models are subject to change.
 
+- Transaction costs were last reviewed on Jan. 7, 2026.
+
 :::
 
 ---
 
 ## Estimating Costs
 
-Below are a few examples of costs provided for explanatory purposes only. Actual costs may vary depending on network conditions and usage patterns.
+We don't have reliable up-to-date numbers to share here. Costs on the Internet Computer vary depending on subnet configuration, network conditions, and your specific usage patterns. Rather than giving you figures that may mislead, we encourage you to run your own experiments and calculations using the official resources:
 
-:::tip
+- 📄 [Cost reference](https://docs.internetcomputer.org/building-apps/essentials/gas-cost)
+- 🧮 [Pricing calculator](https://3d5wy-5aaaa-aaaag-qkhsq-cai.icp0.io/)
 
-You can use the [Pricing Calculator](https://internetcomputer.org/docs/current/developer-docs/cost-estimations-and-examples) to get a better rough estimate of how much your project might cost.
+### What to expect broadly
 
-:::
+Hosting static assets and running lightweight workloads is generally competitive. However, compute and storage costs for data-heavy applications are significantly higher than traditional cloud infrastructure. To put it plainly: the infrastructure, the Internet Computer, is likely more expensive compared to conventional alternatives, and it is better suited for small datasets than for large-scale data-intensive workloads.
 
-### Storage
+That said, the free tier gives you a solid starting point. You'll have enough resources to build, experiment, and evaluate whether ICP's cost model works for your use case before spending anything.
 
-The estimated annual cost of storing 1 gigabyte of data on the Internet Computer is $5.
+And again, we recommend doing your own research. DYOR prevails.
 
-To calculate the estimated monthly cost for 1 gigabyte of storage, you can refer to the table provided on the Internet Computer [website](https://internetcomputer.org/docs/current/developer-docs/gas-cost).
+### A note on emulator metrics
 
-| Transaction                | 13-node Application Subnets | 34-node Application Subnets |
-| -------------------------- | --------------------------- | --------------------------- |
-| GB Storage Per Second      | $0.000000169749             | $0.000000443960             |
-| Derived to a 30-day month  | $0.439                      | $1.149                      |
-| Derived to a 12-month year | $5.268                      | $13.788                     |
+If you use the [local emulator](./guides/local-development.mdx) during development, be aware that any cycles metrics you observe there should **not** be used as a proxy for mainnet costs.
 
-### Deployment
-
-Based on our experimentation, deploying an entire website, such as the website http://juno.build, which consists of approximately 900 files (including compressed versions of the files) and is 40 MB in size, is estimated to cost around 0.114 T Cycles, which converts to 0.0105 ICP ($0.15).
-
-It's important to note that subsequent deployments of your project can have significantly lower costs if the build consistency of your application is maintained. Juno only uploads new files to your Satellites, which helps reduce costs compared to initial deployments.
-
-### Data
-
-Querying data on the Internet Computer is currently free, so there are no additional costs to expect when reading data.
-
-In terms of persisting data, based on our experience, storing 100 instances of a JSON sample data with approximately 90 fields, totaling around 900 bytes, costs approximately 0.0005 TCycles ($0.000675). This means that the cost for a single transaction of this nature would be approximately 0.000005 TCycles or 0.0000017 ICP ($0.00000675).
-
-:::note
-
-Pricing information was last reviewed on Jan. 7, 2026.
-
-Figures are estimates and may change as the Internet Computer evolves.
-
-:::
+The emulator runs on a single [node](./terminology.mdx#node), whereas on mainnet your data is replicated across all nodes in a [subnet](./terminology.mdx#subnet). This replication is what makes the Internet Computer resilient, but it also means real-world costs are meaningfully higher than what local testing suggests.
 
 [mission control]: terminology.mdx#mission-control
 [satellite]: terminology.mdx#satellite
