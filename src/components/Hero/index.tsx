@@ -40,14 +40,15 @@ export default function Hero(): JSX.Element {
             Documentation
           </Link>
 
-          <a
-            href="/llms-full.txt"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.llms}
-          >
-            llms-full.txt
-          </a>
+          <div className={styles.ai}>
+            <a href="/llms-full.txt" target="_blank" rel="noopener noreferrer">
+              llms-full.txt
+            </a>
+            ·
+            <a href="/docs/guides/ai" className={styles.llms}>
+              AI tools
+            </a>
+          </div>
         </div>
       </div>
     </article>
