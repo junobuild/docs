@@ -4414,31 +4414,31 @@ Ready to explore Juno? [Start building](/docs/intro.md)
 
 Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more.
 
-[## 📄️ Next.js
+[## 📄️Next.js
 
 A fullstack note-taking app built with Next.js, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/nextjs.md)
 
-[## 📄️ React TypeScript
+[## 📄️React TypeScript
 
 A fullstack note-taking app built with React, TypeScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/react-typescript.md)
 
-[## 📄️ React JavaScript
+[## 📄️React JavaScript
 
 A fullstack note-taking app built with React, JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/react-javascript.md)
 
-[## 📄️ Vue
+[## 📄️Vue
 
 A fullstack note-taking app built with Vue, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/vue.md)
 
-[## 📄️ SvelteKit
+[## 📄️SvelteKit
 
 A fullstack note-taking app built with SvelteKit, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/sveltekit.md)
 
-[## 📄️ Angular
+[## 📄️Angular
 
 A fullstack note-taking app built with Angular, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/angular.md)
 
-[## 📄️ Vanilla JavaScript
+[## 📄️Vanilla JavaScript
 
 A fullstack note-taking app built with vanilla JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/vanilla-javascript.md)
 
@@ -4446,11 +4446,11 @@ A fullstack note-taking app built with vanilla JavaScript, and Tailwind CSS usin
 
 Write serverless backend logic for your app using TypeScript or Rust. These examples show how to use hooks, assertions, and common function patterns on Juno.
 
-[## 🗃️ Rust
+[## 🗃Rust
 
 4 items](/docs/examples/functions/rust.md)
 
-[## 🗃️ TypeScript
+[## 🗃TypeScript
 
 3 items](/docs/examples/functions/typescript.md)
 
@@ -4458,31 +4458,31 @@ Write serverless backend logic for your app using TypeScript or Rust. These exam
 
 Build full apps with Juno using your preferred frontend framework. These examples cover everything from auth to data handling with React, SvelteKit, Angular, Next.js, and more.
 
-[## 📄️ Next.js
+[## 📄️Next.js
 
 A fullstack note-taking app built with Next.js, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/nextjs.md)
 
-[## 📄️ React TypeScript
+[## 📄️React TypeScript
 
 A fullstack note-taking app built with React, TypeScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/react-typescript.md)
 
-[## 📄️ React JavaScript
+[## 📄️React JavaScript
 
 A fullstack note-taking app built with React, JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/react-javascript.md)
 
-[## 📄️ Vue
+[## 📄️Vue
 
 A fullstack note-taking app built with Vue, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/vue.md)
 
-[## 📄️ SvelteKit
+[## 📄️SvelteKit
 
 A fullstack note-taking app built with SvelteKit, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/sveltekit.md)
 
-[## 📄️ Angular
+[## 📄️Angular
 
 A fullstack note-taking app built with Angular, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/angular.md)
 
-[## 📄️ Vanilla JavaScript
+[## 📄️Vanilla JavaScript
 
 A fullstack note-taking app built with vanilla JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/vanilla-javascript.md)
 
@@ -5397,11 +5397,11 @@ The following functions from `@junobuild/core` are used in this example:
 
 Write serverless backend logic for your app using TypeScript or Rust. These examples show how to use hooks, assertions, and common function patterns on Juno.
 
-[## 🗃️ Rust
+[## 🗃Rust
 
 4 items](/docs/examples/functions/rust.md)
 
-[## 🗃️ TypeScript
+[## 🗃TypeScript
 
 3 items](/docs/examples/functions/typescript.md)
 
@@ -5409,19 +5409,19 @@ Write serverless backend logic for your app using TypeScript or Rust. These exam
 
 Examples of writing serverless functions in Rust for Juno. Includes patterns like custom assertions, data manipulation and calls.
 
-[## 📄️ Assertion
+[## 📄️Assertion
 
 An example demonstrating how to write custom assertions in Rust for Juno serverless functions.](/docs/examples/functions/rust/assertion.md)
 
-[## 📄️ Mutation
+[## 📄️Mutation
 
 An example demonstrating how to modify and re-save documents in Juno Satellites using Rust hooks.](/docs/examples/functions/rust/mutating-docs.md)
 
-[## 📄️ Asset Generation
+[## 📄️Asset Generation
 
 An example showing how to dynamically generate and store assets (like JSON) in Storage using Rust in Juno Satellites.](/docs/examples/functions/rust/generating-assets.md)
 
-[## 📄️ Canister Calls
+[## 📄️Canister Calls
 
 An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in Rust using Juno Satellites.](/docs/examples/functions/rust/canister-calls.md)
 
@@ -5429,15 +5429,15 @@ An example showing how to call external canisters (e.g., ICRC ledger) from a ser
 
 Examples of writing serverless functions in TypeScript for Juno. Includes patterns like custom assertions, data manipulation and calls.
 
-[## 📄️ Assertion
+[## 📄️Assertion
 
 An example demonstrating how to write custom assertions in TypeScript for Juno serverless functions.](/docs/examples/functions/typescript/assertion.md)
 
-[## 📄️ Mutation
+[## 📄️Mutation
 
 An example demonstrating how to modify and re-save documents in Juno Satellites using TypeScript hooks.](/docs/examples/functions/typescript/mutating-docs.md)
 
-[## 📄️ Canister Calls
+[## 📄️Canister Calls
 
 An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in TypeScript using Juno Satellites.](/docs/examples/functions/typescript/canister-calls.md)
 
@@ -5445,19 +5445,19 @@ An example showing how to call external canisters (e.g., ICRC ledger) from a ser
 
 Examples of writing serverless functions in Rust for Juno. Includes patterns like custom assertions, data manipulation and calls.
 
-[## 📄️ Assertion
+[## 📄️Assertion
 
 An example demonstrating how to write custom assertions in Rust for Juno serverless functions.](/docs/examples/functions/rust/assertion.md)
 
-[## 📄️ Mutation
+[## 📄️Mutation
 
 An example demonstrating how to modify and re-save documents in Juno Satellites using Rust hooks.](/docs/examples/functions/rust/mutating-docs.md)
 
-[## 📄️ Asset Generation
+[## 📄️Asset Generation
 
 An example showing how to dynamically generate and store assets (like JSON) in Storage using Rust in Juno Satellites.](/docs/examples/functions/rust/generating-assets.md)
 
-[## 📄️ Canister Calls
+[## 📄️Canister Calls
 
 An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in Rust using Juno Satellites.](/docs/examples/functions/rust/canister-calls.md)
 
@@ -6164,15 +6164,15 @@ These crates are used to build and extend serverless functions in Rust with Juno
 
 Examples of writing serverless functions in TypeScript for Juno. Includes patterns like custom assertions, data manipulation and calls.
 
-[## 📄️ Assertion
+[## 📄️Assertion
 
 An example demonstrating how to write custom assertions in TypeScript for Juno serverless functions.](/docs/examples/functions/typescript/assertion.md)
 
-[## 📄️ Mutation
+[## 📄️Mutation
 
 An example demonstrating how to modify and re-save documents in Juno Satellites using TypeScript hooks.](/docs/examples/functions/typescript/mutating-docs.md)
 
-[## 📄️ Canister Calls
+[## 📄️Canister Calls
 
 An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in TypeScript using Juno Satellites.](/docs/examples/functions/typescript/canister-calls.md)
 
@@ -6787,11 +6787,11 @@ Once configured, you can interact with Juno directly through your AI tool. Just 
 
 Explore how to create a Juno project developed with Angular.
 
-[## 📄️ Build
+[## 📄️Build
 
 Learn how to integrate Juno with Angular. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/angular/build.md)
 
-[## 📄️ Deploy
+[## 📄️Deploy
 
 Learn how to deploy your Angular project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/angular/deploy.md)
 
@@ -6799,11 +6799,11 @@ Learn how to deploy your Angular project to Juno. Follow the deployment guide to
 
 Explore how to create a Juno project developed with Astro.
 
-[## 📄️ Build
+[## 📄️Build
 
 Learn how to integrate Juno with Astro. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/astro/build.md)
 
-[## 📄️ Deploy
+[## 📄️Deploy
 
 Learn how to deploy your Astro project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/astro/deploy.md)
 
@@ -6811,7 +6811,7 @@ Learn how to deploy your Astro project to Juno. Follow the deployment guide to c
 
 Explore how to deploy a Juno project developed with Docusaurus.
 
-[## 📄️ Deploy
+[## 📄️Deploy
 
 Learn how to deploy your Docusaurus project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/docusaurus/deploy.md)
 
@@ -7007,11 +7007,11 @@ For a full overview of the serverless lifecycle—including setup, development, 
 
 Explore how to create a Juno project developed with Next.js.
 
-[## 📄️ Build
+[## 📄️Build
 
 Learn how to integrate Juno with Next.js. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/nextjs/build.md)
 
-[## 📄️ Deploy
+[## 📄️Deploy
 
 Learn how to deploy your Next.js project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/nextjs/deploy.md)
 
@@ -7079,11 +7079,11 @@ This script retrieves a document using `getDoc`, selects the document ID based o
 
 Explore how to create a Juno project developed with React.
 
-[## 📄️ Build
+[## 📄️Build
 
 Learn how to integrate Juno with React. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/react/build.md)
 
-[## 📄️ Deploy
+[## 📄️Deploy
 
 Learn how to deploy your React project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/react/deploy.md)
 
@@ -7275,11 +7275,11 @@ Looking for more examples? Check out [Rust](/docs/examples/functions/rust.md) fo
 
 Explore how to create a Juno project developed with SvelteKit.
 
-[## 📄️ Build
+[## 📄️Build
 
 Learn how to integrate Juno with SvelteKit. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/sveltekit/build.md)
 
-[## 📄️ Deploy
+[## 📄️Deploy
 
 Learn how to deploy your SvelteKit project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/sveltekit/deploy.md)
 
@@ -7503,11 +7503,11 @@ import { j } from "@junobuild/schema";const Schema = j.strictObject({  name: j.s
 
 Explore how to create a Juno project developed with Vue.
 
-[## 📄️ Build
+[## 📄️Build
 
 Learn how to integrate Juno with Vue. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/vue/build.md)
 
-[## 📄️ Deploy
+[## 📄️Deploy
 
 Learn how to deploy your Vue project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/vue/deploy.md)
 
@@ -7515,11 +7515,11 @@ Learn how to deploy your Vue project to Juno. Follow the deployment guide to con
 
 Explore how to create a Juno project developed with Angular.
 
-[## 📄️ Build
+[## 📄️Build
 
 Learn how to integrate Juno with Angular. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/angular/build.md)
 
-[## 📄️ Deploy
+[## 📄️Deploy
 
 Learn how to deploy your Angular project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/angular/deploy.md)
 
@@ -7784,11 +7784,11 @@ juno hosting deploy
 
 Explore how to create a Juno project developed with Astro.
 
-[## 📄️ Build
+[## 📄️Build
 
 Learn how to integrate Juno with Astro. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/astro/build.md)
 
-[## 📄️ Deploy
+[## 📄️Deploy
 
 Learn how to deploy your Astro project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/astro/deploy.md)
 
@@ -8017,7 +8017,7 @@ juno hosting deploy
 
 Explore how to deploy a Juno project developed with Docusaurus.
 
-[## 📄️ Deploy
+[## 📄️Deploy
 
 Learn how to deploy your Docusaurus project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/docusaurus/deploy.md)
 
@@ -8428,11 +8428,11 @@ name: Upgrade Satellite Containeron:  workflow_dispatch:jobs:  upgrade:    runs-
 
 Explore how to create a Juno project developed with Next.js.
 
-[## 📄️ Build
+[## 📄️Build
 
 Learn how to integrate Juno with Next.js. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/nextjs/build.md)
 
-[## 📄️ Deploy
+[## 📄️Deploy
 
 Learn how to deploy your Next.js project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/nextjs/deploy.md)
 
@@ -8715,11 +8715,11 @@ juno hosting deploy
 
 Explore how to create a Juno project developed with React.
 
-[## 📄️ Build
+[## 📄️Build
 
 Learn how to integrate Juno with React. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/react/build.md)
 
-[## 📄️ Deploy
+[## 📄️Deploy
 
 Learn how to deploy your React project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/react/deploy.md)
 
@@ -8984,11 +8984,11 @@ juno hosting deploy
 
 Explore how to create a Juno project developed with SvelteKit.
 
-[## 📄️ Build
+[## 📄️Build
 
 Learn how to integrate Juno with SvelteKit. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/sveltekit/build.md)
 
-[## 📄️ Deploy
+[## 📄️Deploy
 
 Learn how to deploy your SvelteKit project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/sveltekit/deploy.md)
 
@@ -9287,11 +9287,11 @@ juno hosting deploy
 
 Explore how to create a Juno project developed with Vue.
 
-[## 📄️ Build
+[## 📄️Build
 
 Learn how to integrate Juno with Vue. Follow our quickstart guide to set up your development environment, configure your project, and start building with Juno.](/docs/guides/vue/build.md)
 
-[## 📄️ Deploy
+[## 📄️Deploy
 
 Learn how to deploy your Vue project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/vue/deploy.md)
 
@@ -11457,15 +11457,15 @@ A similar configuration is also available for the `orbiter` field used for analy
 
 The emulator provides a complete local environment to build, test, and run your project without deploying anything live. There are two images available, depending on your needs:
 
-[## 📄️ Skylab
+[## 📄️Skylab
 
 The junobuild/skylab image is an all-in-one emulator for local development. It bundles everything you need to build, test, and explore the Juno ecosystem:](/docs/reference/emulator/skylab.md)
 
-[## 📄️ Satellite
+[## 📄️Satellite
 
 Unlike Skylab, the image junobuild/satellite runs a single Satellite in a headless environment, without the Console UI. It always mounts the same Satellite, using the fixed ID jx5yt-yyaaa-aaaal-abzbq-cai.](/docs/reference/emulator/satellite.md)
 
-[## 📄️ Infrastructure
+[## 📄️Infrastructure
 
 In the local environment, several services (which can be either canisters or apps on the Internet Computer) are automatically spun up. This ensures that developers have everything they need to start building right out of the box. Thanks to built-in plugins and tooling, these services are automatically integrated into the environment, eliminating the need for developers to manually manage their bindings.](/docs/reference/emulator/infrastructure.md)
 
@@ -11473,11 +11473,11 @@ In the local environment, several services (which can be either canisters or app
 
 API reference for writing serverless functions in Rust or TypeScript.
 
-[## 🗃️ Rust
+[## 🗃Rust
 
 4 items](/docs/reference/functions/rust.md)
 
-[## 🗃️ TypeScript
+[## 🗃TypeScript
 
 6 items](/docs/reference/functions/typescript.md)
 
@@ -11783,15 +11783,15 @@ If you set the compute allocation to `50n`, the module will be allocated 50% of 
 
 The emulator provides a complete local environment to build, test, and run your project without deploying anything live. There are two images available, depending on your needs:
 
-[## 📄️ Skylab
+[## 📄️Skylab
 
 The junobuild/skylab image is an all-in-one emulator for local development. It bundles everything you need to build, test, and explore the Juno ecosystem:](/docs/reference/emulator/skylab.md)
 
-[## 📄️ Satellite
+[## 📄️Satellite
 
 Unlike Skylab, the image junobuild/satellite runs a single Satellite in a headless environment, without the Console UI. It always mounts the same Satellite, using the fixed ID jx5yt-yyaaa-aaaal-abzbq-cai.](/docs/reference/emulator/satellite.md)
 
-[## 📄️ Infrastructure
+[## 📄️Infrastructure
 
 In the local environment, several services (which can be either canisters or apps on the Internet Computer) are automatically spun up. This ensures that developers have everything they need to start building right out of the box. Thanks to built-in plugins and tooling, these services are automatically integrated into the environment, eliminating the need for developers to manually manage their bindings.](/docs/reference/emulator/infrastructure.md)
 
@@ -11877,11 +11877,11 @@ This is the same interface used in production at [console.juno.build](https://co
 
 API reference for writing serverless functions in Rust or TypeScript.
 
-[## 🗃️ Rust
+[## 🗃Rust
 
 4 items](/docs/reference/functions/rust.md)
 
-[## 🗃️ TypeScript
+[## 🗃TypeScript
 
 6 items](/docs/reference/functions/typescript.md)
 
@@ -11889,19 +11889,19 @@ API reference for writing serverless functions in Rust or TypeScript.
 
 API reference for writing serverless functions in Rust.
 
-[## 📄️ SDK
+[## 📄️SDK
 
 The SDK is provided by the junobuild-satellite crate.](/docs/reference/functions/rust/sdk.md)
 
-[## 📄️ Utils
+[## 📄️Utils
 
 All utilities on this page are provided by the junobuild-utils crate.](/docs/reference/functions/rust/utils.md)
 
-[## 📄️ IC-CDK
+[## 📄️IC-CDK
 
 In the context of Juno, it enables your Satellite to perform low-level operations such as logging, accessing your Satellite identities, or communicating with other canisters — all essential when writing advanced serverless functions.](/docs/reference/functions/rust/ic-cdk.md)
 
-[## 📄️ Crate Versions
+[## 📄️Crate Versions
 
 This page lists the crate versions for each Juno release, to help you upgrade your Rust Serverless Functions. If a release is not listed, no crate updates were required for that version.](/docs/reference/functions/rust/crate-versions.md)
 
@@ -11909,27 +11909,27 @@ This page lists the crate versions for each Juno release, to help you upgrade yo
 
 API reference for writing serverless functions with TypeScript.
 
-[## 📄️ Schema Types
+[## 📄️Schema Types
 
 Juno provides a type system built on top of Zod, extended with a few additional types you'll need when working with serverless functions.](/docs/reference/functions/typescript/schema.md)
 
-[## 📄️ SDK
+[## 📄️SDK
 
 The SDK is provided by the @junobuild/functions library.](/docs/reference/functions/typescript/sdk.md)
 
-[## 📄️ Utils
+[## 📄️Utils
 
 All utilities on this page are provided by the @junobuild/functions library.](/docs/reference/functions/typescript/utils.md)
 
-[## 📄️ IC-CDK
+[## 📄️IC-CDK
 
 Juno exposes a growing set of these features for TypeScript, allowing you to build serverless functions that interact with the IC using a familiar developer experience.](/docs/reference/functions/typescript/ic-cdk.md)
 
-[## 📄️ Canisters
+[## 📄️Canisters
 
 The following functions can be used to interact with well-known Internet Computer canisters from your serverless functions.](/docs/reference/functions/typescript/canisters.md)
 
-[## 📄️ Node.js
+[## 📄️Node.js
 
 The TypeScript runtime used in Juno does not provide full Node.js support. Polyfills are added iteratively to keep the environment stable and predictable.](/docs/reference/functions/typescript/node.md)
 
@@ -11937,19 +11937,19 @@ The TypeScript runtime used in Juno does not provide full Node.js support. Polyf
 
 API reference for writing serverless functions in Rust.
 
-[## 📄️ SDK
+[## 📄️SDK
 
 The SDK is provided by the junobuild-satellite crate.](/docs/reference/functions/rust/sdk.md)
 
-[## 📄️ Utils
+[## 📄️Utils
 
 All utilities on this page are provided by the junobuild-utils crate.](/docs/reference/functions/rust/utils.md)
 
-[## 📄️ IC-CDK
+[## 📄️IC-CDK
 
 In the context of Juno, it enables your Satellite to perform low-level operations such as logging, accessing your Satellite identities, or communicating with other canisters — all essential when writing advanced serverless functions.](/docs/reference/functions/rust/ic-cdk.md)
 
-[## 📄️ Crate Versions
+[## 📄️Crate Versions
 
 This page lists the crate versions for each Juno release, to help you upgrade your Rust Serverless Functions. If a release is not listed, no crate updates were required for that version.](/docs/reference/functions/rust/crate-versions.md)
 
@@ -12483,27 +12483,27 @@ pub fn encode_doc_data_to_string<T: Serialize>(    data: &T,) -> Result<String, 
 
 API reference for writing serverless functions with TypeScript.
 
-[## 📄️ Schema Types
+[## 📄️Schema Types
 
 Juno provides a type system built on top of Zod, extended with a few additional types you'll need when working with serverless functions.](/docs/reference/functions/typescript/schema.md)
 
-[## 📄️ SDK
+[## 📄️SDK
 
 The SDK is provided by the @junobuild/functions library.](/docs/reference/functions/typescript/sdk.md)
 
-[## 📄️ Utils
+[## 📄️Utils
 
 All utilities on this page are provided by the @junobuild/functions library.](/docs/reference/functions/typescript/utils.md)
 
-[## 📄️ IC-CDK
+[## 📄️IC-CDK
 
 Juno exposes a growing set of these features for TypeScript, allowing you to build serverless functions that interact with the IC using a familiar developer experience.](/docs/reference/functions/typescript/ic-cdk.md)
 
-[## 📄️ Canisters
+[## 📄️Canisters
 
 The following functions can be used to interact with well-known Internet Computer canisters from your serverless functions.](/docs/reference/functions/typescript/canisters.md)
 
-[## 📄️ Node.js
+[## 📄️Node.js
 
 The TypeScript runtime used in Juno does not provide full Node.js support. Polyfills are added iteratively to keep the environment stable and predictable.](/docs/reference/functions/typescript/node.md)
 
