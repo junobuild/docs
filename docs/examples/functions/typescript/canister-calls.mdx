@@ -86,7 +86,10 @@ import {
   defineHook,
   type OnSetDoc
 } from "@junobuild/functions";
-import { IcrcLedgerDid } from "@junobuild/functions/canisters/ledger/icrc";
+import {
+  type Account,
+  encodeIcrcAccount
+} from "@junobuild/functions/canisters/ledger/icrc";
 import { id } from "@junobuild/functions/ic-cdk";
 import { decodeDocData } from "@junobuild/functions/sdk";
 import { COLLECTION_REQUEST, ICP_LEDGER_ID } from "../constants/app.constants";
@@ -129,9 +132,8 @@ export const onSetDoc = defineHook<OnSetDoc>({
 
     const ledgerId = ICP_LEDGER_ID;
 
-    const fromAccount: IcrcLedgerDid.Account = {
-      owner: Principal.fromUint8Array(context.caller),
-      subaccount: []
+    const fromAccount: Account = {
+      owner: Principal.fromUint8Array(context.caller)
     };
 
     // ###############
@@ -161,9 +163,8 @@ export const onSetDoc = defineHook<OnSetDoc>({
     // Transfer from wallet to satellite.
     // ###############
 
-    const toAccount: IcrcLedgerDid.Account = {
-      owner: id(),
-      subaccount: []
+    const toAccount: Account = {
+      owner: id()
     };
 
     await transferIcpFromWallet({
@@ -181,6 +182,14 @@ export const onSetDoc = defineHook<OnSetDoc>({
 
 ```ts
 // src/satellite/services.ts
+import { Principal } from "@icp-sdk/core/principal";
+import {
+  IcrcLedgerCanister,
+  type Account,
+  type TransferFromArgs,
+  type Tokens
+} from "@junobuild/functions/canisters/ledger/icrc";
+
 export const assertWalletBalance = async ({
   ledgerId,
   fromAccount,
@@ -188,23 +197,18 @@ export const assertWalletBalance = async ({
   fee
 }: {
   ledgerId: Principal;
-  fromAccount: IcrcLedgerDid.Account;
+  fromAccount: Account;
   amount: bigint;
   fee: bigint | undefined;
 }) => {
   const { icrc1BalanceOf } = new IcrcLedgerCanister({ canisterId: ledgerId });
 
-  const balance = await icrc1BalanceOf({
-    account: fromAccount
-  });
+  const balance = await icrc1BalanceOf({ account: fromAccount });
 
-  const total = amount + (fee ?? IC_TRANSACTION_FEE_ICP);
+  const total = amount + (fee ?? 10_000n);
 
   if (balance < total) {
-    const encodedAccountText = encodeIcrcAccount({
-      owner: fromAccount.owner,
-      subaccount: fromNullable(fromAccount.subaccount)
-    });
+    const encodedAccountText = encodeIcrcAccount(fromAccount);
 
     throw new Error(
       `Balance ${balance} is smaller than ${total} for account ${encodedAccountText}.`
@@ -215,24 +219,21 @@ export const assertWalletBalance = async ({
 export const transferIcpFromWallet = async ({
   ledgerId,
   fromAccount,
+  toAccount,
   amount,
-  fee,
-  toAccount
+  fee
 }: {
   ledgerId: Principal;
-  fromAccount: IcrcLedgerDid.Account;
-  toAccount: IcrcLedgerDid.Account;
+  fromAccount: Account;
+  toAccount: Account;
   amount: bigint;
   fee: bigint | undefined;
-}): Promise<IcrcLedgerDid.Tokens> => {
-  const args: IcrcLedgerDid.TransferFromArgs = {
+}): Promise<Tokens> => {
+  const args: TransferFromArgs = {
     amount,
     from: fromAccount,
     to: toAccount,
-    created_at_time: toNullable(),
-    fee: toNullable(fee),
-    memo: toNullable(),
-    spender_subaccount: toNullable()
+    fee
   };
 
   const { icrc2TransferFrom } = new IcrcLedgerCanister({
