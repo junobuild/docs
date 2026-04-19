@@ -137,7 +137,7 @@ icrc1BalanceOf(params: {
 
 ```typescript
 import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";
-import { Principal } from "@dfinity/principal";
+import { Principal } from "@icp-sdk/core/principal";
 
 export const onExecute = async () => {
   const ledger = new IcrcLedgerCanister({
@@ -184,7 +184,7 @@ icrc1Transfer(params: {
 
 ```typescript
 import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";
-import { Principal } from "@dfinity/principal";
+import { Principal } from "@icp-sdk/core/principal";
 
 export const onExecute = async () => {
   const ledger = new IcrcLedgerCanister({
@@ -242,7 +242,7 @@ icrc2TransferFrom(params: {
 
 ```typescript
 import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";
-import { Principal } from "@dfinity/principal";
+import { Principal } from "@icp-sdk/core/principal";
 
 export const onExecute = async () => {
   const ledger = new IcrcLedgerCanister({
@@ -301,7 +301,7 @@ icrc2Approve(params: {
 
 ```typescript
 import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";
-import { Principal } from "@dfinity/principal";
+import { Principal } from "@icp-sdk/core/principal";
 
 export const onExecute = async () => {
   const ledger = new IcrcLedgerCanister({
@@ -362,7 +362,7 @@ notifyTopUp(params: {
 ```typescript
 import { CMCCanister } from "@junobuild/functions/canisters/cmc";
 import { IcpLedgerCanister } from "@junobuild/functions/canisters/ledger/icp";
-import { Principal } from "@dfinity/principal";
+import { Principal } from "@icp-sdk/core/principal";
 
 export const onExecute = async () => {
   // Step 1: Send ICP to the CMC top-up account

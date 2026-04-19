@@ -62,7 +62,7 @@ Suppose you want to fetch a document and export it to a file:
 ```typescript
 import { getDoc } from "@junobuild/core";
 import { defineRun } from "@junobuild/config";
-import { jsonReplacer } from "@dfinity/utils";
+import { jsonReplacer } from "@junobuild/utils";
 import { writeFile } from "node:fs/promises";
 
 export const onRun = defineRun(({ mode }) => ({
