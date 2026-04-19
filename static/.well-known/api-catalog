@@ -1,0 +1,10 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://juno.build",
+      "service-doc": [
+        { "href": "https://juno.build/docs/guides/ai" }
+      ]
+    }
+  ]
+}

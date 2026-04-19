@@ -6,6 +6,14 @@ import { defineConfig } from "@junobuild/config";
 
 const headers: StorageConfigHeader[] = [
   {
+    source: "/",
+    headers: [["Link", '</llms.txt>; rel="describedby"']]
+  },
+  {
+    source: "/.well-known/api-catalog",
+    headers: [["Content-Type", "application/linkset+json"]]
+  },
+  {
     source: "**/*.svg",
     headers: [["Cache-Control", "max-age=2592000, public"]]
   },
