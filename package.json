@@ -16,6 +16,7 @@
     "dev": "npm run start",
     "start": "docusaurus start",
     "build": "docusaurus build",
+    "docs:ai": "./scripts/ai.mjs && npm run format",
     "docs:cli": "scripts/cli-to-md.sh",
     "docs:subnets": "./scripts/subnets.mjs && npm run format",
     "swizzle": "docusaurus swizzle",

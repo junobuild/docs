@@ -1,0 +1,39 @@
+name: Update AI indexes
+
+on:
+  schedule:
+    - cron: "30 8 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-subnets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare
+        uses: ./.github/actions/prepare
+
+      - name: Update
+        run: npm run docs:ai
+
+      - name: Check for Changes
+        run: |
+          if ! git diff --quiet; then
+            echo "CHANGES_DETECTED=true" >> $GITHUB_ENV
+          fi
+
+      # This action creates a PR only if there are changes.
+      - name: Create Pull Request
+        if: env.CHANGES_DETECTED == 'true'
+        uses: ./.github/actions/create-pr
+        with:
+          branch: bot-cli-docs-update
+          title: "docs: Update AI indexes"
+          body: |
+            Modifications have been made to the AI skills.
