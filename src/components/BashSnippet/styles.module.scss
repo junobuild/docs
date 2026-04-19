@@ -1,0 +1,37 @@
+.code {
+  position: relative;
+
+  :global(.code-npm) {
+    width: 340px;
+    box-shadow: none;
+    margin: 0;
+
+    code {
+      padding: var(--ifm-pre-padding) var(--ifm-pre-padding)
+        var(--ifm-pre-padding) 2rem;
+    }
+
+    span {
+      color: #00fff5;
+    }
+
+    button {
+      opacity: 1;
+      border-color: transparent;
+      padding-top: 0.55rem;
+    }
+
+    button[aria-label="Toggle word wrap"] {
+      display: none;
+    }
+  }
+}
+
+.bash {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translate(0, -50%);
+
+  z-index: 1;
+}
