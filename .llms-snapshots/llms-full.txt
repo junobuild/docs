@@ -6774,7 +6774,7 @@ Compatible with Claude Code, Cursor, Copilot, and [other agents](https://skills.
 
 ## MCP Server
 
-A [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server for Juno is available, built and maintained by a Juno community contributor. It allows MCP-compatible AI tools - such as Claude, Cursor, or VS Code Copilot - to interact with Juno directly through natural language.
+A Model Context Protocol [(MCP)](https://modelcontextprotocol.io/) server for Juno is available, built and maintained by a Juno community contributor. It allows MCP-compatible AI tools - such as Claude, Cursor, or VS Code Copilot - to interact with Juno directly through natural language.
 
 It provides tools to manage identity, config, hosting, serverless functions, and changes - with built-in access to Juno's documentation. Long-running operations like deploys and publishes support real-time progress streaming.
 
