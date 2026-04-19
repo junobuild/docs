@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "juno",
+      "type": "skill-md",
+      "description": "Up-to-date knowledge about Juno's CLI, SDK, and serverless functions for AI coding agents.",
+      "url": "https://raw.githubusercontent.com/junobuild/skills/main/SKILL.md",
+      "digest": "sha256:18b7fec3e46664b67bdf5bd66f4f36fd9fca138a8749ddc2638f61fed4c23483"
+    }
+  ]
+}
