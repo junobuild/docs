@@ -1,5 +1,6 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { initOrbiter } from "@junobuild/analytics";
+import AI from "@site/src/components/Ai";
 import Build from "@site/src/components/Build";
 import Features from "@site/src/components/Features";
 import Head from "@site/src/components/Head";
@@ -54,6 +55,10 @@ export default function Home(): JSX.Element {
 
         <section className={`container ${styles.launch}`}>
           <Launch />
+        </section>
+
+        <section className={`container ${styles.ai}`}>
+          <AI />
         </section>
 
         <section className={`container ${styles.block}`}>

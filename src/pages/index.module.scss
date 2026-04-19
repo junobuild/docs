@@ -39,6 +39,16 @@
   }
 }
 
+.ai {
+  @include section.section;
+
+  padding: 1rem 3rem 6rem;
+
+  @media screen and (min-width: 1140px) {
+    padding: 1rem 3rem 6rem;
+  }
+}
+
 .block {
   @include section.section;
 
