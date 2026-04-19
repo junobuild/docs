@@ -252,8 +252,8 @@ import Call from "./components/functions/call.md";
 ```typescript
 import { call } from "@junobuild/functions/ic-cdk";
 import { defineHook, type OnSetDoc } from "@junobuild/functions";
-import { IDL } from "@dfinity/candid";
-import { Principal } from "@dfinity/principal";
+import { IDL } from "@icp-sdk/core/candid";
+import { Principal } from "@icp-sdk/core/principal";
 
 // Define Candid types
 const SubAccount = IDL.Vec(IDL.Nat8);
