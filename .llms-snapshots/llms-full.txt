@@ -2378,7 +2378,7 @@ Understand the full journey of Serverless Functions in Juno, from setup and deve
 
 ## Initial Setup
 
-If you didn’t use a template or skipped the language selection during setup, you can run `juno functions eject` at the root of your project. This command configures your project with the appropriate setup based on your language of choice. For Rust, it includes a `Cargo.toml` and a `lib.rs` file. For TypeScript, it sets up an `index.ts` file.
+If you didn’t use a template or skipped the language selection during setup, you can run `juno functions init` at the root of your project. This command configures your project with the appropriate setup based on your language of choice. For Rust, it includes a `Cargo.toml` and a `lib.rs` file. For TypeScript, it sets up an `index.ts` file.
 
 ---
 
@@ -2513,7 +2513,7 @@ A quick reference for the most common CLI commands and deployment workflows when
 
 | Command(s) | Scenario |
 | --- | --- |
-| `juno functions eject` | Initializes your project for writing serverless functions. |
+| `juno functions init` | Initializes your project for writing serverless functions. |
 | `juno emulator start` | Starts the emulator. |
 | `juno functions build` | Compiles your custom Satellite's code. Changes are automatically redeployed locally. |
 
@@ -2938,7 +2938,7 @@ include_satellite!();
 
 ## Feature Selection
 
-When you run `juno functions eject`, all the available hooks and assertions are scaffolded in your `lib.rs` module. However, if you don’t have to implement all of them for example to improve readability or reduce unnecessary logic, you can selectively enable only the features you need.
+When you run `juno functions init`, all the available hooks and assertions are scaffolded in your `lib.rs` module. However, if you don’t have to implement all of them for example to improve readability or reduce unnecessary logic, you can selectively enable only the features you need.
 
 To do this, disable the default features in your `Cargo.toml` and explicitly specify only the ones you want to use.
 
@@ -10695,7 +10695,7 @@ Usage: juno dev wait [options]Options:  -t, --timeout         Timeout for the em
 Build and upgrade your satellite's serverless functions.
 
 ```
-Usage: juno functions <subcommand> [options]Subcommands:  build                Build your functions.  eject                Scaffold the necessary files for developing your serverless functions.  init                 Alias for eject.  publish              Publish a new version of your functions.  upgrade              Upgrade your satellite's serverless functions.Notes:- The local server supports live reloading.- You can use fn as a shortcut for functions.
+Usage: juno functions <subcommand> [options]Subcommands:  build                Build your functions.  init                 Scaffold the necessary files for developing your serverless functions.  publish              Publish a new version of your functions.  upgrade              Upgrade your satellite's serverless functions.Notes:- The local server supports live reloading.- You can use fn as a shortcut for functions.
 ```
 
 ---
@@ -10715,7 +10715,7 @@ Usage: juno functions build [options]Options:  -l, --lang            Specify the
 Generate the required files to begin developing serverless functions in your project.
 
 ```
-Usage: juno functions eject [options]Options:  -l, --lang            Specify the language for building the serverless functions: rust, typescript or javascript.  -h, --help            Output usage information.Notes:- Language can be shortened to rs for Rust, ts for TypeScript and mjs for JavaScript.
+Usage: juno functions init [options]Options:  -l, --lang            Specify the language for building the serverless functions: rust, typescript or javascript.  -h, --help            Output usage information.Notes:- Language can be shortened to rs for Rust, ts for TypeScript and mjs for JavaScript.
 ```
 
 ---
