@@ -12543,7 +12543,7 @@ The `@junobuild/functions/canisters` module provides a unified interface for int
 
 *   ⚙️ Type-safe interfaces for well-known IC canisters
 *   🧩 Modular structure with independent sub-packages
-*   🔄 Up-to-date Candid declarations and types
+*   🔄 Up-to-date declarations and types
 *   🧪 Battle-tested through production applications
 
 ---
@@ -12576,29 +12576,29 @@ You can interact with the ICP Ledger through the class `IcpLedgerCanister`.
 Sends ICP using the Ledger canister `transfer` method.
 
 ```
-transfer(params: {  args: IcpLedgerDid.TransferArgs}): Promise<IcpLedgerDid.TransferResult>
+transfer(params: {  args: TransferArgs}): Promise<TransferResult>
 ```
 
 #### Parameters:
 
 *   `args`: The ledger transfer arguments
-*   `to`: Destination account identifier (AccountIdentifier)
+*   `to`: Destination account identifier (`Uint8Array`)
 *   `amount`: Transfer amount object with `e8s` (bigint)
 *   `fee`: Fee object with `e8s` (bigint)
 *   `memo`: Optional transfer memo (bigint)
-*   `from_subaccount`: Optional subaccount (Uint8Array | number\[\])
+*   `from_subaccount`: Optional subaccount (`Uint8Array`)
 *   `created_at_time`: Optional timestamp object with `timestamp_nanos` (bigint)
 
 #### Returns:
 
-*   `Promise<IcpLedgerDid.TransferResult>`: The result of the ICP transfer
-*   On success: `{ Ok: bigint }` (block height)
+*   `Promise<TransferResult>`: The result of the ICP transfer
+*   On success: `{ Ok: bigint }` (block index)
 *   On error: `{ Err: TransferError }`
 
 #### Example:
 
 ```
-import { IcpLedgerCanister } from "@junobuild/functions/canisters/ledger/icp";export const onExecute = async () => {  const ledger = new IcpLedgerCanister();  const result = await ledger.transfer({    args: {      to: "destination-account-identifier",      amount: { e8s: 100_000_000n }, // 1 ICP      fee: { e8s: 10_000n },      memo: 0n    }  });  if ("Ok" in result) {    console.log("Transfer successful, block height:", result.Ok);  } else {    console.error("Transfer failed:", result.Err);  }};
+import { IcpLedgerCanister } from "@junobuild/functions/canisters/ledger/icp";export const onExecute = async () => {  const ledger = new IcpLedgerCanister();  const result = await ledger.transfer({    args: {      to: destinationAccountIdentifier, // Uint8Array      amount: { e8s: 100_000_000n }, // 1 ICP      fee: { e8s: 10_000n },      memo: 0n    }  });  if ("Ok" in result) {    console.log("Transfer successful, block index:", result.Ok);  } else {    console.error("Transfer failed:", result.Err);  }};
 ```
 
 ---
@@ -12612,23 +12612,23 @@ Interact with ICRC compatible ledgers through the class `IcrcLedgerCanister`.
 Returns the balance of an ICRC account.
 
 ```
-icrc1BalanceOf(params: {  account: IcrcLedgerDid.Account}): Promise<IcrcLedgerDid.Tokens>
+icrc1BalanceOf(params: {  account: Account}): Promise<bigint>
 ```
 
 #### Parameters:
 
 *   `account`: The account to query
 *   `owner`: Principal of the account owner
-*   `subaccount`: Optional subaccount (Uint8Array | number\[\])
+*   `subaccount`: Optional subaccount (`Uint8Array`)
 
 #### Returns:
 
-*   `Promise<IcrcLedgerDid.Tokens>`: The token balance (bigint)
+*   `Promise<bigint>`: The token balance
 
 #### Example:
 
 ```
-import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@dfinity/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: "your-icrc-ledger-canister-id"  });  const balance = await ledger.icrc1BalanceOf({    account: {      owner: Principal.fromText("user-principal"),      subaccount: []    }  });  console.log("Balance:", balance);};
+import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@dfinity/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: "your-icrc-ledger-canister-id"  });  const balance = await ledger.icrc1BalanceOf({    account: {      owner: Principal.fromText("user-principal")    }  });  console.log("Balance:", balance);};
 ```
 
 ### icrc1Transfer
@@ -12636,29 +12636,29 @@ import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";
 Transfers tokens using the ICRC-1 `icrc1_transfer` method.
 
 ```
-icrc1Transfer(params: {  args: IcrcLedgerDid.TransferArg}): Promise<IcrcLedgerDid.TransferResult>
+icrc1Transfer(params: {  args: TransferArgs}): Promise<TransferResult>
 ```
 
 #### Parameters:
 
 *   `args`: Transfer arguments
-*   `to`: Destination account (Account object)
+*   `to`: Destination account (`Account`)
 *   `amount`: Transfer amount (bigint)
 *   `fee`: Optional fee (bigint)
-*   `memo`: Optional memo (Uint8Array | number\[\])
-*   `from_subaccount`: Optional subaccount (Uint8Array | number\[\])
+*   `memo`: Optional memo (`Uint8Array`)
+*   `from_subaccount`: Optional subaccount (`Uint8Array`)
 *   `created_at_time`: Optional timestamp (bigint)
 
 #### Returns:
 
-*   `Promise<IcrcLedgerDid.TransferResult>`: The result of the transfer
+*   `Promise<TransferResult>`: The result of the transfer
 *   On success: `{ Ok: bigint }` (block index)
 *   On error: `{ Err: TransferError }`
 
 #### Example:
 
 ```
-import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@dfinity/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: "your-icrc-ledger-canister-id"  });  const result = await ledger.icrc1Transfer({    args: {      to: {        owner: Principal.fromText("recipient-principal"),        subaccount: []      },      amount: 1_000_000n,      fee: 10_000n    }  });  if ("Ok" in result) {    console.log("Transfer successful, block index:", result.Ok);  } else {    console.error("Transfer failed:", result.Err);  }};
+import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@dfinity/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: "your-icrc-ledger-canister-id"  });  const result = await ledger.icrc1Transfer({    args: {      to: {        owner: Principal.fromText("recipient-principal")      },      amount: 1_000_000n,      fee: 10_000n    }  });  if ("Ok" in result) {    console.log("Transfer successful, block index:", result.Ok);  } else {    console.error("Transfer failed:", result.Err);  }};
 ```
 
 ### icrc2TransferFrom
@@ -12668,30 +12668,62 @@ Transfers tokens using the ICRC-2 `icrc2_transfer_from` method.
 Allows transferring tokens from another user's account when an approval has previously been granted via `icrc2_approve`.
 
 ```
-icrc2TransferFrom(params: {  args: IcrcLedgerDid.TransferFromArgs}): Promise<IcrcLedgerDid.TransferFromResult>
+icrc2TransferFrom(params: {  args: TransferFromArgs}): Promise<TransferFromResult>
 ```
 
 #### Parameters:
 
 *   `args`: Transfer-from arguments
-*   `from`: Source account (Account object)
-*   `to`: Destination account (Account object)
+*   `from`: Source account (`Account`)
+*   `to`: Destination account (`Account`)
 *   `amount`: Transfer amount (bigint)
 *   `fee`: Optional fee (bigint)
-*   `memo`: Optional memo (Uint8Array | number\[\])
-*   `spender_subaccount`: Optional spender subaccount (Uint8Array | number\[\])
+*   `memo`: Optional memo (`Uint8Array`)
+*   `spender_subaccount`: Optional spender subaccount (`Uint8Array`)
 *   `created_at_time`: Optional timestamp (bigint)
 
 #### Returns:
 
-*   `Promise<IcrcLedgerDid.TransferFromResult>`: The result of the transfer-from operation
+*   `Promise<TransferFromResult>`: The result of the transfer-from operation
 *   On success: `{ Ok: bigint }` (block index)
 *   On error: `{ Err: TransferFromError }`
 
 #### Example:
 
 ```
-import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@dfinity/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: "your-icrc-ledger-canister-id"  });  const result = await ledger.icrc2TransferFrom({    args: {      from: {        owner: Principal.fromText("source-principal"),        subaccount: []      },      to: {        owner: Principal.fromText("destination-principal"),        subaccount: []      },      amount: 500_000n    }  });  if ("Ok" in result) {    console.log("Transfer from successful, block index:", result.Ok);  } else {    console.error("Transfer from failed:", result.Err);  }};
+import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@dfinity/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: "your-icrc-ledger-canister-id"  });  const result = await ledger.icrc2TransferFrom({    args: {      from: {        owner: Principal.fromText("source-principal")      },      to: {        owner: Principal.fromText("destination-principal")      },      amount: 500_000n    }  });  if ("Ok" in result) {    console.log("Transfer from successful, block index:", result.Ok);  } else {    console.error("Transfer from failed:", result.Err);  }};
+```
+
+### icrc2Approve
+
+Approves a spender to transfer tokens on behalf of the caller using the ICRC-2 `icrc2_approve` method.
+
+```
+icrc2Approve(params: {  args: ApproveArgs}): Promise<ApproveResult>
+```
+
+#### Parameters:
+
+*   `args`: Approve arguments
+*   `spender`: The account being approved (`Account`)
+*   `amount`: The amount to approve (bigint)
+*   `fee`: Optional fee (bigint)
+*   `memo`: Optional memo (`Uint8Array`)
+*   `from_subaccount`: Optional subaccount of the approver (`Uint8Array`)
+*   `created_at_time`: Optional timestamp (bigint)
+*   `expected_allowance`: Optional expected current allowance for optimistic concurrency control (bigint)
+*   `expires_at`: Optional expiry timestamp for the approval (bigint)
+
+#### Returns:
+
+*   `Promise<ApproveResult>`: The result of the approval
+*   On success: `{ Ok: bigint }` (block index)
+*   On error: `{ Err: ApproveError }`
+
+#### Example:
+
+```
+import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@dfinity/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: "your-icrc-ledger-canister-id"  });  const result = await ledger.icrc2Approve({    args: {      spender: {        owner: Principal.fromText("spender-principal")      },      amount: 1_000_000n    }  });  if ("Ok" in result) {    console.log("Approval successful, block index:", result.Ok);  } else {    console.error("Approval failed:", result.Err);  }};
 ```
 
 ---
@@ -12709,7 +12741,7 @@ After sending ICP to the CMC top-up account for a canister, the transfer is reco
 The CMC will then convert the ICP from the given ledger block into cycles and add them to the specified canister.
 
 ```
-notifyTopUp(params: {  args: CmcDid.NotifyTopUpArg}): Promise<CmcDid.NotifyTopUpResult>
+notifyTopUp(params: {  args: NotifyTopUpArgs}): Promise<NotifyTopUpResult>
 ```
 
 #### Parameters:
@@ -12720,14 +12752,14 @@ notifyTopUp(params: {  args: CmcDid.NotifyTopUpArg}): Promise<CmcDid.NotifyTopUp
 
 #### Returns:
 
-*   `Promise<CmcDid.NotifyTopUpResult>`: The result of the CMC conversion and deposit
+*   `Promise<NotifyTopUpResult>`: The result of the CMC conversion and deposit
 *   On success: `{ Ok: bigint }` (cycles deposited)
 *   On error: `{ Err: NotifyError }`
 
 #### Example:
 
 ```
-import { CMCCanister } from "@junobuild/functions/canisters/cmc";import { IcpLedgerCanister } from "@junobuild/functions/canisters/ledger/icp";import { Principal } from "@dfinity/principal";export const onExecute = async () => {  // Step 1: Send ICP to the CMC top-up account  const ledger = new IcpLedgerCanister();  const transferResult = await ledger.transfer({    args: {      to: "cmc-top-up-account-identifier",      amount: { e8s: 100_000_000n }, // 1 ICP      fee: { e8s: 10_000n },      memo: 0n    }  });  if ("Err" in transferResult) {    console.error("Transfer failed:", transferResult.Err);    return;  }  const blockIndex = transferResult.Ok;  // Step 2: Notify the CMC to convert the ICP to cycles  const cmc = new CMCCanister();  const notifyResult = await cmc.notifyTopUp({    args: {      block_index: blockIndex,      canister_id: Principal.fromText("your-canister-id")    }  });  if ("Ok" in notifyResult) {    console.log("Cycles deposited:", notifyResult.Ok);  } else {    console.error("Notify failed:", notifyResult.Err);  }};
+import { CMCCanister } from "@junobuild/functions/canisters/cmc";import { IcpLedgerCanister } from "@junobuild/functions/canisters/ledger/icp";import { Principal } from "@dfinity/principal";export const onExecute = async () => {  // Step 1: Send ICP to the CMC top-up account  const ledger = new IcpLedgerCanister();  const transferResult = await ledger.transfer({    args: {      to: cmcTopUpAccountIdentifier, // Uint8Array      amount: { e8s: 100_000_000n }, // 1 ICP      fee: { e8s: 10_000n },      memo: 0n    }  });  if ("Err" in transferResult) {    console.error("Transfer failed:", transferResult.Err);    return;  }  const blockIndex = transferResult.Ok;  // Step 2: Notify the CMC to convert the ICP to cycles  const cmc = new CMCCanister();  const notifyResult = await cmc.notifyTopUp({    args: {      block_index: blockIndex,      canister_id: Principal.fromText("your-canister-id")    }  });  if ("Ok" in notifyResult) {    console.log("Cycles deposited:", notifyResult.Ok);  } else {    console.error("Notify failed:", notifyResult.Err);  }};
 ```
 
 ---
