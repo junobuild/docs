@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 Sitemap: https://juno.build/sitemap.xml
 Host: https://juno.build
+Content-Signal: ai-train=no, search=yes, ai-input=yes
