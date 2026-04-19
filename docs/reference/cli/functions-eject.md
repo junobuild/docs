@@ -1,7 +1,7 @@
 Generate the required files to begin developing serverless functions in your project.
 
 ```
-Usage: juno functions eject [options]
+Usage: juno functions init [options]
 
 Options:
   -l, --lang            Specify the language for building the serverless functions: rust, typescript or javascript.
