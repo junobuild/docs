@@ -6,7 +6,7 @@ import { defineConfig } from "@junobuild/config";
 
 const headers: StorageConfigHeader[] = [
   {
-    source: "/",
+    source: "/index.html",
     headers: [["Link", '</llms.txt>; rel="describedby"']]
   },
   {
