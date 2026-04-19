@@ -30,36 +30,3 @@
     max-width: 560px;
   }
 }
-
-.code {
-  position: relative;
-
-  :global(.code-npm) {
-    width: 290px;
-    box-shadow: none;
-
-    code {
-      padding: var(--ifm-pre-padding) var(--ifm-pre-padding)
-        var(--ifm-pre-padding) 2rem;
-    }
-
-    span {
-      color: #00fff5;
-    }
-
-    button {
-      opacity: 1;
-      border-color: transparent;
-      padding-top: 0.55rem;
-    }
-  }
-}
-
-.bash {
-  position: absolute;
-  left: 0.75rem;
-  top: 50%;
-  transform: translate(0, -50%);
-
-  z-index: 1;
-}
