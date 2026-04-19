@@ -24,23 +24,30 @@ That being said, integrating authentication is easier in Playwright given that a
 
 ## Authentication
 
-If your application require authentication, we recommend using the Playwright plugin for Internet Identity maintained by the DFINITY foundation:
+If your application require authentication, we recommend using our Playwright plugin for sign-in in development:
 
-👉 [github.com/dfinity/internet-identity-playwright](https://github.com/dfinity/internet-identity-playwright)
+👉 [github.com/junobuild/emulator-playwright](https://github.com/junobuild/emulator-playwright)
 
-It handles the full login flow programmatically, allowing your tests to sign in without user interaction.
+It handles the full login flow programmatically, allowing your tests to sign in without user interaction. Under the hood, it uses the `dev` option of the `signIn` function:
+
+```typescript
+import { signIn } from "@junobuild/core";
+
+await signIn({ dev: {} });
+```
 
 ### Example usage
 
 After installing the plugin, you can write a test like this:
 
 ```typescript
-import { testWithII } from "@dfinity/internet-identity-playwright";
+import { initSatelliteSuite } from "@junobuild/emulator-playwright";
+import { test } from "@playwright/test";
 
-testWithII("should sign-in with a new user", async ({ page, iiPage }) => {
-  await page.goto("/");
+const getPages = initSatelliteSuite();
 
-  await iiPage.signInWithNewIdentity();
+test("...", async () => {
+  const { satelliteId, cliPage } = getPages();
 });
 ```
 
