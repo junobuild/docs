@@ -93,7 +93,9 @@ The Rust ecosystem is also more mature, having been supported on the Internet Co
 
 TypeScript support was introduced on Juno in April 2025. While developer-friendly, it currently lacks Node.js polyfills, which means many npm libraries may not work out of the box. That said, we’re actively improving this — and if there's a specific package or feature you'd like to use, reach out. We're happy to explore adding support.
 
-It is worth to note that in both environments, there is no standard library or file system access. Functions like reading from or writing to disk aren’t available. Instead, e.g. Juno provides purpose-built features such as Storage.
+Furthermore, a key advantage of TypeScript is the ability to share the same `j` schema types — built on Zod — across both your frontend and your Satellite functions, providing a single strongly typed source of truth for your data shapes with full type safety end-to-end.
+
+It is worth noting that in both environments, there is no standard library or file system access. Functions like reading from or writing to disk aren’t available. Instead, e.g. Juno provides purpose-built features such as Storage.
 
 Despite their differences, Rust and TypeScript serverless functions are designed with interoperability in mind. The API surface and structure are intentionally aligned, so migrating from TypeScript to Rust later should feel intuitive and straightforward.
 
@@ -104,5 +106,12 @@ Despite their differences, Rust and TypeScript serverless functions are designed
 | **Performance**         | ✅ Highest, runs natively in WASM          | ⚠️ Interpreted by Rust, slower                              |
 | **Library Support**     | ✅ Many crates                             | ⚠️ Limited (only few Node.js polyfills currently supported) |
 | **Ease of Use**         | ✅ Developer-friendly (with or without AI) | ✅ Developer-friendly (with or without AI)                  |
+| **Shared Types**        | —                                          | ✅ Share `j`/Zod schemas across frontend and backend        |
 | **Migration Path**      | —                                          | ✅ Can migrate to Rust easily                               |
 | **Recommended For**     | Production apps, performance-critical code | Prototypes, smaller tools, quick dev cycles                 |
+
+:::tip
+
+Even if experimental and less performant, if you're a TypeScript developer, TypeScript functions are the natural choice — you get a familiar workflow and shared types with your frontend out of the box.
+
+:::
