@@ -2366,6 +2366,10 @@ Despite their differences, Rust and TypeScript serverless functions are designed
 | **Migration Path** | —   | ✅ Can migrate to Rust easily |
 | **Recommended For** | Production apps, performance-critical code | Prototypes, smaller tools, quick dev cycles |
 
+**Tip:**
+
+Even if experimental and less performant, if you're a TypeScript developer, TypeScript functions are the natural choice — you get a familiar workflow and shared types with your frontend out of the box.
+
 # Lifecycle
 
 Understand the full journey of Serverless Functions in Juno, from setup and development to deployment and maintenance.
