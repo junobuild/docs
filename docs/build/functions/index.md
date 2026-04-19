@@ -109,3 +109,9 @@ Despite their differences, Rust and TypeScript serverless functions are designed
 | **Shared Types**        | —                                          | ✅ Share `j`/Zod schemas across frontend and backend        |
 | **Migration Path**      | —                                          | ✅ Can migrate to Rust easily                               |
 | **Recommended For**     | Production apps, performance-critical code | Prototypes, smaller tools, quick dev cycles                 |
+
+:::tip
+
+Even if experimental and less performant, if you're a TypeScript developer, TypeScript functions are the natural choice — you get a familiar workflow and shared types with your frontend out of the box.
+
+:::
