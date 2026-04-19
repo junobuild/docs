@@ -6693,6 +6693,7 @@ It’s a great reference for more advanced setups and orchestration.
 Juno provides several ways to integrate with AI tools, from documentation context files to a full MCP server for managing your project through natural language.
 
 *   ([LLMs.txt](#llmstxt)): help AI tools better understand the platform
+*   ([Agent Skills](#agent-skills)): up-to-date knowledge for AI coding agents
 *   ([MCP Server](#mcp-server)): interact with Juno directly from your AI tool
 
 ---
@@ -6750,6 +6751,24 @@ For example, you could start a conversation with: _I want to create a web shop a
 #### Resources
 
 Read more in the [Cursor documentation](https://docs.cursor.com/context/@-symbols/@-docs).
+
+---
+
+## Agent Skills
+
+A [Juno skill](https://skills.sh/junobuild/skills/juno) is available for AI coding agents. It provides up-to-date knowledge about Juno's CLI, SDK, and serverless functions directly in your agent's context.
+
+### Install
+
+```
+npx skills add junobuild/skills
+```
+
+Compatible with Claude Code, Cursor, Copilot, and [other agents](https://skills.sh).
+
+### Resources
+
+*   [Source repository](https://github.com/junobuild/skills)
 
 ---
 
