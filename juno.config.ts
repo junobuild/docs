@@ -14,6 +14,10 @@ const headers: StorageConfigHeader[] = [
     headers: [["Content-Type", "application/linkset+json"]]
   },
   {
+    source: "**/*.md",
+    headers: [["Content-Type", "text/markdown; charset=utf-8"]]
+  },
+  {
     source: "**/*.svg",
     headers: [["Cache-Control", "max-age=2592000, public"]]
   },
