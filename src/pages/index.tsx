@@ -36,6 +36,7 @@ export default function Home(): JSX.Element {
     <Layout>
       <Head>
         <link href="https://juno.build" rel="canonical" />
+        <link rel="alternate" type="text/markdown" href="/llms.txt" />
       </Head>
 
       <div className={styles.home}>
