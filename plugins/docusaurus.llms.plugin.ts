@@ -577,7 +577,7 @@ const generateLlmsTxtFile = async ({
   Pick<PluginOptions, "description">) => {
   const llmsTxtContent = `# ${title}
 
-${description ?? tagline}
+> ${description ?? tagline}
 
 ${content}`;
 
