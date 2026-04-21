@@ -1204,7 +1204,7 @@ The `delegation` section defines how long sessions last and which modules authen
 Example configuration:
 
 ```
-authentication: {  github: {    clientId: "1234567890-abcde12345fghijklmno.apps.googleusercontent.com"  },  delegation: {    allowedTargets: ["<YOUR_SATELLITE_ID>", "<LEDGER_CANISTER_ID>"],    sessionDuration: BigInt(7 * 24 * 60 * 60 * 1_000_000_000) // 7 days  }}
+authentication: {  github: {    clientId: "1234567890-abcde12345fghijklmno.apps.googleusercontent.com",    delegation: {      allowedTargets: ["<YOUR_SATELLITE_ID>", "<LEDGER_CANISTER_ID>"],      sessionDuration: BigInt(7 * 24 * 60 * 60 * 1_000_000_000) // 7 days    }  }}
 ```
 
 ---
@@ -1419,7 +1419,7 @@ The `delegation` section defines how long sessions last and which modules authen
 Example configuration:
 
 ```
-authentication: {  google: {    clientId: "1234567890-abcde12345fghijklmno.apps.googleusercontent.com"  },  delegation: {    allowedTargets: ["<YOUR_SATELLITE_ID>", "<LEDGER_CANISTER_ID>"],    sessionDuration: BigInt(7 * 24 * 60 * 60 * 1_000_000_000) // 7 days  }}
+authentication: {  google: {    clientId: "1234567890-abcde12345fghijklmno.apps.googleusercontent.com",    delegation: {      allowedTargets: ["<YOUR_SATELLITE_ID>", "<LEDGER_CANISTER_ID>"],      sessionDuration: BigInt(7 * 24 * 60 * 60 * 1_000_000_000) // 7 days    }  }}
 ```
 
 ---
