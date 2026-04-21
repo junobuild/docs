@@ -187,10 +187,18 @@ export default function docusaurusPluginLLMs(
 
       // Write MD files
       await Promise.all(
-        [...dataRoutes.values()].map(({ markdown: { markdown, outputPath } }) =>
-          writeFile(outputPath, markdown, "utf-8")
+        [...dataRoutes.values()].map(
+          ({
+            markdown: {
+              markdown,
+              output: { absolutePath: outputPath }
+            }
+          }) => writeFile(outputPath, markdown, "utf-8")
         )
       );
+
+      // Add alternate reference to HTML header
+      await addAlternateReferences({ dataRoutes, siteConfig });
 
       // Create /llms.txt
       await generateLlmsTxt({
@@ -228,10 +236,16 @@ type GroupedRoutes = Record<string, GroupedRoute>;
 
 type SortedGroupedRoutes = [string, GroupedRoute][];
 
-interface RouteMarkdownData {
+interface RouteMarkdownPath {
   relativePath: string;
+  absolutePath: string;
+}
+
+interface RouteMarkdownData {
+  source: RouteMarkdownPath;
+  output: RouteMarkdownPath;
+  html: string;
   markdown: string;
-  outputPath: string;
 }
 
 interface RouteMetadata {
@@ -371,9 +385,22 @@ const prepareMarkdown = async ({
 
     const outputPath = join(outDir, relativePath);
 
+    const sourceRelativePath = route.endsWith("/")
+      ? `${route}index.html`
+      : `${route}/index.html`;
+
+    const sourcePath = join(outDir, sourceRelativePath);
+
     return {
-      relativePath,
-      outputPath,
+      source: {
+        relativePath: sourceRelativePath,
+        absolutePath: sourcePath
+      },
+      output: {
+        relativePath,
+        absolutePath: outputPath
+      },
+      html,
       markdown: cleanMd
     };
   };
@@ -450,7 +477,9 @@ const generateLlmsTxt = async ({
     }
 
     const {
-      markdown: { relativePath },
+      markdown: {
+        output: { relativePath }
+      },
       metadata: { title, description }
     } = data;
 
@@ -559,3 +588,35 @@ ${content}`;
 
 const capitalize = (text: string): string =>
   text.replace(/./, (c) => c.toUpperCase());
+
+const addAlternateReferences = async ({
+  dataRoutes,
+  siteConfig: { url }
+}: {
+  dataRoutes: RoutesData;
+} & Pick<LoadContext, "siteConfig">) => {
+  const updateHeadWithAlternateRef = async ({
+    html,
+    source: { absolutePath },
+    output: { relativePath }
+  }: RouteMarkdownData) => {
+    const mdAbsolutePath = "{{MD_ABSOLUTE_PATH}}";
+    const template = `<link href="${mdAbsolutePath}" rel="alternate" type="text/markdown">`;
+
+    // Maybe there is a better target but, feels like the easier and safer
+    const headEndTag = "</head>";
+
+    const updatedHtml = html.replace(
+      headEndTag,
+      `${template.replace(mdAbsolutePath, `${url}${relativePath}`)}${headEndTag}`
+    );
+
+    await writeFile(absolutePath, updatedHtml, "utf-8");
+  };
+
+  await Promise.all(
+    [...dataRoutes.values()].map(({ markdown }) =>
+      updateHeadWithAlternateRef(markdown)
+    )
+  );
+};
