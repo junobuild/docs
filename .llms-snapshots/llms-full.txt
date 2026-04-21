@@ -12658,7 +12658,7 @@ icrc1BalanceOf(params: {  account: Account}): Promise<bigint>
 #### Example:
 
 ```
-import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@icp-sdk/core/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: "your-icrc-ledger-canister-id"  });  const balance = await ledger.icrc1BalanceOf({    account: {      owner: Principal.fromText("user-principal")    }  });  console.log("Balance:", balance);};
+import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@icp-sdk/core/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: Principal.fromText("your-icrc-ledger-canister-id")  });  const balance = await ledger.icrc1BalanceOf({    account: {      owner: Principal.fromText("user-principal")    }  });  console.log("Balance:", balance);};
 ```
 
 ### icrc1Transfer
@@ -12688,7 +12688,7 @@ icrc1Transfer(params: {  args: TransferArgs}): Promise<TransferResult>
 #### Example:
 
 ```
-import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@icp-sdk/core/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: "your-icrc-ledger-canister-id"  });  const result = await ledger.icrc1Transfer({    args: {      to: {        owner: Principal.fromText("recipient-principal")      },      amount: 1_000_000n,      fee: 10_000n    }  });  if ("Ok" in result) {    console.log("Transfer successful, block index:", result.Ok);  } else {    console.error("Transfer failed:", result.Err);  }};
+import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@icp-sdk/core/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: Principal.fromText("your-icrc-ledger-canister-id")  });  const result = await ledger.icrc1Transfer({    args: {      to: {        owner: Principal.fromText("recipient-principal")      },      amount: 1_000_000n,      fee: 10_000n    }  });  if ("Ok" in result) {    console.log("Transfer successful, block index:", result.Ok);  } else {    console.error("Transfer failed:", result.Err);  }};
 ```
 
 ### icrc2TransferFrom
@@ -12721,7 +12721,7 @@ icrc2TransferFrom(params: {  args: TransferFromArgs}): Promise<TransferFromResul
 #### Example:
 
 ```
-import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@icp-sdk/core/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: "your-icrc-ledger-canister-id"  });  const result = await ledger.icrc2TransferFrom({    args: {      from: {        owner: Principal.fromText("source-principal")      },      to: {        owner: Principal.fromText("destination-principal")      },      amount: 500_000n    }  });  if ("Ok" in result) {    console.log("Transfer from successful, block index:", result.Ok);  } else {    console.error("Transfer from failed:", result.Err);  }};
+import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@icp-sdk/core/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: Principal.fromText("your-icrc-ledger-canister-id")  });  const result = await ledger.icrc2TransferFrom({    args: {      from: {        owner: Principal.fromText("source-principal")      },      to: {        owner: Principal.fromText("destination-principal")      },      amount: 500_000n    }  });  if ("Ok" in result) {    console.log("Transfer from successful, block index:", result.Ok);  } else {    console.error("Transfer from failed:", result.Err);  }};
 ```
 
 ### icrc2Approve
@@ -12753,7 +12753,7 @@ icrc2Approve(params: {  args: ApproveArgs}): Promise<ApproveResult>
 #### Example:
 
 ```
-import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@icp-sdk/core/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: "your-icrc-ledger-canister-id"  });  const result = await ledger.icrc2Approve({    args: {      spender: {        owner: Principal.fromText("spender-principal")      },      amount: 1_000_000n    }  });  if ("Ok" in result) {    console.log("Approval successful, block index:", result.Ok);  } else {    console.error("Approval failed:", result.Err);  }};
+import { IcrcLedgerCanister } from "@junobuild/functions/canisters/ledger/icrc";import { Principal } from "@icp-sdk/core/principal";export const onExecute = async () => {  const ledger = new IcrcLedgerCanister({    canisterId: Principal.fromText("your-icrc-ledger-canister-id")  });  const result = await ledger.icrc2Approve({    args: {      spender: {        owner: Principal.fromText("spender-principal")      },      amount: 1_000_000n    }  });  if ("Ok" in result) {    console.log("Approval successful, block index:", result.Ok);  } else {    console.error("Approval failed:", result.Err);  }};
 ```
 
 ---
