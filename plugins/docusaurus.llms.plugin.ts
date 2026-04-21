@@ -275,7 +275,7 @@ const prepareMarkdown = async ({
   turndownService.addRule("docusaurus-skip-to-main-content", {
     filter: (element: HTMLElement, _options: Options): boolean =>
       element.getAttribute("role") === "region" &&
-      element.parentElement.getAttribute("id") === "__docusaurus",
+      element.parentElement?.getAttribute("id") === "__docusaurus",
     replacement: (_content: string, _node: TurndownNode, _options: Options) =>
       ""
   });
@@ -290,7 +290,7 @@ const prepareMarkdown = async ({
 
   turndownService.addRule("docusaurus-admonition", {
     filter: (element: HTMLElement, _options: Options): boolean =>
-      element.parentElement.classList.contains("theme-admonition") &&
+      element.parentElement?.classList.contains("theme-admonition") === true &&
       element.className.includes("admonitionHeading"),
     replacement: (content: string, _node: TurndownNode, _options: Options) =>
       `**${capitalize(content)}:**`
@@ -310,7 +310,7 @@ const prepareMarkdown = async ({
 
       const href = (node as HTMLElement).getAttribute("href");
 
-      if (href.startsWith("#")) {
+      if (href?.startsWith("#")) {
         // Anchor are rendered after titles - e.g "<h3> Something[#](#anchor)" which is handy for the web but,
         // a bit noise in markdown. So we try to clean those.
         const empty = cleanZeroWidthSpace(content) === "";
@@ -323,7 +323,7 @@ const prepareMarkdown = async ({
       }
 
       // Not a link to the documentation can be printed as standard link
-      if (!href.startsWith(`/${docsDir}/`)) {
+      if (!href?.startsWith(`/${docsDir}/`)) {
         return `[${content.trim()}](${href})`;
       }
 
