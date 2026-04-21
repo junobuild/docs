@@ -254,6 +254,16 @@ const redirects: StorageConfigRedirect[] = [
     source: "/docs/category/clients",
     location: "/docs/category/frontend",
     code: 301
+  },
+  {
+    source: "/docs/references",
+    location: "/docs/reference/cli",
+    code: 301
+  },
+  {
+    source: "/docs",
+    location: "/docs/intro",
+    code: 301
   }
 ];
 
