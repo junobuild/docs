@@ -1,10 +1,15 @@
+---
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+
 # Provisioning Options
 
 The creation wizard for Satellites and Orbiters includes advanced provisioning options for developers who need more control.
 
 ---
 
-## Hosting Memory
+## Website vs Application
 
 When you initialize a satellite, you must decide how the frontend will be kept in memory and served on the web.
 
@@ -27,6 +32,28 @@ Ultimately, there are no strict rules. You can use heap for an application or st
 For more background on memory behavior and limits, see the [Memory](./memory.md) documentation.
 
 :::
+
+---
+
+### Summary
+
+The table below summaries the difference regarding the **hosting memory**.
+
+:::note
+
+This comparison relates strictly to where your frontend assets (JS, HTML, etc.) are stored and served from.
+
+:::
+
+|                           | Website (heap)                                            | Application (stable)                                      |
+| ------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| **Best for**              | Websites, blogs, content sites                            | SPAs, feature-rich applications                           |
+| **Speed**                 | Faster, more consistent                                   | Slightly slower on average, spikier under load            |
+| **Asset size limit**      | ~1 GB (serialization on upgrade)                          | No practical limit                                        |
+| **Upgrade cost**          | Assets re-serialized on every upgrade                     | Assets survive upgrades without re-processing             |
+| **SEO impact**            | Better (lower TTFB, ~0.5 s faster LCP)                    | Minor overhead (~0.5 s added to CWV)                      |
+| **Default in Console**    | ✅ Website                                                | ✅ Application                                            |
+| **Can be changed later?** | ✅ Yes — in Hosting › Settings (requires no active files) | ✅ Yes — in Hosting › Settings (requires no active files) |
 
 ---
 
