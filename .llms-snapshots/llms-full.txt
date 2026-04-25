@@ -14152,6 +14152,14 @@ If you want to play with kids in your own group, it’s super fast and easy beca
 
 By picking the right group (or subnet), everyone can play faster and have more fun.
 
+## UFO
+
+A UFO is a raw canister, meaning any ([canister](#canister)) that is not a standard Juno ([module](#modules)) (i.e. not a ([Satellite](#satellite)), ([Mission Control](#mission-control)), or ([Orbiter](#orbiter))).
+
+UFOs can be registered and managed through the ([Console](#console)), giving you access to the same administration features available for other modules: metrics, settings, ([controllers](#controller)), and snapshots. They are also compatible with monitoring.
+
+This is particularly useful for developers who want to spin up arbitrary canisters, for example on a local emulator to replicate a mainnet setup, while still benefiting from the Console's tooling.
+
 ## Wallet
 
 A wallet is your secure repository for managing and storing resources in Juno.
