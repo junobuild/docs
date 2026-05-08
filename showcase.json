@@ -24,13 +24,6 @@
     "img": "/showcase/aegir.jpg"
   },
   {
-    "title": "icdraw",
-    "url": "https://icdraw.com",
-    "description": "A whiteboard for sketching hand-drawn like diagrams on Web3.",
-    "img": "https://icdraw.com/social-image.jpg",
-    "github": "https://github.com/peterpeterparker/icdraw"
-  },
-  {
     "title": "proposals.network",
     "url": "https://proposals.network",
     "description": "Browse and submit proposals on ICP.",
