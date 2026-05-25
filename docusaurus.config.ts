@@ -220,6 +220,14 @@ const config: Config = {
           }
         ]
       },
+      announcementBar: {
+        id: "maintenance_bar",
+        content:
+          "Juno is in <b>maintenance</b> and not actively developed anymore.",
+        isCloseable: false,
+        backgroundColor: "var(--ifm-button-color)",
+        textColor: "var(--ifm-button-background-color)"
+      },
       footer: {
         style: "light",
         links: [
