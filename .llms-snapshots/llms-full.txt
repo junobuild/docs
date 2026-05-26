@@ -6,6 +6,10 @@ Juno is in **maintenance** and not actively developed anymore.
 
 # Getting Started with Juno
 
+**Caution:**
+
+Juno is in **maintenance** and not actively developed anymore. Do not use it for anything serious.
+
 Unless you're looking to solely host your static website, the recommended way to start with Juno is by developing locally using the emulator — a production-like environment with full support for data, authentication, storage, and serverless functions.
 
 It gives you everything you need to build and test your app before deploying anything live.
@@ -483,9 +487,9 @@ Juno is in **maintenance** and not actively developed anymore.
 
 When you're ready to deploy your project to production, you'll need to create a [Satellite](/docs/terminology.md#satellite).
 
-**Tip:**
+**Caution:**
 
-New to Juno? Reach out on [Discord](https://discord.gg/wHZ57Z2RAG) and we'll get you started for free.
+Juno is in **maintenance** and not actively developed anymore. Do not use it for anything serious.
 
 1.  To get started, sign-in to the Juno [Console](https://console.juno.build).
 2.  Click **Launch your first Satellite**.
@@ -10448,10 +10452,6 @@ Juno is in **maintenance** and not actively developed anymore.
 # Wallet
 
 This section provides guidance on managing your cycles with your wallet (your account), which are essential for maintaining and providing enough resources for your modules in the Juno ecosystem.
-
-**Tip:**
-
-New to Juno? You don't need to set up a wallet. Reach out on [Discord](https://discord.gg/wHZ57Z2RAG) and we'll get you started for free.
 
 **Important:**
 
