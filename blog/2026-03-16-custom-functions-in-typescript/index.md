@@ -111,7 +111,7 @@ const Schema = j.discriminatedUnion("type", [
 
 export const registerPet = defineUpdate({
   args: Schema,
-  handler: ({ args }) => {
+  handler: (args) => {
     if (args.type === "cat") {
       // handle cat
     } else {
