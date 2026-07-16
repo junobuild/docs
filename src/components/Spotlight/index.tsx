@@ -6,7 +6,8 @@ export default function Spotlight({
   title,
   description,
   img,
-  url
+  url,
+  github
 }: ShowcaseSpotlight): JSX.Element {
   return (
     <Link href={url} target="_blank" rel="noreferrer noopener nofollow">
@@ -22,7 +23,14 @@ export default function Spotlight({
         </div>
 
         <div className={styles.content}>
-          <h4>{title}</h4>
+        <h4>
+        {title}
+        {github && (
+          <Link href={github} target="_blank" rel="noreferrer noopener nofollow" className={styles.githubLink}>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/640px-Github-desktop-logo-symbol.svg.png" alt="GitHub Logo" className={styles.githubLogo} />
+          </Link>
+        )}
+      </h4>
           <p>{description}</p>
         </div>
       </article>
