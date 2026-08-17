@@ -5,7 +5,6 @@ import Build from "@site/src/components/Build";
 import Features from "@site/src/components/Features";
 import Head from "@site/src/components/Head";
 import Hero from "@site/src/components/Hero";
-import Newsletter from "@site/src/components/Newsletter";
 import Outro from "@site/src/components/Outro";
 import Screenshot from "@site/src/components/Screenshot";
 import Layout from "@theme/Layout";
@@ -64,10 +63,6 @@ export default function Home(): JSX.Element {
 
         <section className={`container ${styles.block}`}>
           <Testimonials />
-        </section>
-
-        <section className={`container ${styles.block}`}>
-          <Newsletter />
         </section>
 
         <Outro />
