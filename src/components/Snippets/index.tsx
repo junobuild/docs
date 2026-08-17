@@ -17,12 +17,7 @@ import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 
 type Snippet =
-  | "auth"
-  | "datastore"
-  | "storage"
-  | "hosting"
-  | "functions"
-  | "analytics";
+  "auth" | "datastore" | "storage" | "hosting" | "functions" | "analytics";
 
 export default function Snippets(): JSX.Element {
   const [snippet, setSnippet] = useState<Snippet>("auth");
