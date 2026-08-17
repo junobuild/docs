@@ -40,8 +40,7 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-markdown": "^10.1.0",
-    "remark-gfm": "^4.0.1",
-    "use-mailchimp-form": "^3.2.3"
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.10.2",
