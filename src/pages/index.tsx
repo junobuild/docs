@@ -1,5 +1,3 @@
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { initOrbiter } from "@junobuild/analytics";
 import AI from "@site/src/components/Ai";
 import Build from "@site/src/components/Build";
 import Features from "@site/src/components/Features";
@@ -8,29 +6,11 @@ import Hero from "@site/src/components/Hero";
 import Outro from "@site/src/components/Outro";
 import Screenshot from "@site/src/components/Screenshot";
 import Layout from "@theme/Layout";
-import { useEffect } from "react";
-
 import Launch from "@site/src/components/Launch";
 import Testimonials from "@site/src/components/Testimonials";
 import styles from "./index.module.scss";
 
 export default function Home(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
-  const {
-    customFields: { dev }
-  } = siteConfig;
-
-  useEffect(() => {
-    if (dev) {
-      return;
-    }
-
-    initOrbiter({
-      satelliteId: "ucnx3-aqaaa-aaaal-ab3ea-cai",
-      orbiterId: "3iier-sqaaa-aaaal-aczaa-cai"
-    });
-  }, []);
-
   return (
     <Layout>
       <Head>

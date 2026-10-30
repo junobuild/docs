@@ -1,5 +1,4 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { trackEvent } from "@site/src/providers/analytics.providers";
 import CodeBlock from "@theme/CodeBlock";
 import { useRef } from "react";
 import styles from "./styles.module.scss";
@@ -14,25 +13,8 @@ export default function BashSnippet({
   const { siteConfig } = useDocusaurusContext();
   const container = useRef(null);
 
-  const onClick = async ({ target }: MouseEvent) => {
-    const btn = container.current?.querySelector('button[title="Copy"]');
-
-    if (!btn?.contains(target)) {
-      return;
-    }
-
-    await trackEvent({
-      name: analyticsEventName,
-      siteConfig
-    });
-  };
-
   return (
-    <div
-      className={styles.code}
-      ref={container}
-      onClick={async ($event) => onClick($event as unknown as MouseEvent)}
-    >
+    <div className={styles.code} ref={container}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="24"
