@@ -1,7 +1,6 @@
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Start from "@site/src/components/Start";
-import { trackEvent } from "@site/src/providers/analytics.providers";
 import clsx from "clsx";
 import { useRef } from "react";
 import styles from "./styles.module.scss";
@@ -27,16 +26,7 @@ export default function Hero(): JSX.Element {
         <p className={`${styles.item}`}></p>
         <div className={`${styles.item} ${styles.actions}`}>
           <Start position="hero">Start Building</Start>
-          <Link
-            className="button button--juno"
-            to="/docs/intro"
-            onClick={() =>
-              trackEvent({
-                name: "documentation",
-                siteConfig
-              })
-            }
-          >
+          <Link className="button button--juno" to="/docs/intro">
             Documentation
           </Link>
 

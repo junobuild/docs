@@ -1,6 +1,5 @@
 import { useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { trackEvent } from "@site/src/providers/analytics.providers";
 import IconClaude from "@site/static/icons/claude.svg";
 import IconMarkdown from "@site/static/icons/markdown.svg";
 import IconOpenAI from "@site/static/icons/openai.svg";
@@ -16,15 +15,6 @@ const AskAiLink = ({ icon, text, link, description, pathname, eventName }) => {
         className="dropdown__link"
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() =>
-          trackEvent({
-            name: eventName,
-            metadata: {
-              pathname
-            },
-            siteConfig
-          })
-        }
       >
         <span className={styles.link}>
           {icon}
