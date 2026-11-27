@@ -1,5 +1,5 @@
 :::caution
 
-Juno is in **maintenance** and not actively developed anymore. Do not use it for anything serious.
+Juno is **deprecated** and no longer maintained. Do not use it for new projects, and consider migrating existing ones.
 
 :::
