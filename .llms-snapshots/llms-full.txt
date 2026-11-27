@@ -2,13 +2,13 @@
 
 > Juno is your self-contained serverless platform for building full-stack web apps without DevOps or backend boilerplate. Developers use their favorite frontend frameworks like React, SvelteKit, or Next.js, and write backend logic in Rust or TypeScript as serverless functions. Everything is bundled into a single WebAssembly (WASM) artifact that runs in a decentralized, stateful environment — under full user ownership — on the Internet Computer. Juno cannot access or modify your code, data, or infrastructure. It supports GitHub Actions for deploys and upgrades, and provides both a CLI and web Console UI for managing projects. The local development environment closely mirrors production, ensuring smooth transitions from build to deployment — all with the privacy and control developers expect from self-hosting.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Getting Started with Juno
 
 **Caution:**
 
-Juno is in **maintenance** and not actively developed anymore. Do not use it for anything serious.
+Juno is **deprecated** and no longer maintained. Do not use it for new projects, and consider migrating existing ones.
 
 Unless you're looking to solely host your static website, the recommended way to start with Juno is by developing locally using the emulator — a production-like environment with full support for data, authentication, storage, and serverless functions.
 
@@ -76,7 +76,7 @@ Learn more about the available products, from auth and data to hosting and funct
 *   [Monitoring](/docs/management/monitoring.md)
 *   [Snapshots](/docs/management/snapshots.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Start a New Project
 
@@ -157,7 +157,7 @@ Everything — frontend, backend, and app state — is bundled into a single Web
 
 This architecture keeps development and deployment straightforward, reliable, and fully yours.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Setup the SDK
 
@@ -257,7 +257,7 @@ You can also pass the Satellite ID manually to the SDK, though using the plugins
 import { initSatellite } from "@junobuild/core";await initSatellite({  satelliteId: "your-actual-satellite-id"});
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Local Development
 
@@ -481,7 +481,7 @@ For example, you can use the following script:
 #!/usr/bin/env bash# Check if a principal is passed as an argument; otherwise, prompt for itif [ -z "$1" ]; then  read -r -p "Enter the Wallet ID (owner account, principal): " PRINCIPALelse  PRINCIPAL=$1fi# Make a transfer request to the admin servercurl "http://localhost:5999/ledger/transfer/?to=$PRINCIPAL"
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Create a Satellite
 
@@ -489,7 +489,7 @@ When you're ready to deploy your project to production, you'll need to create a 
 
 **Caution:**
 
-Juno is in **maintenance** and not actively developed anymore. Do not use it for anything serious.
+Juno is **deprecated** and no longer maintained. Do not use it for new projects, and consider migrating existing ones.
 
 1.  To get started, sign-in to the Juno [Console](https://console.juno.build).
 2.  Click **Launch your first Satellite**.
@@ -513,7 +513,7 @@ Choose **Application** if your project needs user sign-in, data management, or s
 
 You can change this later in your Satellite "Hosting" settings.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Analytics
 
@@ -611,7 +611,7 @@ Consequently, this leaves the canister open to potential attacks that can pollut
 2.  Enable [monitoring](/docs/management/monitoring.md) to ensure your modules are automatically refueled and stay online.
 3.  Interpret the statistics provided by this feature with some reservation, similar to any other analytics data, considering potential inaccuracies.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Development
 
@@ -685,7 +685,7 @@ As long as your URLs include UTM tags, campaign data will be collected and shown
 
 Only the `utm_source` field is mandatory. If it's missing, the campaign will not be tracked.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Setup
 
@@ -888,7 +888,7 @@ juno.config.js
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    }  },  orbiter: {    ids: {      production: "aaaa-bbbbb-ccccc-ddddd-cai",      development: "ffff-eeee-ddddd-ccccc-cai"    }  }});
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Authentication
 
@@ -973,7 +973,7 @@ Each authentication method has its strengths. The right choice depends not only 
 
 Many developers combine multiple providers - for example, offering Google as the default and Internet Identity or Passkeys as alternatives.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Local Development and E2E
 
@@ -1063,7 +1063,7 @@ Clearing identifiers only removes the usage history.
 *   Use different identifiers to test multi-user scenarios
 *   Switch to real providers (Google, Internet Identity, Passkeys) before deploying
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # GitHub
 
@@ -1270,7 +1270,7 @@ Since you are self-hosting the proxy, you will also need to deploy your own Obse
 
 Reach out if you need guidance on setting that up.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Google
 
@@ -1486,7 +1486,7 @@ This setup means your Satellite **trusts Juno** to deliver the correct, untemper
 
 If you prefer to control this part as well, or if you want to improve redundancy in your setup while taking care of the related cost, you can spin your own Observatory instance. Reach out if you're interested in setting that up.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Internet Identity
 
@@ -1585,7 +1585,7 @@ If you're unsure which domain to use as the primary domain, here are two common 
 
 Choosing the right derivation origin early helps avoid identity issues later, but both approaches are valid depending on your goals.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Management
 
@@ -1673,7 +1673,7 @@ You can then share the app link with others. When they attempt to sign in and ar
 
 They can send you their key, and you can add them to the list manually to grant access.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Passkeys
 
@@ -1805,7 +1805,7 @@ import { isWebAuthnAvailable } from "@junobuild/core";if (await isWebAuthnAvaila
 *   Combine Passkeys with other providers (like [Google](/docs/build/authentication/google.md) or [Internet Identity](/docs/build/authentication/internet-identity.md)) to cover both mainstream and decentralized use cases.
 *   Avoid changing your app's domain setup after users have registered, as identities are tied to the original domain scope.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Authentication Utilities
 
@@ -1908,7 +1908,7 @@ The worker also emits an event named `junoDelegationRemainingTime`, which provid
 document.addEventListener(  "junoDelegationRemainingTime",  ({ detail: remainingTime }) => {    // Display the remaining session duration to your users  },  { passive: true });
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Datastore
 
@@ -1984,7 +1984,7 @@ Both Datastore and Storage use a unique identifier per item — but they refer t
     *   Used to serve, list, or delete files.
     *   Example: `/images/logo.png` (collection: `images`) or `/avatars/user42/profile.jpg` (collection: `avatars`).
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Collections
 
@@ -2026,7 +2026,7 @@ If not set to immutable, you can modify the permissions at any time, and the cha
 
 Any collection with read permissions set to `public`, `managed` or `restricted` will allow the developer to view its content in the console under the [datastore](https://console.juno.build/datastore) view.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Development
 
@@ -2314,7 +2314,7 @@ You never need to set this parameter in a browser context.
 import { getDoc } from "@junobuild/core";await getDoc({  collection: "my_collection_key",  key: "my_document_key",  satellite: {    identity: myIdentity,    satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",    container: true  }});
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Functions
 
@@ -2414,7 +2414,7 @@ Despite their differences, Rust and TypeScript serverless functions are designed
 
 Even if experimental and less performant, if you're a TypeScript developer, TypeScript functions are the natural choice — you get a familiar workflow and shared types with your frontend out of the box.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Lifecycle
 
@@ -2573,7 +2573,7 @@ A quick reference for the most common CLI commands and deployment workflows when
 | `juno functions publish --no-apply` in CI → `juno changes apply` → `juno functions upgrade --cdn-path ...` | CI/CD with submit-only access. |
 | `juno functions publish --mode staging` | CI/CD using staging environment. |
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Logs
 
@@ -2628,7 +2628,7 @@ Logs are stored in stable memory, accommodating up to 100 entries. Once this lim
 | `error` | Error | Logs an error message. |
 | `error_with_data` | Error | Logs an error message with additional serialized data. |
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Development
 
@@ -2966,7 +2966,7 @@ For practical use cases, check out the [Examples](/docs/guides/rust.md) page wit
 
 For practical use cases, check out the [Examples](/docs/guides/typescript.md) page with sample projects and resources available on GitHub.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Rust
 
@@ -3070,7 +3070,7 @@ For instance:
 cargo clippy --target=wasm32-unknown-unknown
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # TypeScript
 
@@ -3140,7 +3140,7 @@ This version is embedded into the compiled Wasm binary and displayed in the Juno
 
 You can use any versioning scheme that suits your development workflow (e.g. `0.1.0`, `1.0.0-beta`, `2025.04.18`...).
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Hosting
 
@@ -3160,7 +3160,7 @@ Want to maintain your unique brand identity? You can use your own domain - like 
 
 This comes with an automatically generated SSL certificate for each domain, ensuring secure connections for your users.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Configuration
 
@@ -3434,7 +3434,7 @@ juno.config.js
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    assertions: {      heapMemory: false    }  }});
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Development
 
@@ -3514,7 +3514,7 @@ If you're having trouble, feel free to reach out for assistance—we’re happy 
 
 If one of the status `Pending...` is reached, the console will automatically refresh the status every few seconds until your domain is available.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Storage
 
@@ -3594,7 +3594,7 @@ Both Datastore and Storage use a unique identifier per item — but they refer t
     *   Used to serve, list, or delete files.
     *   Example: `/images/logo.png` (collection: `images`) or `/avatars/user42/profile.jpg` (collection: `avatars`).
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Collections
 
@@ -3640,7 +3640,7 @@ If not set to immutable, you can modify the permissions at any time, and the cha
 
 Any collection with read permissions set to `public`, `managed` or `restricted` will allow the developer to view its content in the console under the [storage](https://console.juno.build/storage) view.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Development
 
@@ -3988,7 +3988,7 @@ You never need to set this parameter in a browser context.
 import { getAsset } from "@junobuild/core";await getAsset({  collection: "my_collection_key",  fullPath: "/images/logo.png",  satellite: {    identity: myIdentity,    satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",    container: true  }});
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # What makes Juno a great Heroku alternative
 
@@ -4080,7 +4080,7 @@ If you love Heroku's simplicity but want a platform designed for the next decade
 
 Ready to explore Juno? [Start building](/docs/intro.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # What makes Juno a great Netlify alternative
 
@@ -4187,7 +4187,7 @@ If you want the same ease — with ownership, clarity, and room to scale — Jun
 
 Ready to explore Juno? [Start building](/docs/intro.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # What makes Juno a great Railway alternative
 
@@ -4295,7 +4295,7 @@ Then **Juno is a powerful Railway alternative** — all the developer convenienc
 
 Ready to explore Juno? [Start building](/docs/intro.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # What makes Juno a great self-hosting alternative
 
@@ -4386,7 +4386,7 @@ If you want the privacy and autonomy of running your own server, without becomin
 
 Ready to explore Juno? [Start building](/docs/intro.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # What makes Juno a great Vercel alternative
 
@@ -4493,7 +4493,7 @@ Then **Juno is a powerful Vercel alternative** — the same serverless experienc
 
 Ready to explore Juno? [Start building](/docs/intro.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Frontend
 
@@ -4527,7 +4527,7 @@ A fullstack note-taking app built with Angular, and Tailwind CSS using Juno for 
 
 A fullstack note-taking app built with vanilla JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/vanilla-javascript.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Functions
 
@@ -4541,7 +4541,7 @@ Write serverless backend logic for your app using TypeScript or Rust. These exam
 
 3 items](/docs/examples/functions/typescript.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Frontend
 
@@ -4575,7 +4575,7 @@ A fullstack note-taking app built with Angular, and Tailwind CSS using Juno for 
 
 A fullstack note-taking app built with vanilla JavaScript, and Tailwind CSS using Juno for authentication, data, and file storage.](/docs/examples/frontend/vanilla-javascript.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Angular Example
 
@@ -4707,7 +4707,7 @@ The following functions from `@junobuild/core` are used in this example:
 | `uploadFile` | Upload a file to storage | [`src/app/components/modal/modal.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/modal/modal.component.ts) | [Upload file](/docs/build/storage/development.md#upload-file) |
 | `deleteAsset` | Delete a file from storage | [`src/app/components/delete/delete.component.ts`](https://github.com/junobuild/create-juno/blob/main/templates/angular-example/src/app/components/delete/delete.component.ts) | [Delete asset](/docs/build/storage/development.md#delete-asset) |
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Next.js Example
 
@@ -4837,7 +4837,7 @@ The following functions from `@junobuild/core` are used in this example:
 | `uploadFile` | Upload a file to storage | [`src/components/modal.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/modal.tsx) | [Upload file](/docs/build/storage/development.md#upload-file) |
 | `deleteAsset` | Delete a file from storage | [`src/components/delete.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/nextjs-example/src/components/delete.tsx) | [Delete asset](/docs/build/storage/development.md#delete-asset) |
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # React JavaScript Example
 
@@ -4971,7 +4971,7 @@ The following functions from `@junobuild/core` are used in this example:
 | `uploadFile` | Upload a file to storage | [`src/components/Modal.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Modal.jsx) | [Upload file](/docs/build/storage/development.md#upload-file) |
 | `deleteAsset` | Delete a file from storage | [`src/components/Delete.jsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-example/src/components/Delete.jsx) | [Delete asset](/docs/build/storage/development.md#delete-asset) |
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # React TypeScript Example
 
@@ -5105,7 +5105,7 @@ The following functions from `@junobuild/core` are used in this example:
 | `uploadFile` | Upload a file to storage | [`src/components/Modal.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Modal.tsx) | [Upload file](/docs/build/storage/development.md#upload-file) |
 | `deleteAsset` | Delete a file from storage | [`src/components/Delete.tsx`](https://github.com/junobuild/create-juno/blob/main/templates/react-ts-example/src/components/Delete.tsx) | [Delete asset](/docs/build/storage/development.md#delete-asset) |
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # SvelteKit Example
 
@@ -5236,7 +5236,7 @@ The following functions from `@junobuild/core` are used in this example:
 | `uploadFile` | Upload a file to storage | [`src/lib/components/Modal.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Modal.svelte) | [Upload file](/docs/build/storage/development.md#upload-file) |
 | `deleteAsset` | Delete a file from storage | [`src/lib/components/Delete.svelte`](https://github.com/junobuild/create-juno/blob/main/templates/sveltekit-example/src/lib/components/Delete.svelte) | [Delete asset](/docs/build/storage/development.md#delete-asset) |
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Vanilla JavaScript Example
 
@@ -5365,7 +5365,7 @@ The following functions from `@junobuild/core` are used in this example:
 | `uploadFile` | Upload a file to storage | [`src/components/modal.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/modal.js) | [Upload file](/docs/build/storage/development.md#upload-file) |
 | `deleteAsset` | Delete a file from storage | [`src/components/delete.js`](https://github.com/junobuild/create-juno/blob/main/templates/vanilla-js-example/src/components/delete.js) | [Delete asset](/docs/build/storage/development.md#delete-asset) |
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Vue Example
 
@@ -5496,7 +5496,7 @@ The following functions from `@junobuild/core` are used in this example:
 | `uploadFile` | Upload a file to storage | [`src/components/Modal.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Modal.vue) | [Upload file](/docs/build/storage/development.md#upload-file) |
 | `deleteAsset` | Delete a file from storage | [`src/components/Delete.vue`](https://github.com/junobuild/create-juno/blob/main/templates/vue-example/src/components/Delete.vue) | [Delete asset](/docs/build/storage/development.md#delete-asset) |
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Functions
 
@@ -5510,7 +5510,7 @@ Write serverless backend logic for your app using TypeScript or Rust. These exam
 
 3 items](/docs/examples/functions/typescript.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Rust
 
@@ -5532,7 +5532,7 @@ An example showing how to dynamically generate and store assets (like JSON) in S
 
 An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in Rust using Juno Satellites.](/docs/examples/functions/rust/canister-calls.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # TypeScript
 
@@ -5550,7 +5550,7 @@ An example demonstrating how to modify and re-save documents in Juno Satellites 
 
 An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in TypeScript using Juno Satellites.](/docs/examples/functions/typescript/canister-calls.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Rust
 
@@ -5572,7 +5572,7 @@ An example showing how to dynamically generate and store assets (like JSON) in S
 
 An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in Rust using Juno Satellites.](/docs/examples/functions/rust/canister-calls.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Rust Assertion Example
 
@@ -5750,7 +5750,7 @@ These crates are used to build and extend serverless functions in Rust with Juno
 *   [junobuild-shared](https://docs.rs/junobuild-shared): Shared types and helpers for Juno projects. Used by all containers including the Console.
 *   [junobuild-storage](https://docs.rs/junobuild-storage): Storage helpers for working with assets and HTTP headers in Juno.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Making Canister Calls in Rust Serverless Functions
 
@@ -5923,7 +5923,7 @@ These crates are used to build and extend serverless functions in Rust with Juno
     
 *   [ic-cdk](https://docs.rs/ic-cdk): Internet Computer canister development kit for Rust.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Generating Assets with Rust Serverless Functions
 
@@ -6086,7 +6086,7 @@ These crates are used to build and extend serverless functions in Rust with Juno
 *   [junobuild-shared](https://docs.rs/junobuild-shared): Shared types and helpers for Juno projects. Used by all containers including the Console.
 *   [junobuild-storage](https://docs.rs/junobuild-storage): Storage helpers for working with assets and HTTP headers in Juno.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Mutating Documents with Rust Hooks
 
@@ -6243,7 +6243,7 @@ These crates are used to build and extend serverless functions in Rust with Juno
 *   [junobuild-shared](https://docs.rs/junobuild-shared): Shared types and helpers for Juno projects. Used by all containers including the Console.
 *   [junobuild-storage](https://docs.rs/junobuild-storage): Storage helpers for working with assets and HTTP headers in Juno.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # TypeScript
 
@@ -6261,7 +6261,7 @@ An example demonstrating how to modify and re-save documents in Juno Satellites 
 
 An example showing how to call external canisters (e.g., ICRC ledger) from a serverless function written in TypeScript using Juno Satellites.](/docs/examples/functions/typescript/canister-calls.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # TypeScript Assertion Example
 
@@ -6428,7 +6428,7 @@ It’s a great reference for more advanced setups and orchestration.
 *   [Configuration Reference](/docs/reference/configuration.md)
 *   [Datastore Collections](/docs/build/datastore/collections.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Making Canister Calls in TypeScript Serverless Functions
 
@@ -6605,7 +6605,7 @@ It’s a great reference for more advanced setups and orchestration.
 *   [Configuration Reference](/docs/reference/configuration.md)
 *   [Datastore Collections](/docs/build/datastore/collections.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Mutating Documents with TypeScript Hooks
 
@@ -6772,7 +6772,7 @@ It’s a great reference for more advanced setups and orchestration.
 *   [Configuration Reference](/docs/reference/configuration.md)
 *   [Datastore Collections](/docs/build/datastore/collections.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Using Juno with AI
 
@@ -6895,7 +6895,7 @@ Once configured, you can interact with Juno directly through your AI tool. Just 
 *   [npm package](https://www.npmjs.com/package/junobuild-mcp-server)
 *   [Source repository](https://github.com/nami2111/junobuild-mcp)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Angular
 
@@ -6909,7 +6909,7 @@ Learn how to integrate Juno with Angular. Follow our quickstart guide to set up 
 
 Learn how to deploy your Angular project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/angular/deploy.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Astro
 
@@ -6923,7 +6923,7 @@ Learn how to integrate Juno with Astro. Follow our quickstart guide to set up yo
 
 Learn how to deploy your Astro project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/astro/deploy.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Docusaurus
 
@@ -6933,7 +6933,7 @@ Explore how to deploy a Juno project developed with Docusaurus.
 
 Learn how to deploy your Docusaurus project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/docusaurus/deploy.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # End-to-End Testing
 
@@ -7023,7 +7023,7 @@ So, how it works:
 
 That's it. Minimal setup, no need for the Console UI, and everything runs headlessly in CI.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Manual Deployment
 
@@ -7129,7 +7129,7 @@ juno functions buildjuno functions publishjuno functions upgrade
 
 For a full overview of the serverless lifecycle—including setup, development, local testing, publishing, approvals, and upgrades — see the Serverless Functions Lifecycle guide.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Next.js
 
@@ -7143,7 +7143,7 @@ Learn how to integrate Juno with Next.js. Follow our quickstart guide to set up 
 
 Learn how to deploy your Next.js project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/nextjs/deploy.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Use Juno in a NodeJS context
 
@@ -7205,7 +7205,7 @@ import { getDoc } from "@junobuild/core";import { defineRun } from "@junobuild/c
 
 This script retrieves a document using `getDoc`, selects the document ID based on the current `mode` (for example staging or production), and writes the result to `mydoc.json`, using `jsonReplacer` to handle types not supported by JSON such as `BigInt`.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # React
 
@@ -7219,7 +7219,7 @@ Learn how to integrate Juno with React. Follow our quickstart guide to set up yo
 
 Learn how to deploy your React project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/react/deploy.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Code Functions in Rust
 
@@ -7405,7 +7405,7 @@ One consideration when using replicated mode: since all nodes execute the same r
 
 Looking for more examples? Check out [Rust](/docs/examples/functions/rust.md) for patterns like custom assertions, data manipulation, and canister calls.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # SvelteKit
 
@@ -7419,7 +7419,7 @@ Learn how to integrate Juno with SvelteKit. Follow our quickstart guide to set u
 
 Learn how to deploy your SvelteKit project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/sveltekit/deploy.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Serverless Functions in TypeScript
 
@@ -7637,7 +7637,7 @@ import { j } from "@junobuild/schema";const Schema = j.strictObject({  name: j.s
 
 📦 Import from `@junobuild/schema`
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Vue
 
@@ -7651,7 +7651,7 @@ Learn how to integrate Juno with Vue. Follow our quickstart guide to set up your
 
 Learn how to deploy your Vue project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/vue/deploy.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Angular
 
@@ -7665,7 +7665,7 @@ Learn how to integrate Juno with Angular. Follow our quickstart guide to set up 
 
 Learn how to deploy your Angular project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/angular/deploy.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Build an Angular App
 
@@ -7821,7 +7821,7 @@ pnpm create juno -- --template angular-example
 
 Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Deploy an Angular App
 
@@ -7926,7 +7926,7 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Astro
 
@@ -7940,7 +7940,7 @@ Learn how to integrate Juno with Astro. Follow our quickstart guide to set up yo
 
 Learn how to deploy your Astro project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/astro/deploy.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Build an Astro App
 
@@ -8060,7 +8060,7 @@ Start the app, go to [http://localhost:4321/](http://localhost:4321/) in a brows
 
 Once you're ready to deploy your app for others to access, continue to the [Deployment guide](/docs/guides/astro/deploy.md).
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Deploy an Astro Site
 
@@ -8165,7 +8165,7 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Docusaurus
 
@@ -8175,7 +8175,7 @@ Explore how to deploy a Juno project developed with Docusaurus.
 
 Learn how to deploy your Docusaurus project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/docusaurus/deploy.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Deploy a Docusaurus Site
 
@@ -8280,7 +8280,7 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # GitHub Actions
 
@@ -8383,7 +8383,7 @@ When using the Actions, you can configure the following environment variables:
 | --- | --- | --- |
 | `PROJECT_PATH` | No  | The path to the folder containing the `juno.config` file if it doesn't exist at the root of your repository. e.g. `./my-app-subfolder`. |
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Deploy Frontend
 
@@ -8470,7 +8470,7 @@ Deploying new assets consumes \[cycles\], and the cost increases with both the f
 on:  release:    types: [released]
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Build and Publish Serverless Functions
 
@@ -8533,7 +8533,7 @@ on:  release:    types: [released]
 
 This ensures that your function bundle is built and published only when a GitHub release is published.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Upgrade Serverless Functions (Optional)
 
@@ -8588,7 +8588,7 @@ name: Upgrade Satellite Containeron:  workflow_dispatch:jobs:  upgrade:    runs-
 name: Upgrade Satellite Containeron:  workflow_dispatch:jobs:  upgrade:    runs-on: ubuntu-latest    steps:      - name: Check out the repo        uses: actions/checkout@v4      - uses: actions/setup-node@v4        with:          node-version: 24          registry-url: "https://registry.npmjs.org"      - uses: pnpm/action-setup@v4        with:          version: 10      - name: Install Dependencies        run: pnpm i --frozen-lockfile      - name: Build        uses: junobuild/juno-action@full        with:          args: functions build      - name: Upgrade        uses: junobuild/juno-action@full        with:          args: functions upgrade        env:          JUNO_TOKEN: ${{ secrets.JUNO_TOKEN }}
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Next.js
 
@@ -8602,7 +8602,7 @@ Learn how to integrate Juno with Next.js. Follow our quickstart guide to set up 
 
 Learn how to deploy your Next.js project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/nextjs/deploy.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Build a Next.js App
 
@@ -8758,7 +8758,7 @@ pnpm create juno -- --template nextjs-example
 
 Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Deploy a Next.js App
 
@@ -8881,7 +8881,7 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # React
 
@@ -8895,7 +8895,7 @@ Learn how to integrate Juno with React. Follow our quickstart guide to set up yo
 
 Learn how to deploy your React project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/react/deploy.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Build a React App
 
@@ -9051,7 +9051,7 @@ pnpm create juno -- --template react-example
 
 Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Deploy a React App
 
@@ -9156,7 +9156,7 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # SvelteKit
 
@@ -9170,7 +9170,7 @@ Learn how to integrate Juno with SvelteKit. Follow our quickstart guide to set u
 
 Learn how to deploy your SvelteKit project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/sveltekit/deploy.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Build a SvelteKit App
 
@@ -9332,7 +9332,7 @@ pnpm create juno -- --template sveltekit-example
 
 Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Deploy a SvelteKit App
 
@@ -9465,7 +9465,7 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Vue
 
@@ -9479,7 +9479,7 @@ Learn how to integrate Juno with Vue. Follow our quickstart guide to set up your
 
 Learn how to deploy your Vue project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/vue/deploy.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Build a Vue App
 
@@ -9635,7 +9635,7 @@ pnpm create juno -- --template vue-example
 
 Follow the CLI prompts to choose the note-taking app example and select local development. The CLI will manage all configurations and dependencies, allowing you to focus on exploring and customizing your app right away.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Deploy a Vue App
 
@@ -9740,7 +9740,7 @@ An access token is used to identify your terminal. That's why the CLI asks wheth
 juno hosting deploy
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Monitoring
 
@@ -9867,7 +9867,7 @@ To enable monitoring, go to the [Monitoring Section](https://console.juno.build/
 
 The wizard guides you through the setup process, making it easy to configure monitoring according to your needs.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Snapshots
 
@@ -9913,7 +9913,7 @@ In addition to standard recovery, snapshots can also be uploaded to reapply the 
 
 This should be used carefully though, as snapshots also include elements such as public access keys and user IDs. Applying one module's snapshot to another may cause unintended side effects.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Access Keys
 
@@ -10020,7 +10020,7 @@ This method is useful if you want to generate a completely new key and apply it 
 
 This action will overwrite the previously saved key used to configure your local CLI environment.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Architecture
 
@@ -10135,7 +10135,7 @@ Juno provides many JavaScript libraries, Rust crates, templates and tooling to g
 
 It also provides an emulator for [local development](/docs/guides/local-development.md) that mimics as closely as possible the experience you get in production.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Best Practices
 
@@ -10169,7 +10169,7 @@ Configure your Satellite to send a CSP header as part of the HTTP response. Head
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    hosting: {      source: "dist"    },    storage: {      headers: [        {          source: "**/*",          headers: [["Content-Security-Policy", "REPLACE_THIS_WITH_YOUR_RULES"]]        }      ]    }  }});
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Infrastructure
 
@@ -10200,7 +10200,7 @@ While Juno runs fully on the Internet Computer, two supporting services are main
 
 These services are strictly optional and exist only for this specific use case.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Memory
 
@@ -10344,7 +10344,7 @@ In any case, the best course of action is to reach out so we can assess your sit
 *   [Measure different collection libraries written in Rust](https://dfinity.github.io/canister-profiling/collections/)
 *   [Question about freeing/shrinking memory in WebAssembly design](https://github.com/WebAssembly/design/issues/1300)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Provisioning Options
 
@@ -10448,7 +10448,7 @@ For most applications, we recommend using the default subnets and staying on the
 
 If you have already configured a [monitoring](/docs/management/monitoring.md) strategy, the new module will automatically be registered with it upon creation. This option is enabled by default and can be unchecked in the advanced options if you prefer to set it up manually later.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Wallet
 
@@ -10541,7 +10541,7 @@ You can also receive and send ICP for backwards compatibility with Mission Contr
 
 Cycles remain the recommended approach for all operations.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Workarounds
 
@@ -10639,7 +10639,7 @@ It's recommended to rename the newly added passkey in Internet Identity to keep 
 
 A maximum of 8 passkeys can be assigned to an identity, allowing you to share a project with up to 7 other people.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # CLI
 
@@ -11074,7 +11074,7 @@ These config files are created based on the selected `--profile` and `--mode`:
 | `juno[-profile][-mode]-cli-settings` |     | Stores CLI preferences, e.g. whether the access key file is encrypted (to avoid unnecessary prompts). |
 | `juno[-profile][-mode]-cli-state` |     | Stores ephemeral state like applied config hashes. |
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Configuration
 
@@ -11688,7 +11688,7 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 A similar configuration is also available for the `orbiter` field used for analytics.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Emulator
 
@@ -11706,7 +11706,7 @@ Unlike Skylab, the image junobuild/satellite runs a single Satellite in a headle
 
 In the local environment, several services (which can be either canisters or apps on the Internet Computer) are automatically spun up. This ensures that developers have everything they need to start building right out of the box. Thanks to built-in plugins and tooling, these services are automatically integrated into the environment, eliminating the need for developers to manually manage their bindings.](/docs/reference/emulator/infrastructure.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Functions
 
@@ -11720,7 +11720,7 @@ API reference for writing serverless functions in Rust or TypeScript.
 
 6 items](/docs/reference/functions/typescript.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Plugins
 
@@ -11902,7 +11902,7 @@ The following variables are available:
 
 Discover additional options in the library's [README](https://github.com/junobuild/plugins/tree/main/plugins/vite-plugin).
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Settings
 
@@ -12022,7 +12022,7 @@ The default value is `0n` - i.e. no particular allocation.
 
 If you set the compute allocation to `50n`, the module will be allocated 50% of the compute capacity. This ensures that the module has a guaranteed share of the compute resources, potentially improving its performance by ensuring it has sufficient processing power for its operations.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Emulator
 
@@ -12040,7 +12040,7 @@ Unlike Skylab, the image junobuild/satellite runs a single Satellite in a headle
 
 In the local environment, several services (which can be either canisters or apps on the Internet Computer) are automatically spun up. This ensures that developers have everything they need to start building right out of the box. Thanks to built-in plugins and tooling, these services are automatically integrated into the environment, eliminating the need for developers to manually manage their bindings.](/docs/reference/emulator/infrastructure.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Infrastructure
 
@@ -12061,7 +12061,7 @@ However, in some cases, it may be useful to explicitly reference their IDs or UR
 | [SNS-Wasm](https://dashboard.internetcomputer.org/canister/qaa6y-5yaaa-aaaaa-aaafa-cai) | `qaa6y-5yaaa-aaaaa-aaafa-cai` |
 | [NNS-dapp](https://dashboard.internetcomputer.org/canister/qoctq-giaaa-aaaaa-aaaea-cai) | `qoctq-giaaa-aaaaa-aaaea-cai` |
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Satellite
 
@@ -12083,7 +12083,7 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 For more advanced options like customizing ports, image name, or CI setup, see the [Emulator Configuration](/docs/reference/configuration.md#emulator-configuration) section.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Skylab
 
@@ -12124,7 +12124,7 @@ When running Skylab, the Console UI is available at [http://localhost:5866](http
 
 This is the same interface used in production at [console.juno.build](https://console.juno.build), allowing you to create Satellites and Orbiters, inspect your wallet, manage your Datastore and Storage, etc.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Functions
 
@@ -12138,7 +12138,7 @@ API reference for writing serverless functions in Rust or TypeScript.
 
 6 items](/docs/reference/functions/typescript.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Rust
 
@@ -12160,7 +12160,7 @@ In the context of Juno, it enables your Satellite to perform low-level operation
 
 This page lists the crate versions for each Juno release, to help you upgrade your Rust Serverless Functions. If a release is not listed, no crate updates were required for that version.](/docs/reference/functions/rust/crate-versions.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # TypeScript
 
@@ -12190,7 +12190,7 @@ The following functions can be used to interact with well-known Internet Compute
 
 The TypeScript runtime used in Juno does not provide full Node.js support. Polyfills are added iteratively to keep the environment stable and predictable.](/docs/reference/functions/typescript/node.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Rust
 
@@ -12212,7 +12212,7 @@ In the context of Juno, it enables your Satellite to perform low-level operation
 
 This page lists the crate versions for each Juno release, to help you upgrade your Rust Serverless Functions. If a release is not listed, no crate updates were required for that version.](/docs/reference/functions/rust/crate-versions.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Crate Versions
 
@@ -12308,7 +12308,7 @@ Release notes on [GitHub](https://github.com/junobuild/juno/releases/tag/v0.0.57
 
 If your current version is not listed, refer to the [release notes on GitHub](https://github.com/junobuild/juno/releases) for older crate versions.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # IC-CDK
 
@@ -12326,7 +12326,7 @@ Because of this compatibility, we do not list them individually here and encoura
 
 For compatibility, always use the `ic_cdk` version specified in Juno’s release notes. This ensures proper integration and avoids version mismatch issues.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # SDK
 
@@ -12702,7 +12702,7 @@ pub fn random() -> Result<i32, String>
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-satellite/latest/junobuild_satellite/fn.random.html)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Utils
 
@@ -12756,7 +12756,7 @@ pub fn encode_doc_data_to_string<T: Serialize>(    data: &T,) -> Result<String, 
 
 📦 See full definition on [docs.rs](https://docs.rs/junobuild-utils/latest/junobuild_utils/fn.encode_doc_data_to_string.html)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # TypeScript
 
@@ -12786,7 +12786,7 @@ The following functions can be used to interact with well-known Internet Compute
 
 The TypeScript runtime used in Juno does not provide full Node.js support. Polyfills are added iteratively to keep the environment stable and predictable.](/docs/reference/functions/typescript/node.md)
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Canisters
 
@@ -13096,7 +13096,7 @@ import { call } from "@junobuild/functions/ic-cdk";import {  IcManagementIdl,  t
 *   For admin operations, you can use the [id](/docs/reference/functions/typescript/ic-cdk.md#canisterself) function to get the Satellite's principal, which has admin privileges.
 *   Error handling follows the Result pattern: check for `Ok` or `Err` properties in the response.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # IC-CDK
 
@@ -13263,7 +13263,7 @@ function time(): bigint;
 
 *   This function is a JavaScript binding for the Rust function [ic\_cdk::time()](https://docs.rs/ic-cdk/latest/ic_cdk/api/fn.time.html).
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Node.js
 
@@ -13319,7 +13319,7 @@ Parses and manipulates URLs with `URL` and `URLSearchParams`.
 const url = new URL("https://example.com?foo=bar");console.log(url.hostname); // example.comconsole.log(url.searchParams.get("foo")); // bar
 ```
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Schema Types
 
@@ -13363,7 +13363,7 @@ All Zod types are available through `j`. Refer to the [Zod documentation](https:
 
 `union` is not supported. Use `discriminatedUnion` instead.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # SDK
 
@@ -14091,7 +14091,7 @@ function callerIsAccessKey(): void;
 
 *   `ZodError` if the caller is not a recognized access key.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Utils
 
@@ -14159,7 +14159,7 @@ function encodeDocData<T>(data: T): Uint8Array;
 
 *   A `Uint8Array` containing the encoded binary data.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # FAQ
 
@@ -14250,7 +14250,7 @@ You can also check out the [guides](/docs/category/guides.md), which feature exa
 
 Do you have more questions or need further assistance? Feel free to reach out to us on [Discord](https://discord.gg/wHZ57Z2RAG) or [Twitter](https://twitter.com/junobuild). We're here to help!
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Pricing
 
@@ -14320,7 +14320,7 @@ If you use the [local emulator](/docs/guides/local-development.md) during develo
 
 The emulator runs on a single [node](/docs/terminology.md#node), whereas on mainnet your data is replicated across all nodes in a [subnet](/docs/terminology.md#subnet). This replication is what makes the Internet Computer resilient, but it also means real-world costs are meaningfully higher than what local testing suggests.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Terminology
 
@@ -14441,7 +14441,7 @@ Your wallet is tied to your identity, which is generated when you first log in.
 
 For more information see [Wallet](/docs/miscellaneous/wallet.md) documentation.
 
-Juno is in **maintenance** and not actively developed anymore.
+Juno is **deprecated** and no longer maintained.
 
 # Troubleshooting
 
