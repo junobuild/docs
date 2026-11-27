@@ -220,9 +220,8 @@ const config: Config = {
         ]
       },
       announcementBar: {
-        id: "maintenance_bar",
-        content:
-          "Juno is in <b>maintenance</b> and not actively developed anymore.",
+        id: "deprecation_bar",
+        content: "Juno is <b>deprecated</b> and no longer maintained.",
         isCloseable: false,
         backgroundColor: "var(--ifm-button-color)",
         textColor: "var(--ifm-button-background-color)"
